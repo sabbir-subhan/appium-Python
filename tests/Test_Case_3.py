@@ -1,16 +1,20 @@
-# Test Case 1 - Log Into OCA mobile via direct Login
+# Test case 3 - Managing events
 # open OCA app
 # input login and password
 # click on Submit button
 # wait until app will login
 # check if button "LOGOUT" is present
+# click into EVENTS button
+
+# filtering events
+# opening existing events and editing, deleting, creating new sub event, setting as primary
 
 import os
 import unittest
 from appium import webdriver
 from time import sleep
 import logging
-logging.basicConfig(filename='OCAapp_TC1.log', level=logging.INFO,
+logging.basicConfig(filename='OCAapp_TC3.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())
 from selenium.webdriver.common.keys import Keys
@@ -24,7 +28,7 @@ PATH = lambda p: os.path.abspath(
 )
 
 
-class TC1(unittest.TestCase):
+class TC3(unittest.TestCase):
     def setUp(self):
         desired_capabilities = {}
         desired_capabilities["platformName"] = "Android"
@@ -42,7 +46,7 @@ class TC1(unittest.TestCase):
         logging.info("Quitting")
         self.driver.quit()
 
-    def test_logging_into_OCA_app(self):
+    def test_create_Event(self):
 
         username = "bitnoise"
         password = "Bitn0!$e"
@@ -82,21 +86,49 @@ class TC1(unittest.TestCase):
         sleep(20)
 
         logging.info("check if LOGOUT button is present")
-        logging.info("scroll down to button LOGOUT")
 
+        logging.info("scroll down to button LOGOUT")
         buttons = self.driver.find_elements_by_class_name('android.view.View')
         self.driver.scroll(buttons[22], buttons[1])
         sleep(2)
         logout_button = self.driver.find_element_by_xpath('.//android.view.View[@content-desc[contains(., "LOGOUT")]]')
         sleep(2)
-
         if logout_button is None:
             print("failed to login")
         else:
-            print("Successful login")
+            print("Successfully login")
             self.assertIsNotNone(logout_button)
+
+        sleep(4)
+        logging.info("scroll up to button EVENTS")
+        buttonsup = self.driver.find_elements_by_class_name('android.view.View')
+        self.driver.scroll(buttonsup[1], buttonsup[22])
+        sleep(2)
+
+        logging.info("clicking on Events button")
+        events_button = self.driver.find_element_by_xpath(
+            './/android.view.View[@content-desc[contains(., "EVENTS")]]').click()
+        sleep(5)
+
+        logging.info("check if Events were opened")
+        events_header = self.driver.find_element_by_xpath(
+            './/android.view.View[@content-desc="Events"]')
+        self.assertIsNotNone(events_header)
+
+        logging.info("clicking on 'More' button")
+        more_button = self.driver.find_element_by_xpath(
+            './/android.widget.Spinner[@content-desc[contains(., "More")]]').click()
+        sleep(3)
+
+        logging.info("here some wait is needed before clicking in button")
+        sleep(5)
+
+        logging.info("clicking on New event button")
+        new_event_button = self.driver.find_element_by_xpath(
+            './/android.view.View[@content-desc[contains(., "New event")]]').click()
+        sleep(2)
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TC1)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TC3)
     unittest.TextTestRunner(verbosity=2).run(suite)

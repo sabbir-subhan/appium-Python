@@ -35,13 +35,13 @@ PATH = lambda p: os.path.abspath(
 )
 
 
-class TestCase2(unittest.TestCase):
+class TC2(unittest.TestCase):
     def setUp(self):
         desired_capabilities = {}
         desired_capabilities["platformName"] = "Android"
         desired_capabilities["platformVersion"] = "4.4"
         desired_capabilities["deviceName"] = "QUANTUM_2_400"
-        desired_capabilities["app"] = PATH("E:/repos/appium_OCA_mobile_app/com.noggin.oca.apk")
+        desired_capabilities["app"] = PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk")
         desired_capabilities["appPackage"] = "com.noggin.oca"
         desired_capabilities["appActivity"] = "com.noggin.oca.OCApp"
 
@@ -168,5 +168,5 @@ class TestCase2(unittest.TestCase):
         sleep(3)
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestCase2)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TC2)
     unittest.TextTestRunner(verbosity=2).run(suite)
