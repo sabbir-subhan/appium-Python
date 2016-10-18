@@ -9,14 +9,11 @@ import os
 import unittest
 from appium import webdriver
 from time import sleep
+from selenium.common.exceptions import NoSuchElementException
 import logging
 logging.basicConfig(filename='OCAapp_TC1.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())
-from selenium.webdriver.common.keys import Keys
-from appium.webdriver.common.touch_action import TouchAction
-from appium.webdriver.common.multi_action import MultiAction
-from selenium.common.exceptions import NoSuchElementException
 
 
 PATH = lambda p: os.path.abspath(
@@ -36,7 +33,16 @@ class TC1(unittest.TestCase):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
-        sleep(10)
+        self.driver.implicitly_wait(20)  # seconds
+
+        # credentials:
+
+        # domain
+        self.domain = "https://bitnoiseqa.nogginoca.com"
+
+        # User - active:
+        self.username = "bitnoise"
+        self.password = "Bitn0!$e"
 
     def tearDown(self):
         logging.info("Quitting")
@@ -44,15 +50,9 @@ class TC1(unittest.TestCase):
 
     def test_logging_into_OCA_app(self):
 
-        username = "bitnoise"
-        password = "Bitn0!$e"
-        domain = "https://bitnoiseqa.nogginoca.com"
-
-        sleep(5)
         logging.info("click in LOGIN button")
         login_button = self.driver.find_element_by_xpath(
             './/android.view.View[@content-desc[contains(., "LOGIN")]]').click()
-        sleep(5)
 
         logging.info("typing username, password and OCA domain")
         logging.info("locating input fields")
@@ -60,15 +60,15 @@ class TC1(unittest.TestCase):
 
         logging.info("clear input field and type username")
         textfield[0].clear()
-        textfield[0].send_keys(username)
+        textfield[0].send_keys(self.username)
 
         logging.info("clear input field and type pass")
         textfield[1].clear()
-        textfield[1].send_keys(password)
+        textfield[1].send_keys(self.password)
 
         logging.info("clear input field and type domain address")
         textfield[2].clear()
-        textfield[2].send_keys(domain)
+        textfield[2].send_keys(self.domain)
 
         logging.info("hide screen keyboard")
         self.driver.hide_keyboard()
@@ -79,21 +79,29 @@ class TC1(unittest.TestCase):
             "//android.widget.Button[@content-desc='Submit']").click()
 
         logging.info("wait until app will login")
-        sleep(20)
+        sleep(10)
+
+        logging.info("accept Terms if needed")
+        try:
+            logging.info("check and click on Accept button if needed")
+            accept_button = self.driver.find_element_by_xpath('.//android.widget.Button'
+                                                              '[@content-desc="Accept"]').click()
+            logging.info("Accept button is present")
+            sleep(10)
+        except NoSuchElementException:
+            logging.info("Terms are already accepted - Accept button is not present")
 
         logging.info("check if LOGOUT button is present")
         logging.info("scroll down to button LOGOUT")
 
         buttons = self.driver.find_elements_by_class_name('android.view.View')
         self.driver.scroll(buttons[22], buttons[1])
-        sleep(2)
         logout_button = self.driver.find_element_by_xpath('.//android.view.View[@content-desc[contains(., "LOGOUT")]]')
-        sleep(2)
 
         if logout_button is None:
-            print("failed to login")
+            logging.info("Failed to login")
         else:
-            print("Successful login")
+            logging.info("Successful login")
             self.assertIsNotNone(logout_button)
 
 

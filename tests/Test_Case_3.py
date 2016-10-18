@@ -1,26 +1,17 @@
-# Test case 3 - Managing events
-# open OCA app
-# input login and password
-# click on Submit button
-# wait until app will login
-# check if button "LOGOUT" is present
-# click into EVENTS button
-
-# filtering events
-# opening existing events and editing, deleting, creating new sub event, setting as primary
+# Test Case 3 - Managing events
 
 import os
 import unittest
 from appium import webdriver
 from time import sleep
 import logging
+from selenium.common.exceptions import NoSuchElementException
 logging.basicConfig(filename='OCAapp_TC3.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())
 from selenium.webdriver.common.keys import Keys
 from appium.webdriver.common.touch_action import TouchAction
 from appium.webdriver.common.multi_action import MultiAction
-from selenium.common.exceptions import NoSuchElementException
 
 
 PATH = lambda p: os.path.abspath(
