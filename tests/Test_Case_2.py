@@ -133,7 +133,6 @@ class TC2(unittest.TestCase):
             sleep(3)
         except NoSuchElementException:
             logging.info("failed - there is no alert message")
-            # unittest.TestResult.addFailure(self, test, err)
 
     def test2(self):
 
@@ -186,9 +185,9 @@ class TC2(unittest.TestCase):
         logout_button = self.driver.find_element_by_xpath('.//android.view.View[@content-desc[contains(., "LOGOUT")]]')
 
         if logout_button is None:
-            print("failed to login")
+            logging.info("failed to login")
         else:
-            print("Successful login")
+            logging.info("Successful login")
             self.assertIsNotNone(logout_button)
 
     def test3(self):
@@ -243,9 +242,9 @@ class TC2(unittest.TestCase):
         logout_button = self.driver.find_element_by_xpath('.//android.view.View[@content-desc[contains(., "LOGOUT")]]')
 
         if logout_button is None:
-            print("failed to login")
+            logging.info("failed to login")
         else:
-            print("Successful login")
+            logging.info("Successful login")
             self.assertIsNotNone(logout_button)
 
     def test4(self):
@@ -428,9 +427,9 @@ class TC2(unittest.TestCase):
         logout_button = self.driver.find_element_by_xpath('.//android.view.View[@content-desc[contains(., "LOGOUT")]]')
 
         if logout_button is None:
-            print("failed to login to login to account that will expire in 1 day")
+            logging.info("failed to login to login to account that will expire in 1 day")
         else:
-            print("Successful login to account that will expire in 1 day")
+            logging.info("Successful login to account that will expire in 1 day")
             self.assertIsNotNone(logout_button)
 
     def test7(self):

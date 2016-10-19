@@ -31,7 +31,7 @@ class TC3(unittest.TestCase):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
-        sleep(10)
+        self.driver.implicitly_wait(15)  # seconds
 
     def tearDown(self):
         logging.info("Quitting")
@@ -43,11 +43,9 @@ class TC3(unittest.TestCase):
         password = "Bitn0!$e"
         domain = "https://bitnoiseqa.nogginoca.com"
 
-        sleep(5)
         logging.info("click in LOGIN button")
         login_button = self.driver.find_element_by_xpath(
             './/android.view.View[@content-desc[contains(., "LOGIN")]]').click()
-        sleep(5)
 
         logging.info("typing username, password and OCA domain")
         logging.info("locating input fields")
@@ -67,39 +65,64 @@ class TC3(unittest.TestCase):
 
         logging.info("hide screen keyboard")
         self.driver.hide_keyboard()
-        sleep(3)
 
         logging.info("click in Submit button")
         submit_button = self.driver.find_element_by_xpath(
             "//android.widget.Button[@content-desc='Submit']").click()
 
         logging.info("wait until app will login")
-        sleep(20)
+        sleep(10)
+
+        logging.info("accept Terms if needed")
+        try:
+            logging.info("check and click on Accept button if needed")
+            accept_button = self.driver.find_element_by_xpath('.//android.widget.Button'
+                                                              '[@content-desc="Accept"]').click()
+            logging.info("Accept button is present")
+            sleep(10)
+        except NoSuchElementException:
+            logging.info("Terms are already accepted - Accept button is not present")
+
+        logging.info("checking alert message")
+        try:
+            logging.info("click Ok on alert msg")
+            click_ok = self.driver.find_element_by_xpath(
+                './/android.view.View[@content-desc="Ok"]').click()
+            sleep(3)
+        except NoSuchElementException:
+            logging.info("there is no alert message")
 
         logging.info("check if LOGOUT button is present")
 
         logging.info("scroll down to button LOGOUT")
         buttons = self.driver.find_elements_by_class_name('android.view.View')
         self.driver.scroll(buttons[22], buttons[1])
-        sleep(2)
         logout_button = self.driver.find_element_by_xpath('.//android.view.View[@content-desc[contains(., "LOGOUT")]]')
-        sleep(2)
         if logout_button is None:
-            print("failed to login")
+            logging.info("failed to login")
         else:
-            print("Successfully login")
+            logging.info("Successfully login")
             self.assertIsNotNone(logout_button)
 
-        sleep(4)
         logging.info("scroll up to button EVENTS")
-        buttonsup = self.driver.find_elements_by_class_name('android.view.View')
-        self.driver.scroll(buttonsup[1], buttonsup[22])
-        sleep(2)
+        self.driver.scroll(buttons[22], buttons[1])
+
+        # logging.info("scrolling up by moving in y axis - locating new element and moving again")
+        # elm = self.driver.find_element_by_xpath(
+        #     './/android.view.View[@content-desc="LOGOUT"]')
+        # action = TouchAction(self.driver)
+        # action.press(elm).perform()
+        # action.move_to(x=0, y=-100).perform()
+        #
+        # elm2 = self.driver.find_element_by_xpath(
+        #     './/android.view.View[@content-desc="SOUND"]')
+        # action = TouchAction(self.driver)
+        # action.press(elm2).perform()
+        # action.move_to(x=0, y=-100).perform()
 
         logging.info("clicking on Events button")
         events_button = self.driver.find_element_by_xpath(
             './/android.view.View[@content-desc[contains(., "EVENTS")]]').click()
-        sleep(5)
 
         logging.info("check if Events were opened")
         events_header = self.driver.find_element_by_xpath(
@@ -109,15 +132,12 @@ class TC3(unittest.TestCase):
         logging.info("clicking on 'More' button")
         more_button = self.driver.find_element_by_xpath(
             './/android.widget.Spinner[@content-desc[contains(., "More")]]').click()
-        sleep(3)
 
         logging.info("here some wait is needed before clicking in button")
-        sleep(5)
 
         logging.info("clicking on New event button")
         new_event_button = self.driver.find_element_by_xpath(
             './/android.view.View[@content-desc[contains(., "New event")]]').click()
-        sleep(2)
 
 
 if __name__ == '__main__':
