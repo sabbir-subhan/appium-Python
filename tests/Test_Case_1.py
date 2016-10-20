@@ -33,6 +33,7 @@ class TC1(unittest.TestCase):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
+
         self.driver.implicitly_wait(20)  # seconds
 
         # credentials:
