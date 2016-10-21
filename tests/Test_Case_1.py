@@ -32,7 +32,8 @@ class TC1(unittest.TestCase):
         desired_capabilities["appActivity"] = "com.noggin.oca.OCApp"
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
-        self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
+        #self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
+        self.driver = webdriver.Remote("http://localhost:4728/wd/hub", desired_capabilities)
 
         self.driver.implicitly_wait(20)  # seconds
 
@@ -59,16 +60,13 @@ class TC1(unittest.TestCase):
         logging.info("locating input fields")
         textfield = self.driver.find_elements_by_class_name("android.widget.EditText")
 
-        logging.info("clear input field and type username")
-        textfield[0].clear()
+        logging.info("type username")
         textfield[0].send_keys(self.username)
 
-        logging.info("clear input field and type pass")
-        textfield[1].clear()
+        logging.info("type pass")
         textfield[1].send_keys(self.password)
 
-        logging.info("clear input field and type domain address")
-        textfield[2].clear()
+        logging.info("type domain address")
         textfield[2].send_keys(self.domain)
 
         logging.info("hide screen keyboard")

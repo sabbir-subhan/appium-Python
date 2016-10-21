@@ -23,15 +23,18 @@ class TC3(unittest.TestCase):
     def setUp(self):
         desired_capabilities = {}
         desired_capabilities["platformName"] = "Android"
-        desired_capabilities["platformVersion"] = "4.4"
-        desired_capabilities["deviceName"] = "QUANTUM_2_400"
+        desired_capabilities["platformVersion"] = "6.0"
+        desired_capabilities["deviceName"] = "Samsung S7"
         desired_capabilities["app"] = PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk")
         desired_capabilities["appPackage"] = "com.noggin.oca"
         desired_capabilities["appActivity"] = "com.noggin.oca.OCApp"
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
-        #self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
-        self.driver = webdriver.Remote("http://localhost:4444/wd/hub", desired_capabilities)
+        # self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
+        # self.driver = webdriver.Remote("http://localhost:4444/wd/hub", desired_capabilities)
+        self.driver = webdriver.Remote("http://localhost:4726/wd/hub", desired_capabilities)
+        # self.driver = webdriver.Remote("http://localhost:4727/wd/hub", desired_capabilities)
+        # self.driver = webdriver.Remote("http://localhost:4728/wd/hub", desired_capabilities)
         self.driver.implicitly_wait(15)  # seconds
 
         # credentials
@@ -54,15 +57,15 @@ class TC3(unittest.TestCase):
         logging.info("locating input fields")
         textfield = self.driver.find_elements_by_class_name("android.widget.EditText")
 
-        logging.info("clear input field and type username")
+        logging.info("type username")
         textfield[0].clear()
         textfield[0].send_keys(self.username)
 
-        logging.info("clear input field and type pass")
+        logging.info("type pass")
         textfield[1].clear()
         textfield[1].send_keys(self.password)
 
-        logging.info("clear input field and type domain address")
+        logging.info("type domain address")
         textfield[2].clear()
         textfield[2].send_keys(self.domain)
 
@@ -97,103 +100,7 @@ class TC3(unittest.TestCase):
         sleep(3)
         self.assertTrue(True)
 
-    def test1(self):
-        logging.info("filter events, create first Event and delete it")
-
-        self.login()
-
-        sleep(3)
-        logging.info("clicking on Events button")
-        events_button = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc[contains(., "EVENTS")]]').click()
-
-        logging.info("check if Events were opened")
-        events_header = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Events"]')
-        self.assertIsNotNone(events_header)
-
-        logging.info("filtering events by Type")
-        any_type_button = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc[contains(., "Any Type click to expand")]]').click()
-        incident_type = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Incident"]').click()
-        any_type_button = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc[contains(., "Incident click to expand")]]').click()
-        any_type = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Any Type"]').click()
-
-        logging.info("filtering events by Status")
-        any_status_button = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc[contains(., "Any Status click to expand")]]').click()
-        active_status = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Active"]').click()
-        sleep(1)
-        active_status_button = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc[contains(., "Active click to expand")]]').click()
-        inactive_status = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Inactive"]').click()
-        sleep(1)
-        inactive_status_button = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc[contains(., "Inactive click to expand")]]').click()
-        draft_status = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Draft"]').click()
-        sleep(1)
-        draft_status_button = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc[contains(., "Draft click to expand")]]').click()
-        any_status = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Any Status"]').click()
-        sleep(1)
-
-        try:
-            logging.info("search field - search event named: 'search'")
-            search_field = self.driver.find_element_by_xpath(
-                './/android.widget.EditText[@index="3"]').send_keys("search")
-            self.driver.keyevent(66)
-            sleep(3)
-            self.driver.hide_keyboard()
-            sleep(2)
-        except NoSuchElementException:
-            pass
-
-        logging.info("clicking on 'More' button")
-        more_button = self.driver.find_element_by_xpath(
-            './/android.widget.Spinner[@content-desc[contains(., "More")]]').click()
-
-        logging.info("clicking on New event button")
-        new_event_button = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc[contains(., "New event")]]').click()
-        sleep(3)
-
-        try:
-            event_type = self.driver.find_element_by_xpath(
-                ".//android.view.View[@content-desc[contains(., 'Incident')]]").click()
-            logging.info("choosing Incident type of new event")
-        except NoSuchElementException:
-            pass
-
-        logging.info("input Name")
-        name_field = self.driver.find_element_by_xpath(".//android.widget.EditText[@index='1']") \
-            .send_keys("Test Appium")
-        self.driver.hide_keyboard()
-
-        logging.info("click on severity level field")
-        severity_level_field = self.driver.find_element_by_xpath(
-            ".//android.widget.ListView[@index='0']"
-            "//android.view.View[@index='3']"
-            "//android.widget.Spinner[@index='2']").click()
-        sleep(2)
-
-        logging.info("choose_severity_lvl")
-        choose_severity_lvl = self.driver.find_element_by_name("Severity 1").click()
-
-        logging.info("click on finished_field")
-        finished_field = self.driver.find_element_by_xpath(
-            ".//android.view.View[@content-desc='Finished']").click()
-
-        logging.info("choose time and date")
-        time_date = self.driver.find_element_by_xpath(
-            ".//android.widget.ImageButton[@content-desc='Increase year']").click()
-        click_on_set = self.driver.find_element_by_id("android:id/button1").click()
+    def scroll_down(self):
 
         logging.info("scroll down")
         elm1 = self.driver.find_element_by_xpath(
@@ -204,7 +111,6 @@ class TC3(unittest.TestCase):
         sleep(1)
         elm2 = self.driver.find_element_by_xpath(
             './/android.view.View[@content-desc="Lead agency"]')
-
         action.press(elm2).perform()
         action.move_to(x=0, y=100).perform()
         sleep(1)
@@ -254,6 +160,124 @@ class TC3(unittest.TestCase):
         action.move_to(x=0, y=100).perform()
         sleep(1)
 
+    def test1(self):
+        logging.info("TC info: filter events, create first Event and delete it")
+
+        self.login()
+
+        sleep(3)
+        logging.info("clicking on Events button")
+        events_button = self.driver.find_element_by_xpath(
+            './/android.view.View[@content-desc[contains(., "EVENTS")]]').click()
+
+        logging.info("check if Events were opened")
+        events_header = self.driver.find_element_by_xpath(
+            './/android.view.View[@content-desc="Events"]')
+        self.assertIsNotNone(events_header)
+
+        logging.info("filtering events by Type")
+        any_type_button = self.driver.find_element_by_xpath(
+            './/android.view.View[@content-desc[contains(., "Any Type click to expand")]]').click()
+        incident_type = self.driver.find_element_by_xpath(
+            './/android.view.View[@content-desc="Incident"]').click()
+        any_type_button = self.driver.find_element_by_xpath(
+            './/android.view.View[@content-desc[contains(., "Incident click to expand")]]').click()
+        any_type = self.driver.find_element_by_xpath(
+            './/android.view.View[@content-desc="Any Type"]').click()
+
+        logging.info("filtering events by Status")
+        any_status_button = self.driver.find_element_by_xpath(
+            './/android.view.View[@content-desc[contains(., "Any Status click to expand")]]').click()
+        active_status = self.driver.find_element_by_xpath(
+            './/android.view.View[@content-desc="Active"]').click()
+        sleep(1)
+        active_status_button = self.driver.find_element_by_xpath(
+            './/android.view.View[@content-desc[contains(., "Active click to expand")]]').click()
+        inactive_status = self.driver.find_element_by_xpath(
+            './/android.view.View[@content-desc="Inactive"]').click()
+        sleep(1)
+        inactive_status_button = self.driver.find_element_by_xpath(
+            './/android.view.View[@content-desc[contains(., "Inactive click to expand")]]').click()
+        draft_status = self.driver.find_element_by_xpath(
+            './/android.view.View[@content-desc="Draft"]').click()
+        sleep(1)
+        draft_status_button = self.driver.find_element_by_xpath(
+            './/android.view.View[@content-desc[contains(., "Draft click to expand")]]').click()
+        any_status = self.driver.find_element_by_xpath(
+            './/android.view.View[@content-desc="Any Status"]').click()
+        sleep(2)
+
+        logging.info("search field - search event named: 'search'")
+        searchfield = self.driver.find_elements_by_class_name("android.widget.EditText")
+        searchfield[0].send_keys("search")
+        #search_field = self.driver.find_element_by_xpath(
+            #"//android.widget.EditText[@index='3']").send_keys("search")
+        sleep(3)
+        logging.info("click Go on keyboard")
+        self.driver.keyevent(66)
+        sleep(3)
+        logging.info("click on Events header to see results and hide keyboard")
+        events_search_header = self.driver.find_element_by_xpath(
+            ".//android.view.View[@index='5']").click()
+
+        logging.info("clear search field")
+        search_field = self.driver.find_element_by_xpath(".//android.widget.EditText[@index='3']").click()
+        self.driver.keyevent(67)
+        self.driver.keyevent(67)
+        self.driver.keyevent(67)
+        self.driver.keyevent(67)
+        self.driver.keyevent(67)
+        self.driver.keyevent(67)
+        sleep(1)
+        logging.info("click on Events header to hide keyboard")
+        events_search_header = self.driver.find_element_by_xpath(
+            ".//android.view.View[@index='5']").click()
+
+        sleep(3)
+        logging.info("clicking on 'More' button")
+        more_button = self.driver.find_element_by_xpath(
+            './/android.widget.Spinner[@content-desc[contains(., "More")]]').click()
+
+        logging.info("clicking on New event button")
+        new_event_button = self.driver.find_element_by_xpath(
+            './/android.view.View[@content-desc[contains(., "New event")]]').click()
+        sleep(3)
+
+        try:
+            event_type = self.driver.find_element_by_xpath(
+                ".//android.view.View[@content-desc[contains(., 'Incident')]]").click()
+            logging.info("choosing Incident type of new event")
+        except NoSuchElementException:
+            pass
+
+        logging.info("input Name")
+        name_field = self.driver.find_element_by_xpath(".//android.widget.EditText[@index='1']") \
+            .send_keys("Test Appium")
+        self.driver.hide_keyboard()
+
+        logging.info("click on severity level field")
+        severity_level_field = self.driver.find_element_by_xpath(
+            ".//android.widget.ListView[@index='0']"
+            "//android.view.View[@index='3']"
+            "//android.widget.Spinner[@index='2']").click()
+        sleep(2)
+
+        logging.info("choose_severity_lvl")
+        choose_severity_lvl = self.driver.find_element_by_name("Severity 1").click()
+
+        logging.info("click on finished_field")
+        finished_field = self.driver.find_element_by_xpath(
+            ".//android.view.View[@content-desc='Finished']").click()
+
+        logging.info("choose time and date")
+        time_date = self.driver.find_element_by_xpath(
+            ".//android.widget.ImageButton[@content-desc='Increase year']").click()
+        click_on_set = self.driver.find_element_by_id("android:id/button1").click()
+
+        action = TouchAction(self.driver)
+
+        self.scroll_down()
+
         logging.info("Save event")
         save_button = self.driver.find_element_by_xpath(".//android.widget.Button[@content-desc='Save']").click()
         sleep(10)
@@ -261,7 +285,7 @@ class TC3(unittest.TestCase):
         logging.info("open created event")
         created_event = self.driver.find_element_by_xpath(
             ".//android.view.View[@content-desc[contains(., 'Test')]]").click()
-        sleep(3)
+        sleep(5)
 
         logging.info("edit previously created event")
         button_edit = self.driver.find_element_by_xpath(".//android.widget.Button[@content-desc='Edit']").click()
@@ -288,62 +312,56 @@ class TC3(unittest.TestCase):
                 "//android.view.View[@index='1']"
                 "//android.view.View[@index='0']"
                 "//android.view.View[@index='0']"
-                "//android.view.View[@clickable='true']").send_keys("test")
+                "//android.view.View[@index='0' and @clickable='true']").send_keys("test")
             sleep(2)
             self.driver.hide_keyboard()
         except NoSuchElementException:
             logging.info("text field couldn't be selected")
             pass
 
-        logging.info("scroll down to Save button")
-        elm1 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Description"]')
-        action.press(elm1).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm2 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Impact"]')
-        action.press(elm2).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
         elm3 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Cause"]')
+            './/android.view.View[@content-desc="Impact"]')
         action.press(elm3).perform()
         action.move_to(x=0, y=100).perform()
         sleep(1)
         elm4 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Situation"]')
+            './/android.view.View[@content-desc="Cause"]')
         action.press(elm4).perform()
         action.move_to(x=0, y=100).perform()
         sleep(1)
         elm5 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Issues"]')
+            './/android.view.View[@content-desc="Situation"]')
         action.press(elm5).perform()
         action.move_to(x=0, y=100).perform()
         sleep(1)
         elm6 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Objectives"]')
+            './/android.view.View[@content-desc="Issues"]')
         action.press(elm6).perform()
         action.move_to(x=0, y=100).perform()
         sleep(1)
         elm7 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Strategies"]')
+            './/android.view.View[@content-desc="Objectives"]')
         action.press(elm7).perform()
         action.move_to(x=0, y=100).perform()
         sleep(1)
         elm8 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Tactics"]')
+            './/android.view.View[@content-desc="Strategies"]')
         action.press(elm8).perform()
         action.move_to(x=0, y=100).perform()
         sleep(1)
         elm9 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Communications"]')
+            './/android.view.View[@content-desc="Tactics"]')
         action.press(elm9).perform()
         action.move_to(x=0, y=100).perform()
         sleep(1)
         elm10 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Related"]')
+            './/android.view.View[@content-desc="Communications"]')
         action.press(elm10).perform()
+        action.move_to(x=0, y=100).perform()
+        sleep(1)
+        elm11 = self.driver.find_element_by_xpath(
+            './/android.view.View[@content-desc="Related"]')
+        action.press(elm11).perform()
         action.move_to(x=0, y=100).perform()
         sleep(1)
 
@@ -357,8 +375,8 @@ class TC3(unittest.TestCase):
             "//android.widget.ListView[@index='0']"
             "//android.view.View[@index='1']"
             "//android.widget.Spinner[@index='0'and @content-desc[contains(., 'More')]]").click()
+        sleep(3)
 
-        sleep(1)
         logging.info("clicking on 'Delete event' button")
         delete_button = self.driver.find_element_by_xpath(
             "//android.widget.ListView[@index='2']"
@@ -372,7 +390,7 @@ class TC3(unittest.TestCase):
         sleep(5)
 
     def test2(self):
-        logging.info("create second event and add map")
+        logging.info("TC info: create second event and add map")
 
         self.login()
 
@@ -426,63 +444,9 @@ class TC3(unittest.TestCase):
             ".//android.widget.ImageButton[@content-desc='Increase year']").click()
         click_on_set = self.driver.find_element_by_id("android:id/button1").click()
 
-        logging.info("scroll down")
-        elm1 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Finished"]')
         action = TouchAction(self.driver)
-        action.press(elm1).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(2)
-        elm2 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Lead agency"]')
-        action.press(elm2).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(2)
-        elm3 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Impact"]')
-        action.press(elm3).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm4 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Cause"]')
-        action.press(elm4).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm5 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Situation"]')
-        action.press(elm5).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm6 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Issues"]')
-        action.press(elm6).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm7 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Objectives"]')
-        action.press(elm7).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm8 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Strategies"]')
-        action.press(elm8).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm9 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Tactics"]')
-        action.press(elm9).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm10 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Communications"]')
-        action.press(elm10).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm11 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Related"]')
-        action.press(elm11).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
+
+        self.scroll_down()
 
         logging.info("Save event")
         save_button = self.driver.find_element_by_xpath(".//android.widget.Button[@content-desc='Save']").click()
@@ -496,62 +460,7 @@ class TC3(unittest.TestCase):
         button_edit = self.driver.find_element_by_xpath(".//android.widget.Button[@content-desc='Edit']").click()
         sleep(3)
 
-        logging.info("scroll down")
-        elm1 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Finished"]')
-        action.press(elm1).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(2)
-        elm2 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Lead agency"]')
-        action.press(elm2).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(2)
-        elm3 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Impact"]')
-        action.press(elm3).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(2)
-        elm4 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Cause"]')
-        action.press(elm4).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(2)
-        elm5 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Situation"]')
-        action.press(elm5).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(2)
-        elm6 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Issues"]')
-        action.press(elm6).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(2)
-        elm7 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Objectives"]')
-        action.press(elm7).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(2)
-        elm8 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Strategies"]')
-        action.press(elm8).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(2)
-        elm9 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Tactics"]')
-        action.press(elm9).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(2)
-        elm10 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Communications"]')
-        action.press(elm10).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(2)
-        elm11 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Related"]')
-        action.press(elm11).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(2)
+        self.scroll_down()
 
         create_mapping_data_buton = self.driver.find_element_by_xpath(
             ".//android.view.View[@content-desc[contains(., ' mapping data')]]").click()
@@ -623,7 +532,7 @@ class TC3(unittest.TestCase):
         sleep(5)
 
     def test3(self):
-        logging.info("crete sub event, set event as primary and after that clear it")
+        logging.info("TC info: crete sub event, set event as primary and after that clear it")
 
         self.login()
 
@@ -678,63 +587,7 @@ class TC3(unittest.TestCase):
             ".//android.widget.ImageButton[@content-desc='Increase year']").click()
         click_on_set = self.driver.find_element_by_id("android:id/button1").click()
 
-        logging.info("scroll down")
-        elm1 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Finished"]')
-        action = TouchAction(self.driver)
-        action.press(elm1).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(2)
-        elm2 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Lead agency"]')
-        action.press(elm2).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(2)
-        elm3 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Impact"]')
-        action.press(elm3).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm4 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Cause"]')
-        action.press(elm4).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm5 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Situation"]')
-        action.press(elm5).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm6 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Issues"]')
-        action.press(elm6).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm7 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Objectives"]')
-        action.press(elm7).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm8 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Strategies"]')
-        action.press(elm8).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm9 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Tactics"]')
-        action.press(elm9).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm10 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Communications"]')
-        action.press(elm10).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm11 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Related"]')
-        action.press(elm11).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
+        self.scroll_down()
 
         logging.info("Save event")
         save_button = self.driver.find_element_by_xpath(".//android.widget.Button[@content-desc='Save']").click()
@@ -743,7 +596,7 @@ class TC3(unittest.TestCase):
         logging.info("open previously created event")
         created_event = self.driver.find_element_by_xpath(
             ".//android.view.View[@content-desc[contains(., 'Test to create sub event')]]").click()
-        sleep(3)
+        sleep(4)
 
         logging.info("clicking on 'More' button")
         more_button = self.driver.find_element_by_xpath(
@@ -785,64 +638,7 @@ class TC3(unittest.TestCase):
             ".//android.widget.ImageButton[@content-desc='Increase year']").click()
         click_on_set = self.driver.find_element_by_id("android:id/button1").click()
 
-        logging.info("scroll down")
-        elm1 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Finished"]')
-        action = TouchAction(self.driver)
-        action.press(elm1).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm2 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Lead agency"]')
-
-        action.press(elm2).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm3 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Impact"]')
-        action.press(elm3).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm4 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Cause"]')
-        action.press(elm4).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm5 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Situation"]')
-        action.press(elm5).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm6 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Issues"]')
-        action.press(elm6).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm7 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Objectives"]')
-        action.press(elm7).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm8 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Strategies"]')
-        action.press(elm8).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm9 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Tactics"]')
-        action.press(elm9).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm10 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Communications"]')
-        action.press(elm10).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm11 = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc="Related"]')
-        action.press(elm11).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
+        self.scroll_down()
 
         logging.info("Save event")
         save_button = self.driver.find_element_by_xpath(".//android.widget.Button[@content-desc='Save']").click()

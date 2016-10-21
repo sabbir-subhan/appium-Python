@@ -37,7 +37,7 @@ class TC2(unittest.TestCase):
         desired_capabilities["appActivity"] = "com.noggin.oca.OCApp"
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
-        self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
+        self.driver = webdriver.Remote("http://localhost:4727/wd/hub", desired_capabilities)
         self.driver.implicitly_wait(20)  # seconds
 
         # credentials:
@@ -89,16 +89,13 @@ class TC2(unittest.TestCase):
         logging.info("locating input fields")
         textfield = self.driver.find_elements_by_class_name("android.widget.EditText")
 
-        logging.info("clear input field and type username")
-        textfield[0].clear()
+        logging.info("type username")
         textfield[0].send_keys(self.username_test_general)
 
-        logging.info("clear input field and type pass")
-        textfield[1].clear()
+        logging.info("type pass")
         textfield[1].send_keys(self.id_generator())
 
-        logging.info("clear input field and type domain address")
-        textfield[2].clear()
+        logging.info("type domain address")
         textfield[2].send_keys(self.domain)
 
         logging.info("hide screen keyboard")
@@ -146,15 +143,15 @@ class TC2(unittest.TestCase):
         logging.info("locating input fields")
         textfield = self.driver.find_elements_by_class_name("android.widget.EditText")
 
-        logging.info("clear input field and type username")
+        logging.info("type username")
         textfield[0].clear()
         textfield[0].send_keys(self.username_test_general)
 
-        logging.info("clear input field and type pass")
+        logging.info("type pass")
         textfield[1].clear()
         textfield[1].send_keys(self.username_test_general)
 
-        logging.info("clear input field and type domain address")
+        logging.info("type domain address")
         textfield[2].clear()
         textfield[2].send_keys(self.domain)
 
@@ -181,7 +178,7 @@ class TC2(unittest.TestCase):
         logging.info("check if LOGOUT button is present")
         logging.info("scroll down to button LOGOUT")
         buttons = self.driver.find_elements_by_class_name('android.view.View')
-        self.driver.scroll(buttons[22], buttons[1])
+        self.driver.scroll(buttons[21], buttons[1])
         logout_button = self.driver.find_element_by_xpath('.//android.view.View[@content-desc[contains(., "LOGOUT")]]')
 
         if logout_button is None:
@@ -202,16 +199,13 @@ class TC2(unittest.TestCase):
         logging.info("locating input fields")
         textfield = self.driver.find_elements_by_class_name("android.widget.EditText")
 
-        logging.info("clear input field and type username")
-        textfield[0].clear()
+        logging.info("type username")
         textfield[0].send_keys(self.username_test_admin)
 
-        logging.info("clear input field and type pass")
-        textfield[1].clear()
+        logging.info("type pass")
         textfield[1].send_keys(self.password_test_admin)
 
-        logging.info("clear input field and type domain address")
-        textfield[2].clear()
+        logging.info("type domain address")
         textfield[2].send_keys(self.domain)
 
         logging.info("hide screen keyboard")
@@ -238,7 +232,7 @@ class TC2(unittest.TestCase):
         logging.info("scroll down to button LOGOUT")
 
         buttons = self.driver.find_elements_by_class_name('android.view.View')
-        self.driver.scroll(buttons[22], buttons[1])
+        self.driver.scroll(buttons[21], buttons[1])
         logout_button = self.driver.find_element_by_xpath('.//android.view.View[@content-desc[contains(., "LOGOUT")]]')
 
         if logout_button is None:
@@ -259,16 +253,13 @@ class TC2(unittest.TestCase):
         logging.info("locating input fields")
         textfield = self.driver.find_elements_by_class_name("android.widget.EditText")
 
-        logging.info("clear input field and type username")
-        textfield[0].clear()
+        logging.info("type username")
         textfield[0].send_keys(self.username_test_expired)
 
-        logging.info("clear input field and type pass")
-        textfield[1].clear()
+        logging.info("type pass")
         textfield[1].send_keys(self.password_test_expired)
 
-        logging.info("clear input field and type domain address")
-        textfield[2].clear()
+        logging.info("type domain address")
         textfield[2].send_keys(self.domain)
 
         logging.info("hide screen keyboard")
@@ -316,16 +307,13 @@ class TC2(unittest.TestCase):
         logging.info("locating input fields")
         textfield = self.driver.find_elements_by_class_name("android.widget.EditText")
 
-        logging.info("clear input field and type username")
-        textfield[0].clear()
+        logging.info("type username")
         textfield[0].send_keys(self.username_test_expire_today)
 
-        logging.info("clear input field and type pass")
-        textfield[1].clear()
+        logging.info("type pass")
         textfield[1].send_keys(self.password_test_expire_today)
 
-        logging.info("clear input field and type domain address")
-        textfield[2].clear()
+        logging.info("type domain address")
         textfield[2].send_keys(self.domain)
 
         logging.info("hide screen keyboard")
@@ -373,16 +361,13 @@ class TC2(unittest.TestCase):
         logging.info("locating input fields")
         textfield = self.driver.find_elements_by_class_name("android.widget.EditText")
 
-        logging.info("clear input field and type username")
-        textfield[0].clear()
+        logging.info("type username")
         textfield[0].send_keys(self.username_test_expire_in_1_day)
 
-        logging.info("clear input field and type pass")
-        textfield[1].clear()
+        logging.info("type pass")
         textfield[1].send_keys(self.password_test_expire_in_1_day)
 
-        logging.info("clear input field and type domain address")
-        textfield[2].clear()
+        logging.info("type domain address")
         textfield[2].send_keys(self.domain)
 
         logging.info("hide screen keyboard")
@@ -423,7 +408,7 @@ class TC2(unittest.TestCase):
         logging.info("scroll down to button LOGOUT")
 
         buttons = self.driver.find_elements_by_class_name('android.view.View')
-        self.driver.scroll(buttons[22], buttons[1])
+        self.driver.scroll(buttons[21], buttons[1])
         logout_button = self.driver.find_element_by_xpath('.//android.view.View[@content-desc[contains(., "LOGOUT")]]')
 
         if logout_button is None:
@@ -444,16 +429,13 @@ class TC2(unittest.TestCase):
         logging.info("locating input fields")
         textfield = self.driver.find_elements_by_class_name("android.widget.EditText")
 
-        logging.info("clear input field and type username")
-        textfield[0].clear()
+        logging.info("type username")
         textfield[0].send_keys(self.username_test_suspended)
 
-        logging.info("clear input field and type pass")
-        textfield[1].clear()
+        logging.info("type pass")
         textfield[1].send_keys(self.password_test_suspended)
 
-        logging.info("clear input field and type domain address")
-        textfield[2].clear()
+        logging.info("type domain address")
         textfield[2].send_keys(self.domain)
 
         logging.info("hide screen keyboard")
