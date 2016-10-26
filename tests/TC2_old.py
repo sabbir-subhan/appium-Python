@@ -8,56 +8,66 @@
 # test6: login_using_account_that_will_expire_in_1_day
 # test7: login_into_suspended_account
 
+import os
 import unittest
 from appium import webdriver
 from time import sleep
-from selenium.common.exceptions import NoSuchElementException
-from desired_capabilities import desired_capabilities
-import credentials
-from locators import *
-import random
 import string
+import random
+from selenium.common.exceptions import NoSuchElementException
 import logging
 logging.basicConfig(filename='OCAapp_TC2.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())
 
 
-class TestCase2(unittest.TestCase):
+PATH = lambda p: os.path.abspath(
+    os.path.join(os.path.dirname(__file__), p)
+)
+
+
+class TC2(unittest.TestCase):
     def setUp(self):
+        desired_capabilities = {}
+        desired_capabilities["platformName"] = "Android"
+        desired_capabilities["platformVersion"] = "4.4"
+        desired_capabilities["deviceName"] = "QUANTUM_2_400"
+        desired_capabilities["app"] = PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk")
+        desired_capabilities["appPackage"] = "com.noggin.oca"
+        desired_capabilities["appActivity"] = "com.noggin.oca.OCApp"
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
         self.driver = webdriver.Remote("http://localhost:4727/wd/hub", desired_capabilities)
         self.driver.implicitly_wait(20)  # seconds
 
-        # # credentials:
-        #
-        # # domain
-        # self.domain = "https://bitnoiseqa.nogginoca.com"
-        #
-        # # General user - active:
-        # self.username_test_general = "test_general"
-        # self.password_test_general = "test_general"
-        #
-        # # Admin - test_admin - active:
-        # self.username_test_admin = "test_admin"
-        # self.password_test_admin = "test_admin"
-        #
-        # # General user - test_expired_1_day_ago
-        # self.username_test_expired = "test_expired"
-        # self.password_test_expired = "test_expired"
-        #
-        # # General user - test_expire_today
-        # self.username_test_expire_today = "test_expire_today"
-        # self.password_test_expire_today = "test_expire_today"
-        #
-        # # General user - test_expire_in_1_day
-        # self.username_test_expire_in_1_day = "test_expire_in_1_day"
-        # self.password_test_expire_in_1_day = "test_expire_in_1_day"
-        #
-        # # General user - test - suspended:
-        # self.username_test_suspended = "test_suspended"
-        # self.password_test_suspended = "test_suspended"
+        # credentials:
+
+        # domain
+        self.domain = "https://bitnoiseqa.nogginoca.com"
+
+        # General user - active:
+        self.username_test_general = "test_general"
+        self.password_test_general = "test_general"
+
+        # Admin - test_admin - active:
+        self.username_test_admin = "test_admin"
+        self.password_test_admin = "test_admin"
+
+        # General user - test_expired_1_day_ago
+        self.username_test_expired = "test_expired"
+        self.password_test_expired = "test_expired"
+
+        # General user - test_expire_today
+        self.username_test_expire_today = "test_expire_today"
+        self.password_test_expire_today = "test_expire_today"
+
+        # General user - test_expire_in_1_day
+        self.username_test_expire_in_1_day = "test_expire_in_1_day"
+        self.password_test_expire_in_1_day = "test_expire_in_1_day"
+
+        # General user - test - suspended:
+        self.username_test_suspended = "test_suspended"
+        self.password_test_suspended = "test_suspended"
 
     def tearDown(self):
         logging.info("Quitting")
@@ -463,5 +473,5 @@ class TestCase2(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestCase2)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TC2)
     unittest.TextTestRunner(verbosity=2).run(suite)
