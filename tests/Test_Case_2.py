@@ -15,8 +15,7 @@ from selenium.common.exceptions import NoSuchElementException
 from desired_capabilities import desired_capabilities
 import credentials
 from locators import *
-import random
-import string
+from generators import RandomGenerator
 import logging
 logging.basicConfig(filename='OCAapp_TC2.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
@@ -27,73 +26,36 @@ class TestCase2(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
-        self.driver = webdriver.Remote("http://localhost:4727/wd/hub", desired_capabilities)
+        self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
         self.driver.implicitly_wait(20)  # seconds
-
-        # # credentials:
-        #
-        # # domain
-        # self.domain = "https://bitnoiseqa.nogginoca.com"
-        #
-        # # General user - active:
-        # self.username_test_general = "test_general"
-        # self.password_test_general = "test_general"
-        #
-        # # Admin - test_admin - active:
-        # self.username_test_admin = "test_admin"
-        # self.password_test_admin = "test_admin"
-        #
-        # # General user - test_expired_1_day_ago
-        # self.username_test_expired = "test_expired"
-        # self.password_test_expired = "test_expired"
-        #
-        # # General user - test_expire_today
-        # self.username_test_expire_today = "test_expire_today"
-        # self.password_test_expire_today = "test_expire_today"
-        #
-        # # General user - test_expire_in_1_day
-        # self.username_test_expire_in_1_day = "test_expire_in_1_day"
-        # self.password_test_expire_in_1_day = "test_expire_in_1_day"
-        #
-        # # General user - test - suspended:
-        # self.username_test_suspended = "test_suspended"
-        # self.password_test_suspended = "test_suspended"
 
     def tearDown(self):
         logging.info("Quitting")
         self.driver.quit()
-
-    # random generator to fill password field
-    def id_generator(self, size=7, chars=string.ascii_uppercase + string.digits):
-        return ''.join(random.choice(chars) for _ in range(size))
 
     def test1(self):
 
         logging.info("starting test1: login_into_general_user_with_incorrect_password")
 
         logging.info("click in LOGIN button")
-        login_button = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc[contains(., "LOGIN")]]').click()
+        self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON).click()
 
         logging.info("typing username, password and OCA domain")
-        logging.info("locating input fields")
-        textfield = self.driver.find_elements_by_class_name("android.widget.EditText")
 
         logging.info("type username")
-        textfield[0].send_keys(self.username_test_general)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME).send_keys(credentials.username_test_general)
 
-        logging.info("type pass")
-        textfield[1].send_keys(self.id_generator())
+        logging.info("type password")
+        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD).send_keys(RandomGenerator.id_generator())
 
         logging.info("type domain address")
-        textfield[2].send_keys(self.domain)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN).send_keys(credentials.domain)
 
         logging.info("hide screen keyboard")
         self.driver.hide_keyboard()
 
         logging.info("click in Submit button")
-        submit_button = self.driver.find_element_by_xpath(
-            "//android.widget.Button[@content-desc='Submit']").click()
+        self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
 
         logging.info("waiting until app will try to login")
         sleep(10)
@@ -101,8 +63,7 @@ class TestCase2(unittest.TestCase):
         logging.info("accept Terms if needed")
         try:
             logging.info("check and click on Accept button if needed")
-            accept_button = self.driver.find_element_by_xpath('.//android.widget.Button'
-                                                              '[@content-desc="Accept"]').click()
+            self.driver.find_element(*LoginScreen.ACCEPT_BUTTON).click()
             logging.info("Accept button is present")
             sleep(10)
         except NoSuchElementException:
@@ -110,13 +71,11 @@ class TestCase2(unittest.TestCase):
 
         logging.info("checking alert message")
         try:
-            alert_msg = self.driver.find_element_by_xpath(
-                './/android.view.View[@content-desc[contains(., "Invalid")]]')
+            alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_INVALID)
             logging.info("Successfully try to login using incorrect credentials - message alert is present")
             self.assertIsNotNone(alert_msg)
             logging.info("click Ok on alert msg")
-            click_ok = self.driver.find_element_by_xpath(
-                './/android.view.View[@content-desc="Ok"]').click()
+            self.driver.find_element(*LoginScreen.OK_BUTTON)
             sleep(3)
         except NoSuchElementException:
             logging.info("failed - there is no alert message")
@@ -126,40 +85,32 @@ class TestCase2(unittest.TestCase):
         logging.info("starting test2: login_into_general_user_with_correct_credentials")
 
         logging.info("click in LOGIN button")
-        login_button = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc[contains(., "LOGIN")]]').click()
+        self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON).click()
 
         logging.info("typing username, password and OCA domain")
-        logging.info("locating input fields")
-        textfield = self.driver.find_elements_by_class_name("android.widget.EditText")
 
         logging.info("type username")
-        textfield[0].clear()
-        textfield[0].send_keys(self.username_test_general)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME).send_keys(credentials.username_test_general)
 
-        logging.info("type pass")
-        textfield[1].clear()
-        textfield[1].send_keys(self.username_test_general)
+        logging.info("type password")
+        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD).send_keys(credentials.password_test_general)
 
         logging.info("type domain address")
-        textfield[2].clear()
-        textfield[2].send_keys(self.domain)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN).send_keys(credentials.domain)
 
         logging.info("hide screen keyboard")
         self.driver.hide_keyboard()
 
         logging.info("click in Submit button")
-        submit_button = self.driver.find_element_by_xpath(
-            "//android.widget.Button[@content-desc='Submit']").click()
+        self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
 
-        logging.info("wait until app will login")
+        logging.info("waiting until app will login")
         sleep(10)
 
         logging.info("accept Terms if needed")
         try:
             logging.info("check and click on Accept button if needed")
-            accept_button = self.driver.find_element_by_xpath('.//android.widget.Button'
-                                                              '[@content-desc="Accept"]').click()
+            self.driver.find_element(*LoginScreen.ACCEPT_BUTTON).click()
             logging.info("Accept button is present")
             sleep(10)
         except NoSuchElementException:
@@ -167,12 +118,11 @@ class TestCase2(unittest.TestCase):
 
         logging.info("check if LOGOUT button is present")
         logging.info("scroll down to button LOGOUT")
-        buttons = self.driver.find_elements_by_class_name('android.view.View')
-        self.driver.scroll(buttons[21], buttons[1])
-        logout_button = self.driver.find_element_by_xpath('.//android.view.View[@content-desc[contains(., "LOGOUT")]]')
-
+        buttons = self.driver.find_elements(*MainMenuScreen.BUTTONS)
+        self.driver.scroll(buttons[22], buttons[1])
+        logout_button = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON)
         if logout_button is None:
-            logging.info("failed to login")
+            logging.info("Failed to login")
         else:
             logging.info("Successful login")
             self.assertIsNotNone(logout_button)
@@ -182,37 +132,32 @@ class TestCase2(unittest.TestCase):
         logging.info("starting test3: login_into_admin_account_with_correct_credentials")
 
         logging.info("click in LOGIN button")
-        login_button = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc[contains(., "LOGIN")]]').click()
+        self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON).click()
 
         logging.info("typing username, password and OCA domain")
-        logging.info("locating input fields")
-        textfield = self.driver.find_elements_by_class_name("android.widget.EditText")
 
         logging.info("type username")
-        textfield[0].send_keys(self.username_test_admin)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME).send_keys(credentials.username_test_admin)
 
-        logging.info("type pass")
-        textfield[1].send_keys(self.password_test_admin)
+        logging.info("type password")
+        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD).send_keys(credentials.password_test_admin)
 
         logging.info("type domain address")
-        textfield[2].send_keys(self.domain)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN).send_keys(credentials.domain)
 
         logging.info("hide screen keyboard")
         self.driver.hide_keyboard()
 
         logging.info("click in Submit button")
-        submit_button = self.driver.find_element_by_xpath(
-            "//android.widget.Button[@content-desc='Submit']").click()
+        self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
 
-        logging.info("wait until app will login")
+        logging.info("waiting until app will login")
         sleep(10)
 
         logging.info("accept Terms if needed")
         try:
             logging.info("check and click on Accept button if needed")
-            accept_button = self.driver.find_element_by_xpath('.//android.widget.Button'
-                                                              '[@content-desc="Accept"]').click()
+            self.driver.find_element(*LoginScreen.ACCEPT_BUTTON).click()
             logging.info("Accept button is present")
             sleep(10)
         except NoSuchElementException:
@@ -220,13 +165,11 @@ class TestCase2(unittest.TestCase):
 
         logging.info("check if LOGOUT button is present")
         logging.info("scroll down to button LOGOUT")
-
-        buttons = self.driver.find_elements_by_class_name('android.view.View')
-        self.driver.scroll(buttons[21], buttons[1])
-        logout_button = self.driver.find_element_by_xpath('.//android.view.View[@content-desc[contains(., "LOGOUT")]]')
-
+        buttons = self.driver.find_elements(*MainMenuScreen.BUTTONS)
+        self.driver.scroll(buttons[22], buttons[1])
+        logout_button = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON)
         if logout_button is None:
-            logging.info("failed to login")
+            logging.info("Failed to login")
         else:
             logging.info("Successful login")
             self.assertIsNotNone(logout_button)
@@ -236,28 +179,24 @@ class TestCase2(unittest.TestCase):
         logging.info("starting test4: login_using_account_expired_1_day_ago")
 
         logging.info("click in LOGIN button")
-        login_button = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc[contains(., "LOGIN")]]').click()
+        self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON).click()
 
         logging.info("typing username, password and OCA domain")
-        logging.info("locating input fields")
-        textfield = self.driver.find_elements_by_class_name("android.widget.EditText")
 
         logging.info("type username")
-        textfield[0].send_keys(self.username_test_expired)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME).send_keys(credentials.username_test_expired)
 
-        logging.info("type pass")
-        textfield[1].send_keys(self.password_test_expired)
+        logging.info("type password")
+        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD).send_keys(credentials.password_test_expired)
 
         logging.info("type domain address")
-        textfield[2].send_keys(self.domain)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN).send_keys(credentials.domain)
 
         logging.info("hide screen keyboard")
         self.driver.hide_keyboard()
 
         logging.info("click in Submit button")
-        submit_button = self.driver.find_element_by_xpath(
-            "//android.widget.Button[@content-desc='Submit']").click()
+        self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
 
         logging.info("waiting until app will try to login")
         sleep(10)
@@ -265,8 +204,7 @@ class TestCase2(unittest.TestCase):
         logging.info("accept Terms if needed")
         try:
             logging.info("check and click on Accept button if needed")
-            accept_button = self.driver.find_element_by_xpath('.//android.widget.Button'
-                                                              '[@content-desc="Accept"]').click()
+            self.driver.find_element(*LoginScreen.ACCEPT_BUTTON).click()
             logging.info("Accept button is present")
             sleep(10)
         except NoSuchElementException:
@@ -274,13 +212,11 @@ class TestCase2(unittest.TestCase):
 
         logging.info("checking alert message")
         try:
-            alert_msg = self.driver.find_element_by_xpath(
-                './/android.view.View[@content-desc[contains(., "Your temporary account has been expired")]]')
+            alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_EXPIRED)
             logging.info("Successfully try to login to account that expired 1 day ago - message alert is present")
             self.assertIsNotNone(alert_msg)
             logging.info("click Ok on alert msg")
-            click_ok = self.driver.find_element_by_xpath(
-                './/android.view.View[@content-desc="Ok"]').click()
+            self.driver.find_element(*LoginScreen.OK_BUTTON)
             sleep(3)
         except NoSuchElementException:
             logging.info("failed - there is no alert message")
@@ -290,28 +226,24 @@ class TestCase2(unittest.TestCase):
         logging.info("starting test5: login_using_account_that_expires_today")
 
         logging.info("click in LOGIN button")
-        login_button = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc[contains(., "LOGIN")]]').click()
+        self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON).click()
 
         logging.info("typing username, password and OCA domain")
-        logging.info("locating input fields")
-        textfield = self.driver.find_elements_by_class_name("android.widget.EditText")
 
         logging.info("type username")
-        textfield[0].send_keys(self.username_test_expire_today)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME).send_keys(credentials.username_test_expire_today)
 
-        logging.info("type pass")
-        textfield[1].send_keys(self.password_test_expire_today)
+        logging.info("type password")
+        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD).send_keys(credentials.password_test_expire_today)
 
         logging.info("type domain address")
-        textfield[2].send_keys(self.domain)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN).send_keys(credentials.domain)
 
         logging.info("hide screen keyboard")
         self.driver.hide_keyboard()
 
         logging.info("click in Submit button")
-        submit_button = self.driver.find_element_by_xpath(
-            "//android.widget.Button[@content-desc='Submit']").click()
+        self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
 
         logging.info("waiting until app will try to login")
         sleep(10)
@@ -319,8 +251,7 @@ class TestCase2(unittest.TestCase):
         logging.info("accept Terms if needed")
         try:
             logging.info("check and click on Accept button if needed")
-            accept_button = self.driver.find_element_by_xpath('.//android.widget.Button'
-                                                              '[@content-desc="Accept"]').click()
+            self.driver.find_element(*LoginScreen.ACCEPT_BUTTON).click()
             logging.info("Accept button is present")
             sleep(10)
         except NoSuchElementException:
@@ -328,13 +259,11 @@ class TestCase2(unittest.TestCase):
 
         logging.info("checking alert message")
         try:
-            alert_msg = self.driver.find_element_by_xpath(
-                './/android.view.View[@content-desc[contains(., "Your temporary account has been expired")]]')
+            alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_EXPIRED)
             logging.info("Successfully try to login to account that expires today - message alert is present")
             self.assertIsNotNone(alert_msg)
             logging.info("click Ok on alert msg")
-            click_ok = self.driver.find_element_by_xpath(
-                './/android.view.View[@content-desc="Ok"]').click()
+            self.driver.find_element(*LoginScreen.OK_BUTTON)
             sleep(3)
         except NoSuchElementException:
             logging.info("failed - there is no alert message")
@@ -344,37 +273,32 @@ class TestCase2(unittest.TestCase):
         logging.info("starting test6: login_using_account_that_will_expire_in_1_day")
 
         logging.info("click in LOGIN button")
-        login_button = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc[contains(., "LOGIN")]]').click()
+        self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON).click()
 
         logging.info("typing username, password and OCA domain")
-        logging.info("locating input fields")
-        textfield = self.driver.find_elements_by_class_name("android.widget.EditText")
 
         logging.info("type username")
-        textfield[0].send_keys(self.username_test_expire_in_1_day)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME).send_keys(credentials.username_test_expire_in_1_day)
 
-        logging.info("type pass")
-        textfield[1].send_keys(self.password_test_expire_in_1_day)
+        logging.info("type password")
+        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD).send_keys(credentials.password_test_expire_in_1_day)
 
         logging.info("type domain address")
-        textfield[2].send_keys(self.domain)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN).send_keys(credentials.domain)
 
         logging.info("hide screen keyboard")
         self.driver.hide_keyboard()
 
         logging.info("click in Submit button")
-        submit_button = self.driver.find_element_by_xpath(
-            "//android.widget.Button[@content-desc='Submit']").click()
+        self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
 
-        logging.info("wait until app will login")
+        logging.info("waiting until app will try to login")
         sleep(10)
 
         logging.info("accept Terms if needed")
         try:
             logging.info("check and click on Accept button if needed")
-            accept_button = self.driver.find_element_by_xpath('.//android.widget.Button'
-                                                              '[@content-desc="Accept"]').click()
+            self.driver.find_element(*LoginScreen.ACCEPT_BUTTON).click()
             logging.info("Accept button is present")
             sleep(10)
         except NoSuchElementException:
@@ -382,27 +306,22 @@ class TestCase2(unittest.TestCase):
 
         logging.info("checking alert message")
         try:
-            alert_msg = self.driver.find_element_by_xpath(
-                './/android.view.View[@content-desc[contains(., "The password '
-                'for the current user is about to expire")]]')
-            logging.info("Successfully try to login to account that expires today - message alert is present")
+            alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_EXPIRED)
+            logging.info("Successfully login to account that will expire in 1 day - message alert is present")
             self.assertIsNotNone(alert_msg)
-            logging.info("click Ok on alert Notice")
-            click_ok = self.driver.find_element_by_xpath(
-                './/android.view.View[@content-desc="Ok"]').click()
+            logging.info("click Ok on alert msg")
+            self.driver.find_element(*LoginScreen.OK_BUTTON)
             sleep(3)
         except NoSuchElementException:
             logging.info("failed - there is no alert Notice")
 
         logging.info("check if LOGOUT button is present")
         logging.info("scroll down to button LOGOUT")
-
-        buttons = self.driver.find_elements_by_class_name('android.view.View')
-        self.driver.scroll(buttons[21], buttons[1])
-        logout_button = self.driver.find_element_by_xpath('.//android.view.View[@content-desc[contains(., "LOGOUT")]]')
-
+        buttons = self.driver.find_elements(*MainMenuScreen.BUTTONS)
+        self.driver.scroll(buttons[22], buttons[1])
+        logout_button = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON)
         if logout_button is None:
-            logging.info("failed to login to login to account that will expire in 1 day")
+            logging.info("Failed to login to account that will expire in 1 day")
         else:
             logging.info("Successful login to account that will expire in 1 day")
             self.assertIsNotNone(logout_button)
@@ -412,37 +331,32 @@ class TestCase2(unittest.TestCase):
         logging.info("starting test7: login_into_suspended_account")
 
         logging.info("click in LOGIN button")
-        login_button = self.driver.find_element_by_xpath(
-            './/android.view.View[@content-desc[contains(., "LOGIN")]]').click()
+        self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON).click()
 
         logging.info("typing username, password and OCA domain")
-        logging.info("locating input fields")
-        textfield = self.driver.find_elements_by_class_name("android.widget.EditText")
 
         logging.info("type username")
-        textfield[0].send_keys(self.username_test_suspended)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME).send_keys(credentials.username_test_suspended)
 
-        logging.info("type pass")
-        textfield[1].send_keys(self.password_test_suspended)
+        logging.info("type password")
+        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD).send_keys(credentials.password_test_suspended)
 
         logging.info("type domain address")
-        textfield[2].send_keys(self.domain)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN).send_keys(credentials.domain)
 
         logging.info("hide screen keyboard")
         self.driver.hide_keyboard()
 
         logging.info("click in Submit button")
-        submit_button = self.driver.find_element_by_xpath(
-            "//android.widget.Button[@content-desc='Submit']").click()
+        self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
 
-        logging.info("wait until app will try to login")
+        logging.info("waiting until app will try to login")
         sleep(10)
 
         logging.info("accept Terms if needed")
         try:
             logging.info("check and click on Accept button if needed")
-            accept_button = self.driver.find_element_by_xpath('.//android.widget.Button'
-                                                              '[@content-desc="Accept"]').click()
+            self.driver.find_element(*LoginScreen.ACCEPT_BUTTON).click()
             logging.info("Accept button is present")
             sleep(10)
         except NoSuchElementException:
@@ -450,16 +364,14 @@ class TestCase2(unittest.TestCase):
 
         logging.info("checking alert message")
         try:
-            alert_msg = self.driver.find_element_by_xpath(
-                './/android.view.View[@content-desc[contains(., "Your account is currently inactive")]]')
+            alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_EXPIRED)
             logging.info("Successfully try to login into suspended account - message alert is present")
             self.assertIsNotNone(alert_msg)
             logging.info("click Ok on alert msg")
-            click_ok = self.driver.find_element_by_xpath(
-                './/android.view.View[@content-desc="Ok"]').click()
+            self.driver.find_element(*LoginScreen.OK_BUTTON)
             sleep(3)
         except NoSuchElementException:
-            logging.info("failed - there is no alert msg")
+            logging.info("failed - there is no alert message")
 
 
 if __name__ == '__main__':

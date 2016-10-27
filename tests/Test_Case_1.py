@@ -38,10 +38,10 @@ class TestCase1(unittest.TestCase):
         logging.info("typing username, password and OCA domain")
 
         logging.info("type username")
-        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME).send_keys(credentials.username)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME).send_keys(credentials.QA_username)
 
         logging.info("type password")
-        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD).send_keys(credentials.password)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD).send_keys(credentials.QA_password)
 
         logging.info("type domain address")
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN).send_keys(credentials.domain)

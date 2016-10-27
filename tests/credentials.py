@@ -4,8 +4,8 @@
 domain = "https://bitnoiseqa.nogginoca.com"
 
 # User - active:
-username = "bitnoise"
-password = "Bitn0!$e"
+QA_username = "bitnoise"
+QA_password = "Bitn0!$e"
 
 
 # credentials for Test Case 2:
