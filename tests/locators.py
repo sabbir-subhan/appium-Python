@@ -28,6 +28,10 @@ class LoginScreen(object):
                              './/android.view.View[@content-desc[contains('
                              '., "The password for the current user is about to expire")]]')
 
+    # alert message with word "inactive"
+    ALERT_MSG_SUSPENDED = (By.XPATH,
+                           './/android.view.View[@content-desc[contains(., "Your account is currently inactive")]]')
+
     # OK button on alert message"
     OK_BUTTON = (By.XPATH, './/android.view.View[@content-desc="Ok"]')
 
@@ -37,6 +41,7 @@ class MainMenuScreen(object):
     BUTTONS = (By.CLASS_NAME, 'android.view.View')
     LOGOUT_BUTTON = (By.XPATH, './/android.view.View[@content-desc[contains(., "LOGOUT")]]')
     EVENTS_BUTTON = (By.XPATH, './/android.view.View[@content-desc[contains(., "EVENTS")]]')
+    NOTICE_ALERT = (By.XPATH, './/android.view.View[@index="24"]//android.view.View[@content-desc[contains(., "Ok")]]')
 
 
 class EventsScreen(object):

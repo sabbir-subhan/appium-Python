@@ -12,6 +12,8 @@ import unittest
 from appium import webdriver
 from time import sleep
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
 from desired_capabilities import desired_capabilities
 import credentials
 from locators import *
@@ -22,12 +24,12 @@ logging.basicConfig(filename='OCAapp_TC2.log', level=logging.INFO,
 logging.getLogger().addHandler(logging.StreamHandler())
 
 
-class TestCase2(unittest.TestCase):
+class TC2(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
-        self.driver.implicitly_wait(20)  # seconds
+        self.driver.implicitly_wait(25)  # seconds
 
     def tearDown(self):
         logging.info("Quitting")
@@ -57,8 +59,8 @@ class TestCase2(unittest.TestCase):
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
 
-        logging.info("waiting until app will try to login")
-        sleep(10)
+        # logging.info("waiting until app will try to login")
+        # sleep(10)
 
         logging.info("accept Terms if needed")
         try:
@@ -74,11 +76,10 @@ class TestCase2(unittest.TestCase):
             alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_INVALID)
             logging.info("Successfully try to login using incorrect credentials - message alert is present")
             self.assertIsNotNone(alert_msg)
-            logging.info("click Ok on alert msg")
             self.driver.find_element(*LoginScreen.OK_BUTTON)
-            sleep(3)
         except NoSuchElementException:
             logging.info("failed - there is no alert message")
+            self.fail("failed - there is no alert message")
 
     def test2(self):
 
@@ -104,28 +105,52 @@ class TestCase2(unittest.TestCase):
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
 
-        logging.info("waiting until app will login")
-        sleep(10)
-
         logging.info("accept Terms if needed")
         try:
-            logging.info("check and click on Accept button if needed")
             self.driver.find_element(*LoginScreen.ACCEPT_BUTTON).click()
             logging.info("Accept button is present")
             sleep(10)
         except NoSuchElementException:
             logging.info("Terms are already accepted - Accept button is not present")
 
-        logging.info("check if LOGOUT button is present")
-        logging.info("scroll down to button LOGOUT")
-        buttons = self.driver.find_elements(*MainMenuScreen.BUTTONS)
-        self.driver.scroll(buttons[22], buttons[1])
-        logout_button = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON)
-        if logout_button is None:
+        logging.info("check if Notice alert is present and click Ok button")
+        try:
+            self.driver.find_element(*MainMenuScreen.NOTICE_ALERT).click()
+            logging.info("Notice alert is present")
+        except NoSuchElementException:
+            logging.info("Notice alert is not present")
+            pass
+
+        try:
+            WebDriverWait(self.driver, 20).until(
+                expected_conditions.presence_of_element_located(MainMenuScreen.EVENTS_BUTTON), "Failed to login")
+            logging.info("Successful login into general user account")
+        except NoSuchElementException:
             logging.info("Failed to login")
-        else:
-            logging.info("Successful login")
-            self.assertIsNotNone(logout_button)
+            self.fail("Failed to login")
+
+        # logging.info("waiting until app will login")
+        # sleep(10)
+        #
+        # logging.info("accept Terms if needed")
+        # try:
+        #     logging.info("check and click on Accept button if needed")
+        #     self.driver.find_element(*LoginScreen.ACCEPT_BUTTON).click()
+        #     logging.info("Accept button is present")
+        #     sleep(10)
+        # except NoSuchElementException:
+        #     logging.info("Terms are already accepted - Accept button is not present")
+        #
+        # logging.info("check if LOGOUT button is present")
+        # logging.info("scroll down to button LOGOUT")
+        # buttons = self.driver.find_elements(*MainMenuScreen.BUTTONS)
+        # self.driver.scroll(buttons[22], buttons[1])
+        # logout_button = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON)
+        # if logout_button is None:
+        #     logging.info("Failed to login")
+        # else:
+        #     logging.info("Successful login")
+        #     self.assertIsNotNone(logout_button)
 
     def test3(self):
 
@@ -151,28 +176,52 @@ class TestCase2(unittest.TestCase):
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
 
-        logging.info("waiting until app will login")
-        sleep(10)
-
         logging.info("accept Terms if needed")
         try:
-            logging.info("check and click on Accept button if needed")
             self.driver.find_element(*LoginScreen.ACCEPT_BUTTON).click()
             logging.info("Accept button is present")
             sleep(10)
         except NoSuchElementException:
             logging.info("Terms are already accepted - Accept button is not present")
 
-        logging.info("check if LOGOUT button is present")
-        logging.info("scroll down to button LOGOUT")
-        buttons = self.driver.find_elements(*MainMenuScreen.BUTTONS)
-        self.driver.scroll(buttons[22], buttons[1])
-        logout_button = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON)
-        if logout_button is None:
+        logging.info("check if Notice alert is present and click Ok button")
+        try:
+            self.driver.find_element(*MainMenuScreen.NOTICE_ALERT).click()
+            logging.info("Notice alert is present")
+        except NoSuchElementException:
+            logging.info("Notice alert is not present")
+            pass
+
+        try:
+            WebDriverWait(self.driver, 20).until(
+                expected_conditions.presence_of_element_located(MainMenuScreen.EVENTS_BUTTON), "Failed to login")
+            logging.info("Successful login into admin account")
+        except NoSuchElementException:
             logging.info("Failed to login")
-        else:
-            logging.info("Successful login")
-            self.assertIsNotNone(logout_button)
+            self.fail("Failed to login")
+
+        # logging.info("waiting until app will login")
+        # sleep(10)
+        #
+        # logging.info("accept Terms if needed")
+        # try:
+        #     logging.info("check and click on Accept button if needed")
+        #     self.driver.find_element(*LoginScreen.ACCEPT_BUTTON).click()
+        #     logging.info("Accept button is present")
+        #     sleep(10)
+        # except NoSuchElementException:
+        #     logging.info("Terms are already accepted - Accept button is not present")
+        #
+        # logging.info("check if LOGOUT button is present")
+        # logging.info("scroll down to button LOGOUT")
+        # buttons = self.driver.find_elements(*MainMenuScreen.BUTTONS)
+        # self.driver.scroll(buttons[22], buttons[1])
+        # logout_button = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON)
+        # if logout_button is None:
+        #     logging.info("Failed to login")
+        # else:
+        #     logging.info("Successful login")
+        #     self.assertIsNotNone(logout_button)
 
     def test4(self):
 
@@ -198,8 +247,8 @@ class TestCase2(unittest.TestCase):
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
 
-        logging.info("waiting until app will try to login")
-        sleep(10)
+        # logging.info("waiting until app will try to login")
+        # sleep(10)
 
         logging.info("accept Terms if needed")
         try:
@@ -215,11 +264,10 @@ class TestCase2(unittest.TestCase):
             alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_EXPIRED)
             logging.info("Successfully try to login to account that expired 1 day ago - message alert is present")
             self.assertIsNotNone(alert_msg)
-            logging.info("click Ok on alert msg")
             self.driver.find_element(*LoginScreen.OK_BUTTON)
-            sleep(3)
         except NoSuchElementException:
             logging.info("failed - there is no alert message")
+            self.fail("failed - there is no alert message")
 
     def test5(self):
 
@@ -245,8 +293,8 @@ class TestCase2(unittest.TestCase):
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
 
-        logging.info("waiting until app will try to login")
-        sleep(10)
+        # logging.info("waiting until app will try to login")
+        # sleep(10)
 
         logging.info("accept Terms if needed")
         try:
@@ -262,11 +310,10 @@ class TestCase2(unittest.TestCase):
             alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_EXPIRED)
             logging.info("Successfully try to login to account that expires today - message alert is present")
             self.assertIsNotNone(alert_msg)
-            logging.info("click Ok on alert msg")
             self.driver.find_element(*LoginScreen.OK_BUTTON)
-            sleep(3)
         except NoSuchElementException:
             logging.info("failed - there is no alert message")
+            self.fail("failed - there is no alert message")
 
     def test6(self):
 
@@ -292,39 +339,63 @@ class TestCase2(unittest.TestCase):
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
 
-        logging.info("waiting until app will try to login")
-        sleep(10)
-
         logging.info("accept Terms if needed")
         try:
-            logging.info("check and click on Accept button if needed")
             self.driver.find_element(*LoginScreen.ACCEPT_BUTTON).click()
             logging.info("Accept button is present")
             sleep(10)
         except NoSuchElementException:
             logging.info("Terms are already accepted - Accept button is not present")
 
-        logging.info("checking alert message")
+        logging.info("check if Notice alert, about expiring password is present and click Ok button")
         try:
-            alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_EXPIRED)
-            logging.info("Successfully login to account that will expire in 1 day - message alert is present")
-            self.assertIsNotNone(alert_msg)
-            logging.info("click Ok on alert msg")
-            self.driver.find_element(*LoginScreen.OK_BUTTON)
-            sleep(3)
+            self.driver.find_element(*MainMenuScreen.NOTICE_ALERT).click()
+            logging.info("Notice alert is present")
         except NoSuchElementException:
-            logging.info("failed - there is no alert Notice")
+            logging.info("Notice alert is not present")
+            pass
 
-        logging.info("check if LOGOUT button is present")
-        logging.info("scroll down to button LOGOUT")
-        buttons = self.driver.find_elements(*MainMenuScreen.BUTTONS)
-        self.driver.scroll(buttons[22], buttons[1])
-        logout_button = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON)
-        if logout_button is None:
-            logging.info("Failed to login to account that will expire in 1 day")
-        else:
+        try:
+            WebDriverWait(self.driver, 20).until(
+                expected_conditions.presence_of_element_located(MainMenuScreen.EVENTS_BUTTON), "Failed to login")
             logging.info("Successful login to account that will expire in 1 day")
-            self.assertIsNotNone(logout_button)
+        except NoSuchElementException:
+            logging.info("Failed to login to account that will expire in 1 day")
+            self.fail("Failed to login to account that will expire in 1 day")
+
+        # logging.info("waiting until app will try to login")
+        # sleep(10)
+        #
+        # logging.info("accept Terms if needed")
+        # try:
+        #     logging.info("check and click on Accept button if needed")
+        #     self.driver.find_element(*LoginScreen.ACCEPT_BUTTON).click()
+        #     logging.info("Accept button is present")
+        #     sleep(10)
+        # except NoSuchElementException:
+        #     logging.info("Terms are already accepted - Accept button is not present")
+        #
+        # logging.info("checking alert message")
+        # try:
+        #     alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_EXPIRED)
+        #     logging.info("Successfully login to account that will expire in 1 day - message alert is present")
+        #     self.assertIsNotNone(alert_msg)
+        #     logging.info("click Ok on alert msg")
+        #     self.driver.find_element(*LoginScreen.OK_BUTTON)
+        #     sleep(3)
+        # except NoSuchElementException:
+        #     logging.info("failed - there is no alert Notice")
+        #
+        # logging.info("check if LOGOUT button is present")
+        # logging.info("scroll down to button LOGOUT")
+        # buttons = self.driver.find_elements(*MainMenuScreen.BUTTONS)
+        # self.driver.scroll(buttons[22], buttons[1])
+        # logout_button = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON)
+        # if logout_button is None:
+        #     logging.info("Failed to login to account that will expire in 1 day")
+        # else:
+        #     logging.info("Successful login to account that will expire in 1 day")
+        #     self.assertIsNotNone(logout_button)
 
     def test7(self):
 
@@ -350,8 +421,8 @@ class TestCase2(unittest.TestCase):
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
 
-        logging.info("waiting until app will try to login")
-        sleep(10)
+        # logging.info("waiting until app will try to login")
+        # sleep(10)
 
         logging.info("accept Terms if needed")
         try:
@@ -364,16 +435,15 @@ class TestCase2(unittest.TestCase):
 
         logging.info("checking alert message")
         try:
-            alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_EXPIRED)
+            alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_SUSPENDED)
             logging.info("Successfully try to login into suspended account - message alert is present")
             self.assertIsNotNone(alert_msg)
-            logging.info("click Ok on alert msg")
             self.driver.find_element(*LoginScreen.OK_BUTTON)
-            sleep(3)
         except NoSuchElementException:
             logging.info("failed - there is no alert message")
+            self.fail("failed - there is no alert message")
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestCase2)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TC2)
     unittest.TextTestRunner(verbosity=2).run(suite)

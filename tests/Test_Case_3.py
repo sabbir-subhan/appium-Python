@@ -4,6 +4,8 @@ import unittest
 from appium import webdriver
 from time import sleep
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
 from appium.webdriver.common.touch_action import TouchAction
 from appium.webdriver.common.multi_action import MultiAction
 from desired_capabilities import desired_capabilities
@@ -16,12 +18,12 @@ logging.basicConfig(filename='OCAapp_TC3.log', level=logging.INFO,
 logging.getLogger().addHandler(logging.StreamHandler())
 
 
-class TestCase3(unittest.TestCase):
+class TC3(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
-        self.driver.implicitly_wait(15)  # seconds
+        self.driver.implicitly_wait(25)  # seconds
 
     def tearDown(self):
         logging.info("Quitting")
@@ -49,26 +51,29 @@ class TestCase3(unittest.TestCase):
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
 
-        logging.info("waiting until app will try to login")
-        sleep(10)
-
         logging.info("accept Terms if needed")
         try:
-            logging.info("check and click on Accept button if needed")
             self.driver.find_element(*LoginScreen.ACCEPT_BUTTON).click()
             logging.info("Accept button is present")
             sleep(10)
         except NoSuchElementException:
             logging.info("Terms are already accepted - Accept button is not present")
 
-        logging.info("checking alert message")
+        logging.info("check if Notice alert is present and click Ok button")
         try:
-            logging.info("click Ok on alert msg if needed")
-            self.driver.find_element(*LoginScreen.OK_BUTTON)
-            sleep(3)
+            self.driver.find_element(*MainMenuScreen.NOTICE_ALERT).click()
+            logging.info("Notice alert is present")
         except NoSuchElementException:
-            logging.info("there is no alert message")
-        logging.info("Successful login")
+            logging.info("Notice alert is not present")
+            pass
+
+        try:
+            WebDriverWait(self.driver, 20).until(
+                expected_conditions.presence_of_element_located(MainMenuScreen.EVENTS_BUTTON), "Failed to login")
+            logging.info("Successful login")
+        except NoSuchElementException:
+            logging.info("Failed to login")
+            self.fail("Failed to login")
 
     def scroll_down(self):
 
@@ -537,5 +542,5 @@ class TestCase3(unittest.TestCase):
         sleep(5)
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestCase3)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TC3)
     unittest.TextTestRunner(verbosity=2).run(suite)

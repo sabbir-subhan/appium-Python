@@ -29,6 +29,8 @@ password_test_expire_today = "test_expire_today"
 # General user - test_expire_in_1_day
 username_test_expire_in_1_day = "test_expire_in_1_day"
 password_test_expire_in_1_day = "test_expire_in_1_day"
+# username_test_expire_in_1_day = "expire_in_1_day"
+# password_test_expire_in_1_day = "expire_in_1_day"
 
 # General user - test - suspended:
 username_test_suspended = "test_suspended"
