@@ -1,5 +1,7 @@
 # Test Case 2 - Logging in as a suspended account and with a wrong password
 
+# before running this Test Case prepare needed accounts on OCA website
+
 # test1: login_into_general_user_with_incorrect_password
 # test2: login_into_general_user_with_correct_credentials
 # test3: login_into_admin_account_with_correct_credentials
@@ -14,7 +16,7 @@ from time import sleep
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
-from desired_capabilities import desired_capabilities
+from desired_capabilities import DesiredCapabilities
 import credentials
 from locators import *
 from generators import RandomGenerator
@@ -28,6 +30,8 @@ class TC2(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_6
+        # choose desired capabilities from desired_capabilities.py
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
         self.driver.implicitly_wait(25)  # seconds
 

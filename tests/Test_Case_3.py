@@ -8,7 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from appium.webdriver.common.touch_action import TouchAction
 from appium.webdriver.common.multi_action import MultiAction
-from desired_capabilities import desired_capabilities
+from desired_capabilities import DesiredCapabilities
 import credentials
 from locators import *
 from generators import RandomGenerator
@@ -22,6 +22,8 @@ class TC3(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_6
+        # choose desired capabilities from desired_capabilities.py
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
         self.driver.implicitly_wait(25)  # seconds
 

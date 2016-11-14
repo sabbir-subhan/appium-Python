@@ -1,0 +1,32 @@
+{
+  "capabilities":
+      [
+        {
+          "browserName": "Alcatel POP3",
+          "version":"5.5.1",
+          "maxInstances": 1,
+          "platform": "ANDROID",
+          "uuid": "7d7d9a62"
+        }
+      ],
+  "configuration":
+  {
+    "cleanUpCycle":2000,
+    "timeout":30000,
+    "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+    "url":"http://127.0.0.1:4736/wd/hub",
+    "host": "127.0.0.1",
+    "port": 4736,
+    "maxSession": 1,
+    "register": true,
+    "registerCycle": 5000,
+    "hubPort": 4444,
+    "hubHost": "127.0.0.1"
+  }
+}
+
+
+
+
+
+
