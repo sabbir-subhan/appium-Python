@@ -17,6 +17,7 @@ console number four:
 
 
 
-# After settings all up - You can run three scripts by lunching second one just after starting the first
+# After settings all up - You can run three scripts by launching second one just after starting the first. You can use for example PyCharm to run them or nose runner to launch them in separate consoles.
+
 
 
