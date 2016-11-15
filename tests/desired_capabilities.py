@@ -15,8 +15,8 @@ class DesiredCapabilities(object):
         "app": PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk"),
         "appPackage": "com.noggin.oca",
         "appActivity": "com.noggin.oca.OCApp",
-        "udid": "0123456789ABCDEF",
-        "newCommandTimeout": "600"
+        "newCommandTimeout": "600",
+        "udid": "0123456789ABCDEF"
     }
 
     desired_capabilities_for_android_5 = {
@@ -26,8 +26,8 @@ class DesiredCapabilities(object):
         "app": PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk"),
         "appPackage": "com.noggin.oca",
         "appActivity": "com.noggin.oca.OCApp",
-        "udid": "7d7d9a62",
-        "newCommandTimeout": "600"
+        "newCommandTimeout": "600",
+        "udid": "7d7d9a62"
     }
 
     desired_capabilities_for_android_6 = {
@@ -37,6 +37,18 @@ class DesiredCapabilities(object):
         "app": PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk"),
         "appPackage": "com.noggin.oca",
         "appActivity": "com.noggin.oca.OCApp",
-        "udid": "ad0816033848eb0443",
-        "newCommandTimeout": "600"
+        "newCommandTimeout": "600",
+        "udid": "ad0816033848eb0443"
+    }
+
+    desired_capabilities_for_iOS_9 = {
+        # iPad mini withh iOS 9.3.5
+        "platformName": "iOS",
+        "platformVersion": "9.3",
+        "deviceName": "iPad mini",
+        "app": PATH("/Users/lukasl/repos/OCA.app"),
+        "appPackage": "com.noggin.oca",
+        "appActivity": "com.noggin.oca.OCApp",
+        "newCommandTimeout": "600",
+        "udid": "db55c238e873230ee454c54a63724397a2981acd"
     }

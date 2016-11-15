@@ -1,0 +1,77 @@
+11/15/2016 10:17:00 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 10:50:11 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 10:53:30 AM click in LOGIN button
+11/15/2016 10:53:56 AM Quitting
+11/15/2016 11:00:44 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 11:01:07 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 11:01:30 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 11:01:44 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 11:02:09 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 11:03:33 AM click in LOGIN button
+11/15/2016 11:03:36 AM typing username, password and OCA domain
+11/15/2016 11:03:36 AM type username
+11/15/2016 11:04:02 AM Quitting
+11/15/2016 11:04:12 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 11:06:07 AM click in LOGIN button
+11/15/2016 11:06:11 AM typing username, password and OCA domain
+11/15/2016 11:06:11 AM type username
+11/15/2016 11:06:36 AM Quitting
+11/15/2016 02:54:24 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 02:54:50 PM click in LOGIN button
+11/15/2016 02:54:54 PM typing username, password and OCA domain
+11/15/2016 02:54:54 PM type username
+11/15/2016 02:55:19 PM Quitting
+11/15/2016 04:11:29 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 04:12:56 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 04:16:36 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 04:16:51 PM click in LOGIN button
+11/15/2016 04:16:57 PM typing username, password and OCA domain
+11/15/2016 04:16:57 PM type username
+11/15/2016 04:17:22 PM Quitting
+11/15/2016 04:26:02 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 04:26:02 PM Could not get IP address for host: localhost
+11/15/2016 04:26:35 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 04:26:52 PM click in LOGIN button
+11/15/2016 04:26:58 PM typing username, password and OCA domain
+11/15/2016 04:26:58 PM type username
+11/15/2016 04:27:24 PM Quitting
+11/15/2016 05:11:03 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 05:11:37 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 05:12:05 PM click in LOGIN button
+11/15/2016 05:12:09 PM typing username, password and OCA domain
+11/15/2016 05:12:09 PM type username
+11/15/2016 05:12:36 PM Quitting
+11/15/2016 05:12:50 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 05:13:04 PM click in LOGIN button
+11/15/2016 05:13:10 PM typing username, password and OCA domain
+11/15/2016 05:13:10 PM type username
+11/15/2016 05:13:38 PM type password
+11/15/2016 05:13:42 PM Quitting
+11/15/2016 05:15:03 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 05:15:18 PM click in LOGIN button
+11/15/2016 05:15:23 PM typing username, password and OCA domain
+11/15/2016 05:15:27 PM type username
+11/15/2016 05:15:34 PM type password
+11/15/2016 05:15:44 PM Quitting
+11/15/2016 05:18:28 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 05:18:44 PM click in LOGIN button
+11/15/2016 05:18:48 PM typing username, password and OCA domain
+11/15/2016 05:18:52 PM type username
+11/15/2016 05:19:00 PM type password
+11/15/2016 05:19:04 PM Quitting
+11/15/2016 05:24:06 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 05:24:15 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 05:24:26 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 05:24:55 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/15/2016 05:26:45 PM click in LOGIN button
+11/15/2016 05:26:51 PM typing username, password and OCA domain
+11/15/2016 05:26:55 PM type username
+11/15/2016 05:27:02 PM type password
+11/15/2016 05:27:15 PM type domain address
+11/15/2016 05:27:30 PM hide screen keyboard
+11/15/2016 05:27:36 PM click in Submit button
+11/15/2016 05:27:40 PM accept Terms if needed
+11/15/2016 05:28:05 PM Terms are already accepted - Accept button is not present
+11/15/2016 05:28:05 PM check if Notice alert, about expiring password is present and click Ok button
+11/15/2016 05:28:31 PM Notice alert is not present
+11/15/2016 05:28:59 PM Quitting

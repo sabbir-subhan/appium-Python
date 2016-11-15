@@ -4,14 +4,21 @@ from selenium.webdriver.common.by import By
 class WelcomeScreen(object):
     """A class for welcome screen locators - first screen after lunching the app."""
     LOGIN_BUTTON = (By.XPATH, './/android.view.View[@content-desc[contains(., "LOGIN")]]')
+    LOGIN_BUTTON_ios = (By.XPATH, '// UIAApplication[1] / UIAWindow[1] / UIAScrollView[2] / UIAWebView[1] / UIALink[9]')
 
 
 class LoginScreen(object):
     """A class for login screen locators - screen after clicking into LOGIN."""
     TEXTFIELD_USERNAME = (By.XPATH, './/android.widget.EditText[@index="1"]')
+    TEXTFIELD_USERNAME_ios = (By.XPATH,
+                              '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIATextField[1]')
     TEXTFIELD_PASSWORD = (By.XPATH, './/android.widget.EditText[@index="3"]')
+    TEXTFIELD_PASSWORD_ios = (By.XPATH,
+                              '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIASecureTextField[1]')
     TEXTFIELD_DOMAIN = (By.XPATH, './/android.widget.EditText[@index="5"]')
+    TEXTFIELD_DOMAIN_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIATextField[2]')
     SUBMIT_BUTTON = (By.XPATH, '//android.widget.Button[@content-desc="Submit"]')
+    SUBMIT_BUTTON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAButton[1]')
 
     # ACCEPT_BUTTON on Terms and Conditions"
     ACCEPT_BUTTON = (By.XPATH, './/android.widget.Button[@content-desc="Accept"]')
