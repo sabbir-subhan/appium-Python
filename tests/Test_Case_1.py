@@ -66,8 +66,9 @@ class TC1(unittest.TestCase):
 
         logging.info("check if Notice alert, about expiring password is present and click Ok button")
         try:
-            self.driver.find_element(*MainMenuScreen.NOTICE_ALERT).click()
+            self.driver.find_element(*LoginScreen.ALERT_MSG_WILL_EXPIRE)
             logging.info("Notice alert is present")
+            self.driver.find_element(*LoginScreen.NOTICE_ALERT_OK_BUTTON).click()
         except NoSuchElementException:
             logging.info("Notice alert is not present")
             pass

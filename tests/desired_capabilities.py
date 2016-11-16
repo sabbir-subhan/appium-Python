@@ -34,7 +34,8 @@ class DesiredCapabilities(object):
         "platformName": "ANDROID",
         "platformVersion": "6.0.1",
         "deviceName": "Samsung Galaxy S7",
-        "app": PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk"),
+        #"app": PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk"),
+        "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
         "appPackage": "com.noggin.oca",
         "appActivity": "com.noggin.oca.OCApp",
         "newCommandTimeout": "600",
@@ -46,9 +47,11 @@ class DesiredCapabilities(object):
         "platformName": "iOS",
         "platformVersion": "9.3",
         "deviceName": "iPad mini",
+        #"deviceName": "iPhone 6s",
         "app": PATH("/Users/lukasl/repos/OCA.app"),
         "appPackage": "com.noggin.oca",
         "appActivity": "com.noggin.oca.OCApp",
         "newCommandTimeout": "600",
+        "noReset": "true",
         "udid": "db55c238e873230ee454c54a63724397a2981acd"
     }
