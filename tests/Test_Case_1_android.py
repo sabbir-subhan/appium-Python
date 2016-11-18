@@ -20,7 +20,7 @@ logging.basicConfig(filename='OCAapp_TC1.log', level=logging.INFO,
 logging.getLogger().addHandler(logging.StreamHandler())
 
 
-class TC1(unittest.TestCase):
+class TC1android(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
@@ -83,5 +83,5 @@ class TC1(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TC1)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TC1android)
     unittest.TextTestRunner(verbosity=2).run(suite)

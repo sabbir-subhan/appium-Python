@@ -24,7 +24,7 @@ class TC1ios(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_9
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPhone4
 
         # choose desired capabilities from desired_capabilities.py
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
@@ -37,10 +37,15 @@ class TC1ios(unittest.TestCase):
 
     def test_logging_into_OCA_app(self):
 
+        sleep(2)
         try:
-            logging.info("Your are already login - logging out")
-            self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios).click()
-            self.driver.find_element(*MainMenuScreen.LOGOUT_SUBMIT_ios).click()
+            logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
+            if logout_button_ios.is_displayed():
+                logging.info("Your are already login - logging out")
+                self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios).click()
+                self.driver.find_element(*MainMenuScreen.LOGOUT_SUBMIT_ios).click()
+            else:
+                pass
         except NoSuchElementException:
             pass
 
@@ -52,13 +57,13 @@ class TC1ios(unittest.TestCase):
         logging.info("type username")
         #self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).send_keys(credentials.QA_username)
         # THAT IS USERNAME FOR NEW ACCOUNT WITH EXPIRATION DATE FOR TESTING ALERT MSG
-        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).send_keys('new_contact_for_ios')
+        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).send_keys('new_contact_for_ios2')
 
         self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).click()
         self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).clear()
         logging.info("type password")
         #self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).send_keys(credentials.QA_password)
-        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).send_keys('new_contact_for_ios')
+        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).send_keys('new_contact_for_ios2')
 
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).click()
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).clear()
@@ -66,14 +71,32 @@ class TC1ios(unittest.TestCase):
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
 
         logging.info("hide screen keyboard")
-        self.driver.hide_keyboard()
-        sleep(3)
+        try:
+            done_button_ios = self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios)
+            if done_button_ios.is_displayed():
+                self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios).click()
+            else:
+                self.driver.hide_keyboard()
+                sleep(3)
+        except NoSuchElementException:
+            pass
 
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
 
         try:
-            logging.info("click No for sending notifications on iOS")
+            accept_terms_button = self.driver.find_element(*LoginScreen.ACCEPT_BUTTON_ios)
+            if accept_terms_button.is_displayed():
+                self.driver.find_element(*LoginScreen.ACCEPT_BUTTON_ios).click()
+                logging.info("Accepting terms and conditions")
+                sleep(10)
+            else:
+                logging.info("Terms are already accepted - Accept button is not present")
+        except NoSuchElementException:
+            pass
+
+        try:
+            logging.info("click 'No' for sending notifications on iOS")
             notification_about_sending_msg = self.driver.find_element(
                 *LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
             self.assertIsNotNone(notification_about_sending_msg)
@@ -81,13 +104,7 @@ class TC1ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
-        logging.info("accept Terms if needed")
-        try:
-            self.driver.find_element(*LoginScreen.ACCEPT_BUTTON_ios).click()
-            logging.info("Accept button is present")
-            sleep(10)
-        except NoSuchElementException:
-            logging.info("Terms are already accepted - Accept button is not present")
+        sleep(2)
 
         # THERE IS PROBLEM WITH DISPLAYING ALERT ON IOS - it's visible only for few seconds
         # logging.info("check if Notice alert, about expiring password is present and click Ok button")

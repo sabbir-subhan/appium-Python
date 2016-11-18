@@ -63,7 +63,7 @@ class TC3(unittest.TestCase):
 
         logging.info("check if Notice alert is present and click Ok button")
         try:
-            self.driver.find_element(*MainMenuScreen.NOTICE_ALERT).click()
+            self.driver.find_element(*LoginScreen.NOTICE_ALERT_OK_BUTTON).click()
             logging.info("Notice alert is present")
         except NoSuchElementException:
             logging.info("Notice alert is not present")

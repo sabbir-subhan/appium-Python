@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 class WelcomeScreen(object):
     """A class for welcome screen locators - first screen after lunching the app."""
     LOGIN_BUTTON = (By.XPATH, './/android.view.View[@content-desc[contains(., "LOGIN")]]')
-    LOGIN_BUTTON_ios = (By.XPATH, '// UIAApplication[1] / UIAWindow[1] / UIAScrollView[2] / UIAWebView[1] / UIALink[9]')
+    LOGIN_BUTTON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[9]')
 
 
 class LoginScreen(object):
@@ -17,6 +17,8 @@ class LoginScreen(object):
                               '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIASecureTextField[1]')
     TEXTFIELD_DOMAIN = (By.XPATH, './/android.widget.EditText[@index="5"]')
     TEXTFIELD_DOMAIN_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIATextField[2]')
+    BUTTON_DONE_TO_HIDE_KEYBOARD_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[2]'
+                                                  '/UIAToolbar[1]/UIAButton[3][@name="Done"]')
     SUBMIT_BUTTON = (By.XPATH, '//android.widget.Button[@content-desc="Submit"]')
     SUBMIT_BUTTON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAButton[1]')
 
@@ -34,8 +36,8 @@ class LoginScreen(object):
 
     # alert message with word "Invalid"
     ALERT_MSG_INVALID = (By.XPATH, './/android.view.View[@content-desc[contains(., "Invalid")]]')
-    ALERT_MSG_INVALID_ios = (By.XPATH,
-                             '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[5]')
+    ALERT_MSG_INVALID_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]'
+                                       '/UIAStaticText[5][@name="Invalid username and/or password"]')
 
     # alert message with "Your temporary account has been expired"
     ALERT_MSG_EXPIRED = (By.XPATH, './/android.view.View[@content-desc[contains('

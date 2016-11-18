@@ -42,16 +42,51 @@ class DesiredCapabilities(object):
         "udid": "ad0816033848eb0443"
     }
 
-    desired_capabilities_for_iOS_9 = {
-        # iPad mini withh iOS 9.3.5
+    desired_capabilities_for_iOS_iPad = {
+        # iPad mini with iOS 9.3.5
         "platformName": "iOS",
         "platformVersion": "9.3",
         "deviceName": "iPad mini",
-        #"deviceName": "iPhone 6s",
-        "app": PATH("/Users/lukasl/repos/OCA.app"),
+        "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData/"
+                    "OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphonesimulator/OCA.app"),
         "appPackage": "com.noggin.oca",
         "appActivity": "com.noggin.oca.OCApp",
         "newCommandTimeout": "600",
-        "noReset": "true",
         "udid": "db55c238e873230ee454c54a63724397a2981acd"
+    }
+
+    desired_capabilities_for_iOS_iPhone4 = {
+        # iPhone 4s simulator with iOS 9.3
+        "platformName": "iOS",
+        "platformVersion": "9.3",
+        "deviceName": "iPhone 4s",
+        "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData/"
+                    "OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphonesimulator/OCA.app"),
+        "appPackage": "com.noggin.oca",
+        "appActivity": "com.noggin.oca.OCApp",
+        "newCommandTimeout": "600"
+    }
+
+    desired_capabilities_for_iOS_iPhone5 = {
+        # iPhone 5 simulator with iOS 9.3
+        "platformName": "iOS",
+        "platformVersion": "9.3",
+        "deviceName": "iPhone 5",
+        "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData/"
+                    "OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphonesimulator/OCA.app"),
+        "appPackage": "com.noggin.oca",
+        "appActivity": "com.noggin.oca.OCApp",
+        "newCommandTimeout": "600"
+    }
+
+    desired_capabilities_for_iOS_iPhone6 = {
+        # iPhone 6s simulator with iOS 9.3
+        "platformName": "iOS",
+        "platformVersion": "9.3",
+        "deviceName": "iPhone 6s",
+        "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData/"
+                    "OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphonesimulator/OCA.app"),
+        "appPackage": "com.noggin.oca",
+        "appActivity": "com.noggin.oca.OCApp",
+        "newCommandTimeout": "600"
     }
