@@ -18,12 +18,14 @@ logging.basicConfig(filename='OCAapp_TC3.log', level=logging.INFO,
 logging.getLogger().addHandler(logging.StreamHandler())
 
 
-class TC3(unittest.TestCase):
+class TC3android(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_6
+
         # choose desired capabilities from desired_capabilities.py
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_6
+
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
         self.driver.implicitly_wait(25)  # seconds
 
@@ -544,5 +546,5 @@ class TC3(unittest.TestCase):
         sleep(5)
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TC3)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TC3android)
     unittest.TextTestRunner(verbosity=2).run(suite)

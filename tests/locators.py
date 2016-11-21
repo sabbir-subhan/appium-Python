@@ -4,7 +4,8 @@ from selenium.webdriver.common.by import By
 class WelcomeScreen(object):
     """A class for welcome screen locators - first screen after lunching the app."""
     LOGIN_BUTTON = (By.XPATH, './/android.view.View[@content-desc[contains(., "LOGIN")]]')
-    LOGIN_BUTTON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[9]')
+    LOGIN_BUTTON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]'
+                                  '/UIALink[9][@name[contains(., "LOGIN")]]')
 
 
 class LoginScreen(object):
@@ -42,7 +43,10 @@ class LoginScreen(object):
     # alert message with "Your temporary account has been expired"
     ALERT_MSG_EXPIRED = (By.XPATH, './/android.view.View[@content-desc[contains('
                                    '., "Your temporary account has been expired")]]')
-    ALERT_MSG_EXPIRED_ios = (By.XPATH, '')
+
+    ALERT_MSG_EXPIRED_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
+                                       '/UIAWebView[1]/UIAStaticText[5][@name[contains'
+                                       '(., "Your temporary account has been expired")]]')
 
     # alert message with "The password for the current user is about to expire"
     ALERT_MSG_WILL_EXPIRE = (By.XPATH,
@@ -53,12 +57,14 @@ class LoginScreen(object):
     # alert message with word "inactive"
     ALERT_MSG_SUSPENDED = (By.XPATH,
                            './/android.view.View[@content-desc[contains(., "Your account is currently inactive")]]')
-    ALERT_MSG_SUSPENDED_ios = (By.XPATH, '')
+    ALERT_MSG_SUSPENDED_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/'
+                                         'UIAStaticText[5][@name[contains(., "Your account is currently inactive")]]')
 
     # alert message about expiring password
     NOTICE_ALERT_OK_BUTTON = (By.XPATH,
                               './/android.view.View[@index="24"]//android.view.View[@content-desc[contains(., "Ok")]]')
-    NOTICE_ALERT_OK_BUTTON_ios = (By.XPATH, '')
+    # the same as OK_BUTTON ??
+    #NOTICE_ALERT_OK_BUTTON_ios = (By.XPATH, '')
 
     # OK button on alert messages"
     OK_BUTTON = (By.XPATH, './/android.view.View[@content-desc="Ok"]')

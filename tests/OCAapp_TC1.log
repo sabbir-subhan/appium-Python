@@ -549,3 +549,73 @@
 11/18/2016 01:51:10 PM Accepting terms and conditions
 11/18/2016 01:51:20 PM click No for sending notifications on iOS
 11/18/2016 01:51:48 PM Quitting
+11/21/2016 12:43:24 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/21/2016 12:43:24 PM Could not get IP address for host: localhost
+11/21/2016 12:43:52 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/21/2016 12:43:52 PM Could not get IP address for host: localhost
+11/21/2016 12:44:06 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/21/2016 12:44:22 PM click in LOGIN button
+11/21/2016 12:44:27 PM typing username, password and OCA domain
+11/21/2016 12:44:27 PM type username
+11/21/2016 12:44:34 PM type password
+11/21/2016 12:44:41 PM type domain address
+11/21/2016 12:44:50 PM hide screen keyboard
+11/21/2016 12:44:54 PM click in Submit button
+11/21/2016 12:44:54 PM accept Terms if needed
+11/21/2016 12:45:20 PM Terms are already accepted - Accept button is not present
+11/21/2016 12:45:20 PM check if Notice alert, about expiring password is present and click Ok button
+11/21/2016 12:45:45 PM Notice alert is not present
+11/21/2016 12:45:45 PM Successful login
+11/21/2016 12:45:45 PM Quitting
+11/21/2016 12:52:44 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/21/2016 12:53:38 PM click in LOGIN button
+11/21/2016 12:53:52 PM type username
+11/21/2016 12:54:14 PM type password
+11/21/2016 12:54:36 PM type domain address
+11/21/2016 12:54:47 PM hide screen keyboard
+11/21/2016 12:55:14 PM click in Submit button
+11/21/2016 12:55:23 PM Terms are already accepted - Accept button is not present
+11/21/2016 12:55:23 PM click 'No' for sending notifications on iOS
+11/21/2016 12:55:31 PM Successful login
+11/21/2016 12:55:31 PM Quitting
+11/21/2016 12:56:23 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/21/2016 12:57:06 PM click in LOGIN button
+11/21/2016 12:57:19 PM type username
+11/21/2016 12:57:41 PM type password
+11/21/2016 12:58:03 PM type domain address
+11/21/2016 12:58:13 PM hide screen keyboard
+11/21/2016 12:58:40 PM click in Submit button
+11/21/2016 12:58:57 PM Accepting terms and conditions
+11/21/2016 12:59:07 PM click 'No' for sending notifications on iOS
+11/21/2016 12:59:13 PM Successful login
+11/21/2016 12:59:13 PM Quitting
+11/21/2016 12:59:32 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/21/2016 12:59:56 PM Your are already login - logging out
+11/21/2016 01:00:04 PM click in LOGIN button
+11/21/2016 01:00:24 PM type username
+11/21/2016 01:00:46 PM type password
+11/21/2016 01:01:08 PM type domain address
+11/21/2016 01:01:19 PM hide screen keyboard
+11/21/2016 01:01:45 PM click in Submit button
+11/21/2016 01:01:56 PM Terms are already accepted - Accept button is not present
+11/21/2016 01:01:56 PM click 'No' for sending notifications on iOS
+11/21/2016 01:02:02 PM Successful login
+11/21/2016 01:02:02 PM Quitting
+11/21/2016 01:14:24 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/21/2016 01:15:11 PM click in LOGIN button
+11/21/2016 01:15:24 PM type username
+11/21/2016 01:15:46 PM type password
+11/21/2016 01:16:08 PM type domain address
+11/21/2016 01:16:19 PM hide screen keyboard
+11/21/2016 01:16:46 PM click in Submit button
+11/21/2016 01:17:25 PM Successful login
+11/21/2016 01:17:25 PM Quitting
+11/21/2016 05:04:50 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/21/2016 05:05:16 PM Your are already login - logging out
+11/21/2016 05:05:26 PM click in LOGIN button
+11/21/2016 05:05:43 PM type username
+11/21/2016 05:06:05 PM type password
+11/21/2016 05:06:27 PM type domain address
+11/21/2016 05:07:03 PM click in Submit button
+11/21/2016 05:07:39 PM Successful login
+11/21/2016 05:07:39 PM Quitting

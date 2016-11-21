@@ -26,12 +26,14 @@ logging.basicConfig(filename='OCAapp_TC2.log', level=logging.INFO,
 logging.getLogger().addHandler(logging.StreamHandler())
 
 
-class TC2(unittest.TestCase):
+class TC2android(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_6
+
         # choose desired capabilities from desired_capabilities.py
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_6
+
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
         self.driver.implicitly_wait(25)  # seconds
 
@@ -119,7 +121,7 @@ class TC2(unittest.TestCase):
 
         logging.info("check if Notice alert is present and click Ok button")
         try:
-            self.driver.find_element(*MainMenuScreen.NOTICE_ALERT).click()
+            self.driver.find_element(*LoginScreen.NOTICE_ALERT_OK_BUTTON).click()
             logging.info("Notice alert is present")
         except NoSuchElementException:
             logging.info("Notice alert is not present")
@@ -190,7 +192,7 @@ class TC2(unittest.TestCase):
 
         logging.info("check if Notice alert is present and click Ok button")
         try:
-            self.driver.find_element(*MainMenuScreen.NOTICE_ALERT).click()
+            self.driver.find_element(*LoginScreen.NOTICE_ALERT_OK_BUTTON).click()
             logging.info("Notice alert is present")
         except NoSuchElementException:
             logging.info("Notice alert is not present")
@@ -353,11 +355,11 @@ class TC2(unittest.TestCase):
 
         logging.info("check if Notice alert, about expiring password is present and click Ok button")
         try:
-            self.driver.find_element(*MainMenuScreen.NOTICE_ALERT).click()
+            self.driver.find_element(*LoginScreen.NOTICE_ALERT_OK_BUTTON).click()
             logging.info("Notice alert is present")
         except NoSuchElementException:
             logging.info("Notice alert is not present")
-            pass
+            self.fail("Notice alert is not present")
 
         try:
             WebDriverWait(self.driver, 20).until(
@@ -449,5 +451,5 @@ class TC2(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TC2)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TC2android)
     unittest.TextTestRunner(verbosity=2).run(suite)

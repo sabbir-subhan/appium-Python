@@ -30,7 +30,7 @@ class TC2ios(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPhone4
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad
 
         # choose desired capabilities from desired_capabilities.py
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
@@ -44,8 +44,8 @@ class TC2ios(unittest.TestCase):
 
         sleep(2)
         try:
-            logoutbutton_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
-            if logoutbutton_ios.is_displayed():
+            logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
+            if logout_button_ios.is_displayed():
                 logging.info("Your are already login - logging out")
                 self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios).click()
                 self.driver.find_element(*MainMenuScreen.LOGOUT_SUBMIT_ios).click()
@@ -54,6 +54,7 @@ class TC2ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
+        sleep(2)
         logging.info("starting test1: login_into_general_user_with_incorrect_password")
 
         logging.info("click in LOGIN button")
@@ -74,8 +75,15 @@ class TC2ios(unittest.TestCase):
         logging.info("type domain address")
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
 
-        logging.info("hide screen keyboard")
-        self.driver.hide_keyboard()
+        try:
+            done_button_ios = self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios)
+            if done_button_ios.is_displayed():
+                logging.info("hide screen keyboard")
+                self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios).click()
+            else:
+                pass
+        except NoSuchElementException:
+            pass
 
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
@@ -105,8 +113,8 @@ class TC2ios(unittest.TestCase):
 
         sleep(2)
         try:
-            logoutbutton_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
-            if logoutbutton_ios.is_displayed():
+            logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
+            if logout_button_ios.is_displayed():
                 logging.info("Your are already login - logging out")
                 self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios).click()
                 self.driver.find_element(*MainMenuScreen.LOGOUT_SUBMIT_ios).click()
@@ -115,6 +123,7 @@ class TC2ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
+        sleep(2)
         logging.info("starting test2: login_into_general_user_with_correct_credentials")
 
         logging.info("click in LOGIN button")
@@ -135,8 +144,15 @@ class TC2ios(unittest.TestCase):
         logging.info("type domain address")
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
 
-        logging.info("hide screen keyboard")
-        self.driver.hide_keyboard()
+        try:
+            done_button_ios = self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios)
+            if done_button_ios.is_displayed():
+                logging.info("hide screen keyboard")
+                self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios).click()
+            else:
+                pass
+        except NoSuchElementException:
+            pass
 
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
@@ -152,15 +168,18 @@ class TC2ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
-        # THERE IS PROBLEM WITH DISPLAYING ALERT ON IOS - it's visible only for few seconds
-        # logging.info("check if Notice alert, about expiring password is present and click Ok button")
-        # try:
-        #     self.driver.find_element(*LoginScreen.ALERT_MSG_WILL_EXPIRE_ios)
-        #     logging.info("Notice alert is present")
-        #     self.driver.find_element(*LoginScreen.NOTICE_ALERT_OK_BUTTON_ios).click()
-        # except NoSuchElementException:
-        #     logging.info("Notice alert is not present")
-        #     pass
+        try:
+            notification_msg_on_ios = self.driver.find_element(*LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+            if notification_msg_on_ios.is_displayed():
+                logging.info("click 'No' for sending notifications on iOS")
+                notification_msg_on_ios = self.driver.find_element(
+                    *LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+                self.assertIsNotNone(notification_msg_on_ios)
+                self.driver.find_element(*LoginScreen.NO_FOR_SENDING_NOTIFICATIONS_ON_ios).click()
+            else:
+                pass
+        except NoSuchElementException:
+            pass
 
         try:
             WebDriverWait(self.driver, 20).until(
@@ -174,8 +193,8 @@ class TC2ios(unittest.TestCase):
 
         sleep(2)
         try:
-            logoutbutton_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
-            if logoutbutton_ios.is_displayed():
+            logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
+            if logout_button_ios.is_displayed():
                 logging.info("Your are already login - logging out")
                 self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios).click()
                 self.driver.find_element(*MainMenuScreen.LOGOUT_SUBMIT_ios).click()
@@ -184,6 +203,7 @@ class TC2ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
+        sleep(2)
         logging.info("starting test3: login_into_admin_account_with_correct_credentials")
 
         logging.info("click in LOGIN button")
@@ -204,8 +224,15 @@ class TC2ios(unittest.TestCase):
         logging.info("type domain address")
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
 
-        logging.info("hide screen keyboard")
-        self.driver.hide_keyboard()
+        try:
+            done_button_ios = self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios)
+            if done_button_ios.is_displayed():
+                logging.info("hide screen keyboard")
+                self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios).click()
+            else:
+                pass
+        except NoSuchElementException:
+            pass
 
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
@@ -232,6 +259,19 @@ class TC2ios(unittest.TestCase):
         #     pass
 
         try:
+            notification_msg_on_ios = self.driver.find_element(*LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+            if notification_msg_on_ios.is_displayed():
+                logging.info("click 'No' for sending notifications on iOS")
+                notification_msg_on_ios = self.driver.find_element(
+                    *LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+                self.assertIsNotNone(notification_msg_on_ios)
+                self.driver.find_element(*LoginScreen.NO_FOR_SENDING_NOTIFICATIONS_ON_ios).click()
+            else:
+                pass
+        except NoSuchElementException:
+            pass
+
+        try:
             WebDriverWait(self.driver, 20).until(
                 expected_conditions.presence_of_element_located(MainMenuScreen.EVENTS_BUTTON_ios), "Failed to login")
             logging.info("Successful login into admin account")
@@ -243,8 +283,8 @@ class TC2ios(unittest.TestCase):
 
         sleep(2)
         try:
-            logoutbutton_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
-            if logoutbutton_ios.is_displayed():
+            logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
+            if logout_button_ios.is_displayed():
                 logging.info("Your are already login - logging out")
                 self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios).click()
                 self.driver.find_element(*MainMenuScreen.LOGOUT_SUBMIT_ios).click()
@@ -253,6 +293,7 @@ class TC2ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
+        sleep(2)
         logging.info("starting test4: login_using_account_expired_1_day_ago")
 
         logging.info("click in LOGIN button")
@@ -273,8 +314,15 @@ class TC2ios(unittest.TestCase):
         logging.info("type domain address")
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
 
-        logging.info("hide screen keyboard")
-        self.driver.hide_keyboard()
+        try:
+            done_button_ios = self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios)
+            if done_button_ios.is_displayed():
+                logging.info("hide screen keyboard")
+                self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios).click()
+            else:
+                pass
+        except NoSuchElementException:
+            pass
 
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
@@ -304,8 +352,8 @@ class TC2ios(unittest.TestCase):
 
         sleep(2)
         try:
-            logoutbutton_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
-            if logoutbutton_ios.is_displayed():
+            logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
+            if logout_button_ios.is_displayed():
                 logging.info("Your are already login - logging out")
                 self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios).click()
                 self.driver.find_element(*MainMenuScreen.LOGOUT_SUBMIT_ios).click()
@@ -314,6 +362,7 @@ class TC2ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
+        sleep(2)
         logging.info("starting test5: login_using_account_that_expires_today")
 
         logging.info("click in LOGIN button")
@@ -334,8 +383,15 @@ class TC2ios(unittest.TestCase):
         logging.info("type domain address")
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
 
-        logging.info("hide screen keyboard")
-        self.driver.hide_keyboard()
+        try:
+            done_button_ios = self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios)
+            if done_button_ios.is_displayed():
+                logging.info("hide screen keyboard")
+                self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios).click()
+            else:
+                pass
+        except NoSuchElementException:
+            pass
 
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
@@ -365,8 +421,8 @@ class TC2ios(unittest.TestCase):
 
         sleep(2)
         try:
-            logoutbutton_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
-            if logoutbutton_ios.is_displayed():
+            logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
+            if logout_button_ios.is_displayed():
                 logging.info("Your are already login - logging out")
                 self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios).click()
                 self.driver.find_element(*MainMenuScreen.LOGOUT_SUBMIT_ios).click()
@@ -375,27 +431,41 @@ class TC2ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
+        sleep(2)
         logging.info("starting test6: login_using_account_that_will_expire_in_1_day")
 
         logging.info("click in LOGIN button")
-        self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON).click()
+        self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_ios).click()
 
-        logging.info("typing username, password and OCA domain")
-
+        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).click()
+        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).clear()
         logging.info("type username")
-        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME).send_keys(credentials.username_test_expire_in_1_day)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).send_keys(
+            credentials.username_test_expire_in_1_day)
 
+        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).click()
+        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).clear()
         logging.info("type password")
-        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD).send_keys(credentials.password_test_expire_in_1_day)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).send_keys(
+            credentials.password_test_expire_in_1_day)
 
+        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).click()
+        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).clear()
         logging.info("type domain address")
-        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN).send_keys(credentials.domain)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
 
-        logging.info("hide screen keyboard")
-        self.driver.hide_keyboard()
+        try:
+            done_button_ios = self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios)
+            if done_button_ios.is_displayed():
+                logging.info("hide screen keyboard")
+                self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios).click()
+            else:
+                pass
+        except NoSuchElementException:
+            pass
 
         logging.info("click in Submit button")
-        self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
+        self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
 
         try:
             accept_terms_button = self.driver.find_element(*LoginScreen.ACCEPT_BUTTON_ios)
@@ -419,8 +489,30 @@ class TC2ios(unittest.TestCase):
         #     pass
 
         try:
+            notification_msg_on_ios = self.driver.find_element(*LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+            if notification_msg_on_ios.is_displayed():
+                logging.info("click 'No' for sending notifications on iOS")
+                notification_msg_on_ios = self.driver.find_element(
+                    *LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+                self.assertIsNotNone(notification_msg_on_ios)
+                self.driver.find_element(*LoginScreen.NO_FOR_SENDING_NOTIFICATIONS_ON_ios).click()
+            else:
+                pass
+        except NoSuchElementException:
+            pass
+
+        logging.info("check if Notice alert, about expiring password is present and click Ok button")
+        try:
+            #self.driver.find_element(*LoginScreen.NOTICE_ALERT_OK_BUTTON_ios).click()
+            self.driver.find_element(*LoginScreen.OK_BUTTON_ios).click()
+            logging.info("Notice alert is present")
+        except NoSuchElementException:
+            logging.info("Notice alert is not present")
+            self.fail("Notice alert is not present")
+
+        try:
             WebDriverWait(self.driver, 20).until(
-                expected_conditions.presence_of_element_located(MainMenuScreen.EVENTS_BUTTON), "Failed to login")
+                expected_conditions.presence_of_element_located(MainMenuScreen.EVENTS_BUTTON_ios), "Failed to login")
             logging.info("Successful login to account that will expire in 1 day")
         except NoSuchElementException:
             logging.info("Failed to login to account that will expire in 1 day")
@@ -430,8 +522,8 @@ class TC2ios(unittest.TestCase):
 
         sleep(2)
         try:
-            logoutbutton_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
-            if logoutbutton_ios.is_displayed():
+            logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
+            if logout_button_ios.is_displayed():
                 logging.info("Your are already login - logging out")
                 self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios).click()
                 self.driver.find_element(*MainMenuScreen.LOGOUT_SUBMIT_ios).click()
@@ -440,27 +532,39 @@ class TC2ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
+        sleep(2)
         logging.info("starting test7: login_into_suspended_account")
 
         logging.info("click in LOGIN button")
-        self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON).click()
+        self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_ios).click()
 
-        logging.info("typing username, password and OCA domain")
-
+        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).click()
+        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).clear()
         logging.info("type username")
-        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME).send_keys(credentials.username_test_suspended)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).send_keys(credentials.username_test_suspended)
 
+        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).click()
+        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).clear()
         logging.info("type password")
-        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD).send_keys(credentials.password_test_suspended)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).send_keys(credentials.password_test_suspended)
 
+        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).click()
+        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).clear()
         logging.info("type domain address")
-        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN).send_keys(credentials.domain)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
 
-        logging.info("hide screen keyboard")
-        self.driver.hide_keyboard()
+        try:
+            done_button_ios = self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios)
+            if done_button_ios.is_displayed():
+                logging.info("hide screen keyboard")
+                self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios).click()
+            else:
+                pass
+        except NoSuchElementException:
+            pass
 
         logging.info("click in Submit button")
-        self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
+        self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
 
         try:
             accept_terms_button = self.driver.find_element(*LoginScreen.ACCEPT_BUTTON_ios)
@@ -475,10 +579,10 @@ class TC2ios(unittest.TestCase):
 
         logging.info("checking alert message")
         try:
-            alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_SUSPENDED)
+            alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_SUSPENDED_ios)
             logging.info("Successfully try to login into suspended account - message alert is present")
             self.assertIsNotNone(alert_msg)
-            self.driver.find_element(*LoginScreen.OK_BUTTON)
+            self.driver.find_element(*LoginScreen.OK_BUTTON_ios)
         except NoSuchElementException:
             logging.info("failed - there is no alert message")
             self.fail("failed - there is no alert message")

@@ -22,7 +22,7 @@ class TC3ios(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_9
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad
 
         # choose desired capabilities from desired_capabilities.py
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
@@ -36,8 +36,8 @@ class TC3ios(unittest.TestCase):
 
         sleep(2)
         try:
-            logoutbutton_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
-            if logoutbutton_ios.is_displayed():
+            logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
+            if logout_button_ios.is_displayed():
                 logging.info("Your are already login - logging out")
                 self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios).click()
                 self.driver.find_element(*MainMenuScreen.LOGOUT_SUBMIT_ios).click()
@@ -65,8 +65,15 @@ class TC3ios(unittest.TestCase):
         logging.info("type domain address")
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
 
-        logging.info("hide screen keyboard")
-        self.driver.hide_keyboard()
+        try:
+            done_button_ios = self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios)
+            if done_button_ios.is_displayed():
+                logging.info("hide screen keyboard")
+                self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios).click()
+            else:
+                pass
+        except NoSuchElementException:
+            pass
 
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
@@ -84,7 +91,7 @@ class TC3ios(unittest.TestCase):
 
         logging.info("check if Notice alert is present and click Ok button")
         try:
-            self.driver.find_element(*LoginScreen.NOTICE_ALERT_OK_BUTTON_ios).click()
+            self.driver.find_element(*LoginScreen.OK_BUTTON_ios).click()
             logging.info("Notice alert is present")
         except NoSuchElementException:
             logging.info("Notice alert is not present")

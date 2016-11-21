@@ -24,9 +24,10 @@ class TC1ios(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPhone4
 
         # choose desired capabilities from desired_capabilities.py
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad
+
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
         self.driver.implicitly_wait(25)  # seconds
@@ -49,6 +50,7 @@ class TC1ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
+        sleep(2)
         logging.info("click in LOGIN button")
         self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_ios).click()
 
@@ -70,14 +72,15 @@ class TC1ios(unittest.TestCase):
         logging.info("type domain address")
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
 
-        logging.info("hide screen keyboard")
+
         try:
             done_button_ios = self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios)
             if done_button_ios.is_displayed():
+                logging.info("hide screen keyboard")
                 self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios).click()
             else:
-                self.driver.hide_keyboard()
-                sleep(3)
+                pass
+                #self.driver.hide_keyboard()
         except NoSuchElementException:
             pass
 
@@ -96,11 +99,15 @@ class TC1ios(unittest.TestCase):
             pass
 
         try:
-            logging.info("click 'No' for sending notifications on iOS")
-            notification_about_sending_msg = self.driver.find_element(
-                *LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
-            self.assertIsNotNone(notification_about_sending_msg)
-            self.driver.find_element(*LoginScreen.NO_FOR_SENDING_NOTIFICATIONS_ON_ios).click()
+            notification_msg_on_ios = self.driver.find_element(*LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+            if notification_msg_on_ios.is_displayed():
+                logging.info("click 'No' for sending notifications on iOS")
+                notification_msg_on_ios = self.driver.find_element(
+                    *LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+                self.assertIsNotNone(notification_msg_on_ios)
+                self.driver.find_element(*LoginScreen.NO_FOR_SENDING_NOTIFICATIONS_ON_ios).click()
+            else:
+                pass
         except NoSuchElementException:
             pass
 
