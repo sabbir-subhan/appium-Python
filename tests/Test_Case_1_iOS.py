@@ -57,21 +57,17 @@ class TC1ios(unittest.TestCase):
         self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).click()
         self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).clear()
         logging.info("type username")
-        #self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).send_keys(credentials.QA_username)
-        # THAT IS USERNAME FOR NEW ACCOUNT WITH EXPIRATION DATE FOR TESTING ALERT MSG
-        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).send_keys('new_contact_for_ios2')
+        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).send_keys(credentials.QA_username)
 
         self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).click()
         self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).clear()
         logging.info("type password")
-        #self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).send_keys(credentials.QA_password)
-        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).send_keys('new_contact_for_ios2')
+        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).send_keys(credentials.QA_password)
 
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).click()
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).clear()
         logging.info("type domain address")
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
-
 
         try:
             done_button_ios = self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios)
@@ -80,7 +76,6 @@ class TC1ios(unittest.TestCase):
                 self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios).click()
             else:
                 pass
-                #self.driver.hide_keyboard()
         except NoSuchElementException:
             pass
 

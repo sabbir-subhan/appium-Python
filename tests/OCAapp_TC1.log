@@ -619,3 +619,12 @@
 11/21/2016 05:07:03 PM click in Submit button
 11/21/2016 05:07:39 PM Successful login
 11/21/2016 05:07:39 PM Quitting
+11/22/2016 10:41:54 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/22/2016 10:44:17 AM click in LOGIN button
+11/22/2016 10:44:30 AM type username
+11/22/2016 10:44:47 AM type password
+11/22/2016 10:45:03 AM type domain address
+11/22/2016 10:45:40 AM click in Submit button
+11/22/2016 10:46:02 AM Accepting terms and conditions
+11/22/2016 10:46:17 AM Successful login
+11/22/2016 10:46:17 AM Quitting

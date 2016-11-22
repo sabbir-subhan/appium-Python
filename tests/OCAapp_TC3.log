@@ -1,0 +1,152 @@
+11/22/2016 03:54:45 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/22/2016 03:55:02 PM TC info: filter events, create first Event and delete it
+11/22/2016 03:55:29 PM starting def with login
+11/22/2016 03:55:29 PM click in LOGIN button
+11/22/2016 03:55:42 PM type username
+11/22/2016 03:55:59 PM type password
+11/22/2016 03:56:17 PM type domain address
+11/22/2016 03:56:55 PM click in Submit button
+11/22/2016 03:57:27 PM check if Notice alert is present and click Ok button
+11/22/2016 03:57:54 PM Notice alert is not present
+11/22/2016 03:57:58 PM Successful login
+11/22/2016 03:58:01 PM clicking on Events button
+11/22/2016 03:58:29 PM Quitting
+11/22/2016 04:05:32 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/22/2016 04:05:51 PM TC info: filter events, create first Event and delete it
+11/22/2016 04:05:58 PM Your are already login - logging out
+11/22/2016 04:06:06 PM starting def with login
+11/22/2016 04:06:06 PM click in LOGIN button
+11/22/2016 04:06:25 PM type username
+11/22/2016 04:06:42 PM type password
+11/22/2016 04:07:00 PM type domain address
+11/22/2016 04:07:37 PM click in Submit button
+11/22/2016 04:08:08 PM check if Notice alert is present and click Ok button
+11/22/2016 04:08:34 PM Notice alert is not present
+11/22/2016 04:08:37 PM Successful login
+11/22/2016 04:08:40 PM clicking on Events button
+11/22/2016 04:08:44 PM check if Events were opened
+11/22/2016 04:09:25 PM Quitting
+11/22/2016 04:12:28 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/22/2016 04:12:45 PM TC info: filter events, create first Event and delete it
+11/22/2016 04:12:55 PM Your are already login - logging out
+11/22/2016 04:13:03 PM starting def with login
+11/22/2016 04:13:03 PM click in LOGIN button
+11/22/2016 04:13:23 PM type username
+11/22/2016 04:13:40 PM type password
+11/22/2016 04:13:58 PM type domain address
+11/22/2016 04:14:34 PM click in Submit button
+11/22/2016 04:15:08 PM Successful login
+11/22/2016 04:15:11 PM clicking on Events button
+11/22/2016 04:15:15 PM clicking on 'More' button
+11/22/2016 04:15:24 PM Quitting
+11/22/2016 04:19:47 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/22/2016 04:20:04 PM TC info: filter events, create first Event and delete it
+11/22/2016 04:20:12 PM Your are already login - logging out
+11/22/2016 04:20:20 PM starting def with login
+11/22/2016 04:20:20 PM click in LOGIN button
+11/22/2016 04:20:40 PM type username
+11/22/2016 04:20:56 PM type password
+11/22/2016 04:21:14 PM type domain address
+11/22/2016 04:21:52 PM click in Submit button
+11/22/2016 04:22:25 PM Successful login
+11/22/2016 04:22:28 PM clicking on Events button
+11/22/2016 04:22:33 PM clicking on 'More' button
+11/22/2016 04:22:41 PM Quitting
+11/22/2016 04:23:07 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/22/2016 04:23:23 PM TC info: filter events, create first Event and delete it
+11/22/2016 04:23:25 PM Quitting
+11/22/2016 04:27:40 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/22/2016 04:27:55 PM TC info: filter events, create first Event and delete it
+11/22/2016 04:28:04 PM Your are already login - logging out
+11/22/2016 04:28:12 PM starting def with login
+11/22/2016 04:28:12 PM click in LOGIN button
+11/22/2016 04:28:31 PM type username
+11/22/2016 04:28:47 PM type password
+11/22/2016 04:29:05 PM type domain address
+11/22/2016 04:29:43 PM click in Submit button
+11/22/2016 04:30:16 PM Successful login
+11/22/2016 04:30:19 PM clicking on Events button
+11/22/2016 04:30:23 PM clicking on 'More' button
+11/22/2016 04:30:32 PM Quitting
+11/22/2016 04:31:26 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/22/2016 04:31:41 PM TC info: filter events, create first Event and delete it
+11/22/2016 04:31:50 PM Your are already login - logging out
+11/22/2016 04:31:58 PM starting def with login
+11/22/2016 04:31:58 PM click in LOGIN button
+11/22/2016 04:32:18 PM type username
+11/22/2016 04:32:34 PM type password
+11/22/2016 04:32:53 PM type domain address
+11/22/2016 04:33:30 PM click in Submit button
+11/22/2016 04:34:05 PM Successful login
+11/22/2016 04:34:08 PM clicking on Events button
+11/22/2016 04:34:12 PM clicking on 'More' button
+11/22/2016 04:34:20 PM Quitting
+11/22/2016 04:36:49 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/22/2016 04:37:08 PM TC info: filter events, create first Event and delete it
+11/22/2016 04:37:14 PM Your are already login - logging out
+11/22/2016 04:37:22 PM starting def with login
+11/22/2016 04:37:22 PM click in LOGIN button
+11/22/2016 04:37:41 PM type username
+11/22/2016 04:37:58 PM type password
+11/22/2016 04:38:16 PM type domain address
+11/22/2016 04:38:53 PM click in Submit button
+11/22/2016 04:39:28 PM Successful login
+11/22/2016 04:39:31 PM clicking on Events button
+11/22/2016 04:39:35 PM clicking on 'More' button
+11/22/2016 04:39:41 PM Quitting
+11/22/2016 04:43:33 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/22/2016 04:43:50 PM TC info: filter events, create first Event and delete it
+11/22/2016 04:43:56 PM Your are already login - logging out
+11/22/2016 04:44:04 PM starting def with login
+11/22/2016 04:44:04 PM click in LOGIN button
+11/22/2016 04:44:23 PM type username
+11/22/2016 04:44:40 PM type password
+11/22/2016 04:44:58 PM type domain address
+11/22/2016 04:45:36 PM click in Submit button
+11/22/2016 04:46:10 PM Successful login
+11/22/2016 04:46:13 PM clicking on Events button
+11/22/2016 04:46:17 PM clicking on 'More' button
+11/22/2016 04:46:22 PM Quitting
+11/22/2016 04:49:55 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/22/2016 04:50:09 PM TC info: filter events, create first Event and delete it
+11/22/2016 04:50:18 PM Your are already login - logging out
+11/22/2016 04:50:26 PM starting def with login
+11/22/2016 04:50:26 PM click in LOGIN button
+11/22/2016 04:50:45 PM type username
+11/22/2016 04:51:02 PM type password
+11/22/2016 04:51:20 PM type domain address
+11/22/2016 04:51:57 PM click in Submit button
+11/22/2016 04:52:32 PM Successful login
+11/22/2016 04:52:35 PM clicking on Events button
+11/22/2016 04:52:42 PM clicking on 'More' button
+11/22/2016 04:53:05 PM clicking on New event button
+11/22/2016 04:53:31 PM choosing Incident type of new event
+11/22/2016 04:53:31 PM filling form to create new event
+11/22/2016 04:53:31 PM input Name
+11/22/2016 04:53:57 PM Quitting
+11/22/2016 05:06:32 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/22/2016 05:06:50 PM TC info: filter events, create first Event and delete it
+11/22/2016 05:06:53 PM clicking on 'More' button
+11/22/2016 05:07:18 PM Quitting
+11/22/2016 05:07:46 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/22/2016 05:08:03 PM TC info: filter events, create first Event and delete it
+11/22/2016 05:08:06 PM clicking on 'More' button
+11/22/2016 05:08:32 PM Quitting
+11/22/2016 05:08:46 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/22/2016 05:09:03 PM TC info: filter events, create first Event and delete it
+11/22/2016 05:09:06 PM clicking on Events button
+11/22/2016 05:09:13 PM clicking on 'More' button
+11/22/2016 05:09:37 PM clicking on New event button
+11/22/2016 05:10:03 PM choosing Incident type of new event
+11/22/2016 05:10:03 PM filling form to create new event
+11/22/2016 05:10:03 PM input Name
+11/22/2016 05:10:39 PM Quitting
+11/22/2016 05:10:57 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/22/2016 05:11:14 PM TC info: filter events, create first Event and delete it
+11/22/2016 05:11:17 PM clicking on Events button
+11/22/2016 05:11:24 PM clicking on 'More' button
+11/22/2016 05:11:48 PM clicking on New event button
+11/22/2016 05:12:13 PM choosing Incident type of new event
+11/22/2016 05:12:13 PM filling form to create new event
+11/22/2016 05:12:13 PM input Name
+11/22/2016 05:12:48 PM Quitting

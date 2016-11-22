@@ -89,13 +89,28 @@ class TC3ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
-        logging.info("check if Notice alert is present and click Ok button")
         try:
-            self.driver.find_element(*LoginScreen.OK_BUTTON_ios).click()
-            logging.info("Notice alert is present")
+            notification_msg_on_ios = self.driver.find_element(*LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+            if notification_msg_on_ios.is_displayed():
+                logging.info("click 'No' for sending notifications on iOS")
+                notification_msg_on_ios = self.driver.find_element(
+                    *LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+                self.assertIsNotNone(notification_msg_on_ios)
+                self.driver.find_element(*LoginScreen.NO_FOR_SENDING_NOTIFICATIONS_ON_ios).click()
+            else:
+                pass
         except NoSuchElementException:
-            logging.info("Notice alert is not present")
             pass
+
+        # THERE IS PROBLEM WITH DISPLAYING ALERT ON IOS - it's visible only for few seconds
+        # logging.info("check if Notice alert, about expiring password is present and click Ok button")
+        # try:
+        #     self.driver.find_element(*LoginScreen.ALERT_MSG_WILL_EXPIRE_ios)
+        #     logging.info("Notice alert is present")
+        #     self.driver.find_element(*LoginScreen.NOTICE_ALERT_OK_BUTTON_ios).click()
+        # except NoSuchElementException:
+        #     logging.info("Notice alert is not present")
+        #     pass
 
         try:
             WebDriverWait(self.driver, 20).until(
@@ -107,53 +122,55 @@ class TC3ios(unittest.TestCase):
 
     def scroll_down(self):
 
-        logging.info("scroll down")
-        action = TouchAction(self.driver)
+        self.driver.scroll(*EventEditScreen.FINISHED_HEADER, *EventEditScreen.RELATED_HEADER)
 
-        elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
-        action.press(elm1).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(2)
-        elm2 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
-        action.press(elm2).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(3)
-        elm3 = self.driver.find_element(*EventEditScreen.IMPACT_HEADER)
-        action.press(elm3).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm4 = self.driver.find_element(*EventEditScreen.CAUSE_HEADER)
-        action.press(elm4).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm5 = self.driver.find_element(*EventEditScreen.SITUATION_HEADER)
-        action.press(elm5).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm6 = self.driver.find_element(*EventEditScreen.ISSUES_HEADER)
-        action.press(elm6).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm7 = self.driver.find_element(*EventEditScreen.OBJECTIVES_HEADER)
-        action.press(elm7).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm8 = self.driver.find_element(*EventEditScreen.STRATEGIES_HEADER)
-        action.press(elm8).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm9 = self.driver.find_element(*EventEditScreen.TACTICS_HEADER)
-        action.press(elm9).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm10 = self.driver.find_element(*EventEditScreen.COMMUNICATIONS_HEADER)
-        action.press(elm10).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
-        action.press(elm11).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
+        logging.info("scroll down")
+        # action = TouchAction(self.driver)
+        #
+        # elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
+        # action.press(elm1).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(2)
+        # elm2 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
+        # action.press(elm2).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(3)
+        # elm3 = self.driver.find_element(*EventEditScreen.IMPACT_HEADER)
+        # action.press(elm3).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(1)
+        # elm4 = self.driver.find_element(*EventEditScreen.CAUSE_HEADER)
+        # action.press(elm4).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(1)
+        # elm5 = self.driver.find_element(*EventEditScreen.SITUATION_HEADER)
+        # action.press(elm5).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(1)
+        # elm6 = self.driver.find_element(*EventEditScreen.ISSUES_HEADER)
+        # action.press(elm6).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(1)
+        # elm7 = self.driver.find_element(*EventEditScreen.OBJECTIVES_HEADER)
+        # action.press(elm7).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(1)
+        # elm8 = self.driver.find_element(*EventEditScreen.STRATEGIES_HEADER)
+        # action.press(elm8).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(1)
+        # elm9 = self.driver.find_element(*EventEditScreen.TACTICS_HEADER)
+        # action.press(elm9).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(1)
+        # elm10 = self.driver.find_element(*EventEditScreen.COMMUNICATIONS_HEADER)
+        # action.press(elm10).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(1)
+        # elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
+        # action.press(elm11).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(1)
 
     def test1(self):
         logging.info("TC info: filter events, create first Event and delete it")
@@ -162,7 +179,7 @@ class TC3ios(unittest.TestCase):
 
         sleep(3)
         logging.info("clicking on Events button")
-        events_button = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON).click()
+        self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON_ios).click()
 
         logging.info("check if Events were opened")
         events_header = self.driver.find_element(*EventsScreen.EVENTS_HEADER)
@@ -202,33 +219,30 @@ class TC3ios(unittest.TestCase):
 
         logging.info("clear search field")
         self.driver.find_element(*EventsScreen.SEARCH_FIELD).click()
-        self.driver.keyevent(67)
-        self.driver.keyevent(67)
-        self.driver.keyevent(67)
-        self.driver.keyevent(67)
-        self.driver.keyevent(67)
-        self.driver.keyevent(67)
+        self.driver.find_element(*EventsScreen.SEARCH_FIELD).clear()
+
         sleep(1)
         logging.info("click on Events header to hide keyboard")
         events_header_after_search = self.driver.find_element(*EventsScreen.EVENTS_HEADER_AFTER_SEARCH).click()
         sleep(3)
 
         logging.info("clicking on 'More' button")
-        more_button = self.driver.find_element(*EventsScreen.MORE_BUTTON).click()
+        self.driver.find_element(*EventsScreen.MORE_BUTTON_ios).click()
 
         logging.info("clicking on New event button")
-        new_event_button = self.driver.find_element(*EventsScreen.NEW_EVENT_BUTTON).click()
+        self.driver.find_element(*EventsScreen.NEW_EVENT_BUTTON_ios).click()
         sleep(3)
 
         try:
-            event_type = self.driver.find_element(*TypesOfEventsScreen.INCIDENT_TYPE_OF_EVENT).click()
+            event_type = self.driver.find_element(*TypesOfEventsScreen.INCIDENT_TYPE_OF_EVENT_ios).click()
             logging.info("choosing Incident type of new event")
         except NoSuchElementException:
             pass
 
         logging.info("filling form to create new event")
         logging.info("input Name")
-        name_field = self.driver.find_element(*EventEditScreen.NAME_FIELD).send_keys("Test Appium")
+        self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).click()
+        name_field = self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).send_keys("Test Appium ios")
         self.driver.hide_keyboard()
 
         logging.info("click on severity level field")
@@ -247,6 +261,22 @@ class TC3ios(unittest.TestCase):
 
         action = TouchAction(self.driver)
         self.scroll_down()
+
+        # MOZE COS W STYLU - tylko bedzie problem z elementem po ktorym scrollowac zapewne
+        logging.info("find element on the list - loop starts")
+        element_on_the_list = None
+        try:
+            element_on_the_list = self.driver.find_element(*EventEditScreen.SAVE_BUTTON_ios)
+            # that is element what You are looking for
+        except Exception as e:
+            element_to_scroll = self.driver.find_element_by_xpath('//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]')
+            # that is id of whole list
+            scrollobject = dict(direction="down", name="Save", element=element_to_scroll.name)
+            self.driver.execute_script("mobile: scrollTo", scrollobject)
+        if element_on_the_list is None:
+            element_on_the_list = self.driver.find_element(*EventEditScreen.SAVE_BUTTON_ios)
+        element_on_the_list.click()
+        
 
         logging.info("Save event")
         save_button = self.driver.find_element(*EventEditScreen.SAVE_BUTTON).click()
@@ -272,7 +302,7 @@ class TC3ios(unittest.TestCase):
 
         try:
             logging.info("type some text into description field")
-            description_field = self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD).send_keys("test")
+            description_field = self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD).send_keys("test ios")
             sleep(2)
             self.driver.hide_keyboard()
         except NoSuchElementException:
@@ -338,7 +368,7 @@ class TC3ios(unittest.TestCase):
 
         sleep(3)
         logging.info("clicking on Events button")
-        events_button = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON).click()
+        EVENTS_BUTTON_ios = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON_ios).click()
 
         logging.info("check if Events were opened")
         events_header = self.driver.find_element(*EventsScreen.EVENTS_HEADER)
@@ -449,7 +479,7 @@ class TC3ios(unittest.TestCase):
 
         sleep(3)
         logging.info("clicking on Events button")
-        events_button = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON).click()
+        EVENTS_BUTTON_ios = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON_ios).click()
 
         logging.info("check if Events were opened")
         events_header = self.driver.find_element(*EventsScreen.EVENTS_HEADER)
@@ -551,7 +581,7 @@ class TC3ios(unittest.TestCase):
         sleep(2)
 
         logging.info("clicking on Events button")
-        events_button = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON).click()
+        EVENTS_BUTTON_ios = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON_ios).click()
 
         logging.info("check if Events were opened")
         events_header = self.driver.find_element(*EventsScreen.EVENTS_HEADER)

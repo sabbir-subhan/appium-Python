@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from appium import webdriver
 
 
 class WelcomeScreen(object):
@@ -21,19 +22,21 @@ class LoginScreen(object):
     BUTTON_DONE_TO_HIDE_KEYBOARD_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[2]'
                                                   '/UIAToolbar[1]/UIAButton[3][@name="Done"]')
     SUBMIT_BUTTON = (By.XPATH, '//android.widget.Button[@content-desc="Submit"]')
-    SUBMIT_BUTTON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAButton[1]')
+    SUBMIT_BUTTON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]'
+                                   '/UIAScrollView[2]/UIAWebView[1]/UIAButton[1][@name="Submit"]')
 
     # Notification alert: "OCA now supports sending 'App Messages' to your device as notifications."
     NOTIFICATION_ABOUT_SENDING_MESSAGES_ios = (By.NAME, "OCA now supports "
                                                         "sending 'App Messages' to your device as notifications.")
 
     # "No" button for sending notifications on iOS
-    NO_FOR_SENDING_NOTIFICATIONS_ON_ios = (By.XPATH, '//UIAApplication[1]'
-                                                     '/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[4]')
+    NO_FOR_SENDING_NOTIFICATIONS_ON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]'
+                                                     '/UIAScrollView[2]/UIAWebView[1]/UIALink[26][@name="No"]')
 
     # ACCEPT_BUTTON on Terms and Conditions"
     ACCEPT_BUTTON = (By.XPATH, './/android.widget.Button[@content-desc="Accept"]')
-    ACCEPT_BUTTON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAButton[1]')
+    ACCEPT_BUTTON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/'
+                                   'UIAScrollView[2]/UIAWebView[1]/UIAButton[1][@name="Accept"]')
 
     # alert message with word "Invalid"
     ALERT_MSG_INVALID = (By.XPATH, './/android.view.View[@content-desc[contains(., "Invalid")]]')
@@ -68,7 +71,8 @@ class LoginScreen(object):
 
     # OK button on alert messages"
     OK_BUTTON = (By.XPATH, './/android.view.View[@content-desc="Ok"]')
-    OK_BUTTON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[4]')
+    #OK_BUTTON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[4]')
+    OK_BUTTON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[4][@name="Ok"]')
 
 
 class MainMenuScreen(object):
@@ -79,7 +83,8 @@ class MainMenuScreen(object):
     LOGOUT_BUTTON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[24]')
     LOGOUT_SUBMIT_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAButton[1]')
     EVENTS_BUTTON = (By.XPATH, './/android.view.View[@content-desc[contains(., "EVENTS")]]')
-    EVENTS_BUTTON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[4]')
+    EVENTS_BUTTON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]'
+                                   '/UIAScrollView[2]/UIAWebView[1]/UIALink[4][@name[contains(., "EVENTS")]]')
 
 
 class EventsScreen(object):
@@ -123,9 +128,11 @@ class EventsScreen(object):
 
     # creating and editing Events
     MORE_BUTTON = (By.XPATH, './/android.widget.Spinner[@content-desc[contains(., "More")]]')
-    MORE_BUTTON_ios = (By.XPATH, '')
+    MORE_BUTTON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
+                                 '/UIAWebView[1]/UIAButton[1][@name[contains(., "More")]]')
     NEW_EVENT_BUTTON = (By.XPATH, './/android.view.View[@content-desc[contains(., "New event")]]')
-    NEW_EVENT_BUTTON_ios = (By.XPATH, '')
+    NEW_EVENT_BUTTON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/'
+                                      'UIAScrollView[2]/UIAWebView[1]/UIALink[@name[contains(., "New event")]]')
 
     # previously created event
     CREATED_EVENT_1 = (By.XPATH, './/android.view.View[@content-desc[contains(., "Test")]]')
@@ -147,13 +154,15 @@ class EventsScreen(object):
 class TypesOfEventsScreen(object):
     """A class for Type of Events screen locators - first screen after creating new event with types of events."""
     INCIDENT_TYPE_OF_EVENT = (By.XPATH, './/android.view.View[@content-desc[contains(., "Incident")]]')
-    INCIDENT_TYPE_OF_EVENT_ios = (By.XPATH, '')
+    INCIDENT_TYPE_OF_EVENT_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]'
+                                            '/UIAScrollView[2]/UIAWebView[1]/UIALink[@name[contains(., "Incident")]]')
 
 
 class EventEditScreen(object):
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
     NAME_FIELD = (By.XPATH, './/android.widget.EditText[@index="1"]')
-    NAME_FIELD_ios = (By.XPATH, '')
+    NAME_FIELD_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
+                                '/UIAWebView[1]/UIATextField[@name="Name"]')
     SEVERITY_LEVEL_SELECTOR = (By.XPATH, './/android.widget.ListView[@index="0"]'
                                          '//android.view.View[@index="3"]'
                                          '//android.widget.Spinner[@index="2"]')
@@ -173,7 +182,8 @@ class EventEditScreen(object):
     SET_BUTTON = (By.ID, 'android:id/button1')
     SET_BUTTON_ios = (By.ID, '')
     SAVE_BUTTON = (By.XPATH, './/android.widget.Button[@content-desc="Save"]')
-    SAVE_BUTTON_ios = (By.XPATH, '')
+    SAVE_BUTTON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
+                                 '/UIAWebView[1]/UIAButton[@name="Save"]')
     DESCRIPTION_FIELD = (By.XPATH,
                          ".//android.widget.ListView[@index='0']"
                          "//android.view.View[@index='8' and @content-desc[contains(., 'Description')]]"

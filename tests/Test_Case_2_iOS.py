@@ -42,7 +42,7 @@ class TC2ios(unittest.TestCase):
 
     def test1(self):
 
-        sleep(2)
+        sleep(5)
         try:
             logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
             if logout_button_ios.is_displayed():
@@ -88,16 +88,17 @@ class TC2ios(unittest.TestCase):
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
 
-        try:
-            accept_terms_button = self.driver.find_element(*LoginScreen.ACCEPT_BUTTON_ios)
-            if accept_terms_button.is_displayed():
-                self.driver.find_element(*LoginScreen.ACCEPT_BUTTON_ios).click()
-                logging.info("Accepting terms and conditions")
-                sleep(10)
-            else:
-                logging.info("Terms are already accepted - Accept button is not present")
-        except NoSuchElementException:
-            pass
+        # it is not necessary to check it because password is generated randomly
+        # try:
+        #     accept_terms_button = self.driver.find_element(*LoginScreen.ACCEPT_BUTTON_ios)
+        #     if accept_terms_button.is_displayed():
+        #         self.driver.find_element(*LoginScreen.ACCEPT_BUTTON_ios).click()
+        #         logging.info("Accepting terms and conditions")
+        #         sleep(10)
+        #     else:
+        #         logging.info("Terms are already accepted - Accept button is not present")
+        # except NoSuchElementException:
+        #     pass
 
         logging.info("checking alert message")
         try:
@@ -111,7 +112,7 @@ class TC2ios(unittest.TestCase):
 
     def test2(self):
 
-        sleep(2)
+        sleep(5)
         try:
             logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
             if logout_button_ios.is_displayed():
@@ -191,7 +192,7 @@ class TC2ios(unittest.TestCase):
 
     def test3(self):
 
-        sleep(2)
+        sleep(5)
         try:
             logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
             if logout_button_ios.is_displayed():
@@ -203,7 +204,7 @@ class TC2ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
-        sleep(2)
+        sleep(3)
         logging.info("starting test3: login_into_admin_account_with_correct_credentials")
 
         logging.info("click in LOGIN button")
@@ -281,7 +282,7 @@ class TC2ios(unittest.TestCase):
 
     def test4(self):
 
-        sleep(2)
+        sleep(5)
         try:
             logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
             if logout_button_ios.is_displayed():
@@ -343,14 +344,14 @@ class TC2ios(unittest.TestCase):
             alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_EXPIRED_ios)
             logging.info("Successfully try to login to account that expired 1 day ago - message alert is present")
             self.assertIsNotNone(alert_msg)
-            self.driver.find_element(*LoginScreen.OK_BUTTON_ios)
+            self.driver.find_element(*LoginScreen.OK_BUTTON_ios).click()
         except NoSuchElementException:
             logging.info("failed - there is no alert message")
             self.fail("failed - there is no alert message")
 
     def test5(self):
 
-        sleep(2)
+        sleep(5)
         try:
             logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
             if logout_button_ios.is_displayed():
@@ -412,14 +413,14 @@ class TC2ios(unittest.TestCase):
             alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_EXPIRED_ios)
             logging.info("Successfully try to login to account that expires today - message alert is present")
             self.assertIsNotNone(alert_msg)
-            self.driver.find_element(*LoginScreen.OK_BUTTON_ios)
+            self.driver.find_element(*LoginScreen.OK_BUTTON_ios).click()
         except NoSuchElementException:
             logging.info("failed - there is no alert message")
             self.fail("failed - there is no alert message")
 
     def test6(self):
 
-        sleep(2)
+        sleep(5)
         try:
             logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
             if logout_button_ios.is_displayed():
@@ -478,7 +479,8 @@ class TC2ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
-        # THERE IS PROBLEM WITH DISPLAYING ALERT ON IOS - it's visible only for few seconds
+        # THERE IS PROBLEM WITH DISPLAYING ALERTS ON IOS - it's visible only for few seconds
+
         # logging.info("check if Notice alert, about expiring password is present and click Ok button")
         # try:
         #     self.driver.find_element(*LoginScreen.ALERT_MSG_WILL_EXPIRE_ios)
@@ -520,7 +522,7 @@ class TC2ios(unittest.TestCase):
 
     def test7(self):
 
-        sleep(2)
+        sleep(5)
         try:
             logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
             if logout_button_ios.is_displayed():
@@ -566,23 +568,24 @@ class TC2ios(unittest.TestCase):
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
 
-        try:
-            accept_terms_button = self.driver.find_element(*LoginScreen.ACCEPT_BUTTON_ios)
-            if accept_terms_button.is_displayed():
-                self.driver.find_element(*LoginScreen.ACCEPT_BUTTON_ios).click()
-                logging.info("Accepting terms and conditions")
-                sleep(10)
-            else:
-                logging.info("Terms are already accepted - Accept button is not present")
-        except NoSuchElementException:
-            pass
+        # suspended account will not see Accept Terms screen
+        # try:
+        #     accept_terms_button = self.driver.find_element(*LoginScreen.ACCEPT_BUTTON_ios)
+        #     if accept_terms_button.is_displayed():
+        #         self.driver.find_element(*LoginScreen.ACCEPT_BUTTON_ios).click()
+        #         logging.info("Accepting terms and conditions")
+        #         sleep(10)
+        #     else:
+        #         logging.info("Terms are already accepted - Accept button is not present")
+        # except NoSuchElementException:
+        #     pass
 
         logging.info("checking alert message")
         try:
             alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_SUSPENDED_ios)
             logging.info("Successfully try to login into suspended account - message alert is present")
             self.assertIsNotNone(alert_msg)
-            self.driver.find_element(*LoginScreen.OK_BUTTON_ios)
+            self.driver.find_element(*LoginScreen.OK_BUTTON_ios).click()
         except NoSuchElementException:
             logging.info("failed - there is no alert message")
             self.fail("failed - there is no alert message")
