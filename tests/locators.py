@@ -90,39 +90,53 @@ class MainMenuScreen(object):
 class EventsScreen(object):
     """A class for Events screen locators - screen after clicking into Events button in Main Menu."""
     EVENTS_HEADER = (By.XPATH, './/android.view.View[@content-desc[contains(., "Events")]]')
-    EVENTS_HEADER_ios = (By.XPATH, '')
+    EVENTS_HEADER_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]'
+                                   '/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[@name="Events"]')
 
     # filtering events by Type
     ANY_TYPE_EXPAND = (By.XPATH, './/android.view.View[@content-desc[contains(., "Any Type click to expand")]]')
-    ANY_TYPE_EXPAND_ios = (By.XPATH, '')
+    ANY_TYPE_EXPAND_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
+                                     '/UIAWebView[1]/UIALink[@name[contains(., "Any Type click to expand")]]')
     CHOOSE_TYPE_INCIDENT = (By.XPATH, './/android.view.View[@content-desc="Incident"]')
-    CHOOSE_TYPE_INCIDENT_ios = (By.XPATH, '')
+    CHOOSE_TYPE_INCIDENT_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]'
+                                          '/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[@name="Incident"]')
     INCIDENT_TYPE_EXPAND = (By.XPATH, './/android.view.View[@content-desc[contains(., "Incident click to expand")]]')
-    INCIDENT_TYPE_EXPAND_ios = (By.XPATH, '')
+    INCIDENT_TYPE_EXPAND_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
+                                          '/UIAWebView[1]/UIALink[@name[contains(., "Incident")]]')
     CHOOSE_TYPE_ANY = (By.XPATH, './/android.view.View[@content-desc="Any Type"]')
-    CHOOSE_TYPE_ANY_ios = (By.XPATH, '')
+    CHOOSE_TYPE_ANY_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]'
+                                     '/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[@name="Any Type"]')
 
     # filtering events by Status
     ANY_STATUS_EXPAND = (By.XPATH, './/android.view.View[@content-desc[contains(., "Any Status click to expand")]]')
-    ANY_STATUS_EXPAND_ios = (By.XPATH, '')
+    ANY_STATUS_EXPAND_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
+                                       '/UIAWebView[1]/UIALink[@name[contains(., "Any Status click to expand")]]')
     CHOOSE_ACTIVE_STATUS = (By.XPATH, './/android.view.View[@content-desc="Active"]')
-    CHOOSE_ACTIVE_STATUS_ios = (By.XPATH, '')
+    CHOOSE_ACTIVE_STATUS_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/'
+                                          'UIAScrollView[2]/UIAWebView[1]/UIALink[@name="Active"]')
     ACTIVE_STATUS_EXPAND = (By.XPATH, './/android.view.View[@content-desc[contains(., "Active click to expand")]]')
-    ACTIVE_STATUS_EXPAND_ios = (By.XPATH, '')
+    ACTIVE_STATUS_EXPAND_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
+                                          '/UIAWebView[1]/UIALink[@name[contains(., "Active")]]')
     CHOOSE_INACTIVE_STATUS = (By.XPATH, './/android.view.View[@content-desc="Inactive"]')
-    CHOOSE_INACTIVE_STATUS_ios = (By.XPATH, '')
+    CHOOSE_INACTIVE_STATUS_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/'
+                                            'UIAScrollView[2]/UIAWebView[1]/UIALink[@name="Inactive"]')
     INACTIVE_STATUS_EXPAND = (By.XPATH, './/android.view.View[@content-desc[contains(., "Inactive click to expand")]]')
-    INACTIVE_STATUS_EXPAND_ios = (By.XPATH, '')
+    INACTIVE_STATUS_EXPAND_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
+                                            '/UIAWebView[1]/UIALink[@name[contains(., "Inactive")]]')
     CHOOSE_DRAFT_STATUS = (By.XPATH, './/android.view.View[@content-desc="Draft"]')
-    CHOOSE_DRAFT_STATUS_ios = (By.XPATH, '')
+    CHOOSE_DRAFT_STATUS_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]'
+                                         '/UIAScrollView[2]/UIAWebView[1]/UIALink[@name="Draft"]')
     DRAFT_STATUS_EXPAND = (By.XPATH, './/android.view.View[@content-desc[contains(., "Draft click to expand")]]')
-    DRAFT_STATUS_EXPAND_ios = (By.XPATH, '')
+    DRAFT_STATUS_EXPAND_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
+                                         '/UIAWebView[1]/UIALink[@name[contains(., "Draft")]]')
     CHOOSE_ANY_STATUS = (By.XPATH, './/android.view.View[@content-desc="Any Status"]')
-    CHOOSE_ANY_STATUS_ios = (By.XPATH, '')
+    CHOOSE_ANY_STATUS_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/'
+                                       'UIAScrollView[2]/UIAWebView[1]/UIALink[@name="Any Status"]')
 
     # filtering events using search field
     SEARCH_FIELD = (By.XPATH, './/android.widget.EditText[@index="3"]')
-    SEARCH_FIELD_ios = (By.XPATH, '')
+    SEARCH_FIELD_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
+                                  '/UIAWebView[1]/UIATextField[@name="Search:"]')
     EVENTS_HEADER_AFTER_SEARCH = (By.XPATH, './/android.view.View[@index="5"]')
     EVENTS_HEADER_AFTER_SEARCH_ios = (By.XPATH, '')
 
@@ -272,6 +286,12 @@ class Map(object):
     ADD_POLYGON3_ios = (By.XPATH, '')
     SAVE_MAP_BUTTON = (By.XPATH, ".//android.widget.Button[@content-desc='Save']")
     SAVE_MAP_BUTTON_ios = (By.XPATH, '')
+
+
+class iOSkeyboard(object):
+    """A class for handling iOS keyboard"""
+
+    RETURN_BUTTON = (By.XPATH, '//UIAApplication[1]/UIAWindow[4]/UIAKeyboard[1]/UIAButton[@name="Return"]')
 
 
 class SearchResultsPageLocators(object):

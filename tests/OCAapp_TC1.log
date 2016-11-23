@@ -628,3 +628,19 @@
 11/22/2016 10:46:02 AM Accepting terms and conditions
 11/22/2016 10:46:17 AM Successful login
 11/22/2016 10:46:17 AM Quitting
+11/23/2016 02:01:59 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 02:02:35 PM Your are already login - logging out
+11/23/2016 02:02:45 PM click in LOGIN button
+11/23/2016 02:03:03 PM type username
+11/23/2016 02:03:19 PM type password
+11/23/2016 02:03:37 PM type domain address
+11/23/2016 02:04:15 PM click in Submit button
+11/23/2016 02:04:42 PM Quitting
+11/23/2016 02:58:01 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 02:59:02 PM click in LOGIN button
+11/23/2016 02:59:16 PM type username
+11/23/2016 02:59:33 PM type password
+11/23/2016 02:59:51 PM type domain address
+11/23/2016 03:00:28 PM click in Submit button
+11/23/2016 03:01:05 PM Successful login
+11/23/2016 03:01:05 PM Quitting

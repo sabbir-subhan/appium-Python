@@ -150,3 +150,109 @@
 11/22/2016 05:12:13 PM filling form to create new event
 11/22/2016 05:12:13 PM input Name
 11/22/2016 05:12:48 PM Quitting
+11/23/2016 12:03:44 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 12:04:13 PM TC info: filter events, create first Event and delete it
+11/23/2016 12:04:16 PM clicking on Events button
+11/23/2016 12:04:22 PM check if Events were opened
+11/23/2016 12:04:22 PM Quitting
+11/23/2016 12:06:18 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 12:06:39 PM TC info: filter events, create first Event and delete it
+11/23/2016 12:06:42 PM clicking on Events button
+11/23/2016 12:06:46 PM check if Events were opened
+11/23/2016 12:06:46 PM Quitting
+11/23/2016 12:08:42 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 12:08:58 PM TC info: filter events, create first Event and delete it
+11/23/2016 12:09:01 PM clicking on Events button
+11/23/2016 12:09:09 PM check if Events were opened
+11/23/2016 12:09:14 PM filtering events by Type
+11/23/2016 12:09:26 PM Quitting
+11/23/2016 01:19:23 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 01:19:40 PM TC info: filter events, create first Event and delete it
+11/23/2016 01:19:43 PM clicking on Events button
+11/23/2016 01:19:50 PM check if Events were opened
+11/23/2016 01:19:55 PM filtering events by Type
+11/23/2016 01:20:32 PM Quitting
+11/23/2016 01:44:13 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 01:44:38 PM TC info: filter events, create first Event and delete it
+11/23/2016 01:44:41 PM clicking on Events button
+11/23/2016 01:44:46 PM check if Events were opened
+11/23/2016 01:44:51 PM filtering events by Type
+11/23/2016 01:45:48 PM Quitting
+11/23/2016 01:48:51 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 01:49:09 PM TC info: filter events, create first Event and delete it
+11/23/2016 01:49:12 PM clicking on Events button
+11/23/2016 01:49:16 PM check if Events were opened
+11/23/2016 01:49:39 PM filtering events by Type
+11/23/2016 01:50:00 PM Quitting
+11/23/2016 03:07:14 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 03:07:36 PM TC info: filter events, create first Event and delete it
+11/23/2016 03:07:39 PM clicking on Events button
+11/23/2016 03:07:47 PM check if Events were opened
+11/23/2016 03:07:53 PM filtering events by Type
+11/23/2016 03:09:15 PM Quitting
+11/23/2016 03:11:59 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 03:12:24 PM TC info: filter events, create first Event and delete it
+11/23/2016 03:12:27 PM clicking on Events button
+11/23/2016 03:12:31 PM check if Events were opened
+11/23/2016 03:12:54 PM filtering events by Type
+11/23/2016 03:13:58 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 03:14:17 PM TC info: filter events, create first Event and delete it
+11/23/2016 03:14:20 PM clicking on Events button
+11/23/2016 03:14:24 PM check if Events were opened
+11/23/2016 03:14:30 PM filtering events by Type
+11/23/2016 03:15:58 PM filtering events by Status
+11/23/2016 03:16:55 PM Quitting
+11/23/2016 03:28:42 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 03:29:05 PM TC info: filter events, create first Event and delete it
+11/23/2016 03:29:08 PM clicking on Events button
+11/23/2016 03:29:15 PM check if Events were opened
+11/23/2016 03:29:21 PM filtering events by Type
+11/23/2016 03:30:33 PM filtering events by Status
+11/23/2016 03:31:28 PM Quitting
+11/23/2016 04:04:42 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 04:05:08 PM TC info: filter events, create first Event and delete it
+11/23/2016 04:05:11 PM clicking on Events button
+11/23/2016 04:05:16 PM check if Events were opened
+11/23/2016 04:05:21 PM filtering events by Type
+11/23/2016 04:06:49 PM filtering events by Status
+11/23/2016 04:08:38 PM search field - search event named: 'search'
+11/23/2016 04:09:16 PM Quitting
+11/23/2016 04:11:21 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 04:11:39 PM TC info: filter events, create first Event and delete it
+11/23/2016 04:11:42 PM clicking on Events button
+11/23/2016 04:11:47 PM check if Events were opened
+11/23/2016 04:11:52 PM filtering events by Type
+11/23/2016 04:13:05 PM filtering events by Status
+11/23/2016 04:14:54 PM search field - search event named: 'search'
+11/23/2016 04:15:44 PM Quitting
+11/23/2016 05:07:48 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 05:08:14 PM TC info: filter events, create first Event and delete it
+11/23/2016 05:08:17 PM clicking on Events button
+11/23/2016 05:08:24 PM check if Events were opened
+11/23/2016 05:08:30 PM filtering events by Type
+11/23/2016 05:09:58 PM filtering events by Status
+11/23/2016 05:11:47 PM search field - search event named: 'search'
+11/23/2016 05:13:01 PM click 'Return' on keyboard
+11/23/2016 05:13:38 PM Quitting
+11/23/2016 05:14:29 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 05:14:53 PM TC info: filter events, create first Event and delete it
+11/23/2016 05:14:56 PM clicking on Events button
+11/23/2016 05:15:03 PM check if Events were opened
+11/23/2016 05:15:08 PM filtering events by Type
+11/23/2016 05:16:21 PM filtering events by Status
+11/23/2016 05:18:11 PM search field - search event named: 'search'
+11/23/2016 05:19:24 PM click 'Return' on keyboard
+11/23/2016 05:19:26 PM Quitting
+11/23/2016 05:22:37 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 05:23:11 PM TC info: filter events, create first Event and delete it
+11/23/2016 05:23:14 PM clicking on Events button
+11/23/2016 05:23:22 PM check if Events were opened
+11/23/2016 05:23:31 PM click 'Return' on keyboard
+11/23/2016 05:23:32 PM Quitting
+11/23/2016 05:24:10 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 05:24:25 PM TC info: filter events, create first Event and delete it
+11/23/2016 05:24:28 PM clicking on Events button
+11/23/2016 05:24:35 PM check if Events were opened
+11/23/2016 05:24:58 PM filtering events by Type
+11/23/2016 05:26:07 PM filtering events by Status
+11/23/2016 05:27:54 PM Quitting

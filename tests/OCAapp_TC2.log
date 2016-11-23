@@ -1957,3 +1957,159 @@
 11/22/2016 03:46:35 PM checking alert message
 11/22/2016 03:46:41 PM Successfully try to login into suspended account - message alert is present
 11/22/2016 03:46:45 PM Quitting
+11/23/2016 10:28:08 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 10:28:08 AM Could not get IP address for host: localhost
+11/23/2016 10:28:08 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 10:28:08 AM Could not get IP address for host: localhost
+11/23/2016 10:28:08 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 10:28:08 AM Could not get IP address for host: localhost
+11/23/2016 10:28:08 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 10:28:08 AM Could not get IP address for host: localhost
+11/23/2016 10:28:08 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 10:28:08 AM Could not get IP address for host: localhost
+11/23/2016 10:28:08 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 10:28:08 AM Could not get IP address for host: localhost
+11/23/2016 10:28:08 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 10:28:08 AM Could not get IP address for host: localhost
+11/23/2016 10:28:16 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 10:28:31 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 10:42:41 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 10:43:21 AM Your are already login - logging out
+11/23/2016 10:43:31 AM starting test1: login_into_general_user_with_incorrect_password
+11/23/2016 10:43:31 AM click in LOGIN button
+11/23/2016 10:43:48 AM type username
+11/23/2016 10:44:06 AM type password
+11/23/2016 10:44:25 AM type domain address
+11/23/2016 10:45:03 AM click in Submit button
+11/23/2016 10:45:07 AM checking alert message
+11/23/2016 10:45:17 AM Successfully try to login using incorrect credentials - message alert is present
+11/23/2016 10:45:17 AM Quitting
+11/23/2016 10:45:19 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 10:46:07 AM starting test2: login_into_general_user_with_correct_credentials
+11/23/2016 10:46:07 AM click in LOGIN button
+11/23/2016 10:46:20 AM type username
+11/23/2016 10:46:38 AM type password
+11/23/2016 10:46:57 AM type domain address
+11/23/2016 10:47:34 AM click in Submit button
+11/23/2016 10:48:08 AM Successful login into general user account
+11/23/2016 10:48:08 AM Quitting
+11/23/2016 10:48:10 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 10:48:39 AM Your are already login - logging out
+11/23/2016 10:48:50 AM starting test3: login_into_admin_account_with_correct_credentials
+11/23/2016 10:48:50 AM click in LOGIN button
+11/23/2016 10:49:05 AM type username
+11/23/2016 10:49:23 AM type password
+11/23/2016 10:49:41 AM type domain address
+11/23/2016 10:50:18 AM click in Submit button
+11/23/2016 10:50:52 AM Successful login into admin account
+11/23/2016 10:50:52 AM Quitting
+11/23/2016 10:50:53 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 10:51:05 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 10:51:05 AM Could not get IP address for host: localhost
+11/23/2016 10:51:05 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 10:51:05 AM Could not get IP address for host: localhost
+11/23/2016 10:51:05 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 10:51:05 AM Could not get IP address for host: localhost
+11/23/2016 11:21:56 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 11:29:44 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 11:29:44 AM Could not get IP address for host: localhost
+11/23/2016 11:29:44 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 11:29:44 AM Could not get IP address for host: localhost
+11/23/2016 11:29:44 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 11:29:44 AM Could not get IP address for host: localhost
+11/23/2016 11:29:44 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 11:29:44 AM Could not get IP address for host: localhost
+11/23/2016 11:29:44 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 11:29:44 AM Could not get IP address for host: localhost
+11/23/2016 11:29:44 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 11:29:44 AM Could not get IP address for host: localhost
+11/23/2016 11:30:07 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 11:30:41 AM starting test1: login_into_general_user_with_incorrect_password
+11/23/2016 11:30:41 AM click in LOGIN button
+11/23/2016 11:31:08 AM Quitting
+11/23/2016 11:31:09 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 11:31:36 AM starting test2: login_into_general_user_with_correct_credentials
+11/23/2016 11:31:36 AM click in LOGIN button
+11/23/2016 11:32:01 AM Quitting
+11/23/2016 11:32:03 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 11:32:33 AM starting test3: login_into_admin_account_with_correct_credentials
+11/23/2016 11:32:33 AM click in LOGIN button
+11/23/2016 11:32:59 AM Quitting
+11/23/2016 11:33:01 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 11:33:33 AM starting test4: login_using_account_expired_1_day_ago
+11/23/2016 11:33:33 AM click in LOGIN button
+11/23/2016 11:33:40 AM Quitting
+11/23/2016 11:33:40 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 11:33:55 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 11:33:55 AM Could not get IP address for host: localhost
+11/23/2016 11:33:55 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 11:33:55 AM Could not get IP address for host: localhost
+11/23/2016 11:36:30 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 11:37:21 AM starting test1: login_into_general_user_with_incorrect_password
+11/23/2016 11:37:21 AM click in LOGIN button
+11/23/2016 11:37:35 AM type username
+11/23/2016 11:37:53 AM type password
+11/23/2016 11:38:13 AM type domain address
+11/23/2016 11:38:51 AM click in Submit button
+11/23/2016 11:38:56 AM checking alert message
+11/23/2016 11:39:05 AM Successfully try to login using incorrect credentials - message alert is present
+11/23/2016 11:39:05 AM Quitting
+11/23/2016 11:39:07 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 11:39:58 AM starting test2: login_into_general_user_with_correct_credentials
+11/23/2016 11:39:58 AM click in LOGIN button
+11/23/2016 11:40:12 AM type username
+11/23/2016 11:40:30 AM type password
+11/23/2016 11:40:49 AM type domain address
+11/23/2016 11:41:26 AM click in Submit button
+11/23/2016 11:42:00 AM Successful login into general user account
+11/23/2016 11:42:00 AM Quitting
+11/23/2016 11:42:01 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 11:42:34 AM starting test3: login_into_admin_account_with_correct_credentials
+11/23/2016 11:42:34 AM click in LOGIN button
+11/23/2016 11:43:00 AM Quitting
+11/23/2016 11:43:01 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 11:43:32 AM starting test4: login_using_account_expired_1_day_ago
+11/23/2016 11:43:32 AM click in LOGIN button
+11/23/2016 11:43:57 AM Quitting
+11/23/2016 11:43:58 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 11:44:23 AM starting test5: login_using_account_that_expires_today
+11/23/2016 11:44:23 AM click in LOGIN button
+11/23/2016 11:44:49 AM Quitting
+11/23/2016 11:44:50 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 12:43:06 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 12:43:52 PM Your are already login - logging out
+11/23/2016 12:44:02 PM starting test6: login_using_account_that_will_expire_in_1_day
+11/23/2016 12:44:02 PM click in LOGIN button
+11/23/2016 12:44:20 PM type username
+11/23/2016 12:44:43 PM type password
+11/23/2016 12:45:05 PM type domain address
+11/23/2016 12:45:42 PM click in Submit button
+11/23/2016 12:46:13 PM check if Notice alert, about expiring password is present and click Ok button
+11/23/2016 12:46:39 PM Notice alert is not present
+11/23/2016 12:46:39 PM Quitting
+11/23/2016 12:50:12 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 12:54:50 PM starting test6: login_using_account_that_will_expire_in_1_day
+11/23/2016 12:54:50 PM click in LOGIN button
+11/23/2016 12:55:03 PM type username
+11/23/2016 12:55:29 PM type password
+11/23/2016 12:55:55 PM type domain address
+11/23/2016 12:56:23 PM hide screen keyboard
+11/23/2016 12:56:27 PM click in Submit button
+11/23/2016 12:56:56 PM check if Notice alert, about expiring password is present and click Ok button
+11/23/2016 12:57:22 PM Notice alert is not present
+11/23/2016 12:57:22 PM Quitting
+11/23/2016 01:10:29 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 01:10:57 PM Your are already login - logging out
+11/23/2016 01:11:08 PM starting test6: login_using_account_that_will_expire_in_1_day
+11/23/2016 01:11:08 PM click in LOGIN button
+11/23/2016 01:11:36 PM Quitting
+11/23/2016 01:14:37 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/23/2016 01:15:24 PM starting test6: login_using_account_that_will_expire_in_1_day
+11/23/2016 01:15:24 PM click in LOGIN button
+11/23/2016 01:15:37 PM type username
+11/23/2016 01:16:00 PM type password
+11/23/2016 01:16:22 PM type domain address
+11/23/2016 01:17:00 PM click in Submit button
+11/23/2016 01:17:31 PM check if Notice alert, about expiring password is present and click Ok button
+11/23/2016 01:17:57 PM Notice alert is not present
+11/23/2016 01:17:57 PM Quitting
