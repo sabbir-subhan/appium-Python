@@ -7,11 +7,11 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from appium.webdriver.common.touch_action import TouchAction
-from appium.webdriver.common.multi_action import MultiAction
+#from appium.webdriver.common.multi_action import MultiAction
 from desired_capabilities import DesiredCapabilities
 import credentials
 from locators import *
-from generators import RandomGenerator
+#from generators import RandomGenerator
 import logging
 logging.basicConfig(filename='OCAapp_TC3.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
@@ -40,7 +40,7 @@ class TC3ios(unittest.TestCase):
             if logout_button_ios.is_displayed():
                 logging.info("Your are already login - logging out")
                 self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios).click()
-                self.driver.find_element(*MainMenuScreen.LOGOUT_SUBMIT_ios).click()
+                self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
             else:
                 pass
         except NoSuchElementException:
@@ -65,13 +65,14 @@ class TC3ios(unittest.TestCase):
         logging.info("type domain address")
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
 
+        # TRY TO USE ONLY key_name  ON BOTH IPHONE4, 5, 6, AND IPAD
         try:
-            done_button_ios = self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios)
+            done_button_ios = self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD)
             if done_button_ios.is_displayed():
                 logging.info("hide screen keyboard")
-                self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios).click()
+                self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
             else:
-                pass
+                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
             pass
 
@@ -122,9 +123,22 @@ class TC3ios(unittest.TestCase):
 
     def scroll_down(self):
 
-        self.driver.scroll(*EventEditScreen.FINISHED_HEADER, *EventEditScreen.RELATED_HEADER)
+        logging.info("scroll down to find element")
+        element_on_the_list = None
+        try:
+            element_on_the_list = self.driver.find_element(*EventEditScreen.SAVE_BUTTON_ios)
+            # that is element what You are looking for
+        except Exception as e:
+            element_to_scroll = self.driver.find_element(*EventEditScreen.ELEMENT_TO_SCROLL_ios)
+            # that is id/xpath/name of whole list
+            scrollobject = dict(direction="down", name="Save", element=element_to_scroll)
+            self.driver.execute_script("mobile: scrollTo", scrollobject)
 
-        logging.info("scroll down")
+        # if element_on_the_list is None:
+        #     element_on_the_list = self.driver.find_element_by_xpath(*EventEditScreen.SAVE_BUTTON_ios)
+
+        # OLD SCROLL METHOD FOR ANDROID
+
         # action = TouchAction(self.driver)
         #
         # elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
@@ -175,7 +189,7 @@ class TC3ios(unittest.TestCase):
     def test1(self):
         logging.info("TC info: filter events, create first Event and delete it")
 
-        # self.login()
+        #self.login()
 
         sleep(3)
         logging.info("clicking on Events button")
@@ -188,53 +202,50 @@ class TC3ios(unittest.TestCase):
         logging.info("filtering events by Type")
         any_type_expand = self.driver.find_element(*EventsScreen.ANY_TYPE_EXPAND_ios).click()
         choose_type_incident = self.driver.find_element(*EventsScreen.CHOOSE_TYPE_INCIDENT_ios).click()
-        sleep(1)
+        #sleep(1)
         incident_type_expand = self.driver.find_element(*EventsScreen.INCIDENT_TYPE_EXPAND_ios).click()
         choose_type_any = self.driver.find_element(*EventsScreen.CHOOSE_TYPE_ANY_ios).click()
-        sleep(1)
+        #sleep(1)
 
         logging.info("filtering events by Status")
         any_status_expand = self.driver.find_element(*EventsScreen.ANY_STATUS_EXPAND_ios).click()
         choose_active_status = self.driver.find_element(*EventsScreen.CHOOSE_ACTIVE_STATUS_ios).click()
-        sleep(1)
+        #sleep(1)
         active_status_expand = self.driver.find_element(*EventsScreen.ACTIVE_STATUS_EXPAND_ios).click()
         choose_inactive_status = self.driver.find_element(*EventsScreen.CHOOSE_INACTIVE_STATUS_ios).click()
-        sleep(1)
+        #sleep(1)
         inactive_status_expand = self.driver.find_element(*EventsScreen.INACTIVE_STATUS_EXPAND_ios).click()
         choose_draft_status = self.driver.find_element(*EventsScreen.CHOOSE_DRAFT_STATUS_ios).click()
-        sleep(1)
+        #sleep(1)
         draft_status_expand = self.driver.find_element(*EventsScreen.DRAFT_STATUS_EXPAND_ios).click()
         choose_any_status = self.driver.find_element(*EventsScreen.CHOOSE_ANY_STATUS_ios).click()
-        sleep(2)
+        #sleep(1)
 
         logging.info("search field - search event named: 'search'")
         self.driver.find_element(*EventsScreen.SEARCH_FIELD_ios).click()
         self.driver.find_element(*EventsScreen.SEARCH_FIELD_ios).clear()
         self.driver.find_element(*EventsScreen.SEARCH_FIELD_ios).send_keys("search")
-        sleep(3)
+
         logging.info("click 'Return' on keyboard")
-        #self.driver.find_element_by_ios_uiautomation("Return").click()
-        #self.driver.find_element(*iOSkeyboard.RETURN_BUTTON).click()
-        #self.driver.find_element_by_ios_uiautomation("Any Type").click()
-        sleep(3)
-        logging.info("click on Events header to see results and hide keyboard")
-        events_header_after_search = self.driver.find_element(*EventsScreen.EVENTS_HEADER_AFTER_SEARCH).click()
+        self.driver.find_element(*iOSkeyboard.RETURN_BUTTON).click()
+
+        #sleep(1)
+        logging.info("hide keyboard")
+        self.driver.hide_keyboard(key_name="Hide keyboard")
 
         logging.info("clear search field")
         self.driver.find_element(*EventsScreen.SEARCH_FIELD_ios).click()
         self.driver.find_element(*EventsScreen.SEARCH_FIELD_ios).clear()
 
-        sleep(1)
-        logging.info("click on Events header to hide keyboard")
-        events_header_after_search = self.driver.find_element(*EventsScreen.EVENTS_HEADER_AFTER_SEARCH).click()
-        sleep(3)
+        self.driver.find_element(*iOSkeyboard.RETURN_BUTTON).click()
+        self.driver.hide_keyboard(key_name="Hide keyboard")
 
         logging.info("clicking on 'More' button")
         self.driver.find_element(*EventsScreen.MORE_BUTTON_ios).click()
 
         logging.info("clicking on New event button")
         self.driver.find_element(*EventsScreen.NEW_EVENT_BUTTON_ios).click()
-        sleep(3)
+        #sleep(3)
 
         try:
             event_type = self.driver.find_element(*TypesOfEventsScreen.INCIDENT_TYPE_OF_EVENT_ios).click()
@@ -249,127 +260,122 @@ class TC3ios(unittest.TestCase):
         self.driver.hide_keyboard()
 
         logging.info("click on severity level field")
-        severity_level_selector = self.driver.find_element(*EventEditScreen.SEVERITY_LEVEL_SELECTOR).click()
-        sleep(2)
+        severity_level_selector = self.driver.find_element(*EventEditScreen.SEVERITY_LEVEL_SELECTOR_ios).click()
+        #sleep(2)
 
         logging.info("choose_severity_lvl1")
-        choose_severity_lvl = self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL1).click()
+        choose_severity_lvl = self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL1_ios).click()
 
-        logging.info("click on finished_field")
-        finished_field = self.driver.find_element(*EventEditScreen.FINISHED_FIELD).click()
+        # logging.info("click on finished_field")
+        # self.driver.find_element(*EventEditScreen.FINISHED_FIELD_ios).click()
+        # sleep(0.5)
+        # self.driver.find_element(*EventEditScreen.FINISHED_FIELD_ios).click()
 
-        logging.info("choose time and date")
-        time_date = self.driver.find_element(*EventEditScreen.TIME_DATE).click()
-        set_button = self.driver.find_element(*EventEditScreen.SET_BUTTON).click()
-
-        action = TouchAction(self.driver)
+        #action = TouchAction(self.driver)
         self.scroll_down()
 
-        # MOZE COS W STYLU - tylko bedzie problem z elementem po ktorym scrollowac zapewne
-        logging.info("find element on the list - loop starts")
-        element_on_the_list = None
-        try:
-            element_on_the_list = self.driver.find_element(*EventEditScreen.SAVE_BUTTON_ios)
-            # that is element what You are looking for
-        except Exception as e:
-            element_to_scroll = self.driver.find_element_by_xpath('//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]')
-            # that is id of whole list
-            scrollobject = dict(direction="down", name="Save", element=element_to_scroll.name)
-            self.driver.execute_script("mobile: scrollTo", scrollobject)
-        if element_on_the_list is None:
-            element_on_the_list = self.driver.find_element(*EventEditScreen.SAVE_BUTTON_ios)
-        element_on_the_list.click()
-        
-
         logging.info("Save event")
-        save_button = self.driver.find_element(*EventEditScreen.SAVE_BUTTON).click()
-        sleep(10)
+        save_button = self.driver.find_element(*EventEditScreen.SAVE_BUTTON_ios).click()
+        sleep(2)
 
         logging.info("open created event")
-        created_event = self.driver.find_element(*EventsScreen.CREATED_EVENT_1).click()
-        sleep(5)
+        created_event = self.driver.find_element(*EventsScreen.CREATED_EVENT_1_ios).click()
+        #sleep(5)
 
         logging.info("edit previously created event")
-        edit_button = self.driver.find_element(*EventDetailsScreen.EDIT_BUTTON).click()
-        sleep(5)
+        edit_button = self.driver.find_element(*EventDetailsScreen.EDIT_BUTTON_ios).click()
+        #sleep(5)
 
         logging.info("scroll down to Description field")
-        elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
-        action.press(elm1).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(2)
-        elm2 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
-        action.press(elm2).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(3)
+        # elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
+        # action.press(elm1).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(2)
+        # elm2 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
+        # action.press(elm2).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(3)
+        element_on_the_list = None
+        try:
+            element_on_the_list = self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD_ios)
+            # that is element what You are looking for
+        except Exception as e:
+            element_to_scroll = self.driver.find_element(*EventEditScreen.ELEMENT_TO_SCROLL_ios)
+            # that is id/xpath/name of whole list
+            scrollobject = dict(direction="down", name="Save", element=element_to_scroll)
+            self.driver.execute_script("mobile: scrollTo", scrollobject)
 
         try:
             logging.info("type some text into description field")
-            description_field = self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD).send_keys("test ios")
-            sleep(2)
-            self.driver.hide_keyboard()
+            # description_field = self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD_ios).click()
+            # description_field.send_keys("test ios")
+            #sleep(2)
+            self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD_ios).click()
+            self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD_ios).send_keys("test ios")
+            self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
             logging.info("text field couldn't be selected")
             pass
 
-        elm3 = self.driver.find_element(*EventEditScreen.IMPACT_HEADER)
-        action.press(elm3).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm4 = self.driver.find_element(*EventEditScreen.CAUSE_HEADER)
-        action.press(elm4).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm5 = self.driver.find_element(*EventEditScreen.SITUATION_HEADER)
-        action.press(elm5).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm6 = self.driver.find_element(*EventEditScreen.ISSUES_HEADER)
-        action.press(elm6).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm7 = self.driver.find_element(*EventEditScreen.OBJECTIVES_HEADER)
-        action.press(elm7).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm8 = self.driver.find_element(*EventEditScreen.STRATEGIES_HEADER)
-        action.press(elm8).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm9 = self.driver.find_element(*EventEditScreen.TACTICS_HEADER)
-        action.press(elm9).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm10 = self.driver.find_element(*EventEditScreen.COMMUNICATIONS_HEADER)
-        action.press(elm10).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
-        elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
-        action.press(elm11).perform()
-        action.move_to(x=0, y=100).perform()
-        sleep(1)
+        # elm3 = self.driver.find_element(*EventEditScreen.IMPACT_HEADER)
+        # action.press(elm3).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(1)
+        # elm4 = self.driver.find_element(*EventEditScreen.CAUSE_HEADER)
+        # action.press(elm4).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(1)
+        # elm5 = self.driver.find_element(*EventEditScreen.SITUATION_HEADER)
+        # action.press(elm5).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(1)
+        # elm6 = self.driver.find_element(*EventEditScreen.ISSUES_HEADER)
+        # action.press(elm6).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(1)
+        # elm7 = self.driver.find_element(*EventEditScreen.OBJECTIVES_HEADER)
+        # action.press(elm7).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(1)
+        # elm8 = self.driver.find_element(*EventEditScreen.STRATEGIES_HEADER)
+        # action.press(elm8).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(1)
+        # elm9 = self.driver.find_element(*EventEditScreen.TACTICS_HEADER)
+        # action.press(elm9).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(1)
+        # elm10 = self.driver.find_element(*EventEditScreen.COMMUNICATIONS_HEADER)
+        # action.press(elm10).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(1)
+        # elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
+        # action.press(elm11).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(1)
+
+        self.scroll_down()
 
         logging.info("Save event")
-        save_button = self.driver.find_element(*EventEditScreen.SAVE_BUTTON).click()
+        save_button = self.driver.find_element(*EventEditScreen.SAVE_BUTTON_ios).click()
 
-        logging.info("clicking on 'More' button")
-        more_button =self.driver.find_element(*EventsScreen.MORE_BUTTON).click()
         sleep(3)
+        logging.info("clicking on 'More' button")
+        more_button = self.driver.find_element(*EventsScreen.MORE_BUTTON_ios).click()
+        #sleep(3)
 
         logging.info("clicking on 'Delete event' button")
-        delete__event_button = self.driver.find_element(*EventDetailsScreen.DELETE_EVENT_BUTTON).click()
-
+        delete__event_button = self.driver.find_element(*EventDetailsScreen.DELETE_EVENT_BUTTON_ios).click()
         logging.info("confirm delete")
-        delete_confirm_button = self.driver.find_element(*EventDetailsScreen.DELETE_CONFIRM_BUTTON).click()
-        self.assertTrue(True)
-        sleep(5)
+        delete_confirm_button = self.driver.find_element(*EventDetailsScreen.DELETE_CONFIRM_BUTTON_ios).click()
+        #sleep(5)
 
     def test2(self):
         logging.info("TC info: create second event and add map")
 
         self.login()
 
-        sleep(3)
+        #sleep(3)
         logging.info("clicking on Events button")
         EVENTS_BUTTON_ios = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON_ios).click()
 

@@ -44,7 +44,7 @@ class TC1ios(unittest.TestCase):
             if logout_button_ios.is_displayed():
                 logging.info("Your are already login - logging out")
                 self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios).click()
-                self.driver.find_element(*MainMenuScreen.LOGOUT_SUBMIT_ios).click()
+                self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
             else:
                 pass
         except NoSuchElementException:
@@ -70,10 +70,10 @@ class TC1ios(unittest.TestCase):
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
 
         try:
-            done_button_ios = self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios)
+            done_button_ios = self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD)
             if done_button_ios.is_displayed():
                 logging.info("hide screen keyboard")
-                self.driver.find_element(*LoginScreen.BUTTON_DONE_TO_HIDE_KEYBOARD_ios).click()
+                self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
             else:
                 pass
         except NoSuchElementException:

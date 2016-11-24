@@ -256,3 +256,753 @@
 11/23/2016 05:24:58 PM filtering events by Type
 11/23/2016 05:26:07 PM filtering events by Status
 11/23/2016 05:27:54 PM Quitting
+11/24/2016 10:18:10 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 10:18:38 AM TC info: filter events, create first Event and delete it
+11/24/2016 10:18:41 AM clicking on Events button
+11/24/2016 10:18:45 AM check if Events were opened
+11/24/2016 10:18:51 AM filtering events by Type
+11/24/2016 10:20:19 AM filtering events by Status
+11/24/2016 10:22:08 AM search field - search event named: 'search'
+11/24/2016 10:23:22 AM click 'Return' on keyboard
+11/24/2016 10:23:25 AM click on Events header to see results and hide keyboard
+11/24/2016 10:24:02 AM Quitting
+11/24/2016 10:24:58 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 10:25:23 AM TC info: filter events, create first Event and delete it
+11/24/2016 10:25:26 AM clicking on Events button
+11/24/2016 10:25:33 AM check if Events were opened
+11/24/2016 10:25:40 AM search field - search event named: 'search'
+11/24/2016 10:26:54 AM click 'Return' on keyboard
+11/24/2016 10:27:31 AM Quitting
+11/24/2016 10:27:47 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 10:28:06 AM TC info: filter events, create first Event and delete it
+11/24/2016 10:28:09 AM clicking on Events button
+11/24/2016 10:28:14 AM check if Events were opened
+11/24/2016 10:28:39 AM search field - search event named: 'search'
+11/24/2016 10:29:50 AM click 'Return' on keyboard
+11/24/2016 10:30:27 AM Quitting
+11/24/2016 10:31:52 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 10:32:13 AM TC info: filter events, create first Event and delete it
+11/24/2016 10:32:16 AM clicking on Events button
+11/24/2016 10:32:20 AM check if Events were opened
+11/24/2016 10:32:28 AM search field - search event named: 'search'
+11/24/2016 10:33:41 AM click 'Return' on keyboard
+11/24/2016 10:34:18 AM Quitting
+11/24/2016 10:35:38 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 10:35:54 AM TC info: filter events, create first Event and delete it
+11/24/2016 10:35:57 AM clicking on Events button
+11/24/2016 10:36:03 AM check if Events were opened
+11/24/2016 10:36:28 AM search field - search event named: 'search'
+11/24/2016 10:37:39 AM click 'Return' on keyboard
+11/24/2016 10:38:03 AM click on Events header to see results and hide keyboard
+11/24/2016 10:38:29 AM Quitting
+11/24/2016 10:40:35 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 10:41:01 AM TC info: filter events, create first Event and delete it
+11/24/2016 10:41:04 AM clicking on Events button
+11/24/2016 10:41:08 AM check if Events were opened
+11/24/2016 10:41:16 AM search field - search event named: 'search'
+11/24/2016 10:42:29 AM click 'Return' on keyboard
+11/24/2016 10:42:53 AM click on Events header to see results and hide keyboard
+11/24/2016 10:43:20 AM Quitting
+11/24/2016 10:52:04 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 10:52:33 AM TC info: filter events, create first Event and delete it
+11/24/2016 10:52:36 AM clicking on Events button
+11/24/2016 10:53:01 AM Quitting
+11/24/2016 10:56:57 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 10:57:27 AM TC info: filter events, create first Event and delete it
+11/24/2016 10:57:30 AM clicking on Events button
+11/24/2016 10:57:34 AM check if Events were opened
+11/24/2016 10:57:42 AM search field - search event named: 'search'
+11/24/2016 10:58:54 AM click 'Return' on keyboard
+11/24/2016 10:59:17 AM hide keyboard
+11/24/2016 10:59:44 AM Quitting
+11/24/2016 11:02:24 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 11:02:50 AM TC info: filter events, create first Event and delete it
+11/24/2016 11:02:53 AM clicking on Events button
+11/24/2016 11:02:59 AM check if Events were opened
+11/24/2016 11:03:07 AM search field - search event named: 'search'
+11/24/2016 11:04:19 AM click 'Return' on keyboard
+11/24/2016 11:04:43 AM hide keyboard
+11/24/2016 11:04:45 AM clear search field
+11/24/2016 11:04:55 AM click on Events header to hide keyboard
+11/24/2016 11:05:21 AM Quitting
+11/24/2016 11:06:21 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 11:06:43 AM TC info: filter events, create first Event and delete it
+11/24/2016 11:06:46 AM clicking on Events button
+11/24/2016 11:06:53 AM check if Events were opened
+11/24/2016 11:07:18 AM search field - search event named: 'search'
+11/24/2016 11:08:29 AM click 'Return' on keyboard
+11/24/2016 11:08:53 AM hide keyboard
+11/24/2016 11:08:55 AM clear search field
+11/24/2016 11:09:12 AM clicking on 'More' button
+11/24/2016 11:09:35 AM clicking on New event button
+11/24/2016 11:10:01 AM choosing Incident type of new event
+11/24/2016 11:10:01 AM filling form to create new event
+11/24/2016 11:10:01 AM input Name
+11/24/2016 11:10:27 AM click on severity level field
+11/24/2016 11:10:54 AM Quitting
+11/24/2016 12:16:00 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 12:16:35 PM TC info: filter events, create first Event and delete it
+11/24/2016 12:16:38 PM clicking on Events button
+11/24/2016 12:16:42 PM check if Events were opened
+11/24/2016 12:16:50 PM search field - search event named: 'search'
+11/24/2016 12:18:04 PM click 'Return' on keyboard
+11/24/2016 12:18:28 PM hide keyboard
+11/24/2016 12:18:30 PM clear search field
+11/24/2016 12:18:47 PM clicking on 'More' button
+11/24/2016 12:19:10 PM clicking on New event button
+11/24/2016 12:19:36 PM choosing Incident type of new event
+11/24/2016 12:19:36 PM filling form to create new event
+11/24/2016 12:19:36 PM input Name
+11/24/2016 12:20:03 PM click on severity level field
+11/24/2016 12:20:12 PM choose_severity_lvl1
+11/24/2016 12:20:26 PM Quitting
+11/24/2016 12:20:50 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 12:21:14 PM TC info: filter events, create first Event and delete it
+11/24/2016 12:21:17 PM clicking on Events button
+11/24/2016 12:21:21 PM check if Events were opened
+11/24/2016 12:21:46 PM search field - search event named: 'search'
+11/24/2016 12:22:57 PM click 'Return' on keyboard
+11/24/2016 12:23:21 PM hide keyboard
+11/24/2016 12:23:23 PM clear search field
+11/24/2016 12:23:40 PM clicking on 'More' button
+11/24/2016 12:24:03 PM clicking on New event button
+11/24/2016 12:24:29 PM choosing Incident type of new event
+11/24/2016 12:24:29 PM filling form to create new event
+11/24/2016 12:24:29 PM input Name
+11/24/2016 12:24:55 PM click on severity level field
+11/24/2016 12:25:04 PM choose_severity_lvl1
+11/24/2016 12:25:12 PM find element on the list - loop starts
+11/24/2016 12:25:19 PM click on finished_field
+11/24/2016 12:26:01 PM Quitting
+11/24/2016 12:50:25 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 12:51:07 PM TC info: filter events, create first Event and delete it
+11/24/2016 12:51:10 PM clicking on Events button
+11/24/2016 12:51:15 PM check if Events were opened
+11/24/2016 12:51:23 PM search field - search event named: 'search'
+11/24/2016 12:52:37 PM click 'Return' on keyboard
+11/24/2016 12:53:01 PM hide keyboard
+11/24/2016 12:53:03 PM clear search field
+11/24/2016 12:53:20 PM clicking on 'More' button
+11/24/2016 12:53:43 PM clicking on New event button
+11/24/2016 12:54:09 PM choosing Incident type of new event
+11/24/2016 12:54:09 PM filling form to create new event
+11/24/2016 12:54:09 PM input Name
+11/24/2016 12:54:35 PM click on severity level field
+11/24/2016 12:54:44 PM choose_severity_lvl1
+11/24/2016 12:54:52 PM find element on the list - loop starts
+11/24/2016 12:55:09 PM click on finished_field
+11/24/2016 12:55:47 PM Quitting
+11/24/2016 01:22:01 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 01:22:33 PM TC info: filter events, create first Event and delete it
+11/24/2016 01:22:36 PM clicking on Events button
+11/24/2016 01:22:41 PM check if Events were opened
+11/24/2016 01:23:06 PM search field - search event named: 'search'
+11/24/2016 01:24:18 PM click 'Return' on keyboard
+11/24/2016 01:24:43 PM hide keyboard
+11/24/2016 01:24:44 PM clear search field
+11/24/2016 01:25:02 PM clicking on 'More' button
+11/24/2016 01:25:25 PM clicking on New event button
+11/24/2016 01:25:51 PM choosing Incident type of new event
+11/24/2016 01:25:51 PM filling form to create new event
+11/24/2016 01:25:51 PM input Name
+11/24/2016 01:26:17 PM click on severity level field
+11/24/2016 01:26:26 PM choose_severity_lvl1
+11/24/2016 01:26:34 PM click on finished_field
+11/24/2016 01:26:50 PM Quitting
+11/24/2016 01:44:45 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 01:45:06 PM TC info: filter events, create first Event and delete it
+11/24/2016 01:45:09 PM clicking on Events button
+11/24/2016 01:45:14 PM check if Events were opened
+11/24/2016 01:45:39 PM search field - search event named: 'search'
+11/24/2016 01:46:53 PM click 'Return' on keyboard
+11/24/2016 01:47:17 PM hide keyboard
+11/24/2016 01:47:19 PM clear search field
+11/24/2016 01:47:36 PM clicking on 'More' button
+11/24/2016 01:47:59 PM clicking on New event button
+11/24/2016 01:48:26 PM choosing Incident type of new event
+11/24/2016 01:48:26 PM filling form to create new event
+11/24/2016 01:48:26 PM input Name
+11/24/2016 01:48:52 PM click on severity level field
+11/24/2016 01:49:02 PM choose_severity_lvl1
+11/24/2016 01:49:09 PM click on finished_field
+11/24/2016 01:49:26 PM Quitting
+11/24/2016 01:52:23 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 01:52:46 PM TC info: filter events, create first Event and delete it
+11/24/2016 01:52:49 PM clicking on Events button
+11/24/2016 01:52:53 PM check if Events were opened
+11/24/2016 01:52:59 PM filtering events by Type
+11/24/2016 01:54:11 PM filtering events by Status
+11/24/2016 01:54:55 PM Quitting
+11/24/2016 01:57:01 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 01:57:20 PM TC info: filter events, create first Event and delete it
+11/24/2016 01:57:23 PM clicking on Events button
+11/24/2016 01:57:28 PM check if Events were opened
+11/24/2016 01:57:51 PM filtering events by Type
+11/24/2016 01:59:16 PM filtering events by Status
+11/24/2016 02:00:46 PM search field - search event named: 'search'
+11/24/2016 02:01:58 PM click 'Return' on keyboard
+11/24/2016 02:02:19 PM hide keyboard
+11/24/2016 02:02:21 PM clear search field
+11/24/2016 02:02:39 PM clicking on 'More' button
+11/24/2016 02:03:03 PM clicking on New event button
+11/24/2016 02:03:26 PM choosing Incident type of new event
+11/24/2016 02:03:26 PM filling form to create new event
+11/24/2016 02:03:26 PM input Name
+11/24/2016 02:03:53 PM click on severity level field
+11/24/2016 02:04:00 PM choose_severity_lvl1
+11/24/2016 02:04:08 PM scroll down to find element
+11/24/2016 02:04:08 PM Quitting
+11/24/2016 02:05:59 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 02:07:51 PM TC info: filter events, create first Event and delete it
+11/24/2016 02:07:54 PM clicking on Events button
+11/24/2016 02:08:01 PM check if Events were opened
+11/24/2016 02:08:07 PM filtering events by Type
+11/24/2016 02:09:17 PM filtering events by Status
+11/24/2016 02:11:01 PM search field - search event named: 'search'
+11/24/2016 02:12:12 PM click 'Return' on keyboard
+11/24/2016 02:12:33 PM hide keyboard
+11/24/2016 02:12:35 PM clear search field
+11/24/2016 02:12:51 PM clicking on 'More' button
+11/24/2016 02:13:14 PM clicking on New event button
+11/24/2016 02:13:38 PM choosing Incident type of new event
+11/24/2016 02:13:38 PM filling form to create new event
+11/24/2016 02:13:38 PM input Name
+11/24/2016 02:14:03 PM click on severity level field
+11/24/2016 02:14:10 PM choose_severity_lvl1
+11/24/2016 02:14:18 PM scroll down to find element
+11/24/2016 02:14:24 PM Save event
+11/24/2016 02:14:31 PM open created event
+11/24/2016 02:15:13 PM Quitting
+11/24/2016 02:47:08 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 02:47:35 PM TC info: filter events, create first Event and delete it
+11/24/2016 02:47:38 PM clicking on Events button
+11/24/2016 02:47:43 PM check if Events were opened
+11/24/2016 02:47:48 PM filtering events by Type
+11/24/2016 02:49:00 PM filtering events by Status
+11/24/2016 02:50:46 PM search field - search event named: 'search'
+11/24/2016 02:51:59 PM click 'Return' on keyboard
+11/24/2016 02:52:20 PM hide keyboard
+11/24/2016 02:52:22 PM clear search field
+11/24/2016 02:52:39 PM clicking on 'More' button
+11/24/2016 02:53:03 PM clicking on New event button
+11/24/2016 02:53:27 PM choosing Incident type of new event
+11/24/2016 02:53:27 PM filling form to create new event
+11/24/2016 02:53:27 PM input Name
+11/24/2016 02:53:53 PM click on severity level field
+11/24/2016 02:54:01 PM choose_severity_lvl1
+11/24/2016 02:54:09 PM scroll down to find element
+11/24/2016 02:54:15 PM Save event
+11/24/2016 02:54:22 PM open created event
+11/24/2016 02:54:51 PM edit previously created event
+11/24/2016 02:54:58 PM scroll down to Description field
+11/24/2016 02:55:07 PM type some text into description field
+11/24/2016 02:55:35 PM Quitting
+11/24/2016 02:56:26 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 02:56:50 PM TC info: filter events, create first Event and delete it
+11/24/2016 02:56:53 PM clicking on Events button
+11/24/2016 02:56:58 PM check if Events were opened
+11/24/2016 02:57:22 PM filtering events by Type
+11/24/2016 02:58:32 PM filtering events by Status
+11/24/2016 03:00:19 PM search field - search event named: 'search'
+11/24/2016 03:01:32 PM click 'Return' on keyboard
+11/24/2016 03:01:55 PM hide keyboard
+11/24/2016 03:01:57 PM clear search field
+11/24/2016 03:02:14 PM clicking on 'More' button
+11/24/2016 03:02:38 PM clicking on New event button
+11/24/2016 03:03:02 PM choosing Incident type of new event
+11/24/2016 03:03:02 PM filling form to create new event
+11/24/2016 03:03:02 PM input Name
+11/24/2016 03:03:28 PM click on severity level field
+11/24/2016 03:03:35 PM choose_severity_lvl1
+11/24/2016 03:03:43 PM scroll down to find element
+11/24/2016 03:03:49 PM Save event
+11/24/2016 03:03:57 PM open created event
+11/24/2016 03:04:25 PM edit previously created event
+11/24/2016 03:04:32 PM scroll down to Description field
+11/24/2016 03:04:41 PM type some text into description field
+11/24/2016 03:04:48 PM Quitting
+11/24/2016 03:06:37 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 03:07:09 PM TC info: filter events, create first Event and delete it
+11/24/2016 03:07:17 PM Your are already login - logging out
+11/24/2016 03:07:25 PM starting def with login
+11/24/2016 03:07:25 PM click in LOGIN button
+11/24/2016 03:07:44 PM type username
+11/24/2016 03:08:01 PM type password
+11/24/2016 03:08:19 PM type domain address
+11/24/2016 03:08:57 PM click in Submit button
+11/24/2016 03:09:30 PM Successful login
+11/24/2016 03:09:30 PM clicking on Events button
+11/24/2016 03:09:34 PM check if Events were opened
+11/24/2016 03:09:40 PM filtering events by Type
+11/24/2016 03:11:10 PM filtering events by Status
+11/24/2016 03:12:43 PM search field - search event named: 'search'
+11/24/2016 03:13:57 PM click 'Return' on keyboard
+11/24/2016 03:14:19 PM hide keyboard
+11/24/2016 03:14:21 PM clear search field
+11/24/2016 03:14:37 PM clicking on 'More' button
+11/24/2016 03:15:02 PM clicking on New event button
+11/24/2016 03:15:26 PM choosing Incident type of new event
+11/24/2016 03:15:26 PM filling form to create new event
+11/24/2016 03:15:26 PM input Name
+11/24/2016 03:15:53 PM click on severity level field
+11/24/2016 03:16:01 PM choose_severity_lvl1
+11/24/2016 03:16:09 PM scroll down to find element
+11/24/2016 03:16:15 PM Save event
+11/24/2016 03:16:22 PM open created event
+11/24/2016 03:16:50 PM edit previously created event
+11/24/2016 03:16:59 PM scroll down to Description field
+11/24/2016 03:17:07 PM type some text into description field
+11/24/2016 03:17:27 PM scroll down to find element
+11/24/2016 03:17:33 PM Save event
+11/24/2016 03:17:39 PM clicking on 'More' button
+11/24/2016 03:18:05 PM Quitting
+11/24/2016 03:18:30 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 03:19:11 PM TC info: filter events, create first Event and delete it
+11/24/2016 03:19:11 PM clicking on Events button
+11/24/2016 03:19:24 PM check if Events were opened
+11/24/2016 03:19:30 PM filtering events by Type
+11/24/2016 03:21:00 PM filtering events by Status
+11/24/2016 03:22:32 PM search field - search event named: 'search'
+11/24/2016 03:23:46 PM click 'Return' on keyboard
+11/24/2016 03:24:07 PM hide keyboard
+11/24/2016 03:24:09 PM clear search field
+11/24/2016 03:24:26 PM clicking on 'More' button
+11/24/2016 03:24:51 PM clicking on New event button
+11/24/2016 03:25:14 PM choosing Incident type of new event
+11/24/2016 03:25:14 PM filling form to create new event
+11/24/2016 03:25:14 PM input Name
+11/24/2016 03:25:40 PM click on severity level field
+11/24/2016 03:25:47 PM choose_severity_lvl1
+11/24/2016 03:25:55 PM scroll down to find element
+11/24/2016 03:26:01 PM Save event
+11/24/2016 03:26:08 PM open created event
+11/24/2016 03:26:38 PM edit previously created event
+11/24/2016 03:26:45 PM scroll down to Description field
+11/24/2016 03:26:54 PM type some text into description field
+11/24/2016 03:27:14 PM scroll down to find element
+11/24/2016 03:27:19 PM Save event
+11/24/2016 03:27:26 PM clicking on 'More' button
+11/24/2016 03:27:52 PM Quitting
+11/24/2016 03:28:34 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 03:28:55 PM TC info: filter events, create first Event and delete it
+11/24/2016 03:28:55 PM clicking on Events button
+11/24/2016 03:29:05 PM check if Events were opened
+11/24/2016 03:29:11 PM filtering events by Type
+11/24/2016 03:30:25 PM filtering events by Status
+11/24/2016 03:31:58 PM search field - search event named: 'search'
+11/24/2016 03:33:12 PM click 'Return' on keyboard
+11/24/2016 03:33:33 PM hide keyboard
+11/24/2016 03:33:35 PM clear search field
+11/24/2016 03:33:52 PM clicking on 'More' button
+11/24/2016 03:34:17 PM clicking on New event button
+11/24/2016 03:34:41 PM choosing Incident type of new event
+11/24/2016 03:34:41 PM filling form to create new event
+11/24/2016 03:34:41 PM input Name
+11/24/2016 03:35:07 PM click on severity level field
+11/24/2016 03:35:14 PM choose_severity_lvl1
+11/24/2016 03:35:22 PM scroll down to find element
+11/24/2016 03:35:28 PM Save event
+11/24/2016 03:35:36 PM open created event
+11/24/2016 03:36:05 PM edit previously created event
+11/24/2016 03:36:12 PM scroll down to Description field
+11/24/2016 03:36:21 PM type some text into description field
+11/24/2016 03:36:41 PM scroll down to find element
+11/24/2016 03:36:46 PM Save event
+11/24/2016 03:36:53 PM clicking on 'More' button
+11/24/2016 03:37:05 PM clicking on 'Delete event' button
+11/24/2016 03:37:30 PM Quitting
+11/24/2016 03:39:17 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 03:39:34 PM TC info: filter events, create first Event and delete it
+11/24/2016 03:39:44 PM Your are already login - logging out
+11/24/2016 03:40:14 PM starting def with login
+11/24/2016 03:40:14 PM click in LOGIN button
+11/24/2016 03:40:39 PM Quitting
+11/24/2016 03:41:00 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 03:41:19 PM TC info: filter events, create first Event and delete it
+11/24/2016 03:41:26 PM Your are already login - logging out
+11/24/2016 03:41:55 PM starting def with login
+11/24/2016 03:41:55 PM click in LOGIN button
+11/24/2016 03:42:21 PM Quitting
+11/24/2016 03:42:47 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 03:43:04 PM TC info: filter events, create first Event and delete it
+11/24/2016 03:43:13 PM Your are already login - logging out
+11/24/2016 03:43:21 PM starting def with login
+11/24/2016 03:43:21 PM click in LOGIN button
+11/24/2016 03:43:40 PM type username
+11/24/2016 03:43:57 PM type password
+11/24/2016 03:44:15 PM type domain address
+11/24/2016 03:44:52 PM click in Submit button
+11/24/2016 03:45:27 PM Successful login
+11/24/2016 03:45:27 PM clicking on Events button
+11/24/2016 03:45:31 PM check if Events were opened
+11/24/2016 03:45:37 PM filtering events by Type
+11/24/2016 03:46:52 PM filtering events by Status
+11/24/2016 03:48:27 PM search field - search event named: 'search'
+11/24/2016 03:49:42 PM click 'Return' on keyboard
+11/24/2016 03:50:03 PM hide keyboard
+11/24/2016 03:50:06 PM clear search field
+11/24/2016 03:50:22 PM clicking on 'More' button
+11/24/2016 03:50:47 PM clicking on New event button
+11/24/2016 03:51:11 PM choosing Incident type of new event
+11/24/2016 03:51:11 PM filling form to create new event
+11/24/2016 03:51:11 PM input Name
+11/24/2016 03:51:39 PM click on severity level field
+11/24/2016 03:51:46 PM choose_severity_lvl1
+11/24/2016 03:51:54 PM scroll down to find element
+11/24/2016 03:52:00 PM Save event
+11/24/2016 03:52:07 PM open created event
+11/24/2016 03:52:36 PM edit previously created event
+11/24/2016 03:52:44 PM scroll down to Description field
+11/24/2016 03:52:52 PM type some text into description field
+11/24/2016 03:53:11 PM scroll down to find element
+11/24/2016 03:53:17 PM Save event
+11/24/2016 03:53:24 PM clicking on 'More' button
+11/24/2016 03:53:33 PM clicking on 'Delete event' button
+11/24/2016 03:53:59 PM Quitting
+11/24/2016 03:55:26 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 03:55:55 PM TC info: filter events, create first Event and delete it
+11/24/2016 03:56:05 PM Your are already login - logging out
+11/24/2016 03:56:13 PM starting def with login
+11/24/2016 03:56:13 PM click in LOGIN button
+11/24/2016 03:56:33 PM type username
+11/24/2016 03:56:49 PM type password
+11/24/2016 03:57:07 PM type domain address
+11/24/2016 03:57:45 PM click in Submit button
+11/24/2016 03:58:19 PM Successful login
+11/24/2016 03:58:19 PM clicking on Events button
+11/24/2016 03:58:23 PM check if Events were opened
+11/24/2016 03:58:29 PM filtering events by Type
+11/24/2016 03:59:45 PM filtering events by Status
+11/24/2016 04:01:37 PM search field - search event named: 'search'
+11/24/2016 04:03:14 PM click 'Return' on keyboard
+11/24/2016 04:03:42 PM hide keyboard
+11/24/2016 04:03:44 PM clear search field
+11/24/2016 04:04:02 PM clicking on 'More' button
+11/24/2016 04:04:07 PM clicking on New event button
+11/24/2016 04:04:15 PM choosing Incident type of new event
+11/24/2016 04:04:15 PM filling form to create new event
+11/24/2016 04:04:15 PM input Name
+11/24/2016 04:04:41 PM click on severity level field
+11/24/2016 04:04:48 PM choose_severity_lvl1
+11/24/2016 04:04:56 PM scroll down to find element
+11/24/2016 04:05:02 PM Save event
+11/24/2016 04:05:09 PM open created event
+11/24/2016 04:05:36 PM Quitting
+11/24/2016 04:33:26 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 04:33:56 PM TC info: filter events, create first Event and delete it
+11/24/2016 04:34:06 PM Your are already login - logging out
+11/24/2016 04:34:14 PM starting def with login
+11/24/2016 04:34:14 PM click in LOGIN button
+11/24/2016 04:34:33 PM type username
+11/24/2016 04:34:50 PM type password
+11/24/2016 04:35:08 PM type domain address
+11/24/2016 04:35:46 PM click in Submit button
+11/24/2016 04:36:20 PM Successful login
+11/24/2016 04:36:20 PM clicking on Events button
+11/24/2016 04:36:25 PM check if Events were opened
+11/24/2016 04:36:30 PM filtering events by Type
+11/24/2016 04:38:03 PM filtering events by Status
+11/24/2016 04:39:37 PM search field - search event named: 'search'
+11/24/2016 04:40:52 PM click 'Return' on keyboard
+11/24/2016 04:41:14 PM hide keyboard
+11/24/2016 04:41:17 PM clear search field
+11/24/2016 04:41:34 PM clicking on 'More' button
+11/24/2016 04:41:59 PM clicking on New event button
+11/24/2016 04:42:23 PM choosing Incident type of new event
+11/24/2016 04:42:23 PM filling form to create new event
+11/24/2016 04:42:23 PM input Name
+11/24/2016 04:42:49 PM click on severity level field
+11/24/2016 04:42:56 PM choose_severity_lvl1
+11/24/2016 04:43:04 PM scroll down to find element
+11/24/2016 04:43:10 PM Save event
+11/24/2016 04:43:17 PM open created event
+11/24/2016 04:43:46 PM edit previously created event
+11/24/2016 04:43:54 PM scroll down to Description field
+11/24/2016 04:44:02 PM type some text into description field
+11/24/2016 04:44:21 PM scroll down to find element
+11/24/2016 04:44:27 PM Save event
+11/24/2016 04:44:34 PM clicking on 'More' button
+11/24/2016 04:44:43 PM clicking on 'Delete event' button
+11/24/2016 04:45:08 PM Quitting
+11/24/2016 04:49:02 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 04:49:21 PM TC info: filter events, create first Event and delete it
+11/24/2016 04:49:21 PM clicking on Events button
+11/24/2016 04:49:26 PM check if Events were opened
+11/24/2016 04:49:50 PM filtering events by Type
+11/24/2016 04:51:19 PM filtering events by Status
+11/24/2016 04:52:53 PM search field - search event named: 'search'
+11/24/2016 04:54:06 PM click 'Return' on keyboard
+11/24/2016 04:54:28 PM hide keyboard
+11/24/2016 04:54:30 PM clear search field
+11/24/2016 04:54:46 PM clicking on 'More' button
+11/24/2016 04:55:11 PM clicking on New event button
+11/24/2016 04:55:35 PM choosing Incident type of new event
+11/24/2016 04:55:35 PM filling form to create new event
+11/24/2016 04:55:35 PM input Name
+11/24/2016 04:56:01 PM click on severity level field
+11/24/2016 04:56:08 PM choose_severity_lvl1
+11/24/2016 04:56:15 PM scroll down to find element
+11/24/2016 04:56:21 PM Save event
+11/24/2016 04:56:28 PM open created event
+11/24/2016 04:56:57 PM edit previously created event
+11/24/2016 04:57:04 PM scroll down to Description field
+11/24/2016 04:57:13 PM type some text into description field
+11/24/2016 04:57:31 PM scroll down to find element
+11/24/2016 04:57:37 PM Save event
+11/24/2016 04:57:44 PM clicking on 'More' button
+11/24/2016 04:57:49 PM clicking on 'Delete event' button
+11/24/2016 04:58:16 PM Quitting
+11/24/2016 05:04:45 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 05:05:05 PM TC info: filter events, create first Event and delete it
+11/24/2016 05:05:05 PM clicking on Events button
+11/24/2016 05:05:17 PM check if Events were opened
+11/24/2016 05:05:42 PM filtering events by Type
+11/24/2016 05:06:55 PM filtering events by Status
+11/24/2016 05:08:09 PM search field - search event named: 'search'
+11/24/2016 05:09:24 PM click 'Return' on keyboard
+11/24/2016 05:09:46 PM hide keyboard
+11/24/2016 05:09:48 PM clear search field
+11/24/2016 05:10:05 PM clicking on 'More' button
+11/24/2016 05:10:31 PM clicking on New event button
+11/24/2016 05:10:55 PM choosing Incident type of new event
+11/24/2016 05:10:55 PM filling form to create new event
+11/24/2016 05:10:55 PM input Name
+11/24/2016 05:11:21 PM click on severity level field
+11/24/2016 05:11:28 PM choose_severity_lvl1
+11/24/2016 05:11:36 PM scroll down to find element
+11/24/2016 05:11:42 PM Save event
+11/24/2016 05:11:49 PM open created event
+11/24/2016 05:12:20 PM edit previously created event
+11/24/2016 05:12:28 PM scroll down to Description field
+11/24/2016 05:12:36 PM type some text into description field
+11/24/2016 05:12:55 PM scroll down to find element
+11/24/2016 05:13:01 PM Save event
+11/24/2016 05:13:08 PM clicking on 'More' button
+11/24/2016 05:13:18 PM clicking on 'Delete event' button
+11/24/2016 05:13:23 PM confirm delete
+11/24/2016 05:13:27 PM Quitting
+11/24/2016 05:14:28 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 05:14:46 PM TC info: filter events, create first Event and delete it
+11/24/2016 05:14:46 PM starting def with login
+11/24/2016 05:14:46 PM click in LOGIN button
+11/24/2016 05:14:52 PM typing username, password and OCA domain
+11/24/2016 05:14:52 PM type username
+11/24/2016 05:15:00 PM type password
+11/24/2016 05:15:06 PM type domain address
+11/24/2016 05:15:15 PM hide screen keyboard
+11/24/2016 05:15:15 PM click in Submit button
+11/24/2016 05:15:16 PM accept Terms if needed
+11/24/2016 05:15:41 PM Terms are already accepted - Accept button is not present
+11/24/2016 05:15:41 PM check if Notice alert is present and click Ok button
+11/24/2016 05:16:07 PM Notice alert is not present
+11/24/2016 05:16:07 PM Successful login
+11/24/2016 05:16:10 PM clicking on Events button
+11/24/2016 05:16:11 PM check if Events were opened
+11/24/2016 05:16:11 PM filtering events by Type
+11/24/2016 05:16:27 PM filtering events by Status
+11/24/2016 05:17:02 PM search field - search event named: 'search'
+11/24/2016 05:17:11 PM click Go on keyboard
+11/24/2016 05:17:14 PM click on Events header to see results and hide keyboard
+11/24/2016 05:17:14 PM clear search field
+11/24/2016 05:17:19 PM click on Events header to hide keyboard
+11/24/2016 05:17:23 PM clicking on 'More' button
+11/24/2016 05:17:24 PM clicking on New event button
+11/24/2016 05:17:28 PM choosing Incident type of new event
+11/24/2016 05:17:28 PM filling form to create new event
+11/24/2016 05:17:28 PM input Name
+11/24/2016 05:17:38 PM click on severity level field
+11/24/2016 05:17:41 PM choose_severity_lvl1
+11/24/2016 05:17:41 PM Quitting
+11/24/2016 05:23:03 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 05:23:14 PM TC info: filter events, create first Event and delete it
+11/24/2016 05:23:14 PM starting def with login
+11/24/2016 05:23:14 PM click in LOGIN button
+11/24/2016 05:23:19 PM typing username, password and OCA domain
+11/24/2016 05:23:19 PM type username
+11/24/2016 05:23:25 PM type password
+11/24/2016 05:23:33 PM type domain address
+11/24/2016 05:23:41 PM hide screen keyboard
+11/24/2016 05:23:42 PM click in Submit button
+11/24/2016 05:23:43 PM accept Terms if needed
+11/24/2016 05:24:08 PM Terms are already accepted - Accept button is not present
+11/24/2016 05:24:08 PM check if Notice alert is present and click Ok button
+11/24/2016 05:24:33 PM Notice alert is not present
+11/24/2016 05:24:33 PM Successful login
+11/24/2016 05:24:36 PM clicking on Events button
+11/24/2016 05:24:37 PM check if Events were opened
+11/24/2016 05:24:38 PM filtering events by Type
+11/24/2016 05:24:55 PM filtering events by Status
+11/24/2016 05:25:30 PM search field - search event named: 'search'
+11/24/2016 05:25:39 PM click Go on keyboard
+11/24/2016 05:25:42 PM click on Events header to see results and hide keyboard
+11/24/2016 05:25:43 PM clear search field
+11/24/2016 05:25:48 PM click on Events header to hide keyboard
+11/24/2016 05:25:52 PM clicking on 'More' button
+11/24/2016 05:25:53 PM clicking on New event button
+11/24/2016 05:25:58 PM choosing Incident type of new event
+11/24/2016 05:25:58 PM filling form to create new event
+11/24/2016 05:25:58 PM input Name
+11/24/2016 05:26:06 PM click on severity level field
+11/24/2016 05:26:09 PM choose_severity_lvl1
+11/24/2016 05:26:35 PM Quitting
+11/24/2016 05:26:53 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 05:27:03 PM TC info: filter events, create first Event and delete it
+11/24/2016 05:27:03 PM starting def with login
+11/24/2016 05:27:03 PM click in LOGIN button
+11/24/2016 05:27:09 PM typing username, password and OCA domain
+11/24/2016 05:27:09 PM type username
+11/24/2016 05:27:16 PM type password
+11/24/2016 05:27:22 PM type domain address
+11/24/2016 05:27:29 PM hide screen keyboard
+11/24/2016 05:27:29 PM click in Submit button
+11/24/2016 05:27:30 PM accept Terms if needed
+11/24/2016 05:27:56 PM Terms are already accepted - Accept button is not present
+11/24/2016 05:27:56 PM check if Notice alert is present and click Ok button
+11/24/2016 05:28:21 PM Notice alert is not present
+11/24/2016 05:28:21 PM Successful login
+11/24/2016 05:28:24 PM clicking on Events button
+11/24/2016 05:28:25 PM check if Events were opened
+11/24/2016 05:28:25 PM filtering events by Type
+11/24/2016 05:28:42 PM filtering events by Status
+11/24/2016 05:29:18 PM search field - search event named: 'search'
+11/24/2016 05:29:26 PM click Go on keyboard
+11/24/2016 05:29:30 PM click on Events header to see results and hide keyboard
+11/24/2016 05:29:30 PM clear search field
+11/24/2016 05:29:36 PM click on Events header to hide keyboard
+11/24/2016 05:29:39 PM clicking on 'More' button
+11/24/2016 05:29:40 PM clicking on New event button
+11/24/2016 05:29:45 PM choosing Incident type of new event
+11/24/2016 05:29:45 PM filling form to create new event
+11/24/2016 05:29:45 PM input Name
+11/24/2016 05:29:53 PM click on severity level field
+11/24/2016 05:29:56 PM choose_severity_lvl1
+11/24/2016 05:29:57 PM click on finished_field
+11/24/2016 05:29:58 PM choose time and date
+11/24/2016 05:30:00 PM scroll down to find element
+11/24/2016 05:30:01 PM Save event
+11/24/2016 05:30:14 PM open created event
+11/24/2016 05:30:40 PM Quitting
+11/24/2016 05:30:46 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 05:30:57 PM TC info: filter events, create first Event and delete it
+11/24/2016 05:30:57 PM starting def with login
+11/24/2016 05:30:57 PM click in LOGIN button
+11/24/2016 05:31:02 PM typing username, password and OCA domain
+11/24/2016 05:31:02 PM type username
+11/24/2016 05:31:08 PM type password
+11/24/2016 05:31:15 PM type domain address
+11/24/2016 05:31:23 PM hide screen keyboard
+11/24/2016 05:31:24 PM click in Submit button
+11/24/2016 05:31:25 PM accept Terms if needed
+11/24/2016 05:31:50 PM Terms are already accepted - Accept button is not present
+11/24/2016 05:31:50 PM check if Notice alert is present and click Ok button
+11/24/2016 05:32:16 PM Notice alert is not present
+11/24/2016 05:32:16 PM Successful login
+11/24/2016 05:32:19 PM clicking on Events button
+11/24/2016 05:32:20 PM check if Events were opened
+11/24/2016 05:32:20 PM clicking on 'More' button
+11/24/2016 05:32:21 PM clicking on New event button
+11/24/2016 05:32:26 PM choosing Incident type of new event
+11/24/2016 05:32:26 PM filling form to create new event
+11/24/2016 05:32:26 PM input Name
+11/24/2016 05:32:35 PM click on severity level field
+11/24/2016 05:32:39 PM choose_severity_lvl1
+11/24/2016 05:32:39 PM click on finished_field
+11/24/2016 05:32:40 PM choose time and date
+11/24/2016 05:32:42 PM scroll down to find element
+11/24/2016 05:32:43 PM Save event
+11/24/2016 05:32:57 PM open created event
+11/24/2016 05:33:22 PM Quitting
+11/24/2016 05:35:32 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 05:35:44 PM TC info: filter events, create first Event and delete it
+11/24/2016 05:35:44 PM starting def with login
+11/24/2016 05:35:44 PM click in LOGIN button
+11/24/2016 05:35:49 PM typing username, password and OCA domain
+11/24/2016 05:35:49 PM type username
+11/24/2016 05:35:56 PM type password
+11/24/2016 05:36:03 PM type domain address
+11/24/2016 05:36:11 PM hide screen keyboard
+11/24/2016 05:36:11 PM click in Submit button
+11/24/2016 05:36:12 PM accept Terms if needed
+11/24/2016 05:36:38 PM Terms are already accepted - Accept button is not present
+11/24/2016 05:36:38 PM check if Notice alert is present and click Ok button
+11/24/2016 05:37:03 PM Notice alert is not present
+11/24/2016 05:37:04 PM Successful login
+11/24/2016 05:37:07 PM clicking on Events button
+11/24/2016 05:37:07 PM check if Events were opened
+11/24/2016 05:37:08 PM clicking on 'More' button
+11/24/2016 05:37:08 PM clicking on New event button
+11/24/2016 05:37:14 PM choosing Incident type of new event
+11/24/2016 05:37:14 PM filling form to create new event
+11/24/2016 05:37:14 PM input Name
+11/24/2016 05:37:22 PM click on severity level field
+11/24/2016 05:37:25 PM choose_severity_lvl1
+11/24/2016 05:37:26 PM click on finished_field
+11/24/2016 05:37:28 PM choose time and date
+11/24/2016 05:37:29 PM scroll down
+11/24/2016 05:37:51 PM Save event
+11/24/2016 05:38:02 PM open created event
+11/24/2016 05:38:07 PM edit previously created event
+11/24/2016 05:38:13 PM scroll down to Description field
+11/24/2016 05:38:20 PM type some text into description field
+11/24/2016 05:38:44 PM Save event
+11/24/2016 05:38:44 PM clicking on 'More' button
+11/24/2016 05:38:50 PM clicking on 'Delete event' button
+11/24/2016 05:38:50 PM confirm delete
+11/24/2016 05:38:56 PM Quitting
+11/24/2016 05:39:36 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 05:40:13 PM TC info: filter events, create first Event and delete it
+11/24/2016 05:40:13 PM clicking on Events button
+11/24/2016 05:40:42 PM Quitting
+11/24/2016 05:40:50 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 05:41:06 PM TC info: filter events, create first Event and delete it
+11/24/2016 05:41:06 PM clicking on Events button
+11/24/2016 05:41:14 PM check if Events were opened
+11/24/2016 05:41:20 PM filtering events by Type
+11/24/2016 05:42:56 PM filtering events by Status
+11/24/2016 05:44:30 PM search field - search event named: 'search'
+11/24/2016 05:45:46 PM click 'Return' on keyboard
+11/24/2016 05:46:08 PM hide keyboard
+11/24/2016 05:46:10 PM clear search field
+11/24/2016 05:46:27 PM clicking on 'More' button
+11/24/2016 05:46:52 PM clicking on New event button
+11/24/2016 05:47:17 PM choosing Incident type of new event
+11/24/2016 05:47:17 PM filling form to create new event
+11/24/2016 05:47:17 PM input Name
+11/24/2016 05:47:42 PM click on severity level field
+11/24/2016 05:47:49 PM choose_severity_lvl1
+11/24/2016 05:47:57 PM scroll down to find element
+11/24/2016 05:48:03 PM Save event
+11/24/2016 05:48:10 PM open created event
+11/24/2016 05:48:40 PM edit previously created event
+11/24/2016 05:48:47 PM scroll down to Description field
+11/24/2016 05:48:55 PM type some text into description field
+11/24/2016 05:49:15 PM scroll down to find element
+11/24/2016 05:49:20 PM Save event
+11/24/2016 05:49:27 PM clicking on 'More' button
+11/24/2016 05:49:33 PM clicking on 'Delete event' button
+11/24/2016 05:49:59 PM Quitting
+11/24/2016 05:50:19 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/24/2016 05:50:38 PM TC info: filter events, create first Event and delete it
+11/24/2016 05:50:41 PM clicking on Events button
+11/24/2016 05:50:46 PM check if Events were opened
+11/24/2016 05:50:52 PM filtering events by Type
+11/24/2016 05:52:08 PM filtering events by Status
+11/24/2016 05:53:59 PM search field - search event named: 'search'
+11/24/2016 05:55:15 PM click 'Return' on keyboard
+11/24/2016 05:55:38 PM hide keyboard
+11/24/2016 05:55:40 PM clear search field
+11/24/2016 05:55:57 PM clicking on 'More' button
+11/24/2016 05:56:22 PM clicking on New event button
+11/24/2016 05:56:47 PM choosing Incident type of new event
+11/24/2016 05:56:47 PM filling form to create new event
+11/24/2016 05:56:47 PM input Name
+11/24/2016 05:57:13 PM click on severity level field
+11/24/2016 05:57:20 PM choose_severity_lvl1
+11/24/2016 05:57:28 PM scroll down to find element
+11/24/2016 05:57:34 PM Save event
+11/24/2016 05:57:41 PM open created event
+11/24/2016 05:58:10 PM edit previously created event
+11/24/2016 05:58:21 PM scroll down to Description field
+11/24/2016 05:58:29 PM type some text into description field
+11/24/2016 05:58:48 PM scroll down to find element
+11/24/2016 05:58:54 PM Save event
