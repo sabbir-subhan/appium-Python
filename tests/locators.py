@@ -122,11 +122,11 @@ class EventsScreen(object):
     CREATED_EVENT_1 = (By.XPATH, './/android.view.View[@content-desc[contains(., "Test")]]')
     CREATED_EVENT_1_ios = (By.XPATH, '//UIALink[@name[contains(., "Test")]]')
     CREATED_EVENT_2 = (By.XPATH, './/android.view.View[@content-desc[contains(., "Test Appium - second event")]]')
-    CREATED_EVENT_2_ios = (By.XPATH, '')
+    CREATED_EVENT_2_ios = (By.XPATH, '//UIALink[@name[contains(., "Test Appium ios - second event")]]')
     CREATED_EVENT_3 = (By.XPATH, './/android.view.View[@content-desc[contains(., "Test to create sub event")]]')
-    CREATED_EVENT_3_ios = (By.XPATH, '')
+    CREATED_EVENT_3_ios = (By.XPATH, '//UIALink[@name[contains(., "Test ios to create sub event")]]')
     CLEAR_PRIMARY_EVENT_BUTTON = (By.XPATH, './/android.view.View[@content-desc[contains(., "Clear primary event")]]')
-    CLEAR_PRIMARY_EVENT_BUTTON_ios = (By.XPATH, '')
+    CLEAR_PRIMARY_EVENT_BUTTON_ios = (By.XPATH, '//UIALink[@name[contains(., "Clear primary event")]]')
     NOTIFICATION_PRIMARY_EVENT_CLEARED = (By.XPATH, './/android.view.View[@content-desc="Primary event cleared"]')
     NOTIFICATION_PRIMARY_EVENT_CLEARED_ios = (By.XPATH, '')
     GO_BACK_TO_MAIN_MENU_ARROW_BUTTON = (By.XPATH, ".//android.webkit.WebView[@index='0']"
@@ -190,7 +190,7 @@ class EventEditScreen(object):
     COMMUNICATIONS_HEADER = (By.XPATH, './/android.view.View[@content-desc="Communications"]')
     RELATED_HEADER = (By.XPATH, './/android.view.View[@content-desc="Related"]')
     CREATE_MAPPING_DATA = (By.XPATH, ".//android.view.View[@content-desc[contains(., ' mapping data')]]")
-    ELEMENT_TO_SCROLL = (By.XPATH, '')
+    CREATE_MAPPING_DATA_ios = (By.XPATH, "//UIAButton[@name[contains(., ' mapping data')]]")
     ELEMENT_TO_SCROLL_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAImage[1]')
 
 
@@ -207,7 +207,7 @@ class EventDetailsScreen(object):
     NEW_SUB_EVENT = (By.XPATH, './/android.view.View[@content-desc[contains(., "New sub event")]]')
     NEW_SUB_EVENT_ios = (By.XPATH, '')
     SET_AS_PRIMARY_BUTTON = (By.XPATH, './/android.view.View[@content-desc[contains(., "Set as primary")]]')
-    SET_AS_PRIMARY_BUTTON_ios = (By.XPATH, '')
+    SET_AS_PRIMARY_BUTTON_ios = (By.XPATH, '//UIALink[@name[contains(., "Set as primary")]]')
 
 
 class Map(object):
@@ -244,7 +244,7 @@ class Map(object):
     ADD_POLYGON3 = (By.XPATH, ".//android.widget.Image[@index='3']")
     ADD_POLYGON3_ios = (By.XPATH, '')
     SAVE_MAP_BUTTON = (By.XPATH, ".//android.widget.Button[@content-desc='Save']")
-    SAVE_MAP_BUTTON_ios = (By.XPATH, '')
+    SAVE_MAP_BUTTON_ios = (By.XPATH, '//UIAButton[@name[contains(., "Save")]]')
 
 
 class iOSkeyboard(object):
