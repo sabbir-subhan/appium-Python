@@ -207,7 +207,7 @@ class TC3ios(unittest.TestCase):
         logging.info("filling form to create new event")
         logging.info("input Name")
         self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).click()
-        name_field = self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).send_keys("Test Appium ios")
+        name_field = self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).send_keys("Test Appium iOS")
         self.driver.hide_keyboard(key_name="Hide keyboard")
 
         logging.info("click on severity level field")
@@ -260,7 +260,7 @@ class TC3ios(unittest.TestCase):
         sleep(3)
         logging.info("clicking on 'More' button")
         more_button = self.driver.find_element(*EventsScreen.MORE_BUTTON_ios).click()
-        #sleep(3)
+        sleep(3)
 
         logging.info("clicking on 'Delete event' button")
         delete__event_button = self.driver.find_element(*EventDetailsScreen.DELETE_EVENT_BUTTON_ios).click()
@@ -296,9 +296,9 @@ class TC3ios(unittest.TestCase):
 
         logging.info("filling form to create new event")
         logging.info("input Name")
-        name_field = self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).send_keys(
-            "Test Appium ios - second event")
-
+        self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).click()
+        self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).send_keys(
+            "Test Appium iOS - second event")
         logging.info("hide keyboard")
         self.driver.hide_keyboard(key_name="Hide keyboard")
 
@@ -308,10 +308,6 @@ class TC3ios(unittest.TestCase):
 
         logging.info("choose_severity_lvl4")
         choose_severity_lvl = self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL4_ios).click()
-
-        # logging.info("choose time and date")
-        # time_date = self.driver.find_element(*EventEditScreen.TIME_DATE).click()
-        # set_button = self.driver.find_element(*EventEditScreen.SET_BUTTON).click()
 
         action = TouchAction(self.driver)
         self.scroll_down()
@@ -337,13 +333,14 @@ class TC3ios(unittest.TestCase):
         logging.info("add point into the map")
         tool_button = self.driver.find_element(*Map.TOOL_BUTTON_ios).click()
         poin_button = self.driver.find_element(*Map.POINT_BUTTON_ios).click()
-        poin_default_button = self.driver.find_element(*Map.POINT_DEFAULT_BUTTON_ios).click()
+        poin_default_button = self.driver.find_element(*Map.DEFAULT_BUTTON_ios).click()
+        sleep(0.5)
         add_point_into_map = self.driver.find_element(*Map.ADD_POINT_INTO_MAP_ios).click()
         sleep(1)
         logging.info("add line into the map")
         tool_button = self.driver.find_element(*Map.TOOL_BUTTON_ios).click()
         line_button = self.driver.find_element(*Map.LINE_BUTTON_ios).click()
-        line_default_button = self.driver.find_element(*Map.LINE_DEFAULT_BUTTON_ios).click()
+        line_default_button = self.driver.find_element(*Map.DEFAULT_BUTTON_ios).click()
         add_line1 = self.driver.find_element(*Map.ADD_LINE1_ios).click()
         add_line2 = self.driver.find_element(*Map.ADD_LINE2_ios).click()
         action.tap(add_line2).perform()
@@ -353,14 +350,14 @@ class TC3ios(unittest.TestCase):
         logging.info("add circle into the map")
         tool_button = self.driver.find_element(*Map.TOOL_BUTTON_ios).click()
         circle_button = self.driver.find_element(*Map.CIRCLE_BUTTON_ios).click()
-        circle_default_button = self.driver.find_element(*Map.CIRCLE_DEFAULT_BUTTON_ios).click()
+        circle_default_button = self.driver.find_element(*Map.DEFAULT_BUTTON_ios).click()
         add_circle_on_map = self.driver.find_element(*Map.ADD_CIRCLE_INTO_MAP_ios).click()
         sleep(1)
 
         logging.info("add polygon into the map")
         tool_button = self.driver.find_element(*Map.TOOL_BUTTON_ios).click()
         polygon_button = self.driver.find_element(*Map.POLYGON_BUTTON_ios).click()
-        polygon_default_button = self.driver.find_element(*Map.POLYGON_DEFAULT_BUTTON_ios).click()
+        polygon_default_button = self.driver.find_element(*Map.DEFAULT_BUTTON_ios).click()
         add_polygon1 = self.driver.find_element(*Map.ADD_POLYGON1_ios).click()
         add_polygon2 = self.driver.find_element(*Map.ADD_POLYGON2_ios).click()
         add_polygon3 = self.driver.find_element(*Map.ADD_POLYGON3_ios).click()
@@ -405,8 +402,8 @@ class TC3ios(unittest.TestCase):
 
         logging.info("filling form to create new event")
         logging.info("input Name")
-        name_field = self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).send_keys("Test ios to create sub event")
-
+        self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).click()
+        self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).send_keys("Test ios to create sub event")
         logging.info("hide keyboard")
         self.driver.hide_keyboard(key_name="Hide keyboard")
 
@@ -416,10 +413,6 @@ class TC3ios(unittest.TestCase):
 
         logging.info("choose_severity_lvl3")
         choose_severity_lvl = self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL3_ios).click()
-
-        # logging.info("choose time and date")
-        # time_date = self.driver.find_element(*EventEditScreen.TIME_DATE).click()
-        # set_button = self.driver.find_element(*EventEditScreen.SET_BUTTON).click()
 
         self.scroll_down()
 
@@ -445,8 +438,8 @@ class TC3ios(unittest.TestCase):
             pass
 
         logging.info("input Name for new sub event")
-        name_field = self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).send_keys("Test ios to create sub event")
-
+        self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).click()
+        self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).send_keys("Test iOS to create sub event")
         logging.info("hide keyboard")
         self.driver.hide_keyboard(key_name="Hide keyboard")
 
@@ -456,10 +449,6 @@ class TC3ios(unittest.TestCase):
 
         logging.info("choose_severity_lvl2")
         choose_severity_lvl = self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL2_ios).click()
-
-        # logging.info("choose time and date")
-        # time_date = self.driver.find_element(*EventEditScreen.TIME_DATE).click()
-        # set_button = self.driver.find_element(*EventEditScreen.SET_BUTTON).click()
 
         self.scroll_down()
 

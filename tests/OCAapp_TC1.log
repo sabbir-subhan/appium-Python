@@ -644,3 +644,11 @@
 11/23/2016 03:00:28 PM click in Submit button
 11/23/2016 03:01:05 PM Successful login
 11/23/2016 03:01:05 PM Quitting
+11/25/2016 04:06:20 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/25/2016 04:07:07 PM click in LOGIN button
+11/25/2016 04:07:21 PM type username
+11/25/2016 04:07:37 PM type password
+11/25/2016 04:07:56 PM type domain address
+11/25/2016 04:08:33 PM click in Submit button
+11/25/2016 04:09:09 PM Successful login
+11/25/2016 04:09:09 PM Quitting
