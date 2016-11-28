@@ -120,11 +120,11 @@ class EventsScreen(object):
 
     # previously created event
     CREATED_EVENT_1 = (By.XPATH, './/android.view.View[@content-desc[contains(., "Test")]]')
-    CREATED_EVENT_1_ios = (By.XPATH, '//UIALink[@name[contains(., "Test")]]')
+    CREATED_EVENT_1_ios = (By.XPATH, '//UIALink[@name[contains(., "Test Appium iOS")]]')
     CREATED_EVENT_2 = (By.XPATH, './/android.view.View[@content-desc[contains(., "Test Appium - second event")]]')
     CREATED_EVENT_2_ios = (By.XPATH, '//UIALink[@name[contains(., "Test Appium iOS - second event")]]')
     CREATED_EVENT_3 = (By.XPATH, './/android.view.View[@content-desc[contains(., "Test to create sub event")]]')
-    CREATED_EVENT_3_ios = (By.XPATH, '//UIALink[@name[contains(., "Test iOS to create sub event")]]')
+    CREATED_EVENT_3_ios = (By.XPATH, '//UIALink[@name[contains(., "iOS to create sub")]]')
     CLEAR_PRIMARY_EVENT_BUTTON = (By.XPATH, './/android.view.View[@content-desc[contains(., "Clear primary event")]]')
     CLEAR_PRIMARY_EVENT_BUTTON_ios = (By.XPATH, '//UIALink[@name[contains(., "Clear primary event")]]')
     NOTIFICATION_PRIMARY_EVENT_CLEARED = (By.XPATH, './/android.view.View[@content-desc="Primary event cleared"]')
@@ -132,7 +132,7 @@ class EventsScreen(object):
     GO_BACK_TO_MAIN_MENU_ARROW_BUTTON = (By.XPATH, ".//android.webkit.WebView[@index='0']"
                                                    "//android.view.View[@index='0']"
                                                    "//android.view.View[@index='0']")
-    GO_BACK_TO_MAIN_MENU_ARROW_BUTTON_ios = (By.XPATH, '//UIAWebView[1]/UIALink[1]/UIAStaticText[1]')
+    GO_BACK_TO_MAIN_MENU_ARROW_BUTTON_ios = (By.XPATH, '//UIAWebView[1]/UIALink[1]')
 
 
 class TypesOfEventsScreen(object):
@@ -189,8 +189,10 @@ class EventEditScreen(object):
     TACTICS_HEADER = (By.XPATH, './/android.view.View[@content-desc="Tactics"]')
     COMMUNICATIONS_HEADER = (By.XPATH, './/android.view.View[@content-desc="Communications"]')
     RELATED_HEADER = (By.XPATH, './/android.view.View[@content-desc="Related"]')
-    CREATE_MAPPING_DATA = (By.XPATH, ".//android.view.View[@content-desc[contains(., ' mapping data')]]")
-    CREATE_MAPPING_DATA_ios = (By.XPATH, "//UIALink[@name[contains(., ' mapping data')]]")
+    CREATE_MAPPING_DATA = (By.XPATH, ".//android.view.View[@content-desc[contains(., 'Create mapping data')]]")
+    CREATE_MAPPING_DATA_ios = (By.XPATH, "//UIALink[@name[contains(., 'Create mapping data')]]")
+    EDIT_MAPPING_DATA = (By.XPATH, ".//android.view.View[@content-desc[contains(., 'Edit mapping data')]]")
+    EDIT_MAPPING_DATA_ios = (By.XPATH, "//UIALink[@name[contains(., 'Create mapping data')]]")
     ELEMENT_TO_SCROLL_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAImage[1]')
 
 
@@ -205,9 +207,9 @@ class EventDetailsScreen(object):
     DELETE_CONFIRM_BUTTON = (By.XPATH, './/android.view.View[@content-desc="Delete"]')
     DELETE_CONFIRM_BUTTON_ios = (By.XPATH, '//UIALink[@name="Delete"]')
     NEW_SUB_EVENT = (By.XPATH, './/android.view.View[@content-desc[contains(., "New sub event")]]')
-    NEW_SUB_EVENT_ios = (By.XPATH, '//UIALink[@name[contains(., "New sub event")]]')
+    NEW_SUB_EVENT_ios = (By.XPATH, '//UIAWebView[1]/UIALink[@name[contains(., "New sub event")]]')
     SET_AS_PRIMARY_BUTTON = (By.XPATH, './/android.view.View[@content-desc[contains(., "Set as primary")]]')
-    SET_AS_PRIMARY_BUTTON_ios = (By.XPATH, '//UIALink[@name[contains(., "Set as primary")]]')
+    SET_AS_PRIMARY_BUTTON_ios = (By.XPATH, '//UIAStaticText[@name[contains(., "Set as primary")]]')
 
 
 class Map(object):
@@ -218,22 +220,20 @@ class Map(object):
     DEFAULT_BUTTON = (By.XPATH, ".//android.view.View[@content-desc='Default']")
     DEFAULT_BUTTON_ios = (By.XPATH, '//UIAStaticText[@name="Default"]')
     ADD_POINT_INTO_MAP = (By.XPATH, ".//android.widget.Image[@index='6']")
-    ADD_POINT_INTO_MAP_ios = (By.XPATH, '//UIAWebView[1]/UIAImage[12]')
+    ADD_POINT_INTO_MAP_ios = (By.XPATH, '//UIAWebView[1]/UIAImage[13]')
+    #ADD_POINT_INTO_MAP_ios = (By.XPATH, '/UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAImage[13]')
     LINE_BUTTON = (By.XPATH, ".//android.view.View[@content-desc[contains(., 'Line click to expand')]]")
     LINE_BUTTON_ios = (By.XPATH, '//UIALink[@name[contains(., "Line click to expand")]]')
-    # LINE_DEFAULT_BUTTON = (By.XPATH, ".//android.view.View[@content-desc='Default']")
     ADD_LINE1 = (By.XPATH, ".//android.widget.Image[@index='5']")
     ADD_LINE1_ios = (By.XPATH, '//UIAWebView[1]/UIAImage[12]')
-    ADD_LINE2 = (By.XPATH, ".//android.widget.Image[@index='6']")
+    ADD_LINE2 = (By.XPATH, ".//android.widget.Image[@index='3']")
     ADD_LINE2_ios = (By.XPATH, '//UIAWebView[1]/UIAImage[17]')
     CIRCLE_BUTTON = (By.XPATH, ".//android.view.View[@content-desc[contains(., 'Circle click to expand')]]")
     CIRCLE_BUTTON_ios = (By.XPATH, '//UIALink[@name[contains(., "Circle click to expand")]]')
-    # CIRCLE_DEFAULT_BUTTON = (By.XPATH, ".//android.view.View[@content-desc='Default']")
     ADD_CIRCLE_INTO_MAP = (By.XPATH, ".//android.widget.Image[@index='6']")
     ADD_CIRCLE_INTO_MAP_ios = (By.XPATH, '//UIAWebView[1]/UIAImage[12]')
     POLYGON_BUTTON = (By.XPATH, ".//android.view.View[@content-desc[contains(., 'Polygon click to expand')]]")
     POLYGON_BUTTON_ios = (By.XPATH, '//UIALink[@name[contains(., "Polygon click to expand")]]')
-    # POLYGON_DEFAULT_BUTTON = (By.XPATH, ".//android.view.View[@content-desc='Default']")
     ADD_POLYGON1 = (By.XPATH, ".//android.widget.Image[@index='5']")
     ADD_POLYGON1_ios = (By.XPATH, '//UIAWebView[1]/UIAImage[12]')
     ADD_POLYGON2 = (By.XPATH, ".//android.widget.Image[@index='6']")
