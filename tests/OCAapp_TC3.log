@@ -3724,3 +3724,607 @@
 11/28/2016 08:57:17 PM clicking on Events button
 11/28/2016 08:57:21 PM check if Events were opened
 11/28/2016 08:57:28 PM clicking on 'More' button
+11/28/2016 08:58:05 PM clicking on New event button
+11/28/2016 08:58:39 PM choosing Incident type of new event
+11/28/2016 08:58:39 PM filling form to create new event
+11/28/2016 08:58:39 PM input Name
+11/28/2016 08:59:05 PM hide keyboard
+11/28/2016 08:59:06 PM click on severity level field
+11/28/2016 08:59:15 PM choose_severity_lvl3
+11/28/2016 08:59:22 PM scroll down to find element
+11/28/2016 08:59:28 PM Save event
+11/28/2016 08:59:40 PM check if Events were opened
+11/28/2016 09:00:16 PM open previously created event
+11/28/2016 09:00:52 PM clicking on 'More' button
+11/28/2016 09:00:59 PM clicking on 'New sub event' button
+11/28/2016 09:01:11 PM choosing Incident type of new event
+11/28/2016 09:01:11 PM input Name for new sub event
+11/28/2016 09:01:34 PM hide keyboard
+11/28/2016 09:01:36 PM click on severity level field
+11/28/2016 09:01:45 PM choose_severity_lvl2
+11/28/2016 09:01:52 PM scroll down to find element
+11/28/2016 09:01:58 PM Save event
+11/28/2016 09:02:10 PM clicking on 'More' button
+11/28/2016 09:02:14 PM clicking on 'Set as primary' button
+11/28/2016 09:02:21 PM go back to main menu
+11/28/2016 09:02:59 PM Quitting
+11/29/2016 09:34:26 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/29/2016 09:34:49 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/29/2016 09:35:24 AM TC info: crete sub event, set event as primary and after that clear it
+11/29/2016 09:35:35 AM Your are already login - logging out
+11/29/2016 09:35:46 AM starting def with login
+11/29/2016 09:35:46 AM click in LOGIN button
+11/29/2016 09:36:13 AM Quitting
+11/29/2016 09:36:53 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/29/2016 09:37:15 AM TC info: crete sub event, set event as primary and after that clear it
+11/29/2016 09:37:42 AM starting def with login
+11/29/2016 09:37:42 AM click in LOGIN button
+11/29/2016 09:37:56 AM type username
+11/29/2016 09:38:13 AM type password
+11/29/2016 09:38:31 AM type domain address
+11/29/2016 09:39:08 AM click in Submit button
+11/29/2016 09:39:42 AM Successful login
+11/29/2016 09:39:42 AM clicking on Events button
+11/29/2016 09:39:47 AM check if Events were opened
+11/29/2016 09:39:53 AM clicking on 'More' button
+11/29/2016 09:40:30 AM clicking on New event button
+11/29/2016 09:41:05 AM choosing Incident type of new event
+11/29/2016 09:41:05 AM filling form to create new event
+11/29/2016 09:41:05 AM input Name
+11/29/2016 09:41:29 AM hide keyboard
+11/29/2016 09:41:31 AM click on severity level field
+11/29/2016 09:41:40 AM choose_severity_lvl3
+11/29/2016 09:41:47 AM scroll down to find element
+11/29/2016 09:41:53 AM Save event
+11/29/2016 09:42:05 AM check if Events were opened
+11/29/2016 09:42:41 AM open previously created event
+11/29/2016 09:43:17 AM clicking on 'More' button
+11/29/2016 09:43:24 AM clicking on 'New sub event' button
+11/29/2016 09:43:35 AM choosing Incident type of new event
+11/29/2016 09:43:35 AM input Name for new sub event
+11/29/2016 09:43:59 AM hide keyboard
+11/29/2016 09:44:01 AM click on severity level field
+11/29/2016 09:44:10 AM choose_severity_lvl2
+11/29/2016 09:44:17 AM scroll down to find element
+11/29/2016 09:44:22 AM Save event
+11/29/2016 09:44:34 AM clicking on 'More' button
+11/29/2016 09:44:39 AM clicking on 'Set as primary' button
+11/29/2016 09:44:45 AM go back to main menu
+11/29/2016 09:45:23 AM Quitting
+11/29/2016 01:46:14 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/29/2016 01:47:01 PM TC info: create second event and add map
+11/29/2016 01:47:01 PM open previously created Event, Edit and Create mapping data
+11/29/2016 01:47:01 PM open created event
+11/29/2016 01:47:27 PM Quitting
+11/29/2016 01:47:39 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/29/2016 01:47:54 PM TC info: create second event and add map
+11/29/2016 01:47:54 PM open previously created Event, Edit and Create mapping data
+11/29/2016 01:47:54 PM open created event
+11/29/2016 01:48:20 PM Quitting
+11/29/2016 01:48:55 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/29/2016 01:49:12 PM TC info: create second event and add map
+11/29/2016 01:49:12 PM clicking on Events button
+11/29/2016 01:49:19 PM check if Events were opened
+11/29/2016 01:49:25 PM clicking on 'More' button
+11/29/2016 01:50:02 PM clicking on New event button
+11/29/2016 01:50:36 PM choosing Incident type of new event
+11/29/2016 01:50:36 PM filling form to create new event
+11/29/2016 01:50:36 PM input Name
+11/29/2016 01:51:04 PM hide keyboard
+11/29/2016 01:51:06 PM click on severity level field
+11/29/2016 01:51:15 PM choose_severity_lvl4
+11/29/2016 01:51:22 PM scroll down to find element
+11/29/2016 01:51:28 PM Save event
+11/29/2016 01:51:44 PM open previously created Event, Edit and Create mapping data
+11/29/2016 01:51:44 PM open created event
+11/29/2016 01:52:27 PM edit previously created event
+11/29/2016 01:52:36 PM scroll down to find element
+11/29/2016 01:52:49 PM wait for map
+11/29/2016 01:52:59 PM add point into the map
+11/29/2016 01:53:19 PM add line into the map
+11/29/2016 01:53:38 PM Quitting
+11/29/2016 01:54:23 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/29/2016 01:54:42 PM TC info: create second event and add map
+11/29/2016 01:54:42 PM clicking on Events button
+11/29/2016 01:54:49 PM check if Events were opened
+11/29/2016 01:55:26 PM clicking on 'More' button
+11/29/2016 01:55:56 PM clicking on New event button
+11/29/2016 01:56:30 PM choosing Incident type of new event
+11/29/2016 01:56:30 PM filling form to create new event
+11/29/2016 01:56:30 PM input Name
+11/29/2016 01:56:58 PM hide keyboard
+11/29/2016 01:57:00 PM click on severity level field
+11/29/2016 01:57:08 PM choose_severity_lvl4
+11/29/2016 01:57:16 PM scroll down to find element
+11/29/2016 01:57:21 PM Save event
+11/29/2016 01:57:38 PM open previously created Event, Edit and Create mapping data
+11/29/2016 01:57:38 PM open created event
+11/29/2016 01:58:20 PM edit previously created event
+11/29/2016 01:58:30 PM scroll down to find element
+11/29/2016 01:58:44 PM wait for map
+11/29/2016 01:58:54 PM add point into the map
+11/29/2016 01:59:14 PM add line into the map
+11/29/2016 01:59:36 PM Quitting
+11/29/2016 04:12:39 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/29/2016 04:32:22 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/29/2016 04:34:35 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/29/2016 04:50:12 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/29/2016 04:50:45 PM TC info: create second event and add map
+11/29/2016 04:50:45 PM clicking on Events button
+11/29/2016 04:51:11 PM Quitting
+11/29/2016 04:51:29 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/29/2016 04:51:52 PM TC info: create second event and add map
+11/29/2016 04:52:20 PM starting def with login
+11/29/2016 04:52:20 PM click in LOGIN button
+11/29/2016 04:52:34 PM type username
+11/29/2016 04:52:51 PM type password
+11/29/2016 04:53:09 PM type domain address
+11/29/2016 04:53:46 PM click in Submit button
+11/29/2016 04:54:20 PM Successful login
+11/29/2016 04:54:23 PM clicking on Events button
+11/29/2016 04:54:29 PM Quitting
+11/29/2016 04:55:07 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/29/2016 04:55:36 PM TC info: create second event and add map
+11/29/2016 04:55:43 PM starting def with login
+11/29/2016 04:55:43 PM click in LOGIN button
+11/29/2016 04:56:11 PM Quitting
+11/29/2016 04:56:42 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/29/2016 04:57:02 PM TC info: create second event and add map
+11/29/2016 04:57:09 PM starting def with login
+11/29/2016 04:57:09 PM click in LOGIN button
+11/29/2016 04:57:34 PM Quitting
+11/29/2016 05:07:54 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/29/2016 05:08:26 PM TC info: create second event and add map
+11/29/2016 05:08:33 PM starting def with login
+11/29/2016 05:08:33 PM click in LOGIN button
+11/29/2016 05:08:59 PM Quitting
+11/29/2016 05:12:04 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/29/2016 05:14:01 PM TC info: create second event and add map
+11/29/2016 05:14:07 PM starting def with login
+11/29/2016 05:14:07 PM click in LOGIN button
+11/29/2016 05:14:35 PM Quitting
+11/29/2016 05:15:05 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/29/2016 05:15:22 PM TC info: create second event and add map
+11/29/2016 05:15:29 PM starting def with login
+11/29/2016 05:15:29 PM click in LOGIN button
+11/29/2016 05:15:54 PM Quitting
+11/30/2016 11:14:36 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 11:16:33 AM TC info: create second event and add map
+11/30/2016 11:16:45 AM Your are already login - logging out
+11/30/2016 11:16:53 AM starting def with login
+11/30/2016 11:16:53 AM click in LOGIN button
+11/30/2016 11:17:12 AM type username
+11/30/2016 11:17:28 AM type password
+11/30/2016 11:17:46 AM type domain address
+11/30/2016 11:18:23 AM click in Submit button
+11/30/2016 11:19:22 AM Successful login
+11/30/2016 11:19:25 AM clicking on Events button
+11/30/2016 11:19:29 AM check if Events were opened
+11/30/2016 11:19:35 AM clicking on 'More' button
+11/30/2016 11:20:11 AM clicking on New event button
+11/30/2016 11:20:44 AM choosing Incident type of new event
+11/30/2016 11:20:44 AM filling form to create new event
+11/30/2016 11:20:44 AM input Name
+11/30/2016 11:21:12 AM hide keyboard
+11/30/2016 11:21:14 AM click on severity level field
+11/30/2016 11:21:23 AM choose_severity_lvl4
+11/30/2016 11:21:30 AM scroll down to find element
+11/30/2016 11:21:36 AM Save event
+11/30/2016 11:21:52 AM open previously created Event, Edit and Create mapping data
+11/30/2016 11:21:52 AM open created event
+11/30/2016 11:22:34 AM edit previously created event
+11/30/2016 11:22:44 AM scroll down to find element
+11/30/2016 11:22:57 AM wait for map
+11/30/2016 11:23:07 AM add point into the map
+11/30/2016 11:23:44 AM add line into the map
+11/30/2016 11:24:06 AM Quitting
+11/30/2016 12:07:08 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 12:07:39 PM TC info: create second event and add map
+11/30/2016 12:07:47 PM Your are already login - logging out
+11/30/2016 12:07:55 PM starting def with login
+11/30/2016 12:07:55 PM click in LOGIN button
+11/30/2016 12:08:14 PM type username
+11/30/2016 12:08:31 PM type password
+11/30/2016 12:08:49 PM type domain address
+11/30/2016 12:09:27 PM click in Submit button
+11/30/2016 12:10:27 PM Successful login
+11/30/2016 12:10:30 PM clicking on Events button
+11/30/2016 12:10:34 PM check if Events were opened
+11/30/2016 12:10:41 PM clicking on 'More' button
+11/30/2016 12:11:18 PM clicking on New event button
+11/30/2016 12:11:52 PM choosing Incident type of new event
+11/30/2016 12:11:52 PM filling form to create new event
+11/30/2016 12:11:52 PM input Name
+11/30/2016 12:12:20 PM hide keyboard
+11/30/2016 12:12:22 PM click on severity level field
+11/30/2016 12:12:31 PM choose_severity_lvl4
+11/30/2016 12:12:38 PM scroll down to find element
+11/30/2016 12:12:44 PM Save event
+11/30/2016 12:13:00 PM open previously created Event, Edit and Create mapping data
+11/30/2016 12:13:00 PM open created event
+11/30/2016 12:13:43 PM edit previously created event
+11/30/2016 12:13:53 PM scroll down to find element
+11/30/2016 12:14:06 PM wait for map
+11/30/2016 12:14:16 PM add point into the map
+11/30/2016 12:14:33 PM add line into the map
+11/30/2016 12:14:55 PM add circle into the map
+11/30/2016 12:15:13 PM add polygon into the map
+11/30/2016 12:15:37 PM Save map
+11/30/2016 12:15:45 PM Save event
+11/30/2016 12:15:57 PM Quitting
+11/30/2016 12:20:31 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 12:20:54 PM TC info: create second event and add map
+11/30/2016 12:21:04 PM Your are already login - logging out
+11/30/2016 12:21:12 PM starting def with login
+11/30/2016 12:21:12 PM click in LOGIN button
+11/30/2016 12:21:31 PM type username
+11/30/2016 12:21:48 PM type password
+11/30/2016 12:22:05 PM type domain address
+11/30/2016 12:22:43 PM click in Submit button
+11/30/2016 12:23:43 PM Successful login
+11/30/2016 12:23:46 PM clicking on Events button
+11/30/2016 12:23:51 PM check if Events were opened
+11/30/2016 12:23:56 PM clicking on 'More' button
+11/30/2016 12:24:33 PM clicking on New event button
+11/30/2016 12:25:07 PM choosing Incident type of new event
+11/30/2016 12:25:07 PM filling form to create new event
+11/30/2016 12:25:07 PM input Name
+11/30/2016 12:25:36 PM hide keyboard
+11/30/2016 12:25:37 PM click on severity level field
+11/30/2016 12:25:46 PM choose_severity_lvl4
+11/30/2016 12:25:53 PM scroll down to find element
+11/30/2016 12:25:59 PM Save event
+11/30/2016 12:26:16 PM open previously created Event, Edit and Create mapping data
+11/30/2016 12:26:16 PM open created event
+11/30/2016 12:26:59 PM edit previously created event
+11/30/2016 12:27:12 PM scroll down to find element
+11/30/2016 12:27:24 PM wait for map
+11/30/2016 12:27:34 PM add point into the map
+11/30/2016 12:27:52 PM add line into the map
+11/30/2016 12:28:14 PM add circle into the map
+11/30/2016 12:28:32 PM add polygon into the map
+11/30/2016 12:28:59 PM Save map
+11/30/2016 12:29:07 PM Save event
+11/30/2016 12:29:20 PM Quitting
+11/30/2016 12:30:06 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 12:30:32 PM TC info: create second event and add map
+11/30/2016 12:30:42 PM Your are already login - logging out
+11/30/2016 12:30:50 PM starting def with login
+11/30/2016 12:30:50 PM click in LOGIN button
+11/30/2016 12:31:09 PM type username
+11/30/2016 12:31:26 PM type password
+11/30/2016 12:31:44 PM type domain address
+11/30/2016 12:32:22 PM click in Submit button
+11/30/2016 12:33:22 PM Successful login
+11/30/2016 12:33:25 PM clicking on Events button
+11/30/2016 12:33:29 PM check if Events were opened
+11/30/2016 12:33:36 PM clicking on 'More' button
+11/30/2016 12:34:13 PM clicking on New event button
+11/30/2016 12:34:47 PM choosing Incident type of new event
+11/30/2016 12:34:47 PM filling form to create new event
+11/30/2016 12:34:47 PM input Name
+11/30/2016 12:35:14 PM hide keyboard
+11/30/2016 12:35:16 PM click on severity level field
+11/30/2016 12:35:25 PM choose_severity_lvl4
+11/30/2016 12:35:32 PM scroll down to find element
+11/30/2016 12:35:38 PM Save event
+11/30/2016 12:35:55 PM open previously created Event, Edit and Create mapping data
+11/30/2016 12:35:55 PM open created event
+11/30/2016 12:36:37 PM edit previously created event
+11/30/2016 12:36:47 PM scroll down to find element
+11/30/2016 12:37:00 PM wait for map
+11/30/2016 12:37:10 PM add point into the map
+11/30/2016 12:37:27 PM add line into the map
+11/30/2016 12:37:50 PM add circle into the map
+11/30/2016 12:38:08 PM add polygon into the map
+11/30/2016 12:38:35 PM Save map
+11/30/2016 12:38:43 PM Save event
+11/30/2016 12:38:55 PM Quitting
+11/30/2016 01:15:52 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 01:16:43 PM TC info: create second event and add map
+11/30/2016 01:16:49 PM Your are already login - logging out
+11/30/2016 01:16:57 PM starting def with login
+11/30/2016 01:16:57 PM click in LOGIN button
+11/30/2016 01:17:16 PM type username
+11/30/2016 01:17:33 PM type password
+11/30/2016 01:17:50 PM type domain address
+11/30/2016 01:18:29 PM click in Submit button
+11/30/2016 01:19:29 PM Successful login
+11/30/2016 01:19:32 PM clicking on Events button
+11/30/2016 01:19:36 PM check if Events were opened
+11/30/2016 01:19:42 PM clicking on 'More' button
+11/30/2016 01:20:18 PM clicking on New event button
+11/30/2016 01:20:51 PM choosing Incident type of new event
+11/30/2016 01:20:51 PM filling form to create new event
+11/30/2016 01:20:51 PM input Name
+11/30/2016 01:21:20 PM hide keyboard
+11/30/2016 01:21:21 PM click on severity level field
+11/30/2016 01:21:30 PM choose_severity_lvl4
+11/30/2016 01:21:37 PM scroll down to find element
+11/30/2016 01:21:43 PM Save event
+11/30/2016 01:22:00 PM open previously created Event, Edit and Create mapping data
+11/30/2016 01:22:00 PM open created event
+11/30/2016 01:22:42 PM edit previously created event
+11/30/2016 01:22:52 PM scroll down to find element
+11/30/2016 01:23:05 PM wait for map
+11/30/2016 01:23:15 PM add point into the map
+11/30/2016 01:23:32 PM add line into the map
+11/30/2016 01:23:55 PM add circle into the map
+11/30/2016 01:24:12 PM add polygon into the map
+11/30/2016 01:24:39 PM Save map
+11/30/2016 01:24:48 PM Save event
+11/30/2016 01:25:00 PM Quitting
+11/30/2016 01:27:22 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 01:27:59 PM TC info: create second event and add map
+11/30/2016 01:28:02 PM clicking on Events button
+11/30/2016 01:28:06 PM check if Events were opened
+11/30/2016 01:28:13 PM clicking on 'More' button
+11/30/2016 01:28:49 PM clicking on New event button
+11/30/2016 01:29:23 PM choosing Incident type of new event
+11/30/2016 01:29:23 PM filling form to create new event
+11/30/2016 01:29:23 PM input Name
+11/30/2016 01:29:50 PM hide keyboard
+11/30/2016 01:29:52 PM click on severity level field
+11/30/2016 01:30:01 PM choose_severity_lvl4
+11/30/2016 01:30:08 PM scroll down to find element
+11/30/2016 01:30:14 PM Save event
+11/30/2016 01:30:30 PM open previously created Event, Edit and Create mapping data
+11/30/2016 01:30:30 PM open created event
+11/30/2016 01:31:12 PM edit previously created event
+11/30/2016 01:31:22 PM scroll down to find element
+11/30/2016 01:31:35 PM wait for map
+11/30/2016 01:31:45 PM add point into the map
+11/30/2016 01:32:02 PM add line into the map
+11/30/2016 01:32:24 PM add circle into the map
+11/30/2016 01:32:42 PM add polygon into the map
+11/30/2016 01:33:06 PM Save map
+11/30/2016 01:33:14 PM Save event
+11/30/2016 01:33:26 PM Quitting
+11/30/2016 01:51:01 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 01:51:18 PM TC info: create second event and add map
+11/30/2016 01:51:18 PM starting def with login
+11/30/2016 01:51:18 PM click in LOGIN button
+11/30/2016 01:51:23 PM typing username, password and OCA domain
+11/30/2016 01:51:23 PM type username
+11/30/2016 01:51:30 PM type password
+11/30/2016 01:51:37 PM type domain address
+11/30/2016 01:51:46 PM hide screen keyboard
+11/30/2016 01:51:47 PM click in Submit button
+11/30/2016 01:51:48 PM accept Terms if needed
+11/30/2016 01:52:13 PM Terms are already accepted - Accept button is not present
+11/30/2016 01:52:13 PM check if Notice alert is present and click Ok button
+11/30/2016 01:52:39 PM Notice alert is not present
+11/30/2016 01:52:39 PM Successful login
+11/30/2016 01:52:42 PM clicking on Events button
+11/30/2016 01:52:43 PM check if Events were opened
+11/30/2016 01:52:44 PM clicking on 'More' button
+11/30/2016 01:52:44 PM clicking on New event button
+11/30/2016 01:52:50 PM choosing Incident type of new event
+11/30/2016 01:52:50 PM filling form to create new event
+11/30/2016 01:52:50 PM input Name
+11/30/2016 01:53:01 PM click on severity level field
+11/30/2016 01:53:04 PM choose_severity_lvl4
+11/30/2016 01:53:04 PM click on finished_field
+11/30/2016 01:53:06 PM choose time and date
+11/30/2016 01:53:08 PM scroll down
+11/30/2016 01:53:29 PM Save event
+11/30/2016 01:53:39 PM open previously created Event, Edit and Create mapping data
+11/30/2016 01:53:39 PM open created event
+11/30/2016 01:53:45 PM edit previously created event
+11/30/2016 01:53:52 PM scroll down
+11/30/2016 01:54:15 PM wait for map
+11/30/2016 01:54:25 PM add point into the map
+11/30/2016 01:54:29 PM add line into the map
+11/30/2016 01:54:36 PM add circle into the map
+11/30/2016 01:54:40 PM add polygon into the map
+11/30/2016 01:54:47 PM Save map
+11/30/2016 01:54:52 PM Save event
+11/30/2016 01:54:57 PM Quitting
+11/30/2016 02:38:45 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 02:39:18 PM TC info: crete sub event, set event as primary and after that clear it
+11/30/2016 02:39:45 PM starting def with login
+11/30/2016 02:39:45 PM click in LOGIN button
+11/30/2016 02:39:59 PM type username
+11/30/2016 02:40:15 PM type password
+11/30/2016 02:40:33 PM type domain address
+11/30/2016 02:41:11 PM click in Submit button
+11/30/2016 02:41:47 PM click 'No' for sending notifications on iOS
+11/30/2016 02:42:04 PM Successful login
+11/30/2016 02:42:04 PM clicking on Events button
+11/30/2016 02:42:08 PM check if Events were opened
+11/30/2016 02:42:15 PM clicking on 'More' button
+11/30/2016 02:42:52 PM clicking on New event button
+11/30/2016 02:43:26 PM choosing Incident type of new event
+11/30/2016 02:43:26 PM filling form to create new event
+11/30/2016 02:43:26 PM input Name
+11/30/2016 02:43:52 PM hide keyboard
+11/30/2016 02:43:54 PM click on severity level field
+11/30/2016 02:44:03 PM choose_severity_lvl3
+11/30/2016 02:44:10 PM scroll down to find element
+11/30/2016 02:44:16 PM Save event
+11/30/2016 02:44:28 PM check if Events were opened
+11/30/2016 02:45:04 PM open previously created event
+11/30/2016 02:45:40 PM clicking on 'More' button
+11/30/2016 02:45:46 PM clicking on 'New sub event' button
+11/30/2016 02:45:58 PM choosing Incident type of new event
+11/30/2016 02:45:58 PM input Name for new sub event
+11/30/2016 02:46:22 PM hide keyboard
+11/30/2016 02:46:24 PM click on severity level field
+11/30/2016 02:46:32 PM choose_severity_lvl2
+11/30/2016 02:46:40 PM scroll down to find element
+11/30/2016 02:46:45 PM Save event
+11/30/2016 02:46:57 PM clicking on 'More' button
+11/30/2016 02:47:02 PM clicking on 'Set as primary' button
+11/30/2016 02:47:08 PM go back to main menu
+11/30/2016 02:47:46 PM Quitting
+11/30/2016 03:01:03 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 03:01:26 PM TC info: create second event and add map
+11/30/2016 03:01:29 PM clicking on Events button
+11/30/2016 03:01:38 PM check if Events were opened
+11/30/2016 03:01:45 PM clicking on 'More' button
+11/30/2016 03:02:21 PM clicking on New event button
+11/30/2016 03:02:55 PM choosing Incident type of new event
+11/30/2016 03:02:56 PM filling form to create new event
+11/30/2016 03:02:56 PM input Name
+11/30/2016 03:03:23 PM hide keyboard
+11/30/2016 03:03:25 PM click on severity level field
+11/30/2016 03:03:34 PM choose_severity_lvl4
+11/30/2016 03:03:41 PM scroll down to find element
+11/30/2016 03:03:47 PM Save event
+11/30/2016 03:04:03 PM open previously created Event, Edit and Create mapping data
+11/30/2016 03:04:03 PM open created event
+11/30/2016 03:04:46 PM edit previously created event
+11/30/2016 03:04:56 PM scroll down to find element
+11/30/2016 03:05:31 PM Quitting
+11/30/2016 03:05:49 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 03:06:12 PM TC info: create second event and add map
+11/30/2016 03:06:15 PM clicking on Events button
+11/30/2016 03:06:40 PM Quitting
+11/30/2016 03:26:26 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 03:27:10 PM TC info: create second event and add map
+11/30/2016 03:27:13 PM clicking on Events button
+11/30/2016 03:27:20 PM check if Events were opened
+11/30/2016 03:27:27 PM clicking on 'More' button
+11/30/2016 03:28:04 PM clicking on New event button
+11/30/2016 03:28:38 PM choosing Incident type of new event
+11/30/2016 03:28:38 PM filling form to create new event
+11/30/2016 03:28:38 PM input Name
+11/30/2016 03:29:06 PM hide keyboard
+11/30/2016 03:29:08 PM click on severity level field
+11/30/2016 03:29:17 PM choose_severity_lvl4
+11/30/2016 03:29:24 PM scroll down to find element
+11/30/2016 03:29:29 PM Save event
+11/30/2016 03:29:46 PM open previously created Event, Edit and Create mapping data
+11/30/2016 03:29:46 PM open created event
+11/30/2016 03:30:28 PM edit previously created event
+11/30/2016 03:30:38 PM scroll down to find element
+11/30/2016 03:30:51 PM wait for map
+11/30/2016 03:31:01 PM add point into the map
+11/30/2016 03:31:18 PM add line into the map
+11/30/2016 03:31:42 PM add circle into the map
+11/30/2016 03:31:59 PM add polygon into the map
+11/30/2016 03:32:25 PM Save map
+11/30/2016 03:32:33 PM Save event
+11/30/2016 03:32:45 PM Quitting
+11/30/2016 03:58:47 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 03:59:21 PM TC info: crete sub event, set event as primary and after that clear it
+11/30/2016 03:59:21 PM clicking on Events button
+11/30/2016 03:59:30 PM check if Events were opened
+11/30/2016 04:00:07 PM clicking on 'More' button
+11/30/2016 04:00:37 PM clicking on New event button
+11/30/2016 04:01:10 PM choosing Incident type of new event
+11/30/2016 04:01:10 PM filling form to create new event
+11/30/2016 04:01:10 PM input Name
+11/30/2016 04:01:35 PM hide keyboard
+11/30/2016 04:01:37 PM click on severity level field
+11/30/2016 04:01:46 PM choose_severity_lvl3
+11/30/2016 04:01:53 PM scroll down to find element
+11/30/2016 04:01:58 PM Save event
+11/30/2016 04:02:10 PM check if Events were opened
+11/30/2016 04:02:45 PM open previously created event
+11/30/2016 04:03:20 PM clicking on 'More' button
+11/30/2016 04:03:26 PM clicking on 'New sub event' button
+11/30/2016 04:03:38 PM choosing Incident type of new event
+11/30/2016 04:03:38 PM input Name for new sub event
+11/30/2016 04:04:01 PM hide keyboard
+11/30/2016 04:04:03 PM click on severity level field
+11/30/2016 04:04:11 PM choose_severity_lvl2
+11/30/2016 04:04:18 PM scroll down to find element
+11/30/2016 04:04:23 PM Save event
+11/30/2016 04:04:35 PM clicking on 'More' button
+11/30/2016 04:04:40 PM clicking on 'Set as primary' button
+11/30/2016 04:04:46 PM go back to main menu
+11/30/2016 04:05:23 PM Quitting
+11/30/2016 04:38:28 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 04:38:59 PM TC info: crete sub event, set event as primary and after that clear it
+11/30/2016 04:38:59 PM clicking on Events button
+11/30/2016 04:39:05 PM check if Events were opened
+11/30/2016 04:39:11 PM clicking on 'More' button
+11/30/2016 04:39:48 PM clicking on New event button
+11/30/2016 04:40:22 PM choosing Incident type of new event
+11/30/2016 04:40:22 PM filling form to create new event
+11/30/2016 04:40:22 PM input Name
+11/30/2016 04:40:49 PM hide keyboard
+11/30/2016 04:40:51 PM click on severity level field
+11/30/2016 04:41:00 PM choose_severity_lvl3
+11/30/2016 04:41:07 PM scroll down to find element
+11/30/2016 04:41:16 PM Save event
+11/30/2016 04:41:28 PM check if Events were opened
+11/30/2016 04:42:04 PM open previously created event
+11/30/2016 04:42:39 PM clicking on 'More' button
+11/30/2016 04:42:46 PM clicking on 'New sub event' button
+11/30/2016 04:42:58 PM choosing Incident type of new event
+11/30/2016 04:42:58 PM input Name for new sub event
+11/30/2016 04:43:23 PM hide keyboard
+11/30/2016 04:43:24 PM click on severity level field
+11/30/2016 04:43:33 PM choose_severity_lvl2
+11/30/2016 04:43:40 PM scroll down to find element
+11/30/2016 04:43:46 PM Save event
+11/30/2016 04:43:57 PM clicking on 'More' button
+11/30/2016 04:44:02 PM clicking on 'Set as primary' button
+11/30/2016 04:44:09 PM go back to main menu
+11/30/2016 04:44:49 PM clicking on Events button
+11/30/2016 04:44:51 PM Quitting
+11/30/2016 04:55:14 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 04:55:41 PM TC info: crete sub event, set event as primary and after that clear it
+11/30/2016 04:55:41 PM clicking on Events button
+11/30/2016 04:55:52 PM check if Events were opened
+11/30/2016 04:55:59 PM clicking on 'More' button
+11/30/2016 04:56:36 PM clicking on New event button
+11/30/2016 04:57:10 PM choosing Incident type of new event
+11/30/2016 04:57:10 PM filling form to create new event
+11/30/2016 04:57:10 PM input Name
+11/30/2016 04:57:35 PM hide keyboard
+11/30/2016 04:57:37 PM click on severity level field
+11/30/2016 04:57:46 PM choose_severity_lvl3
+11/30/2016 04:57:53 PM scroll down to find element
+11/30/2016 04:57:59 PM Save event
+11/30/2016 04:58:11 PM check if Events were opened
+11/30/2016 04:58:46 PM open previously created event
+11/30/2016 04:59:22 PM clicking on 'More' button
+11/30/2016 04:59:29 PM clicking on 'New sub event' button
+11/30/2016 04:59:41 PM choosing Incident type of new event
+11/30/2016 04:59:41 PM input Name for new sub event
+11/30/2016 05:00:04 PM hide keyboard
+11/30/2016 05:00:05 PM click on severity level field
+11/30/2016 05:00:14 PM choose_severity_lvl2
+11/30/2016 05:00:21 PM scroll down to find element
+11/30/2016 05:00:27 PM Save event
+11/30/2016 05:00:39 PM clicking on 'More' button
+11/30/2016 05:00:43 PM clicking on 'Set as primary' button
+11/30/2016 05:00:50 PM go back to main menu
+11/30/2016 05:01:30 PM clicking on Events button
+11/30/2016 05:01:32 PM Quitting
+11/30/2016 05:04:37 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 05:05:00 PM TC info: crete sub event, set event as primary and after that clear it
+11/30/2016 05:05:00 PM clicking on Events button
+11/30/2016 05:05:05 PM check if Events were opened
+11/30/2016 05:05:11 PM clicking on 'More' button
+11/30/2016 05:05:47 PM clicking on New event button
+11/30/2016 05:06:20 PM choosing Incident type of new event
+11/30/2016 05:06:20 PM filling form to create new event
+11/30/2016 05:06:20 PM input Name
+11/30/2016 05:06:45 PM hide keyboard
+11/30/2016 05:06:47 PM click on severity level field
+11/30/2016 05:06:55 PM choose_severity_lvl3
+11/30/2016 05:07:02 PM scroll down to find element
+11/30/2016 05:07:08 PM Save event
+11/30/2016 05:07:19 PM check if Events were opened
+11/30/2016 05:07:55 PM open previously created event
+11/30/2016 05:08:30 PM clicking on 'More' button
+11/30/2016 05:08:36 PM clicking on 'New sub event' button
+11/30/2016 05:08:48 PM choosing Incident type of new event
+11/30/2016 05:08:48 PM input Name for new sub event
+11/30/2016 05:09:11 PM hide keyboard
+11/30/2016 05:09:13 PM click on severity level field
+11/30/2016 05:09:21 PM choose_severity_lvl2
+11/30/2016 05:09:28 PM scroll down to find element
+11/30/2016 05:09:34 PM Save event
+11/30/2016 05:09:46 PM clicking on 'More' button
+11/30/2016 05:09:50 PM clicking on 'Set as primary' button
+11/30/2016 05:09:57 PM clicking on 'More' button
+11/30/2016 05:11:08 PM clicking on 'Clear primary event' button
+11/30/2016 05:11:52 PM Quitting
+11/30/2016 06:32:57 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 06:33:35 PM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 06:33:36 PM Could not get IP address for host: localhost

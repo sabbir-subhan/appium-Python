@@ -387,6 +387,7 @@ class TC3android(unittest.TestCase):
         add_line1 = self.driver.find_element(*Map.ADD_LINE1)
         add_line2 = self.driver.find_element(*Map.ADD_LINE2)
         action.tap(add_line1).perform()
+        sleep(3)
         action.tap(add_line2).perform()
         action.tap(add_line2).perform()
 
@@ -406,6 +407,7 @@ class TC3android(unittest.TestCase):
         add_polygon2 = self.driver.find_element(*Map.ADD_POLYGON2)
         action.tap(add_polygon2).perform()
         add_polygon3 = self.driver.find_element(*Map.ADD_POLYGON3)
+        sleep(3)
         action.tap(add_polygon3).perform()
         action.tap(add_polygon3).perform()
         # self.driver.save_screenshot("screen.png")

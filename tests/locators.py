@@ -19,8 +19,8 @@ class LoginScreen(object):
     SUBMIT_BUTTON_ios = (By.XPATH, '//UIAWebView[1]/UIAButton[@name="Submit"]')
 
     # Notification alert: "OCA now supports sending 'App Messages' to your device as notifications."
-    NOTIFICATION_ABOUT_SENDING_MESSAGES_ios = (By.NAME, "OCA now supports "
-                                                        "sending 'App Messages' to your device as notifications.")
+    NOTIFICATION_ABOUT_SENDING_MESSAGES_ios = (By.XPATH, '//UIAWebView[1]/UIAStaticText[@name[contains(., '
+                                                         '"OCA now supports ")]]')
 
     # "No" button for sending notifications on iOS
     NO_FOR_SENDING_NOTIFICATIONS_ON_ios = (By.XPATH, '//UIAWebView[1]/UIALink[@name="No"]')
@@ -132,7 +132,10 @@ class EventsScreen(object):
     GO_BACK_TO_MAIN_MENU_ARROW_BUTTON = (By.XPATH, ".//android.webkit.WebView[@index='0']"
                                                    "//android.view.View[@index='0']"
                                                    "//android.view.View[@index='0']")
-    GO_BACK_TO_MAIN_MENU_ARROW_BUTTON_ios = (By.XPATH, '//UIAWebView[1]/UIALink[1]')
+    GO_BACK_TO_MAIN_MENU_ARROW_BUTTON_ios = (By.XPATH, '//UIAApplication[1]'
+                                                       '/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[1]')
+    HAMBURGER_FOR_MAIN_MENU_ios = (By.XPATH, '//UIAApplication[1]'
+                                             '/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[3]')
 
 
 class TypesOfEventsScreen(object):

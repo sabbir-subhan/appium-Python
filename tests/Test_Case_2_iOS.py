@@ -43,6 +43,21 @@ class TC2ios(unittest.TestCase):
     def test1(self):
 
         sleep(5)
+
+        def notification():
+            try:
+                notification_msg_on_ios = self.driver.find_element(*LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+                if notification_msg_on_ios.is_displayed():
+                    logging.info("click 'No' for sending notifications on iOS")
+                    notification_msg_on_ios = self.driver.find_element(
+                        *LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+                    self.assertIsNotNone(notification_msg_on_ios)
+                    self.driver.find_element(*LoginScreen.NO_FOR_SENDING_NOTIFICATIONS_ON_ios).click()
+                else:
+                    pass
+            except NoSuchElementException:
+                pass
+
         try:
             logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
             if logout_button_ios.is_displayed():

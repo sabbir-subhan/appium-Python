@@ -35,6 +35,21 @@ class TC3ios(unittest.TestCase):
     def login(self):
 
         sleep(2)
+
+        def notification():
+            try:
+                notification_msg_on_ios = self.driver.find_element(*LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+                if notification_msg_on_ios.is_displayed():
+                    logging.info("click 'No' for sending notifications on iOS")
+                    notification_msg_on_ios = self.driver.find_element(
+                        *LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+                    self.assertIsNotNone(notification_msg_on_ios)
+                    self.driver.find_element(*LoginScreen.NO_FOR_SENDING_NOTIFICATIONS_ON_ios).click()
+                else:
+                    pass
+            except NoSuchElementException:
+                pass
+
         try:
             logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
             if logout_button_ios.is_displayed():
@@ -90,18 +105,9 @@ class TC3ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
-        try:
-            notification_msg_on_ios = self.driver.find_element(*LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
-            if notification_msg_on_ios.is_displayed():
-                logging.info("click 'No' for sending notifications on iOS")
-                notification_msg_on_ios = self.driver.find_element(
-                    *LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
-                self.assertIsNotNone(notification_msg_on_ios)
-                self.driver.find_element(*LoginScreen.NO_FOR_SENDING_NOTIFICATIONS_ON_ios).click()
-            else:
-                pass
-        except NoSuchElementException:
-            pass
+        # click "No" for sending notification massages - device stores info about it
+        notification()
+
 
         # THERE IS PROBLEM WITH DISPLAYING ALERT ON IOS - it's visible only for few seconds
         # logging.info("check if Notice alert, about expiring password is present and click Ok button")
@@ -273,47 +279,47 @@ class TC3ios(unittest.TestCase):
 
         #self.login()
 
-        #sleep(3)
-        # logging.info("clicking on Events button")
-        # EVENTS_BUTTON_ios = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON_ios).click()
-        #
-        # logging.info("check if Events were opened")
-        # events_header = self.driver.find_element(*EventsScreen.EVENTS_HEADER_ios)
-        # self.assertIsNotNone(events_header)
-        #
-        # logging.info("clicking on 'More' button")
-        # more_button = self.driver.find_element(*EventsScreen.MORE_BUTTON_ios).click()
-        #
-        # logging.info("clicking on New event button")
-        # new_event_button = self.driver.find_element(*EventsScreen.NEW_EVENT_BUTTON_ios).click()
-        # sleep(3)
-        #
-        # try:
-        #     event_type = self.driver.find_element(*TypesOfEventsScreen.INCIDENT_TYPE_OF_EVENT_ios).click()
-        #     logging.info("choosing Incident type of new event")
-        # except NoSuchElementException:
-        #     pass
-        #
-        # logging.info("filling form to create new event")
-        # logging.info("input Name")
-        # self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).click()
-        # self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).send_keys(
-        #     "Test Appium iOS - second event")
-        # logging.info("hide keyboard")
-        # self.driver.hide_keyboard(key_name="Hide keyboard")
-        #
-        # logging.info("click on severity level field")
-        # severity_level_selector = self.driver.find_element(*EventEditScreen.SEVERITY_LEVEL_SELECTOR_ios).click()
-        # sleep(2)
-        #
-        # logging.info("choose_severity_lvl4")
-        # choose_severity_lvl = self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL4_ios).click()
-        #
-        # self.scroll_down()
-        #
-        # logging.info("Save event")
-        # save_button = self.driver.find_element(*EventEditScreen.SAVE_BUTTON_ios).click()
-        # sleep(10)
+        sleep(3)
+        logging.info("clicking on Events button")
+        EVENTS_BUTTON_ios = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON_ios).click()
+
+        logging.info("check if Events were opened")
+        events_header = self.driver.find_element(*EventsScreen.EVENTS_HEADER_ios)
+        self.assertIsNotNone(events_header)
+
+        logging.info("clicking on 'More' button")
+        more_button = self.driver.find_element(*EventsScreen.MORE_BUTTON_ios).click()
+
+        logging.info("clicking on New event button")
+        new_event_button = self.driver.find_element(*EventsScreen.NEW_EVENT_BUTTON_ios).click()
+        sleep(3)
+
+        try:
+            event_type = self.driver.find_element(*TypesOfEventsScreen.INCIDENT_TYPE_OF_EVENT_ios).click()
+            logging.info("choosing Incident type of new event")
+        except NoSuchElementException:
+            pass
+
+        logging.info("filling form to create new event")
+        logging.info("input Name")
+        self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).click()
+        self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).send_keys(
+            "Test Appium iOS - second event")
+        logging.info("hide keyboard")
+        self.driver.hide_keyboard(key_name="Hide keyboard")
+
+        logging.info("click on severity level field")
+        severity_level_selector = self.driver.find_element(*EventEditScreen.SEVERITY_LEVEL_SELECTOR_ios).click()
+        sleep(2)
+
+        logging.info("choose_severity_lvl4")
+        choose_severity_lvl = self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL4_ios).click()
+
+        self.scroll_down()
+
+        logging.info("Save event")
+        save_button = self.driver.find_element(*EventEditScreen.SAVE_BUTTON_ios).click()
+        sleep(10)
 
         logging.info("open previously created Event, Edit and Create mapping data")
         logging.info("open created event")
@@ -326,7 +332,9 @@ class TC3ios(unittest.TestCase):
 
         self.scroll_down()
 
-        create_mapping_data_button = self.driver.find_element(*EventEditScreen.CREATE_MAPPING_DATA_ios).click()
+        create_mapping_data_button = self.driver.find_element(*EventEditScreen.CREATE_MAPPING_DATA_ios)
+        self.assertIsNotNone(create_mapping_data_button, "Button for creating map data is not present")
+        create_mapping_data_button.click()
         logging.info("wait for map")
         sleep(10)
 
@@ -336,38 +344,47 @@ class TC3ios(unittest.TestCase):
         tool_button.click()
         point_button = self.driver.find_element(*Map.POINT_BUTTON_ios).click()
         point_default_button = self.driver.find_element(*Map.DEFAULT_BUTTON_ios).click()
-        add_point_on_map = self.driver.find_element(*Map.ADD_POINT_INTO_MAP_ios)
-        action = TouchAction(self.driver)
-        action.tap(add_point_on_map).perform()
+
+        # appium cannot click/tap in elements on the map, because attribute "visible" is false
+        # add_point_on_map = self.driver.find_element(*Map.ADD_POINT_INTO_MAP_ios)
+        positions_for_point = [(283, 457)]
+        self.driver.tap(positions_for_point)
 
         logging.info("add line into the map")
         tool_button = self.driver.find_element(*Map.TOOL_BUTTON_ios).click()
         line_button = self.driver.find_element(*Map.LINE_BUTTON_ios).click()
         line_default_button = self.driver.find_element(*Map.DEFAULT_BUTTON_ios).click()
-        add_line_on_map1 = self.driver.find_element(*Map.ADD_LINE1_ios)
-        action.tap(add_line_on_map1).perform()
-        add_line_on_map2 = self.driver.find_element(*Map.ADD_LINE2_ios)
-        action.tap(add_line_on_map2).perform()
-        action.tap(add_line_on_map2).perform()
+        # add_line_on_map1 = self.driver.find_element(*Map.ADD_LINE1_ios)
+        # add_line_on_map2 = self.driver.find_element(*Map.ADD_LINE2_ios)
+        # positions_for_line1 = [(290, 440)]
+        # self.driver.tap(positions_for_line1)
+        # positions_for_line2 = [(340, 470)]
+        # self.driver.tap(positions_for_line2, 1)
+        # self.driver.tap(positions_for_line2, 1)
 
         logging.info("add circle into the map")
         tool_button = self.driver.find_element(*Map.TOOL_BUTTON_ios).click()
         circle_button = self.driver.find_element(*Map.CIRCLE_BUTTON_ios).click()
         circle_default_button = self.driver.find_element(*Map.DEFAULT_BUTTON_ios).click()
-        add_circle_on_map = self.driver.find_element(*Map.ADD_CIRCLE_INTO_MAP_ios)
-        action.tap(add_circle_on_map).perform()
+        # add_circle_on_map = self.driver.find_element(*Map.ADD_CIRCLE_INTO_MAP_ios)
+        positions_for_circle = [(310, 360)]
+        self.driver.tap(positions_for_circle)
 
         logging.info("add polygon into the map")
         tool_button = self.driver.find_element(*Map.TOOL_BUTTON_ios).click()
         polygon_button = self.driver.find_element(*Map.POLYGON_BUTTON_ios).click()
         polygon_default_button = self.driver.find_element(*Map.DEFAULT_BUTTON_ios).click()
-        add_polygon1 = self.driver.find_element(*Map.ADD_POLYGON1_ios)
-        action.tap(add_polygon1).perform()
-        add_polygon2 = self.driver.find_element(*Map.ADD_POLYGON2_ios)
-        action.tap(add_polygon2).perform()
-        add_polygon3 = self.driver.find_element(*Map.ADD_POLYGON3_ios)
-        action.tap(add_polygon3).perform()
-        action.tap(add_polygon3).perform()
+        # add_polygon1 = self.driver.find_element(*Map.ADD_POLYGON1_ios)
+        # add_polygon2 = self.driver.find_element(*Map.ADD_POLYGON2_ios)
+        # add_polygon3 = self.driver.find_element(*Map.ADD_POLYGON3_ios)
+        # positions_for_polygon1 = [(270, 350)]
+        # self.driver.tap(positions_for_polygon1)
+        # positions_for_polygon2 = [(240, 330)]
+        # self.driver.tap(positions_for_polygon2)
+        # positions_for_polygon3 = [(100, 300)]
+        # self.driver.tap(positions_for_polygon3, 1)
+        # self.driver.tap(positions_for_polygon3, 1)
+
         # self.driver.save_screenshot("screen.png")
 
         logging.info("Save map")
@@ -380,7 +397,7 @@ class TC3ios(unittest.TestCase):
     def test3(self):
         logging.info("TC info: crete sub event, set event as primary and after that clear it")
 
-        self.login()
+        #self.login()
 
         # sleep(3)
         logging.info("clicking on Events button")
@@ -483,14 +500,17 @@ class TC3ios(unittest.TestCase):
         sleep(2)
 
         logging.info("go back to main menu")
-        arrow_back = self.driver.find_element(*EventsScreen.GO_BACK_TO_MAIN_MENU_ARROW_BUTTON_ios).click()
-        #sleep(2)
+        hamburger_button = self.driver.find_element(*EventsScreen.HAMBURGER_FOR_MAIN_MENU_ios)
+        self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
+        positions_for_hamburger_button = [(10, 20)]
+        self.driver.tap(positions_for_hamburger_button)
+        sleep(2)
 
         logging.info("clicking on Events button")
-        EVENTS_BUTTON_ios = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON_ios).click()
+        events_button_ios.click()
 
         logging.info("check if Events were opened")
-        events_header = self.driver.find_element(*EventsScreen.EVENTS_HEADER_ios)
+        #events_header = self.driver.find_element(*EventsScreen.EVENTS_HEADER_ios)
         self.assertIsNotNone(events_header)
 
         logging.info("clicking on 'More' button")
@@ -504,7 +524,6 @@ class TC3ios(unittest.TestCase):
         notification = self.driver.find_element(*EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED_ios)
         self.assertIsNotNone(notification)
 
-        sleep(5)
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(TC3ios)

@@ -652,3 +652,79 @@
 11/25/2016 04:08:33 PM click in Submit button
 11/25/2016 04:09:09 PM Successful login
 11/25/2016 04:09:09 PM Quitting
+11/30/2016 09:31:47 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 09:32:16 AM click in LOGIN button
+11/30/2016 09:32:42 AM Quitting
+11/30/2016 09:33:46 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 09:34:14 AM click in LOGIN button
+11/30/2016 09:34:39 AM Quitting
+11/30/2016 10:08:10 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 10:08:59 AM click in LOGIN button
+11/30/2016 10:09:25 AM Quitting
+11/30/2016 10:12:21 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 10:13:17 AM click in LOGIN button
+11/30/2016 10:13:42 AM Quitting
+11/30/2016 10:15:36 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 10:17:43 AM click in LOGIN button
+11/30/2016 10:18:11 AM Quitting
+11/30/2016 10:19:17 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 10:19:57 AM click in LOGIN button
+11/30/2016 10:20:23 AM Quitting
+11/30/2016 10:23:12 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 10:23:46 AM click in LOGIN button
+11/30/2016 10:24:12 AM Quitting
+11/30/2016 10:25:47 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 10:26:15 AM click 'No' for sending notifications on iOS
+11/30/2016 10:26:29 AM Your are already login - logging out
+11/30/2016 10:26:40 AM click in LOGIN button
+11/30/2016 10:26:58 AM type username
+11/30/2016 10:27:15 AM type password
+11/30/2016 10:27:33 AM type domain address
+11/30/2016 10:28:10 AM click in Submit button
+11/30/2016 10:29:12 AM Successful login
+11/30/2016 10:29:12 AM Quitting
+11/30/2016 10:31:53 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 10:32:30 AM Your are already login - logging out
+11/30/2016 10:32:41 AM click in LOGIN button
+11/30/2016 10:32:58 AM type username
+11/30/2016 10:33:15 AM type password
+11/30/2016 10:33:33 AM type domain address
+11/30/2016 10:34:11 AM click in Submit button
+11/30/2016 10:35:11 AM Successful login
+11/30/2016 10:35:11 AM Quitting
+11/30/2016 10:43:37 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 10:44:19 AM Your are already login - logging out
+11/30/2016 10:44:30 AM click in LOGIN button
+11/30/2016 10:44:46 AM type username
+11/30/2016 10:45:04 AM Quitting
+11/30/2016 10:45:15 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 10:51:16 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 10:52:17 AM click in LOGIN button
+11/30/2016 10:52:30 AM type username
+11/30/2016 10:52:47 AM type password
+11/30/2016 10:53:05 AM type domain address
+11/30/2016 10:53:42 AM click in Submit button
+11/30/2016 10:54:17 AM click 'No' for sending notifications on iOS
+11/30/2016 10:54:36 AM Successful login
+11/30/2016 10:54:36 AM Quitting
+11/30/2016 10:57:52 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 10:58:31 AM Your are already login - logging out
+11/30/2016 10:58:42 AM click in LOGIN button
+11/30/2016 10:58:59 AM type username
+11/30/2016 10:59:15 AM type password
+11/30/2016 10:59:32 AM type domain address
+11/30/2016 11:00:10 AM click in Submit button
+11/30/2016 11:00:32 AM Accepting terms and conditions
+11/30/2016 11:01:12 AM Successful login
+11/30/2016 11:01:12 AM Quitting
+11/30/2016 11:02:31 AM WebDriver request initiated. Waiting for response, this may take a while.
+11/30/2016 11:03:39 AM click in LOGIN button
+11/30/2016 11:03:52 AM type username
+11/30/2016 11:04:09 AM type password
+11/30/2016 11:04:25 AM type domain address
+11/30/2016 11:05:03 AM click in Submit button
+11/30/2016 11:05:25 AM Accepting terms and conditions
+11/30/2016 11:05:40 AM click 'No' for sending notifications on iOS
+11/30/2016 11:05:54 AM Successful login
+11/30/2016 11:05:54 AM Quitting
+11/30/2016 06:49:58 PM WebDriver request initiated. Waiting for response, this may take a while.
