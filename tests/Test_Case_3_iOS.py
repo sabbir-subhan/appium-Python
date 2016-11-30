@@ -499,6 +499,7 @@ class TC3ios(unittest.TestCase):
         set_as_primary_button = self.driver.find_element(*EventDetailsScreen.SET_AS_PRIMARY_BUTTON_ios).click()
         sleep(2)
 
+        # NEED SOME FIX
         logging.info("go back to main menu")
         hamburger_button = self.driver.find_element(*EventsScreen.HAMBURGER_FOR_MAIN_MENU_ios)
         self.assertIsNotNone(hamburger_button, "Hamburger button is not present")

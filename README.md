@@ -8,22 +8,26 @@ SOFT NEEDED:
 - Appium app from official website
 - PyCharm - for running tests
 
+
 for OSX:
+
 - all above plus
 - xcode 7.3 (version 8 is not supported by appium)
 - node
 - npm
 - brew
 - brew install libimobiledevice
+
 need udid from real device - open iTunes with connected device and click on serial number
 iOS version and device name for "desire_capabilities.py"
 in appium yous need to provide path to app - to get app file you need to build it in xcode
 
 
 
--- Appium in CLI:
-npm install -g appium
-npm install wd
+Appium in CLI:
+
+- npm install -g appium
+- npm install wd
 appium -p 4723 -bp 5724 --session-override --log-level debug
 
 
@@ -39,6 +43,7 @@ CONFIGURING ANDROID DEVICE:
 
 
 PULLING APK FILE FROM ANDROID DEVICE:
+(You can use app file from repo "com.noggin.oca.apk")
 
 first - install app from google store
 next open terminal and use:
@@ -86,4 +91,4 @@ issues:
 - Test Case 2 is not working correctly because there is bug in OCA mobile app = alerts are not visible after login
 - some elements have attribute visible: false and appium is unable to interact with those elements for example map
 - for some reason test sometime fail to start in first run, but after running it again it is working correctly 
-
+- Test Case 3 - test 3 --still need some fix with "hamburger button"
