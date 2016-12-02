@@ -47,8 +47,8 @@ class DesiredCapabilities(object):
         "platformName": "iOS",
         "platformVersion": "9.3",
         "deviceName": "iPad mini",
-        "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData/"
-                    "OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphonesimulator/OCA.app"),
+        "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData"
+                    "/OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphoneos/OCA.app"),
         "appPackage": "com.noggin.oca",
         "appActivity": "com.noggin.oca.OCApp",
         "newCommandTimeout": "600",
@@ -83,9 +83,9 @@ class DesiredCapabilities(object):
         # iPhone 6s simulator with iOS 9.3
         "platformName": "iOS",
         "platformVersion": "9.3",
-        "deviceName": "iPhone 6s",
-        "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData/"
-                    "OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphonesimulator/OCA.app"),
+        "deviceName": "iPhone 6",
+        "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData"
+                    "/OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphonesimulator/OCA.app"),
         "appPackage": "com.noggin.oca",
         "appActivity": "com.noggin.oca.OCApp",
         "newCommandTimeout": "600"

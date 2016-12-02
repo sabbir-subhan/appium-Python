@@ -108,7 +108,6 @@ class TC3ios(unittest.TestCase):
         # click "No" for sending notification massages - device stores info about it
         notification()
 
-
         # THERE IS PROBLEM WITH DISPLAYING ALERT ON IOS - it's visible only for few seconds
         # logging.info("check if Notice alert, about expiring password is present and click Ok button")
         # try:
@@ -277,7 +276,7 @@ class TC3ios(unittest.TestCase):
     def test2(self):
         logging.info("TC info: create second event and add map")
 
-        #self.login()
+        self.login()
 
         sleep(3)
         logging.info("clicking on Events button")
@@ -335,6 +334,14 @@ class TC3ios(unittest.TestCase):
         create_mapping_data_button = self.driver.find_element(*EventEditScreen.CREATE_MAPPING_DATA_ios)
         self.assertIsNotNone(create_mapping_data_button, "Button for creating map data is not present")
         create_mapping_data_button.click()
+
+        button_allow_location = self.driver.find_element(*Map.BUTTON_ALLOW_LOCATION_ios)
+        if button_allow_location.is_displayed():
+            logging.info("Accept using location - device will store that for later use")
+            button_allow_location.click()
+        else:
+            pass
+
         logging.info("wait for map")
         sleep(10)
 
@@ -399,7 +406,7 @@ class TC3ios(unittest.TestCase):
 
         #self.login()
 
-        # sleep(3)
+        sleep(3)
         logging.info("clicking on Events button")
         events_button_ios = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON_ios)
         self.assertIsNotNone(events_button_ios, "Events button is not present")
@@ -449,7 +456,7 @@ class TC3ios(unittest.TestCase):
 
         logging.info("open previously created event")
         created_event = self.driver.find_element(*EventsScreen.CREATED_EVENT_3_ios).click()
-        sleep(5)
+        sleep(6)
 
         logging.info("clicking on 'More' button")
         more_button = self.driver.find_element(*EventsScreen.MORE_BUTTON_ios)
@@ -499,19 +506,22 @@ class TC3ios(unittest.TestCase):
         set_as_primary_button = self.driver.find_element(*EventDetailsScreen.SET_AS_PRIMARY_BUTTON_ios).click()
         sleep(2)
 
-        # NEED SOME FIX
         logging.info("go back to main menu")
+        sleep(2)
         hamburger_button = self.driver.find_element(*EventsScreen.HAMBURGER_FOR_MAIN_MENU_ios)
         self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
-        positions_for_hamburger_button = [(10, 20)]
+        # it cannot be clicked because attribute visible is "false"
+        # hamburger_button.click()
+        positions_for_hamburger_button = [(729, 23)]
         self.driver.tap(positions_for_hamburger_button)
         sleep(2)
 
         logging.info("clicking on Events button")
+        events_button_ios = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON_ios)
+        self.assertIsNotNone(events_button_ios)
         events_button_ios.click()
 
         logging.info("check if Events were opened")
-        #events_header = self.driver.find_element(*EventsScreen.EVENTS_HEADER_ios)
         self.assertIsNotNone(events_header)
 
         logging.info("clicking on 'More' button")

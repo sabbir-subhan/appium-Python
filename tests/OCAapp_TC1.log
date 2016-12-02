@@ -735,3 +735,73 @@
 11/30/2016 07:22:22 PM WebDriver request initiated. Waiting for response, this may take a while.
 11/30/2016 07:32:08 PM WebDriver request initiated. Waiting for response, this may take a while.
 11/30/2016 07:56:16 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 11:54:04 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 11:54:53 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 11:58:56 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 11:58:56 AM Could not get IP address for host: localhost
+12/02/2016 11:59:14 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 11:59:14 AM Could not get IP address for host: localhost
+12/02/2016 12:00:00 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 12:02:43 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 12:02:43 PM Could not get IP address for host: localhost
+12/02/2016 12:03:31 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 12:31:43 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 12:31:55 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 12:33:30 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 12:35:20 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 01:31:35 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 01:32:41 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 01:32:41 PM Could not get IP address for host: localhost
+12/02/2016 01:33:01 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 01:33:53 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 01:41:58 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 01:43:20 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 01:43:35 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:17:05 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:17:15 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:17:39 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:18:28 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:19:36 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:25:07 PM click in LOGIN button
+12/02/2016 02:25:22 PM type username
+12/02/2016 02:25:39 PM type password
+12/02/2016 02:25:56 PM type domain address
+12/02/2016 02:26:26 PM hide screen keyboard
+12/02/2016 02:26:30 PM click in Submit button
+12/02/2016 02:27:03 PM click 'No' for sending notifications on iOS
+12/02/2016 02:27:13 PM Successful login
+12/02/2016 02:27:13 PM Quitting
+12/02/2016 02:33:35 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:33:43 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:33:55 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:34:23 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:34:23 PM Could not get IP address for host: localhost
+12/02/2016 02:34:27 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:34:27 PM Could not get IP address for host: localhost
+12/02/2016 02:34:30 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:35:51 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:36:24 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:37:35 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:37:57 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:38:20 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:41:31 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:42:38 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:44:01 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:45:18 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:47:06 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:47:06 PM Could not get IP address for host: localhost
+12/02/2016 02:47:27 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:52:03 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:53:42 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 02:53:42 PM Could not get IP address for host: localhost
+12/02/2016 02:53:49 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 03:16:13 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 03:19:48 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/02/2016 03:20:52 PM click in LOGIN button
+12/02/2016 03:21:06 PM type username
+12/02/2016 03:21:23 PM type password
+12/02/2016 03:21:40 PM type domain address
+12/02/2016 03:22:19 PM click in Submit button
+12/02/2016 03:22:55 PM click 'No' for sending notifications on iOS
+12/02/2016 03:23:14 PM Successful login
+12/02/2016 03:23:14 PM Quitting

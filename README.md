@@ -6,19 +6,27 @@ SOFT NEEDED:
 - Selenium  (pip install -U selenium)
 - Appium client for python  (pip install Appium-Python-Client)
 - Appium app from official website
-- PyCharm - for running tests
+- PyCharm - for opening and running tests (also could be run from terminal)
 
 
-for OSX:
+for OSX all above plus:
 
-- all above plus
-- xcode 7.3 (version 8 is not supported by appium)
+- xcode 8.1 (version 8 is not supported by appium but brew need version 8.1 to install libimobiledevice - so install xcode 8.1 froma appstore)
 - node
 - npm
 - brew
 - brew install libimobiledevice
+- brew install ideviceinstaller
+- rename xcode - applications - xcode -- rename to: xcode8
+- download xcode 7.3 and install - open appium and add path to xcode 7.3
 
-need udid from real device - open iTunes with connected device and click on serial number
+You probably also need to use:
+
+- sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer/
+- sudo chmod -R 777 /var/db/lockdown/
+
+
+need UDID from real device - open iTunes with connected device and click on serial number
 iOS version and device name for "desire_capabilities.py"
 in appium yous need to provide path to app - to get app file you need to build it in xcode
 
@@ -45,33 +53,38 @@ CONFIGURING ANDROID DEVICE:
 PULLING APK FILE FROM ANDROID DEVICE:
 (You can use app file from repo "com.noggin.oca.apk")
 
-first - install app from google store
+- first - install app from google store
+
 next open terminal and use:
 
-adb devices
-adb shell pm list packages
-adb shell pm path com.noggin.
-adb pull /data/app/com.noggin.oca.apk
-aapt dump badging com.noggin.oca.apk
+- adb devices
+- adb shell pm list packages
+- adb shell pm path com.noggin.
+- adb pull /data/app/com.noggin.oca.apk
+- aapt dump badging com.noggin.oca.apk
 
 finding app activity through adb - appActivity:
-android adb devices
-adb shell
-dumpsys window windows | grep -E ‘mCurrentFocus|mFocusedApp’
-(app need to be open on device)
+- android adb devices
+- adb shell
+- dumpsys window windows | grep -E ‘mCurrentFocus|mFocusedApp’
+ (app need to be open on device)
 
 
 
 BUILDING .APP FILE ON OSX:
 
-build app through cordova
-build app through xcode
-on real device, first You need to run app from xcode - it will install it on the device (You have to TRUST app in General - Device management)
+- edit config.xml - change "id" for example to "com.noggin.oca$YOUR_USER_NAME"
+- build app through cordova
+- enable developer mode on device
+- open project in xcode and change Bundle Identifier accordingly to "id" above
+- build app through xcode (7.3)
+- on real device, first You need to run app from xcode - it will install it on the device (You have to TRUST app in General - Device management)
 
 
 STARTING APPIUM:
+
 - provide paths for android sdk and xcode
-- provide path to app file (android - .apk file, ios - .app file from xcode)
+- provide path to app file (android - .apk file, ios - .app file from xcode(xcode build the app file for example in /Users/$USER/Library/Developer/Xcode/DerivedData/))
 - for iOS provide BundleID from xcode, check "Force device", type device name and check "UDID" (search for it in iTunes)
 
 
@@ -79,6 +92,7 @@ file desired_capabilities.py need to be updated accordingly to used device:
 - it contains names of devices
 - UDDID
 - OS version and name
+- paths to .apk and .app files
 
 to use device defined in desired_capabilities.py You need to open test case and change line:
 "desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad" for example to:
@@ -90,5 +104,5 @@ issues:
 
 - Test Case 2 is not working correctly because there is bug in OCA mobile app = alerts are not visible after login
 - some elements have attribute visible: false and appium is unable to interact with those elements for example map
-- for some reason test sometime fail to start in first run, but after running it again it is working correctly 
+- for some reason test sometimes fail to start on the first run, but after running it again it is working correctly 
 - Test Case 3 - test 3 --still need some fix with "hamburger button"

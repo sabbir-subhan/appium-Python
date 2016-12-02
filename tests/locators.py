@@ -126,16 +126,17 @@ class EventsScreen(object):
     CREATED_EVENT_3 = (By.XPATH, './/android.view.View[@content-desc[contains(., "Test to create sub event")]]')
     CREATED_EVENT_3_ios = (By.XPATH, '//UIALink[@name[contains(., "iOS to create sub")]]')
     CLEAR_PRIMARY_EVENT_BUTTON = (By.XPATH, './/android.view.View[@content-desc[contains(., "Clear primary event")]]')
-    CLEAR_PRIMARY_EVENT_BUTTON_ios = (By.XPATH, '//UIALink[@name[contains(., "Clear primary event")]]')
+    CLEAR_PRIMARY_EVENT_BUTTON_ios = (By.XPATH, '//UIAWebView[1]/UIAStaticText[@name'
+                                                '[contains(., "Clear primary event")]]')
     NOTIFICATION_PRIMARY_EVENT_CLEARED = (By.XPATH, './/android.view.View[@content-desc="Primary event cleared"]')
-    NOTIFICATION_PRIMARY_EVENT_CLEARED_ios = (By.XPATH, '')
+    NOTIFICATION_PRIMARY_EVENT_CLEARED_ios = (By.XPATH, '//UIAWebView[1]/UIAStaticText[@name="Primary event cleared"]')
     GO_BACK_TO_MAIN_MENU_ARROW_BUTTON = (By.XPATH, ".//android.webkit.WebView[@index='0']"
                                                    "//android.view.View[@index='0']"
                                                    "//android.view.View[@index='0']")
     GO_BACK_TO_MAIN_MENU_ARROW_BUTTON_ios = (By.XPATH, '//UIAApplication[1]'
                                                        '/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[1]')
-    HAMBURGER_FOR_MAIN_MENU_ios = (By.XPATH, '//UIAApplication[1]'
-                                             '/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[3]')
+    HAMBURGER_FOR_MAIN_MENU_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
+                                             '/UIAWebView[1]/UIALink[3]/UIAStaticText[1]')
 
 
 class TypesOfEventsScreen(object):
@@ -245,6 +246,8 @@ class Map(object):
     ADD_POLYGON3_ios = (By.XPATH, '//UIAWebView[1]/UIAImage[18]')
     SAVE_MAP_BUTTON = (By.XPATH, ".//android.widget.Button[@content-desc='Save']")
     SAVE_MAP_BUTTON_ios = (By.XPATH, '//UIAButton[@name[contains(., "Save")]]')
+    BUTTON_ALLOW_LOCATION_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]'
+                                           '/UIACollectionCell[2]/UIAButton[@name="Allow"]')
 
 
 class iOSkeyboard(object):
