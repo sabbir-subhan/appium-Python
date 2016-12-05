@@ -143,6 +143,8 @@ class TypesOfEventsScreen(object):
     """A class for Type of Events screen locators - first screen after creating new event with types of events."""
     INCIDENT_TYPE_OF_EVENT = (By.XPATH, './/android.view.View[@content-desc[contains(., "Incident")]]')
     INCIDENT_TYPE_OF_EVENT_ios = (By.XPATH, '//UIAWebView[1]/UIALink[@name[contains(., "Incident")]]')
+    EVENT_FOR_ON_LOAD_SAVE_ios = (By.XPATH, '//UIAWebView[1]/UIALink[@name[contains(., "event_for_on_load")]]')
+    EVENT_FOR_CHOOSER_FIELDS_ios = (By.XPATH, '//UIAWebView[1]/UIALink[@name[contains(., "event_for_chooser")]]')
 
 
 class EventEditScreen(object):
@@ -198,6 +200,26 @@ class EventEditScreen(object):
     EDIT_MAPPING_DATA = (By.XPATH, ".//android.view.View[@content-desc[contains(., 'Edit mapping data')]]")
     EDIT_MAPPING_DATA_ios = (By.XPATH, "//UIALink[@name[contains(., 'Create mapping data')]]")
     ELEMENT_TO_SCROLL_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAImage[1]')
+    SEQUENCE_ONLOAD_HEADER_ios = (By.XPATH, '//UIAStaticText[@name="sequence_onload"]')
+    SEQUENCE_ONLOAD_VALUE_ios = (By.XPATH, '//UIAStaticText[@value="test on load"]')
+    SEQUENCE_ONSAVE_HEADER_ios = (By.XPATH, '//UIAStaticText[@name="sequence_onsave"]')
+    SEQUENCE_ONSAVE_VALUE_ios = (By.XPATH, '//UIAStaticText[@value="(auto)"]')
+    NEW_OPTION_LIST_HEADER_ios = (By.XPATH, '//UIAStaticText[@name="New option list"]')
+    OPTION_LIST_VALUE_1_ios = (By.XPATH, '//UIAStaticText[@name="1"]')
+    OPTION_LIST_VALUE_2_ios = (By.XPATH, '//UIAStaticText[@name="2"]')
+    OPTION_LIST_VALUE_3_ios = (By.XPATH, '//UIAStaticText[@name="3"]')
+    FIELD_TO_RESTORE_HEADER_ios = (By.XPATH, '//UIAStaticText[@name="field to restore"]')
+    FIELD_TO_RESTORE_VALUE_ios = (By.XPATH, '//UIATextField[@value="value for field 1"]')
+    FIELD_TO_RESTORE__2_HEADER_ios = (By.XPATH, '//UIAStaticText[@name="New email address"]')
+    FIELD_TO_RESTORE_2_VALUE_ios = (By.XPATH, '//UIATextField[@value="lukaszbitnoise@gmail.com"]')
+    CANCEL_BUTTON_ios = (By.XPATH, '//UIAButton[@name="Cancel"]')
+    CHOOSER_FIELD_ios = (By.XPATH, '//UIAWebView/UIALink/UIALink[@name[contains(., "New events chooser")]]')
+    # EVENT_INSIDE_CHOOSER_ios = (By.XPATH, '//UIAWebView/UIALink/UIALink[@name[contains(., "Test Appium iOS")]]')
+    SUBFORM_FIELD_ADD_ROW_ios = (By.XPATH, '//UIAButton[@name="Add row"]')
+    NEW_EVENTS_CHOOSER_IN_SUB_FORM = (By.XPATH, '//UIALink[@name[contains(., "New events chooser inside sub form")]]')
+    # SUB_EVENT_INSIDE_CHOOSER_ios = (By.XPATH, '//UIAWebView/UIALink/UIALink[@name'
+    #                                           '[contains(., "iOS to create sub event")]]')
+    DELETE_SUB_EVENT_FROM_CHOOSER_ios = (By.XPATH, '//UIAScrollView[2]/UIAWebView[1]/UIALink[6]')
 
 
 class EventDetailsScreen(object):

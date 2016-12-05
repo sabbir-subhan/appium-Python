@@ -99,10 +99,15 @@ to use device defined in desired_capabilities.py You need to open test case and 
 "desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPhone6"
 
 
-
-issues:
+Known issues:
 
 - Test Case 2 is not working correctly because there is bug in OCA mobile app = alerts are not visible after login
 - some elements have attribute visible: false and appium is unable to interact with those elements for example map
 - for some reason test sometimes fail to start on the first run, but after running it again it is working correctly 
-- Test Case 3 - test 3 --still need some fix with "hamburger button"
+
+
+Additional info:
+
+Locators for elements are based mostly on visible texts, so if in OCA webpage some name, for example, for event type will be changed it will stop working.
+
+
