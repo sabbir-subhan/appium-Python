@@ -23,7 +23,7 @@ class LoginScreen(object):
                                                          '"OCA now supports ")]]')
 
     # "No" button for sending notifications on iOS
-    NO_FOR_SENDING_NOTIFICATIONS_ON_ios = (By.XPATH, '//UIAWebView[1]/UIALink[@name="No"]')
+    NO_FOR_SENDING_NOTIFICATIONS_ON_ios = (By.XPATH, '//UIAWebView/UIALink[@name="No"]')
 
     # ACCEPT_BUTTON on Terms and Conditions"
     ACCEPT_BUTTON = (By.XPATH, './/android.widget.Button[@content-desc="Accept"]')
@@ -44,8 +44,9 @@ class LoginScreen(object):
     ALERT_MSG_WILL_EXPIRE = (By.XPATH,
                              './/android.view.View[@content-desc[contains('
                              '., "The password for the current user is about to expire")]]')
-                # TO DO
-    ALERT_MSG_WILL_EXPIRE_ios = (By.XPATH, '')
+
+    ALERT_MSG_WILL_EXPIRE_ios = (By.XPATH, '//UIAStaticText[@name'
+                                           '[contains(., "The password for the current user is about to expire")]]')
 
     # alert message with word "inactive"
     ALERT_MSG_SUSPENDED = (By.XPATH,
@@ -53,16 +54,14 @@ class LoginScreen(object):
     ALERT_MSG_SUSPENDED_ios = (By.XPATH, '//UIAWebView[1]/'
                                          'UIAStaticText[@name[contains(., "Your account is currently inactive")]]')
 
+# DO ZASTĄPIENIA PRZEZ OK_BUTTON
     # alert message about expiring password
     NOTICE_ALERT_OK_BUTTON = (By.XPATH,
                               './/android.view.View[@index="24"]//android.view.View[@content-desc[contains(., "Ok")]]')
-    # the same as OK_BUTTON ??
-    #NOTICE_ALERT_OK_BUTTON_ios = (By.XPATH, '')
 
     # OK button on alert messages"
     OK_BUTTON = (By.XPATH, './/android.view.View[@content-desc="Ok"]')
-    #OK_BUTTON_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[4]')
-    OK_BUTTON_ios = (By.XPATH, '//UIAWebView[1]/UIALink[@name="Ok"]')
+    OK_BUTTON_ios = (By.XPATH, '//UIALink[@name="Ok"]')
 
 
 class MainMenuScreen(object):
@@ -143,7 +142,9 @@ class TypesOfEventsScreen(object):
     """A class for Type of Events screen locators - first screen after creating new event with types of events."""
     INCIDENT_TYPE_OF_EVENT = (By.XPATH, './/android.view.View[@content-desc[contains(., "Incident")]]')
     INCIDENT_TYPE_OF_EVENT_ios = (By.XPATH, '//UIAWebView[1]/UIALink[@name[contains(., "Incident")]]')
+    EVENT_FOR_ON_LOAD_SAVE = (By.XPATH, '//android.view.View[@content-desc[contains(., "event_for_on_load")]]')
     EVENT_FOR_ON_LOAD_SAVE_ios = (By.XPATH, '//UIAWebView[1]/UIALink[@name[contains(., "event_for_on_load")]]')
+    EVENT_FOR_CHOOSER_FIELDS = (By.XPATH, '//android.view.View[@content-desc[contains(., "event_for_chooser")]]')
     EVENT_FOR_CHOOSER_FIELDS_ios = (By.XPATH, '//UIAWebView[1]/UIALink[@name[contains(., "event_for_chooser")]]')
 
 
@@ -200,26 +201,46 @@ class EventEditScreen(object):
     EDIT_MAPPING_DATA = (By.XPATH, ".//android.view.View[@content-desc[contains(., 'Edit mapping data')]]")
     EDIT_MAPPING_DATA_ios = (By.XPATH, "//UIALink[@name[contains(., 'Create mapping data')]]")
     ELEMENT_TO_SCROLL_ios = (By.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAImage[1]')
+    SEQUENCE_ONLOAD_HEADER = (By.XPATH, '//android.view.View[@content-desc="sequence_onload"]')
     SEQUENCE_ONLOAD_HEADER_ios = (By.XPATH, '//UIAStaticText[@name="sequence_onload"]')
-    SEQUENCE_ONLOAD_VALUE_ios = (By.XPATH, '//UIAStaticText[@value="test on load"]')
+    SEQUENCE_ONLOAD_VALUE = (By.XPATH, '//android.widget.EditText[@content-desc="test on load"]')
+    SEQUENCE_ONLOAD_VALUE_ios = (By.XPATH, '//UIATextField[@value="test on load"]')
+    SEQUENCE_ONSAVE_HEADER = (By.XPATH, '//android.view.View[@content-desc="sequence_onsave"]')
     SEQUENCE_ONSAVE_HEADER_ios = (By.XPATH, '//UIAStaticText[@name="sequence_onsave"]')
-    SEQUENCE_ONSAVE_VALUE_ios = (By.XPATH, '//UIAStaticText[@value="(auto)"]')
+    SEQUENCE_ONSAVE_VALUE = (By.XPATH, '//android.widget.EditText[@content-desc="(auto)"]')
+    SEQUENCE_ONSAVE_VALUE_ios = (By.XPATH, '//UIATextField[@value="(auto)"]')
+    NEW_OPTION_LIST_HEADER = (By.XPATH, '//android.view.View[@content-desc="New option list"]')
     NEW_OPTION_LIST_HEADER_ios = (By.XPATH, '//UIAStaticText[@name="New option list"]')
+    OPTION_LIST_VALUE_1 = (By.XPATH, '//android.view.View[@content-desc="1"]')
+    OPTION_LIST_VALUE_2 = (By.XPATH, '//android.view.View[@content-desc="2"]')
+    OPTION_LIST_VALUE_3 = (By.XPATH, '//android.view.View[@content-desc="3"]')
     OPTION_LIST_VALUE_1_ios = (By.XPATH, '//UIAStaticText[@name="1"]')
     OPTION_LIST_VALUE_2_ios = (By.XPATH, '//UIAStaticText[@name="2"]')
     OPTION_LIST_VALUE_3_ios = (By.XPATH, '//UIAStaticText[@name="3"]')
-    FIELD_TO_RESTORE_HEADER_ios = (By.XPATH, '//UIAStaticText[@name="field to restore"]')
-    FIELD_TO_RESTORE_VALUE_ios = (By.XPATH, '//UIATextField[@value="value for field 1"]')
+    FIELD_TO_RESTORE_1_HEADER = (By.XPATH, '//android.view.View[@content-desc="field to restore"]')
+    FIELD_TO_RESTORE_1_HEADER_ios = (By.XPATH, '//UIAStaticText[@name="field to restore"]')
+    FIELD_TO_RESTORE_1_VALUE = (By.XPATH, '//android.widget.EditText[@content-desc="value for field 1"]')
+    FIELD_TO_RESTORE_1_VALUE_ios = (By.XPATH, '//UIATextField[@value="value for field 1"]')
+    FIELD_TO_RESTORE__2_HEADER = (By.XPATH, '//android.view.View[@content-desc="New email address"]')
     FIELD_TO_RESTORE__2_HEADER_ios = (By.XPATH, '//UIAStaticText[@name="New email address"]')
+    FIELD_TO_RESTORE_2_VALUE = (By.XPATH, '//android.widget.EditText[@content-desc="lukaszbitnoise@gmail.com"]')
     FIELD_TO_RESTORE_2_VALUE_ios = (By.XPATH, '//UIATextField[@value="lukaszbitnoise@gmail.com"]')
+    CANCEL_BUTTON = (By.XPATH, '//android.widget.Button[@content-desc="Cancel"]')
     CANCEL_BUTTON_ios = (By.XPATH, '//UIAButton[@name="Cancel"]')
+    CHOOSER_FIELD = (By.XPATH, '//android.view.View[@content-desc[contains(., "New events chooser")]]')
     CHOOSER_FIELD_ios = (By.XPATH, '//UIAWebView/UIALink/UIALink[@name[contains(., "New events chooser")]]')
-    # EVENT_INSIDE_CHOOSER_ios = (By.XPATH, '//UIAWebView/UIALink/UIALink[@name[contains(., "Test Appium iOS")]]')
+    PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER = (By.XPATH, '//android.view.View[@content-desc[contains(., "Test")]]')
+    PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER_ios = (By.XPATH, '//UIAStaticText[@name[contains(., "Test Appium iOS")]]')
+    SUBFORM_FIELD_ADD_ROW = (By.XPATH, '//android.widget.Button[@content-desc="Add row"]')
     SUBFORM_FIELD_ADD_ROW_ios = (By.XPATH, '//UIAButton[@name="Add row"]')
-    NEW_EVENTS_CHOOSER_IN_SUB_FORM = (By.XPATH, '//UIALink[@name[contains(., "New events chooser inside sub form")]]')
-    # SUB_EVENT_INSIDE_CHOOSER_ios = (By.XPATH, '//UIAWebView/UIALink/UIALink[@name'
-    #                                           '[contains(., "iOS to create sub event")]]')
-    DELETE_SUB_EVENT_FROM_CHOOSER_ios = (By.XPATH, '//UIAScrollView[2]/UIAWebView[1]/UIALink[6]')
+    NEW_EVENTS_CHOOSER_IN_SUB_FORM = (By.XPATH, '//android.view.View'
+                                                '[@content-desc[contains(., "New events chooser inside sub form")]]')
+    NEW_EVENTS_CHOOSER_IN_SUB_FORM_ios = (By.XPATH, '//UIAWebView/UIALink/UIALink'
+                                                    '[@name[contains(., "New events chooser inside sub form")]]')
+    PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER_ios = (By.XPATH, '//UIAStaticText[@name[contains(., "Test")]]')
+    DELETE_SUB_EVENT_FROM_CHOOSER = (By.XPATH, '//android.widget.ListView[0]/android.view.View[8]/android.view.View[1]')
+    #DELETE_SUB_EVENT_FROM_CHOOSER = (By.XPATH, '//android.widget.ListView/android.view.View[@index="8"]/android.view.View[@index="1"]')
+    #DELETE_SUB_EVENT_FROM_CHOOSER_ios = (By.XPATH, '//UIAScrollView[2]/UIAWebView[1]/UIALink[6]')
 
 
 class EventDetailsScreen(object):

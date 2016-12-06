@@ -44,20 +44,19 @@ class TC2ios(unittest.TestCase):
 
         sleep(5)
 
-        # handling notifications on iOS - device stores that settings
-        def notification():
-            try:
-                notification_msg_on_ios = self.driver.find_element(*LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
-                if notification_msg_on_ios.is_displayed():
-                    logging.info("click 'No' for sending notifications on iOS")
-                    notification_msg_on_ios = self.driver.find_element(
-                        *LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
-                    self.assertIsNotNone(notification_msg_on_ios)
-                    self.driver.find_element(*LoginScreen.NO_FOR_SENDING_NOTIFICATIONS_ON_ios).click()
-                else:
-                    pass
-            except NoSuchElementException:
+        # click "No" for sending notification massages - device stores info about it
+        try:
+            notification_msg_on_ios = self.driver.find_element(*LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+            if notification_msg_on_ios.is_displayed():
+                logging.info("click 'No' for sending notifications on iOS")
+                notification_msg_on_ios = self.driver.find_element(
+                    *LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+                self.assertIsNotNone(notification_msg_on_ios)
+                self.driver.find_element(*LoginScreen.NO_FOR_SENDING_NOTIFICATIONS_ON_ios).click()
+            else:
                 pass
+        except NoSuchElementException:
+            pass
 
         try:
             logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
@@ -70,7 +69,7 @@ class TC2ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
-        sleep(2)
+        sleep(5)
         logging.info("starting test1: login_into_general_user_with_incorrect_password")
 
         logging.info("click in LOGIN button")
@@ -104,18 +103,6 @@ class TC2ios(unittest.TestCase):
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
 
-        # it is not necessary to check it because password is generated randomly
-        # try:
-        #     accept_terms_button = self.driver.find_element(*LoginScreen.ACCEPT_BUTTON_ios)
-        #     if accept_terms_button.is_displayed():
-        #         self.driver.find_element(*LoginScreen.ACCEPT_BUTTON_ios).click()
-        #         logging.info("Accepting terms and conditions")
-        #         sleep(10)
-        #     else:
-        #         logging.info("Terms are already accepted - Accept button is not present")
-        # except NoSuchElementException:
-        #     pass
-
         logging.info("checking alert message")
         try:
             alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_INVALID_ios)
@@ -128,19 +115,21 @@ class TC2ios(unittest.TestCase):
 
     def test2(self):
 
-        def notification():
-            try:
-                notification_msg_on_ios = self.driver.find_element(*LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
-                if notification_msg_on_ios.is_displayed():
-                    logging.info("click 'No' for sending notifications on iOS")
-                    notification_msg_on_ios = self.driver.find_element(
-                        *LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
-                    self.assertIsNotNone(notification_msg_on_ios)
-                    self.driver.find_element(*LoginScreen.NO_FOR_SENDING_NOTIFICATIONS_ON_ios).click()
-                else:
-                    pass
-            except NoSuchElementException:
+        sleep(3)
+
+        # click "No" for sending notification massages - device stores info about it
+        try:
+            notification_msg_on_ios = self.driver.find_element(*LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+            if notification_msg_on_ios.is_displayed():
+                logging.info("click 'No' for sending notifications on iOS")
+                notification_msg_on_ios = self.driver.find_element(
+                    *LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+                self.assertIsNotNone(notification_msg_on_ios)
+                self.driver.find_element(*LoginScreen.NO_FOR_SENDING_NOTIFICATIONS_ON_ios).click()
+            else:
                 pass
+        except NoSuchElementException:
+            pass
 
         sleep(5)
         try:
@@ -199,7 +188,29 @@ class TC2ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
-        notification()
+        logging.info("check if Notice alert, about expiring password, is present")
+        try:
+            self.driver.find_element(*LoginScreen.ALERT_MSG_WILL_EXPIRE_ios)
+            self.assertIsNotNone(*LoginScreen.ALERT_MSG_WILL_EXPIRE_ios)
+            logging.info("Notice alert is present")
+            self.driver.find_element(*LoginScreen.OK_BUTTON_ios).click()
+        except NoSuchElementException:
+            logging.info("Notice alert is not present")
+            pass
+
+        # click "No" for sending notification massages - device stores info about it
+        try:
+            notification_msg_on_ios = self.driver.find_element(*LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+            if notification_msg_on_ios.is_displayed():
+                logging.info("click 'No' for sending notifications on iOS")
+                notification_msg_on_ios = self.driver.find_element(
+                    *LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
+                self.assertIsNotNone(notification_msg_on_ios)
+                self.driver.find_element(*LoginScreen.NO_FOR_SENDING_NOTIFICATIONS_ON_ios).click()
+            else:
+                pass
+        except NoSuchElementException:
+            pass
 
         try:
             WebDriverWait(self.driver, 20).until(
@@ -223,7 +234,7 @@ class TC2ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
-        sleep(3)
+        sleep(6)
         logging.info("starting test3: login_into_admin_account_with_correct_credentials")
 
         logging.info("click in LOGIN button")
@@ -268,15 +279,15 @@ class TC2ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
-        # THERE IS PROBLEM WITH DISPLAYING ALERT ON IOS - it's visible only for few seconds
-        # logging.info("check if Notice alert, about expiring password is present and click Ok button")
-        # try:
-        #     self.driver.find_element(*LoginScreen.ALERT_MSG_WILL_EXPIRE_ios)
-        #     logging.info("Notice alert is present")
-        #     self.driver.find_element(*LoginScreen.NOTICE_ALERT_OK_BUTTON_ios).click()
-        # except NoSuchElementException:
-        #     logging.info("Notice alert is not present")
-        #     pass
+        logging.info("check if Notice alert, about expiring password, is present")
+        try:
+            self.driver.find_element(*LoginScreen.ALERT_MSG_WILL_EXPIRE_ios)
+            self.assertIsNotNone(*LoginScreen.ALERT_MSG_WILL_EXPIRE_ios)
+            logging.info("Notice alert is present")
+            self.driver.find_element(*LoginScreen.OK_BUTTON_ios).click()
+        except NoSuchElementException:
+            logging.info("Notice alert is not present")
+            pass
 
         try:
             WebDriverWait(self.driver, 20).until(
@@ -485,25 +496,16 @@ class TC2ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
-        # THERE IS PROBLEM WITH DISPLAYING ALERTS ON IOS - it's visible only for few seconds
-
-        # logging.info("check if Notice alert, about expiring password is present and click Ok button")
-        # try:
-        #     self.driver.find_element(*LoginScreen.ALERT_MSG_WILL_EXPIRE_ios)
-        #     logging.info("Notice alert is present")
-        #     self.driver.find_element(*LoginScreen.NOTICE_ALERT_OK_BUTTON_ios).click()
-        # except NoSuchElementException:
-        #     logging.info("Notice alert is not present")
-        #     pass
-
-        logging.info("check if Notice alert, about expiring password is present and click Ok button")
+        logging.info("check if Notice alert, about expiring password, is present and click Ok button")
         try:
-            #self.driver.find_element(*LoginScreen.NOTICE_ALERT_OK_BUTTON_ios).click()
-            self.driver.find_element(*LoginScreen.OK_BUTTON_ios).click()
+            self.driver.find_element(*LoginScreen.ALERT_MSG_WILL_EXPIRE_ios)
+            self.assertIsNotNone(*LoginScreen.ALERT_MSG_WILL_EXPIRE_ios)
             logging.info("Notice alert is present")
+            self.driver.find_element(*LoginScreen.OK_BUTTON_ios).click()
         except NoSuchElementException:
             logging.info("Notice alert is not present")
             self.fail("Notice alert is not present")
+            pass
 
         try:
             WebDriverWait(self.driver, 20).until(
@@ -527,7 +529,7 @@ class TC2ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
-        sleep(2)
+        sleep(5)
         logging.info("starting test7: login_into_suspended_account")
 
         logging.info("click in LOGIN button")
@@ -562,16 +564,6 @@ class TC2ios(unittest.TestCase):
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
 
         # suspended account will not see Accept Terms screen
-        # try:
-        #     accept_terms_button = self.driver.find_element(*LoginScreen.ACCEPT_BUTTON_ios)
-        #     if accept_terms_button.is_displayed():
-        #         self.driver.find_element(*LoginScreen.ACCEPT_BUTTON_ios).click()
-        #         logging.info("Accepting terms and conditions")
-        #         sleep(10)
-        #     else:
-        #         logging.info("Terms are already accepted - Accept button is not present")
-        # except NoSuchElementException:
-        #     pass
 
         logging.info("checking alert message")
         try:

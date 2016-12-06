@@ -1,0 +1,55 @@
+12/06/2016 10:18:20 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 10:18:20 AM Could not get IP address for host: localhost
+12/06/2016 10:18:32 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 10:19:19 AM click in LOGIN button
+12/06/2016 10:19:33 AM type username
+12/06/2016 10:19:50 AM type password
+12/06/2016 10:20:08 AM type domain address
+12/06/2016 10:20:46 AM click in Submit button
+12/06/2016 10:21:49 AM Successful login
+12/06/2016 10:21:49 AM Quitting
+12/06/2016 11:37:11 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 11:37:39 AM Your are already login - logging out
+12/06/2016 11:37:49 AM click in LOGIN button
+12/06/2016 11:38:07 AM type username
+12/06/2016 11:38:24 AM type password
+12/06/2016 11:38:42 AM type domain address
+12/06/2016 11:39:19 AM click in Submit button
+12/06/2016 11:40:18 AM check if Notice alert, about expiring password, is present
+12/06/2016 11:40:45 AM Notice alert is not present
+12/06/2016 11:40:48 AM Successful login
+12/06/2016 11:40:48 AM Quitting
+12/06/2016 04:58:12 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 04:58:54 PM click in LOGIN button
+12/06/2016 04:59:19 PM Quitting
+12/06/2016 04:59:27 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 04:59:59 PM click in LOGIN button
+12/06/2016 05:00:26 PM Quitting
+12/06/2016 05:00:52 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 05:01:34 PM click in LOGIN button
+12/06/2016 05:01:59 PM Quitting
+12/06/2016 05:02:55 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 05:03:24 PM click in LOGIN button
+12/06/2016 05:03:49 PM Quitting
+12/06/2016 05:04:23 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 05:04:49 PM click in LOGIN button
+12/06/2016 05:05:15 PM Quitting
+12/06/2016 05:06:46 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 05:07:13 PM click in LOGIN button
+12/06/2016 05:07:39 PM Quitting
+12/06/2016 05:08:40 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 05:09:02 PM click 'No' for sending notifications on iOS
+12/06/2016 05:09:15 PM Your are already login - logging out
+12/06/2016 05:09:26 PM click in LOGIN button
+12/06/2016 05:09:54 PM Quitting
+12/06/2016 05:10:01 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 05:11:11 PM click in LOGIN button
+12/06/2016 05:11:25 PM type username
+12/06/2016 05:11:42 PM type password
+12/06/2016 05:12:00 PM type domain address
+12/06/2016 05:12:38 PM click in Submit button
+12/06/2016 05:12:43 PM check Terms and Conditions
+12/06/2016 05:13:10 PM check if Notice alert, about expiring password, is present
+12/06/2016 05:13:36 PM Notice alert is not present
+12/06/2016 05:14:05 PM Successful login
+12/06/2016 05:14:05 PM Quitting

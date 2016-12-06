@@ -547,6 +547,126 @@ class TC3android(unittest.TestCase):
         notification = self.driver.find_element(*EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED)
         self.assertIsNotNone(notification)
 
+        events_button = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON)
+        self.assertIsNotNone(events_button)
+        events_button.click()
+        logging.info("check if Events were opened")
+        self.assertIsNotNone(events_header)
+
+        logging.info("create new type of event, but do not save it - event with on load and on save sequence"
+                     " and hidden fields")
+        sleep(1)
+        self.driver.find_element(*EventsScreen.MORE_BUTTON).click()
+        self.driver.find_element(*EventsScreen.NEW_EVENT_BUTTON).click()
+
+        logging.info("choose type of event = event_for_on_load/save_test")
+        self.driver.find_element(*TypesOfEventsScreen.EVENT_FOR_ON_LOAD_SAVE).click()
+
+        logging.info("assert on load and on save sequence")
+        sequence_onload_header = self.driver.find_element(*EventEditScreen.SEQUENCE_ONLOAD_HEADER)
+        self.assertIsNotNone(sequence_onload_header)
+        sequence_onload_value = self.driver.find_element(*EventEditScreen.SEQUENCE_ONLOAD_VALUE)
+        self.assertIsNotNone(sequence_onload_value)
+        sequence_onsave_header = self.driver.find_element(*EventEditScreen.SEQUENCE_ONSAVE_HEADER)
+        sequence_onsave_value = self.driver.find_element(*EventEditScreen.SEQUENCE_ONSAVE_VALUE)
+        self.assertIsNotNone(sequence_onsave_header)
+        self.assertIsNotNone(sequence_onsave_value)
+
+        logging.info("add hidden fields")
+        logging.info("click on option list")
+        new_option_list = self.driver.find_element(*EventEditScreen.NEW_OPTION_LIST_HEADER).click()
+        logging.info("choose '1' in option list")
+        self.driver.find_element(*EventEditScreen.OPTION_LIST_VALUE_1).click()
+
+        field_to_restore_1_header = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE_1_HEADER)
+        self.assertIsNotNone(field_to_restore_1_header)
+        field_to_restore_1_value = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE_1_VALUE)
+        self.assertIsNotNone(field_to_restore_1_value)
+
+        logging.info("click on option list")
+        new_option_list = self.driver.find_element(*EventEditScreen.NEW_OPTION_LIST_HEADER).click()
+        logging.info("choose '2' in option list")
+        self.driver.find_element(*EventEditScreen.OPTION_LIST_VALUE_2).click()
+
+        logging.info("assert restored field")
+        field_to_restore_2_header = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE__2_HEADER)
+        self.assertIsNotNone(field_to_restore_2_header)
+        field_to_restore_2_value = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE_2_VALUE)
+        self.assertIsNotNone(field_to_restore_2_value)
+
+        logging.info("assert hidden field")
+        try:
+            # field_to_restore_1_header = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE_1_HEADER)
+            if field_to_restore_1_header.is_displayed():
+                self.fail("field was not hidden correctly")
+        except:
+            logging.info("field is not visible = OK")
+            pass
+
+        logging.info("click on option list")
+        new_option_list = self.driver.find_element(*EventEditScreen.NEW_OPTION_LIST_HEADER).click()
+        logging.info("choose '3' in option list")
+        self.driver.find_element(*EventEditScreen.OPTION_LIST_VALUE_3).click()
+
+        logging.info("assert hidden fields")
+        try:
+            if field_to_restore_1_header.is_displayed():
+                self.fail("field was not hidden correctly")
+            if field_to_restore_2_header.is_displayed():
+                self.fail("field was not hidden correctly")
+        except:
+            logging.info("fields are not visible = OK")
+            pass
+
+        # action = TouchAction(self.driver)
+        # elm3 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
+        # action.press(elm3).perform()
+        # action.move_to(x=0, y=100).perform()
+        # sleep(1)
+        # tu bedzie scroll potrzebny
+
+        logging.info("click on Cancel button")
+        self.driver.find_element(*EventEditScreen.CANCEL_BUTTON).click()
+
+        logging.info("check if Events were opened")
+        events_header = self.driver.find_element(*EventsScreen.EVENTS_HEADER)
+        self.assertIsNotNone(events_header)
+
+        logging.info("create new type of event, but do not save it - event with chooser field for another event "
+                     "and sub form with chooser field")
+        logging.info("click More button")
+        self.driver.find_element(*EventsScreen.MORE_BUTTON).click()
+
+        logging.info("click New Event button")
+        self.driver.find_element(*EventsScreen.NEW_EVENT_BUTTON).click()
+
+        logging.info("choose type of event = event for chooser fields")
+        self.driver.find_element(*TypesOfEventsScreen.EVENT_FOR_CHOOSER_FIELDS).click()
+
+        logging.info("choose previously created event for chooser field")
+        self.driver.find_element(*EventEditScreen.CHOOSER_FIELD).click()
+        sleep(1)
+        self.driver.find_element(*EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER).click()
+
+        logging.info("choose event inside sub form")
+        self.driver.find_element(*EventEditScreen.SUBFORM_FIELD_ADD_ROW).click()
+        self.driver.find_element(*EventEditScreen.NEW_EVENTS_CHOOSER_IN_SUB_FORM).click()
+        sleep(1)
+        previously_created_event_for_subform_chooser = self.driver.find_element(
+            *EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER).click()
+        sleep(1)
+        self.driver.find_element(*EventEditScreen.DELETE_SUB_EVENT_FROM_CHOOSER).click()
+        self.assertIsNone(previously_created_event_for_subform_chooser)
+
+        # i tutaj tez pewnie bedzie potrzebny scroll
+
+        logging.info("click on Cancel button")
+        self.driver.find_element(*EventEditScreen.CANCEL_BUTTON).click()
+
+        logging.info("check if Events were opened")
+        events_header = self.driver.find_element(*EventsScreen.EVENTS_HEADER)
+        self.assertIsNotNone(events_header)
+
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(TC3android)

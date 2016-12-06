@@ -1,0 +1,294 @@
+12/06/2016 10:34:16 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 10:34:47 AM Your are already login - logging out
+12/06/2016 10:34:57 AM starting test6: login_using_account_that_will_expire_in_1_day
+12/06/2016 10:34:57 AM click in LOGIN button
+12/06/2016 10:35:14 AM type username
+12/06/2016 10:35:37 AM type password
+12/06/2016 10:36:00 AM type domain address
+12/06/2016 10:36:36 AM click in Submit button
+12/06/2016 10:37:06 AM check if Notice alert, about expiring password is present and click Ok button
+12/06/2016 10:37:08 AM Quitting
+12/06/2016 10:37:38 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 10:38:08 AM Your are already login - logging out
+12/06/2016 10:38:19 AM starting test6: login_using_account_that_will_expire_in_1_day
+12/06/2016 10:38:19 AM click in LOGIN button
+12/06/2016 10:38:47 AM Quitting
+12/06/2016 10:39:11 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 10:40:02 AM starting test6: login_using_account_that_will_expire_in_1_day
+12/06/2016 10:40:02 AM click in LOGIN button
+12/06/2016 10:40:16 AM type username
+12/06/2016 10:40:38 AM type password
+12/06/2016 10:41:00 AM type domain address
+12/06/2016 10:41:37 AM click in Submit button
+12/06/2016 10:42:08 AM check if Notice alert, about expiring password is present and click Ok button
+12/06/2016 10:42:11 AM Notice alert is present
+12/06/2016 10:42:20 AM Successful login to account that will expire in 1 day
+12/06/2016 10:42:20 AM Quitting
+12/06/2016 10:47:52 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 10:48:26 AM Your are already login - logging out
+12/06/2016 10:48:38 AM starting test3: login_into_admin_account_with_correct_credentials
+12/06/2016 10:48:38 AM click in LOGIN button
+12/06/2016 10:48:53 AM type username
+12/06/2016 10:49:11 AM type password
+12/06/2016 10:49:29 AM type domain address
+12/06/2016 10:50:07 AM click in Submit button
+12/06/2016 10:50:37 AM check if Notice alert, about expiring password, is present and click Ok button
+12/06/2016 10:51:02 AM Notice alert is not present
+12/06/2016 10:51:05 AM Successful login into admin account
+12/06/2016 10:51:05 AM Quitting
+12/06/2016 10:52:37 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 10:53:01 AM Your are already login - logging out
+12/06/2016 10:53:12 AM starting test1: login_into_general_user_with_incorrect_password
+12/06/2016 10:53:12 AM click in LOGIN button
+12/06/2016 10:53:40 AM Quitting
+12/06/2016 10:53:41 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 10:56:07 AM starting test2: login_into_general_user_with_correct_credentials
+12/06/2016 10:56:07 AM click in LOGIN button
+12/06/2016 10:56:20 AM type username
+12/06/2016 10:56:38 AM type password
+12/06/2016 10:56:57 AM type domain address
+12/06/2016 10:57:33 AM click in Submit button
+12/06/2016 10:58:04 AM check if Notice alert, about expiring password, is present
+12/06/2016 10:58:29 AM Notice alert is not present
+12/06/2016 10:58:57 AM Successful login into general user account
+12/06/2016 10:58:57 AM Quitting
+12/06/2016 10:58:59 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 10:59:30 AM Your are already login - logging out
+12/06/2016 10:59:41 AM starting test3: login_into_admin_account_with_correct_credentials
+12/06/2016 10:59:42 AM click in LOGIN button
+12/06/2016 11:00:08 AM Quitting
+12/06/2016 11:00:10 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 11:01:05 AM starting test4: login_using_account_expired_1_day_ago
+12/06/2016 11:01:05 AM click in LOGIN button
+12/06/2016 11:01:19 AM type username
+12/06/2016 11:01:39 AM type password
+12/06/2016 11:01:57 AM type domain address
+12/06/2016 11:02:35 AM click in Submit button
+12/06/2016 11:03:05 AM checking alert message
+12/06/2016 11:03:08 AM Successfully try to login to account that expired 1 day ago - message alert is present
+12/06/2016 11:03:12 AM Quitting
+12/06/2016 11:03:14 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 11:04:07 AM starting test5: login_using_account_that_expires_today
+12/06/2016 11:04:07 AM click in LOGIN button
+12/06/2016 11:04:20 AM type username
+12/06/2016 11:04:41 AM type password
+12/06/2016 11:05:01 AM type domain address
+12/06/2016 11:05:38 AM click in Submit button
+12/06/2016 11:06:08 AM checking alert message
+12/06/2016 11:06:11 AM Successfully try to login to account that expires today - message alert is present
+12/06/2016 11:06:15 AM Quitting
+12/06/2016 11:06:17 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 11:07:10 AM starting test6: login_using_account_that_will_expire_in_1_day
+12/06/2016 11:07:10 AM click in LOGIN button
+12/06/2016 11:07:24 AM type username
+12/06/2016 11:07:47 AM type password
+12/06/2016 11:08:09 AM type domain address
+12/06/2016 11:08:47 AM click in Submit button
+12/06/2016 11:09:18 AM check if Notice alert, about expiring password, is present and click Ok button
+12/06/2016 11:09:20 AM Notice alert is present
+12/06/2016 11:09:30 AM Successful login to account that will expire in 1 day
+12/06/2016 11:09:30 AM Quitting
+12/06/2016 11:09:31 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 11:09:57 AM Your are already login - logging out
+12/06/2016 11:10:07 AM starting test7: login_into_suspended_account
+12/06/2016 11:10:07 AM click in LOGIN button
+12/06/2016 11:10:24 AM type username
+12/06/2016 11:10:43 AM type password
+12/06/2016 11:11:02 AM type domain address
+12/06/2016 11:11:39 AM click in Submit button
+12/06/2016 11:11:44 AM checking alert message
+12/06/2016 11:11:50 AM Successfully try to login into suspended account - message alert is present
+12/06/2016 11:11:54 AM Quitting
+12/06/2016 11:14:18 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 11:15:08 AM starting test1: login_into_general_user_with_incorrect_password
+12/06/2016 11:15:08 AM click in LOGIN button
+12/06/2016 11:15:21 AM type username
+12/06/2016 11:15:39 AM type password
+12/06/2016 11:15:59 AM type domain address
+12/06/2016 11:16:36 AM click in Submit button
+12/06/2016 11:16:41 AM checking alert message
+12/06/2016 11:16:50 AM Successfully try to login using incorrect credentials - message alert is present
+12/06/2016 11:16:50 AM Quitting
+12/06/2016 11:16:52 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 11:17:40 AM starting test2: login_into_general_user_with_correct_credentials
+12/06/2016 11:17:40 AM click in LOGIN button
+12/06/2016 11:17:53 AM type username
+12/06/2016 11:18:12 AM type password
+12/06/2016 11:18:30 AM type domain address
+12/06/2016 11:19:07 AM click in Submit button
+12/06/2016 11:19:38 AM check if Notice alert, about expiring password, is present
+12/06/2016 11:20:04 AM Notice alert is not present
+12/06/2016 11:20:34 AM Successful login into general user account
+12/06/2016 11:20:34 AM Quitting
+12/06/2016 11:20:35 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 11:21:00 AM Your are already login - logging out
+12/06/2016 11:21:11 AM starting test3: login_into_admin_account_with_correct_credentials
+12/06/2016 11:21:11 AM click in LOGIN button
+12/06/2016 11:21:37 AM Quitting
+12/06/2016 11:21:38 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 11:22:28 AM starting test4: login_using_account_expired_1_day_ago
+12/06/2016 11:22:28 AM click in LOGIN button
+12/06/2016 11:22:41 AM type username
+12/06/2016 11:22:59 AM type password
+12/06/2016 11:23:17 AM type domain address
+12/06/2016 11:23:55 AM click in Submit button
+12/06/2016 11:24:25 AM checking alert message
+12/06/2016 11:24:28 AM Successfully try to login to account that expired 1 day ago - message alert is present
+12/06/2016 11:24:32 AM Quitting
+12/06/2016 11:24:34 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 11:25:21 AM starting test5: login_using_account_that_expires_today
+12/06/2016 11:25:21 AM click in LOGIN button
+12/06/2016 11:25:35 AM type username
+12/06/2016 11:25:55 AM type password
+12/06/2016 11:26:15 AM type domain address
+12/06/2016 11:26:52 AM click in Submit button
+12/06/2016 11:27:22 AM checking alert message
+12/06/2016 11:27:25 AM Successfully try to login to account that expires today - message alert is present
+12/06/2016 11:27:30 AM Quitting
+12/06/2016 11:27:30 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 11:28:22 AM starting test6: login_using_account_that_will_expire_in_1_day
+12/06/2016 11:28:22 AM click in LOGIN button
+12/06/2016 11:28:35 AM type username
+12/06/2016 11:28:58 AM type password
+12/06/2016 11:29:21 AM type domain address
+12/06/2016 11:29:58 AM click in Submit button
+12/06/2016 11:30:28 AM check if Notice alert, about expiring password, is present and click Ok button
+12/06/2016 11:30:31 AM Notice alert is present
+12/06/2016 11:30:41 AM Successful login to account that will expire in 1 day
+12/06/2016 11:30:41 AM Quitting
+12/06/2016 11:30:42 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 11:31:12 AM Your are already login - logging out
+12/06/2016 11:31:22 AM starting test7: login_into_suspended_account
+12/06/2016 11:31:22 AM click in LOGIN button
+12/06/2016 11:31:38 AM type username
+12/06/2016 11:31:57 AM type password
+12/06/2016 11:32:16 AM type domain address
+12/06/2016 11:32:53 AM click in Submit button
+12/06/2016 11:32:58 AM checking alert message
+12/06/2016 11:33:04 AM Successfully try to login into suspended account - message alert is present
+12/06/2016 11:33:08 AM Quitting
+12/06/2016 11:33:35 AM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 11:34:30 AM starting test3: login_into_admin_account_with_correct_credentials
+12/06/2016 11:34:30 AM click in LOGIN button
+12/06/2016 11:34:44 AM type username
+12/06/2016 11:35:02 AM type password
+12/06/2016 11:35:20 AM type domain address
+12/06/2016 11:35:57 AM click in Submit button
+12/06/2016 11:36:29 AM check if Notice alert, about expiring password, is present
+12/06/2016 11:36:54 AM Notice alert is not present
+12/06/2016 11:36:57 AM Successful login into admin account
+12/06/2016 11:36:57 AM Quitting
+12/06/2016 03:28:40 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 03:29:18 PM Your are already login - logging out
+12/06/2016 03:29:32 PM starting test1: login_into_general_user_with_incorrect_password
+12/06/2016 03:29:32 PM click in LOGIN button
+12/06/2016 03:29:46 PM type username
+12/06/2016 03:30:05 PM type password
+12/06/2016 03:30:24 PM type domain address
+12/06/2016 03:31:00 PM click in Submit button
+12/06/2016 03:31:05 PM checking alert message
+12/06/2016 03:31:15 PM Successfully try to login using incorrect credentials - message alert is present
+12/06/2016 03:31:15 PM Quitting
+12/06/2016 03:31:16 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 03:32:10 PM starting test2: login_into_general_user_with_correct_credentials
+12/06/2016 03:32:10 PM click in LOGIN button
+12/06/2016 03:32:24 PM type username
+12/06/2016 03:32:43 PM type password
+12/06/2016 03:33:01 PM type domain address
+12/06/2016 03:33:38 PM click in Submit button
+12/06/2016 03:34:10 PM check if Notice alert, about expiring password, is present
+12/06/2016 03:34:36 PM Notice alert is not present
+12/06/2016 03:35:04 PM Successful login into general user account
+12/06/2016 03:35:04 PM Quitting
+12/06/2016 03:35:06 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 03:35:41 PM Your are already login - logging out
+12/06/2016 03:35:55 PM starting test3: login_into_admin_account_with_correct_credentials
+12/06/2016 03:35:55 PM click in LOGIN button
+12/06/2016 03:36:09 PM type username
+12/06/2016 03:36:27 PM type password
+12/06/2016 03:36:46 PM type domain address
+12/06/2016 03:37:23 PM click in Submit button
+12/06/2016 03:37:55 PM check if Notice alert, about expiring password, is present
+12/06/2016 03:38:20 PM Notice alert is not present
+12/06/2016 03:38:23 PM Successful login into admin account
+12/06/2016 03:38:23 PM Quitting
+12/06/2016 03:38:24 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 03:40:29 PM Your are already login - logging out
+12/06/2016 03:40:39 PM starting test4: login_using_account_expired_1_day_ago
+12/06/2016 03:40:39 PM click in LOGIN button
+12/06/2016 03:40:56 PM type username
+12/06/2016 03:41:14 PM type password
+12/06/2016 03:41:32 PM type domain address
+12/06/2016 03:42:09 PM click in Submit button
+12/06/2016 03:42:39 PM checking alert message
+12/06/2016 03:42:42 PM Successfully try to login to account that expired 1 day ago - message alert is present
+12/06/2016 03:42:46 PM Quitting
+12/06/2016 03:42:47 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 03:43:36 PM starting test5: login_using_account_that_expires_today
+12/06/2016 03:43:36 PM click in LOGIN button
+12/06/2016 03:43:50 PM type username
+12/06/2016 03:44:11 PM type password
+12/06/2016 03:44:32 PM type domain address
+12/06/2016 03:45:10 PM click in Submit button
+12/06/2016 03:45:41 PM checking alert message
+12/06/2016 03:45:44 PM Successfully try to login to account that expires today - message alert is present
+12/06/2016 03:45:48 PM Quitting
+12/06/2016 03:45:49 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 03:46:43 PM starting test6: login_using_account_that_will_expire_in_1_day
+12/06/2016 03:46:43 PM click in LOGIN button
+12/06/2016 03:46:57 PM type username
+12/06/2016 03:47:19 PM type password
+12/06/2016 03:47:42 PM type domain address
+12/06/2016 03:48:19 PM click in Submit button
+12/06/2016 03:48:50 PM check if Notice alert, about expiring password, is present and click Ok button
+12/06/2016 03:48:53 PM Notice alert is present
+12/06/2016 03:49:02 PM Successful login to account that will expire in 1 day
+12/06/2016 03:49:02 PM Quitting
+12/06/2016 03:49:04 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 03:49:29 PM Your are already login - logging out
+12/06/2016 03:49:39 PM starting test7: login_into_suspended_account
+12/06/2016 03:49:39 PM click in LOGIN button
+12/06/2016 03:50:08 PM Quitting
+12/06/2016 03:50:51 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 03:51:45 PM starting test7: login_into_suspended_account
+12/06/2016 03:51:45 PM click in LOGIN button
+12/06/2016 03:51:59 PM type username
+12/06/2016 03:52:18 PM type password
+12/06/2016 03:52:36 PM type domain address
+12/06/2016 03:53:14 PM click in Submit button
+12/06/2016 03:53:19 PM checking alert message
+12/06/2016 03:53:26 PM Successfully try to login into suspended account - message alert is present
+12/06/2016 03:53:30 PM Quitting
+12/06/2016 04:53:54 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 04:55:00 PM starting test6: login_using_account_that_will_expire_in_1_day
+12/06/2016 04:55:00 PM click in LOGIN button
+12/06/2016 04:55:14 PM type username
+12/06/2016 04:55:37 PM type password
+12/06/2016 04:55:59 PM type domain address
+12/06/2016 04:56:37 PM click in Submit button
+12/06/2016 04:57:08 PM check if Notice alert, about expiring password, is present and click Ok button
+12/06/2016 04:57:11 PM Notice alert is present
+12/06/2016 04:57:22 PM Successful login to account that will expire in 1 day
+12/06/2016 04:57:22 PM Quitting
+12/06/2016 05:14:15 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 05:15:08 PM Your are already login - logging out
+12/06/2016 05:15:21 PM starting test1: login_into_general_user_with_incorrect_password
+12/06/2016 05:15:21 PM click in LOGIN button
+12/06/2016 05:15:36 PM type username
+12/06/2016 05:15:54 PM type password
+12/06/2016 05:16:13 PM type domain address
+12/06/2016 05:16:49 PM click in Submit button
+12/06/2016 05:16:54 PM checking alert message
+12/06/2016 05:17:04 PM Successfully try to login using incorrect credentials - message alert is present
+12/06/2016 05:17:04 PM Quitting
+12/06/2016 05:17:05 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 05:17:18 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 05:17:18 PM Could not get IP address for host: localhost
+12/06/2016 05:17:18 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 05:17:18 PM Could not get IP address for host: localhost
+12/06/2016 05:17:18 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 05:17:18 PM Could not get IP address for host: localhost
+12/06/2016 05:17:18 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 05:17:18 PM Could not get IP address for host: localhost
+12/06/2016 05:17:18 PM WebDriver request initiated. Waiting for response, this may take a while.
+12/06/2016 05:17:18 PM Could not get IP address for host: localhost

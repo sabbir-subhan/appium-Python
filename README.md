@@ -101,7 +101,6 @@ to use device defined in desired_capabilities.py You need to open test case and 
 
 Known issues:
 
-- Test Case 2 is not working correctly because there is bug in OCA mobile app = alerts are not visible after login
 - some elements have attribute visible: false and appium is unable to interact with those elements for example map
 - for some reason test sometimes fail to start on the first run, but after running it again it is working correctly 
 
@@ -109,5 +108,13 @@ Known issues:
 Additional info:
 
 Locators for elements are based mostly on visible texts, so if in OCA webpage some name, for example, for event type will be changed it will stop working.
+
+Required configuration on OCA webpage:
+
+- user accounts with correct settings (see credentials.py)
+- 3 types of events (Incident, event_for_chooser_fields, event_for_on_load/save_test)
+- option list inside "Central list templates" with values; "1", "2", "3" - that list is added as a option list to event type: event_for_on_load/save_test
+- two sequences for events (on load and on save) - that sequences are added to event type: event_for_on_load/save_test
+
 
 
