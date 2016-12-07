@@ -21,7 +21,7 @@ import credentials
 from locators import *
 from generators import RandomGenerator
 import logging
-logging.basicConfig(filename='OCAapp_TC2.log', level=logging.INFO,
+logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/OCAapp_TC2.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())
 
@@ -42,7 +42,7 @@ class TC2ios(unittest.TestCase):
 
     def test1(self):
 
-        sleep(5)
+        sleep(10)
 
         # click "No" for sending notification massages - device stores info about it
         try:
@@ -96,7 +96,7 @@ class TC2ios(unittest.TestCase):
                 logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
             else:
-                pass
+                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
             pass
 
@@ -170,7 +170,7 @@ class TC2ios(unittest.TestCase):
                 logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
             else:
-                pass
+                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
             pass
 
@@ -222,7 +222,7 @@ class TC2ios(unittest.TestCase):
 
     def test3(self):
 
-        sleep(5)
+        sleep(10)
         try:
             logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
             if logout_button_ios.is_displayed():
@@ -234,7 +234,7 @@ class TC2ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
-        sleep(6)
+        sleep(5)
         logging.info("starting test3: login_into_admin_account_with_correct_credentials")
 
         logging.info("click in LOGIN button")
@@ -261,7 +261,7 @@ class TC2ios(unittest.TestCase):
                 logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
             else:
-                pass
+                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
             pass
 
@@ -311,7 +311,7 @@ class TC2ios(unittest.TestCase):
         except NoSuchElementException:
             pass
 
-        sleep(2)
+        sleep(5)
         logging.info("starting test4: login_using_account_expired_1_day_ago")
 
         logging.info("click in LOGIN button")
@@ -338,7 +338,7 @@ class TC2ios(unittest.TestCase):
                 logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
             else:
-                pass
+                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
             pass
 
@@ -407,7 +407,7 @@ class TC2ios(unittest.TestCase):
                 logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
             else:
-                pass
+                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
             pass
 
@@ -478,7 +478,7 @@ class TC2ios(unittest.TestCase):
                 logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
             else:
-                pass
+                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
             pass
 
@@ -556,7 +556,7 @@ class TC2ios(unittest.TestCase):
                 logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
             else:
-                pass
+                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
             pass
 

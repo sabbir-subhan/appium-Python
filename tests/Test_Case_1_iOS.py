@@ -15,7 +15,7 @@ from desired_capabilities import DesiredCapabilities
 import credentials
 from locators import *
 import logging
-logging.basicConfig(filename='OCAapp_TC1.log', level=logging.INFO,
+logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/OCAapp_TC1.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())
 
@@ -90,7 +90,7 @@ class TC1ios(unittest.TestCase):
                 logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
             else:
-                pass
+                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
             pass
 

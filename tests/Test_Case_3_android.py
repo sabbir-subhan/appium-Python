@@ -547,10 +547,7 @@ class TC3android(unittest.TestCase):
         notification = self.driver.find_element(*EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED)
         self.assertIsNotNone(notification)
 
-        events_button = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON)
-        self.assertIsNotNone(events_button)
-        events_button.click()
-        logging.info("check if Events were opened")
+        logging.info("check if Events are opene")
         self.assertIsNotNone(events_header)
 
         logging.info("create new type of event, but do not save it - event with on load and on save sequence"
@@ -572,22 +569,29 @@ class TC3android(unittest.TestCase):
         self.assertIsNotNone(sequence_onsave_header)
         self.assertIsNotNone(sequence_onsave_value)
 
-        logging.info("add hidden fields")
-        logging.info("click on option list")
+        logging.info("scroll down")
+        action = TouchAction(self.driver)
+        elm3 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
+        action.press(elm3).perform()
+        action.move_to(x=0, y=100).perform()
+        sleep(2)
+
+        logging.info("add hidden fields, click on option list")
         new_option_list = self.driver.find_element(*EventEditScreen.NEW_OPTION_LIST_HEADER).click()
         logging.info("choose '1' in option list")
         self.driver.find_element(*EventEditScreen.OPTION_LIST_VALUE_1).click()
-
+        sleep(0.5)
         field_to_restore_1_header = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE_1_HEADER)
         self.assertIsNotNone(field_to_restore_1_header)
         field_to_restore_1_value = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE_1_VALUE)
         self.assertIsNotNone(field_to_restore_1_value)
-
+        sleep(1)
         logging.info("click on option list")
         new_option_list = self.driver.find_element(*EventEditScreen.NEW_OPTION_LIST_HEADER).click()
+        sleep(0.5)
         logging.info("choose '2' in option list")
         self.driver.find_element(*EventEditScreen.OPTION_LIST_VALUE_2).click()
-
+        sleep(3)
         logging.info("assert restored field")
         field_to_restore_2_header = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE__2_HEADER)
         self.assertIsNotNone(field_to_restore_2_header)
@@ -618,12 +622,11 @@ class TC3android(unittest.TestCase):
             logging.info("fields are not visible = OK")
             pass
 
-        # action = TouchAction(self.driver)
-        # elm3 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
-        # action.press(elm3).perform()
-        # action.move_to(x=0, y=100).perform()
-        # sleep(1)
-        # tu bedzie scroll potrzebny
+        logging.info("scroll down")
+        elm3 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
+        action.press(elm3).perform()
+        action.move_to(x=0, y=100).perform()
+        sleep(1)
 
         logging.info("click on Cancel button")
         self.driver.find_element(*EventEditScreen.CANCEL_BUTTON).click()
@@ -643,6 +646,12 @@ class TC3android(unittest.TestCase):
         logging.info("choose type of event = event for chooser fields")
         self.driver.find_element(*TypesOfEventsScreen.EVENT_FOR_CHOOSER_FIELDS).click()
 
+        logging.info("scroll down")
+        elm3 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
+        action.press(elm3).perform()
+        action.move_to(x=0, y=100).perform()
+        sleep(1)
+
         logging.info("choose previously created event for chooser field")
         self.driver.find_element(*EventEditScreen.CHOOSER_FIELD).click()
         sleep(1)
@@ -655,10 +664,15 @@ class TC3android(unittest.TestCase):
         previously_created_event_for_subform_chooser = self.driver.find_element(
             *EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER).click()
         sleep(1)
+        logging.info("clear sub for with event chooser")
         self.driver.find_element(*EventEditScreen.DELETE_SUB_EVENT_FROM_CHOOSER).click()
         self.assertIsNone(previously_created_event_for_subform_chooser)
 
-        # i tutaj tez pewnie bedzie potrzebny scroll
+        logging.info("scroll down")
+        elm3 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
+        action.press(elm3).perform()
+        action.move_to(x=0, y=100).perform()
+        sleep(1)
 
         logging.info("click on Cancel button")
         self.driver.find_element(*EventEditScreen.CANCEL_BUTTON).click()

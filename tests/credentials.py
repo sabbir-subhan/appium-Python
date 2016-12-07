@@ -19,8 +19,8 @@ username_test_admin = "test_admin"
 password_test_admin = "test_admin"
 
 # General user - test_expired_1_day_ago
-username_test_expired = "test_expired"
-password_test_expired = "test_expired"
+username_test_expired = "test_expired_1_day_ago"
+password_test_expired = "test_expired_1_day_ago"
 
 # General user - test_expire_today
 username_test_expire_today = "test_expire_today"

@@ -101,7 +101,7 @@ to use device defined in desired_capabilities.py You need to open test case and 
 
 Known issues:
 
-- some elements have attribute visible: false and appium is unable to interact with those elements for example map
+- some elements have attribute "visible: false" and appium is unable to interact with those elements for example map --that is bug in Appium https://github.com/appium/appium/issues/4131
 - for some reason test sometimes fail to start on the first run, but after running it again it is working correctly 
 
 
@@ -111,10 +111,37 @@ Locators for elements are based mostly on visible texts, so if in OCA webpage so
 
 Required configuration on OCA webpage:
 
-- user accounts with correct settings (see credentials.py)
+- users accounts with correct settings (see credentials.py)
 - 3 types of events (Incident, event_for_chooser_fields, event_for_on_load/save_test)
 - option list inside "Central list templates" with values; "1", "2", "3" - that list is added as a option list to event type: event_for_on_load/save_test
 - two sequences for events (on load and on save) - that sequences are added to event type: event_for_on_load/save_test
+- EVENT TYPE: event_for_on_load/save_test, should have two single line fields with properties "Sequential prefix" pinpointing to correct sequences ("sequence_onload" with vaule: "test on load",
+ and second; "sequence_onsave" with value: "test on save") and two fields with visibility rules ("field to restore" with value: "value for field 1" and visibility rule pointing to "New option list"
+ with value "1",and second field; "New email address" with value: "test@noggin.com" and visibility rule pointing to "new option list" with value "2")
+- EVENT TYPE: event_for_chooser_fields, should have "event chooser" field (name: "New events chooser") with property "Minimum selected options" set to "1", and second event chooser field inside sub form
+with name: "New events chooser inside sub form"
 
 
 
+BEFORE EACH NEW RUN OF TESTS:
+
+- make sure You have permissions to: /var/db/lockdown/  (sudo chmod -R 777 /var/db/lockdown/)
+- make sure to lunch appium server
+- make sure that users accounts in OCA webpage have correct properties (for example expiration dates)
+- make sure that real devices are connected and unlocked 
+- make sure line in test case: "desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad" is pinpointing to correct desired_capabilities for Your real device (see desired_capabilities.py)
+
+
+RUNNING TESTS ON SIMULATORS:
+
+- change desired_capabilities
+- for Android, simulator Genymotion is much faster than simulator from android studio
+- for iOS, You have to build app for exact simulator
+- open Appium settings and uncheck UDID checkobox and change device name - choose from dropdown in Appium settings
+
+
+
+APP VERSIONS:
+
+- android: 8.1.11
+- iOS: 9.1.0 (dev branch)
