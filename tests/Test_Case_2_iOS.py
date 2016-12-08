@@ -89,16 +89,13 @@ class TC2ios(unittest.TestCase):
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).clear()
         logging.info("type domain address")
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
-
+        logging.info("hide keyboard")
         try:
             done_button_ios = self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD)
             if done_button_ios.is_displayed():
-                logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
-            else:
-                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
-            pass
+            self.driver.hide_keyboard(key_name="Hide keyboard")
 
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
@@ -163,16 +160,13 @@ class TC2ios(unittest.TestCase):
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).clear()
         logging.info("type domain address")
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
-
+        logging.info("hide keyboard")
         try:
             done_button_ios = self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD)
             if done_button_ios.is_displayed():
-                logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
-            else:
-                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
-            pass
+            self.driver.hide_keyboard(key_name="Hide keyboard")
 
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
@@ -254,16 +248,13 @@ class TC2ios(unittest.TestCase):
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).clear()
         logging.info("type domain address")
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
-
+        logging.info("hide keyboard")
         try:
             done_button_ios = self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD)
             if done_button_ios.is_displayed():
-                logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
-            else:
-                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
-            pass
+            self.driver.hide_keyboard(key_name="Hide keyboard")
 
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
@@ -331,16 +322,13 @@ class TC2ios(unittest.TestCase):
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).clear()
         logging.info("type domain address")
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
-
+        logging.info("hide keyboard")
         try:
             done_button_ios = self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD)
             if done_button_ios.is_displayed():
-                logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
-            else:
-                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
-            pass
+            self.driver.hide_keyboard(key_name="Hide keyboard")
 
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
@@ -400,16 +388,13 @@ class TC2ios(unittest.TestCase):
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).clear()
         logging.info("type domain address")
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
-
+        logging.info("hide keyboard")
         try:
             done_button_ios = self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD)
             if done_button_ios.is_displayed():
-                logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
-            else:
-                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
-            pass
+            self.driver.hide_keyboard(key_name="Hide keyboard")
 
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
@@ -471,16 +456,13 @@ class TC2ios(unittest.TestCase):
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).clear()
         logging.info("type domain address")
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
-
+        logging.info("hide keyboard")
         try:
             done_button_ios = self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD)
             if done_button_ios.is_displayed():
-                logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
-            else:
-                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
-            pass
+            self.driver.hide_keyboard(key_name="Hide keyboard")
 
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
@@ -549,16 +531,13 @@ class TC2ios(unittest.TestCase):
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).clear()
         logging.info("type domain address")
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
-
+        logging.info("hide keyboard")
         try:
             done_button_ios = self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD)
             if done_button_ios.is_displayed():
-                logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
-            else:
-                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
-            pass
+            self.driver.hide_keyboard(key_name="Hide keyboard")
 
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()

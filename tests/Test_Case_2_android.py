@@ -21,7 +21,7 @@ import credentials
 from locators import *
 from generators import RandomGenerator
 import logging
-logging.basicConfig(filename='OCAapp_TC2.log', level=logging.INFO,
+logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/OCAapp_TC2.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())
 
@@ -64,9 +64,6 @@ class TC2android(unittest.TestCase):
 
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
-
-        # logging.info("waiting until app will try to login")
-        # sleep(10)
 
         logging.info("accept Terms if needed")
         try:
@@ -135,29 +132,6 @@ class TC2android(unittest.TestCase):
             logging.info("Failed to login")
             self.fail("Failed to login")
 
-        # logging.info("waiting until app will login")
-        # sleep(10)
-        #
-        # logging.info("accept Terms if needed")
-        # try:
-        #     logging.info("check and click on Accept button if needed")
-        #     self.driver.find_element(*LoginScreen.ACCEPT_BUTTON).click()
-        #     logging.info("Accept button is present")
-        #     sleep(10)
-        # except NoSuchElementException:
-        #     logging.info("Terms are already accepted - Accept button is not present")
-        #
-        # logging.info("check if LOGOUT button is present")
-        # logging.info("scroll down to button LOGOUT")
-        # buttons = self.driver.find_elements(*MainMenuScreen.BUTTONS)
-        # self.driver.scroll(buttons[22], buttons[1])
-        # logout_button = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON)
-        # if logout_button is None:
-        #     logging.info("Failed to login")
-        # else:
-        #     logging.info("Successful login")
-        #     self.assertIsNotNone(logout_button)
-
     def test3(self):
 
         logging.info("starting test3: login_into_admin_account_with_correct_credentials")
@@ -206,29 +180,6 @@ class TC2android(unittest.TestCase):
             logging.info("Failed to login")
             self.fail("Failed to login")
 
-        # logging.info("waiting until app will login")
-        # sleep(10)
-        #
-        # logging.info("accept Terms if needed")
-        # try:
-        #     logging.info("check and click on Accept button if needed")
-        #     self.driver.find_element(*LoginScreen.ACCEPT_BUTTON).click()
-        #     logging.info("Accept button is present")
-        #     sleep(10)
-        # except NoSuchElementException:
-        #     logging.info("Terms are already accepted - Accept button is not present")
-        #
-        # logging.info("check if LOGOUT button is present")
-        # logging.info("scroll down to button LOGOUT")
-        # buttons = self.driver.find_elements(*MainMenuScreen.BUTTONS)
-        # self.driver.scroll(buttons[22], buttons[1])
-        # logout_button = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON)
-        # if logout_button is None:
-        #     logging.info("Failed to login")
-        # else:
-        #     logging.info("Successful login")
-        #     self.assertIsNotNone(logout_button)
-
     def test4(self):
 
         logging.info("starting test4: login_using_account_expired_1_day_ago")
@@ -252,9 +203,6 @@ class TC2android(unittest.TestCase):
 
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
-
-        # logging.info("waiting until app will try to login")
-        # sleep(10)
 
         logging.info("accept Terms if needed")
         try:
@@ -298,9 +246,6 @@ class TC2android(unittest.TestCase):
 
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
-
-        # logging.info("waiting until app will try to login")
-        # sleep(10)
 
         logging.info("accept Terms if needed")
         try:
@@ -369,40 +314,6 @@ class TC2android(unittest.TestCase):
             logging.info("Failed to login to account that will expire in 1 day")
             self.fail("Failed to login to account that will expire in 1 day")
 
-        # logging.info("waiting until app will try to login")
-        # sleep(10)
-        #
-        # logging.info("accept Terms if needed")
-        # try:
-        #     logging.info("check and click on Accept button if needed")
-        #     self.driver.find_element(*LoginScreen.ACCEPT_BUTTON).click()
-        #     logging.info("Accept button is present")
-        #     sleep(10)
-        # except NoSuchElementException:
-        #     logging.info("Terms are already accepted - Accept button is not present")
-        #
-        # logging.info("checking alert message")
-        # try:
-        #     alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_EXPIRED)
-        #     logging.info("Successfully login to account that will expire in 1 day - message alert is present")
-        #     self.assertIsNotNone(alert_msg)
-        #     logging.info("click Ok on alert msg")
-        #     self.driver.find_element(*LoginScreen.OK_BUTTON)
-        #     sleep(3)
-        # except NoSuchElementException:
-        #     logging.info("failed - there is no alert Notice")
-        #
-        # logging.info("check if LOGOUT button is present")
-        # logging.info("scroll down to button LOGOUT")
-        # buttons = self.driver.find_elements(*MainMenuScreen.BUTTONS)
-        # self.driver.scroll(buttons[22], buttons[1])
-        # logout_button = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON)
-        # if logout_button is None:
-        #     logging.info("Failed to login to account that will expire in 1 day")
-        # else:
-        #     logging.info("Successful login to account that will expire in 1 day")
-        #     self.assertIsNotNone(logout_button)
-
     def test7(self):
 
         logging.info("starting test7: login_into_suspended_account")
@@ -426,9 +337,6 @@ class TC2android(unittest.TestCase):
 
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
-
-        # logging.info("waiting until app will try to login")
-        # sleep(10)
 
         logging.info("accept Terms if needed")
         try:

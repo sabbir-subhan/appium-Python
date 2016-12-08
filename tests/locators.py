@@ -1,13 +1,13 @@
 from selenium.webdriver.common.by import By
 
 
-class WelcomeScreen(object):
+class WelcomeScreen:
     """A class for welcome screen locators - first screen after lunching the app."""
     LOGIN_BUTTON = (By.XPATH, './/android.view.View[@content-desc[contains(., "LOGIN")]]')
     LOGIN_BUTTON_ios = (By.XPATH, '//UIALink[@name[contains(., "LOGIN")]]')
 
 
-class LoginScreen(object):
+class LoginScreen:
     """A class for login screen locators - screen after clicking into LOGIN."""
     TEXTFIELD_USERNAME = (By.XPATH, './/android.widget.EditText[@index="1"]')
     TEXTFIELD_USERNAME_ios = (By.XPATH, '//UIAWebView[1]/UIATextField[1]')
@@ -168,7 +168,7 @@ class EventEditScreen(object):
     CHOOSE_SEVERITY_LVL4 = (By.XPATH, '//android.widget.CheckedTextView[@text="Severity 4"]')
     CHOOSE_SEVERITY_LVL4_iPad = (By.XPATH, '//UIATableCell[@name="Severity 4"]')
     CHOOSE_SEVERITY_LVL4_iPhone = (By.XPATH, '//UIAPicker/UIAPickerWheel[@value="Severity 4"]')
-    SEVERITY_PICKER_ios = (By.XPATH, '//UIAApplication/UIAWindow/UIAPicker')
+    SEVERITY_PICKER_ios = (By.XPATH, '//UIAApplication/UIAWindow/UIAPicker/UIAPickerWheel')
     FINISHED_FIELD = (By.XPATH, './/android.view.View[@content-desc="Finished"]')
     FINISHED_FIELD_ios = (By.XPATH, '//UIAStaticText[@name="Finished"]')
     TIME_DATE = (By.XPATH, './/android.widget.ImageButton[@content-desc="Increase year"]')
@@ -304,5 +304,3 @@ class iOSkeyboard(object):
 class SearchResultsPageLocators(object):
     """A class for search results locators. All search results locators should come here"""
     pass
-
-

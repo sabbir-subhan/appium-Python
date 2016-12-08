@@ -49,8 +49,7 @@ class DesiredCapabilities(object):
         "deviceName": "iPad mini",
         "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData"
                     "/OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphoneos/OCA.app"),
-        "appPackage": "com.noggin.oca",
-        "appActivity": "com.noggin.oca.OCApp",
+        "bundleId": "com.noggin.ocalukasl",
         "newCommandTimeout": "600",
         "udid": "db55c238e873230ee454c54a63724397a2981acd"
     }
@@ -62,8 +61,7 @@ class DesiredCapabilities(object):
         "deviceName": "iPhone 4s",
         "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData/"
                     "OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphonesimulator/OCA.app"),
-        "appPackage": "com.noggin.oca",
-        "appActivity": "com.noggin.oca.OCApp",
+        "bundleId": "com.noggin.ocalukasl",
         "newCommandTimeout": "600"
     }
 
@@ -74,8 +72,7 @@ class DesiredCapabilities(object):
         "deviceName": "iPhone 5",
         "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData/"
                     "OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphonesimulator/OCA.app"),
-        "appPackage": "com.noggin.oca",
-        "appActivity": "com.noggin.oca.OCApp",
+        "bundleId": "com.noggin.ocalukasl",
         "newCommandTimeout": "600"
     }
 
@@ -86,7 +83,6 @@ class DesiredCapabilities(object):
         "deviceName": "iPhone 6",
         "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData"
                     "/OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphonesimulator/OCA.app"),
-        "appPackage": "com.noggin.oca",
-        "appActivity": "com.noggin.oca.OCApp",
+        "bundleId": "com.noggin.ocalukasl",
         "newCommandTimeout": "600"
     }

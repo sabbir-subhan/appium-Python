@@ -6,6 +6,7 @@ from time import sleep
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
+from appium.webdriver.common.touch_action import TouchAction
 from desired_capabilities import DesiredCapabilities
 import credentials
 from locators import *
@@ -19,7 +20,7 @@ class TC3ios(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPhone5
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad
 
         # choose desired capabilities from desired_capabilities.py
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
@@ -31,7 +32,7 @@ class TC3ios(unittest.TestCase):
 
     def login(self):
 
-        sleep(2)
+        sleep(5)
 
         # click "No" for sending notification massages - device stores info about it
         try:
@@ -59,7 +60,7 @@ class TC3ios(unittest.TestCase):
             pass
 
         logging.info("starting def with login")
-        sleep(5)
+        sleep(10)
         logging.info("click in LOGIN button")
         self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_ios).click()
 
@@ -77,16 +78,13 @@ class TC3ios(unittest.TestCase):
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).clear()
         logging.info("type domain address")
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
-
+        logging.info("hide keyboard")
         try:
             done_button_ios = self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD)
             if done_button_ios.is_displayed():
-                logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
-            else:
-                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
-            pass
+            self.driver.hide_keyboard(key_name="Hide keyboard")
 
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
@@ -134,21 +132,18 @@ class TC3ios(unittest.TestCase):
             logging.info("Failed to login")
             self.fail("Failed to login")
 
-    def scroll_down(self):
-
-        logging.info("scroll down to find element")
-        element_on_the_list = None
-        try:
-            element_on_the_list = self.driver.find_element(*EventEditScreen.SAVE_BUTTON_ios)
-            # that is element what You are looking for
-        except Exception as e:
-            element_to_scroll = self.driver.find_element(*EventEditScreen.ELEMENT_TO_SCROLL_ios)
-            # that is id/xpath/name of whole list
-            scrollobject = dict(direction="down", name="Save", element=element_to_scroll)
-            self.driver.execute_script("mobile: scrollTo", scrollobject)
-
-        # if element_on_the_list is None:
-        #     element_on_the_list = self.driver.find_element_by_xpath(*EventEditScreen.SAVE_BUTTON_ios)
+    # def scroll_down(self):
+    #
+    #     logging.info("scroll down to find element")
+    #     element_on_the_list = None
+    #     try:
+    #         element_on_the_list = self.driver.find_element(*EventEditScreen.SAVE_BUTTON_ios)
+    #         # that is element what You are looking for
+    #     except Exception as e:
+    #         element_to_scroll = self.driver.find_element(*EventEditScreen.ELEMENT_TO_SCROLL_ios)
+    #         # that is id/xpath/name of whole list
+    #         scrollobject = dict(direction="down", name="Save", element=element_to_scroll)
+    #         self.driver.execute_script("mobile: scroll", scrollobject)
 
     def test1(self):
 
@@ -159,9 +154,9 @@ class TC3ios(unittest.TestCase):
         self.login()
 
         sleep(5)
+
         logging.info("clicking on Events button")
         self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON_ios).click()
-
         logging.info("check if Events were opened")
         events_header = self.driver.find_element(*EventsScreen.EVENTS_HEADER_ios)
         self.assertIsNotNone(events_header)
@@ -196,31 +191,28 @@ class TC3ios(unittest.TestCase):
         logging.info("click 'Return' on keyboard")
         self.driver.find_element(*iOSkeyboard.RETURN_BUTTON).click()
         sleep(0.5)
+        logging.info("hide keyboard")
         try:
             done_button_ios = self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD)
             if done_button_ios.is_displayed():
-                logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
-            else:
-                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
-            pass
+            self.driver.hide_keyboard(key_name="Hide keyboard")
 
         logging.info("clear search field")
         self.driver.find_element(*EventsScreen.SEARCH_FIELD_ios).click()
         self.driver.find_element(*EventsScreen.SEARCH_FIELD_ios).clear()
-
+        logging.info("click 'Return' on keyboard")
         self.driver.find_element(*iOSkeyboard.RETURN_BUTTON).click()
+        logging.info("hide keyboard")
         try:
             done_button_ios = self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD)
             if done_button_ios.is_displayed():
-                logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
-            else:
-                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
-            pass
+            self.driver.hide_keyboard(key_name="Hide keyboard")
 
+        sleep(1)
         logging.info("clicking on 'More' button")
         self.driver.find_element(*EventsScreen.MORE_BUTTON_ios).click()
 
@@ -237,17 +229,14 @@ class TC3ios(unittest.TestCase):
         logging.info("filling form to create new event - input Name")
         self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).click()
         name_field = self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).send_keys("Test Appium iOS")
+        logging.info("hide keyboard")
         try:
             done_button_ios = self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD)
             if done_button_ios.is_displayed():
-                logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
-            else:
-                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
-            pass
-# THERE IS SOMETHING WRONG WITH SCROLL - TRY TO HANDLE WHEEL PICKER IN DIFFERENT WAY
-        sleep(1)
+            self.driver.hide_keyboard(key_name="Hide keyboard")
+
         try:
             logging.info("click on severity level field")
             severity_level_selector = self.driver.find_element(*EventEditScreen.SEVERITY_LEVEL_SELECTOR_ios).click()
@@ -256,21 +245,9 @@ class TC3ios(unittest.TestCase):
             if choose_severity_lvl1.is_displayed():
                 choose_severity_lvl1.click()
             else:
-                logging.info("scroll down to find element inside severity picker")
-                severity_lvl_on_the_list = None
-                try:
-                    severity_lvl_on_the_list = self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL1_iPhone)
-                    # that is element what You are looking for
-                except Exception as e:
-                    logging.info("execute scroll down")
-                    element_to_scroll = self.driver.find_element(*EventEditScreen.SEVERITY_PICKER_ios)
-                    # that is id/xpath/name of whole list
-                    scrollobject = dict(direction="down", value="Severity 1", element=element_to_scroll)
-                    self.driver.execute_script("mobile: scrollTo", scrollobject)
-                    severity_lvl_on_the_list.click()
-                # if element_on_the_list is None:
-                #     element_on_the_list = self.driver.find_element_by_xpath(*EventEditScreen.SAVE_BUTTON_ios)
-                # self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL1_iPhone).click()
+                # NEED A WAY TO SCROLL WHEEL PICKER ON iPhones, scroll, tap and move, click on element, send keys are not working - this step is not required in TC
+                # try to use self.driver.swipe
+                pass
         except NoSuchElementException:
             pass
         sleep(1)
@@ -279,41 +256,42 @@ class TC3ios(unittest.TestCase):
 
         logging.info("Save event")
         save_button = self.driver.find_element(*EventEditScreen.SAVE_BUTTON_ios).click()
-        sleep(2)
+        sleep(5)
 
         logging.info("open created event")
         created_event = self.driver.find_element(*EventsScreen.CREATED_EVENT_1_ios).click()
-        sleep(2)
-        logging.info("edit previously created event")
-        edit_button = self.driver.find_element(*EventDetailsScreen.EDIT_BUTTON_ios).click()
         sleep(5)
+        logging.info("edit previously created event")
+        edit_button = self.driver.find_element(*EventDetailsScreen.EDIT_BUTTON_ios)
+        self.assertIsNotNone(edit_button)
+        edit_button.click()
+
+        sleep(2)
 
         try:
             logging.info("type some text into description field")
             self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD_ios).click()
             self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD_ios).send_keys("test ios")
+            logging.info("hide keyboard")
             try:
                 done_button_ios = self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD)
                 if done_button_ios.is_displayed():
-                    logging.info("hide screen keyboard")
                     self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
-                else:
-                    self.driver.hide_keyboard(key_name="Hide keyboard")
             except NoSuchElementException:
-                pass
+                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
             logging.info("text field couldn't be selected")
             pass
 
         #self.scroll_down()
-
+        sleep(1)
         logging.info("Save event")
         save_button = self.driver.find_element(*EventEditScreen.SAVE_BUTTON_ios).click()
 
-        sleep(3)
+        sleep(5)
         logging.info("clicking on 'More' button")
         more_button = self.driver.find_element(*EventsScreen.MORE_BUTTON_ios).click()
-        sleep(3)
+        sleep(1)
 
         logging.info("clicking on 'Delete event' button")
         delete__event_button = self.driver.find_element(*EventDetailsScreen.DELETE_EVENT_BUTTON_ios).click()
@@ -356,12 +334,9 @@ class TC3ios(unittest.TestCase):
         try:
             done_button_ios = self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD)
             if done_button_ios.is_displayed():
-                logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
-            else:
-                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
-            pass
+            self.driver.hide_keyboard(key_name="Hide keyboard")
 
         try:
             logging.info("click on severity level field")
@@ -371,11 +346,11 @@ class TC3ios(unittest.TestCase):
             if choose_severity_lvl4.is_displayed():
                 choose_severity_lvl4.click()
             else:
-                self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL4_iPhone).click()
+                pass
         except NoSuchElementException:
             pass
 
-        self.scroll_down()
+        # self.scroll_down()
 
         logging.info("Save event")
         save_button = self.driver.find_element(*EventEditScreen.SAVE_BUTTON_ios).click()
@@ -390,7 +365,7 @@ class TC3ios(unittest.TestCase):
         edit_button = self.driver.find_element(*EventDetailsScreen.EDIT_BUTTON_ios).click()
         sleep(5)
 
-        self.scroll_down()
+        # self.scroll_down()
 
         create_mapping_data_button = self.driver.find_element(*EventEditScreen.CREATE_MAPPING_DATA_ios)
         self.assertIsNotNone(create_mapping_data_button, "Button for creating map data is not present")
@@ -505,12 +480,9 @@ class TC3ios(unittest.TestCase):
         try:
             done_button_ios = self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD)
             if done_button_ios.is_displayed():
-                logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
-            else:
-                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
-            pass
+            self.driver.hide_keyboard(key_name="Hide keyboard")
 
         try:
             logging.info("click on severity level field")
@@ -520,11 +492,11 @@ class TC3ios(unittest.TestCase):
             if choose_severity_lvl3.is_displayed():
                 choose_severity_lvl3.click()
             else:
-                self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL3_iPhone).click()
+                pass
         except NoSuchElementException:
             pass
 
-        self.scroll_down()
+        # self.scroll_down()
 
         logging.info("Save event")
         save_button = self.driver.find_element(*EventEditScreen.SAVE_BUTTON_ios).click()
@@ -563,12 +535,9 @@ class TC3ios(unittest.TestCase):
         try:
             done_button_ios = self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD)
             if done_button_ios.is_displayed():
-                logging.info("hide screen keyboard")
                 self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD).click()
-            else:
-                self.driver.hide_keyboard(key_name="Hide keyboard")
         except NoSuchElementException:
-            pass
+            self.driver.hide_keyboard(key_name="Hide keyboard")
 
         try:
             logging.info("click on severity level field")
@@ -578,11 +547,11 @@ class TC3ios(unittest.TestCase):
             if choose_severity_lvl2.is_displayed():
                 choose_severity_lvl2.click()
             else:
-                self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL2_iPhone).click()
+                pass
         except NoSuchElementException:
             pass
 
-        self.scroll_down()
+        #self.scroll_down()
 
         logging.info("Save event")
         save_button = self.driver.find_element(*EventEditScreen.SAVE_BUTTON_ios).click()

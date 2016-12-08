@@ -26,9 +26,11 @@ You probably also need to use:
 - sudo chmod -R 777 /var/db/lockdown/
 
 
-need UDID from real device - open iTunes with connected device and click on serial number
-iOS version and device name for "desire_capabilities.py"
-in appium yous need to provide path to app - to get app file you need to build it in xcode
+desired_capabilities.py and appium settings:
+
+- UDID from real device - open iTunes with connected device and click on serial number or use terminal command: "idevice_id -l"
+- iOS version and device name
+- path to app - to get app file You need to build it in xcode
 
 
 
@@ -85,7 +87,7 @@ STARTING APPIUM:
 
 - provide paths for android sdk and xcode
 - provide path to app file (android - .apk file, ios - .app file from xcode(xcode build the app file for example in /Users/$USER/Library/Developer/Xcode/DerivedData/))
-- for iOS provide BundleID from xcode, check "Force device", type device name and check "UDID" (search for it in iTunes)
+- for iOS provide BundleID from xcode, check "Force device", type device name and check "UDID" (search for it in iTunes or use terminal command: "idevice_id -l")
 
 
 file desired_capabilities.py need to be updated accordingly to used device:
@@ -94,9 +96,9 @@ file desired_capabilities.py need to be updated accordingly to used device:
 - OS version and name
 - paths to .apk and .app files
 
-to use device defined in desired_capabilities.py You need to open test case and change line:
-"desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad" for example to:
-"desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPhone6"
+to use device defined in desired_capabilities.py You need to open test case and change line;
+- "desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad" for example to:
+- "desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPhone6"
 
 
 Known issues:
@@ -125,7 +127,7 @@ with name: "New events chooser inside sub form"
 
 BEFORE EACH NEW RUN OF TESTS:
 
-- make sure You have permissions to: /var/db/lockdown/  (sudo chmod -R 777 /var/db/lockdown/)
+- make sure You have permissions to: /var/db/lockdown/  (sudo chmod -R 777 /var/db/lockdown/) - without, appium will trow: "An unknown server-side error occurred while processing the command. Original error: Installing"
 - make sure to lunch appium server
 - make sure that users accounts in OCA webpage have correct properties (for example expiration dates)
 - make sure that real devices are connected and unlocked 

@@ -15,7 +15,7 @@ from desired_capabilities import DesiredCapabilities
 import credentials
 from locators import *
 import logging
-logging.basicConfig(filename='OCAapp_TC1.log', level=logging.INFO,
+logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/OCAapp_TC1.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())
 

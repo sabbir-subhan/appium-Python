@@ -13,7 +13,7 @@ import credentials
 from locators import *
 from generators import RandomGenerator
 import logging
-logging.basicConfig(filename='OCAapp_TC3.log', level=logging.INFO,
+logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/OCAapp_TC3.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())
 
