@@ -24,7 +24,7 @@ You probably also need to use:
 
 - sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer/
 - sudo chmod -R 777 /var/db/lockdown/
-
+or instead of "brew install libimobiledevice" use "brew install --HEAD libimobiledevice"
 
 desired_capabilities.py and appium settings:
 
