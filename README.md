@@ -15,16 +15,15 @@ for OSX all above plus:
 - node
 - npm
 - brew
-- brew install libimobiledevice
+- brew install --HEAD libimobiledevice
+- brew link --overwrite libimobiledevice
 - brew install ideviceinstaller
-- rename xcode - applications - xcode -- rename to: xcode8
+- brew link --overwrite ideviceinstaller
+- rename xcode - applications - xcode --rename to: xcode8
 - download xcode 7.3 and install - open appium and add path to xcode 7.3
 
-You probably also need to use:
+- to switch between xcode versions, for example: sudo xcode-select -switch /Applications/Xcode8.app/Contents/Developer/
 
-- sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer/
-- sudo chmod -R 777 /var/db/lockdown/
-or instead of "brew install libimobiledevice" use "brew install --HEAD libimobiledevice"
 
 desired_capabilities.py and appium settings:
 
@@ -101,12 +100,6 @@ to use device defined in desired_capabilities.py You need to open test case and 
 - "desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPhone6"
 
 
-Known issues:
-
-- some elements have attribute "visible: false" and appium is unable to interact with those elements for example map --that is bug in Appium https://github.com/appium/appium/issues/4131
-- for some reason test sometimes fail to start on the first run, but after running it again it is working correctly 
-
-
 Additional info:
 
 Locators for elements are based mostly on visible texts, so if in OCA webpage some name, for example, for event type will be changed it will stop working.
@@ -127,7 +120,6 @@ with name: "New events chooser inside sub form"
 
 BEFORE EACH NEW RUN OF TESTS:
 
-- make sure You have permissions to: /var/db/lockdown/  (sudo chmod -R 777 /var/db/lockdown/) - without, appium will trow: "An unknown server-side error occurred while processing the command. Original error: Installing"
 - make sure to lunch appium server
 - make sure that users accounts in OCA webpage have correct properties (for example expiration dates)
 - make sure that real devices are connected and unlocked 
@@ -147,3 +139,15 @@ APP VERSIONS:
 
 - android: 8.1.11
 - iOS: 9.1.0 (dev branch)
+
+
+
+
+
+Known issues:
+
+- some elements have attribute "visible: false" and appium is unable to interact with those elements for example map --that is bug in Appium https://github.com/appium/appium/issues/4131
+- for some reason test sometimes fail to start on the first run, but after running it again it is working correctly (it may depends on that how fast device/simulator is starting)
+- if Appium, after running test, will throws: "An unknown server-side error occurred while processing the command. Original error: Installing", use: sudo chmod -R 777 /var/db/lockdown/
+- if Appium, after running test, throws error: "is device plugged in?" -- just disconnect device and reconnect it again (it may happen after booting OSX with connected device)
+

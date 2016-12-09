@@ -12,7 +12,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from desired_capabilities import DesiredCapabilities
-import credentials
+from credentials import Credentials
 from locators import *
 import logging
 logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/OCAapp_TC1.log', level=logging.INFO,
@@ -72,17 +72,17 @@ class TC1ios(unittest.TestCase):
         self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).click()
         self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).clear()
         logging.info("type username")
-        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).send_keys(credentials.QA_username)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).send_keys(Credentials.QA_username)
 
         self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).click()
         self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).clear()
         logging.info("type password")
-        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).send_keys(credentials.QA_password)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD_ios).send_keys(Credentials.QA_password)
 
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).click()
         self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).clear()
         logging.info("type domain address")
-        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(credentials.domain)
+        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(Credentials.domain)
         logging.info("hide keyboard")
         try:
             done_button_ios = self.driver.find_element(*iOSkeyboard.BUTTON_DONE_TO_HIDE_KEYBOARD)
