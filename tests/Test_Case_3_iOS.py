@@ -379,7 +379,7 @@ class TC3ios(unittest.TestCase):
             pass
 
         logging.info("wait for map")
-        sleep(10)
+        sleep(10)   # TUTAJ SKONCZYLEM POP - NA RAZIE SPROBOWAC BEZ SLEEPA
 
         logging.info("add point into the map")
         tool_button = self.driver.find_element(*Map.TOOL_BUTTON_ios)
