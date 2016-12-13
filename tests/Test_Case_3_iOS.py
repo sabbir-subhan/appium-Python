@@ -379,7 +379,7 @@ class TC3ios(unittest.TestCase):
             pass
 
         logging.info("wait for map")
-        sleep(10)   # TUTAJ SKONCZYLEM POP - NA RAZIE SPROBOWAC BEZ SLEEPA
+        sleep(10)
 
         logging.info("add point into the map")
         tool_button = self.driver.find_element(*Map.TOOL_BUTTON_ios)
@@ -441,8 +441,8 @@ class TC3ios(unittest.TestCase):
 
         sleep(5)
 
-        logging.info("TC info: crete sub event, set event as primary after that clear. Next create, "
-                     "but not save, events with on load/save sequence and with hidden fields"
+        logging.info("TC info: crete sub event, set event as primary and after that clear it. Next create, "
+                     "but do not save; events with on load/save sequence and with hidden fields"
                      " and another with chooser fields")
 
         self.login()

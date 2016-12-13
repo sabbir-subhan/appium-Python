@@ -1,14 +1,14 @@
-from selenium.webdriver.common.by import By
+# from selenium.webdriver.common.by import By
 from appium.webdriver.common.mobileby import MobileBy
 
 
-class WelcomeScreen(object):
+class WelcomeScreen:
     """A class for welcome screen locators - first screen after lunching the app."""
     LOGIN_BUTTON = (MobileBy.XPATH, './/android.view.View[@content-desc[contains(., "LOGIN")]]')
     LOGIN_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "LOGIN")]]')
 
 
-class LoginScreen(object):
+class LoginScreen:
     """A class for login screen locators - screen after clicking into LOGIN."""
     TEXTFIELD_USERNAME = (MobileBy.XPATH, './/android.widget.EditText[@index="1"]')
     TEXTFIELD_USERNAME_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIATextField[1]')
@@ -21,7 +21,7 @@ class LoginScreen(object):
 
     # Notification alert: "OCA now supports sending 'App Messages' to your device as notifications."
     NOTIFICATION_ABOUT_SENDING_MESSAGES_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText[@name[contains(., '
-                                                         '"OCA now supports ")]]')
+                                                               '"OCA now supports ")]]')
 
     # "No" button for sending notifications on iOS
     NO_FOR_SENDING_NOTIFICATIONS_ON_ios = (MobileBy.XPATH, '//UIAWebView/UIALink[@name="No"]')
@@ -36,24 +36,24 @@ class LoginScreen(object):
 
     # alert message with "Your temporary account has been expired"
     ALERT_MSG_EXPIRED = (MobileBy.XPATH, './/android.view.View[@content-desc[contains('
-                                   '., "Your temporary account has been expired")]]')
+                                         '., "Your temporary account has been expired")]]')
 
     ALERT_MSG_EXPIRED_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText[@name[contains'
-                                       '(., "Your temporary account has been expired")]]')
+                                             '(., "Your temporary account has been expired")]]')
 
     # alert message with "The password for the current user is about to expire"
     ALERT_MSG_WILL_EXPIRE = (MobileBy.XPATH,
                              './/android.view.View[@content-desc[contains('
                              '., "The password for the current user is about to expire")]]')
 
-    ALERT_MSG_WILL_EXPIRE_ios = (MobileBy.XPATH, '//UIAStaticText[@name'
-                                           '[contains(., "The password for the current user is about to expire")]]')
+    ALERT_MSG_WILL_EXPIRE_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains('
+                                                 '., "The password for the current user is about to expire")]]')
 
     # alert message with word "inactive"
     ALERT_MSG_SUSPENDED = (MobileBy.XPATH,
                            './/android.view.View[@content-desc[contains(., "Your account is currently inactive")]]')
-    ALERT_MSG_SUSPENDED_ios = (MobileBy.XPATH, '//UIAWebView[1]/'
-                                         'UIAStaticText[@name[contains(., "Your account is currently inactive")]]')
+    ALERT_MSG_SUSPENDED_ios = (MobileBy.XPATH, '//UIAWebView/UIAStaticText['
+                                               '@name[contains(., "Your account is currently inactive")]]')
 
 # DO ZASTĄPIENIA PRZEZ OK_BUTTON
     # alert message about expiring password
@@ -65,7 +65,7 @@ class LoginScreen(object):
     OK_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name="Ok"]')
 
 
-class MainMenuScreen(object):
+class MainMenuScreen:
     """A class for main menu screen locators - first screen after correct login into the app."""
     BUTTONS = (MobileBy.CLASS_NAME, 'android.view.View')
     LOGOUT_BUTTON = (MobileBy.XPATH, './/android.view.View[@content-desc[contains(., "LOGOUT")]]')
@@ -74,7 +74,7 @@ class MainMenuScreen(object):
     EVENTS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "EVENTS")]]')
 
 
-class EventsScreen(object):
+class EventsScreen:
     """A class for Events screen locators - screen after clicking into Events button in Main Menu."""
     EVENTS_HEADER = (MobileBy.XPATH, './/android.view.View[@content-desc[contains(., "Events")]]')
     EVENTS_HEADER_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText[@name="Events"]')
@@ -84,13 +84,15 @@ class EventsScreen(object):
     ANY_TYPE_EXPAND_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIALink[@name[contains(., "Any Type click to expand")]]')
     CHOOSE_TYPE_INCIDENT = (MobileBy.XPATH, './/android.view.View[@content-desc="Incident"]')
     CHOOSE_TYPE_INCIDENT_ios = (MobileBy.XPATH, '//UIAStaticText[@name="Incident"]')
-    INCIDENT_TYPE_EXPAND = (MobileBy.XPATH, './/android.view.View[@content-desc[contains(., "Incident click to expand")]]')
+    INCIDENT_TYPE_EXPAND = (MobileBy.XPATH, './/android.view.View[@content-desc[contains('
+                                            '., "Incident click to expand")]]')
     INCIDENT_TYPE_EXPAND_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "Incident click to expand")]]')
     CHOOSE_TYPE_ANY = (MobileBy.XPATH, './/android.view.View[@content-desc="Any Type"]')
     CHOOSE_TYPE_ANY_ios = (MobileBy.XPATH, '//UIAStaticText[@name="Any Type"]')
 
     # filtering events by Status
-    ANY_STATUS_EXPAND = (MobileBy.XPATH, './/android.view.View[@content-desc[contains(., "Any Status click to expand")]]')
+    ANY_STATUS_EXPAND = (MobileBy.XPATH, './/android.view.View[@content-desc[contains('
+                                         '., "Any Status click to expand")]]')
     ANY_STATUS_EXPAND_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "Any Status click to expand")]]')
     CHOOSE_ACTIVE_STATUS = (MobileBy.XPATH, './/android.view.View[@content-desc="Active"]')
     CHOOSE_ACTIVE_STATUS_ios = (MobileBy.XPATH, '//UIALink[@name="Active"]')
@@ -98,7 +100,8 @@ class EventsScreen(object):
     ACTIVE_STATUS_EXPAND_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "Active click to expand")]]')
     CHOOSE_INACTIVE_STATUS = (MobileBy.XPATH, './/android.view.View[@content-desc="Inactive"]')
     CHOOSE_INACTIVE_STATUS_ios = (MobileBy.XPATH, '//UIALink[@name="Inactive"]')
-    INACTIVE_STATUS_EXPAND = (MobileBy.XPATH, './/android.view.View[@content-desc[contains(., "Inactive click to expand")]]')
+    INACTIVE_STATUS_EXPAND = (MobileBy.XPATH, './/android.view.View[@content-desc[contains('
+                                              '., "Inactive click to expand")]]')
     INACTIVE_STATUS_EXPAND_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "Inactive click to expand")]]')
     CHOOSE_DRAFT_STATUS = (MobileBy.XPATH, './/android.view.View[@content-desc="Draft"]')
     CHOOSE_DRAFT_STATUS_ios = (MobileBy.XPATH, '//UIALink[@name="Draft"]')
@@ -125,21 +128,23 @@ class EventsScreen(object):
     CREATED_EVENT_2_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "Test Appium iOS - second event")]]')
     CREATED_EVENT_3 = (MobileBy.XPATH, './/android.view.View[@content-desc[contains(., "Test to create sub event")]]')
     CREATED_EVENT_3_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "iOS to create sub")]]')
-    CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.XPATH, './/android.view.View[@content-desc[contains(., "Clear primary event")]]')
+    CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.XPATH, './/android.view.View[@content-desc[contains('
+                                                  '., "Clear primary event")]]')
     CLEAR_PRIMARY_EVENT_BUTTON_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText[@name'
-                                                '[contains(., "Clear primary event")]]')
+                                                      '[contains(., "Clear primary event")]]')
     NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.XPATH, './/android.view.View[@content-desc="Primary event cleared"]')
-    NOTIFICATION_PRIMARY_EVENT_CLEARED_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText[@name="Primary event cleared"]')
+    NOTIFICATION_PRIMARY_EVENT_CLEARED_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText['
+                                                              '@name="Primary event cleared"]')
     GO_BACK_TO_MAIN_MENU_ARROW_BUTTON = (MobileBy.XPATH, ".//android.webkit.WebView[@index='0']"
-                                                   "//android.view.View[@index='0']"
-                                                   "//android.view.View[@index='0']")
-    GO_BACK_TO_MAIN_MENU_ARROW_BUTTON_ios = (MobileBy.XPATH, '//UIAApplication[1]'
-                                                       '/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[1]')
+                                                         "//android.view.View[@index='0']"
+                                                         "//android.view.View[@index='0']")
+    # GO_BACK_TO_MAIN_MENU_ARROW_BUTTON_ios = (MobileBy.XPATH, '//UIAApplication[1]'
+    #                                                    '/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[1]')
     HAMBURGER_FOR_MAIN_MENU_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
-                                             '/UIAWebView[1]/UIALink[3]/UIAStaticText[1]')
+                                                   '/UIAWebView[1]/UIALink[3]/UIAStaticText[1]')
 
 
-class TypesOfEventsScreen(object):
+class TypesOfEventsScreen:
     """A class for Type of Events screen locators - first screen after creating new event with types of events."""
     INCIDENT_TYPE_OF_EVENT = (MobileBy.XPATH, './/android.view.View[@content-desc[contains(., "Incident")]]')
     INCIDENT_TYPE_OF_EVENT_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIALink[@name[contains(., "Incident")]]')
@@ -149,13 +154,13 @@ class TypesOfEventsScreen(object):
     EVENT_FOR_CHOOSER_FIELDS_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIALink[@name[contains(., "event_for_chooser")]]')
 
 
-class EventEditScreen(object):
+class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
     NAME_FIELD = (MobileBy.XPATH, './/android.widget.EditText[@index="1"]')
-    NAME_FIELD_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIATextField[@name="Name"]')
+    NAME_FIELD_ios = (MobileBy.XPATH, '//UIAScrollView/UIAWebView/UIATextField[@name="Name"]')
     SEVERITY_LEVEL_SELECTOR = (MobileBy.XPATH, './/android.widget.ListView[@index="0"]'
-                                         '//android.view.View[@index="3"]'
-                                         '//android.widget.Spinner[@index="2"]')
+                                               '//android.view.View[@index="3"]'
+                                               '//android.widget.Spinner[@index="2"]')
     SEVERITY_LEVEL_SELECTOR_ios = (MobileBy.XPATH, '//UIAElement[2]')
     CHOOSE_SEVERITY_LVL1 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 1"]')
     CHOOSE_SEVERITY_LVL1_iPad = (MobileBy.XPATH, '//UIATableCell[@name="Severity 1"]')
@@ -223,8 +228,8 @@ class EventEditScreen(object):
     FIELD_TO_RESTORE_1_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name="field to restore"]')
     FIELD_TO_RESTORE_1_VALUE = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="value for field 1"]')
     FIELD_TO_RESTORE_1_VALUE_ios = (MobileBy.XPATH, '//UIATextField[@value="value for field 1"]')
-    FIELD_TO_RESTORE__2_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="New email address"]')
-    FIELD_TO_RESTORE__2_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name="New email address"]')
+    FIELD_TO_RESTORE_2_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="New email address"]')
+    FIELD_TO_RESTORE_2_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name="New email address"]')
     FIELD_TO_RESTORE_2_VALUE = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="test@noggin.com"]')
     FIELD_TO_RESTORE_2_VALUE_ios = (MobileBy.XPATH, '//UIATextField[@value="test@noggin.com"]')
     CANCEL_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Cancel"]')
@@ -232,26 +237,29 @@ class EventEditScreen(object):
     CHOOSER_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "New events chooser")]]')
     CHOOSER_FIELD_ios = (MobileBy.XPATH, '//UIAWebView/UIALink/UIALink[@name[contains(., "New events chooser")]]')
     PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Test")]]')
-    PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Test Appium iOS")]]')
+    PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains('
+                                                                '., "Test Appium iOS")]]')
     SUBFORM_FIELD_ADD_ROW = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Add row"]')
     SUBFORM_FIELD_ADD_ROW_ios = (MobileBy.XPATH, '//UIAButton[@name="Add row"]')
-    NEW_EVENTS_CHOOSER_IN_SUB_FORM = (MobileBy.XPATH, '//android.view.View'
-                                                '[@content-desc[contains(., "New events chooser inside sub form")]]')
-    NEW_EVENTS_CHOOSER_IN_SUB_FORM_ios = (MobileBy.XPATH, '//UIAWebView/UIALink/UIALink'
-                                                    '[@name[contains(., "New events chooser inside sub form")]]')
+    NEW_EVENTS_CHOOSER_IN_SUB_FORM = (MobileBy.XPATH, '//android.view.View[@content-desc['
+                                                      'contains(., "New events chooser inside sub form")]]')
+    NEW_EVENTS_CHOOSER_IN_SUB_FORM_ios = (MobileBy.XPATH, '//UIAWebView/UIALink/UIALink[@name[contains('
+                                                          '., "New events chooser inside sub form")]]')
     PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Test")]]')
-    #DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.XPATH, '//android.widget.ListView[0]/android.view.View[8]/android.view.View[1]')
-    DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View[@index="8"]/android.view.View[@index="1"]')
-    #DELETE_SUB_EVENT_FROM_CHOOSER_ios = (MobileBy.XPATH, '//UIAScrollView[2]/UIAWebView[1]/UIALink[6]')
+    # DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.XPATH, '//android.widget.ListView[0]/android.view.View[8]'
+    #                                                  '/android.view.View[1]')
+    DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View[@index="8"]'
+                                                     '/android.view.View[@index="1"]')
+    # DELETE_SUB_EVENT_FROM_CHOOSER_ios = (MobileBy.XPATH, '//UIAScrollView[2]/UIAWebView[1]/UIALink[6]')
 
 
-class EventDetailsScreen(object):
+class EventDetailsScreen:
     """A class for Event Details screen locators - screen with event details - after opening event."""
     EDIT_BUTTON = (MobileBy.XPATH, './/android.widget.Button[@content-desc="Edit"]')
     EDIT_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Edit"]')
     DELETE_EVENT_BUTTON = (MobileBy.XPATH, "//android.widget.ListView[@index='2']"
-                                     "//android.view.View[@index='2']"
-                                     "//android.view.View[@content-desc[contains(., 'Delete event')]]")
+                                           "//android.view.View[@index='2']"
+                                           "//android.view.View[@content-desc[contains(., 'Delete event')]]")
     DELETE_EVENT_BUTTON_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIALink[@name[contains(., "Delete event")]]')
     DELETE_CONFIRM_BUTTON = (MobileBy.XPATH, './/android.view.View[@content-desc="Delete"]')
     DELETE_CONFIRM_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name="Delete"]')
@@ -261,47 +269,43 @@ class EventDetailsScreen(object):
     SET_AS_PRIMARY_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Set as primary")]]')
 
 
-class Map(object):
+class Map:
     TOOL_BUTTON = (MobileBy.XPATH, ".//android.widget.Spinner[@content-desc[contains(., 'Tool')]]")
     TOOL_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Tool")]]')
     POINT_BUTTON = (MobileBy.XPATH, ".//android.view.View[@content-desc[contains(., 'Point click to expand')]]")
     POINT_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "Point click to expand")]]')
     DEFAULT_BUTTON = (MobileBy.XPATH, ".//android.view.View[@content-desc='Default']")
     DEFAULT_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[@name="Default"]')
-    ADD_POINT_INTO_MAP = (MobileBy.XPATH, ".//android.widget.Image[@index='6']")
-    ADD_POINT_INTO_MAP_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[13]')
-    #ADD_POINT_INTO_MAP_ios = (MobileBy.XPATH, '/UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAImage[13]')
+    MAP_AREA_3 = (MobileBy.XPATH, ".//android.widget.Image[@index='3']")
+    MAP_AREA_5 = (MobileBy.XPATH, ".//android.widget.Image[@index='5']")
+    MAP_AREA_6 = (MobileBy.XPATH, ".//android.widget.Image[@index='6']")
+    MAP_AREA_12_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[12]')
+    MAP_AREA_13_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[13]')
+    MAP_AREA_17_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[17]')
+    MAP_AREA_18_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[18]')
+    # ADD_POINT_INTO_MAP_ios = (MobileBy.XPATH, '/UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
+    #                                           '/UIAWebView[1]/UIAImage[13]')
     LINE_BUTTON = (MobileBy.XPATH, ".//android.view.View[@content-desc[contains(., 'Line click to expand')]]")
     LINE_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "Line click to expand")]]')
-    ADD_LINE1 = (MobileBy.XPATH, ".//android.widget.Image[@index='5']")
-    ADD_LINE1_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[12]')
-    ADD_LINE2 = (MobileBy.XPATH, ".//android.widget.Image[@index='3']")
-    ADD_LINE2_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[17]')
     CIRCLE_BUTTON = (MobileBy.XPATH, ".//android.view.View[@content-desc[contains(., 'Circle click to expand')]]")
     CIRCLE_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "Circle click to expand")]]')
-    ADD_CIRCLE_INTO_MAP = (MobileBy.XPATH, ".//android.widget.Image[@index='6']")
-    ADD_CIRCLE_INTO_MAP_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[12]')
+    # MAP_AREA_6 = (MobileBy.XPATH, ".//android.widget.Image[@index='6']")
+    # MAP_AREA_12_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[12]')
     POLYGON_BUTTON = (MobileBy.XPATH, ".//android.view.View[@content-desc[contains(., 'Polygon click to expand')]]")
     POLYGON_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "Polygon click to expand")]]')
-    ADD_POLYGON1 = (MobileBy.XPATH, ".//android.widget.Image[@index='5']")
-    ADD_POLYGON1_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[12]')
-    ADD_POLYGON2 = (MobileBy.XPATH, ".//android.widget.Image[@index='6']")
-    ADD_POLYGON2_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[17]')
-    ADD_POLYGON3 = (MobileBy.XPATH, ".//android.widget.Image[@index='3']")
-    ADD_POLYGON3_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[18]')
+    # MAP_AREA_5 = (MobileBy.XPATH, ".//android.widget.Image[@index='5']")
+    # MAP_AREA_12_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[12]')
+    # MAP_AREA_6 = (MobileBy.XPATH, ".//android.widget.Image[@index='6']")
+    # MAP_AREA_17_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[17]')
+    # MAP_AREA_3 = (MobileBy.XPATH, ".//android.widget.Image[@index='3']")
     SAVE_MAP_BUTTON = (MobileBy.XPATH, ".//android.widget.Button[@content-desc='Save']")
     SAVE_MAP_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Save")]]')
     BUTTON_ALLOW_LOCATION_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]'
-                                           '/UIACollectionCell[2]/UIAButton[@name="Allow"]')
+                                                 '/UIACollectionCell[2]/UIAButton[@name="Allow"]')
 
 
-class iOSkeyboard(object):
+class iOSkeyboard:
     """A class for handling iOS keyboard"""
 
     BUTTON_DONE_TO_HIDE_KEYBOARD = (MobileBy.XPATH, '//UIAWindow[2]/UIAToolbar[1]/UIAButton[@name="Done"]')
     RETURN_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Return"]')
-
-
-class SearchResultsPageLocators(object):
-    """A class for search results locators. All search results locators should come here"""
-    pass

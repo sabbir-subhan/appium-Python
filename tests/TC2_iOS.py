@@ -26,7 +26,7 @@ class TestCase2iOS(unittest.TestCase):
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
-        self.driver.implicitly_wait(25)  # seconds
+        self.driver.implicitly_wait(10)  # seconds
 
     def tearDown(self):
 
