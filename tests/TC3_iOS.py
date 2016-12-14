@@ -1,4 +1,4 @@
-# Test Case 3 - Managing events
+# Test Case 3 - Managing events  -- OCAMOB-64
 
 
 from appium import webdriver
@@ -87,6 +87,8 @@ class TestCase3iOS(unittest.TestCase):
         event_edit_page.click_severity_lvl_picker()
         event_edit_page.choose_severity_level_4()
         event_edit_page.save_event()
+        events_page.check_if_EVENTS_were_opened()
+        events_page.open_previously_created_event2()
         event_details_page.click_edit_button()
         event_edit_page.click_create_mapping_data()
         ios_device.alert_allow_location()
@@ -99,19 +101,18 @@ class TestCase3iOS(unittest.TestCase):
         map_page.click_tool_button()
         map_page.click_line_button()
         map_page.click_default_button()
-        map_page.click_in_map_area_13()
         map_page.click_in_map_area_17()
-        map_page.click_in_map_area_17()
+        map_page.double_click_in_map_area_18()
+        map_page.click_tool_button()
         map_page.click_circle_button()
         map_page.click_default_button()
-        map_page.click_in_map_area_18()
+        map_page.click_in_map_area_17()
         map_page.click_tool_button()
         map_page.click_polygon_button()
         map_page.click_default_button()
-        map_page.click_in_map_area_12()
+        map_page.click_in_map_area_13()
         map_page.click_in_map_area_17()
-        map_page.click_in_map_area_18()
-        map_page.click_in_map_area_18()
+        map_page.double_click_in_map_area_18()
         map_page.save_map()
         event_edit_page.save_event()
 

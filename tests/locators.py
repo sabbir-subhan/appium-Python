@@ -5,7 +5,9 @@ from appium.webdriver.common.mobileby import MobileBy
 class WelcomeScreen:
     """A class for welcome screen locators - first screen after lunching the app."""
     LOGIN_BUTTON = (MobileBy.XPATH, './/android.view.View[@content-desc[contains(., "LOGIN")]]')
-    LOGIN_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "LOGIN")]]')
+    LOGIN_BUTTON_ios = (MobileBy.XPATH, '//UIAScrollView/UIAWebView/UIALink[@name[contains(., "LOGIN")]]')
+    LOGIN_BUTTON_by_index_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]'
+                                                 '/UIAScrollView[2]/UIAWebView[1]/UIALink[9]')
 
 
 class LoginScreen:
@@ -20,10 +22,13 @@ class LoginScreen:
     SUBMIT_BUTTON_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAButton[@name="Submit"]')
 
     # Notification alert: "OCA now supports sending 'App Messages' to your device as notifications."
+    NOTIFICATION_ABOUT_SENDING_MESSAGES = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., '
+                                                           '"OCA now supports ")]]')
     NOTIFICATION_ABOUT_SENDING_MESSAGES_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText[@name[contains(., '
                                                                '"OCA now supports ")]]')
 
     # "No" button for sending notifications on iOS
+    NO_FOR_SENDING_NOTIFICATIONS_ON = (MobileBy.XPATH, '//android.view.View[@content-desc="No"]')
     NO_FOR_SENDING_NOTIFICATIONS_ON_ios = (MobileBy.XPATH, '//UIAWebView/UIALink[@name="No"]')
 
     # ACCEPT_BUTTON on Terms and Conditions"
@@ -55,10 +60,9 @@ class LoginScreen:
     ALERT_MSG_SUSPENDED_ios = (MobileBy.XPATH, '//UIAWebView/UIAStaticText['
                                                '@name[contains(., "Your account is currently inactive")]]')
 
-# DO ZASTĄPIENIA PRZEZ OK_BUTTON
-    # alert message about expiring password
-    NOTICE_ALERT_OK_BUTTON = (MobileBy.XPATH,
-                              './/android.view.View[@index="24"]//android.view.View[@content-desc[contains(., "Ok")]]')
+    # # alert message about expiring password
+    # NOTICE_ALERT_OK_BUTTON = (MobileBy.XPATH,
+    #                           './/android.view.View[@index="24"]//android.view.View[@content-desc[contains(., "Ok")]]')
 
     # OK button on alert messages"
     OK_BUTTON = (MobileBy.XPATH, './/android.view.View[@content-desc="Ok"]')
@@ -72,6 +76,18 @@ class MainMenuScreen:
     LOGOUT_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "LOGOUT")]]')
     EVENTS_BUTTON = (MobileBy.XPATH, './/android.view.View[@content-desc[contains(., "EVENTS")]]')
     EVENTS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "EVENTS")]]')
+    LOCATION_BUTTON = (MobileBy.XPATH, './/android.view.View[@content-desc[contains(., "LOCATION")]]')
+    LOCATION_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "LOCATION")]]')
+
+
+class LocationScreen:
+    """A class for Location screen locators - screen after clicking into Location button in Main Menu."""
+    SEND_ONCE_NOW = (MobileBy.XPATH, './/android.widget.Button[@content-desc[contains(., "Send once now")]]')
+    SEND_ONCE_NOW_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Send once now")]]')
+    SEND_EVERY = (MobileBy.XPATH, '')
+    SEND_EVERY_ios =(MobileBy.XPATH, '')
+    CHOOSE_1_HOUR_OPTION = (MobileBy.XPATH, '')
+    CHOOSE_1_HOUR_OPTION_ios = (MobileBy.XPATH, '')
 
 
 class EventsScreen:
@@ -140,6 +156,10 @@ class EventsScreen:
                                                          "//android.view.View[@index='0']")
     # GO_BACK_TO_MAIN_MENU_ARROW_BUTTON_ios = (MobileBy.XPATH, '//UIAApplication[1]'
     #                                                    '/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[1]')
+    HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, ".//android.webkit.WebView[@index='0']"
+                                               "/android.view.View[@index='0']"
+                                               "/android.view.View[@index='2']"
+                                               "/android.view.View[@index='0']")
     HAMBURGER_FOR_MAIN_MENU_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
                                                    '/UIAWebView[1]/UIALink[3]/UIAStaticText[1]')
 
@@ -158,6 +178,7 @@ class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
     NAME_FIELD = (MobileBy.XPATH, './/android.widget.EditText[@index="1"]')
     NAME_FIELD_ios = (MobileBy.XPATH, '//UIAScrollView/UIAWebView/UIATextField[@name="Name"]')
+    NAME_FIELD_by_index_ios = (MobileBy.XPATH, '//UIAScrollView/UIAWebView/UIATextField[1]')
     SEVERITY_LEVEL_SELECTOR = (MobileBy.XPATH, './/android.widget.ListView[@index="0"]'
                                                '//android.view.View[@index="3"]'
                                                '//android.widget.Spinner[@index="2"]')
@@ -245,12 +266,12 @@ class EventEditScreen:
                                                       'contains(., "New events chooser inside sub form")]]')
     NEW_EVENTS_CHOOSER_IN_SUB_FORM_ios = (MobileBy.XPATH, '//UIAWebView/UIALink/UIALink[@name[contains('
                                                           '., "New events chooser inside sub form")]]')
+    PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER = (MobileBy.XPATH, '//android.view.View'
+                                                                    '[@content-desc[contains(., "Test")]]')
     PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Test")]]')
-    # DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.XPATH, '//android.widget.ListView[0]/android.view.View[8]'
-    #                                                  '/android.view.View[1]')
     DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View[@index="8"]'
                                                      '/android.view.View[@index="1"]')
-    # DELETE_SUB_EVENT_FROM_CHOOSER_ios = (MobileBy.XPATH, '//UIAScrollView[2]/UIAWebView[1]/UIALink[6]')
+    DELETE_SUB_EVENT_FROM_CHOOSER_ios = (MobileBy.XPATH, '//UIAScrollView[2]/UIAWebView[1]/UIALink[6]')
 
 
 class EventDetailsScreen:
@@ -285,14 +306,14 @@ class Map:
     MAP_AREA_18_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[18]')
     # ADD_POINT_INTO_MAP_ios = (MobileBy.XPATH, '/UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
     #                                           '/UIAWebView[1]/UIAImage[13]')
-    LINE_BUTTON = (MobileBy.XPATH, ".//android.view.View[@content-desc[contains(., 'Line click to expand')]]")
-    LINE_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "Line click to expand")]]')
-    CIRCLE_BUTTON = (MobileBy.XPATH, ".//android.view.View[@content-desc[contains(., 'Circle click to expand')]]")
-    CIRCLE_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "Circle click to expand")]]')
+    LINE_BUTTON = (MobileBy.XPATH, ".//android.view.View[@content-desc[contains(., 'Line')]]")
+    LINE_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "Line")]]')
+    CIRCLE_BUTTON = (MobileBy.XPATH, ".//android.view.View[@content-desc[contains(., 'Circle')]]")
+    CIRCLE_BUTTON_ios = (MobileBy.XPATH, '//UIAScrollView[2]/UIAWebView[1]/UIALink[@name[contains(., "Circle")]]')
     # MAP_AREA_6 = (MobileBy.XPATH, ".//android.widget.Image[@index='6']")
     # MAP_AREA_12_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[12]')
-    POLYGON_BUTTON = (MobileBy.XPATH, ".//android.view.View[@content-desc[contains(., 'Polygon click to expand')]]")
-    POLYGON_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "Polygon click to expand")]]')
+    POLYGON_BUTTON = (MobileBy.XPATH, ".//android.view.View[@content-desc[contains(., 'Polygon')]]")
+    POLYGON_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "Polygon")]]')
     # MAP_AREA_5 = (MobileBy.XPATH, ".//android.widget.Image[@index='5']")
     # MAP_AREA_12_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[12]')
     # MAP_AREA_6 = (MobileBy.XPATH, ".//android.widget.Image[@index='6']")
@@ -300,12 +321,18 @@ class Map:
     # MAP_AREA_3 = (MobileBy.XPATH, ".//android.widget.Image[@index='3']")
     SAVE_MAP_BUTTON = (MobileBy.XPATH, ".//android.widget.Button[@content-desc='Save']")
     SAVE_MAP_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Save")]]')
+
+
+class iOSDevice:
+    """A class for handling iOS device for example keyboard"""
+
+    BUTTON_DONE_TO_HIDE_KEYBOARD = (MobileBy.XPATH, '//UIAWindow[2]/UIAToolbar[1]/UIAButton[@name="Done"]')
+    RETURN_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Return"]')
     BUTTON_ALLOW_LOCATION_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]'
                                                  '/UIACollectionCell[2]/UIAButton[@name="Allow"]')
 
 
-class iOSkeyboard:
-    """A class for handling iOS keyboard"""
+class AndroidDevice:
+    """A class for handling Android device for example alerts"""
 
-    BUTTON_DONE_TO_HIDE_KEYBOARD = (MobileBy.XPATH, '//UIAWindow[2]/UIAToolbar[1]/UIAButton[@name="Done"]')
-    RETURN_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Return"]')
+    BUTTON_ALLOW_LOCATION = (MobileBy.ID, 'com.android.packageinstaller:id/permission_allow_button')

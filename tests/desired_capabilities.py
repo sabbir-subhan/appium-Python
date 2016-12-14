@@ -12,9 +12,9 @@ class DesiredCapabilities(object):
         "platformName": "ANDROID",
         "platformVersion": "4.4.2",
         "deviceName": "QUANTUM_2_400",
-        "app": PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk"),
-        "appPackage": "com.noggin.oca",
-        "appActivity": "com.noggin.oca.OCApp",
+        "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
+        "apppackage": "com.noggin.oca",
+        "appactivity": "com.noggin.oca.OCApp",
         "newCommandTimeout": "600",
         "udid": "0123456789ABCDEF"
     }
@@ -23,9 +23,9 @@ class DesiredCapabilities(object):
         "platformName": "ANDROID",
         "platformVersion": "5.1.1",
         "deviceName": "Alcatel POP3",
-        "app": PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk"),
-        "appPackage": "com.noggin.oca",
-        "appActivity": "com.noggin.oca.OCApp",
+        "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
+        "apppackage": "com.noggin.oca",
+        "appactivity": "com.noggin.oca.OCApp",
         "newCommandTimeout": "600",
         "udid": "7d7d9a62"
     }
@@ -36,8 +36,8 @@ class DesiredCapabilities(object):
         "deviceName": "Samsung Galaxy S7",
         #"app": PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk"),
         "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
-        "appPackage": "com.noggin.oca",
-        "appActivity": "com.noggin.oca.OCApp",
+        "apppackage": "com.noggin.oca",
+        "appactivity": "com.noggin.oca.OCApp",
         "newCommandTimeout": "600",
         "udid": "ad0816033848eb0443"
     }
