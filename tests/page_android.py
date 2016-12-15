@@ -28,15 +28,19 @@ class BasePage(unittest.TestCase):
 
     # OCA top bar
     def hamburger_button(self):
+
         logging.info("click hamburger button to go back to main menu")
-        sleep(2)
         try:
-            hamburger_button = self.driver.find_element(*EventsScreen.HAMBURGER_FOR_MAIN_MENU)
+            hamburger_button = self.driver.find_element(*TopBar.HAMBURGER_FOR_MAIN_MENU)
             self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
+            if hamburger_button.is_displayed():
+                hamburger_button.click()
+            else:
+                pass
             # probably that element cannot be clicked because attribute visible is "false"
-            hamburger_button.click()
         except NoSuchElementException:
-            positions_for_hamburger_button = [(729, 23)]
+            positions_for_hamburger_button = [(730, 20)]
+            sleep(1)
             self.driver.tap(positions_for_hamburger_button)
         sleep(2)
 
@@ -45,9 +49,12 @@ class AndroidDevice(BasePage):
 
     def hide_keyboard(self):
 
-        logging.info("hide screen keyboard")
-        self.driver.hide_keyboard()
-        sleep(3)
+        try:
+            logging.info("hide screen keyboard")
+            self.driver.hide_keyboard()
+            sleep(3)
+        except NoSuchElementException:
+            logging.info("screen keyboard not found")
 
     def click_Go_button_on_keyboard(self):
 
@@ -55,15 +62,10 @@ class AndroidDevice(BasePage):
         self.driver.keyevent(66)
         sleep(3)
 
-    def clear_text_field(self):
-
-        logging.info("clear text field")
-        self.driver.keyevent(67)   # it will delete only one character
-
     def alert_allow_location(self):
 
         try:
-            button_allow_location = self.driver.find_element(*AndroidDevice.BUTTON_ALLOW_LOCATION)
+            button_allow_location = self.driver.find_element(*Android.BUTTON_ALLOW_LOCATION)
             if button_allow_location.is_displayed():
                 logging.info("Accept using location - device will store that info for later use")
                 button_allow_location.click()
@@ -77,12 +79,11 @@ class WelcomePage(BasePage):
 
     def click_login_button(self):
 
+        logging.info("click in LOGIN button")
         try:
             WebDriverWait(self.driver, 20).until(
                 expected_conditions.presence_of_element_located(WelcomeScreen.LOGIN_BUTTON),
                 "Login button not found")
-            logging.info("Login button found")
-            logging.info("click in LOGIN button")
             self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON).click()
         except NoSuchElementException:
             self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_by_index).click()
@@ -224,7 +225,7 @@ class MainPage(BasePage):
 
     def open_EVENTS(self):
 
-        logging.info("clicking on Events button")
+        logging.info("clicking in Events button")
         events_button = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON)
         self.assertIsNotNone(events_button)
         events_button.click()
@@ -234,104 +235,166 @@ class MainPage(BasePage):
 
     def open_LOCATION(self):
 
-        logging.info("clicking on Events button")
+        logging.info("clicking in Events button")
         location_button = self.driver.find_element(*MainMenuScreen.LOCATION_BUTTON)
         self.assertIsNotNone(location_button)
         location_button.click()
 
 
 class LocationPage(BasePage):
+
+    def check_if_location_page_was_opened(self):
+
+        location_page_header = self.driver.find_element(*LocationScreen.LOCATION_PAGE_HEADER)
+        self.assertIsNotNone(location_page_header, "Location Page header was not found")
+
     def click_send_once_now(self):
-        logging.info("clicking on send_once_now button")
+
+        logging.info("clicking in send_once_now button")
         send_once_now_button = self.driver.find_element(*LocationScreen.SEND_ONCE_NOW)
         self.assertIsNotNone(send_once_now_button)
         send_once_now_button.click()
 
     def click_send_every(self):
-        logging.info("clicking on send_every button")
+
+        logging.info("clicking in send_every button")
         send_every_button = self.driver.find_element(*LocationScreen.SEND_EVERY_SPINNER)
         self.assertIsNotNone(send_every_button)
         send_every_button.click()
 
     def choose_1_hour_option(self):
+
         logging.info("choose_1_hour_option")
         choose_1_hour_option = self.driver.find_element(*LocationScreen.CHOOSE_1_HOUR_OPTION)
         self.assertIsNotNone(choose_1_hour_option)
         choose_1_hour_option.click()
 
-            
+    def check_if_1hour_option_was_chosen(self):
+
+        logging.info("check_if_1hour_option_was_chosen")
+        check_if_1hour_option_was_chosen = self.driver.find_element(*LocationScreen.ASSERT_1_HOUR_OPTION)
+        self.assertIsNotNone(check_if_1hour_option_was_chosen)
+
+    def check_if_button_send_once_was_pressed(self):
+
+        logging.info("check_if_1hour_option_was_chosen")
+        check_if_1hour_option_was_chosen = self.driver.find_element(*LocationScreen.ASSERT_1_HOUR_OPTION)
+        self.assertIsNotNone(check_if_1hour_option_was_chosen)
+
+    def click_start_button(self):
+
+        logging.info("click start button")
+        start_button = self.driver.find_element(*LocationScreen.START_BUTTON)
+        self.assertIsNotNone(start_button)
+        start_button.click()
+
+    def check_if_start_button_was_clicked(self):
+
+        try:
+            start_button_disabled = self.driver.find_element(*LocationScreen.START_BUTTON_disabled)
+            if start_button_disabled.is_displayed():
+                logging.info("button Start was clicked")
+            else:
+                self.fail("button Start was not clicked")
+        except NoSuchElementException:
+            self.fail("button Start was not clicked")
+
+
 class EventsPage(BasePage):
 
     def check_if_EVENTS_were_opened(self):
+
         logging.info("check if Events were opened")
         events_header = self.driver.find_element(*EventsScreen.EVENTS_HEADER)
         self.assertIsNotNone(events_header)
 
     def filter_events_by_Type(self):
+
+        sleep(1)
         logging.info("filtering events by Type")
         self.driver.find_element(*EventsScreen.ANY_TYPE_EXPAND).click()
         self.driver.find_element(*EventsScreen.CHOOSE_TYPE_INCIDENT).click()
         sleep(1)
         self.driver.find_element(*EventsScreen.INCIDENT_TYPE_EXPAND).click()
         self.driver.find_element(*EventsScreen.CHOOSE_TYPE_ANY).click()
-        sleep(0.5)
+        sleep(1)
 
     def filter_events_by_Status(self):
+
+        sleep(1)
         logging.info("filtering events by Status")
         self.driver.find_element(*EventsScreen.ANY_STATUS_EXPAND).click()
         self.driver.find_element(*EventsScreen.CHOOSE_ACTIVE_STATUS).click()
-        sleep(0.5)
+        sleep(1)
         self.driver.find_element(*EventsScreen.ACTIVE_STATUS_EXPAND).click()
         self.driver.find_element(*EventsScreen.CHOOSE_INACTIVE_STATUS).click()
-        sleep(0.5)
+        sleep(1)
         self.driver.find_element(*EventsScreen.INACTIVE_STATUS_EXPAND).click()
         self.driver.find_element(*EventsScreen.CHOOSE_DRAFT_STATUS).click()
-        sleep(0.5)
+        sleep(1)
         self.driver.find_element(*EventsScreen.DRAFT_STATUS_EXPAND).click()
         self.driver.find_element(*EventsScreen.CHOOSE_ANY_STATUS).click()
-        sleep(0.5)
+        sleep(1)
 
     def filter_events_by_Search_field(self):
+
         logging.info("search field - search event named: 'search'")
         self.driver.find_element(*EventsScreen.SEARCH_FIELD).click()
         self.driver.find_element(*EventsScreen.SEARCH_FIELD).clear()
         self.driver.find_element(*EventsScreen.SEARCH_FIELD).send_keys("search")
 
     def clear_Search_field(self):
+
         logging.info("clear search field")
-        self.driver.find_element(*EventsScreen.SEARCH_FIELD).click()
+        search_field = self.driver.find_element(*EventsScreen.SEARCH_FIELD)
+        search_field.click()
         self.driver.keyevent(67)
         self.driver.keyevent(67)
         self.driver.keyevent(67)
         self.driver.keyevent(67)
         self.driver.keyevent(67)
         self.driver.keyevent(67)
+        # search_field_string = self.driver.find_element(*EventsScreen.SEARCH_FIELD).get_attribute("content-desc")
+        # len_of_the_string = len(search_field_string)
+        # delete_character = self.driver.keyevent(67)  # it will delete only one character
+        # clear_as_many_characters_needed = delete_character * len_of_the_string
 
     def click_More_button(self):
-        logging.info("clicking on 'More' button")
-        self.driver.find_element(*EventsScreen.MORE_BUTTON).click()
+
+        sleep(1)
+        logging.info("clicking in 'More' button")
+        more_button = self.driver.find_element(*EventsScreen.MORE_BUTTON)
+        self.assertIsNotNone(more_button, "More button was not found")
+        more_button.click()
 
     def click_New_event_button(self):
-        logging.info("clicking on New event button")
-        self.driver.find_element(*EventsScreen.NEW_EVENT_BUTTON).click()
+
+        sleep(1)
+        logging.info("clicking in New event button")
+        new_event_button = self.driver.find_element(*EventsScreen.NEW_EVENT_BUTTON)
+        self.assertIsNotNone(new_event_button, "New Event button not found")
+        new_event_button.click()
         sleep(0.5)
 
     def click_New_sub_event(self):
-        logging.info("clicking on 'New sub event' button")
+
+        logging.info("clicking in 'New sub event' button")
         new_sub_event = self.driver.find_element(*EventDetailsScreen.NEW_SUB_EVENT)
         self.assertIsNotNone(new_sub_event, "New sub event button is not present")
         new_sub_event.click()
         sleep(3)
 
     def set_as_primary_event(self):
-        logging.info("clicking on 'Set as primary' button")
+
+        logging.info("clicking in 'Set as primary' button")
         set_as_primary_button = self.driver.find_element(*EventDetailsScreen.SET_AS_PRIMARY_BUTTON)
         self.assertIsNotNone(set_as_primary_button)
         set_as_primary_button.click()
         sleep(2)
 
     def clear_primary_event(self):
-        logging.info("clicking on 'Clear primary event' button")
+
+        logging.info("clicking in 'Clear primary event' button")
         clear_primary_event_button = self.driver.find_element(*EventsScreen.CLEAR_PRIMARY_EVENT_BUTTON)
         self.assertIsNotNone(clear_primary_event_button)
         clear_primary_event_button.click()
@@ -340,6 +403,7 @@ class EventsPage(BasePage):
         self.assertIsNotNone(notification)
 
     def open_previously_created_event1(self):
+
         logging.info("open created event")
         created_event1 = self.driver.find_element(*EventsScreen.CREATED_EVENT_1)
         self.assertIsNotNone(created_event1)
@@ -347,6 +411,7 @@ class EventsPage(BasePage):
         sleep(5)
 
     def open_previously_created_event2(self):
+
         logging.info("open previously created Event, Edit and Create mapping data")
         created_event2 = self.driver.find_element(*EventsScreen.CREATED_EVENT_2)
         self.assertIsNotNone(created_event2)
@@ -354,6 +419,7 @@ class EventsPage(BasePage):
         sleep(5)
 
     def open_previously_created_event3(self):
+
         logging.info("open previously created Event, Edit and Create mapping data")
         created_event3 = self.driver.find_element(*EventsScreen.CREATED_EVENT_3)
         self.assertIsNotNone(created_event3)
@@ -362,12 +428,14 @@ class EventsPage(BasePage):
 
     # only for events list, opened from chooser fields inside other event
     def click_on_previously_created_event_for_chooser_field(self):
+
         logging.info("click_on_previously_created_event_for_chooser_field")
         event_for_chooser_field = self.driver.find_element(*EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER)
         self.assertIsNotNone(event_for_chooser_field)
         event_for_chooser_field.click()
 
     def click_on_previously_created_event_for_subform_chooser(self):
+
         logging.info("click_on_previously_created_event_for_subform_chooser")
         event_for_subform = self.driver.find_element(*EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER)
         self.assertIsNotNone(event_for_subform)
@@ -378,18 +446,21 @@ class EventsPage(BasePage):
 class EventsTypesPage(BasePage):
 
     def choose_Incident_type_of_event(self):
+
         event_type_incident = self.driver.find_element(*TypesOfEventsScreen.INCIDENT_TYPE_OF_EVENT)
         self.assertIsNotNone(event_type_incident)
         logging.info("choosing Incident type of new event")
         event_type_incident.click()
 
     def choose_Event_for_on_load_save_type_of_event(self):
+
         event_type_onload = self.driver.find_element(*TypesOfEventsScreen.EVENT_FOR_ON_LOAD_SAVE)
         self.assertIsNotNone(event_type_onload)
         logging.info("choose type of event = event_for_on_load/save_test")
         event_type_onload.click()
 
     def choose_Event_for_chooser_fields_type_of_event(self):
+
         event_type_chooser = self.driver.find_element(*TypesOfEventsScreen.EVENT_FOR_CHOOSER_FIELDS)
         self.assertIsNotNone(event_type_chooser)
         logging.info("choose type of event = event for chooser fields")
@@ -471,13 +542,13 @@ class EventEditPage(BasePage):
 
     def type_text_into_description_field(self):
 
+        sleep(1)
         try:
             logging.info("type some text into description field")
             self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD).click()
-            self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD).send_keys("test ios")
+            self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD).send_keys("test Android")
         except NoSuchElementException:
-            logging.info("text field couldn't be selected")
-            pass
+            self.fail("text field couldn't be selected")
 
     def click_create_mapping_data(self):
 
@@ -651,22 +722,39 @@ class EventEditPage(BasePage):
         action.move_to(x=0, y=100).perform()
         sleep(1)
 
+    def scroll_down_to_description_field(self):
+
+        logging.info("scroll down to description field")
+        action = TouchAction(self.driver)
+
+        elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
+        action.press(elm1).perform()
+        action.move_to(x=0, y=100).perform()
+        sleep(2)
+        elm2 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
+        action.press(elm2).perform()
+        action.move_to(x=0, y=100).perform()
+        sleep(3)
+
 
 class OptionList(BasePage):
 
     def click_on_option_1(self):
+
         logging.info("choose '1' in option list")
         option_1 = self.driver.find_element(*EventEditScreen.OPTION_LIST_VALUE_1)
         self.assertIsNotNone(option_1, "option list - option '1' not found")
         option_1.click()
 
     def click_on_option_2(self):
+
         logging.info("choose '2' in option list")
         option_2 = self.driver.find_element(*EventEditScreen.OPTION_LIST_VALUE_2)
         self.assertIsNotNone(option_2, "option list - option '2' not found")
         option_2.click()
 
     def click_on_option_3(self):
+
         logging.info("choose '3' in option list")
         option_3 = self.driver.find_element(*EventEditScreen.OPTION_LIST_VALUE_3)
         self.assertIsNotNone(option_3, "option list - option '3' not found")
@@ -676,6 +764,7 @@ class OptionList(BasePage):
 class MapPage(BasePage):
 
     def wait_for_map_to_load(self):
+
         logging.info("Waiting for map to load")
         try:
             WebDriverWait(self.driver, 25).until(
@@ -761,6 +850,7 @@ class MapPage(BasePage):
 class EventDetailsPage(BasePage):
 
     def click_edit_button(self):
+
         logging.info("edit previously created event")
         edit_button = self.driver.find_element(*EventDetailsScreen.EDIT_BUTTON)
         self.assertIsNotNone(edit_button, "edit button not found")
@@ -768,12 +858,14 @@ class EventDetailsPage(BasePage):
         sleep(2)
 
     def click_Delete_button(self):
-        logging.info("clicking on 'Delete event' button")
+
+        logging.info("clicking in 'Delete event' button")
         delete_event_button = self.driver.find_element(*EventDetailsScreen.DELETE_EVENT_BUTTON)
         self.assertIsNotNone(delete_event_button, "delete event button not found")
         delete_event_button.click()
 
     def alert_confirm_delete(self):
+
         logging.info("confirm delete")
         delete_confirm_button = self.driver.find_element(*EventDetailsScreen.DELETE_CONFIRM_BUTTON)
         self.assertIsNotNone(delete_confirm_button, "confirm delete button not found")

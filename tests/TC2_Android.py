@@ -26,7 +26,7 @@ class TestCase2Android(unittest.TestCase):
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
-        self.driver.implicitly_wait(10)  # seconds
+        self.driver.implicitly_wait(15)  # seconds
 
     def tearDown(self):
 
@@ -45,8 +45,8 @@ class TestCase2Android(unittest.TestCase):
         login_page.type_username('QA')
         login_page.type_password('random')
         login_page.type_domain_address('QA')
-        android_keyboard = AndroidDevice(self.driver)
-        android_keyboard.hide_keyboard()
+        android_device = AndroidDevice(self.driver)
+        android_device.hide_keyboard()
         login_page.click_submit_button()
         login_page.alert_wrong_password()
 
@@ -62,8 +62,8 @@ class TestCase2Android(unittest.TestCase):
         login_page.type_username('general_user')
         login_page.type_password('general_user')
         login_page.type_domain_address('QA')
-        android_keyboard = AndroidDevice(self.driver)
-        android_keyboard.hide_keyboard()
+        android_device = AndroidDevice(self.driver)
+        android_device.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
         main_page.alert_expiring_password()
@@ -82,8 +82,8 @@ class TestCase2Android(unittest.TestCase):
         login_page.type_username('admin')
         login_page.type_password('admin')
         login_page.type_domain_address('QA')
-        android_keyboard = AndroidDevice(self.driver)
-        android_keyboard.hide_keyboard()
+        android_device = AndroidDevice(self.driver)
+        android_device.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
         main_page.alert_expiring_password()
@@ -102,8 +102,8 @@ class TestCase2Android(unittest.TestCase):
         login_page.type_username('expired_1_day_ago')
         login_page.type_password('expired_1_day_ago')
         login_page.type_domain_address('QA')
-        android_keyboard = AndroidDevice(self.driver)
-        android_keyboard.hide_keyboard()
+        android_device = AndroidDevice(self.driver)
+        android_device.hide_keyboard()
         login_page.click_submit_button()
         login_page.alert_expired_password()
 
@@ -119,8 +119,8 @@ class TestCase2Android(unittest.TestCase):
         login_page.type_username('expire_today')
         login_page.type_password('expire_today')
         login_page.type_domain_address('QA')
-        android_keyboard = AndroidDevice(self.driver)
-        android_keyboard.hide_keyboard()
+        android_device = AndroidDevice(self.driver)
+        android_device.hide_keyboard()
         login_page.click_submit_button()
         login_page.alert_expired_password()
 
@@ -136,8 +136,8 @@ class TestCase2Android(unittest.TestCase):
         login_page.type_username('expire_in_1_day')
         login_page.type_password('expire_in_1_day')
         login_page.type_domain_address('QA')
-        android_keyboard = AndroidDevice(self.driver)
-        android_keyboard.hide_keyboard()
+        android_device = AndroidDevice(self.driver)
+        android_device.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
         main_page.alert_expiring_password()
@@ -156,8 +156,8 @@ class TestCase2Android(unittest.TestCase):
         login_page.type_username('suspended')
         login_page.type_password('suspended')
         login_page.type_domain_address('QA')
-        android_keyboard = AndroidDevice(self.driver)
-        android_keyboard.hide_keyboard()
+        android_device = AndroidDevice(self.driver)
+        android_device.hide_keyboard()
         login_page.click_submit_button()
         login_page.alert_suspended_account()
 

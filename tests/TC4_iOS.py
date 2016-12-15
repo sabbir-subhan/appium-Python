@@ -34,7 +34,7 @@ class TestCase4iOS(unittest.TestCase):
         logging.info("Quitting")
         self.driver.quit()
 
-    def test_login(self):
+    def test_send_location(self):
 
         main_page = MainPage(self.driver)
         main_page.dismiss_ios_notifications()
@@ -46,8 +46,8 @@ class TestCase4iOS(unittest.TestCase):
         login_page.type_username('QA')
         login_page.type_password('QA')
         login_page.type_domain_address('QA')
-        ios_keyboard = iOSdevice(self.driver)
-        ios_keyboard.hide_keyboard()
+        ios_device = iOSdevice(self.driver)
+        ios_device.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
         main_page.alert_expiring_password()
@@ -55,9 +55,14 @@ class TestCase4iOS(unittest.TestCase):
         main_page.check_presence_of_events_button()
         main_page.open_LOCATION()
         location_page = LocationPage(self.driver)
+        location_page.check_if_location_page_was_opened()
         location_page.click_send_once_now()
+        ios_device.alert_allow_location()
         location_page.click_send_every()
         location_page.choose_1_hour_option()
+        location_page.check_if_1hour_option_was_chosen()
+        location_page.click_start_button()
+        location_page.check_if_start_button_was_clicked()
 
 
 if __name__ == '__main__':

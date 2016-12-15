@@ -24,7 +24,7 @@ class TestCase1Android(unittest.TestCase):
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
-        self.driver.implicitly_wait(10)  # seconds
+        self.driver.implicitly_wait(15)  # seconds
 
     def tearDown(self):
 
@@ -43,8 +43,8 @@ class TestCase1Android(unittest.TestCase):
         login_page.type_username('QA')
         login_page.type_password('QA')
         login_page.type_domain_address('QA')
-        android_keyboard = AndroidDevice(self.driver)
-        android_keyboard.hide_keyboard()
+        android_device = AndroidDevice(self.driver)
+        android_device.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
         main_page.alert_expiring_password()

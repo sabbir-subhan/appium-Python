@@ -2,6 +2,14 @@
 from appium.webdriver.common.mobileby import MobileBy
 
 
+class TopBar:
+    """A class for top bar locators."""
+    HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, ".//android.webkit.WebView[@index='0']"
+                                               "/android.view.View[@index='0']"
+                                               "/android.view.View[@index='2']"
+                                               "/android.view.View[@index='0']")
+
+
 class WelcomeScreen:
     """A class for welcome screen locators - first screen after lunching the app."""
     LOGIN_BUTTON = (MobileBy.XPATH, './/android.view.View[@content-desc[contains(., "LOGIN")]]')
@@ -59,6 +67,13 @@ class LocationScreen:
     SEND_ONCE_NOW = (MobileBy.XPATH, './/android.widget.Button[@content-desc[contains(., "Send once now")]]')
     SEND_EVERY_SPINNER = (MobileBy.XPATH, '//android.widget.Spinner[@index="7"]')
     CHOOSE_1_HOUR_OPTION = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="1 hour"]')
+    ASSERT_1_HOUR_OPTION = (MobileBy.XPATH, '//android.widget.Spinner[@content-desc="1 hour"]')
+    ASSERT_SENDING_NOW = (MobileBy.XPATH, '//android.widget.Button[content-desc[contains(., "Sending now")]]')
+    START_BUTTON = (MobileBy.XPATH, './/android.widget.Button[@content-desc[contains(., "Start")]]')
+    START_BUTTON_disabled = (MobileBy.XPATH, './/android.widget.Button[@content-desc['
+                                             'contains(., "Start")] and @enabled="false"]')
+    LOCATION_PAGE_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc['
+                                            'contains(., "Your location was last sent")]]')
 
 
 class EventsScreen:
@@ -103,10 +118,6 @@ class EventsScreen:
     GO_BACK_TO_MAIN_MENU_ARROW_BUTTON = (MobileBy.XPATH, ".//android.webkit.WebView[@index='0']"
                                                          "//android.view.View[@index='0']"
                                                          "//android.view.View[@index='0']")
-    HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, ".//android.webkit.WebView[@index='0']"
-                                               "/android.view.View[@index='0']"
-                                               "/android.view.View[@index='2']"
-                                               "/android.view.View[@index='0']")
 
 
 class TypesOfEventsScreen:
@@ -203,7 +214,7 @@ class Map:
     SAVE_MAP_BUTTON = (MobileBy.XPATH, ".//android.widget.Button[@content-desc='Save']")
 
 
-class AndroidDevice:
+class Android:
     """A class for handling Android device for example alerts"""
 
     BUTTON_ALLOW_LOCATION = (MobileBy.ID, 'com.android.packageinstaller:id/permission_allow_button')

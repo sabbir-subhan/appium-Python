@@ -2,9 +2,15 @@
 from appium.webdriver.common.mobileby import MobileBy
 
 
+class TopBar:
+    """A class for top bar locators."""
+    HAMBURGER_FOR_MAIN_MENU_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
+                                                   '/UIAWebView[1]/UIALink[3]/UIAStaticText[1]')
+
+
 class WelcomeScreen:
     """A class for welcome screen locators - first screen after lunching the app."""
-    LOGIN_BUTTON_ios = (MobileBy.XPATH, '//UIAScrollView/UIAWebView/UIALink[@name[contains(., "LOGIN")]]')
+    LOGIN_BUTTON_ios = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "LOGIN")]]')
     LOGIN_BUTTON_by_index_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]'
                                                  '/UIAScrollView[2]/UIAWebView[1]/UIALink[9]')
 
@@ -57,8 +63,12 @@ class MainMenuScreen:
 class LocationScreen:
     """A class for Location screen locators - screen after clicking into Location button in Main Menu."""
     SEND_ONCE_NOW_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Send once now")]]')
-    SEND_EVERY_SPINNER_ios = (MobileBy.XPATH, '')
-    CHOOSE_1_HOUR_OPTION_ios = (MobileBy.XPATH, '')
+    # button have attribute visible: false ASSERT_SENDING_NOW_ios = (MobileBy.XPATH, '')
+    SEND_EVERY_SPINNER_ios = (MobileBy.XPATH, '//UIAWebView/UIAElement[@name="Send every"]')
+    CHOOSE_1_HOUR_OPTION_iPad = (MobileBy.XPATH, '//UIAWindow/UIAPopover/UIATableView/UIATableCell[6]')
+    ASSERT_1_HOUR_OPTION_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText[@name="1 hour"]')
+    START_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Start")]]')
+    LOCATION_PAGE_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Your location was last sent")]]')
 
 
 class EventsScreen:
@@ -96,8 +106,6 @@ class EventsScreen:
                                                       '[contains(., "Clear primary event")]]')
     NOTIFICATION_PRIMARY_EVENT_CLEARED_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText['
                                                               '@name="Primary event cleared"]')
-    HAMBURGER_FOR_MAIN_MENU_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
-                                                   '/UIAWebView[1]/UIALink[3]/UIAStaticText[1]')
 
 
 class TypesOfEventsScreen:
@@ -176,7 +184,7 @@ class Map:
     SAVE_MAP_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Save")]]')
 
 
-class iOSDevice:
+class iOS:
     """A class for handling iOS device for example keyboard"""
 
     BUTTON_DONE_TO_HIDE_KEYBOARD = (MobileBy.XPATH, '//UIAWindow[2]/UIAToolbar[1]/UIAButton[@name="Done"]')

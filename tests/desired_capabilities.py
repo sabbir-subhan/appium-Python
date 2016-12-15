@@ -37,7 +37,8 @@ class DesiredCapabilities(object):
         #"app": PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk"),
         "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
         "apppackage": "com.noggin.oca",
-        "appactivity": "com.noggin.oca.OCApp",
+        # "appactivity": "com.noggin.oca.OCApp",
+        "appactivity": "com.noggin.oca.MainActivity",
         "newCommandTimeout": "600",
         "udid": "ad0816033848eb0443"
     }

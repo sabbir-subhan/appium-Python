@@ -16,7 +16,7 @@ class TestCase3Android(unittest.TestCase):
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
-        self.driver.implicitly_wait(10)  # seconds
+        self.driver.implicitly_wait(20)  # seconds
 
     def tearDown(self):
 
@@ -61,7 +61,7 @@ class TestCase3Android(unittest.TestCase):
         events_types_page.choose_Incident_type_of_event()
         event_edit_page = EventEditPage(self.driver)
         event_edit_page.click_into_Name_input_field()
-        event_edit_page.fill_Name_input_field("Test Appium iOS")
+        event_edit_page.fill_Name_input_field("Test Appium Android")
         android_device.hide_keyboard()
         event_edit_page.click_severity_lvl_picker()
         event_edit_page.choose_severity_level_1()
@@ -70,6 +70,7 @@ class TestCase3Android(unittest.TestCase):
         events_page.open_previously_created_event1()
         event_details_page = EventDetailsPage(self.driver)
         event_details_page.click_edit_button()
+        event_edit_page.scroll_down_to_description_field()
         event_edit_page.type_text_into_description_field()
         android_device.hide_keyboard()
         event_edit_page.scroll_down()
@@ -84,7 +85,7 @@ class TestCase3Android(unittest.TestCase):
         events_page.click_New_event_button()
         events_types_page.choose_Incident_type_of_event()
         event_edit_page.click_into_Name_input_field()
-        event_edit_page.fill_Name_input_field("Test Appium iOS - second event")
+        event_edit_page.fill_Name_input_field("Test Appium Android - second event")
         android_device.hide_keyboard()
         event_edit_page.click_severity_lvl_picker()
         event_edit_page.choose_severity_level_4()
@@ -129,7 +130,7 @@ class TestCase3Android(unittest.TestCase):
         events_page.click_New_event_button()
         events_types_page.choose_Incident_type_of_event()
         event_edit_page.click_into_Name_input_field()
-        event_edit_page.fill_Name_input_field("Test android to create sub event")
+        event_edit_page.fill_Name_input_field("Test Android to create sub event")
         android_device.hide_keyboard()
         event_edit_page.click_severity_lvl_picker()
         event_edit_page.choose_severity_level_3()
@@ -141,7 +142,7 @@ class TestCase3Android(unittest.TestCase):
         events_page.click_New_sub_event()
         events_types_page.choose_Incident_type_of_event()
         event_edit_page.click_into_Name_input_field()
-        event_edit_page.fill_Name_input_field("Test iOS to create sub event")
+        event_edit_page.fill_Name_input_field("Test Android to create sub event")
         android_device.hide_keyboard()
         event_edit_page.click_severity_lvl_picker()
         event_edit_page.choose_severity_level_2()
@@ -150,7 +151,8 @@ class TestCase3Android(unittest.TestCase):
         events_page.check_if_EVENTS_were_opened()
         events_page.click_More_button()
         events_page.set_as_primary_event()
-        events_page.hamburger_button()
+        top_bar = BasePage(self.driver)
+        top_bar.hamburger_button()
         main_page.open_EVENTS()
         events_page.click_More_button()
         events_page.clear_primary_event()

@@ -5,7 +5,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from appium.webdriver.common.touch_action import TouchAction
-from appium import webdriver
+# from appium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from appium.webdriver.common.multi_action import MultiAction
 from appium.webdriver.mobilecommand import MobileCommand
@@ -31,17 +31,24 @@ class BasePage(unittest.TestCase):
 
     # OCA top bar
     def hamburger_button(self):
+
         logging.info("click hamburger button to go back to main menu")
-        sleep(2)
-        try:
-            hamburger_button = self.driver.find_element(*EventsScreen.HAMBURGER_FOR_MAIN_MENU_ios)
-            self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
-            # probably that element cannot be clicked because attribute visible is "false"
-            hamburger_button.click()
-        except NoSuchElementException:
-            positions_for_hamburger_button = [(729, 23)]
-            self.driver.tap(positions_for_hamburger_button)
-        sleep(2)
+        # try:
+        #     hamburger_button = self.driver.find_element(*TopBar.HAMBURGER_FOR_MAIN_MENU_ios)
+        #     self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
+        #     if hamburger_button.is_displayed():
+        #         hamburger_button.click()
+        #     else:
+        #         pass
+        #     # probably that element cannot be clicked because attribute visible is "false"
+        # except NoSuchElementException:
+        #     positions_for_hamburger_button = [(730, 20)]
+        #     sleep(1)
+        #     self.driver.tap(positions_for_hamburger_button)
+        # sleep(2)
+        positions_for_hamburger_button = [(730, 20)]
+        sleep(1)
+        self.driver.tap(positions_for_hamburger_button)
 
 
 class iOSdevice(BasePage):
@@ -50,7 +57,7 @@ class iOSdevice(BasePage):
 
         logging.info("hide keyboard")
         try:
-            done_button_ios = self.driver.find_element(*iOSDevice.BUTTON_DONE_TO_HIDE_KEYBOARD)
+            done_button_ios = self.driver.find_element(*iOS.BUTTON_DONE_TO_HIDE_KEYBOARD)
             if done_button_ios.is_displayed():
                 done_button_ios.click()
             else:
@@ -61,13 +68,13 @@ class iOSdevice(BasePage):
     def click_Return_button_on_keyboard(self):
 
         logging.info("click 'Return' on keyboard")
-        self.driver.find_element(*iOSDevice.RETURN_BUTTON).click()
+        self.driver.find_element(*iOS.RETURN_BUTTON).click()
         sleep(1)
 
     def alert_allow_location(self):
 
         try:
-            button_allow_location = self.driver.find_element(*iOSDevice.BUTTON_ALLOW_LOCATION_ios)
+            button_allow_location = self.driver.find_element(*iOS.BUTTON_ALLOW_LOCATION_ios)
             logging.info("Accept using location - device will store that info for later use")
             self.assertIsNotNone(button_allow_location)
             button_allow_location.click()
@@ -79,15 +86,41 @@ class WelcomePage(BasePage):
 
     def click_login_button(self):
 
+        sleep(20)
+        self.driver.find_element(*TopBar.HAMBURGER_FOR_MAIN_MENU_ios).click()
+        logging.info("click in LOGIN button")
         try:
-            WebDriverWait(self.driver, 25).until(
-                expected_conditions.presence_of_element_located(WelcomeScreen.LOGIN_BUTTON_ios),
-                "Login button not found")
-            logging.info("Login button found")
-            logging.info("click in LOGIN button")
-            self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_ios).click()
+            login_button = self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_ios)
+            self.assertIsNotNone(login_button)
+            login_button.click()
         except NoSuchElementException:
             self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_by_index_ios).click()
+
+        # try:
+        #     login_button = self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_ios)
+        #     self.assertIsNotNone(login_button, "login button not found by name")
+        #     login_button.click()
+        #     logging.info("try 1")
+        #     try:
+        #         login_button_by_index = self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_by_index_ios)
+        #         self.assertIsNotNone(login_button_by_index, "login button not found by index")
+        #         login_button_by_index.click()
+        #         logging.info("try 2")
+        #         try:
+        #             WebDriverWait(self.driver, 30).until(
+        #                 expected_conditions.presence_of_element_located(WelcomeScreen.LOGIN_BUTTON_ios),
+        #                 "Login button not found by name and after waiting 30s")
+        #             self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_ios).click()
+        #             logging.info("try 3")
+        #         except NoSuchElementException:
+        #             sleep(10)
+        #             login_button = self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_by_index_ios)
+        #             self.driver.tap(login_button)
+        #             logging.info("try 4")
+        #     except NoSuchElementException:
+        #         pass
+        # except NoSuchElementException:
+        #     pass
 
 
 class LoginPage(BasePage):
@@ -226,7 +259,7 @@ class MainPage(BasePage):
 
     def open_EVENTS(self):
 
-        logging.info("clicking on Events button")
+        logging.info("clicking in Events button")
         events_button = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON_ios)
         self.assertIsNotNone(events_button)
         events_button.click()
@@ -236,46 +269,79 @@ class MainPage(BasePage):
         
     def open_LOCATION(self):
 
-        logging.info("clicking on Location button")
+        logging.info("clicking in Location button")
         location_button = self.driver.find_element(*MainMenuScreen.LOCATION_BUTTON_ios)
-        self.assertIsNotNone(location_button)
+        self.assertIsNotNone(location_button, "Location button not found")
         location_button.click()
         
     def open_MAP(self):
 
-        logging.info("clicking on Map button")
+        logging.info("clicking in Map button")
         map_button = self.driver.find_element(*MainMenuScreen.MAP_BUTTON_ios)
         self.assertIsNotNone(map_button)
         map_button.click()
 
 
 class LocationPage(BasePage):
+
+    def check_if_location_page_was_opened(self):
+
+        logging.info("Location Page was opened")
+        location_page_header = self.driver.find_element(*LocationScreen.LOCATION_PAGE_HEADER_ios)
+        self.assertIsNotNone(location_page_header, "Location Page header was not found")
     
     def click_send_once_now(self):
         
-        logging.info("clicking on send_once_now button")
+        logging.info("clicking in 'Send once now' button")
         send_once_now_button = self.driver.find_element(*LocationScreen.SEND_ONCE_NOW_ios)
         self.assertIsNotNone(send_once_now_button)
         send_once_now_button.click()
 
     def click_send_every(self):
 
-        logging.info("clicking on send_every button")
+        logging.info("clicking in 'Send every' button")
         send_every_button = self.driver.find_element(*LocationScreen.SEND_EVERY_SPINNER_ios)
         self.assertIsNotNone(send_every_button)
         send_every_button.click()
 
     def choose_1_hour_option(self):
 
-        logging.info("choose_1_hour_option")
-        choose_1_hour_option = self.driver.find_element(*LocationScreen.CHOOSE_1_HOUR_OPTION_ios)
+        logging.info("choose '1 hour' option")
+        choose_1_hour_option = self.driver.find_element(*LocationScreen.CHOOSE_1_HOUR_OPTION_iPad)
         self.assertIsNotNone(choose_1_hour_option)
         choose_1_hour_option.click()
+
+    def check_if_1hour_option_was_chosen(self):
+
+        logging.info("check if '1 hour' option was_chosen")
+        check_if_1hour_option_was_chosen = self.driver.find_element(*LocationScreen.ASSERT_1_HOUR_OPTION_ios)
+        self.assertIsNotNone(check_if_1hour_option_was_chosen)
+
+    def click_start_button(self):
+
+        logging.info("click 'Start' button")
+        start_button = self.driver.find_element(*LocationScreen.START_BUTTON_ios)
+        self.assertIsNotNone(start_button)
+        start_button.click()
+
+    def check_if_start_button_was_clicked(self):
+
+        logging.info("check if 'Start' button was clicked")
+        try:
+            start_button = self.driver.find_element(*LocationScreen.START_BUTTON_ios)
+            if start_button.is_displayed():
+                self.fail("button Start was not clicked")
+            else:
+                pass
+        except NoSuchElementException:
+            logging.info("button Start was clicked")
 
 
 class EventsPage(BasePage):
 
     def check_if_EVENTS_were_opened(self):
+
+        sleep(2)
         logging.info("check if Events were opened")
         events_header = self.driver.find_element(*EventsScreen.EVENTS_HEADER_ios)
         self.assertIsNotNone(events_header)
@@ -322,18 +388,22 @@ class EventsPage(BasePage):
 
     def click_More_button(self):
 
-        logging.info("clicking on 'More' button")
-        self.driver.find_element(*EventsScreen.MORE_BUTTON_ios).click()
+        logging.info("clicking in More button")
+        more_button = self.driver.find_element(*EventsScreen.MORE_BUTTON_ios)
+        self.assertIsNotNone(more_button, "More button not found")
+        more_button.click()
 
     def click_New_event_button(self):
 
-        logging.info("clicking on New event button")
-        self.driver.find_element(*EventsScreen.NEW_EVENT_BUTTON_ios).click()
+        logging.info("clicking in New event button")
+        new_event_button = self.driver.find_element(*EventsScreen.NEW_EVENT_BUTTON_ios)
+        self.assertIsNotNone(new_event_button, "New Event button not found")
+        new_event_button.click()
         sleep(0.5)
 
     def click_New_sub_event(self):
 
-        logging.info("clicking on 'New sub event' button")
+        logging.info("clicking in 'New sub event' button")
         new_sub_event = self.driver.find_element(*EventDetailsScreen.NEW_SUB_EVENT_ios)
         self.assertIsNotNone(new_sub_event, "New sub event button is not present")
         new_sub_event.click()
@@ -341,7 +411,7 @@ class EventsPage(BasePage):
 
     def set_as_primary_event(self):
 
-        logging.info("clicking on 'Set as primary' button")
+        logging.info("clicking in 'Set as primary' button")
         set_as_primary_button = self.driver.find_element(*EventDetailsScreen.SET_AS_PRIMARY_BUTTON_ios)
         self.assertIsNotNone(set_as_primary_button)
         set_as_primary_button.click()
@@ -349,7 +419,7 @@ class EventsPage(BasePage):
 
     def clear_primary_event(self):
 
-        logging.info("clicking on 'Clear primary event' button")
+        logging.info("clicking in 'Clear primary event' button")
         clear_primary_event_button = self.driver.find_element(*EventsScreen.CLEAR_PRIMARY_EVENT_BUTTON_ios)
         self.assertIsNotNone(clear_primary_event_button)
         clear_primary_event_button.click()
@@ -527,7 +597,7 @@ class EventEditPage(BasePage):
         save_button = self.driver.find_element(*EventEditScreen.SAVE_BUTTON_ios)
         self.assertIsNotNone(save_button, "Save button not found")
         save_button.click()
-        sleep(5)
+        sleep(10)
         
     def cancel_button(self):
         
@@ -776,7 +846,7 @@ class EventDetailsPage(BasePage):
 
     def click_Delete_button(self):
 
-        logging.info("clicking on 'Delete event' button")
+        logging.info("clicking in 'Delete event' button")
         delete_event_button = self.driver.find_element(*EventDetailsScreen.DELETE_EVENT_BUTTON_ios)
         self.assertIsNotNone(delete_event_button, "delete event button not found")
         delete_event_button.click()
