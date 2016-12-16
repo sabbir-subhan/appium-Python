@@ -1,6 +1,7 @@
-# Test Case 4 - Send location to OCA -- OCAMOB-41
+# Before running test - enable allow access to Camera and Photos in iOS settings for OCA app
 
-# (before running test, enable location on device)
+# Test Case 5 - Send Photo -- OCAMOB-43
+
 # open OCA app
 # dismiss iOS notifications
 # input login, password and domain
@@ -8,16 +9,25 @@
 # accept terms if needed
 # dismiss alert about expiring password
 # dismiss iOS notifications
-# Click on location and touch send once now
-# Setup sending location every 5 minutes for an hour
-
+# check if button "EVENTS" is present
+# From the main menu click on Photo.
+# Click Gallery and select an existing photo.
+# Enter a description and click Send.
+# Click on Photo and now click Take New. (step 4)
+# Click the change camera button on the bottom right  twice.
+# Click on the button below Photo to take a picture.
+# Click on Use Photo.
+# Enter a description and press Send.
+# Repeat steps 4 & 6.
+# Press Retake and take another photo.
+# Repeat steps 7 & 8.
 
 from appium import webdriver
 from desired_capabilities import DesiredCapabilities
 from page_ios import *
 
 
-class TestCase4iOS(unittest.TestCase):
+class TestCase1iOS(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
@@ -27,14 +37,14 @@ class TestCase4iOS(unittest.TestCase):
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
-        self.driver.implicitly_wait(20)  # seconds
+        self.driver.implicitly_wait(15)  # seconds
 
     def tearDown(self):
 
         logging.info("Quitting")
         self.driver.quit()
 
-    def test_send_location(self):
+    def test_login(self):
 
         main_page = MainPage(self.driver)
         main_page.dismiss_ios_notifications()
@@ -53,18 +63,21 @@ class TestCase4iOS(unittest.TestCase):
         main_page.alert_expiring_password()
         main_page.dismiss_ios_notifications()
         main_page.check_presence_of_events_button()
-        main_page.open_LOCATION()
-        location_page = LocationPage(self.driver)
-        location_page.check_if_location_page_was_opened()
-        location_page.click_send_once_now()
-        ios_device.alert_allow_location()
-        location_page.click_send_every()
-        location_page.choose_1_hour_option()
-        location_page.check_if_1hour_option_was_chosen()
-        location_page.click_start_button()
-        location_page.check_if_start_button_was_clicked()
+        main_page.open_PHOTO()
+        photo_page = PhotoPage(self.driver)
+        photo_page.check_if_photo_page_was_opened()
+        photo_page.click_gallery_button()
+        # cos
+        photo_page.click_take_new_button()
+        camera_page = CameraPage(self.driver)
+        camera_page.choose_camera()
+        camera_page.choose_camera()
+        camera_page.take_a_photo()
+        camera_page.click_use_photo()
+        #photo_page.
+        #step9
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestCase4iOS)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestCase1iOS)
     unittest.TextTestRunner(verbosity=2).run(suite)

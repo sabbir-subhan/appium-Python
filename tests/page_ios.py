@@ -87,7 +87,9 @@ class WelcomePage(BasePage):
     def click_login_button(self):
 
         sleep(20)
-        self.driver.find_element(*TopBar.HAMBURGER_FOR_MAIN_MENU_ios).click()
+        positions_for_hamburger_button = [(730, 20)]
+        sleep(1)
+        self.driver.tap(positions_for_hamburger_button)
         logging.info("click in LOGIN button")
         try:
             login_button = self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_ios)
@@ -263,9 +265,6 @@ class MainPage(BasePage):
         events_button = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON_ios)
         self.assertIsNotNone(events_button)
         events_button.click()
-        logging.info("check if Events were opened")
-        events_header = self.driver.find_element(*EventsScreen.EVENTS_HEADER_ios)
-        self.assertIsNotNone(events_header)
         
     def open_LOCATION(self):
 
@@ -280,6 +279,74 @@ class MainPage(BasePage):
         map_button = self.driver.find_element(*MainMenuScreen.MAP_BUTTON_ios)
         self.assertIsNotNone(map_button)
         map_button.click()
+
+    def open_PHOTO(self):
+
+        logging.info("clicking in Photo button")
+        photo_button = self.driver.find_element(*MainMenuScreen.PHOTO_BUTTON_ios)
+        self.assertIsNotNone(photo_button)
+        photo_button.click()
+
+
+class PhotoPage(BasePage):
+    
+    def check_if_photo_page_was_opened(self):
+
+        photo_page_header = self.driver.find_element(*PhotoScreen.PHOTO_PAGE_HEADER_ios)
+        self.assertIsNotNone(photo_page_header, "Photo page header was not found")
+        logging.info("Photo page was opened")
+        
+    def click_gallery_button(self):
+
+        logging.info("clicking in Gallery button")
+        gallery_button = self.driver.find_element(*PhotoScreen.GALLERY_BUTTON_ios)
+        self.assertIsNotNone(gallery_button)
+        gallery_button.click()
+
+    def click_take_new_button(self):
+
+        logging.info("clicking in Take new button")
+        take_new_button = self.driver.find_element(*PhotoScreen.TAKE_NEW_BUTTON_ios)
+        self.assertIsNotNone(take_new_button)
+        take_new_button.click()
+
+
+class CameraPage(BasePage):
+
+    def take_a_photo(self):
+
+        logging.info("taking photo")
+        photo_capture = self.driver.find_element(*CameraScreen.PHOTO_CAPTURE)
+        self.assertIsNotNone(photo_capture)
+        photo_capture.click()
+
+    def click_cancel(self):
+
+        logging.info("click Cancel")
+        cancel = self.driver.find_element(*CameraScreen.CANCEL_BUTTON)
+        self.assertIsNotNone(cancel)
+        cancel.click()
+
+    def click_use_photo(self):
+
+        logging.info("click Use Photo")
+        use_photo = self.driver.find_element(*CameraScreen.USE_PHOTO)
+        self.assertIsNotNone(use_photo)
+        use_photo.click()
+
+    def retake_photo(self):
+
+        logging.info("click Retake")
+        retake_photo = self.driver.find_element(*CameraScreen.RETAKE)
+        self.assertIsNotNone(retake_photo)
+        retake_photo.click()
+
+    def choose_camera(self):
+
+        logging.info("click choose camera")
+        chooser_camera = self.driver.find_element(*CameraScreen.CAMERA_CHOOSER)
+        self.assertIsNotNone(chooser_camera)
+        chooser_camera.click()
 
 
 class LocationPage(BasePage):

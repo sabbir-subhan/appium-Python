@@ -58,17 +58,26 @@ class MainMenuScreen:
     EVENTS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "EVENTS")]]')
     LOCATION_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "LOCATION")]]')
     MAP_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "MAP")]]')
+    PHOTO_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "PHOTO")]]')
 
 
 class LocationScreen:
     """A class for Location screen locators - screen after clicking into Location button in Main Menu."""
     SEND_ONCE_NOW_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Send once now")]]')
-    # button have attribute visible: false ASSERT_SENDING_NOW_ios = (MobileBy.XPATH, '')
+    # button have attribute visible: false
+    CHECK_SENDING_NOW_BUTTON_ios = (MobileBy.XPATH, '')
     SEND_EVERY_SPINNER_ios = (MobileBy.XPATH, '//UIAWebView/UIAElement[@name="Send every"]')
     CHOOSE_1_HOUR_OPTION_iPad = (MobileBy.XPATH, '//UIAWindow/UIAPopover/UIATableView/UIATableCell[6]')
     ASSERT_1_HOUR_OPTION_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText[@name="1 hour"]')
     START_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Start")]]')
     LOCATION_PAGE_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Your location was last sent")]]')
+
+
+class PhotoScreen:
+    """A class for Photo screen locators - screen after clicking into Photo button in Main Menu."""
+    PHOTO_PAGE_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Send a photo to OCA")]]')
+    GALLERY_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Gallery")]]')
+    TAKE_NEW_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Take New")]]')
 
 
 class EventsScreen:
@@ -184,10 +193,21 @@ class Map:
     SAVE_MAP_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Save")]]')
 
 
+class CameraScreen:
+    """A class for handling Camera"""
+    PHOTO_CAPTURE = (MobileBy.ACCESSIBILITY_ID, 'PhotoCapture')
+    CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Cancel')
+    CAMERA_CHOOSER = (MobileBy.ACCESSIBILITY_ID, 'FrontBackFacingCameraChooser')
+    RETAKE = (MobileBy.ACCESSIBILITY_ID, 'Retake')
+    USE_PHOTO = (MobileBy.ACCESSIBILITY_ID, 'Use Photo')
+
+
 class iOS:
     """A class for handling iOS device for example keyboard"""
-
     BUTTON_DONE_TO_HIDE_KEYBOARD = (MobileBy.XPATH, '//UIAWindow[2]/UIAToolbar[1]/UIAButton[@name="Done"]')
     RETURN_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Return"]')
     BUTTON_ALLOW_LOCATION_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]'
                                                  '/UIACollectionCell[2]/UIAButton[@name="Allow"]')
+    BUTTON_ALLOW_ACCESS_TO_CAMERA = (MobileBy.ACCESSIBILITY_ID, 'OK')
+    #BUTTON_ALLOW_ACCESS_TO_CAMERA = (MobileBy.IOS_UIAUTOMATION, 'OK')
+    #BUTTON_ALLOW_ACCESS_TO_CAMERA = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]')

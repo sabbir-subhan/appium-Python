@@ -65,7 +65,7 @@ class AndroidDevice(BasePage):
     def alert_allow_location(self):
 
         try:
-            button_allow_location = self.driver.find_element(*Android.BUTTON_ALLOW_LOCATION)
+            button_allow_location = self.driver.find_element(*Android.ANDROID_ALLOW)
             if button_allow_location.is_displayed():
                 logging.info("Accept using location - device will store that info for later use")
                 button_allow_location.click()
@@ -192,9 +192,13 @@ class MainPage(BasePage):
         sleep(5)
         logging.info("logout if already logged in")
         try:
+            # scroll to logout button
+            # buttons = self.driver.find_elements(*MainMenuScreen.BUTTONS)
+            # self.driver.scroll(buttons[22], buttons[1])
+            logging.info("Your are already logged in - logging out")
+            sleep(0.5)
             logout_button = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON)
             self.assertIsNotNone(logout_button, "logout button not found")
-            logging.info("Your are already logged in - logging out")
             logout_button.click()
             self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
             sleep(5)
@@ -366,6 +370,7 @@ class EventsPage(BasePage):
         more_button = self.driver.find_element(*EventsScreen.MORE_BUTTON)
         self.assertIsNotNone(more_button, "More button was not found")
         more_button.click()
+        sleep(0.5)
 
     def click_New_event_button(self):
 
@@ -437,7 +442,7 @@ class EventsPage(BasePage):
     def click_on_previously_created_event_for_subform_chooser(self):
 
         logging.info("click_on_previously_created_event_for_subform_chooser")
-        event_for_subform = self.driver.find_element(*EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER)
+        event_for_subform = self.driver.find_element(*EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER)
         self.assertIsNotNone(event_for_subform)
         event_for_subform.click()
         sleep(1)
@@ -669,7 +674,7 @@ class EventEditPage(BasePage):
         self.assertIsNotNone(delete_button_inside_sub_form, "delete_button_inside_sub_form not found")
         delete_button_inside_sub_form.click()
         previously_created_event_for_subform_chooser = self.driver.find_element(
-            *EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER)
+            *EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER)
         self.assertIsNone(previously_created_event_for_subform_chooser)
 
     def scroll_down(self):
@@ -722,9 +727,9 @@ class EventEditPage(BasePage):
         action.move_to(x=0, y=100).perform()
         sleep(1)
 
-    def scroll_down_to_description_field(self):
+    def scroll_down_to_leadagency_header_field(self):
 
-        logging.info("scroll down to description field")
+        logging.info("scroll down to lead agency header field")
         action = TouchAction(self.driver)
 
         elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
@@ -735,6 +740,16 @@ class EventEditPage(BasePage):
         action.press(elm2).perform()
         action.move_to(x=0, y=100).perform()
         sleep(3)
+
+    def scroll_down_from_leadagency_to_related_header(self):
+
+        logging.info("scroll down from lead agency header field to Related header")
+        action = TouchAction(self.driver)
+
+        elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
+        action.press(elm11).perform()
+        action.move_to(x=0, y=100).perform()
+        sleep(1)
 
 
 class OptionList(BasePage):
@@ -768,7 +783,7 @@ class MapPage(BasePage):
         logging.info("Waiting for map to load")
         try:
             WebDriverWait(self.driver, 25).until(
-                expected_conditions.presence_of_element_located(Map.MAP_AREA_3),
+                expected_conditions.presence_of_element_located(Map.MAP_AREA_5),
                 "Failed to load map")
             logging.info("Map was successfully loaded")
         except NoSuchElementException:
@@ -804,7 +819,7 @@ class MapPage(BasePage):
 
     def click_polygon_button(self):
 
-        polygon_button = self.driver.find_element(*Map.CIRCLE_BUTTON)
+        polygon_button = self.driver.find_element(*Map.POLYGON_BUTTON)
         self.assertIsNotNone(polygon_button, "polygon button not found")
         polygon_button.click()
 
@@ -814,29 +829,37 @@ class MapPage(BasePage):
         self.assertIsNotNone(default_button, "default button not found")
         default_button.click()
 
-    def click_in_map_area_3(self):
+    def click_in_map_area_9(self):
 
+        logging.info("click on map")
         try:
-            self.driver.find_element(*Map.MAP_AREA_3).click()
+            position = [(350, 400)]
+            self.driver.tap(position)
         except NoSuchElementException:
-            positions = [(283, 457)]
-            self.driver.tap(positions)
+            self.driver.find_element(*Map.MAP_AREA_9).click()
+        sleep(1)
 
     def click_in_map_area_5(self):
 
+        logging.info("click on map")
         try:
+            position = [(250, 500)]
+            self.driver.tap(position)
+        except NoSuchElementException:
             self.driver.find_element(*Map.MAP_AREA_5).click()
-        except NoSuchElementException:
-            positions = [(290, 440)]
-            self.driver.tap(positions)
+        sleep(1)
 
-    def click_in_map_area_6(self):
+    def double_click_in_map_area_6(self):
 
+        sleep(1)
+        logging.info("double click on map")
         try:
-            self.driver.find_element(*Map.MAP_AREA_6).click()
+            action = TouchAction(self.driver)
+            action.tap(element=None, x=400, y=350, count=2).perform()
         except NoSuchElementException:
-            positions = [(340, 470)]
-            self.driver.tap(positions)
+            self.driver.find_element(*Map.MAP_AREA_6).click()
+            self.driver.find_element(*Map.MAP_AREA_6).click()
+        sleep(1)
 
     def save_map(self):
 
