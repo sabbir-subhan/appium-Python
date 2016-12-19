@@ -120,10 +120,11 @@ with name: "New events chooser inside sub form"
 
 BEFORE EACH NEW RUN OF TESTS:
 
+- for some reason on iOS -- "No reset" checkbox in Appium setting is not working, so tests for iOS are written to compensate it, but remember to run Android tests with checkbox "No reset" checked
 - make sure to lunch appium server
-- make sure that users accounts in OCA webpage have correct properties (for example expiration dates)
 - make sure that real devices are connected and unlocked 
 - make sure line in test case: "desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad" is pinpointing to correct desired_capabilities for Your real device (see desired_capabilities.py)
+- make sure that users accounts in OCA webpage have correct properties (for example expiration dates) and other tests have proper configurations in OCA webpage
 
 
 RUNNING TESTS ON SIMULATORS:
@@ -131,7 +132,7 @@ RUNNING TESTS ON SIMULATORS:
 - change desired_capabilities
 - for Android, simulator Genymotion is much faster than simulator from android studio
 - for iOS, You have to build app for exact simulator
-- open Appium settings and uncheck UDID checkobox and change device name - choose from dropdown in Appium settings
+- open Appium settings and uncheck UDID checkbox and change device name - choose from dropdown in Appium settings
 
 
 
@@ -150,4 +151,4 @@ Known issues:
 - for some reason test sometimes fail to start on the first run, but after running it again it is working correctly (it may depends on that how fast device/simulator is starting)
 - if Appium, after running test, will throws: "An unknown server-side error occurred while processing the command. Original error: Installing", use: sudo chmod -R 777 /var/db/lockdown/
 - if Appium, after running test, throws error: "is device plugged in?" -- just disconnect device and reconnect it again (it may happen after booting OSX with connected device)
-
+- for some reason on iOS -- "No reset" checkbox in Appium setting is not working, so tests for iOS are written to compensate it, but remember to run Android tests with checkbox "No reset" checked -- https://github.com/appium/appium/issues/4956

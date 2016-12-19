@@ -229,11 +229,14 @@ class MainPage(BasePage):
         logging.info("logout if already logged in")
         try:
             logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
-            self.assertIsNotNone(logout_button_ios, "logout button not found")
-            logging.info("Your are already logged in - logging out")
-            logout_button_ios.click()
-            self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
-            sleep(5)
+            if logout_button_ios.is_displayed():
+                self.assertIsNotNone(logout_button_ios, "logout button not found")
+                logging.info("Your are already logged in - logging out")
+                logout_button_ios.click()
+                self.driver.find_element(*LoginScreen.SUBMIT_BUTTON_ios).click()
+                sleep(5)
+            else:
+                pass
         except NoSuchElementException:
             logging.info("Your are already logged out")
 
@@ -725,9 +728,9 @@ class EventEditPage(BasePage):
     def check_hidden_fields_1_and_2(self):
 
         logging.info("assert hidden fields")
-        field_to_restore_1_header = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE_1_HEADER_ios)
-        field_to_restore_2_header = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE_2_HEADER_ios)
         try:
+            field_to_restore_1_header = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE_1_HEADER_ios)
+            field_to_restore_2_header = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE_2_HEADER_ios)
             if field_to_restore_1_header.is_displayed():
                 self.fail("field 1 was not hidden correctly")
             if field_to_restore_2_header.is_displayed():
@@ -767,13 +770,21 @@ class EventEditPage(BasePage):
         logging.info("delete chosen event inside sub form")
         sleep(1)
         try:
-            self.driver.find_element(*EventEditScreen.DELETE_SUB_EVENT_FROM_CHOOSER_ios).click()
+            delete_x = self.driver.find_element(*EventEditScreen.DELETE_SUB_EVENT_FROM_CHOOSER_ios)
+            if delete_x.is_displayed():
+                self.assertIsNotNone(delete_x)
+                delete_x.click()
+            else:
+                pass
         except NoSuchElementException:
             positions_for_delete_button = [(16, 608)]
             self.driver.tap(positions_for_delete_button)
-        previously_created_event_for_subform_chooser = self.driver.find_element(
-            *EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER_ios)
-        self.assertIsNone(previously_created_event_for_subform_chooser)
+            try:
+                previously_created_event_for_subform_chooser = self.driver.find_element(
+                    *EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER_ios)
+                self.assertIsNone(previously_created_event_for_subform_chooser)
+            except NoSuchElementException:
+                pass
 
 
 class OptionList(BasePage):

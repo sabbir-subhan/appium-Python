@@ -35,9 +35,6 @@ class TestCase2Android(unittest.TestCase):
 
     def test_1_login_into_general_user_account_with_incorrect_password(self):
 
-        main_page = MainPage(self.driver)
-        main_page.dismiss_android_notifications()
-        main_page.logout_if_already_logged_in()
         logging.info("starting test1: login_into_general_user__account_with_incorrect_password")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()
@@ -52,9 +49,6 @@ class TestCase2Android(unittest.TestCase):
 
     def test_2_login_into_general_user_account(self):
 
-        main_page = MainPage(self.driver)
-        main_page.dismiss_android_notifications()
-        main_page.logout_if_already_logged_in()
         logging.info("starting test2: login_into_general_user_account_with_correct_credentials")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()
@@ -66,15 +60,13 @@ class TestCase2Android(unittest.TestCase):
         android_device.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
+        main_page = MainPage(self.driver)
         main_page.alert_expiring_password()
         main_page.dismiss_android_notifications()
         main_page.check_presence_of_events_button()
 
     def test_3_login_into_admin_account(self):
 
-        main_page = MainPage(self.driver)
-        main_page.dismiss_android_notifications()
-        main_page.logout_if_already_logged_in()
         logging.info("starting test3: login_into_admin_account_with_correct_credentials")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()
@@ -86,15 +78,13 @@ class TestCase2Android(unittest.TestCase):
         android_device.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
+        main_page = MainPage(self.driver)
         main_page.alert_expiring_password()
         main_page.dismiss_android_notifications()
         main_page.check_presence_of_events_button()
 
     def test_4_login_using_account_expired_1_day_ago(self):
 
-        main_page = MainPage(self.driver)
-        main_page.dismiss_android_notifications()
-        main_page.logout_if_already_logged_in()
         logging.info("starting test4: login_using_account_expired_1_day_ago")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()
@@ -109,9 +99,6 @@ class TestCase2Android(unittest.TestCase):
 
     def test_5_login_using_account_that_expires_today(self):
 
-        main_page = MainPage(self.driver)
-        main_page.dismiss_android_notifications()
-        main_page.logout_if_already_logged_in()
         logging.info("starting test5: login_using_account_that_expires_today")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()
@@ -126,9 +113,6 @@ class TestCase2Android(unittest.TestCase):
 
     def test_6_login_using_account_that_will_expire_in_1_day(self):
 
-        main_page = MainPage(self.driver)
-        main_page.dismiss_android_notifications()
-        main_page.logout_if_already_logged_in()
         logging.info("starting test6: login_using_account_that_will_expire_in_1_day")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()
@@ -140,15 +124,13 @@ class TestCase2Android(unittest.TestCase):
         android_device.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
+        main_page = MainPage(self.driver)
         main_page.alert_expiring_password()
         main_page.dismiss_android_notifications()
         main_page.check_presence_of_events_button()
 
     def test_7_login_into_suspended_account(self):
 
-        main_page = MainPage(self.driver)
-        main_page.dismiss_android_notifications()
-        main_page.logout_if_already_logged_in()
         logging.info("starting test7: login_into_suspended_account")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()

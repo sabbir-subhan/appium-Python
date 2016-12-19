@@ -187,23 +187,26 @@ class MainPage(BasePage):
         except NoSuchElementException:
             pass
 
-    def logout_if_already_logged_in(self):
-
-        sleep(5)
-        logging.info("logout if already logged in")
-        try:
-            # scroll to logout button
-            # buttons = self.driver.find_elements(*MainMenuScreen.BUTTONS)
-            # self.driver.scroll(buttons[22], buttons[1])
-            logging.info("Your are already logged in - logging out")
-            sleep(0.5)
-            logout_button = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON)
-            self.assertIsNotNone(logout_button, "logout button not found")
-            logout_button.click()
-            self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
-            sleep(5)
-        except NoSuchElementException:
-            logging.info("Your are already logged out")
+    # def logout_if_already_logged_in(self):
+    #     # logout button does not have attribute content-desc
+    #     sleep(5)
+    #     logging.info("logout if already logged in")
+    #     try:
+    #         logout_button = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON)
+    #         if logout_button.is_displayed():
+    #             logging.info("Your are already logged in - logging out")
+    #             # scroll to logout button
+    #             buttons = self.driver.find_elements(*MainMenuScreen.BUTTONS)
+    #             self.driver.scroll(buttons[22], buttons[1])
+    #             sleep(0.5)
+    #             self.assertIsNotNone(logout_button, "logout button not found")
+    #             logout_button.click()
+    #             self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
+    #             sleep(5)
+    #         else:
+    #             logging.info("logout button is not present")
+    #     except NoSuchElementException:
+    #         logging.info("Your are already logged out")
 
     def alert_expiring_password(self):
 
@@ -417,7 +420,7 @@ class EventsPage(BasePage):
 
     def open_previously_created_event2(self):
 
-        logging.info("open previously created Event, Edit and Create mapping data")
+        logging.info("open previously created Event")
         created_event2 = self.driver.find_element(*EventsScreen.CREATED_EVENT_2)
         self.assertIsNotNone(created_event2)
         created_event2.click()
@@ -425,7 +428,7 @@ class EventsPage(BasePage):
 
     def open_previously_created_event3(self):
 
-        logging.info("open previously created Event, Edit and Create mapping data")
+        logging.info("open previously created Event")
         created_event3 = self.driver.find_element(*EventsScreen.CREATED_EVENT_3)
         self.assertIsNotNone(created_event3)
         created_event3.click()
@@ -442,9 +445,14 @@ class EventsPage(BasePage):
     def click_on_previously_created_event_for_subform_chooser(self):
 
         logging.info("click_on_previously_created_event_for_subform_chooser")
-        event_for_subform = self.driver.find_element(*EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER)
+        event_for_subform = self.driver.find_element(*EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER)
         self.assertIsNotNone(event_for_subform)
-        event_for_subform.click()
+        sleep(1)
+        try:
+            event_for_subform.click()
+        except NoSuchElementException:
+            action = TouchAction(self.driver)
+            action.tap(element=event_for_subform, count=1).perform()
         sleep(1)
 
 
@@ -567,7 +575,10 @@ class EventEditPage(BasePage):
         logging.info("Save event")
         save_button = self.driver.find_element(*EventEditScreen.SAVE_BUTTON)
         self.assertIsNotNone(save_button)
-        save_button.click()
+        if save_button.is_displayed():
+            save_button.click()
+        else:
+            self.fail("Save event button not found")
         sleep(5)
 
     def cancel_button(self):
@@ -595,7 +606,24 @@ class EventEditPage(BasePage):
         logging.info("click on option list")
         new_option_list = self.driver.find_element(*EventEditScreen.NEW_OPTION_LIST_HEADER)
         self.assertIsNotNone(new_option_list)
-        new_option_list.click()
+        action = TouchAction(self.driver)
+        action.tap(element=new_option_list, count=1).perform()
+        # header after opening option list
+        header_after_opening_option_list = self.driver.find_element(*EventEditScreen.HEADER_ON_OPTION_LIST_PAGE)
+        self.assertIsNotNone(header_after_opening_option_list)
+        # action = TouchAction(self.driver)
+        # action.long_press(new_option_list, duration=1000).perform()
+        # try:
+        #     if new_option_list.is_displayed():
+        #         new_option_list.click()
+        #     elif new_option_list.is_displayed():
+        #         action.long_press(new_option_list, duration=500).perform()
+        #     elif new_option_list.is_enabled():
+        #         action.press(new_option_list).perform()
+        #     else:
+        #         action.tap(element=new_option_list, count=1).perform()
+        # except NoSuchElementException:
+        #     pass
 
     def check_restored_field_1(self):
 
@@ -629,9 +657,10 @@ class EventEditPage(BasePage):
     def check_hidden_fields_1_and_2(self):
 
         logging.info("assert hidden fields")
-        field_to_restore_1_header = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE_1_HEADER)
-        field_to_restore_2_header = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE_2_HEADER)
+
         try:
+            field_to_restore_1_header = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE_1_HEADER)
+            field_to_restore_2_header = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE_2_HEADER)
             if field_to_restore_1_header.is_displayed():
                 self.fail("field 1 was not hidden correctly")
             if field_to_restore_2_header.is_displayed():
@@ -673,9 +702,12 @@ class EventEditPage(BasePage):
         delete_button_inside_sub_form = self.driver.find_element(*EventEditScreen.DELETE_SUB_EVENT_FROM_CHOOSER)
         self.assertIsNotNone(delete_button_inside_sub_form, "delete_button_inside_sub_form not found")
         delete_button_inside_sub_form.click()
-        previously_created_event_for_subform_chooser = self.driver.find_element(
-            *EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER)
-        self.assertIsNone(previously_created_event_for_subform_chooser)
+        try:
+            previously_created_event_for_subform_chooser = self.driver.find_element(
+                *EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER)
+            self.assertIsNone(previously_created_event_for_subform_chooser)
+        except NoSuchElementException:
+            pass
 
     def scroll_down(self):
 
@@ -685,47 +717,47 @@ class EventEditPage(BasePage):
         elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
         action.press(elm1).perform()
         action.move_to(x=0, y=100).perform()
-        sleep(2)
+        #sleep(2)
         elm2 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
         action.press(elm2).perform()
         action.move_to(x=0, y=100).perform()
-        sleep(3)
+        #sleep(3)
         elm3 = self.driver.find_element(*EventEditScreen.IMPACT_HEADER)
         action.press(elm3).perform()
         action.move_to(x=0, y=100).perform()
-        sleep(1)
+        #sleep(1)
         elm4 = self.driver.find_element(*EventEditScreen.CAUSE_HEADER)
         action.press(elm4).perform()
         action.move_to(x=0, y=100).perform()
-        sleep(1)
+        #sleep(1)
         elm5 = self.driver.find_element(*EventEditScreen.SITUATION_HEADER)
         action.press(elm5).perform()
         action.move_to(x=0, y=100).perform()
-        sleep(1)
+        #sleep(1)
         elm6 = self.driver.find_element(*EventEditScreen.ISSUES_HEADER)
         action.press(elm6).perform()
         action.move_to(x=0, y=100).perform()
-        sleep(1)
+        #sleep(1)
         elm7 = self.driver.find_element(*EventEditScreen.OBJECTIVES_HEADER)
         action.press(elm7).perform()
         action.move_to(x=0, y=100).perform()
-        sleep(1)
+        #sleep(1)
         elm8 = self.driver.find_element(*EventEditScreen.STRATEGIES_HEADER)
         action.press(elm8).perform()
         action.move_to(x=0, y=100).perform()
-        sleep(1)
+        #sleep(1)
         elm9 = self.driver.find_element(*EventEditScreen.TACTICS_HEADER)
         action.press(elm9).perform()
         action.move_to(x=0, y=100).perform()
-        sleep(1)
+        #sleep(1)
         elm10 = self.driver.find_element(*EventEditScreen.COMMUNICATIONS_HEADER)
         action.press(elm10).perform()
         action.move_to(x=0, y=100).perform()
-        sleep(1)
+        #sleep(1)
         elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
         action.press(elm11).perform()
         action.move_to(x=0, y=100).perform()
-        sleep(1)
+        #sleep(1)
 
     def scroll_down_to_leadagency_header_field(self):
 
@@ -735,11 +767,11 @@ class EventEditPage(BasePage):
         elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
         action.press(elm1).perform()
         action.move_to(x=0, y=100).perform()
-        sleep(2)
+        #sleep(2)
         elm2 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
         action.press(elm2).perform()
         action.move_to(x=0, y=100).perform()
-        sleep(3)
+        #sleep(3)
 
     def scroll_down_from_leadagency_to_related_header(self):
 
@@ -749,7 +781,7 @@ class EventEditPage(BasePage):
         elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
         action.press(elm11).perform()
         action.move_to(x=0, y=100).perform()
-        sleep(1)
+        #sleep(1)
 
 
 class OptionList(BasePage):
@@ -782,8 +814,8 @@ class MapPage(BasePage):
 
         logging.info("Waiting for map to load")
         try:
-            WebDriverWait(self.driver, 25).until(
-                expected_conditions.presence_of_element_located(Map.MAP_AREA_5),
+            WebDriverWait(self.driver, 30).until(
+                expected_conditions.presence_of_element_located(Map.MAP_AREA_6),
                 "Failed to load map")
             logging.info("Map was successfully loaded")
         except NoSuchElementException:
@@ -832,33 +864,34 @@ class MapPage(BasePage):
     def click_in_map_area_9(self):
 
         logging.info("click on map")
+        action = TouchAction(self.driver)
         try:
-            position = [(350, 400)]
-            self.driver.tap(position)
+            action.tap(element=None, x=600, y=900, count=1).perform()
         except NoSuchElementException:
-            self.driver.find_element(*Map.MAP_AREA_9).click()
+            map9 = self.driver.find_element(*Map.MAP_AREA_9)
+            action.tap(element=map9, count=1).perform()
         sleep(1)
 
-    def click_in_map_area_5(self):
+    def click_in_map_area_3(self):
 
         logging.info("click on map")
+        action = TouchAction(self.driver)
         try:
-            position = [(250, 500)]
-            self.driver.tap(position)
+            action.tap(element=None, x=300, y=1600, count=1).perform()
         except NoSuchElementException:
-            self.driver.find_element(*Map.MAP_AREA_5).click()
+            map3 = self.driver.find_element(*Map.MAP_AREA_3)
+            action.tap(element=map3, count=1).perform()
         sleep(1)
 
     def double_click_in_map_area_6(self):
 
-        sleep(1)
         logging.info("double click on map")
+        action = TouchAction(self.driver)
         try:
-            action = TouchAction(self.driver)
-            action.tap(element=None, x=400, y=350, count=2).perform()
+            action.tap(element=None, x=1200, y=1900, count=2).perform()
         except NoSuchElementException:
-            self.driver.find_element(*Map.MAP_AREA_6).click()
-            self.driver.find_element(*Map.MAP_AREA_6).click()
+            map6 = self.driver.find_element(*Map.MAP_AREA_6)
+            action.tap(element=map6, count=2).perform()
         sleep(1)
 
     def save_map(self):

@@ -44,7 +44,7 @@ class TestCase1iOS(unittest.TestCase):
         logging.info("Quitting")
         self.driver.quit()
 
-    def test_login(self):
+    def test_send_photo(self):
 
         main_page = MainPage(self.driver)
         main_page.dismiss_ios_notifications()

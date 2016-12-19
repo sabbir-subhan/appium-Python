@@ -57,7 +57,7 @@ class LoginScreen:
 class MainMenuScreen:
     """A class for main menu screen locators - first screen after correct login into the app."""
     BUTTONS = (MobileBy.CLASS_NAME, 'android.view.View')
-    LOGOUT_BUTTON = (MobileBy.XPATH, './/android.view.View[@content-desc[contains(., "LOGOUT")]]')
+    LOGOUT_BUTTON = (MobileBy.XPATH, './/android.view.View[@content-desc[contains(., "LOGOUT")]]') # there is problem with that locator because buttons suddenly don't have attribute content-desc
     EVENTS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "EVENTS")]]')
     LOCATION_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "LOCATION")]]')
 
@@ -112,8 +112,9 @@ class EventsScreen:
     CREATED_EVENT_1 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Test Appium Android")]]')
     CREATED_EVENT_2 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., " second event")]]')
     CREATED_EVENT_3 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., " to create sub event")]]')
-    CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains('
-                                                  '., "Clear primary event")]]')
+    # CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains('
+    #                                               '., "Clear primary event")]]')
+    CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc="Clear primary event"]')
     NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.XPATH, '//android.view.View[@content-desc="Primary event cleared"]')
     GO_BACK_TO_MAIN_MENU_ARROW_BUTTON = (MobileBy.XPATH, "//android.webkit.WebView[@index='0']"
                                                          "//android.view.View[@index='0']"
@@ -169,22 +170,29 @@ class EventEditScreen:
     SEQUENCE_ONLOAD_VALUE = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="test on load"]')
     SEQUENCE_ONSAVE_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="sequence_onsave"]')
     SEQUENCE_ONSAVE_VALUE = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="(auto)"]')
-    NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="New option list"]')
-    OPTION_LIST_VALUE_1 = (MobileBy.XPATH, '//android.view.View[@content-desc="1"]')
-    OPTION_LIST_VALUE_2 = (MobileBy.XPATH, '//android.view.View[@content-desc="2"]')
-    OPTION_LIST_VALUE_3 = (MobileBy.XPATH, '//android.view.View[@content-desc="3"]')
+    # NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View/android.view.View'
+    #                                           '[@content-desc="New option list" and @clickable="true"]')
+    NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View/android.view.View['
+                                              '@index="2" and @clickable="true"]')
+    HEADER_ON_OPTION_LIST_PAGE = (MobileBy.XPATH, '//android.view.View[@content-desc="New option list"]')
+    OPTION_LIST_VALUE_1 = (MobileBy.XPATH, '//android.view.View[@content-desc="1" and @clickable="true"]')
+    OPTION_LIST_VALUE_2 = (MobileBy.XPATH, '//android.view.View[@content-desc="2" and @clickable="true"]')
+    OPTION_LIST_VALUE_3 = (MobileBy.XPATH, '//android.view.View[@content-desc="3" and @clickable="true"]')
     FIELD_TO_RESTORE_1_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="field to restore"]')
     FIELD_TO_RESTORE_1_VALUE = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="value for field 1"]')
     FIELD_TO_RESTORE_2_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="New email address"]')
     FIELD_TO_RESTORE_2_VALUE = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="test@noggin.com"]')
     CANCEL_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Cancel"]')
     CHOOSER_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "New events chooser")]]')
-    PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Test")]]')
+    PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER = (MobileBy.XPATH, '//android.view.View[@content-desc['
+                                                            'contains(., "Test Appium Android")]]')
     SUBFORM_FIELD_ADD_ROW = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Add row"]')
     NEW_EVENTS_CHOOSER_IN_SUB_FORM = (MobileBy.XPATH, '//android.view.View[@content-desc['
                                                       'contains(., "New events chooser inside sub form")]]')
     DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View[@index="8"]'
                                                      '/android.view.View[@index="1"]')
+    PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER = (MobileBy.XPATH, '//android.view.View[@content-desc['
+                                                                    'contains(., "Test Android to create")]]')
 
 
 class EventDetailsScreen:
@@ -204,7 +212,7 @@ class Map:
     POINT_BUTTON = (MobileBy.XPATH, "//android.view.View[@content-desc[contains(., 'Point click to expand')]]")
     DEFAULT_BUTTON = (MobileBy.XPATH, "//android.view.View[@content-desc='Default']")
     MAP_AREA_9 = (MobileBy.XPATH, "//android.widget.Image[@index='9']")
-    MAP_AREA_5 = (MobileBy.XPATH, "//android.widget.Image[@index='5']")
+    MAP_AREA_3 = (MobileBy.XPATH, "//android.widget.Image[@index='3']")
     MAP_AREA_6 = (MobileBy.XPATH, "//android.widget.Image[@index='6']")
     LINE_BUTTON = (MobileBy.XPATH, "//android.view.View[@content-desc[contains(., 'Line')]]")
     CIRCLE_BUTTON = (MobileBy.XPATH, "//android.view.View[@content-desc[contains(., 'Circle')]]")

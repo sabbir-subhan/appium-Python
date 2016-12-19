@@ -165,7 +165,7 @@ class EventEditScreen:
     NEW_EVENTS_CHOOSER_IN_SUB_FORM_ios = (MobileBy.XPATH, '//UIAWebView/UIALink/UIALink[@name[contains('
                                                           '., "New events chooser inside sub form")]]')
     PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Test")]]')
-    DELETE_SUB_EVENT_FROM_CHOOSER_ios = (MobileBy.XPATH, '//UIAScrollView[2]/UIAWebView[1]/UIALink[6]')
+    DELETE_SUB_EVENT_FROM_CHOOSER_ios = (MobileBy.XPATH, '//UIAScrollView/UIAWebView/UIALink[6]')
 
 
 class EventDetailsScreen:
