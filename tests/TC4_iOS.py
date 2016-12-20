@@ -57,7 +57,6 @@ class TestCase4iOS(unittest.TestCase):
         location_page = LocationPage(self.driver)
         location_page.check_if_location_page_was_opened()
         location_page.click_send_once_now()
-        ios_device.alert_allow_location()
         location_page.click_send_every()
         location_page.choose_1_hour_option()
         location_page.check_if_1hour_option_was_chosen()

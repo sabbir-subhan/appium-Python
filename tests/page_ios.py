@@ -71,15 +71,15 @@ class iOSdevice(BasePage):
         self.driver.find_element(*iOS.RETURN_BUTTON).click()
         sleep(1)
 
-    def alert_allow_location(self):
-
-        try:
-            button_allow_location = self.driver.find_element(*iOS.BUTTON_ALLOW_LOCATION_ios)
-            logging.info("Accept using location - device will store that info for later use")
-            self.assertIsNotNone(button_allow_location)
-            button_allow_location.click()
-        except NoSuchElementException:
-            pass
+    # def alert_allow_location(self):
+    #
+    #     try:
+    #         button_allow_location = self.driver.find_element(*iOS.BUTTON_ALLOW_LOCATION_ios)
+    #         logging.info("Accept using location - device will store that info for later use")
+    #         self.assertIsNotNone(button_allow_location)
+    #         button_allow_location.click()
+    #     except NoSuchElementException:
+    #         pass
 
 
 class WelcomePage(BasePage):

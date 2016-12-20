@@ -206,8 +206,7 @@ class iOS:
     """A class for handling iOS device for example keyboard"""
     BUTTON_DONE_TO_HIDE_KEYBOARD = (MobileBy.XPATH, '//UIAWindow[2]/UIAToolbar[1]/UIAButton[@name="Done"]')
     RETURN_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Return"]')
-    BUTTON_ALLOW_LOCATION_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]'
-                                                 '/UIACollectionCell[2]/UIAButton[@name="Allow"]')
-    BUTTON_ALLOW_ACCESS_TO_CAMERA = (MobileBy.ACCESSIBILITY_ID, 'OK')
-    #BUTTON_ALLOW_ACCESS_TO_CAMERA = (MobileBy.IOS_UIAUTOMATION, 'OK')
-    #BUTTON_ALLOW_ACCESS_TO_CAMERA = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]')
+    # BUTTON_ALLOW_LOCATION_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]'
+    #                                              '/UIACollectionCell[2]/UIAButton[@name="Allow"]')
+    # BUTTON_ALLOW_ACCESS_TO_CAMERA = (MobileBy.ACCESSIBILITY_ID, 'OK')
+

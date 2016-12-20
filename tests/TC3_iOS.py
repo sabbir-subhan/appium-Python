@@ -103,7 +103,7 @@ class TestCase3iOS(unittest.TestCase):
         event_details_page = EventDetailsPage(self.driver)
         event_details_page.click_edit_button()
         event_edit_page.click_create_mapping_data()
-        ios_device.alert_allow_location()
+        # ios_device.alert_allow_location()
         map_page = MapPage(self.driver)
         map_page.wait_for_map_to_load()
         map_page.click_tool_button()

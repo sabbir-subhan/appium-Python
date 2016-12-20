@@ -131,9 +131,19 @@ class TypesOfEventsScreen:
 class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
     NAME_FIELD = (MobileBy.XPATH, '//android.widget.EditText[@index="1"]')
+    # SEVERITY_LEVEL_SELECTOR = (MobileBy.XPATH, '//android.widget.ListView[@index="0"]'
+    #                                            '//android.view.View[@index="3"]'
+    #                                            '//android.widget.Spinner[@index="2"]')
+    # SEVERITY_LEVEL_SELECTOR = (MobileBy.XPATH, '//android.widget.ListView/android.view.View/'
+    #                                            'android.view.View[@content-desc="Severity"]')
+
+    # SEVERITY_LEVEL_SELECTOR = (MobileBy.XPATH, '//android.widget.ListView/android.view.View'
+    #                                            '[@content-desc[contains(., "Severity")]]/android.widget.Spinner')   # works on android 6
+
     SEVERITY_LEVEL_SELECTOR = (MobileBy.XPATH, '//android.widget.ListView[@index="0"]'
-                                               '//android.view.View[@index="3"]'
-                                               '//android.widget.Spinner[@index="2"]')
+                                               '/android.view.View[@index="3" and @content-desc[contains(., "Severity")]]'
+                                               '/android.widget.Spinner[@index="2"]')
+
     CHOOSE_SEVERITY_LVL1 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 1"]')
     CHOOSE_SEVERITY_LVL2 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 2"]')
     CHOOSE_SEVERITY_LVL3 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 3"]')
@@ -172,8 +182,14 @@ class EventEditScreen:
     SEQUENCE_ONSAVE_VALUE = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="(auto)"]')
     # NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View/android.view.View'
     #                                           '[@content-desc="New option list" and @clickable="true"]')
-    NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View/android.view.View['
-                                              '@index="2" and @clickable="true"]')
+    # NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View/android.view.View['
+    #                                           '@index="2" and @clickable="true"]')
+    # NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.view.View[@index="0" and @clickable="true" and '
+    #                                           '@content-desc="New option list"]')
+
+    NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View'
+                                              '[@content-desc[contains(., "New option list")]]/android.widget.Spinner')
+
     HEADER_ON_OPTION_LIST_PAGE = (MobileBy.XPATH, '//android.view.View[@content-desc="New option list"]')
     OPTION_LIST_VALUE_1 = (MobileBy.XPATH, '//android.view.View[@content-desc="1" and @clickable="true"]')
     OPTION_LIST_VALUE_2 = (MobileBy.XPATH, '//android.view.View[@content-desc="2" and @clickable="true"]')

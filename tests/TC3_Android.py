@@ -1,4 +1,5 @@
 # Test Case 3 - Managing events  -- OCAMOB-64
+# map will not work on small android screens with low resolution because taping into map is based on x,y coordinates
 
 
 from appium import webdriver
@@ -12,11 +13,11 @@ class TestCase3Android(unittest.TestCase):
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
         # choose desired capabilities from desired_capabilities.py
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_6
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_4
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
-        self.driver.implicitly_wait(20)  # seconds
+        self.driver.implicitly_wait(25)  # seconds
 
     def tearDown(self):
 
@@ -78,6 +79,7 @@ class TestCase3Android(unittest.TestCase):
         event_edit_page.type_text_into_description_field()
         android_device.hide_keyboard()
         event_edit_page.scroll_down()
+        #event_edit_page.scroll_down_from_description_field()
         event_edit_page.save_event()
         events_page.click_More_button()
         event_details_page.click_Delete_button()

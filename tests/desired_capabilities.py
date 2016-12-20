@@ -14,8 +14,9 @@ class DesiredCapabilities(object):
         "deviceName": "QUANTUM_2_400",
         "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
         "apppackage": "com.noggin.oca",
-        "appactivity": "com.noggin.oca.OCApp",
-        "newCommandTimeout": "600",
+        "appactivity": "com.noggin.oca.MainActivity",
+        "newCommandTimeout": "45",
+        "androidDeviceReadyTimeout": "30",
         "udid": "0123456789ABCDEF"
     }
 
@@ -25,8 +26,8 @@ class DesiredCapabilities(object):
         "deviceName": "Alcatel POP3",
         "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
         "apppackage": "com.noggin.oca",
-        "appactivity": "com.noggin.oca.OCApp",
-        "newCommandTimeout": "600",
+        "appactivity": "com.noggin.oca.MainActivity",
+        "newCommandTimeout": "45",
         "udid": "7d7d9a62"
     }
 
@@ -34,12 +35,14 @@ class DesiredCapabilities(object):
         "platformName": "ANDROID",
         "platformVersion": "6.0.1",
         "deviceName": "Samsung Galaxy S7",
-        #"app": PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk"),
-        "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
-        "apppackage": "com.noggin.oca",
-        # "appactivity": "com.noggin.oca.OCApp",
-        "appactivity": "com.noggin.oca.MainActivity",
-        "newCommandTimeout": "600",
+        # "app": PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk"),
+        # "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
+        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.1.3.apk"),
+        "apppackage": "com.noggin.ocalukasl",
+        "appactivity": "com.noggin.ocalukasl.MainActivity",
+        # "apppackage": "com.noggin.oca",
+        # "appactivity": "com.noggin.oca.MainActivity",
+        "newCommandTimeout": "45",
         "udid": "ad0816033848eb0443"
     }
 
@@ -51,7 +54,8 @@ class DesiredCapabilities(object):
         "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData"
                     "/OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphoneos/OCA.app"),
         "bundleId": "com.noggin.ocalukasl",
-        "newCommandTimeout": "600",
+        "newCommandTimeout": "45",
+        "autoAcceptAlerts": "true",
         "udid": "db55c238e873230ee454c54a63724397a2981acd"
     }
 
@@ -63,7 +67,8 @@ class DesiredCapabilities(object):
         "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData/"
                     "OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphonesimulator/OCA.app"),
         "bundleId": "com.noggin.ocalukasl",
-        "newCommandTimeout": "600"
+        "newCommandTimeout": "45",
+        "autoAcceptAlerts": "true"
     }
 
     desired_capabilities_for_iOS_iPhone5 = {
@@ -74,7 +79,8 @@ class DesiredCapabilities(object):
         "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData/"
                     "OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphonesimulator/OCA.app"),
         "bundleId": "com.noggin.ocalukasl",
-        "newCommandTimeout": "600"
+        "newCommandTimeout": "45",
+        "autoAcceptAlerts": "true"
     }
 
     desired_capabilities_for_iOS_iPhone6 = {
@@ -85,5 +91,6 @@ class DesiredCapabilities(object):
         "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData"
                     "/OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphonesimulator/OCA.app"),
         "bundleId": "com.noggin.ocalukasl",
-        "newCommandTimeout": "600"
+        "newCommandTimeout": "45",
+        "autoAcceptAlerts": "true"
     }

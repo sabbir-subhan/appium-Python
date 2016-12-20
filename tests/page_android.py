@@ -603,16 +603,26 @@ class EventEditPage(BasePage):
 
     def click_on_option_list(self):
 
+        sleep(2)
         logging.info("click on option list")
-        new_option_list = self.driver.find_element(*EventEditScreen.NEW_OPTION_LIST_HEADER)
-        self.assertIsNotNone(new_option_list)
         action = TouchAction(self.driver)
-        action.tap(element=new_option_list, count=1).perform()
+        action.tap(element=None, x=700, y=1430, count=1).perform()
+        # try:
+        #     option_list = self.driver.find_element(*EventEditScreen.NEW_OPTION_LIST_HEADER)
+        #     self.assertIsNotNone(option_list)
+        #     option_list.click()
+        # except NoSuchElementException:
+        #     action = TouchAction(self.driver)
+        #     action.tap(element=None, x=700, y=1430, count=1).perform()
+        # try:
+        #     option_list.click()
+        # except NoSuchElementException:
+        #     action.tap(element=None, x=700, y=1700, count=1).perform()
+        #     self.fail("appium could not click on option list")
+        # action.tap(element=option_list, count=1).perform()
         # header after opening option list
         header_after_opening_option_list = self.driver.find_element(*EventEditScreen.HEADER_ON_OPTION_LIST_PAGE)
         self.assertIsNotNone(header_after_opening_option_list)
-        # action = TouchAction(self.driver)
-        # action.long_press(new_option_list, duration=1000).perform()
         # try:
         #     if new_option_list.is_displayed():
         #         new_option_list.click()
@@ -709,55 +719,127 @@ class EventEditPage(BasePage):
         except NoSuchElementException:
             pass
 
+    # def scroll_down(self):
+    #
+    #     logging.info("scroll down")
+    #     action = TouchAction(self.driver)
+    #
+    #     elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
+    #     action.press(elm1).perform()
+    #     action.move_to(x=0, y=100).perform()
+    #     #sleep(2)
+    #     elm2 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
+    #     action.press(elm2).perform()
+    #     action.move_to(x=0, y=100).perform()
+    #     #sleep(3)
+    #     elm3 = self.driver.find_element(*EventEditScreen.IMPACT_HEADER)
+    #     action.press(elm3).perform()
+    #     action.move_to(x=0, y=100).perform()
+    #     #sleep(1)
+    #     elm4 = self.driver.find_element(*EventEditScreen.CAUSE_HEADER)
+    #     action.press(elm4).perform()
+    #     action.move_to(x=0, y=100).perform()
+    #     #sleep(1)
+    #     elm5 = self.driver.find_element(*EventEditScreen.SITUATION_HEADER)
+    #     action.press(elm5).perform()
+    #     action.move_to(x=0, y=100).perform()
+    #     #sleep(1)
+    #     elm6 = self.driver.find_element(*EventEditScreen.ISSUES_HEADER)
+    #     action.press(elm6).perform()
+    #     action.move_to(x=0, y=100).perform()
+    #     #sleep(1)
+    #     elm7 = self.driver.find_element(*EventEditScreen.OBJECTIVES_HEADER)
+    #     action.press(elm7).perform()
+    #     action.move_to(x=0, y=100).perform()
+    #     #sleep(1)
+    #     elm8 = self.driver.find_element(*EventEditScreen.STRATEGIES_HEADER)
+    #     action.press(elm8).perform()
+    #     action.move_to(x=0, y=100).perform()
+    #     #sleep(1)
+    #     elm9 = self.driver.find_element(*EventEditScreen.TACTICS_HEADER)
+    #     action.press(elm9).perform()
+    #     action.move_to(x=0, y=100).perform()
+    #     #sleep(1)
+    #     elm10 = self.driver.find_element(*EventEditScreen.COMMUNICATIONS_HEADER)
+    #     action.press(elm10).perform()
+    #     action.move_to(x=0, y=100).perform()
+    #     #sleep(1)
+    #     elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
+    #     action.press(elm11).perform()
+    #     action.move_to(x=0, y=100).perform()
+    #     #sleep(1)
+
     def scroll_down(self):
 
         logging.info("scroll down")
         action = TouchAction(self.driver)
-
-        elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
-        action.press(elm1).perform()
-        action.move_to(x=0, y=100).perform()
-        #sleep(2)
-        elm2 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
-        action.press(elm2).perform()
-        action.move_to(x=0, y=100).perform()
-        #sleep(3)
-        elm3 = self.driver.find_element(*EventEditScreen.IMPACT_HEADER)
-        action.press(elm3).perform()
-        action.move_to(x=0, y=100).perform()
-        #sleep(1)
-        elm4 = self.driver.find_element(*EventEditScreen.CAUSE_HEADER)
-        action.press(elm4).perform()
-        action.move_to(x=0, y=100).perform()
-        #sleep(1)
-        elm5 = self.driver.find_element(*EventEditScreen.SITUATION_HEADER)
-        action.press(elm5).perform()
-        action.move_to(x=0, y=100).perform()
-        #sleep(1)
-        elm6 = self.driver.find_element(*EventEditScreen.ISSUES_HEADER)
-        action.press(elm6).perform()
-        action.move_to(x=0, y=100).perform()
-        #sleep(1)
-        elm7 = self.driver.find_element(*EventEditScreen.OBJECTIVES_HEADER)
-        action.press(elm7).perform()
-        action.move_to(x=0, y=100).perform()
-        #sleep(1)
-        elm8 = self.driver.find_element(*EventEditScreen.STRATEGIES_HEADER)
-        action.press(elm8).perform()
-        action.move_to(x=0, y=100).perform()
-        #sleep(1)
-        elm9 = self.driver.find_element(*EventEditScreen.TACTICS_HEADER)
-        action.press(elm9).perform()
-        action.move_to(x=0, y=100).perform()
-        #sleep(1)
-        elm10 = self.driver.find_element(*EventEditScreen.COMMUNICATIONS_HEADER)
-        action.press(elm10).perform()
-        action.move_to(x=0, y=100).perform()
-        #sleep(1)
-        elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
-        action.press(elm11).perform()
-        action.move_to(x=0, y=100).perform()
-        #sleep(1)
+        sleep(1)
+        try:
+            elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
+            action.press(elm1).perform()
+            action.move_to(x=0, y=100).perform()
+        except NoSuchElementException:
+            pass
+        try:
+            elm2 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
+            action.press(elm2).perform()
+            action.move_to(x=0, y=100).perform()
+        except NoSuchElementException:
+            pass
+        try:
+            elm3 = self.driver.find_element(*EventEditScreen.IMPACT_HEADER)
+            action.press(elm3).perform()
+            action.move_to(x=0, y=100).perform()
+        except NoSuchElementException:
+            pass
+        try:
+            elm4 = self.driver.find_element(*EventEditScreen.CAUSE_HEADER)
+            action.press(elm4).perform()
+            action.move_to(x=0, y=100).perform()
+        except NoSuchElementException:
+            pass
+        try:
+            elm5 = self.driver.find_element(*EventEditScreen.SITUATION_HEADER)
+            action.press(elm5).perform()
+            action.move_to(x=0, y=100).perform()
+        except NoSuchElementException:
+            pass
+        try:
+            elm6 = self.driver.find_element(*EventEditScreen.ISSUES_HEADER)
+            action.press(elm6).perform()
+            action.move_to(x=0, y=100).perform()
+        except NoSuchElementException:
+            pass
+        try:
+            elm7 = self.driver.find_element(*EventEditScreen.OBJECTIVES_HEADER)
+            action.press(elm7).perform()
+            action.move_to(x=0, y=100).perform()
+        except NoSuchElementException:
+            pass
+        try:
+            elm8 = self.driver.find_element(*EventEditScreen.STRATEGIES_HEADER)
+            action.press(elm8).perform()
+            action.move_to(x=0, y=100).perform()
+        except NoSuchElementException:
+            pass
+        try:
+            elm9 = self.driver.find_element(*EventEditScreen.TACTICS_HEADER)
+            action.press(elm9).perform()
+            action.move_to(x=0, y=100).perform()
+        except NoSuchElementException:
+            pass
+        try:
+            elm10 = self.driver.find_element(*EventEditScreen.COMMUNICATIONS_HEADER)
+            action.press(elm10).perform()
+            action.move_to(x=0, y=100).perform()
+        except NoSuchElementException:
+            pass
+        try:
+            elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
+            action.press(elm11).perform()
+            action.move_to(x=0, y=100).perform()
+        except NoSuchElementException:
+            pass
 
     def scroll_down_to_leadagency_header_field(self):
 
@@ -781,7 +863,38 @@ class EventEditPage(BasePage):
         elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
         action.press(elm11).perform()
         action.move_to(x=0, y=100).perform()
-        #sleep(1)
+
+    def scroll_down_from_description_field(self):
+
+        logging.info("scroll down from Description field")
+        action = TouchAction(self.driver)
+        elm3 = self.driver.find_element(*EventEditScreen.IMPACT_HEADER)
+        action.press(elm3).perform()
+        action.move_to(x=0, y=100).perform()
+        elm4 = self.driver.find_element(*EventEditScreen.CAUSE_HEADER)
+        action.press(elm4).perform()
+        action.move_to(x=0, y=100).perform()
+        elm5 = self.driver.find_element(*EventEditScreen.SITUATION_HEADER)
+        action.press(elm5).perform()
+        action.move_to(x=0, y=100).perform()
+        elm6 = self.driver.find_element(*EventEditScreen.ISSUES_HEADER)
+        action.press(elm6).perform()
+        action.move_to(x=0, y=100).perform()
+        elm7 = self.driver.find_element(*EventEditScreen.OBJECTIVES_HEADER)
+        action.press(elm7).perform()
+        action.move_to(x=0, y=100).perform()
+        elm8 = self.driver.find_element(*EventEditScreen.STRATEGIES_HEADER)
+        action.press(elm8).perform()
+        action.move_to(x=0, y=100).perform()
+        elm9 = self.driver.find_element(*EventEditScreen.TACTICS_HEADER)
+        action.press(elm9).perform()
+        action.move_to(x=0, y=100).perform()
+        elm10 = self.driver.find_element(*EventEditScreen.COMMUNICATIONS_HEADER)
+        action.press(elm10).perform()
+        action.move_to(x=0, y=100).perform()
+        elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
+        action.press(elm11).perform()
+        action.move_to(x=0, y=100).perform()
 
 
 class OptionList(BasePage):
@@ -861,12 +974,28 @@ class MapPage(BasePage):
         self.assertIsNotNone(default_button, "default button not found")
         default_button.click()
 
+    # def click_in_map_area_9(self):
+    #
+    #     logging.info("click on map")
+    #     action = TouchAction(self.driver)
+    #     try:
+    #         action.tap(element=None, x=600, y=900, count=1).perform()
+    #     except NoSuchElementException:
+    #         map9 = self.driver.find_element(*Map.MAP_AREA_9)
+    #         action.tap(element=map9, count=1).perform()
+    #     sleep(1)
+
     def click_in_map_area_9(self):
 
         logging.info("click on map")
         action = TouchAction(self.driver)
+        screen_size = self.driver.get_window_size(windowHandle='current')  # it creates dictionary
         try:
-            action.tap(element=None, x=600, y=900, count=1).perform()
+            if screen_size['width'] > 1400:
+                action.tap(element=None, x=600, y=900, count=1).perform()
+            else:
+                logging.info("executing tap on map - width < 1400")
+                action.tap(element=None, x=300, y=500, count=1).perform()
         except NoSuchElementException:
             map9 = self.driver.find_element(*Map.MAP_AREA_9)
             action.tap(element=map9, count=1).perform()
@@ -911,7 +1040,7 @@ class EventDetailsPage(BasePage):
         edit_button = self.driver.find_element(*EventDetailsScreen.EDIT_BUTTON)
         self.assertIsNotNone(edit_button, "edit button not found")
         edit_button.click()
-        sleep(2)
+        #sleep(2)
 
     def click_Delete_button(self):
 
