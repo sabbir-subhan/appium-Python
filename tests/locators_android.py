@@ -22,7 +22,8 @@ class LoginScreen:
     TEXTFIELD_USERNAME = (MobileBy.XPATH, '//android.widget.EditText[@index="1"]')
     TEXTFIELD_PASSWORD = (MobileBy.XPATH, '//android.widget.EditText[@index="3"]')
     TEXTFIELD_DOMAIN = (MobileBy.XPATH, '//android.widget.EditText[@index="5"]')
-    SUBMIT_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Submit"]')
+    #SUBMIT_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Submit"]')
+    SUBMIT_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Submit')
 
     # Notification alert: "OCA now supports sending 'App Messages' to your device as notifications."
     NOTIFICATION_ABOUT_SENDING_MESSAGES = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., '
@@ -60,6 +61,8 @@ class MainMenuScreen:
     LOGOUT_BUTTON = (MobileBy.XPATH, './/android.view.View[@content-desc[contains(., "LOGOUT")]]') # there is problem with that locator because buttons suddenly don't have attribute content-desc
     EVENTS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "EVENTS")]]')
     LOCATION_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "LOCATION")]]')
+    PHOTO_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "PHOTO")]]')
+    # PHOTO_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'PHOTO')
 
 
 class LocationScreen:
@@ -236,6 +239,16 @@ class Map:
     SAVE_MAP_BUTTON = (MobileBy.XPATH, "//android.widget.Button[@content-desc='Save']")
 
 
+class PhotoScreen:
+    """A class for Photo screen locators - screen after clicking into Photo button in Main Menu."""
+    PHOTO_PAGE_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Send a photo to OCA")]]')
+    GALLERY_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Gallery")]]')
+    TAKE_NEW_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Take New")]]')
+    # PHOTO_PAGE_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Send a photo to OCA')
+    # GALLERY_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Gallery')
+    # TAKE_NEW_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Take New')
+
+
 class CameraScreen:
     """A class for handling Camera"""
     PHOTO_CAPTURE = (MobileBy.ACCESSIBILITY_ID, 'Shutter')
@@ -251,4 +264,5 @@ class Android:
     """A class for handling Android device for example alerts"""
 
     ANDROID_ALLOW = (MobileBy.ID, 'com.android.packageinstaller:id/permission_allow_button')
+    ANDROID_DENY = (MobileBy.ID, 'com.android.packageinstaller:id/permission_deny_button')
     PHOTO_FROM_GALLERY = (MobileBy.ID, 'com.android.documentsui:id/icon_thumb')

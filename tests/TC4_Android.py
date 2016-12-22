@@ -32,13 +32,11 @@ class TestCase4Android(unittest.TestCase):
     def tearDown(self):
 
         logging.info("Quitting")
+
         self.driver.quit()
 
     def test_send_location(self):
 
-        main_page = MainPage(self.driver)
-        main_page.dismiss_android_notifications()
-        main_page.logout_if_already_logged_in()
         logging.info("starting Test Case 1: login into active account")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()
@@ -50,6 +48,7 @@ class TestCase4Android(unittest.TestCase):
         android_device.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
+        main_page = MainPage(self.driver)
         main_page.alert_expiring_password()
         main_page.dismiss_android_notifications()
         main_page.check_presence_of_events_button()

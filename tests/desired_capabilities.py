@@ -32,8 +32,11 @@ class DesiredCapabilities(object):
     }
 
     desired_capabilities_for_android_6 = {
+        # deviceName: SM-G930F
         "platformName": "ANDROID",
         "platformVersion": "6.0.1",
+        # probably necessary to enable this and disable platformVersion when switching to webview context, but currently there is only NATIVE_APP context
+        # "automationName": "Appium",
         "deviceName": "Samsung Galaxy S7",
         # "app": PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk"),
         # "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
@@ -51,8 +54,9 @@ class DesiredCapabilities(object):
         "platformName": "iOS",
         "platformVersion": "9.3",
         "deviceName": "iPad mini",
-        "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData"
-                    "/OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphoneos/OCA.app"),
+        # "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData/"
+        #             "OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphoneos/OCA.app"),
+        "app": PATH("/Users/lukasl/Build_xcode/Products/Debug-iphoneos/OCA.app"),
         "bundleId": "com.noggin.ocalukasl",
         "newCommandTimeout": "45",
         "autoAcceptAlerts": "true",

@@ -82,11 +82,12 @@ BUILDING .APP FILE ON OSX:
 - on real device, first You need to run app from xcode - it will install it on the device (You have to TRUST app in General - Device management)
 
 
-STARTING APPIUM:
+CONFIGURE APPIUM:
 
 - provide paths for android sdk and xcode
-- provide path to app file (android - .apk file, ios - .app file from xcode(xcode build the app file for example in /Users/$USER/Library/Developer/Xcode/DerivedData/))
-- for iOS provide BundleID from xcode, check "Force device", type device name and check "UDID" (search for it in iTunes or use terminal command: "idevice_id -l")
+- provide path to app file (android - .apk file, ios - .app file from xcode(xcode build the app file for example in /Users/$USER/Library/Developer/Xcode/DerivedData/) or in other location(ProjectSettings))
+- for iOS provide BundleID from xcode, check "Force device", device name and check "UDID" (search for it in iTunes or use terminal command: "idevice_id -l")
+- uncheck "No reset" checkbox 
 
 
 file desired_capabilities.py need to be updated accordingly to used device:

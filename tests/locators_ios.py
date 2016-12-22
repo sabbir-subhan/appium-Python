@@ -21,6 +21,7 @@ class LoginScreen:
     TEXTFIELD_PASSWORD_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIASecureTextField[1]')
     TEXTFIELD_DOMAIN_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIATextField[2]')
     SUBMIT_BUTTON_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAButton[@name="Submit"]')
+    # SUBMIT_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Submit') for testing
 
     # Notification alert: "OCA now supports sending 'App Messages' to your device as notifications."
     NOTIFICATION_ABOUT_SENDING_MESSAGES_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText[@name[contains(., '
@@ -71,13 +72,6 @@ class LocationScreen:
     ASSERT_1_HOUR_OPTION_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText[@name="1 hour"]')
     START_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Start")]]')
     LOCATION_PAGE_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Your location was last sent")]]')
-
-
-class PhotoScreen:
-    """A class for Photo screen locators - screen after clicking into Photo button in Main Menu."""
-    PHOTO_PAGE_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Send a photo to OCA")]]')
-    GALLERY_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Gallery")]]')
-    TAKE_NEW_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Take New")]]')
 
 
 class EventsScreen:
@@ -191,6 +185,13 @@ class Map:
     CIRCLE_BUTTON_ios = (MobileBy.XPATH, '//UIAScrollView[2]/UIAWebView[1]/UIALink[@name[contains(., "Circle")]]')
     POLYGON_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "Polygon")]]')
     SAVE_MAP_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Save")]]')
+
+
+class PhotoScreen:
+    """A class for Photo screen locators - screen after clicking into Photo button in Main Menu."""
+    PHOTO_PAGE_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Send a photo to OCA")]]')
+    GALLERY_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Gallery")]]')
+    TAKE_NEW_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Take New")]]')
 
 
 class CameraScreen:

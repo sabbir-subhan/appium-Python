@@ -1,14 +1,12 @@
-# Before running test - enable allow access to Camera and Photos in iOS settings for OCA app
-
 # Test Case 5 - Send Photo -- OCAMOB-43
 
 # open OCA app
-# dismiss iOS notifications
+# dismiss android notifications
 # input login, password and domain
 # click on Submit button
 # accept terms if needed
 # dismiss alert about expiring password
-# dismiss iOS notifications
+# dismiss android notifications
 # check if button "EVENTS" is present
 # From the main menu click on Photo.
 # Click Gallery and select an existing photo.
@@ -24,20 +22,20 @@
 
 from appium import webdriver
 from desired_capabilities import DesiredCapabilities
-from page_ios import *
+from page_android import *
 
 
-class TestCase5iOS(unittest.TestCase):
+class TestCase5android(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
         # choose desired capabilities from desired_capabilities.py
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_6
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
-        self.driver.implicitly_wait(15)  # seconds
+        self.driver.implicitly_wait(20)  # seconds
 
     def tearDown(self):
 
@@ -46,9 +44,6 @@ class TestCase5iOS(unittest.TestCase):
 
     def test_send_photo(self):
 
-        main_page = MainPage(self.driver)
-        main_page.dismiss_ios_notifications()
-        main_page.logout_if_already_logged_in()
         logging.info("starting Test Case 1: login into active account")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()
@@ -56,19 +51,21 @@ class TestCase5iOS(unittest.TestCase):
         login_page.type_username('QA')
         login_page.type_password('QA')
         login_page.type_domain_address('QA')
-        ios_device = iOSdevice(self.driver)
-        ios_device.hide_keyboard()
+        android_device = AndroidDevice(self.driver)
+        android_device.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
+        main_page = MainPage(self.driver)
         main_page.alert_expiring_password()
-        main_page.dismiss_ios_notifications()
+        main_page.dismiss_android_notifications()
         main_page.check_presence_of_events_button()
         main_page.open_PHOTO()
         photo_page = PhotoPage(self.driver)
+        android_device.alert_allow_location()
         photo_page.check_if_photo_page_was_opened()
-        photo_page.click_gallery_button()
+        #photo_page.click_gallery_button()
         # cos
-        photo_page.click_take_new_button()
+        photo_page.click_take_new_button()  # problem with clicking into right spot
         camera_page = CameraPage(self.driver)
         camera_page.choose_camera()
         camera_page.choose_camera()
@@ -79,5 +76,5 @@ class TestCase5iOS(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestCase5iOS)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestCase5android)
     unittest.TextTestRunner(verbosity=2).run(suite)

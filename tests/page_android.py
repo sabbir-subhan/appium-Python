@@ -114,6 +114,14 @@ class LoginPage(BasePage):
 
     def click_submit_button(self):
 
+        # switching context
+
+        # print(self.driver.contexts)
+        # print(self.driver.current_context)
+        # context_name = "WEBVIEW_com.noggin.ocalukasl"
+        # print(self.driver.contexts)
+        # print(self.driver.current_context)
+
         logging.info("click in Submit button")
         self.driver.find_element(*LoginScreen.SUBMIT_BUTTON).click()
 
@@ -242,10 +250,75 @@ class MainPage(BasePage):
 
     def open_LOCATION(self):
 
-        logging.info("clicking in Events button")
+        logging.info("clicking in Location button")
         location_button = self.driver.find_element(*MainMenuScreen.LOCATION_BUTTON)
         self.assertIsNotNone(location_button)
         location_button.click()
+
+    def open_PHOTO(self):
+
+        logging.info("clicking in Photo button")
+        photo_button = self.driver.find_element(*MainMenuScreen.PHOTO_BUTTON)
+        self.assertIsNotNone(photo_button)
+        photo_button.click()
+
+
+class PhotoPage(BasePage):
+
+    def check_if_photo_page_was_opened(self):
+        photo_page_header = self.driver.find_element(*PhotoScreen.PHOTO_PAGE_HEADER)
+        self.assertIsNotNone(photo_page_header, "Photo page header was not found")
+        logging.info("Photo page was opened")
+
+    def click_gallery_button(self):
+        logging.info("clicking in Gallery button")
+        gallery_button = self.driver.find_element(*PhotoScreen.GALLERY_BUTTON)
+        self.assertIsNotNone(gallery_button)
+        gallery_button.click()
+
+    def click_take_new_button(self):
+        logging.info("clicking in Take new button")
+        take_new_button = self.driver.find_element(*PhotoScreen.TAKE_NEW_BUTTON)
+        self.assertIsNotNone(take_new_button)
+        take_new_button.click()
+
+
+class CameraPage(BasePage):
+
+    def take_a_photo(self):
+
+        logging.info("taking photo")
+        photo_capture = self.driver.find_element(*CameraScreen.PHOTO_CAPTURE)
+        self.assertIsNotNone(photo_capture)
+        photo_capture.click()
+
+    def click_cancel(self):
+
+        logging.info("click Cancel")
+        cancel = self.driver.find_element(*CameraScreen.CANCEL_BUTTON)
+        self.assertIsNotNone(cancel)
+        cancel.click()
+
+    def click_use_photo(self):
+
+        logging.info("click Use Photo")
+        use_photo = self.driver.find_element(*CameraScreen.USE_PHOTO)
+        self.assertIsNotNone(use_photo)
+        use_photo.click()
+
+    def retake_photo(self):
+
+        logging.info("click Retake")
+        retake_photo = self.driver.find_element(*CameraScreen.RETAKE)
+        self.assertIsNotNone(retake_photo)
+        retake_photo.click()
+
+    def choose_camera(self):
+
+        logging.info("click choose camera")
+        chooser_camera = self.driver.find_element(*CameraScreen.CAMERA_CHOOSER)
+        self.assertIsNotNone(chooser_camera)
+        chooser_camera.click()
 
 
 class LocationPage(BasePage):
@@ -849,11 +922,11 @@ class EventEditPage(BasePage):
         elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
         action.press(elm1).perform()
         action.move_to(x=0, y=100).perform()
-        #sleep(2)
+        # sleep(2)
         elm2 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
         action.press(elm2).perform()
         action.move_to(x=0, y=100).perform()
-        #sleep(3)
+        # sleep(3)
 
     def scroll_down_from_leadagency_to_related_header(self):
 
@@ -1040,7 +1113,7 @@ class EventDetailsPage(BasePage):
         edit_button = self.driver.find_element(*EventDetailsScreen.EDIT_BUTTON)
         self.assertIsNotNone(edit_button, "edit button not found")
         edit_button.click()
-        #sleep(2)
+        # sleep(2)
 
     def click_Delete_button(self):
 

@@ -13,7 +13,7 @@ class TestCase3Android(unittest.TestCase):
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
         # choose desired capabilities from desired_capabilities.py
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_4
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_6
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
