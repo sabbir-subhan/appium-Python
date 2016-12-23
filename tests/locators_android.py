@@ -115,8 +115,7 @@ class EventsScreen:
     CREATED_EVENT_1 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Test Appium Android")]]')
     CREATED_EVENT_2 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., " second event")]]')
     CREATED_EVENT_3 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., " to create sub event")]]')
-    # CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains('
-    #                                               '., "Clear primary event")]]')
+
     CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc="Clear primary event"]')
     NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.XPATH, '//android.view.View[@content-desc="Primary event cleared"]')
     GO_BACK_TO_MAIN_MENU_ARROW_BUTTON = (MobileBy.XPATH, "//android.webkit.WebView[@index='0']"
@@ -134,18 +133,10 @@ class TypesOfEventsScreen:
 class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
     NAME_FIELD = (MobileBy.XPATH, '//android.widget.EditText[@index="1"]')
-    # SEVERITY_LEVEL_SELECTOR = (MobileBy.XPATH, '//android.widget.ListView[@index="0"]'
-    #                                            '//android.view.View[@index="3"]'
-    #                                            '//android.widget.Spinner[@index="2"]')
-    # SEVERITY_LEVEL_SELECTOR = (MobileBy.XPATH, '//android.widget.ListView/android.view.View/'
-    #                                            'android.view.View[@content-desc="Severity"]')
 
-    # SEVERITY_LEVEL_SELECTOR = (MobileBy.XPATH, '//android.widget.ListView/android.view.View'
-    #                                            '[@content-desc[contains(., "Severity")]]/android.widget.Spinner')   # works on android 6
-
-    SEVERITY_LEVEL_SELECTOR = (MobileBy.XPATH, '//android.widget.ListView[@index="0"]'
-                                               '/android.view.View[@index="3" and @content-desc[contains(., "Severity")]]'
-                                               '/android.widget.Spinner[@index="2"]')
+    SEVERITY_LEVEL_SELECTOR = (MobileBy.XPATH, '//android.widget.ListView[@index="0"]/android.view.View['
+                                               '@index="3" and @content-desc[contains(., "Severity")]]/'
+                                               'android.widget.Spinner[@index="2"]')
 
     CHOOSE_SEVERITY_LVL1 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 1"]')
     CHOOSE_SEVERITY_LVL2 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 2"]')
@@ -183,12 +174,6 @@ class EventEditScreen:
     SEQUENCE_ONLOAD_VALUE = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="test on load"]')
     SEQUENCE_ONSAVE_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="sequence_onsave"]')
     SEQUENCE_ONSAVE_VALUE = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="(auto)"]')
-    # NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View/android.view.View'
-    #                                           '[@content-desc="New option list" and @clickable="true"]')
-    # NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View/android.view.View['
-    #                                           '@index="2" and @clickable="true"]')
-    # NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.view.View[@index="0" and @clickable="true" and '
-    #                                           '@content-desc="New option list"]')
 
     NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View'
                                               '[@content-desc[contains(., "New option list")]]/android.widget.Spinner')
@@ -241,23 +226,28 @@ class Map:
 
 class PhotoScreen:
     """A class for Photo screen locators - screen after clicking into Photo button in Main Menu."""
-    PHOTO_PAGE_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Send a photo to OCA")]]')
-    GALLERY_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Gallery")]]')
-    TAKE_NEW_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Take New")]]')
-    # PHOTO_PAGE_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Send a photo to OCA')
-    # GALLERY_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Gallery')
-    # TAKE_NEW_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Take New')
+    PHOTO_PAGE_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Send a photo to OCA')
+    GALLERY_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Gallery')
+    TAKE_NEW_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Take New')
+    SEND_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Send')
+    DESCRIPTION_FIELD = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="Description (optional)"]')
 
 
 class CameraScreen:
     """A class for handling Camera"""
-    PHOTO_CAPTURE = (MobileBy.ACCESSIBILITY_ID, 'Shutter')
+    # PHOTO_CAPTURE = (MobileBy.ACCESSIBILITY_ID, 'Shutter')
+    PHOTO_CAPTURE_ANDROID4 = (MobileBy.ANDROID_UIAUTOMATOR, 'Shutter')
+    PHOTO_CAPTURE_ANDROID6 = (MobileBy.XPATH, '//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/'
+                                              'android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/'
+                                              'android.widget.LinearLayout[1]/android.view.View[1]/GLViewGroup[1]/'
+                                              'GLViewGroup[3]/GLViewGroup[1]/GLButton[4]')
     CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Review cancel')
-    CAMERA_CHOOSER = (MobileBy.ID, 'com.android.camera2:id/btn_switch_camera')
+    CAMERA_CHOOSER_ANDROID4 = (MobileBy.ID, 'com.android.camera2:id/btn_switch_camera')
+    CAMERA_CHOOSER = (MobileBy.ACCESSIBILITY_ID, 'Switch camera')  # for android 6
     CAMERA_CHOOSER2 = (MobileBy.ID, 'com.tct.camera:id/onscreen_camera_picker')
     RETAKE = (MobileBy.ACCESSIBILITY_ID, 'Review retake')
-    USE_PHOTO = (MobileBy.ACCESSIBILITY_ID, 'Review done')
-    USE_PHOTO2 = (MobileBy.ACCESSIBILITY_ID, 'OK')
+    USE_PHOTO_ANDROID4 = (MobileBy.ACCESSIBILITY_ID, 'Review done')
+    USE_PHOTO_ANDROID6 = (MobileBy.ACCESSIBILITY_ID, 'OK')  #com.sec.android.app.camera:id/okay
 
 
 class Android:

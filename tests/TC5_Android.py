@@ -61,18 +61,21 @@ class TestCase5android(unittest.TestCase):
         main_page.check_presence_of_events_button()
         main_page.open_PHOTO()
         photo_page = PhotoPage(self.driver)
-        android_device.alert_allow_location()
+        android_device.alert_android_allow()
         photo_page.check_if_photo_page_was_opened()
-        #photo_page.click_gallery_button()
-        # cos
-        photo_page.click_take_new_button()  # problem with clicking into right spot
+        # photo_page.click_gallery_button()
+        photo_page.click_take_new_button()
+        android_device.alert_android_allow()
+        photo_page.click_take_new_button() # second click is not working ??
+        android_device.alert_android_allow()
+        android_device.alert_android_allow()
         camera_page = CameraPage(self.driver)
         camera_page.choose_camera()
         camera_page.choose_camera()
         camera_page.take_a_photo()
         camera_page.click_use_photo()
-        #photo_page.
-        #step9
+        # photo_page.
+        # step9
 
 
 if __name__ == '__main__':

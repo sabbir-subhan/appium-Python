@@ -62,12 +62,12 @@ class AndroidDevice(BasePage):
         self.driver.keyevent(66)
         sleep(3)
 
-    def alert_allow_location(self):
+    def alert_android_allow(self):
 
         try:
             button_allow_location = self.driver.find_element(*Android.ANDROID_ALLOW)
             if button_allow_location.is_displayed():
-                logging.info("Accept using location - device will store that info for later use")
+                logging.info("Accept for example using location - device will store that info for later use")
                 button_allow_location.click()
             else:
                 pass
@@ -266,21 +266,26 @@ class MainPage(BasePage):
 class PhotoPage(BasePage):
 
     def check_if_photo_page_was_opened(self):
+
+        logging.info("check_if_photo_page_was_opened")
         photo_page_header = self.driver.find_element(*PhotoScreen.PHOTO_PAGE_HEADER)
         self.assertIsNotNone(photo_page_header, "Photo page header was not found")
         logging.info("Photo page was opened")
 
     def click_gallery_button(self):
+
         logging.info("clicking in Gallery button")
         gallery_button = self.driver.find_element(*PhotoScreen.GALLERY_BUTTON)
         self.assertIsNotNone(gallery_button)
         gallery_button.click()
 
     def click_take_new_button(self):
+
         logging.info("clicking in Take new button")
         take_new_button = self.driver.find_element(*PhotoScreen.TAKE_NEW_BUTTON)
         self.assertIsNotNone(take_new_button)
-        take_new_button.click()
+        #take_new_button.click()
+        TouchAction(self.driver).tap(element=take_new_button, count=1).perform()
 
 
 class CameraPage(BasePage):
@@ -288,7 +293,7 @@ class CameraPage(BasePage):
     def take_a_photo(self):
 
         logging.info("taking photo")
-        photo_capture = self.driver.find_element(*CameraScreen.PHOTO_CAPTURE)
+        photo_capture = self.driver.find_element(*CameraScreen.PHOTO_CAPTURE_ANDROID6)
         self.assertIsNotNone(photo_capture)
         photo_capture.click()
 
@@ -937,37 +942,37 @@ class EventEditPage(BasePage):
         action.press(elm11).perform()
         action.move_to(x=0, y=100).perform()
 
-    def scroll_down_from_description_field(self):
-
-        logging.info("scroll down from Description field")
-        action = TouchAction(self.driver)
-        elm3 = self.driver.find_element(*EventEditScreen.IMPACT_HEADER)
-        action.press(elm3).perform()
-        action.move_to(x=0, y=100).perform()
-        elm4 = self.driver.find_element(*EventEditScreen.CAUSE_HEADER)
-        action.press(elm4).perform()
-        action.move_to(x=0, y=100).perform()
-        elm5 = self.driver.find_element(*EventEditScreen.SITUATION_HEADER)
-        action.press(elm5).perform()
-        action.move_to(x=0, y=100).perform()
-        elm6 = self.driver.find_element(*EventEditScreen.ISSUES_HEADER)
-        action.press(elm6).perform()
-        action.move_to(x=0, y=100).perform()
-        elm7 = self.driver.find_element(*EventEditScreen.OBJECTIVES_HEADER)
-        action.press(elm7).perform()
-        action.move_to(x=0, y=100).perform()
-        elm8 = self.driver.find_element(*EventEditScreen.STRATEGIES_HEADER)
-        action.press(elm8).perform()
-        action.move_to(x=0, y=100).perform()
-        elm9 = self.driver.find_element(*EventEditScreen.TACTICS_HEADER)
-        action.press(elm9).perform()
-        action.move_to(x=0, y=100).perform()
-        elm10 = self.driver.find_element(*EventEditScreen.COMMUNICATIONS_HEADER)
-        action.press(elm10).perform()
-        action.move_to(x=0, y=100).perform()
-        elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
-        action.press(elm11).perform()
-        action.move_to(x=0, y=100).perform()
+    # def scroll_down_from_description_field(self):
+    #
+    #     logging.info("scroll down from Description field")
+    #     action = TouchAction(self.driver)
+    #     elm3 = self.driver.find_element(*EventEditScreen.IMPACT_HEADER)
+    #     action.press(elm3).perform()
+    #     action.move_to(x=0, y=100).perform()
+    #     elm4 = self.driver.find_element(*EventEditScreen.CAUSE_HEADER)
+    #     action.press(elm4).perform()
+    #     action.move_to(x=0, y=100).perform()
+    #     elm5 = self.driver.find_element(*EventEditScreen.SITUATION_HEADER)
+    #     action.press(elm5).perform()
+    #     action.move_to(x=0, y=100).perform()
+    #     elm6 = self.driver.find_element(*EventEditScreen.ISSUES_HEADER)
+    #     action.press(elm6).perform()
+    #     action.move_to(x=0, y=100).perform()
+    #     elm7 = self.driver.find_element(*EventEditScreen.OBJECTIVES_HEADER)
+    #     action.press(elm7).perform()
+    #     action.move_to(x=0, y=100).perform()
+    #     elm8 = self.driver.find_element(*EventEditScreen.STRATEGIES_HEADER)
+    #     action.press(elm8).perform()
+    #     action.move_to(x=0, y=100).perform()
+    #     elm9 = self.driver.find_element(*EventEditScreen.TACTICS_HEADER)
+    #     action.press(elm9).perform()
+    #     action.move_to(x=0, y=100).perform()
+    #     elm10 = self.driver.find_element(*EventEditScreen.COMMUNICATIONS_HEADER)
+    #     action.press(elm10).perform()
+    #     action.move_to(x=0, y=100).perform()
+    #     elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
+    #     action.press(elm11).perform()
+    #     action.move_to(x=0, y=100).perform()
 
 
 class OptionList(BasePage):
@@ -981,6 +986,7 @@ class OptionList(BasePage):
 
     def click_on_option_2(self):
 
+        sleep(1)
         logging.info("choose '2' in option list")
         option_2 = self.driver.find_element(*EventEditScreen.OPTION_LIST_VALUE_2)
         self.assertIsNotNone(option_2, "option list - option '2' not found")
@@ -1101,6 +1107,7 @@ class MapPage(BasePage):
         logging.info("Save map")
         save_map_button = self.driver.find_element(*Map.SAVE_MAP_BUTTON)
         self.assertIsNotNone(save_map_button, "save map button not found")
+        # self.driver.save_screenshot("screen_map.png")
         save_map_button.click()
         sleep(3)
 
