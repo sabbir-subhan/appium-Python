@@ -11,7 +11,7 @@ from locators_android import *
 from credentials import Credentials
 import logging
 
-logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/TCs.log', level=logging.INFO,
+logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/TCs.log', level=logging.DEBUG,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())
 
@@ -118,7 +118,8 @@ class LoginPage(BasePage):
 
         # print(self.driver.contexts)
         # print(self.driver.current_context)
-        # context_name = "WEBVIEW_com.noggin.ocalukasl"
+        # context_name = "WEBVIEW_com.noggin.oca"
+        # self.driver.switch_to.context(context_name)
         # print(self.driver.contexts)
         # print(self.driver.current_context)
 
@@ -284,7 +285,7 @@ class PhotoPage(BasePage):
         logging.info("clicking in Take new button")
         take_new_button = self.driver.find_element(*PhotoScreen.TAKE_NEW_BUTTON)
         self.assertIsNotNone(take_new_button)
-        #take_new_button.click()
+        # take_new_button.click()
         TouchAction(self.driver).tap(element=take_new_button, count=1).perform()
 
 
@@ -335,36 +336,71 @@ class LocationPage(BasePage):
 
     def click_send_once_now(self):
 
-        logging.info("clicking in send_once_now button")
+        logging.info("clicking in 'Send once now' button")
         send_once_now_button = self.driver.find_element(*LocationScreen.SEND_ONCE_NOW)
         self.assertIsNotNone(send_once_now_button)
         send_once_now_button.click()
 
+    def check_if_location_was_sent(self):
+
+        sleep(5)
+        logging.info("check if location was sent")
+        # location_status = self.driver.find_element(*LocationScreen.LOCATION_STATUS_ios)
+        # self.assertIsNotNone(location_status)
+        try:
+            WebDriverWait(self.driver, 45).until(
+                expected_conditions.presence_of_element_located(LocationScreen.LOCATION_STATUS),
+                "Failed to send location")
+            logging.info("Location was sent")
+        except NoSuchElementException:
+            logging.info("Failed to send location")
+            self.fail("Failed to send location")
+
     def click_send_every(self):
 
-        logging.info("clicking in send_every button")
+        logging.info("clicking in 'Send every' selector")
         send_every_button = self.driver.find_element(*LocationScreen.SEND_EVERY_SPINNER)
         self.assertIsNotNone(send_every_button)
         send_every_button.click()
 
+    def choose_send_every_5_minutes_option(self):
+
+        logging.info("choose send every '5 minutes' option")
+        choose_5_minutes_option = self.driver.find_element(*LocationScreen.CHOOSE_5_MINUTES_OPTION)
+        self.assertIsNotNone(choose_5_minutes_option)
+        choose_5_minutes_option.click()
+
+    def check_if_5_minutes_option_was_chosen(self):
+
+        logging.info("check if send every '5 minutes'  option was chosen")
+        check_if_5_minutes_option_was_chosen = self.driver.find_element(*LocationScreen.ASSERT_5_MINUTES_OPTION)
+        self.assertIsNotNone(check_if_5_minutes_option_was_chosen)
+
+    def click_for_the_next(self):
+
+        logging.info("clicking in 'For the next' selector")
+        for_the_next = self.driver.find_element(*LocationScreen.FOR_THE_NEXT_SPINNER)
+        self.assertIsNotNone(for_the_next)
+        for_the_next.click()
+
     def choose_1_hour_option(self):
 
-        logging.info("choose_1_hour_option")
+        logging.info("choose '1 hour' option")
         choose_1_hour_option = self.driver.find_element(*LocationScreen.CHOOSE_1_HOUR_OPTION)
         self.assertIsNotNone(choose_1_hour_option)
         choose_1_hour_option.click()
 
-    def check_if_1hour_option_was_chosen(self):
+    def check_if_1_hour_option_was_chosen(self):
 
-        logging.info("check_if_1hour_option_was_chosen")
+        logging.info("check if '1 hour' option was chosen")
         check_if_1hour_option_was_chosen = self.driver.find_element(*LocationScreen.ASSERT_1_HOUR_OPTION)
         self.assertIsNotNone(check_if_1hour_option_was_chosen)
 
-    def check_if_button_send_once_was_pressed(self):
-
-        logging.info("check_if_1hour_option_was_chosen")
-        check_if_1hour_option_was_chosen = self.driver.find_element(*LocationScreen.ASSERT_1_HOUR_OPTION)
-        self.assertIsNotNone(check_if_1hour_option_was_chosen)
+    # def check_if_button_send_once_was_pressed(self):
+    #
+    #     logging.info("check_if_1hour_option_was_chosen")
+    #     check_if_1hour_option_was_chosen = self.driver.find_element(*LocationScreen.)
+    #     self.assertIsNotNone(check_if_1hour_option_was_chosen)
 
     def click_start_button(self):
 
@@ -424,9 +460,11 @@ class EventsPage(BasePage):
     def filter_events_by_Search_field(self):
 
         logging.info("search field - search event named: 'search'")
-        self.driver.find_element(*EventsScreen.SEARCH_FIELD).click()
-        self.driver.find_element(*EventsScreen.SEARCH_FIELD).clear()
-        self.driver.find_element(*EventsScreen.SEARCH_FIELD).send_keys("search")
+        search_field = self.driver.find_element(*EventsScreen.SEARCH_FIELD)
+        search_field.click()
+        search_field.clear()
+        logging.info("sending keys")
+        search_field.send_keys('search')
 
     def clear_Search_field(self):
 
@@ -715,6 +753,7 @@ class EventEditPage(BasePage):
 
     def check_restored_field_1(self):
 
+        sleep(2)
         logging.info("assert restored field 1")
         field_to_restore_1_header = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE_1_HEADER)
         self.assertIsNotNone(field_to_restore_1_header)
@@ -797,125 +836,75 @@ class EventEditPage(BasePage):
         except NoSuchElementException:
             pass
 
-    # def scroll_down(self):
-    #
-    #     logging.info("scroll down")
-    #     action = TouchAction(self.driver)
-    #
-    #     elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
-    #     action.press(elm1).perform()
-    #     action.move_to(x=0, y=100).perform()
-    #     #sleep(2)
-    #     elm2 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
-    #     action.press(elm2).perform()
-    #     action.move_to(x=0, y=100).perform()
-    #     #sleep(3)
-    #     elm3 = self.driver.find_element(*EventEditScreen.IMPACT_HEADER)
-    #     action.press(elm3).perform()
-    #     action.move_to(x=0, y=100).perform()
-    #     #sleep(1)
-    #     elm4 = self.driver.find_element(*EventEditScreen.CAUSE_HEADER)
-    #     action.press(elm4).perform()
-    #     action.move_to(x=0, y=100).perform()
-    #     #sleep(1)
-    #     elm5 = self.driver.find_element(*EventEditScreen.SITUATION_HEADER)
-    #     action.press(elm5).perform()
-    #     action.move_to(x=0, y=100).perform()
-    #     #sleep(1)
-    #     elm6 = self.driver.find_element(*EventEditScreen.ISSUES_HEADER)
-    #     action.press(elm6).perform()
-    #     action.move_to(x=0, y=100).perform()
-    #     #sleep(1)
-    #     elm7 = self.driver.find_element(*EventEditScreen.OBJECTIVES_HEADER)
-    #     action.press(elm7).perform()
-    #     action.move_to(x=0, y=100).perform()
-    #     #sleep(1)
-    #     elm8 = self.driver.find_element(*EventEditScreen.STRATEGIES_HEADER)
-    #     action.press(elm8).perform()
-    #     action.move_to(x=0, y=100).perform()
-    #     #sleep(1)
-    #     elm9 = self.driver.find_element(*EventEditScreen.TACTICS_HEADER)
-    #     action.press(elm9).perform()
-    #     action.move_to(x=0, y=100).perform()
-    #     #sleep(1)
-    #     elm10 = self.driver.find_element(*EventEditScreen.COMMUNICATIONS_HEADER)
-    #     action.press(elm10).perform()
-    #     action.move_to(x=0, y=100).perform()
-    #     #sleep(1)
-    #     elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
-    #     action.press(elm11).perform()
-    #     action.move_to(x=0, y=100).perform()
-    #     #sleep(1)
-
     def scroll_down(self):
 
         logging.info("scroll down")
         action = TouchAction(self.driver)
-        sleep(1)
+        sleep(2)
         try:
             elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
             action.press(elm1).perform()
-            action.move_to(x=0, y=100).perform()
+            action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
             pass
         try:
             elm2 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
             action.press(elm2).perform()
-            action.move_to(x=0, y=100).perform()
+            action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
             pass
         try:
             elm3 = self.driver.find_element(*EventEditScreen.IMPACT_HEADER)
             action.press(elm3).perform()
-            action.move_to(x=0, y=100).perform()
+            action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
             pass
         try:
             elm4 = self.driver.find_element(*EventEditScreen.CAUSE_HEADER)
             action.press(elm4).perform()
-            action.move_to(x=0, y=100).perform()
+            action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
             pass
         try:
             elm5 = self.driver.find_element(*EventEditScreen.SITUATION_HEADER)
             action.press(elm5).perform()
-            action.move_to(x=0, y=100).perform()
+            action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
             pass
         try:
             elm6 = self.driver.find_element(*EventEditScreen.ISSUES_HEADER)
             action.press(elm6).perform()
-            action.move_to(x=0, y=100).perform()
+            action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
             pass
         try:
             elm7 = self.driver.find_element(*EventEditScreen.OBJECTIVES_HEADER)
             action.press(elm7).perform()
-            action.move_to(x=0, y=100).perform()
+            action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
             pass
         try:
             elm8 = self.driver.find_element(*EventEditScreen.STRATEGIES_HEADER)
             action.press(elm8).perform()
-            action.move_to(x=0, y=100).perform()
+            action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
             pass
         try:
             elm9 = self.driver.find_element(*EventEditScreen.TACTICS_HEADER)
             action.press(elm9).perform()
-            action.move_to(x=0, y=100).perform()
+            action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
             pass
         try:
             elm10 = self.driver.find_element(*EventEditScreen.COMMUNICATIONS_HEADER)
             action.press(elm10).perform()
-            action.move_to(x=0, y=100).perform()
+            action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
             pass
         try:
             elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
             action.press(elm11).perform()
-            action.move_to(x=0, y=100).perform()
+            action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
             pass
 
@@ -1074,7 +1063,7 @@ class MapPage(BasePage):
                 action.tap(element=None, x=600, y=900, count=1).perform()
             else:
                 logging.info("executing tap on map - width < 1400")
-                action.tap(element=None, x=300, y=500, count=1).perform()
+                action.tap(element=None, x=300, y=450, count=1).perform()
         except NoSuchElementException:
             map9 = self.driver.find_element(*Map.MAP_AREA_9)
             action.tap(element=map9, count=1).perform()
@@ -1084,8 +1073,13 @@ class MapPage(BasePage):
 
         logging.info("click on map")
         action = TouchAction(self.driver)
+        screen_size = self.driver.get_window_size(windowHandle='current')
         try:
-            action.tap(element=None, x=300, y=1600, count=1).perform()
+            if screen_size['width'] > 1400:
+                action.tap(element=None, x=300, y=1600, count=1).perform()
+            else:
+                logging.info("executing tap on map - width < 1400")
+                action.tap(element=None, x=150, y=400, count=1).perform()
         except NoSuchElementException:
             map3 = self.driver.find_element(*Map.MAP_AREA_3)
             action.tap(element=map3, count=1).perform()
@@ -1095,8 +1089,13 @@ class MapPage(BasePage):
 
         logging.info("double click on map")
         action = TouchAction(self.driver)
+        screen_size = self.driver.get_window_size(windowHandle='current')
         try:
-            action.tap(element=None, x=1200, y=1900, count=2).perform()
+            if screen_size['width'] > 1400:
+                action.tap(element=None, x=1200, y=1900, count=2).perform()
+            else:
+                logging.info("executing tap on map - width < 1400")
+                action.tap(element=None, x=100, y=600, count=2).perform()
         except NoSuchElementException:
             map6 = self.driver.find_element(*Map.MAP_AREA_6)
             action.tap(element=map6, count=2).perform()

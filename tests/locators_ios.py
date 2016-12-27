@@ -68,10 +68,14 @@ class LocationScreen:
     # button have attribute visible: false
     CHECK_SENDING_NOW_BUTTON_ios = (MobileBy.XPATH, '')
     SEND_EVERY_SPINNER_ios = (MobileBy.XPATH, '//UIAWebView/UIAElement[@name="Send every"]')
-    CHOOSE_1_HOUR_OPTION_iPad = (MobileBy.XPATH, '//UIAWindow/UIAPopover/UIATableView/UIATableCell[6]')
+    CHOOSE_5_MINUTES_OPTION_iPad = (MobileBy.XPATH, '//UIAWindow/UIAPopover/UIATableView/UIATableCell[2]')
+    ASSERT_5_MINUTES_OPTION_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText[@name="5 minutes"]')
+    FOR_THE_NEXT_SPINNER_ios = (MobileBy.XPATH, '//UIAWebView/UIAElement[@name="For the next"]')
+    CHOOSE_1_HOUR_OPTION_iPad = (MobileBy.XPATH, '//UIAWindow/UIAPopover/UIATableView/UIATableCell[3]')
     ASSERT_1_HOUR_OPTION_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText[@name="1 hour"]')
     START_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Start")]]')
     LOCATION_PAGE_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Your location was last sent")]]')
+    LOCATION_STATUS_ios = (MobileBy.XPATH, "//UIAStaticText[@name[contains(., 'few seconds ago')]]")
 
 
 class EventsScreen:
@@ -207,7 +211,5 @@ class iOS:
     """A class for handling iOS device for example keyboard"""
     BUTTON_DONE_TO_HIDE_KEYBOARD = (MobileBy.XPATH, '//UIAWindow[2]/UIAToolbar[1]/UIAButton[@name="Done"]')
     RETURN_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Return"]')
-    # BUTTON_ALLOW_LOCATION_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]'
-    #                                              '/UIACollectionCell[2]/UIAButton[@name="Allow"]')
-    # BUTTON_ALLOW_ACCESS_TO_CAMERA = (MobileBy.ACCESSIBILITY_ID, 'OK')
+
 

@@ -69,6 +69,9 @@ class LocationScreen:
     """A class for Location screen locators - screen after clicking into Location button in Main Menu."""
     SEND_ONCE_NOW = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains(., "Send once now")]]')
     SEND_EVERY_SPINNER = (MobileBy.XPATH, '//android.widget.Spinner[@index="7"]')
+    CHOOSE_5_MINUTES_OPTION = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="5 minutes"]')
+    ASSERT_5_MINUTES_OPTION = (MobileBy.XPATH, '//android.widget.Spinner[@content-desc="5 minutes"]')
+    FOR_THE_NEXT_SPINNER = (MobileBy.XPATH, '//android.widget.Spinner[@index="11"]')
     CHOOSE_1_HOUR_OPTION = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="1 hour"]')
     ASSERT_1_HOUR_OPTION = (MobileBy.XPATH, '//android.widget.Spinner[@content-desc="1 hour"]')
     ASSERT_SENDING_NOW = (MobileBy.XPATH, '//android.widget.Button[content-desc[contains(., "Sending now")]]')
@@ -77,6 +80,8 @@ class LocationScreen:
                                              'contains(., "Start")] and @enabled="false"]')
     LOCATION_PAGE_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc['
                                             'contains(., "Your location was last sent")]]')
+    LOCATION_STATUS = (MobileBy.ACCESSIBILITY_ID, 'a few seconds ago')
+    # //android.view.View[@content-desc="a few seconds ago"]
 
 
 class EventsScreen:
@@ -104,7 +109,8 @@ class EventsScreen:
     CHOOSE_ANY_STATUS = (MobileBy.XPATH, '//android.view.View[@content-desc="Any Status"]')
 
     # filtering events using search field
-    SEARCH_FIELD = (MobileBy.XPATH, '//android.widget.EditText[@index="3"]')
+    #SEARCH_FIELD = (MobileBy.XPATH, '//android.widget.EditText[@index="3"]')
+    SEARCH_FIELD = (MobileBy.CLASS_NAME, 'android.widget.EditText')
     EVENTS_HEADER_AFTER_SEARCH = (MobileBy.XPATH, '//android.view.View[@index="5"]')
 
     # creating and editing Events

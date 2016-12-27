@@ -1,5 +1,4 @@
 # Test Case 3 - Managing events  -- OCAMOB-64
-# map will not work on small android screens with low resolution because taping into map is based on x,y coordinates
 
 
 from appium import webdriver
@@ -13,11 +12,11 @@ class TestCase3Android(unittest.TestCase):
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
         # choose desired capabilities from desired_capabilities.py
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_6
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_4
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
-        self.driver.implicitly_wait(25)  # seconds
+        self.driver.implicitly_wait(30)  # seconds
 
     def tearDown(self):
 
@@ -48,10 +47,9 @@ class TestCase3Android(unittest.TestCase):
         logging.info("TC info: filter events, create first Event and delete it")
         main_page.open_EVENTS()
         events_page = EventsPage(self.driver)
-        events_page.check_if_EVENTS_were_opened()
         events_page.filter_events_by_Type()
         events_page.filter_events_by_Status()
-        events_page.filter_events_by_Search_field()
+        events_page.filter_events_by_Search_field()                 # it's not working on android 4.4.2 and 5.1 - Appium is not sending keys
         android_device.click_Go_button_on_keyboard()
         android_device.hide_keyboard()
         events_page.clear_Search_field()
@@ -59,7 +57,6 @@ class TestCase3Android(unittest.TestCase):
         android_device.hide_keyboard()
         top_bar.hamburger_button()
         main_page.open_EVENTS()
-        events_page.check_if_EVENTS_were_opened()
         events_page.click_More_button()
         events_page.click_New_event_button()
         events_types_page = EventsTypesPage(self.driver)

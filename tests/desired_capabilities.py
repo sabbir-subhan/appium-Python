@@ -12,19 +12,20 @@ class DesiredCapabilities(object):
         "platformName": "ANDROID",
         "platformVersion": "4.4.2",
         "deviceName": "QUANTUM_2_400",
-        "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
+        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.1.4.apk"),
         "apppackage": "com.noggin.oca",
         "appactivity": "com.noggin.oca.MainActivity",
-        "newCommandTimeout": "45",
-        "androidDeviceReadyTimeout": "30",
+        "newCommandTimeout": "80",
+        "androidDeviceReadyTimeout": "60",
         "udid": "0123456789ABCDEF"
     }
 
     desired_capabilities_for_android_5 = {
         "platformName": "ANDROID",
         "platformVersion": "5.1.1",
-        "deviceName": "Alcatel POP3",
-        "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
+        "deviceName": "POP 3",
+        # "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
+        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.1.4.apk"),
         "apppackage": "com.noggin.oca",
         "appactivity": "com.noggin.oca.MainActivity",
         "newCommandTimeout": "45",
@@ -32,20 +33,20 @@ class DesiredCapabilities(object):
     }
 
     desired_capabilities_for_android_6 = {
-        # deviceName: SM-G930F
         "platformName": "ANDROID",
         "platformVersion": "6.0.1",
-        # probably necessary to enable this and disable platformVersion when switching to webview context, but currently there is only NATIVE_APP context
-        # "automationName": "Appium",
-        "deviceName": "Samsung Galaxy S7",
+        # "automationName": "Appium",                       # probably necessary to enable this and disable platformVersion when switching to webview context, but currently there is only NATIVE_APP context
+        "deviceName": "SM-G930F",
         # "app": PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk"),
         # "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
-        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.1.3.apk"),
-        "apppackage": "com.noggin.ocalukasl",
-        "appactivity": "com.noggin.ocalukasl.MainActivity",
-        # "apppackage": "com.noggin.oca",
-        # "appactivity": "com.noggin.oca.MainActivity",
-        "newCommandTimeout": "45",
+        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.1.4.apk"),
+        # "apppackage": "com.noggin.ocalukasl",
+        # "appactivity": "com.noggin.ocalukasl.MainActivity",
+        "apppackage": "com.noggin.oca",
+        "appactivity": "com.noggin.oca.MainActivity",
+        "newCommandTimeout": "60",
+        # "unicodekeyboard": "true",
+        # "resetkeyboard": "true",
         "udid": "ad0816033848eb0443"
     }
 

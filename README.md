@@ -11,7 +11,7 @@ SOFT NEEDED:
 
 for OSX all above plus:
 
-- xcode 8.1 (version 8 is not supported by appium but brew need version 8.1 to install libimobiledevice - so install xcode 8.1 froma appstore)
+- xcode 8.1 (version 8 is not supported by appium but brew need version 8.1 to install libimobiledevice - so install xcode 8.1 from appstore)
 - node
 - npm
 - brew
@@ -59,10 +59,10 @@ PULLING APK FILE FROM ANDROID DEVICE:
 next open terminal and use:
 
 - adb devices
-- adb shell pm list packages
+- adb shell pm list packages | grep com.noggin
 - adb shell pm path com.noggin.
-- adb pull /data/app/com.noggin.oca.apk
-- aapt dump badging com.noggin.oca.apk
+- adb pull <path to package>
+(aapt dump badging com.noggin.oca.apk)
 
 finding app activity through adb - appActivity:
 - android adb devices
@@ -88,6 +88,7 @@ CONFIGURE APPIUM:
 - provide path to app file (android - .apk file, ios - .app file from xcode(xcode build the app file for example in /Users/$USER/Library/Developer/Xcode/DerivedData/) or in other location(ProjectSettings))
 - for iOS provide BundleID from xcode, check "Force device", device name and check "UDID" (search for it in iTunes or use terminal command: "idevice_id -l")
 - uncheck "No reset" checkbox 
+- if inspector in Appium doesn't work, try to uncheck "Bundle Identifier"
 
 
 file desired_capabilities.py need to be updated accordingly to used device:

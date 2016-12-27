@@ -27,7 +27,7 @@ class TestCase4Android(unittest.TestCase):
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
-        self.driver.implicitly_wait(10)  # seconds
+        self.driver.implicitly_wait(15)  # seconds
 
     def tearDown(self):
 
@@ -37,7 +37,7 @@ class TestCase4Android(unittest.TestCase):
 
     def test_send_location(self):
 
-        logging.info("starting Test Case 1: login into active account")
+        logging.info("starting Test Case 1: send location")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()
         login_page = LoginPage(self.driver)
@@ -56,12 +56,16 @@ class TestCase4Android(unittest.TestCase):
         location_page = LocationPage(self.driver)
         location_page.check_if_location_page_was_opened()
         location_page.click_send_once_now()
-        android_device.alert_android_allow()
+        location_page.check_if_location_was_sent()
         location_page.click_send_every()
+        location_page.choose_send_every_5_minutes_option()
+        location_page.check_if_5_minutes_option_was_chosen()
+        location_page.click_for_the_next()
         location_page.choose_1_hour_option()
-        location_page.check_if_1hour_option_was_chosen()
+        location_page.check_if_1_hour_option_was_chosen()
         location_page.click_start_button()
         location_page.check_if_start_button_was_clicked()
+        location_page.check_if_location_was_sent()
 
 
 if __name__ == '__main__':

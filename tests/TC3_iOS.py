@@ -48,7 +48,6 @@ class TestCase3iOS(unittest.TestCase):
         logging.info("TC info: filter events, create first Event and delete it")
         main_page.open_EVENTS()
         events_page = EventsPage(self.driver)
-        events_page.check_if_EVENTS_were_opened()
         events_page.filter_events_by_Type()
         events_page.filter_events_by_Status()
         events_page.filter_events_by_Search_field()

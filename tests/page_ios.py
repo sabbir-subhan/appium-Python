@@ -71,16 +71,6 @@ class iOSdevice(BasePage):
         self.driver.find_element(*iOS.RETURN_BUTTON).click()
         sleep(1)
 
-    # def alert_allow_location(self):
-    #
-    #     try:
-    #         button_allow_location = self.driver.find_element(*iOS.BUTTON_ALLOW_LOCATION_ios)
-    #         logging.info("Accept using location - device will store that info for later use")
-    #         self.assertIsNotNone(button_allow_location)
-    #         button_allow_location.click()
-    #     except NoSuchElementException:
-    #         pass
-
 
 class WelcomePage(BasePage):
 
@@ -367,12 +357,47 @@ class LocationPage(BasePage):
         self.assertIsNotNone(send_once_now_button)
         send_once_now_button.click()
 
+    def check_if_location_was_sent(self):
+
+        sleep(2)
+        logging.info("check if location was sent")
+        # location_status = self.driver.find_element(*LocationScreen.LOCATION_STATUS_ios)
+        # self.assertIsNotNone(location_status)
+        try:
+            WebDriverWait(self.driver, 30).until(
+                expected_conditions.presence_of_element_located(LocationScreen.LOCATION_STATUS_ios),
+                "Failed to send location")
+            logging.info("Location was sent")
+        except NoSuchElementException:
+            logging.info("Failed to send location")
+            self.fail("Failed to send location")
+
     def click_send_every(self):
 
-        logging.info("clicking in 'Send every' button")
+        logging.info("clicking in 'Send every' selector")
         send_every_button = self.driver.find_element(*LocationScreen.SEND_EVERY_SPINNER_ios)
         self.assertIsNotNone(send_every_button)
         send_every_button.click()
+
+    def choose_send_every_5_minutes_option(self):
+
+        logging.info("choose send every '5 minutes' option")
+        choose_5_minutes_option = self.driver.find_element(*LocationScreen.CHOOSE_5_MINUTES_OPTION_iPad)
+        self.assertIsNotNone(choose_5_minutes_option)
+        choose_5_minutes_option.click()
+
+    def check_if_5_minutes_option_was_chosen(self):
+
+        logging.info("check if send every '5 minutes'  option was chosen")
+        check_if_5_minutes_option_was_chosen = self.driver.find_element(*LocationScreen.ASSERT_5_MINUTES_OPTION_ios)
+        self.assertIsNotNone(check_if_5_minutes_option_was_chosen)
+
+    def click_for_the_next(self):
+
+        logging.info("clicking in 'For the next' selector")
+        for_the_next = self.driver.find_element(*LocationScreen.FOR_THE_NEXT_SPINNER_ios)
+        self.assertIsNotNone(for_the_next)
+        for_the_next.click()
 
     def choose_1_hour_option(self):
 
@@ -381,9 +406,9 @@ class LocationPage(BasePage):
         self.assertIsNotNone(choose_1_hour_option)
         choose_1_hour_option.click()
 
-    def check_if_1hour_option_was_chosen(self):
+    def check_if_1_hour_option_was_chosen(self):
 
-        logging.info("check if '1 hour' option was_chosen")
+        logging.info("check if '1 hour' option was chosen")
         check_if_1hour_option_was_chosen = self.driver.find_element(*LocationScreen.ASSERT_1_HOUR_OPTION_ios)
         self.assertIsNotNone(check_if_1hour_option_was_chosen)
 

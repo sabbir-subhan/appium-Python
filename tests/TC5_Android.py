@@ -44,7 +44,7 @@ class TestCase5android(unittest.TestCase):
 
     def test_send_photo(self):
 
-        logging.info("starting Test Case 1: login into active account")
+        logging.info("starting Test Case 1: send photo")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()
         login_page = LoginPage(self.driver)
