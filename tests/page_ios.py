@@ -366,7 +366,7 @@ class LocationPage(BasePage):
         try:
             WebDriverWait(self.driver, 30).until(
                 expected_conditions.presence_of_element_located(LocationScreen.LOCATION_STATUS_ios),
-                "Failed to send location")
+                "Failed to send location1")
             logging.info("Location was sent")
         except NoSuchElementException:
             logging.info("Failed to send location")

@@ -20,6 +20,17 @@ class DesiredCapabilities(object):
         "udid": "0123456789ABCDEF"
     }
 
+    desired_capabilities_for_android_simulator_4 = {
+        "platformName": "ANDROID",
+        "platformVersion": "4.4.4",
+        "deviceName": "Samsung Galaxy Note 3",
+        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.1.4.apk"),
+        "apppackage": "com.noggin.oca",
+        "appactivity": "com.noggin.oca.MainActivity",
+        "newCommandTimeout": "80",
+        "androidDeviceReadyTimeout": "60"
+    }
+
     desired_capabilities_for_android_5 = {
         "platformName": "ANDROID",
         "platformVersion": "5.1.1",

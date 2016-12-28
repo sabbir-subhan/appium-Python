@@ -65,8 +65,6 @@ class MainMenuScreen:
 class LocationScreen:
     """A class for Location screen locators - screen after clicking into Location button in Main Menu."""
     SEND_ONCE_NOW_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Send once now")]]')
-    # button have attribute visible: false
-    CHECK_SENDING_NOW_BUTTON_ios = (MobileBy.XPATH, '')
     SEND_EVERY_SPINNER_ios = (MobileBy.XPATH, '//UIAWebView/UIAElement[@name="Send every"]')
     CHOOSE_5_MINUTES_OPTION_iPad = (MobileBy.XPATH, '//UIAWindow/UIAPopover/UIATableView/UIATableCell[2]')
     ASSERT_5_MINUTES_OPTION_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText[@name="5 minutes"]')

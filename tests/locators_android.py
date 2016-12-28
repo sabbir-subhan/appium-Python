@@ -19,21 +19,21 @@ class WelcomeScreen:
 
 class LoginScreen:
     """A class for login screen locators - screen after clicking into LOGIN."""
-    TEXTFIELD_USERNAME = (MobileBy.XPATH, '//android.widget.EditText[@index="1"]')
+    TEXTFIELD_USERNAME = (MobileBy.ACCESSIBILITY_ID, 'Username')
     TEXTFIELD_PASSWORD = (MobileBy.XPATH, '//android.widget.EditText[@index="3"]')
     TEXTFIELD_DOMAIN = (MobileBy.XPATH, '//android.widget.EditText[@index="5"]')
-    #SUBMIT_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Submit"]')
     SUBMIT_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Submit')
 
     # Notification alert: "OCA now supports sending 'App Messages' to your device as notifications."
     NOTIFICATION_ABOUT_SENDING_MESSAGES = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., '
                                                            '"OCA now supports ")]]')
+    SSO_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'SSO')
 
     # "No" button for sending notifications on iOS
-    NO_FOR_SENDING_NOTIFICATIONS_ON = (MobileBy.XPATH, '//android.view.View[@content-desc="No"]')
+    NO_FOR_SENDING_NOTIFICATIONS_ON = (MobileBy.ACCESSIBILITY_ID, 'No')
 
     # ACCEPT_BUTTON on Terms and Conditions"
-    ACCEPT_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Accept"]')
+    ACCEPT_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Accept')
 
     # alert message with word "Invalid"
     ALERT_MSG_INVALID = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Invalid")]]')
@@ -52,7 +52,7 @@ class LoginScreen:
                            '//android.view.View[@content-desc[contains(., "Your account is currently inactive")]]')
 
     # OK button on alert messages"
-    OK_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc="Ok"]')
+    OK_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Ok')
 
 
 class MainMenuScreen:
@@ -62,7 +62,6 @@ class MainMenuScreen:
     EVENTS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "EVENTS")]]')
     LOCATION_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "LOCATION")]]')
     PHOTO_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "PHOTO")]]')
-    # PHOTO_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'PHOTO')
 
 
 class LocationScreen:
@@ -78,38 +77,38 @@ class LocationScreen:
     START_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains(., "Start")]]')
     START_BUTTON_disabled = (MobileBy.XPATH, '//android.widget.Button[@content-desc['
                                              'contains(., "Start")] and @enabled="false"]')
-    LOCATION_PAGE_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc['
-                                            'contains(., "Your location was last sent")]]')
+    # LOCATION_PAGE_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc['
+    #                                         'contains(., "Your location was last sent")]]')
+    LOCATION_PAGE_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Your location was last sent')
     LOCATION_STATUS = (MobileBy.ACCESSIBILITY_ID, 'a few seconds ago')
     # //android.view.View[@content-desc="a few seconds ago"]
 
 
 class EventsScreen:
     """A class for Events screen locators - screen after clicking into Events button in Main Menu."""
-    EVENTS_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Events")]]')
+    EVENTS_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Events')
 
     # filtering events by Type
     ANY_TYPE_EXPAND = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Any Type click to expand")]]')
-    CHOOSE_TYPE_INCIDENT = (MobileBy.XPATH, '//android.view.View[@content-desc="Incident"]')
+    CHOOSE_TYPE_INCIDENT = (MobileBy.ACCESSIBILITY_ID, 'Incident')
     INCIDENT_TYPE_EXPAND = (MobileBy.XPATH, '//android.view.View[@content-desc[contains('
                                             '., "Incident click to expand")]]')
-    CHOOSE_TYPE_ANY = (MobileBy.XPATH, '//android.view.View[@content-desc="Any Type"]')
+    CHOOSE_TYPE_ANY = (MobileBy.ACCESSIBILITY_ID, 'Any Type')
 
     # filtering events by Status
     ANY_STATUS_EXPAND = (MobileBy.XPATH, '//android.view.View[@content-desc[contains('
                                          '., "Any Status click to expand")]]')
-    CHOOSE_ACTIVE_STATUS = (MobileBy.XPATH, '//android.view.View[@content-desc="Active"]')
+    CHOOSE_ACTIVE_STATUS = (MobileBy.ACCESSIBILITY_ID, 'Active')
     ACTIVE_STATUS_EXPAND = (MobileBy.XPATH, '//android.view.View[@content-desc[contains('
                                             '., "Active click to expand")]]')
-    CHOOSE_INACTIVE_STATUS = (MobileBy.XPATH, '//android.view.View[@content-desc="Inactive"]')
+    CHOOSE_INACTIVE_STATUS = (MobileBy.ACCESSIBILITY_ID, 'Inactive')
     INACTIVE_STATUS_EXPAND = (MobileBy.XPATH, '//android.view.View[@content-desc[contains('
                                               '., "Inactive click to expand")]]')
-    CHOOSE_DRAFT_STATUS = (MobileBy.XPATH, '//android.view.View[@content-desc="Draft"]')
+    CHOOSE_DRAFT_STATUS = (MobileBy.ACCESSIBILITY_ID, 'Draft')
     DRAFT_STATUS_EXPAND = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Draft click to expand")]]')
-    CHOOSE_ANY_STATUS = (MobileBy.XPATH, '//android.view.View[@content-desc="Any Status"]')
+    CHOOSE_ANY_STATUS = (MobileBy.ACCESSIBILITY_ID, 'Any Status')
 
     # filtering events using search field
-    #SEARCH_FIELD = (MobileBy.XPATH, '//android.widget.EditText[@index="3"]')
     SEARCH_FIELD = (MobileBy.CLASS_NAME, 'android.widget.EditText')
     EVENTS_HEADER_AFTER_SEARCH = (MobileBy.XPATH, '//android.view.View[@index="5"]')
 
@@ -139,19 +138,20 @@ class TypesOfEventsScreen:
 class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
     NAME_FIELD = (MobileBy.XPATH, '//android.widget.EditText[@index="1"]')
-
     SEVERITY_LEVEL_SELECTOR = (MobileBy.XPATH, '//android.widget.ListView[@index="0"]/android.view.View['
                                                '@index="3" and @content-desc[contains(., "Severity")]]/'
                                                'android.widget.Spinner[@index="2"]')
-
     CHOOSE_SEVERITY_LVL1 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 1"]')
     CHOOSE_SEVERITY_LVL2 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 2"]')
     CHOOSE_SEVERITY_LVL3 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 3"]')
     CHOOSE_SEVERITY_LVL4 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 4"]')
-    FINISHED_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc="Finished"]')
-    TIME_DATE = (MobileBy.XPATH, '//android.widget.ImageButton[@content-desc="Increase year"]')
+    # FINISHED_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc="Finished"]')
+    FINISHED_FIELD = (MobileBy.ACCESSIBILITY_ID, 'Finished')
+    # TIME_DATE = (MobileBy.XPATH, '//android.widget.ImageButton[@content-desc="Increase year"]')
+    TIME_DATE = (MobileBy.ACCESSIBILITY_ID, 'Increase year')
     SET_BUTTON = (MobileBy.ID, 'android:id/button1')
-    SAVE_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Save"]')
+    # SAVE_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Save"]')
+    SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
     DESCRIPTION_FIELD = (MobileBy.XPATH,
                          "//android.widget.ListView[@index='0']"
                          "//android.view.View[@index='8' and @content-desc[contains(., 'Description')]]"
@@ -160,58 +160,57 @@ class EventEditScreen:
                          "//android.view.View[@index='0']"
                          "//android.view.View[@index='0']"
                          "//android.view.View[@index='0' and @clickable='true']")
-
-    # headers for scrolling
-    FINISHED_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="Finished"]')
-    LEADAGENCY_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="Lead agency"]')
-    IMPACT_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="Impact"]')
-    CAUSE_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="Cause"]')
-    SITUATION_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="Situation"]')
-    ISSUES_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="Issues"]')
-    OBJECTIVES_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="Objectives"]')
-    STRATEGIES_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="Strategies"]')
-    TACTICS_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="Tactics"]')
-    COMMUNICATIONS_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="Communications"]')
-    RELATED_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="Related"]')
-
     CREATE_MAPPING_DATA = (MobileBy.XPATH, "//android.view.View[@content-desc[contains(., 'Create mapping data')]]")
+    ADD_MEDIA_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Add media')
     EDIT_MAPPING_DATA = (MobileBy.XPATH, "//android.view.View[@content-desc[contains(., 'Edit mapping data')]]")
-    SEQUENCE_ONLOAD_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="sequence_onload"]')
-    SEQUENCE_ONLOAD_VALUE = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="test on load"]')
-    SEQUENCE_ONSAVE_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="sequence_onsave"]')
-    SEQUENCE_ONSAVE_VALUE = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="(auto)"]')
-
+    SEQUENCE_ONLOAD_HEADER = (MobileBy.ACCESSIBILITY_ID, 'sequence_onload')
+    SEQUENCE_ONLOAD_VALUE = (MobileBy.ACCESSIBILITY_ID, 'test on load')
+    SEQUENCE_ONSAVE_HEADER = (MobileBy.ACCESSIBILITY_ID, 'sequence_onsave')
+    SEQUENCE_ONSAVE_VALUE = (MobileBy.ACCESSIBILITY_ID, '(auto)')
     NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View'
                                               '[@content-desc[contains(., "New option list")]]/android.widget.Spinner')
-
-    HEADER_ON_OPTION_LIST_PAGE = (MobileBy.XPATH, '//android.view.View[@content-desc="New option list"]')
-    OPTION_LIST_VALUE_1 = (MobileBy.XPATH, '//android.view.View[@content-desc="1" and @clickable="true"]')
-    OPTION_LIST_VALUE_2 = (MobileBy.XPATH, '//android.view.View[@content-desc="2" and @clickable="true"]')
-    OPTION_LIST_VALUE_3 = (MobileBy.XPATH, '//android.view.View[@content-desc="3" and @clickable="true"]')
-    FIELD_TO_RESTORE_1_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="field to restore"]')
-    FIELD_TO_RESTORE_1_VALUE = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="value for field 1"]')
-    FIELD_TO_RESTORE_2_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="New email address"]')
-    FIELD_TO_RESTORE_2_VALUE = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="test@noggin.com"]')
-    CANCEL_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Cancel"]')
+    HEADER_ON_OPTION_LIST_PAGE = (MobileBy.ACCESSIBILITY_ID, 'New option list')
+    OPTION_LIST_VALUE_1 = (MobileBy.ACCESSIBILITY_ID, '1')
+    OPTION_LIST_VALUE_2 = (MobileBy.ACCESSIBILITY_ID, '2')
+    OPTION_LIST_VALUE_3 = (MobileBy.ACCESSIBILITY_ID, '3')
+    FIELD_TO_RESTORE_1_HEADER = (MobileBy.ACCESSIBILITY_ID, 'field to restore')
+    FIELD_TO_RESTORE_1_VALUE = (MobileBy.ACCESSIBILITY_ID, 'value for field 1')
+    FIELD_TO_RESTORE_2_HEADER = (MobileBy.ACCESSIBILITY_ID, 'New email address')
+    FIELD_TO_RESTORE_2_VALUE = (MobileBy.ACCESSIBILITY_ID, 'test@noggin.com')
+    CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Cancel')
     CHOOSER_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "New events chooser")]]')
     PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER = (MobileBy.XPATH, '//android.view.View[@content-desc['
                                                             'contains(., "Test Appium Android")]]')
-    SUBFORM_FIELD_ADD_ROW = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Add row"]')
+    SUBFORM_FIELD_ADD_ROW = (MobileBy.ACCESSIBILITY_ID, 'Add row')
     NEW_EVENTS_CHOOSER_IN_SUB_FORM = (MobileBy.XPATH, '//android.view.View[@content-desc['
                                                       'contains(., "New events chooser inside sub form")]]')
     DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View[@index="8"]'
                                                      '/android.view.View[@index="1"]')
     PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER = (MobileBy.XPATH, '//android.view.View[@content-desc['
                                                                     'contains(., "Test Android to create")]]')
+    # headers for scrolling
+    FINISHED_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Finished')
+    LEADAGENCY_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Lead agency')
+    IMPACT_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Impact')
+    CAUSE_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Cause')
+    SITUATION_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Situation')
+    ISSUES_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Issues')
+    OBJECTIVES_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Objectives')
+    STRATEGIES_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Strategies')
+    TACTICS_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Tactics')
+    COMMUNICATIONS_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Communications')
+    RELATED_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Related')
+    MAPPING_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Mapping')
+    ACCESS_LEVELS_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Access Levels')
 
 
 class EventDetailsScreen:
     """A class for Event Details screen locators - screen with event details - after opening event."""
-    EDIT_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Edit"]')
+    EDIT_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Edit')
     DELETE_EVENT_BUTTON = (MobileBy.XPATH, "//android.widget.ListView[@index='2']"
                                            "//android.view.View[@index='2']"
                                            "//android.view.View[@content-desc[contains(., 'Delete event')]]")
-    DELETE_CONFIRM_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc="Delete"]')
+    DELETE_CONFIRM_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Delete')
     NEW_SUB_EVENT = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "New sub event")]]')
     SET_AS_PRIMARY_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Set as primary")]]')
 
@@ -220,14 +219,14 @@ class Map:
     """A class for Map screen locators."""
     TOOL_BUTTON = (MobileBy.XPATH, "//android.widget.Spinner[@content-desc[contains(., 'Tool')]]")
     POINT_BUTTON = (MobileBy.XPATH, "//android.view.View[@content-desc[contains(., 'Point click to expand')]]")
-    DEFAULT_BUTTON = (MobileBy.XPATH, "//android.view.View[@content-desc='Default']")
+    DEFAULT_BUTTON = (MobileBy.ACCESSIBILITY_ID, "Default")
     MAP_AREA_9 = (MobileBy.XPATH, "//android.widget.Image[@index='9']")
     MAP_AREA_3 = (MobileBy.XPATH, "//android.widget.Image[@index='3']")
     MAP_AREA_6 = (MobileBy.XPATH, "//android.widget.Image[@index='6']")
     LINE_BUTTON = (MobileBy.XPATH, "//android.view.View[@content-desc[contains(., 'Line')]]")
     CIRCLE_BUTTON = (MobileBy.XPATH, "//android.view.View[@content-desc[contains(., 'Circle')]]")
     POLYGON_BUTTON = (MobileBy.XPATH, "//android.view.View[@content-desc[contains(., 'Polygon')]]")
-    SAVE_MAP_BUTTON = (MobileBy.XPATH, "//android.widget.Button[@content-desc='Save']")
+    SAVE_MAP_BUTTON = (MobileBy.ACCESSIBILITY_ID, "Save")
 
 
 class PhotoScreen:
@@ -236,24 +235,31 @@ class PhotoScreen:
     GALLERY_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Gallery')
     TAKE_NEW_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Take New')
     SEND_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Send')
-    DESCRIPTION_FIELD = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="Description (optional)"]')
+    DESCRIPTION_FIELD = (MobileBy.ACCESSIBILITY_ID, 'Description (optional)')
 
 
 class CameraScreen:
     """A class for handling Camera"""
-    # PHOTO_CAPTURE = (MobileBy.ACCESSIBILITY_ID, 'Shutter')
-    PHOTO_CAPTURE_ANDROID4 = (MobileBy.ANDROID_UIAUTOMATOR, 'Shutter')
-    PHOTO_CAPTURE_ANDROID6 = (MobileBy.XPATH, '//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/'
-                                              'android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/'
-                                              'android.widget.LinearLayout[1]/android.view.View[1]/GLViewGroup[1]/'
-                                              'GLViewGroup[3]/GLViewGroup[1]/GLButton[4]')
+    # PHOTO_CAPTURE_ANDROID4 = (MobileBy.ANDROID_UIAUTOMATOR, 'Shutter')
+    PHOTO_CAPTURE_ANDROID_4_and_5 = (MobileBy.ACCESSIBILITY_ID, 'Shutter')
+    # PHOTO_CAPTURE_ANDROID6 = (MobileBy.XPATH, '//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/'
+    #                                           'android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/'
+    #                                           'android.widget.LinearLayout[1]/android.view.View[1]/GLViewGroup[1]/'
+    #                                           'GLViewGroup[3]/GLViewGroup[1]/GLButton[4]')
+    PHOTO_CAPTURE_ANDROID6 = (MobileBy.XPATH, '//GLButton[@text="Shutter"]')
     CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Review cancel')
     CAMERA_CHOOSER_ANDROID4 = (MobileBy.ID, 'com.android.camera2:id/btn_switch_camera')
     CAMERA_CHOOSER = (MobileBy.ACCESSIBILITY_ID, 'Switch camera')  # for android 6
     CAMERA_CHOOSER2 = (MobileBy.ID, 'com.tct.camera:id/onscreen_camera_picker')
     RETAKE = (MobileBy.ACCESSIBILITY_ID, 'Review retake')
     USE_PHOTO_ANDROID4 = (MobileBy.ACCESSIBILITY_ID, 'Review done')
-    USE_PHOTO_ANDROID6 = (MobileBy.ACCESSIBILITY_ID, 'OK')  #com.sec.android.app.camera:id/okay
+    USE_PHOTO_ANDROID_5_and_6 = (MobileBy.ACCESSIBILITY_ID, 'OK')
+
+
+class GalleryScreen:
+    """A class for handling Gallery"""
+    GALLERY_PHOTO_1 = (MobileBy.ID, 'com.android.documentsui:id/icon_thumb')
+# class: android.widget.LinearLayout
 
 
 class Android:

@@ -11,7 +11,7 @@ from locators_android import *
 from credentials import Credentials
 import logging
 
-logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/TCs.log', level=logging.DEBUG,
+logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/TCs.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())
 
@@ -53,14 +53,17 @@ class AndroidDevice(BasePage):
             logging.info("hide screen keyboard")
             self.driver.hide_keyboard()
             sleep(3)
-        except NoSuchElementException:
+        except:
             logging.info("screen keyboard not found")
 
     def click_Go_button_on_keyboard(self):
 
-        logging.info("click Go on keyboard")
-        self.driver.keyevent(66)
-        sleep(3)
+        try:
+            logging.info("click Go on keyboard")
+            self.driver.keyevent(66)
+            sleep(3)
+        except NoSuchElementException:
+            logging.info("keyboard not found")
 
     def alert_android_allow(self):
 
@@ -93,24 +96,31 @@ class LoginPage(BasePage):
 
     def type_username(self, username):
 
-        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME).click()
-        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME).clear()
+        username_field = self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME)
+        action = TouchAction(self.driver)
+        action.long_press(el=username_field, duration=1000).perform()
+        self.driver.keyevent(67)
+        # self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME).clear()
         logging.info("type username")
-        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME).send_keys(Credentials.get_username(username))
+        username_field.send_keys(Credentials.get_username(username))
 
     def type_password(self, password):
 
-        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD).click()
-        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD).clear()
+        password_field = self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD)
+        action = TouchAction(self.driver)
+        action.long_press(el=password_field, duration=1000).perform()
+        self.driver.keyevent(67)
         logging.info("type password")
-        self.driver.find_element(*LoginScreen.TEXTFIELD_PASSWORD).send_keys(Credentials.get_password(password))
+        password_field.send_keys(Credentials.get_password(password))
 
     def type_domain_address(self, domain):
 
-        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN).click()
-        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN).clear()
+        domain_field = self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN)
+        action = TouchAction(self.driver)
+        action.long_press(el=domain_field, duration=1000).perform()
+        self.driver.keyevent(67)
         logging.info("type domain address")
-        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN).send_keys(Credentials.get_domain(domain))
+        domain_field.send_keys(Credentials.get_domain(domain))
 
     def click_submit_button(self):
 
@@ -303,14 +313,23 @@ class CameraPage(BasePage):
         logging.info("click Cancel")
         cancel = self.driver.find_element(*CameraScreen.CANCEL_BUTTON)
         self.assertIsNotNone(cancel)
-        cancel.click()
+        if cancel.is_displayed():
+            cancel.click()
+        else:
+            self.fail("cancel button not found")
 
     def click_use_photo(self):
 
         logging.info("click Use Photo")
-        use_photo = self.driver.find_element(*CameraScreen.USE_PHOTO)
-        self.assertIsNotNone(use_photo)
-        use_photo.click()
+        try:
+            use_photo1 = self.driver.find_element(*CameraScreen.USE_PHOTO_ANDROID4)
+            self.assertIsNotNone(use_photo1)
+            use_photo1.click()
+        except NoSuchElementException:
+            use_photo2 = self.driver.find_element(*CameraScreen.USE_PHOTO_ANDROID_5_and_6)
+            self.assertIsNotNone(use_photo2)
+            use_photo2.click()
+            self.fail("Use Photo button not found")
 
     def retake_photo(self):
 
@@ -425,6 +444,7 @@ class EventsPage(BasePage):
 
     def check_if_EVENTS_were_opened(self):
 
+        sleep(2)
         logging.info("check if Events were opened")
         events_header = self.driver.find_element(*EventsScreen.EVENTS_HEADER)
         self.assertIsNotNone(events_header)
@@ -461,26 +481,21 @@ class EventsPage(BasePage):
 
         logging.info("search field - search event named: 'search'")
         search_field = self.driver.find_element(*EventsScreen.SEARCH_FIELD)
-        search_field.click()
-        search_field.clear()
-        logging.info("sending keys")
-        search_field.send_keys('search')
+        screen_size = self.driver.get_window_size(windowHandle='current')  # it creates dictionary
+        if screen_size['width'] < 1000:         # android 4.4.2 and 5.1 can't click correctly in "Search field" because of that Appium can't send keys into text field
+            pass
+        else:
+            search_field.click()
+            logging.info("sending keys")
+            search_field.send_keys('search')
 
     def clear_Search_field(self):
 
         logging.info("clear search field")
         search_field = self.driver.find_element(*EventsScreen.SEARCH_FIELD)
-        search_field.click()
+        action = TouchAction(self.driver)
+        action.long_press(el=search_field, duration=1000).perform()
         self.driver.keyevent(67)
-        self.driver.keyevent(67)
-        self.driver.keyevent(67)
-        self.driver.keyevent(67)
-        self.driver.keyevent(67)
-        self.driver.keyevent(67)
-        # search_field_string = self.driver.find_element(*EventsScreen.SEARCH_FIELD).get_attribute("content-desc")
-        # len_of_the_string = len(search_field_string)
-        # delete_character = self.driver.keyevent(67)  # it will delete only one character
-        # clear_as_many_characters_needed = delete_character * len_of_the_string
 
     def click_More_button(self):
 
@@ -673,9 +688,13 @@ class EventEditPage(BasePage):
 
         sleep(1)
         try:
-            logging.info("type some text into description field")
-            self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD).click()
-            self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD).send_keys("test Android")
+            screen_size = self.driver.get_window_size(windowHandle='current')  # it creates dictionary
+            if screen_size['width'] > 1000:
+                logging.info("type some text into description field")
+                self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD).click()
+                self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD).send_keys("test Android")
+            else:
+                logging.info("passing sending text into Description field to avoid problems on older android devices")
         except NoSuchElementException:
             self.fail("text field couldn't be selected")
 
@@ -719,10 +738,14 @@ class EventEditPage(BasePage):
 
     def click_on_option_list(self):
 
-        sleep(2)
+        sleep(4)
         logging.info("click on option list")
         action = TouchAction(self.driver)
-        action.tap(element=None, x=700, y=1430, count=1).perform()
+        screen_size = self.driver.get_window_size(windowHandle='current')  # it creates dictionary
+        if screen_size['width'] < 1000:
+            action.tap(element=None, x=250, y=530, count=1).perform()  # coordinates for clicking into "Option List"
+        else:
+            action.tap(element=None, x=700, y=1430, count=1).perform()
         # try:
         #     option_list = self.driver.find_element(*EventEditScreen.NEW_OPTION_LIST_HEADER)
         #     self.assertIsNotNone(option_list)
@@ -753,12 +776,15 @@ class EventEditPage(BasePage):
 
     def check_restored_field_1(self):
 
-        sleep(2)
-        logging.info("assert restored field 1")
-        field_to_restore_1_header = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE_1_HEADER)
-        self.assertIsNotNone(field_to_restore_1_header)
-        field_to_restore_1_value = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE_1_VALUE)
-        self.assertIsNotNone(field_to_restore_1_value)
+        sleep(4)
+        try:
+            logging.info("assert restored field 1")
+            field_to_restore_1_header = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE_1_HEADER)
+            self.assertIsNotNone(field_to_restore_1_header)
+            field_to_restore_1_value = self.driver.find_element(*EventEditScreen.FIELD_TO_RESTORE_1_VALUE)
+            self.assertIsNotNone(field_to_restore_1_value)
+        except NoSuchElementException:
+            logging.info("unable to check restored field 1")
 
     def check_restored_field_2(self):
 
@@ -846,122 +872,162 @@ class EventEditPage(BasePage):
             action.press(elm1).perform()
             action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
-            pass
+            logging.info("can't find FINISHED_HEADER")
+        sleep(1)
         try:
             elm2 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
             action.press(elm2).perform()
             action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
-            pass
+            logging.info("can't find LEADAGENCY_HEADER")
         try:
             elm3 = self.driver.find_element(*EventEditScreen.IMPACT_HEADER)
             action.press(elm3).perform()
             action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
-            pass
+            logging.info("can't find IMPACT_HEADER")
         try:
             elm4 = self.driver.find_element(*EventEditScreen.CAUSE_HEADER)
             action.press(elm4).perform()
             action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
-            pass
+            logging.info("can't find CAUSE_HEADER")
         try:
             elm5 = self.driver.find_element(*EventEditScreen.SITUATION_HEADER)
             action.press(elm5).perform()
             action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
-            pass
+            logging.info("can't find SITUATION_HEADER")
         try:
             elm6 = self.driver.find_element(*EventEditScreen.ISSUES_HEADER)
             action.press(elm6).perform()
             action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
-            pass
+            logging.info("can't find ISSUES_HEADER")
         try:
             elm7 = self.driver.find_element(*EventEditScreen.OBJECTIVES_HEADER)
             action.press(elm7).perform()
             action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
-            pass
+            logging.info("can't find OBJECTIVES_HEADER")
         try:
             elm8 = self.driver.find_element(*EventEditScreen.STRATEGIES_HEADER)
             action.press(elm8).perform()
             action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
-            pass
+            logging.info("can't find STRATEGIES_HEADER")
         try:
             elm9 = self.driver.find_element(*EventEditScreen.TACTICS_HEADER)
             action.press(elm9).perform()
             action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
-            pass
+            logging.info("can't find TACTICS_HEADER")
         try:
             elm10 = self.driver.find_element(*EventEditScreen.COMMUNICATIONS_HEADER)
             action.press(elm10).perform()
             action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
-            pass
+            logging.info("can't find COMMUNICATIONS_HEADER")
         try:
             elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
             action.press(elm11).perform()
             action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
-            pass
+            logging.info("can't find RELATED_HEADER")
 
     def scroll_down_to_leadagency_header_field(self):
 
         logging.info("scroll down to lead agency header field")
         action = TouchAction(self.driver)
-
-        elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
-        action.press(elm1).perform()
-        action.move_to(x=0, y=100).perform()
-        # sleep(2)
-        elm2 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
-        action.press(elm2).perform()
-        action.move_to(x=0, y=100).perform()
-        # sleep(3)
+        try:
+            elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
+            action.press(elm1).perform()
+            action.move_to(x=1, y=100).perform()
+        except NoSuchElementException:
+            logging.info("can't find FINISHED_HEADER")
+        sleep(1)
+        try:
+            elm2 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
+            action.press(elm2).perform()
+            action.move_to(x=1, y=100).perform()
+        except NoSuchElementException:
+            logging.info("can't find LEADAGENCY_HEADER")
 
     def scroll_down_from_leadagency_to_related_header(self):
 
         logging.info("scroll down from lead agency header field to Related header")
         action = TouchAction(self.driver)
+        try:
+            elm1 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
+            action.press(elm1).perform()
+            action.move_to(x=1, y=100).perform()
+        except NoSuchElementException:
+            logging.info("can't find LEADAGENCY_HEADER")
+        try:
+            elm2 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
+            action.press(elm2).perform()
+            action.move_to(x=1, y=100).perform()
+        except NoSuchElementException:
+            logging.info("can't find RELATED_HEADER")
 
-        elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
-        action.press(elm11).perform()
-        action.move_to(x=0, y=100).perform()
+    def scroll_down_from_description_field(self):
 
-    # def scroll_down_from_description_field(self):
-    #
-    #     logging.info("scroll down from Description field")
-    #     action = TouchAction(self.driver)
-    #     elm3 = self.driver.find_element(*EventEditScreen.IMPACT_HEADER)
-    #     action.press(elm3).perform()
-    #     action.move_to(x=0, y=100).perform()
-    #     elm4 = self.driver.find_element(*EventEditScreen.CAUSE_HEADER)
-    #     action.press(elm4).perform()
-    #     action.move_to(x=0, y=100).perform()
-    #     elm5 = self.driver.find_element(*EventEditScreen.SITUATION_HEADER)
-    #     action.press(elm5).perform()
-    #     action.move_to(x=0, y=100).perform()
-    #     elm6 = self.driver.find_element(*EventEditScreen.ISSUES_HEADER)
-    #     action.press(elm6).perform()
-    #     action.move_to(x=0, y=100).perform()
-    #     elm7 = self.driver.find_element(*EventEditScreen.OBJECTIVES_HEADER)
-    #     action.press(elm7).perform()
-    #     action.move_to(x=0, y=100).perform()
-    #     elm8 = self.driver.find_element(*EventEditScreen.STRATEGIES_HEADER)
-    #     action.press(elm8).perform()
-    #     action.move_to(x=0, y=100).perform()
-    #     elm9 = self.driver.find_element(*EventEditScreen.TACTICS_HEADER)
-    #     action.press(elm9).perform()
-    #     action.move_to(x=0, y=100).perform()
-    #     elm10 = self.driver.find_element(*EventEditScreen.COMMUNICATIONS_HEADER)
-    #     action.press(elm10).perform()
-    #     action.move_to(x=0, y=100).perform()
-    #     elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
-    #     action.press(elm11).perform()
-    #     action.move_to(x=0, y=100).perform()
+        logging.info("scroll down from Description field")
+        action = TouchAction(self.driver)
+        try:
+            elm3 = self.driver.find_element(*EventEditScreen.IMPACT_HEADER)
+            action.press(elm3).perform()
+            action.move_to(x=1, y=100).perform()
+        except NoSuchElementException:
+            logging.info("can't find IMPACT_HEADER")
+        try:
+            elm4 = self.driver.find_element(*EventEditScreen.CAUSE_HEADER)
+            action.press(elm4).perform()
+            action.move_to(x=1, y=100).perform()
+        except NoSuchElementException:
+            logging.info("can't find CAUSE_HEADER")
+        try:
+            elm5 = self.driver.find_element(*EventEditScreen.SITUATION_HEADER)
+            action.press(elm5).perform()
+            action.move_to(x=1, y=100).perform()
+        except NoSuchElementException:
+            logging.info("can't find SITUATION_HEADER")
+        try:
+            elm6 = self.driver.find_element(*EventEditScreen.ISSUES_HEADER)
+            action.press(elm6).perform()
+            action.move_to(x=1, y=100).perform()
+        except NoSuchElementException:
+            logging.info("can't find ISSUES_HEADER")
+        try:
+            elm7 = self.driver.find_element(*EventEditScreen.OBJECTIVES_HEADER)
+            action.press(elm7).perform()
+            action.move_to(x=1, y=100).perform()
+        except NoSuchElementException:
+            logging.info("can't find OBJECTIVES_HEADER")
+        try:
+            elm8 = self.driver.find_element(*EventEditScreen.STRATEGIES_HEADER)
+            action.press(elm8).perform()
+            action.move_to(x=1, y=100).perform()
+        except NoSuchElementException:
+            logging.info("can't find STRATEGIES_HEADER")
+        try:
+            elm9 = self.driver.find_element(*EventEditScreen.TACTICS_HEADER)
+            action.press(elm9).perform()
+            action.move_to(x=1, y=100).perform()
+        except NoSuchElementException:
+            logging.info("can't find TACTICS_HEADER")
+        try:
+            elm10 = self.driver.find_element(*EventEditScreen.COMMUNICATIONS_HEADER)
+            action.press(elm10).perform()
+            action.move_to(x=1, y=100).perform()
+        except NoSuchElementException:
+            logging.info("can't find COMMUNICATIONS_HEADER")
+        try:
+            elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
+            action.press(elm11).perform()
+            action.move_to(x=1, y=100).perform()
+        except NoSuchElementException:
+            logging.info("can't find RELATED_HEADER")
 
 
 class OptionList(BasePage):
@@ -971,22 +1037,33 @@ class OptionList(BasePage):
         logging.info("choose '1' in option list")
         option_1 = self.driver.find_element(*EventEditScreen.OPTION_LIST_VALUE_1)
         self.assertIsNotNone(option_1, "option list - option '1' not found")
-        option_1.click()
+        action = TouchAction(self.driver)
+        try:
+            action.tap(element=option_1, count=1).perform()
+        except:
+            option_1.click()
 
     def click_on_option_2(self):
 
-        sleep(1)
         logging.info("choose '2' in option list")
         option_2 = self.driver.find_element(*EventEditScreen.OPTION_LIST_VALUE_2)
         self.assertIsNotNone(option_2, "option list - option '2' not found")
-        option_2.click()
+        action = TouchAction(self.driver)
+        try:
+            action.tap(element=option_2, count=1).perform()
+        except:
+            option_2.click()
 
     def click_on_option_3(self):
 
         logging.info("choose '3' in option list")
         option_3 = self.driver.find_element(*EventEditScreen.OPTION_LIST_VALUE_3)
         self.assertIsNotNone(option_3, "option list - option '3' not found")
-        option_3.click()
+        action = TouchAction(self.driver)
+        try:
+            action.tap(element=option_3, count=1).perform()
+        except:
+            option_3.click()
 
 
 class MapPage(BasePage):
@@ -1041,17 +1118,6 @@ class MapPage(BasePage):
         default_button = self.driver.find_element(*Map.DEFAULT_BUTTON)
         self.assertIsNotNone(default_button, "default button not found")
         default_button.click()
-
-    # def click_in_map_area_9(self):
-    #
-    #     logging.info("click on map")
-    #     action = TouchAction(self.driver)
-    #     try:
-    #         action.tap(element=None, x=600, y=900, count=1).perform()
-    #     except NoSuchElementException:
-    #         map9 = self.driver.find_element(*Map.MAP_AREA_9)
-    #         action.tap(element=map9, count=1).perform()
-    #     sleep(1)
 
     def click_in_map_area_9(self):
 

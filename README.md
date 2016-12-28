@@ -134,7 +134,8 @@ RUNNING TESTS ON SIMULATORS:
 - change desired_capabilities
 - for Android, simulator Genymotion is much faster than simulator from android studio
 - for iOS, You have to build app for exact simulator
-- open Appium settings and uncheck UDID checkbox and change device name - choose from dropdown in Appium settings
+- for Android - open Appium settings, check "Launch AVD" and choose created simulator from the list (first You need to create simulator in Genymotion)
+- for iOS - open Appium settings and uncheck UDID checkbox and change device name - choose from dropdown in Appium settings
 
 
 

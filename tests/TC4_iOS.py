@@ -66,7 +66,7 @@ class TestCase4iOS(unittest.TestCase):
         location_page.check_if_1_hour_option_was_chosen()
         location_page.click_start_button()
         location_page.check_if_start_button_was_clicked()
-        #location_page.check_if_location_was_sent()                             # to uncomment - currently sending continuous location is not working
+        location_page.check_if_location_was_sent()
 
 
 if __name__ == '__main__':
