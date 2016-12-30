@@ -192,22 +192,31 @@ class Map:
 class PhotoScreen:
     """A class for Photo screen locators - screen after clicking into Photo button in Main Menu."""
     PHOTO_PAGE_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Send a photo to OCA")]]')
-    GALLERY_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Gallery")]]')
-    TAKE_NEW_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Take New")]]')
+    GALLERY_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Gallery")]]')
+    TAKE_NEW_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Take New")]]')
+    DESCRIPTION_FIELD_ios = (MobileBy.CLASS_NAME, 'UIATextField')
+    SEND_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Send"]')
+    RESET_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Reset"]')
+
+
+class GalleryScreen:
+    """A class for handling Gallery"""
+    GALLERY_PHOTO_1_ios = (MobileBy.XPATH, '//UIAPopover[1]/UIACollectionView[1]/UIACollectionCell[38]') #change it to 1
+    GALLERY_PHOTO_38_ios = (MobileBy.XPATH, '//UIAPopover[1]/UIACollectionView[1]/UIACollectionCell[38]')
 
 
 class CameraScreen:
     """A class for handling Camera"""
-    PHOTO_CAPTURE = (MobileBy.ACCESSIBILITY_ID, 'PhotoCapture')
-    CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Cancel')
-    CAMERA_CHOOSER = (MobileBy.ACCESSIBILITY_ID, 'FrontBackFacingCameraChooser')
-    RETAKE = (MobileBy.ACCESSIBILITY_ID, 'Retake')
-    USE_PHOTO = (MobileBy.ACCESSIBILITY_ID, 'Use Photo')
+    PHOTO_CAPTURE_ios = (MobileBy.ACCESSIBILITY_ID, 'PhotoCapture')
+    CANCEL_BUTTON_ios = (MobileBy.ACCESSIBILITY_ID, 'Cancel')
+    CAMERA_CHOOSER_ios = (MobileBy.ACCESSIBILITY_ID, 'FrontBackFacingCameraChooser')
+    RETAKE_ios = (MobileBy.ACCESSIBILITY_ID, 'Retake')
+    USE_PHOTO_ios = (MobileBy.ACCESSIBILITY_ID, 'Use Photo')
 
 
 class iOS:
     """A class for handling iOS device for example keyboard"""
-    BUTTON_DONE_TO_HIDE_KEYBOARD = (MobileBy.XPATH, '//UIAWindow[2]/UIAToolbar[1]/UIAButton[@name="Done"]')
-    RETURN_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Return"]')
+    BUTTON_DONE_TO_HIDE_KEYBOARD_ios = (MobileBy.XPATH, '//UIAWindow[2]/UIAToolbar[1]/UIAButton[@name="Done"]')
+    RETURN_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Return"]')
 
 

@@ -303,41 +303,76 @@ class PhotoPage(BasePage):
         self.assertIsNotNone(take_new_button)
         take_new_button.click()
 
+    def type_text_into_description_field(self, text):
+
+        logging.info("type text into description field")
+        description_field = self.driver.find_element(*PhotoScreen.TAKE_NEW_BUTTON_ios)
+        self.assertIsNotNone(description_field)
+        description_field.send_keys(text)
+
+    def click_send_button(self):
+
+        logging.info("click send button")
+        send_button = self.driver.find_element(*PhotoScreen.SEND_BUTTON_ios)
+        self.assertIsNotNone(send_button)
+        send_button.click()
+        WebDriverWait(self.driver, 120).until(
+            expected_conditions.presence_of_element_located(MainMenuScreen.LOCATION_BUTTON_ios),
+            "Failed to send photo")
+        logging.info("Photo was sent")
+
+    def click_reset_button(self):
+
+        logging.info("click send button")
+        reset_button = self.driver.find_element(*PhotoScreen.RESET_BUTTON_ios)
+        self.assertIsNotNone(reset_button)
+        reset_button.click()
+
+
+class GalleryPage(BasePage):
+
+    def choose_photo_1(self):
+
+        logging.info("choosing photo 1")
+        choose_photo = self.driver.find_element(*GalleryScreen.GALLERY_PHOTO_1_ios)
+        self.assertIsNotNone(choose_photo)
+        choose_photo.click()
+
 
 class CameraPage(BasePage):
 
     def take_a_photo(self):
 
         logging.info("taking photo")
-        photo_capture = self.driver.find_element(*CameraScreen.PHOTO_CAPTURE)
+        photo_capture = self.driver.find_element(*CameraScreen.PHOTO_CAPTURE_ios)
         self.assertIsNotNone(photo_capture)
         photo_capture.click()
 
     def click_cancel(self):
 
         logging.info("click Cancel")
-        cancel = self.driver.find_element(*CameraScreen.CANCEL_BUTTON)
+        cancel = self.driver.find_element(*CameraScreen.CANCEL_BUTTON_ios)
         self.assertIsNotNone(cancel)
         cancel.click()
 
     def click_use_photo(self):
 
         logging.info("click Use Photo")
-        use_photo = self.driver.find_element(*CameraScreen.USE_PHOTO)
+        use_photo = self.driver.find_element(*CameraScreen.USE_PHOTO_ios)
         self.assertIsNotNone(use_photo)
         use_photo.click()
 
     def retake_photo(self):
 
         logging.info("click Retake")
-        retake_photo = self.driver.find_element(*CameraScreen.RETAKE)
+        retake_photo = self.driver.find_element(*CameraScreen.RETAKE_ios)
         self.assertIsNotNone(retake_photo)
         retake_photo.click()
 
     def choose_camera(self):
 
         logging.info("click choose camera")
-        chooser_camera = self.driver.find_element(*CameraScreen.CAMERA_CHOOSER)
+        chooser_camera = self.driver.find_element(*CameraScreen.CAMERA_CHOOSER_ios)
         self.assertIsNotNone(chooser_camera)
         chooser_camera.click()
 
@@ -366,7 +401,7 @@ class LocationPage(BasePage):
         try:
             WebDriverWait(self.driver, 30).until(
                 expected_conditions.presence_of_element_located(LocationScreen.LOCATION_STATUS_ios),
-                "Failed to send location1")
+                "Failed to send location")
             logging.info("Location was sent")
         except NoSuchElementException:
             logging.info("Failed to send location")

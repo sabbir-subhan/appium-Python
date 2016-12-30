@@ -132,9 +132,8 @@ BEFORE EACH NEW RUN OF TESTS:
 RUNNING TESTS ON SIMULATORS:
 
 - change desired_capabilities
-- for Android, simulator Genymotion is much faster than simulator from android studio
+- for Android, open Appium settings, check "Launch AVD" and choose created simulator from the list (first You need to create simulator) and add udid of the simulator (from adb devices), start emulator and then run Appium
 - for iOS, You have to build app for exact simulator
-- for Android - open Appium settings, check "Launch AVD" and choose created simulator from the list (first You need to create simulator in Genymotion)
 - for iOS - open Appium settings and uncheck UDID checkbox and change device name - choose from dropdown in Appium settings
 
 
@@ -155,3 +154,6 @@ Known issues:
 - if Appium, after running test, will throws: "An unknown server-side error occurred while processing the command. Original error: Installing", use: sudo chmod -R 777 /var/db/lockdown/
 - if Appium, after running test, throws error: "is device plugged in?" -- just disconnect device and reconnect it again (it may happen after booting OSX with connected device)
 - for some reason on iOS -- "No reset" checkbox in Appium setting is not working, so tests for iOS are written to compensate it, but remember to run Android tests with checkbox "No reset" checked -- https://github.com/appium/appium/issues/4956
+- Appium and OCA app sometime have problems to collaborate - if test fails, try to run it again or shutdown Appium and reconnect device
+- if tests are running fine but Appium inspector is not lunching on iOS - You need to rebuild app by cordova and xcode and reinstall it on device 
+- if after starting test, Appium throws errors like: "lockdown_receive_message error!" ??? i don't know, reinstall appium maybe??

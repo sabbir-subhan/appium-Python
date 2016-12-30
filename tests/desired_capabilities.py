@@ -61,6 +61,29 @@ class DesiredCapabilities(object):
         "udid": "ad0816033848eb0443"
     }
 
+    desired_capabilities_for_android_simulator_6 = {
+        "platformName": "ANDROID",
+        "platformVersion": "6.0.0",
+        "deviceName": "android6",
+        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.1.4.apk"),
+        "apppackage": "com.noggin.oca",
+        "appactivity": "com.noggin.oca.MainActivity",
+        "newCommandTimeout": "60",
+        "androidDeviceReadyTimeout": "60",
+        "udid": "emulator-5554"
+    }
+
+    desired_capabilities_for_android_simulator_7 = {
+        "platformName": "ANDROID",
+        "platformVersion": "7.0.0",
+        "deviceName": "Google Nexus 5X",
+        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.1.4.apk"),
+        "apppackage": "com.noggin.oca",
+        "appactivity": "com.noggin.oca.MainActivity",
+        "newCommandTimeout": "60",
+        "androidDeviceReadyTimeout": "60"
+    }
+
     desired_capabilities_for_iOS_iPad = {
         # iPad mini with iOS 9.3.5
         "platformName": "iOS",

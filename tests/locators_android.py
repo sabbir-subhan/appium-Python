@@ -77,11 +77,8 @@ class LocationScreen:
     START_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains(., "Start")]]')
     START_BUTTON_disabled = (MobileBy.XPATH, '//android.widget.Button[@content-desc['
                                              'contains(., "Start")] and @enabled="false"]')
-    # LOCATION_PAGE_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc['
-    #                                         'contains(., "Your location was last sent")]]')
     LOCATION_PAGE_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Your location was last sent')
     LOCATION_STATUS = (MobileBy.ACCESSIBILITY_ID, 'a few seconds ago')
-    # //android.view.View[@content-desc="a few seconds ago"]
 
 
 class EventsScreen:
@@ -145,12 +142,9 @@ class EventEditScreen:
     CHOOSE_SEVERITY_LVL2 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 2"]')
     CHOOSE_SEVERITY_LVL3 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 3"]')
     CHOOSE_SEVERITY_LVL4 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 4"]')
-    # FINISHED_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc="Finished"]')
     FINISHED_FIELD = (MobileBy.ACCESSIBILITY_ID, 'Finished')
-    # TIME_DATE = (MobileBy.XPATH, '//android.widget.ImageButton[@content-desc="Increase year"]')
     TIME_DATE = (MobileBy.ACCESSIBILITY_ID, 'Increase year')
     SET_BUTTON = (MobileBy.ID, 'android:id/button1')
-    # SAVE_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Save"]')
     SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
     DESCRIPTION_FIELD = (MobileBy.XPATH,
                          "//android.widget.ListView[@index='0']"
@@ -178,7 +172,9 @@ class EventEditScreen:
     FIELD_TO_RESTORE_2_HEADER = (MobileBy.ACCESSIBILITY_ID, 'New email address')
     FIELD_TO_RESTORE_2_VALUE = (MobileBy.ACCESSIBILITY_ID, 'test@noggin.com')
     CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Cancel')
+    CANCEL_BUTTON_by_index = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Button')
     CHOOSER_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "New events chooser")]]')
+    # CHOOSER_FIELD = (MobileBy.ACCESSIBILITY_ID, 'New events chooser - ')
     PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER = (MobileBy.XPATH, '//android.view.View[@content-desc['
                                                             'contains(., "Test Appium Android")]]')
     SUBFORM_FIELD_ADD_ROW = (MobileBy.ACCESSIBILITY_ID, 'Add row')
@@ -247,7 +243,7 @@ class CameraScreen:
     #                                           'android.widget.LinearLayout[1]/android.view.View[1]/GLViewGroup[1]/'
     #                                           'GLViewGroup[3]/GLViewGroup[1]/GLButton[4]')
     PHOTO_CAPTURE_ANDROID6 = (MobileBy.XPATH, '//GLButton[@text="Shutter"]')
-    CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Review cancel')
+    CANCEL_PHOTO_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Review cancel')
     CAMERA_CHOOSER_ANDROID4 = (MobileBy.ID, 'com.android.camera2:id/btn_switch_camera')
     CAMERA_CHOOSER = (MobileBy.ACCESSIBILITY_ID, 'Switch camera')  # for android 6
     CAMERA_CHOOSER2 = (MobileBy.ID, 'com.tct.camera:id/onscreen_camera_picker')

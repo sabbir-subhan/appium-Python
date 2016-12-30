@@ -311,12 +311,9 @@ class CameraPage(BasePage):
     def click_cancel(self):
 
         logging.info("click Cancel")
-        cancel = self.driver.find_element(*CameraScreen.CANCEL_BUTTON)
+        cancel = self.driver.find_element(*CameraScreen.CANCEL_PHOTO_BUTTON)
         self.assertIsNotNone(cancel)
-        if cancel.is_displayed():
-            cancel.click()
-        else:
-            self.fail("cancel button not found")
+        cancel.click()
 
     def click_use_photo(self):
 
@@ -367,7 +364,7 @@ class LocationPage(BasePage):
         # location_status = self.driver.find_element(*LocationScreen.LOCATION_STATUS_ios)
         # self.assertIsNotNone(location_status)
         try:
-            WebDriverWait(self.driver, 45).until(
+            WebDriverWait(self.driver, 65).until(
                 expected_conditions.presence_of_element_located(LocationScreen.LOCATION_STATUS),
                 "Failed to send location")
             logging.info("Location was sent")
@@ -718,10 +715,15 @@ class EventEditPage(BasePage):
 
     def cancel_button(self):
 
+        sleep(2)
         logging.info("click on Cancel button")
-        cancel_button = self.driver.find_element(*EventEditScreen.CANCEL_BUTTON)
+        cancel_button = self.driver.find_element(*EventEditScreen.CANCEL_BUTTON_by_index)
         self.assertIsNotNone(cancel_button)
-        cancel_button.click()
+        try:
+            self.driver.find_element(*EventEditScreen.CANCEL_BUTTON).click()
+        except:
+            cancel_button.click()
+        sleep(2)
 
     # only for event type: "event_for_on_load/save_test"
     def check_on_load_and_on_save_sequences(self):
@@ -953,22 +955,26 @@ class EventEditPage(BasePage):
         except NoSuchElementException:
             logging.info("can't find LEADAGENCY_HEADER")
 
-    def scroll_down_from_leadagency_to_related_header(self):
+    def scroll_down_from_leadagency_to_buttons(self):
 
         logging.info("scroll down from lead agency header field to Related header")
+        sleep(2)
         action = TouchAction(self.driver)
         try:
-            elm1 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
-            action.press(elm1).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find LEADAGENCY_HEADER")
-        try:
-            elm2 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
-            action.press(elm2).perform()
+            related_header = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
+            self.assertIsNotNone(related_header, msg="RELATED_HEADER not found")
+            action.press(related_header).perform()
             action.move_to(x=1, y=100).perform()
         except NoSuchElementException:
             logging.info("can't find RELATED_HEADER")
+        sleep(2)
+        try:
+            related_header = self.driver.find_element(*EventEditScreen.MAPPING_HEADER)
+            self.assertIsNotNone(related_header, msg="MAPPING_HEADER not found")
+            action.press(related_header).perform()
+            action.move_to(x=1, y=100).perform()
+        except NoSuchElementException:
+            logging.info("can't find MAPPING_HEADER")
 
     def scroll_down_from_description_field(self):
 
@@ -1034,6 +1040,7 @@ class OptionList(BasePage):
 
     def click_on_option_1(self):
 
+        sleep(1)
         logging.info("choose '1' in option list")
         option_1 = self.driver.find_element(*EventEditScreen.OPTION_LIST_VALUE_1)
         self.assertIsNotNone(option_1, "option list - option '1' not found")

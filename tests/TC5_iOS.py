@@ -67,15 +67,29 @@ class TestCase5iOS(unittest.TestCase):
         photo_page = PhotoPage(self.driver)
         photo_page.check_if_photo_page_was_opened()
         photo_page.click_gallery_button()
-        # cos
+        gallery_page = GalleryPage(self.driver)
+        gallery_page.choose_photo_1()
+        photo_page.type_text_into_description_field("test photo 1 from gallery")
+        photo_page.click_send_button()
+        main_page.open_PHOTO()
         photo_page.click_take_new_button()
         camera_page = CameraPage(self.driver)
         camera_page.choose_camera()
         camera_page.choose_camera()
         camera_page.take_a_photo()
         camera_page.click_use_photo()
-        #photo_page.
-        #step9
+        photo_page.type_text_into_description_field("test take a photo 1")
+        photo_page.click_send_button()
+        main_page.open_PHOTO()
+        photo_page.click_take_new_button()
+        camera_page.choose_camera()
+        camera_page.choose_camera()
+        camera_page.take_a_photo()
+        camera_page.retake_photo()
+        camera_page.take_a_photo()
+        camera_page.click_use_photo()
+        photo_page.type_text_into_description_field("test take a photo 2")
+        photo_page.click_send_button()
 
 
 if __name__ == '__main__':
