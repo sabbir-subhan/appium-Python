@@ -193,6 +193,7 @@ class PhotoScreen:
     """A class for Photo screen locators - screen after clicking into Photo button in Main Menu."""
     PHOTO_PAGE_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Send a photo to OCA")]]')
     GALLERY_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Gallery")]]')
+    # GALLERY_BUTTON_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[2]')
     TAKE_NEW_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Take New")]]')
     DESCRIPTION_FIELD_ios = (MobileBy.CLASS_NAME, 'UIATextField')
     SEND_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Send"]')
@@ -201,7 +202,7 @@ class PhotoScreen:
 
 class GalleryScreen:
     """A class for handling Gallery"""
-    GALLERY_PHOTO_1_ios = (MobileBy.XPATH, '//UIAPopover[1]/UIACollectionView[1]/UIACollectionCell[38]') #change it to 1
+    GALLERY_PHOTO_1_ios = (MobileBy.XPATH, '//UIAPopover[1]/UIACollectionView[1]/UIACollectionCell[38]') # change it to 1
     GALLERY_PHOTO_38_ios = (MobileBy.XPATH, '//UIAPopover[1]/UIACollectionView[1]/UIACollectionCell[38]')
 
 
@@ -218,5 +219,7 @@ class iOS:
     """A class for handling iOS device for example keyboard"""
     BUTTON_DONE_TO_HIDE_KEYBOARD_ios = (MobileBy.XPATH, '//UIAWindow[2]/UIAToolbar[1]/UIAButton[@name="Done"]')
     RETURN_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Return"]')
-
+    BUTTON_ALLOW_LOCATION_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]'
+                                                 '/UIACollectionCell[2]/UIAButton[@name="Allow"]')
+    BUTTON_ALLOW_ACCESS_TO_CAMERA = (MobileBy.ACCESSIBILITY_ID, 'OK')
 

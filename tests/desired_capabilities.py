@@ -88,12 +88,12 @@ class DesiredCapabilities(object):
         # iPad mini with iOS 9.3.5
         "platformName": "iOS",
         "platformVersion": "9.3",
-        "deviceName": "iPad mini",
+        "deviceName": "iPad 2",
         # "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData/"
         #             "OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphoneos/OCA.app"),
         "app": PATH("/Users/lukasl/Build_xcode/Products/Debug-iphoneos/OCA.app"),
         "bundleId": "com.noggin.ocalukasl",
-        "newCommandTimeout": "45",
+        # "newCommandTimeout": "45",
         "autoAcceptAlerts": "true",
         "udid": "db55c238e873230ee454c54a63724397a2981acd"
     }
@@ -126,9 +126,8 @@ class DesiredCapabilities(object):
         # iPhone 6s simulator with iOS 9.3
         "platformName": "iOS",
         "platformVersion": "9.3",
-        "deviceName": "iPhone 6",
-        "app": PATH("/Users/lukasl/Library/Developer/Xcode/DerivedData"
-                    "/OCA-bdxtjnqokrqssihekwhfopxonvwa/Build/Products/Debug-iphonesimulator/OCA.app"),
+        "deviceName": "iPhone 6s",
+        "app": PATH("/Users/lukasl/Build_xcode/Products/Debug-iphonesimulator/OCA.app"),
         "bundleId": "com.noggin.ocalukasl",
         "newCommandTimeout": "45",
         "autoAcceptAlerts": "true"

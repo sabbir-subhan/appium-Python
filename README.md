@@ -22,7 +22,8 @@ for OSX all above plus:
 - rename xcode - applications - xcode --rename to: xcode8
 - download xcode 7.3 and install - open appium and add path to xcode 7.3
 
-- to switch between xcode versions, for example: sudo xcode-select -switch /Applications/Xcode8.app/Contents/Developer/
+- to switch between xcode versions, for example: sudo xcode-select -switch /Applications/Xcode8.app
+(sudo xcode-select -switch /Applications/Xcode8.app/Contents/Developer/)
 
 
 desired_capabilities.py and appium settings:
@@ -156,4 +157,4 @@ Known issues:
 - for some reason on iOS -- "No reset" checkbox in Appium setting is not working, so tests for iOS are written to compensate it, but remember to run Android tests with checkbox "No reset" checked -- https://github.com/appium/appium/issues/4956
 - Appium and OCA app sometime have problems to collaborate - if test fails, try to run it again or shutdown Appium and reconnect device
 - if tests are running fine but Appium inspector is not lunching on iOS - You need to rebuild app by cordova and xcode and reinstall it on device 
-- if after starting test, Appium throws errors like: "lockdown_receive_message error!" ??? i don't know, reinstall appium maybe??
+- if after starting test, Appium throws errors like: "lockdown_receive_message error!" -- use sudo chmod -R 777 /var/db/lockdown/

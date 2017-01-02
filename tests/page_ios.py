@@ -57,7 +57,7 @@ class iOSdevice(BasePage):
 
         logging.info("hide keyboard")
         try:
-            done_button_ios = self.driver.find_element(*iOS.BUTTON_DONE_TO_HIDE_KEYBOARD)
+            done_button_ios = self.driver.find_element(*iOS.BUTTON_DONE_TO_HIDE_KEYBOARD_ios)
             if done_button_ios.is_displayed():
                 done_button_ios.click()
             else:
@@ -68,7 +68,7 @@ class iOSdevice(BasePage):
     def click_Return_button_on_keyboard(self):
 
         logging.info("click 'Return' on keyboard")
-        self.driver.find_element(*iOS.RETURN_BUTTON).click()
+        self.driver.find_element(*iOS.RETURN_BUTTON_ios).click()
         sleep(1)
 
 
@@ -77,9 +77,12 @@ class WelcomePage(BasePage):
     def click_login_button(self):
 
         sleep(20)
-        positions_for_hamburger_button = [(730, 20)]
-        sleep(1)
-        self.driver.tap(positions_for_hamburger_button)
+        try:
+            positions_for_hamburger_button = [(730, 20)]
+            sleep(1)
+            self.driver.tap(positions_for_hamburger_button)
+        except:
+            logging.info("pass tapping into positions")
         logging.info("click in LOGIN button")
         try:
             login_button = self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_ios)
@@ -294,6 +297,8 @@ class PhotoPage(BasePage):
         logging.info("clicking in Gallery button")
         gallery_button = self.driver.find_element(*PhotoScreen.GALLERY_BUTTON_ios)
         self.assertIsNotNone(gallery_button)
+        # action = TouchAction(self.driver)
+        # action.tap(element=gallery_button, count=1).perform()
         gallery_button.click()
 
     def click_take_new_button(self):
