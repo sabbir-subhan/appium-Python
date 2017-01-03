@@ -1,5 +1,3 @@
-# Before running test - enable allow access to Camera and Photos in iOS settings for OCA app
-
 # Test Case 5 - Send Photo -- OCAMOB-43
 
 # open OCA app
@@ -69,7 +67,8 @@ class TestCase5iOS(unittest.TestCase):
         photo_page.click_gallery_button()
         gallery_page = GalleryPage(self.driver)
         gallery_page.choose_photo_1()
-        photo_page.type_text_into_description_field("test photo 1 from gallery")
+        photo_page.type_description_of_the_photo("test iOS - photo 1 from gallery")
+        ios_device.hide_keyboard()
         photo_page.click_send_button()
         main_page.open_PHOTO()
         photo_page.click_take_new_button()
@@ -78,7 +77,8 @@ class TestCase5iOS(unittest.TestCase):
         camera_page.choose_camera()
         camera_page.take_a_photo()
         camera_page.click_use_photo()
-        photo_page.type_text_into_description_field("test take a photo 1")
+        photo_page.type_description_of_the_photo("test iOS - take a photo 1")
+        ios_device.hide_keyboard()
         photo_page.click_send_button()
         main_page.open_PHOTO()
         photo_page.click_take_new_button()
@@ -88,8 +88,9 @@ class TestCase5iOS(unittest.TestCase):
         camera_page.retake_photo()
         camera_page.take_a_photo()
         camera_page.click_use_photo()
-        photo_page.type_text_into_description_field("test take a photo 2")
+        photo_page.type_description_of_the_photo("test iOS - take a photo 2")
         photo_page.click_send_button()
+        main_page.check_presence_of_events_button()
 
 
 if __name__ == '__main__':

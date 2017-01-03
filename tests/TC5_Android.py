@@ -31,7 +31,7 @@ class TestCase5android(unittest.TestCase):
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
         # choose desired capabilities from desired_capabilities.py
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_6
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_5
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
@@ -63,19 +63,35 @@ class TestCase5android(unittest.TestCase):
         photo_page = PhotoPage(self.driver)
         android_device.alert_android_allow()
         photo_page.check_if_photo_page_was_opened()
-        # photo_page.click_gallery_button()
+        photo_page.click_gallery_button()
+        android_device.alert_android_allow()
+        gallery_page = GalleryPage(self.driver)
+        gallery_page.choose_photo_1()
+        photo_page.type_description_of_the_photo("test android - photo 1 from gallery")
+        android_device.hide_keyboard()
+        photo_page.click_send_button()
+        main_page.open_PHOTO()
         photo_page.click_take_new_button()
-        android_device.alert_android_allow()
-        photo_page.click_take_new_button() # second click is not working ??
-        android_device.alert_android_allow()
         android_device.alert_android_allow()
         camera_page = CameraPage(self.driver)
         camera_page.choose_camera()
         camera_page.choose_camera()
         camera_page.take_a_photo()
         camera_page.click_use_photo()
-        # photo_page.
-        # step9
+        photo_page.type_description_of_the_photo("test android - take a photo 1")
+        android_device.hide_keyboard()
+        photo_page.click_send_button()
+        main_page.open_PHOTO()
+        photo_page.click_take_new_button()
+        camera_page.choose_camera()
+        camera_page.choose_camera()
+        camera_page.take_a_photo()
+        camera_page.retake_photo()
+        camera_page.take_a_photo()
+        camera_page.click_use_photo()
+        photo_page.type_description_of_the_photo("test android - take a photo 2")
+        photo_page.click_send_button()
+        main_page.check_presence_of_events_button()
 
 
 if __name__ == '__main__':

@@ -72,8 +72,12 @@ class AndroidDevice(BasePage):
             if button_allow_location.is_displayed():
                 logging.info("Accept for example using location - device will store that info for later use")
                 button_allow_location.click()
-            else:
-                pass
+        except NoSuchElementException:
+            pass
+        try:
+            button_allow_location = self.driver.find_element(*Android.ANDROID_ALLOW)
+            if button_allow_location.is_displayed():
+                button_allow_location.click()
         except NoSuchElementException:
             pass
 
@@ -244,7 +248,7 @@ class MainPage(BasePage):
         try:
             WebDriverWait(self.driver, 20).until(
                 expected_conditions.presence_of_element_located(MainMenuScreen.EVENTS_BUTTON), "Failed to login")
-            logging.info("Successful login")
+            logging.info("Events button in Main Menu is present")
         except NoSuchElementException:
             logging.info("Failed to login")
             self.fail("Failed to login")
@@ -295,8 +299,46 @@ class PhotoPage(BasePage):
         logging.info("clicking in Take new button")
         take_new_button = self.driver.find_element(*PhotoScreen.TAKE_NEW_BUTTON)
         self.assertIsNotNone(take_new_button)
-        # take_new_button.click()
-        TouchAction(self.driver).tap(element=take_new_button, count=1).perform()
+        take_new_button.click()
+
+    def type_description_of_the_photo(self, text):
+
+        WebDriverWait(self.driver, 35).until(
+            expected_conditions.presence_of_element_located(PhotoScreen.DESCRIPTION_FIELD),
+            "Failed to locate description field for photo")
+        logging.info("type text into description field")
+        description_field = self.driver.find_element(*PhotoScreen.DESCRIPTION_FIELD)
+        self.assertIsNotNone(description_field)
+        description_field.send_keys(text)
+
+    def click_send_button(self):
+
+        logging.info("click send button")
+        send_button = self.driver.find_element(*PhotoScreen.SEND_BUTTON)
+        self.assertIsNotNone(send_button)
+        send_button.click()
+        logging.info("sending photo")
+        WebDriverWait(self.driver, 360).until(
+            expected_conditions.presence_of_element_located(MainMenuScreen.LOCATION_BUTTON),
+            "Failed to send photo")
+        logging.info("Photo was sent")
+
+    def click_reset_button(self):
+
+        logging.info("click send button")
+        reset_button = self.driver.find_element(*PhotoScreen.RESET_BUTTON)
+        self.assertIsNotNone(reset_button)
+        reset_button.click()
+
+
+class GalleryPage(BasePage):
+
+    def choose_photo_1(self):
+
+        logging.info("choosing photo 1")
+        choose_photo = self.driver.find_element(*GalleryScreen.GALLERY_PHOTO_1)
+        self.assertIsNotNone(choose_photo)
+        choose_photo.click()
 
 
 class CameraPage(BasePage):
@@ -304,9 +346,16 @@ class CameraPage(BasePage):
     def take_a_photo(self):
 
         logging.info("taking photo")
-        photo_capture = self.driver.find_element(*CameraScreen.PHOTO_CAPTURE_ANDROID6)
-        self.assertIsNotNone(photo_capture)
-        photo_capture.click()
+        try:
+            photo_capture1 = self.driver.find_element(*CameraScreen.PHOTO_CAPTURE_ANDROID6)
+            if photo_capture1.is_displayed():
+                self.assertIsNotNone(photo_capture1)
+                photo_capture1.click()
+        except NoSuchElementException:
+            photo_capture2 = self.driver.find_element(*CameraScreen.PHOTO_CAPTURE_ANDROID_4_and_5)
+            if photo_capture2.is_displayed():
+                self.assertIsNotNone(photo_capture2)
+                photo_capture2.click()
 
     def click_cancel(self):
 
@@ -320,13 +369,18 @@ class CameraPage(BasePage):
         logging.info("click Use Photo")
         try:
             use_photo1 = self.driver.find_element(*CameraScreen.USE_PHOTO_ANDROID4)
-            self.assertIsNotNone(use_photo1)
-            use_photo1.click()
+            if use_photo1.is_displayed():
+                self.assertIsNotNone(use_photo1)
+                action = TouchAction(self.driver)
+                action.tap(element=use_photo1, count=1).perform()
         except NoSuchElementException:
             use_photo2 = self.driver.find_element(*CameraScreen.USE_PHOTO_ANDROID_5_and_6)
-            self.assertIsNotNone(use_photo2)
-            use_photo2.click()
-            self.fail("Use Photo button not found")
+            if use_photo2.is_displayed():
+                self.assertIsNotNone(use_photo2)
+                action = TouchAction(self.driver)
+                action.tap(element=use_photo2, count=1).perform()
+            else:
+                self.fail("could not locate 'Use photo' button")
 
     def retake_photo(self):
 
@@ -338,9 +392,27 @@ class CameraPage(BasePage):
     def choose_camera(self):
 
         logging.info("click choose camera")
-        chooser_camera = self.driver.find_element(*CameraScreen.CAMERA_CHOOSER)
-        self.assertIsNotNone(chooser_camera)
-        chooser_camera.click()
+        try:
+            chooser_camera = self.driver.find_element(*CameraScreen.CAMERA_CHOOSER)
+            if chooser_camera.is_displayed():
+                self.assertIsNotNone(chooser_camera)
+                chooser_camera.click()
+        except NoSuchElementException:
+            pass
+        try:
+            chooser_camera2 = self.driver.find_element(*CameraScreen.CAMERA_CHOOSER2)
+            if chooser_camera2.is_displayed():
+                self.assertIsNotNone(chooser_camera2)
+                chooser_camera2.click()
+        except NoSuchElementException:
+            pass
+        try:
+            chooser_camera_for_android_4 = self.driver.find_element(*CameraScreen.CAMERA_CHOOSER_ANDROID4)
+            if chooser_camera_for_android_4.is_displayed():
+                self.assertIsNotNone(chooser_camera_for_android_4)
+                chooser_camera_for_android_4.click()
+        except NoSuchElementException:
+            pass
 
 
 class LocationPage(BasePage):

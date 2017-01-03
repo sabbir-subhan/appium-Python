@@ -32,6 +32,7 @@ class BasePage(unittest.TestCase):
     # OCA top bar
     def hamburger_button(self):
 
+# add coordinates for iPhones - clicking is not working because button is invisible
         logging.info("click hamburger button to go back to main menu")
         # try:
         #     hamburger_button = self.driver.find_element(*TopBar.HAMBURGER_FOR_MAIN_MENU_ios)
@@ -76,46 +77,28 @@ class WelcomePage(BasePage):
 
     def click_login_button(self):
 
-        sleep(20)
-        try:
-            positions_for_hamburger_button = [(730, 20)]
-            sleep(1)
-            self.driver.tap(positions_for_hamburger_button)
-        except:
-            logging.info("pass tapping into positions")
+        sleep(10)
+        # try:
+        #     positions_for_hamburger_button = [(730, 20)]
+        #     sleep(1)
+        #     self.driver.tap(positions_for_hamburger_button)
+        # except:
+        #     logging.info("pass tapping into positions")
         logging.info("click in LOGIN button")
         try:
             login_button = self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_ios)
-            self.assertIsNotNone(login_button)
-            login_button.click()
+            if login_button.is_displayed():
+                self.assertIsNotNone(login_button)
+                login_button.click()
         except NoSuchElementException:
-            self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_by_index_ios).click()
-
-        # try:
-        #     login_button = self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_ios)
-        #     self.assertIsNotNone(login_button, "login button not found by name")
-        #     login_button.click()
-        #     logging.info("try 1")
-        #     try:
-        #         login_button_by_index = self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_by_index_ios)
-        #         self.assertIsNotNone(login_button_by_index, "login button not found by index")
-        #         login_button_by_index.click()
-        #         logging.info("try 2")
-        #         try:
-        #             WebDriverWait(self.driver, 30).until(
-        #                 expected_conditions.presence_of_element_located(WelcomeScreen.LOGIN_BUTTON_ios),
-        #                 "Login button not found by name and after waiting 30s")
-        #             self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_ios).click()
-        #             logging.info("try 3")
-        #         except NoSuchElementException:
-        #             sleep(10)
-        #             login_button = self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_by_index_ios)
-        #             self.driver.tap(login_button)
-        #             logging.info("try 4")
-        #     except NoSuchElementException:
-        #         pass
-        # except NoSuchElementException:
-        #     pass
+            pass
+        try:
+            login_button_by_index = self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_by_index_ios)
+            if login_button_by_index.is_displayed():
+                self.assertIsNotNone(login_button_by_index)
+                login_button_by_index.click()
+        except NoSuchElementException:
+            pass
 
 
 class LoginPage(BasePage):
@@ -250,7 +233,7 @@ class MainPage(BasePage):
         try:
             WebDriverWait(self.driver, 20).until(
                 expected_conditions.presence_of_element_located(MainMenuScreen.EVENTS_BUTTON_ios), "Failed to login")
-            logging.info("Successful login")
+            logging.info("Events button in Main Menu is present")
         except NoSuchElementException:
             logging.info("Failed to login")
             self.fail("Failed to login")
@@ -294,25 +277,36 @@ class PhotoPage(BasePage):
         
     def click_gallery_button(self):
 
+#add coordinates for iPhones - clicking is not working because button is invisible
         logging.info("clicking in Gallery button")
         gallery_button = self.driver.find_element(*PhotoScreen.GALLERY_BUTTON_ios)
         self.assertIsNotNone(gallery_button)
-        # action = TouchAction(self.driver)
-        # action.tap(element=gallery_button, count=1).perform()
-        gallery_button.click()
+        try:
+            action = TouchAction(self.driver)
+            action.tap(element=None, x=180, y=158, count=1).perform()
+            sleep(2)
+        except:
+            gallery_button.click()
 
     def click_take_new_button(self):
 
         logging.info("clicking in Take new button")
         take_new_button = self.driver.find_element(*PhotoScreen.TAKE_NEW_BUTTON_ios)
         self.assertIsNotNone(take_new_button)
-        take_new_button.click()
+        try:
+            action = TouchAction(self.driver)
+            action.tap(element=None, x=548, y=158, count=1).perform()
+            sleep(2)
+        except:
+            take_new_button.click()
 
-    def type_text_into_description_field(self, text):
+    def type_description_of_the_photo(self, text):
 
+        sleep(2)
         logging.info("type text into description field")
-        description_field = self.driver.find_element(*PhotoScreen.TAKE_NEW_BUTTON_ios)
+        description_field = self.driver.find_element(*PhotoScreen.DESCRIPTION_FIELD_ios)
         self.assertIsNotNone(description_field)
+        description_field.click()
         description_field.send_keys(text)
 
     def click_send_button(self):
@@ -321,7 +315,7 @@ class PhotoPage(BasePage):
         send_button = self.driver.find_element(*PhotoScreen.SEND_BUTTON_ios)
         self.assertIsNotNone(send_button)
         send_button.click()
-        WebDriverWait(self.driver, 120).until(
+        WebDriverWait(self.driver, 180).until(
             expected_conditions.presence_of_element_located(MainMenuScreen.LOCATION_BUTTON_ios),
             "Failed to send photo")
         logging.info("Photo was sent")

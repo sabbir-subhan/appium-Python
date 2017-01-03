@@ -228,20 +228,16 @@ class Map:
 class PhotoScreen:
     """A class for Photo screen locators - screen after clicking into Photo button in Main Menu."""
     PHOTO_PAGE_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Send a photo to OCA')
-    GALLERY_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Gallery')
-    TAKE_NEW_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Take New')
+    GALLERY_BUTTON = (MobileBy.XPATH, '//android.view.View[2]/android.view.View[2]/android.view.View[1]')  # accessibility id won't work because it pinpoints only text
+    TAKE_NEW_BUTTON = (MobileBy.XPATH, '//android.view.View[2]/android.view.View[3]/android.view.View[1]')  # accessibility id won't work because it pinpoints only text
     SEND_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Send')
+    RESET_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Reset')
     DESCRIPTION_FIELD = (MobileBy.ACCESSIBILITY_ID, 'Description (optional)')
 
 
 class CameraScreen:
     """A class for handling Camera"""
-    # PHOTO_CAPTURE_ANDROID4 = (MobileBy.ANDROID_UIAUTOMATOR, 'Shutter')
     PHOTO_CAPTURE_ANDROID_4_and_5 = (MobileBy.ACCESSIBILITY_ID, 'Shutter')
-    # PHOTO_CAPTURE_ANDROID6 = (MobileBy.XPATH, '//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/'
-    #                                           'android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/'
-    #                                           'android.widget.LinearLayout[1]/android.view.View[1]/GLViewGroup[1]/'
-    #                                           'GLViewGroup[3]/GLViewGroup[1]/GLButton[4]')
     PHOTO_CAPTURE_ANDROID6 = (MobileBy.XPATH, '//GLButton[@text="Shutter"]')
     CANCEL_PHOTO_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Review cancel')
     CAMERA_CHOOSER_ANDROID4 = (MobileBy.ID, 'com.android.camera2:id/btn_switch_camera')
@@ -254,8 +250,11 @@ class CameraScreen:
 
 class GalleryScreen:
     """A class for handling Gallery"""
-    GALLERY_PHOTO_1 = (MobileBy.ID, 'com.android.documentsui:id/icon_thumb')
-# class: android.widget.LinearLayout
+    GALLERY_PHOTO_1 = (MobileBy.XPATH, '//android.widget.GridView[1]/android.widget.FrameLayout[1]')
+
+
+class RisksScreen:
+    """A class for handling Risks screen"""
 
 
 class Android:
@@ -263,4 +262,4 @@ class Android:
 
     ANDROID_ALLOW = (MobileBy.ID, 'com.android.packageinstaller:id/permission_allow_button')
     ANDROID_DENY = (MobileBy.ID, 'com.android.packageinstaller:id/permission_deny_button')
-    PHOTO_FROM_GALLERY = (MobileBy.ID, 'com.android.documentsui:id/icon_thumb')
+

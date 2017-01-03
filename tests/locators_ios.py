@@ -12,7 +12,8 @@ class WelcomeScreen:
     """A class for welcome screen locators - first screen after lunching the app."""
     LOGIN_BUTTON_ios = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "LOGIN")]]')
     LOGIN_BUTTON_by_index_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]'
-                                                 '/UIAScrollView[2]/UIAWebView[1]/UIALink[9]')
+                                                 '/UIAScrollView[2]/UIAWebView[1]/UIALink[9]'
+                                                 '[@name[contains(., "LOGIN")]]')
 
 
 class LoginScreen:
@@ -21,7 +22,7 @@ class LoginScreen:
     TEXTFIELD_PASSWORD_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIASecureTextField[1]')
     TEXTFIELD_DOMAIN_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIATextField[2]')
     SUBMIT_BUTTON_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAButton[@name="Submit"]')
-    # SUBMIT_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Submit') for testing
+    # SUBMIT_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Submit')  # not working
 
     # Notification alert: "OCA now supports sending 'App Messages' to your device as notifications."
     NOTIFICATION_ABOUT_SENDING_MESSAGES_ios = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText[@name[contains(., '
@@ -60,6 +61,7 @@ class MainMenuScreen:
     LOCATION_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "LOCATION")]]')
     MAP_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "MAP")]]')
     PHOTO_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "PHOTO")]]')
+    RISKS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "RISKS")]]')
 
 
 class LocationScreen:
@@ -192,8 +194,7 @@ class Map:
 class PhotoScreen:
     """A class for Photo screen locators - screen after clicking into Photo button in Main Menu."""
     PHOTO_PAGE_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Send a photo to OCA")]]')
-    GALLERY_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Gallery")]]')
-    # GALLERY_BUTTON_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[2]')
+    GALLERY_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[2][@visible="false"]')  # appium can't tap that element - probably it's a bug in Appium
     TAKE_NEW_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Take New")]]')
     DESCRIPTION_FIELD_ios = (MobileBy.CLASS_NAME, 'UIATextField')
     SEND_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Send"]')
@@ -202,7 +203,7 @@ class PhotoScreen:
 
 class GalleryScreen:
     """A class for handling Gallery"""
-    GALLERY_PHOTO_1_ios = (MobileBy.XPATH, '//UIAPopover[1]/UIACollectionView[1]/UIACollectionCell[38]') # change it to 1
+    GALLERY_PHOTO_1_ios = (MobileBy.XPATH, '//UIAPopover[1]/UIACollectionView[1]/UIACollectionCell[1]')
     GALLERY_PHOTO_38_ios = (MobileBy.XPATH, '//UIAPopover[1]/UIACollectionView[1]/UIACollectionCell[38]')
 
 
@@ -213,6 +214,10 @@ class CameraScreen:
     CAMERA_CHOOSER_ios = (MobileBy.ACCESSIBILITY_ID, 'FrontBackFacingCameraChooser')
     RETAKE_ios = (MobileBy.ACCESSIBILITY_ID, 'Retake')
     USE_PHOTO_ios = (MobileBy.ACCESSIBILITY_ID, 'Use Photo')
+
+
+class RisksScreen:
+    """A class for handling Risks screen"""
 
 
 class iOS:
