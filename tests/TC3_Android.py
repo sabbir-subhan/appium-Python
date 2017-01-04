@@ -26,7 +26,7 @@ class TestCase3Android(unittest.TestCase):
     def test_managing_events(self):
 
         # login
-        logging.info("starting test: managing events")
+        logging.info("starting Test Case 3: managing events")
         top_bar = BasePage(self.driver)
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()

@@ -34,25 +34,19 @@ class BasePage(unittest.TestCase):
 
 # add coordinates for iPhones - clicking is not working because button is invisible
         logging.info("click hamburger button to go back to main menu")
-        # try:
-        #     hamburger_button = self.driver.find_element(*TopBar.HAMBURGER_FOR_MAIN_MENU_ios)
-        #     self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
-        #     if hamburger_button.is_displayed():
-        #         hamburger_button.click()
-        #     else:
-        #         pass
-        #     # probably that element cannot be clicked because attribute visible is "false"
-        # except NoSuchElementException:
-        #     positions_for_hamburger_button = [(730, 20)]
-        #     sleep(1)
-        #     self.driver.tap(positions_for_hamburger_button)
-        # sleep(2)
-        positions_for_hamburger_button = [(730, 20)]
-        sleep(1)
-        self.driver.tap(positions_for_hamburger_button)
+        try:
+            hamburger_button = self.driver.find_element(*TopBar.HAMBURGER_FOR_MAIN_MENU_ios)
+            if hamburger_button.is_displayed():
+                self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
+                hamburger_button.click()
+        except NoSuchElementException:
+            positions_for_hamburger_button = [(730, 20)]
+            sleep(1)
+            self.driver.tap(positions_for_hamburger_button)
 
 
 class iOSdevice(BasePage):
+    """A class for methods to handle iOS Device"""
 
     def hide_keyboard(self):
 
@@ -88,7 +82,7 @@ class WelcomePage(BasePage):
         try:
             login_button = self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_ios)
             if login_button.is_displayed():
-                self.assertIsNotNone(login_button)
+                self.assertIsNotNone(login_button, "Login button not found")
                 login_button.click()
         except NoSuchElementException:
             pass
@@ -98,7 +92,9 @@ class WelcomePage(BasePage):
                 self.assertIsNotNone(login_button_by_index)
                 login_button_by_index.click()
         except NoSuchElementException:
-            pass
+            action = TouchAction(self.driver)
+            action.tap(element=None, x=115, y=283, count=1).perform()
+        # add coordinates for iPhones
 
 
 class LoginPage(BasePage):
@@ -149,7 +145,7 @@ class LoginPage(BasePage):
         logging.info("checking alert message")
         try:
             alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_INVALID_ios)
-            self.assertIsNotNone(alert_msg)
+            self.assertIsNotNone(alert_msg, "Alert - wrong pass msg not found")
             self.driver.find_element(*LoginScreen.OK_BUTTON_ios).click()
             logging.info("Successfully try to login using incorrect credentials - message alert is present")
         except NoSuchElementException:
@@ -162,7 +158,7 @@ class LoginPage(BasePage):
         try:
             alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_EXPIRED_ios)
             logging.info("Successfully try to login to account that expired 1 day ago - message alert is present")
-            self.assertIsNotNone(alert_msg)
+            self.assertIsNotNone(alert_msg, "Alert - expired msg not found")
             self.driver.find_element(*LoginScreen.OK_BUTTON_ios).click()
         except NoSuchElementException:
             logging.info("failed - there is no alert message")
@@ -174,7 +170,7 @@ class LoginPage(BasePage):
         try:
             alert_msg = self.driver.find_element(*LoginScreen.ALERT_MSG_SUSPENDED_ios)
             logging.info("Successfully try to login into suspended account - message alert is present")
-            self.assertIsNotNone(alert_msg)
+            self.assertIsNotNone(alert_msg, "Alert - suspended msg not found")
             self.driver.find_element(*LoginScreen.OK_BUTTON_ios).click()
         except NoSuchElementException:
             logging.info("failed - there is no alert message")
@@ -192,7 +188,7 @@ class MainPage(BasePage):
                 logging.info("click 'No' for sending notifications on iOS")
                 notification_msg_on_ios = self.driver.find_element(
                     *LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
-                self.assertIsNotNone(notification_msg_on_ios)
+                self.assertIsNotNone(notification_msg_on_ios, "Notification msg on iOS not found")
                 self.driver.find_element(*LoginScreen.NO_FOR_SENDING_NOTIFICATIONS_ON_ios).click()
             else:
                 pass
@@ -242,7 +238,7 @@ class MainPage(BasePage):
 
         logging.info("clicking in Events button")
         events_button = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON_ios)
-        self.assertIsNotNone(events_button)
+        self.assertIsNotNone(events_button, "EVENTS button not found")
         events_button.click()
         
     def open_LOCATION(self):
@@ -256,123 +252,184 @@ class MainPage(BasePage):
 
         logging.info("clicking in Map button")
         map_button = self.driver.find_element(*MainMenuScreen.MAP_BUTTON_ios)
-        self.assertIsNotNone(map_button)
+        self.assertIsNotNone(map_button, "MAP button not found")
         map_button.click()
 
     def open_PHOTO(self):
 
         logging.info("clicking in Photo button")
         photo_button = self.driver.find_element(*MainMenuScreen.PHOTO_BUTTON_ios)
-        self.assertIsNotNone(photo_button)
+        self.assertIsNotNone(photo_button, "PHOTO button not found")
         photo_button.click()
+
+    def open_VIDEO(self):
+
+        logging.info("clicking in Video button")
+        video_button = self.driver.find_element(*MainMenuScreen.VIDEO_BUTTON_ios)
+        self.assertIsNotNone(video_button, "VIDEO button not found")
+        video_button.click()
 
 
 class PhotoPage(BasePage):
-    
+
     def check_if_photo_page_was_opened(self):
 
         photo_page_header = self.driver.find_element(*PhotoScreen.PHOTO_PAGE_HEADER_ios)
         self.assertIsNotNone(photo_page_header, "Photo page header was not found")
         logging.info("Photo page was opened")
-        
-    def click_gallery_button(self):
 
-#add coordinates for iPhones - clicking is not working because button is invisible
-        logging.info("clicking in Gallery button")
-        gallery_button = self.driver.find_element(*PhotoScreen.GALLERY_BUTTON_ios)
-        self.assertIsNotNone(gallery_button)
-        try:
-            action = TouchAction(self.driver)
-            action.tap(element=None, x=180, y=158, count=1).perform()
-            sleep(2)
-        except:
-            gallery_button.click()
-
-    def click_take_new_button(self):
-
-        logging.info("clicking in Take new button")
-        take_new_button = self.driver.find_element(*PhotoScreen.TAKE_NEW_BUTTON_ios)
-        self.assertIsNotNone(take_new_button)
-        try:
-            action = TouchAction(self.driver)
-            action.tap(element=None, x=548, y=158, count=1).perform()
-            sleep(2)
-        except:
-            take_new_button.click()
-
-    def type_description_of_the_photo(self, text):
+    def type_description(self, description):
 
         sleep(2)
         logging.info("type text into description field")
         description_field = self.driver.find_element(*PhotoScreen.DESCRIPTION_FIELD_ios)
-        self.assertIsNotNone(description_field)
+        self.assertIsNotNone(description_field, "Description field not found")
         description_field.click()
-        description_field.send_keys(text)
+        description_field.send_keys(description)
+
+    def click_gallery_button(self):
+
+        # add coordinates for iPhones - clicking is not working because button is invisible
+        logging.info("clicking in 'Gallery' button")
+        try:
+            action = TouchAction(self.driver)
+            action.tap(element=None, x=180, y=158, count=1).perform()
+        except NoSuchElementException:
+            gallery_button = self.driver.find_element(*PhotoScreen.GALLERY_BUTTON_ios)
+            if gallery_button.is_displayed():
+                self.assertIsNotNone(gallery_button, "Gallery button not found")
+                gallery_button.click()
+
+    def click_take_new_button(self):
+
+        logging.info("clicking in 'Take new' button")
+        try:
+            take_new_button = self.driver.find_element(*PhotoScreen.TAKE_NEW_BUTTON_ios)
+            if take_new_button.is_displayed():
+                self.assertIsNotNone(take_new_button, "Take new button not found")
+                take_new_button.click()
+        except NoSuchElementException:
+            action = TouchAction(self.driver)
+            action.tap(element=None, x=548, y=158, count=1).perform()
+        # add coordinates for iPhones
 
     def click_send_button(self):
 
-        logging.info("click send button")
+        logging.info("click 'Send' button")
         send_button = self.driver.find_element(*PhotoScreen.SEND_BUTTON_ios)
-        self.assertIsNotNone(send_button)
+        self.assertIsNotNone(send_button, "Send button not found")
         send_button.click()
-        WebDriverWait(self.driver, 180).until(
+        WebDriverWait(self.driver, 360).until(
             expected_conditions.presence_of_element_located(MainMenuScreen.LOCATION_BUTTON_ios),
-            "Failed to send photo")
-        logging.info("Photo was sent")
+            "Failed to send file")
+        logging.info("File was sent")
 
     def click_reset_button(self):
 
-        logging.info("click send button")
+        logging.info("click 'Reset' button")
         reset_button = self.driver.find_element(*PhotoScreen.RESET_BUTTON_ios)
-        self.assertIsNotNone(reset_button)
+        self.assertIsNotNone(reset_button, "Reset button not found")
         reset_button.click()
 
 
 class GalleryPage(BasePage):
 
-    def choose_photo_1(self):
+    def choose_element_1(self):
 
-        logging.info("choosing photo 1")
-        choose_photo = self.driver.find_element(*GalleryScreen.GALLERY_PHOTO_1_ios)
-        self.assertIsNotNone(choose_photo)
-        choose_photo.click()
+        logging.info("choosing element 1")
+        choose_element_1 = self.driver.find_element(*GalleryScreen.GALLERY_ELEMENT_1_ios)
+        self.assertIsNotNone(choose_element_1, "first element in gallery not found")
+        choose_element_1.click()
+
+    def choose_videos_gallery(self):
+
+        logging.info("choose videos gallery")
+        choose_videos_gallery = self.driver.find_element(*GalleryScreen.GALLERY_VIDEOS_POPOVER_ios)
+        self.assertIsNotNone(choose_videos_gallery, "videos gallery not found")
+        choose_videos_gallery.click()
+
+    def click_use_video_button(self):
+
+        logging.info("click 'Use' button")
+        use_video_button = self.driver.find_element(*GalleryScreen.USE_VIDEO_BUTTON_ios)
+        self.assertIsNotNone(use_video_button, "use video button not found")
+        use_video_button.click()
+
+
+class VideoPage(PhotoPage):
+    """A class for methods to handle Video Page"""
+
+    def check_if_video_page_was_opened(self):
+
+        video_page_header = self.driver.find_element(*VideoScreen.VIDEO_PAGE_HEADER_ios)
+        self.assertIsNotNone(video_page_header, "Video page header was not found")
+        logging.info("Video page was opened")
+
+    def click_record_new_button(self):
+
+        logging.info("clicking in 'Record new' button")
+        try:
+            record_new_button = self.driver.find_element(*VideoScreen.RECORD_NEW_BUTTON_ios)  # there is bug in app - clicking on empty space on 'Video' page causes to open Camera
+            if record_new_button.is_displayed():
+                self.assertIsNotNone(record_new_button, "record new button not found")
+                record_new_button.click()
+        except NoSuchElementException:
+            action = TouchAction(self.driver)
+            action.tap(element=None, x=548, y=158, count=1).perform()
+        # add coordinates for iPhones
 
 
 class CameraPage(BasePage):
+    """A class for methods to handle Camera"""
 
     def take_a_photo(self):
 
         logging.info("taking photo")
         photo_capture = self.driver.find_element(*CameraScreen.PHOTO_CAPTURE_ios)
-        self.assertIsNotNone(photo_capture)
+        self.assertIsNotNone(photo_capture, "photo capture button not found")
         photo_capture.click()
+
+    def capture_video(self):
+
+        logging.info("recording new video")
+        record_new_video = self.driver.find_element(*CameraScreen.VIDEO_CAPTURE_ios)
+        self.assertIsNotNone(record_new_video, "video capture button not found")
+        record_new_video.click()
 
     def click_cancel(self):
 
         logging.info("click Cancel")
         cancel = self.driver.find_element(*CameraScreen.CANCEL_BUTTON_ios)
-        self.assertIsNotNone(cancel)
+        self.assertIsNotNone(cancel, "Cancel button not found")
         cancel.click()
 
     def click_use_photo(self):
 
         logging.info("click Use Photo")
         use_photo = self.driver.find_element(*CameraScreen.USE_PHOTO_ios)
-        self.assertIsNotNone(use_photo)
+        self.assertIsNotNone(use_photo, "Use photo button not found")
         use_photo.click()
 
-    def retake_photo(self):
+    def click_use_video(self):
+
+        logging.info("click Use Video")
+        use_video = self.driver.find_element(*CameraScreen.USE_VIDEO_ios)
+        self.assertIsNotNone(use_video, "Use video button not found")
+        use_video.click()
+        sleep(2)
+
+    def click_retake(self):
 
         logging.info("click Retake")
         retake_photo = self.driver.find_element(*CameraScreen.RETAKE_ios)
-        self.assertIsNotNone(retake_photo)
+        self.assertIsNotNone(retake_photo, "Retake button not found")
         retake_photo.click()
 
     def choose_camera(self):
 
         logging.info("click choose camera")
         chooser_camera = self.driver.find_element(*CameraScreen.CAMERA_CHOOSER_ios)
-        self.assertIsNotNone(chooser_camera)
+        self.assertIsNotNone(chooser_camera, "Choose camera button not found")
         chooser_camera.click()
 
 
@@ -388,15 +445,13 @@ class LocationPage(BasePage):
         
         logging.info("clicking in 'Send once now' button")
         send_once_now_button = self.driver.find_element(*LocationScreen.SEND_ONCE_NOW_ios)
-        self.assertIsNotNone(send_once_now_button)
+        self.assertIsNotNone(send_once_now_button, "Send once now button not found")
         send_once_now_button.click()
 
     def check_if_location_was_sent(self):
 
         sleep(2)
         logging.info("check if location was sent")
-        # location_status = self.driver.find_element(*LocationScreen.LOCATION_STATUS_ios)
-        # self.assertIsNotNone(location_status)
         try:
             WebDriverWait(self.driver, 30).until(
                 expected_conditions.presence_of_element_located(LocationScreen.LOCATION_STATUS_ios),
@@ -410,47 +465,47 @@ class LocationPage(BasePage):
 
         logging.info("clicking in 'Send every' selector")
         send_every_button = self.driver.find_element(*LocationScreen.SEND_EVERY_SPINNER_ios)
-        self.assertIsNotNone(send_every_button)
+        self.assertIsNotNone(send_every_button, "Send every button not found")
         send_every_button.click()
 
     def choose_send_every_5_minutes_option(self):
 
         logging.info("choose send every '5 minutes' option")
         choose_5_minutes_option = self.driver.find_element(*LocationScreen.CHOOSE_5_MINUTES_OPTION_iPad)
-        self.assertIsNotNone(choose_5_minutes_option)
+        self.assertIsNotNone(choose_5_minutes_option, "5 minutes option not found")
         choose_5_minutes_option.click()
 
     def check_if_5_minutes_option_was_chosen(self):
 
         logging.info("check if send every '5 minutes'  option was chosen")
         check_if_5_minutes_option_was_chosen = self.driver.find_element(*LocationScreen.ASSERT_5_MINUTES_OPTION_ios)
-        self.assertIsNotNone(check_if_5_minutes_option_was_chosen)
+        self.assertIsNotNone(check_if_5_minutes_option_was_chosen, "5 minutes option was not chosen")
 
     def click_for_the_next(self):
 
         logging.info("clicking in 'For the next' selector")
         for_the_next = self.driver.find_element(*LocationScreen.FOR_THE_NEXT_SPINNER_ios)
-        self.assertIsNotNone(for_the_next)
+        self.assertIsNotNone(for_the_next, "for the next selector not found")
         for_the_next.click()
 
     def choose_1_hour_option(self):
 
         logging.info("choose '1 hour' option")
         choose_1_hour_option = self.driver.find_element(*LocationScreen.CHOOSE_1_HOUR_OPTION_iPad)
-        self.assertIsNotNone(choose_1_hour_option)
+        self.assertIsNotNone(choose_1_hour_option, "1 hour option not found")
         choose_1_hour_option.click()
 
     def check_if_1_hour_option_was_chosen(self):
 
         logging.info("check if '1 hour' option was chosen")
         check_if_1hour_option_was_chosen = self.driver.find_element(*LocationScreen.ASSERT_1_HOUR_OPTION_ios)
-        self.assertIsNotNone(check_if_1hour_option_was_chosen)
+        self.assertIsNotNone(check_if_1hour_option_was_chosen, "1 hour option was not chosen")
 
     def click_start_button(self):
 
         logging.info("click 'Start' button")
         start_button = self.driver.find_element(*LocationScreen.START_BUTTON_ios)
-        self.assertIsNotNone(start_button)
+        self.assertIsNotNone(start_button, "start button not found")
         start_button.click()
 
     def check_if_start_button_was_clicked(self):
@@ -473,7 +528,7 @@ class EventsPage(BasePage):
         sleep(2)
         logging.info("check if Events were opened")
         events_header = self.driver.find_element(*EventsScreen.EVENTS_HEADER_ios)
-        self.assertIsNotNone(events_header)
+        self.assertIsNotNone(events_header, "Events header not found")
 
     def filter_events_by_Type(self):
 
@@ -542,7 +597,7 @@ class EventsPage(BasePage):
 
         logging.info("clicking in 'Set as primary' button")
         set_as_primary_button = self.driver.find_element(*EventDetailsScreen.SET_AS_PRIMARY_BUTTON_ios)
-        self.assertIsNotNone(set_as_primary_button)
+        self.assertIsNotNone(set_as_primary_button, "Set as primary button not found")
         set_as_primary_button.click()
         sleep(2)
 
@@ -550,7 +605,7 @@ class EventsPage(BasePage):
 
         logging.info("clicking in 'Clear primary event' button")
         clear_primary_event_button = self.driver.find_element(*EventsScreen.CLEAR_PRIMARY_EVENT_BUTTON_ios)
-        self.assertIsNotNone(clear_primary_event_button)
+        self.assertIsNotNone(clear_primary_event_button, "Clear primary event button not found")
         clear_primary_event_button.click()
         logging.info("checking notification - 'Primary event cleared'")
         notification = self.driver.find_element(*EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED_ios)
@@ -560,7 +615,7 @@ class EventsPage(BasePage):
 
         logging.info("open created event")
         created_event1 = self.driver.find_element(*EventsScreen.CREATED_EVENT_1_ios)
-        self.assertIsNotNone(created_event1)
+        self.assertIsNotNone(created_event1, "Created event 1 not found")
         created_event1.click()
         sleep(5)
 
@@ -568,7 +623,7 @@ class EventsPage(BasePage):
 
         logging.info("open previously created Event, Edit and Create mapping data")
         created_event2 = self.driver.find_element(*EventsScreen.CREATED_EVENT_2_ios)
-        self.assertIsNotNone(created_event2)
+        self.assertIsNotNone(created_event2, "Created event 2 not found")
         created_event2.click()
         sleep(5)
         
@@ -576,7 +631,7 @@ class EventsPage(BasePage):
 
         logging.info("open previously created Event, Edit and Create mapping data")
         created_event3 = self.driver.find_element(*EventsScreen.CREATED_EVENT_3_ios)
-        self.assertIsNotNone(created_event3)
+        self.assertIsNotNone(created_event3, "Created event 3 not found")
         created_event3.click()
         sleep(5)
 
@@ -585,14 +640,14 @@ class EventsPage(BasePage):
 
         logging.info("click_on_previously_created_event_for_chooser_field")
         event_for_chooser_field = self.driver.find_element(*EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER_ios)
-        self.assertIsNotNone(event_for_chooser_field)
+        self.assertIsNotNone(event_for_chooser_field, "event_for_chooser_field not found")
         event_for_chooser_field.click()
 
     def click_on_previously_created_event_for_subform_chooser(self):
 
         logging.info("click_on_previously_created_event_for_subform_chooser")
         event_for_subform = self.driver.find_element(*EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER_ios)
-        self.assertIsNotNone(event_for_subform)
+        self.assertIsNotNone(event_for_subform, "event_for_subform not found")
         event_for_subform.click()
         sleep(1)
 
@@ -602,21 +657,21 @@ class EventsTypesPage(BasePage):
     def choose_Incident_type_of_event(self):
 
         event_type_incident = self.driver.find_element(*TypesOfEventsScreen.INCIDENT_TYPE_OF_EVENT_ios)
-        self.assertIsNotNone(event_type_incident)
+        self.assertIsNotNone(event_type_incident, "event_type_incident not found")
         logging.info("choosing Incident type of new event")
         event_type_incident.click()
 
     def choose_Event_for_on_load_save_type_of_event(self):
 
         event_type_onload = self.driver.find_element(*TypesOfEventsScreen.EVENT_FOR_ON_LOAD_SAVE_ios)
-        self.assertIsNotNone(event_type_onload)
+        self.assertIsNotNone(event_type_onload, "event_type_onload not found")
         logging.info("choose type of event = event_for_on_load/save_test")
         event_type_onload.click()
 
     def choose_Event_for_chooser_fields_type_of_event(self):
 
         event_type_chooser = self.driver.find_element(*TypesOfEventsScreen.EVENT_FOR_CHOOSER_FIELDS_ios)
-        self.assertIsNotNone(event_type_chooser)
+        self.assertIsNotNone(event_type_chooser, "event_type_chooser not found")
         logging.info("choose type of event = event for chooser fields")
         event_type_chooser.click()
 
@@ -654,6 +709,7 @@ class EventEditPage(BasePage):
             logging.info("choose_severity_lvl1")
             choose_severity_lvl1 = self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL1_iPad)
             if choose_severity_lvl1.is_displayed():
+                self.assertIsNotNone(choose_severity_lvl1, "choose_severity_lvl1 not found")
                 choose_severity_lvl1.click()
             else:
                 # NEED A WAY TO SCROLL WHEEL PICKER ON iPhones, scroll, tap and move, click on element,
@@ -670,9 +726,8 @@ class EventEditPage(BasePage):
             logging.info("choose_severity_lvl2")
             choose_severity_lvl2 = self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL2_iPad)
             if choose_severity_lvl2.is_displayed():
+                self.assertIsNotNone(choose_severity_lvl2, "choose_severity_lvl2 not found")
                 choose_severity_lvl2.click()
-            else:
-                pass
         except NoSuchElementException:
             pass
         sleep(1)
@@ -683,9 +738,8 @@ class EventEditPage(BasePage):
             logging.info("choose_severity_lvl3")
             choose_severity_lvl3 = self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL3_iPad)
             if choose_severity_lvl3.is_displayed():
+                self.assertIsNotNone(choose_severity_lvl3, "choose_severity_lvl3 not found")
                 choose_severity_lvl3.click()
-            else:
-                pass
         except NoSuchElementException:
             pass
         sleep(1)
@@ -732,7 +786,7 @@ class EventEditPage(BasePage):
         
         logging.info("click on Cancel button")
         cancel_button = self.driver.find_element(*EventEditScreen.CANCEL_BUTTON_ios)
-        self.assertIsNotNone(cancel_button)
+        self.assertIsNotNone(cancel_button, "Cancel button not found")
         cancel_button.click()
 
     # only for event type: "event_for_on_load/save_test"

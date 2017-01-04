@@ -48,7 +48,7 @@ class TestCase6iOS(unittest.TestCase):
         main_page = MainPage(self.driver)
         main_page.dismiss_ios_notifications()
         main_page.logout_if_already_logged_in()
-        logging.info("starting Test Case 1: send photo")
+        logging.info("starting Test Case 6: Risk")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()
         login_page = LoginPage(self.driver)

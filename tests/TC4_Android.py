@@ -37,7 +37,7 @@ class TestCase4Android(unittest.TestCase):
 
     def test_send_location(self):
 
-        logging.info("starting Test Case 1: send location")
+        logging.info("starting Test Case 4: send location")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()
         login_page = LoginPage(self.driver)

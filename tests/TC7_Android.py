@@ -1,39 +1,38 @@
-# Test Case 5 - Send Photo -- OCAMOB-43
+# Test Case 7 - Sending Video -- OCAMOB-45
 
-# before run test - prepare sample photo file on device
+# before run test - prepare sample video file on device
 
 # open OCA app
-# dismiss android notifications
+# dismiss iOS notifications
 # input login, password and domain
 # click on Submit button
 # accept terms if needed
 # dismiss alert about expiring password
-# dismiss android notifications
+# dismiss iOS notifications
 # check if button "EVENTS" is present
-# From the main menu click on Photo.
-# Click Gallery and select an existing photo.
-# Enter a description and click Send.
-# Click on Photo and now click Take New. (step 4)
-# Click the change camera button on the bottom right  twice.
-# Click on the button below Photo to take a picture.
-# Click on Use Photo.
-# Enter a description and press Send.
-# Repeat steps 4 & 6.
-# Press Retake and take another photo.
-# Repeat steps 7 & 8.
+# From the main menu, click Video.
+# Click Gallery, and select a video that has already been recorded.
+# Enter a description and press the Send button.
+# Click Video and now select Record New. (step 4)
+# Press the button under video to start recording a video. Press the button again to stop recording.
+# Press Use Video to select the video.
+# Enter a description and press the Send button.
+# Repeat steps 4 & 5.
+# Press retake, and record a new video.
+# Repeat steps 6 & 7.
 
 from appium import webdriver
 from desired_capabilities import DesiredCapabilities
 from page_android import *
 
 
-class TestCase5android(unittest.TestCase):
+class TestCase7Android(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
         # choose desired capabilities from desired_capabilities.py
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_5
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_6
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
@@ -44,9 +43,9 @@ class TestCase5android(unittest.TestCase):
         logging.info("Quitting")
         self.driver.quit()
 
-    def test_send_photo(self):
+    def test_send_video(self):
 
-        logging.info("starting Test Case 5: send photo")
+        logging.info("starting Test Case 7: Sending Video")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()
         login_page = LoginPage(self.driver)
@@ -61,42 +60,43 @@ class TestCase5android(unittest.TestCase):
         main_page.alert_expiring_password()
         main_page.dismiss_android_notifications()
         main_page.check_presence_of_events_button()
-        main_page.open_PHOTO()
-        photo_page = PhotoPage(self.driver)
+        main_page.open_VIDEO()
+        video_page = VideoPage(self.driver)
         android_device.alert_android_allow()
-        photo_page.check_if_photo_page_was_opened()
-        photo_page.click_gallery_button()
+        video_page.check_if_video_page_was_opened()
+        video_page.click_gallery_button()
+        gallery_video_page = GalleryPage(self.driver)
+        gallery_video_page.choose_element_1()
         android_device.alert_android_allow()
-        gallery_page = GalleryPage(self.driver)
-        gallery_page.choose_element_1()
-        android_device.alert_android_allow()
-        photo_page.type_description("test Android - photo 1 from gallery")
+        video_page.type_description("test Android - video 1 from gallery")
         android_device.hide_keyboard()
-        photo_page.click_send_button()
-        main_page.open_PHOTO()
-        photo_page.click_take_new_button()
+        video_page.click_send_button()
+        main_page.open_VIDEO()
+        video_page.click_record_new_button()
         android_device.alert_android_allow()
         camera_page = CameraPage(self.driver)
-        camera_page.choose_camera()
-        camera_page.choose_camera()
+        camera_page.capture()
+        sleep(1)  # time for recording video
         camera_page.capture()
         camera_page.click_use()
-        photo_page.type_description("test Android - take a photo 1")
+        video_page.type_description("test Android - video 1")
         android_device.hide_keyboard()
-        photo_page.click_send_button()
-        main_page.open_PHOTO()
-        photo_page.click_take_new_button()
-        camera_page.choose_camera()
-        camera_page.choose_camera()
+        video_page.click_send_button()
+        main_page.open_VIDEO()
+        video_page.click_record_new_button()
+        camera_page.capture()
+        sleep(1)  # time for recording video
         camera_page.capture()
         camera_page.click_retake()
         camera_page.capture()
+        sleep(1)  # time for recording video
+        camera_page.capture()
         camera_page.click_use()
-        photo_page.type_description("test Android - take a photo 2")
-        photo_page.click_send_button()
+        video_page.type_description("test Android - video 2")
+        video_page.click_send_button()
         main_page.check_presence_of_events_button()
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestCase5android)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestCase7Android)
     unittest.TextTestRunner(verbosity=2).run(suite)

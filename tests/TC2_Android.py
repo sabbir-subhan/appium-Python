@@ -35,6 +35,7 @@ class TestCase2Android(unittest.TestCase):
 
     def test_1_login_into_general_user_account_with_incorrect_password(self):
 
+        logging.info("starting Test Case 2: Logging in as a suspended account and with a wrong password")
         logging.info("starting test1: login_into_general_user__account_with_incorrect_password")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()

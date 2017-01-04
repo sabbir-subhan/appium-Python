@@ -35,6 +35,7 @@ class TestCase2iOS(unittest.TestCase):
 
     def test_1_login_into_general_user_account_with_incorrect_password(self):
 
+        logging.info("starting Test Case 2: Logging in as a suspended account and with a wrong password")
         main_page = MainPage(self.driver)
         main_page.dismiss_ios_notifications()
         main_page.logout_if_already_logged_in()

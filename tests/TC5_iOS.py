@@ -1,5 +1,7 @@
 # Test Case 5 - Send Photo -- OCAMOB-43
 
+# before run test - prepare sample photo file on device
+
 # open OCA app
 # dismiss iOS notifications
 # input login, password and domain
@@ -47,7 +49,7 @@ class TestCase5iOS(unittest.TestCase):
         main_page = MainPage(self.driver)
         main_page.dismiss_ios_notifications()
         main_page.logout_if_already_logged_in()
-        logging.info("starting Test Case 1: send photo")
+        logging.info("starting Test Case 5: send photo")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()
         login_page = LoginPage(self.driver)
@@ -66,8 +68,8 @@ class TestCase5iOS(unittest.TestCase):
         photo_page.check_if_photo_page_was_opened()
         photo_page.click_gallery_button()
         gallery_page = GalleryPage(self.driver)
-        gallery_page.choose_photo_1()
-        photo_page.type_description_of_the_photo("test iOS - photo 1 from gallery")
+        gallery_page.choose_element_1()
+        photo_page.type_description("test iOS - photo 1 from gallery")
         ios_device.hide_keyboard()
         photo_page.click_send_button()
         main_page.open_PHOTO()
@@ -77,7 +79,7 @@ class TestCase5iOS(unittest.TestCase):
         camera_page.choose_camera()
         camera_page.take_a_photo()
         camera_page.click_use_photo()
-        photo_page.type_description_of_the_photo("test iOS - take a photo 1")
+        photo_page.type_description("test iOS - take a photo 1")
         ios_device.hide_keyboard()
         photo_page.click_send_button()
         main_page.open_PHOTO()
@@ -85,10 +87,10 @@ class TestCase5iOS(unittest.TestCase):
         camera_page.choose_camera()
         camera_page.choose_camera()
         camera_page.take_a_photo()
-        camera_page.retake_photo()
+        camera_page.click_retake()
         camera_page.take_a_photo()
         camera_page.click_use_photo()
-        photo_page.type_description_of_the_photo("test iOS - take a photo 2")
+        photo_page.type_description("test iOS - take a photo 2")
         photo_page.click_send_button()
         main_page.check_presence_of_events_button()
 

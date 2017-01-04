@@ -29,7 +29,7 @@ class LoginScreen:
                                                            '"OCA now supports ")]]')
     SSO_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'SSO')
 
-    # "No" button for sending notifications on iOS
+    # "No" button for sending notifications on Android
     NO_FOR_SENDING_NOTIFICATIONS_ON = (MobileBy.ACCESSIBILITY_ID, 'No')
 
     # ACCEPT_BUTTON on Terms and Conditions"
@@ -58,10 +58,29 @@ class LoginScreen:
 class MainMenuScreen:
     """A class for main menu screen locators - first screen after correct login into the app."""
     BUTTONS = (MobileBy.CLASS_NAME, 'android.view.View')
-    LOGOUT_BUTTON = (MobileBy.XPATH, './/android.view.View[@content-desc[contains(., "LOGOUT")]]') # there is problem with that locator because buttons suddenly don't have attribute content-desc
+    RISKS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "RISKS")]]')
     EVENTS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "EVENTS")]]')
+    LOGS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "LOGS")]]')
+    REPORTS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "REPORTS")]]')
+    MAP_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "MAP")]]')
     LOCATION_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "LOCATION")]]')
+    ASSETS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "ASSETS")]]')
+    MY_MESSAGES_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "MY MESSAGES")]]')
+    INBOX_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "INBOX")]]')
+    COMPOSE_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "COMPOSE")]]')
+    SENT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "SENT")]]')
     PHOTO_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "PHOTO")]]')
+    VIDEO_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "VIDEO")]]')
+    SOUND_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "SOUND")]]')
+    TASKS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "TASKS")]]')
+    DOCUMENTS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "DOCUMENTS")]]')
+    CONTACTS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "CONTACTS")]]')
+    ALLOCATE_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "ALLOCATE")]]')
+    SETTINGS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "SETTINGS")]]')
+    ACTIVATE_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "ACTIVATE")]]')
+    OFFLINE_SYNC_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "OFFLINE SYNC")]]')
+    ABOUT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "ABOUT")]]')
+    LOGOUT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "LOGOUT")]]')  # there is problem with that locator because buttons suddenly don't have attribute content-desc
 
 
 class LocationScreen:
@@ -235,22 +254,30 @@ class PhotoScreen:
     DESCRIPTION_FIELD = (MobileBy.ACCESSIBILITY_ID, 'Description (optional)')
 
 
-class CameraScreen:
-    """A class for handling Camera"""
-    PHOTO_CAPTURE_ANDROID_4_and_5 = (MobileBy.ACCESSIBILITY_ID, 'Shutter')
-    PHOTO_CAPTURE_ANDROID6 = (MobileBy.XPATH, '//GLButton[@text="Shutter"]')
-    CANCEL_PHOTO_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Review cancel')
-    CAMERA_CHOOSER_ANDROID4 = (MobileBy.ID, 'com.android.camera2:id/btn_switch_camera')
-    CAMERA_CHOOSER = (MobileBy.ACCESSIBILITY_ID, 'Switch camera')  # for android 6
-    CAMERA_CHOOSER2 = (MobileBy.ID, 'com.tct.camera:id/onscreen_camera_picker')
-    RETAKE = (MobileBy.ACCESSIBILITY_ID, 'Review retake')
-    USE_PHOTO_ANDROID4 = (MobileBy.ACCESSIBILITY_ID, 'Review done')
-    USE_PHOTO_ANDROID_5_and_6 = (MobileBy.ACCESSIBILITY_ID, 'OK')
+class VideoScreen:
+    """A class for Video screen locators - screen after clicking into Photo button in Main Menu."""
+    VIDEO_PAGE_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Send a video to OCA')
+    RECORD_NEW_BUTTON = (MobileBy.XPATH, '//android.view.View[2]/android.view.View[3]/android.view.View[1]')
 
 
 class GalleryScreen:
     """A class for handling Gallery"""
-    GALLERY_PHOTO_1 = (MobileBy.XPATH, '//android.widget.GridView[1]/android.widget.FrameLayout[1]')
+    GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//android.widget.GridView[1]/android.widget.FrameLayout[1]')
+
+
+class CameraScreen:
+    """A class for handling Camera"""
+    CAPTURE_BUTTON_ANDROID_4_and_5 = (MobileBy.ACCESSIBILITY_ID, 'Shutter')
+    CAPTURE_BUTTON_ANDROID_6 = (MobileBy.XPATH, '//GLButton[@text="Shutter"]')
+    CANCEL_PHOTO_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Review cancel')
+    CAMERA_CHOOSER_ANDROID4 = (MobileBy.ID, 'com.android.camera2:id/btn_switch_camera')
+    CAMERA_CHOOSER = (MobileBy.ACCESSIBILITY_ID, 'Switch camera')  # for android 6
+    CAMERA_CHOOSER2 = (MobileBy.ID, 'com.tct.camera:id/onscreen_camera_picker')
+    RETAKE_ANDROID_4_and_5 = (MobileBy.ACCESSIBILITY_ID, 'Review retake')  # com.tct.camera:id/btn_retake
+    RETAKE_ANDROID_6 = (MobileBy.ID, 'com.sec.android.app.camera:id/retry')
+    USE_PHOTO_ANDROID4 = (MobileBy.ACCESSIBILITY_ID, 'Review done')
+    USE_PHOTO_ANDROID5 = (MobileBy.ACCESSIBILITY_ID, 'OK')  # com.tct.camera:id/btn_done
+    USE_PHOTO_ANDROID6 = (MobileBy.ID, 'com.sec.android.app.camera:id/okay')
 
 
 class RisksScreen:

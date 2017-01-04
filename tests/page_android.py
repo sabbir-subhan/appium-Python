@@ -104,7 +104,6 @@ class LoginPage(BasePage):
         action = TouchAction(self.driver)
         action.long_press(el=username_field, duration=1000).perform()
         self.driver.keyevent(67)
-        # self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME).clear()
         logging.info("type username")
         username_field.send_keys(Credentials.get_username(username))
 
@@ -277,6 +276,13 @@ class MainPage(BasePage):
         self.assertIsNotNone(photo_button)
         photo_button.click()
 
+    def open_VIDEO(self):
+
+        logging.info("clicking in Video button")
+        video_button = self.driver.find_element(*MainMenuScreen.VIDEO_BUTTON)
+        self.assertIsNotNone(video_button, "VIDEO button not found")
+        video_button.click()
+
 
 class PhotoPage(BasePage):
 
@@ -291,28 +297,29 @@ class PhotoPage(BasePage):
 
         logging.info("clicking in Gallery button")
         gallery_button = self.driver.find_element(*PhotoScreen.GALLERY_BUTTON)
-        self.assertIsNotNone(gallery_button)
+        self.assertIsNotNone(gallery_button, "Gallery button not found")
         gallery_button.click()
 
     def click_take_new_button(self):
 
         logging.info("clicking in Take new button")
         take_new_button = self.driver.find_element(*PhotoScreen.TAKE_NEW_BUTTON)
-        self.assertIsNotNone(take_new_button)
+        self.assertIsNotNone(take_new_button, "Take new button not found")
         take_new_button.click()
 
-    def type_description_of_the_photo(self, text):
+    def type_description(self, description):
 
         WebDriverWait(self.driver, 35).until(
             expected_conditions.presence_of_element_located(PhotoScreen.DESCRIPTION_FIELD),
             "Failed to locate description field for photo")
         logging.info("type text into description field")
         description_field = self.driver.find_element(*PhotoScreen.DESCRIPTION_FIELD)
-        self.assertIsNotNone(description_field)
-        description_field.send_keys(text)
+        self.assertIsNotNone(description_field, "Description field not found")
+        description_field.send_keys(description)
 
     def click_send_button(self):
 
+        sleep(1)
         logging.info("click send button")
         send_button = self.driver.find_element(*PhotoScreen.SEND_BUTTON)
         self.assertIsNotNone(send_button)
@@ -333,26 +340,50 @@ class PhotoPage(BasePage):
 
 class GalleryPage(BasePage):
 
-    def choose_photo_1(self):
+    def choose_element_1(self):
 
-        logging.info("choosing photo 1")
-        choose_photo = self.driver.find_element(*GalleryScreen.GALLERY_PHOTO_1)
-        self.assertIsNotNone(choose_photo)
-        choose_photo.click()
+        logging.info("choosing element 1")
+        choose_element_1 = self.driver.find_element(*GalleryScreen.GALLERY_ELEMENT_1)
+        self.assertIsNotNone(choose_element_1, "first element in gallery not found")
+        choose_element_1.click()
+
+
+class VideoPage(PhotoPage):
+    """A class for methods to handle Video Page"""
+
+    def check_if_video_page_was_opened(self):
+
+        video_page_header = self.driver.find_element(*VideoScreen.VIDEO_PAGE_HEADER)
+        self.assertIsNotNone(video_page_header, "Video page header was not found")
+        logging.info("Video page was opened")
+
+    def click_record_new_button(self):
+
+        logging.info("clicking in 'Record new' button")
+        try:
+            record_new_button = self.driver.find_element(*VideoScreen.RECORD_NEW_BUTTON)
+            if record_new_button.is_displayed():
+                self.assertIsNotNone(record_new_button, "record new button not found")
+                record_new_button.click()
+        except NoSuchElementException:
+            action = TouchAction(self.driver)
+            action.tap(element=None, x=548, y=158, count=1).perform()
+        # add coordinates for iPhones
 
 
 class CameraPage(BasePage):
+    """A class for methods to handle Camera"""
 
-    def take_a_photo(self):
+    def capture(self):
 
         logging.info("taking photo")
         try:
-            photo_capture1 = self.driver.find_element(*CameraScreen.PHOTO_CAPTURE_ANDROID6)
+            photo_capture1 = self.driver.find_element(*CameraScreen.CAPTURE_BUTTON_ANDROID_6)
             if photo_capture1.is_displayed():
                 self.assertIsNotNone(photo_capture1)
                 photo_capture1.click()
         except NoSuchElementException:
-            photo_capture2 = self.driver.find_element(*CameraScreen.PHOTO_CAPTURE_ANDROID_4_and_5)
+            photo_capture2 = self.driver.find_element(*CameraScreen.CAPTURE_BUTTON_ANDROID_4_and_5)
             if photo_capture2.is_displayed():
                 self.assertIsNotNone(photo_capture2)
                 photo_capture2.click()
@@ -364,9 +395,9 @@ class CameraPage(BasePage):
         self.assertIsNotNone(cancel)
         cancel.click()
 
-    def click_use_photo(self):
+    def click_use(self):
 
-        logging.info("click Use Photo")
+        logging.info("Use Photo")
         try:
             use_photo1 = self.driver.find_element(*CameraScreen.USE_PHOTO_ANDROID4)
             if use_photo1.is_displayed():
@@ -374,20 +405,41 @@ class CameraPage(BasePage):
                 action = TouchAction(self.driver)
                 action.tap(element=use_photo1, count=1).perform()
         except NoSuchElementException:
-            use_photo2 = self.driver.find_element(*CameraScreen.USE_PHOTO_ANDROID_5_and_6)
+            pass
+        try:
+            use_photo2 = self.driver.find_element(*CameraScreen.USE_PHOTO_ANDROID5)
             if use_photo2.is_displayed():
                 self.assertIsNotNone(use_photo2)
                 action = TouchAction(self.driver)
                 action.tap(element=use_photo2, count=1).perform()
-            else:
-                self.fail("could not locate 'Use photo' button")
+        except NoSuchElementException:
+            pass
+        try:
+            use_photo3 = self.driver.find_element(*CameraScreen.USE_PHOTO_ANDROID6)
+            if use_photo3.is_displayed():
+                self.assertIsNotNone(use_photo3)
+                action = TouchAction(self.driver)
+                action.tap(element=use_photo3, count=1).perform()
+        except NoSuchElementException:
+            pass
 
-    def retake_photo(self):
+    def click_retake(self):
 
-        logging.info("click Retake")
-        retake_photo = self.driver.find_element(*CameraScreen.RETAKE)
-        self.assertIsNotNone(retake_photo)
-        retake_photo.click()
+        logging.info("Retake photo")
+        try:
+            retake_photo_android_4_and_5 = self.driver.find_element(*CameraScreen.RETAKE_ANDROID_4_and_5)
+            if retake_photo_android_4_and_5.is_displayed():
+                self.assertIsNotNone(retake_photo_android_4_and_5)
+                retake_photo_android_4_and_5.click()
+        except NoSuchElementException:
+            pass
+        try:
+            retake_photo_android_6 = self.driver.find_element(*CameraScreen.RETAKE_ANDROID_6)
+            if retake_photo_android_6.is_displayed():
+                self.assertIsNotNone(retake_photo_android_6)
+                retake_photo_android_6.click()
+        except NoSuchElementException:
+            pass
 
     def choose_camera(self):
 
@@ -793,7 +845,7 @@ class EventEditPage(BasePage):
         self.assertIsNotNone(cancel_button)
         try:
             self.driver.find_element(*EventEditScreen.CANCEL_BUTTON).click()
-        except:
+        except NoSuchElementException:
             cancel_button.click()
         sleep(2)
 

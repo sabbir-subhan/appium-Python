@@ -1,4 +1,5 @@
-# Test Case 1 - Log Into OCA mobile via direct Login  -- OCAMOB-38
+# Test Case 6 - Risk -- OCAMOB-44
+
 # open OCA app
 # dismiss iOS notifications
 # input login, password and domain
@@ -7,6 +8,17 @@
 # dismiss alert about expiring password
 # dismiss iOS notifications
 # check if button "EVENTS" is present
+# From the main menu click on Risks.
+# Create a new Risk Register
+# Click on Risk >Click on Existing library >Click Add Control
+# CClick on Risk Register>Click on new>Click on Add new Context
+# Click on Risk Register>Click on New>Click on Add new Risk
+# Click on Risk Register>Click on New>Click on Add new library Risk
+# Click on Risk>Select a Risk Register>Select a Context>Click on Context>Click on more >Add new control
+# Click on Risk>Select a Risk Register>Select a Context>Click on Context>Click on more >Delete this risk
+# Click on Risk>Select a Risk Register>Select a Context>Click on Context>Click on more >Add Library Control
+# Click on Risk>Select a Risk Register>Select a Context>Click on Context>Click on more >Mark as Reviewed
+# Click on Risk >Risk register>View>View Register
 
 
 from appium import webdriver
@@ -14,13 +26,13 @@ from desired_capabilities import DesiredCapabilities
 from page_android import *
 
 
-class TestCase1Android(unittest.TestCase):
+class TestCase6Android(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
         # choose desired capabilities from desired_capabilities.py
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_6
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
@@ -31,14 +43,14 @@ class TestCase1Android(unittest.TestCase):
         logging.info("Quitting")
         self.driver.quit()
 
-    def test_login(self):
+    def test_manage_risks(self):
 
-        logging.info("starting Test Case 1: login into active account")
+        logging.info("starting Test Case 6: Risk")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()
         login_page = LoginPage(self.driver)
-        login_page.type_username('QA')  # change here login credentials (login and pass are defined in credentials.py)
-        login_page.type_password('QA')  # for example use: QA, general_user, admin, expired_1_day_ago, expire_today, expire_in_1_day, suspended
+        login_page.type_username('QA')
+        login_page.type_password('QA')
         login_page.type_domain_address('QA')
         android_device = AndroidDevice(self.driver)
         android_device.hide_keyboard()
@@ -51,5 +63,5 @@ class TestCase1Android(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestCase1Android)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestCase6Android)
     unittest.TextTestRunner(verbosity=2).run(suite)

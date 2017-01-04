@@ -29,7 +29,7 @@ class TestCase3iOS(unittest.TestCase):
         main_page = MainPage(self.driver)
         main_page.dismiss_ios_notifications()
         main_page.logout_if_already_logged_in()
-        logging.info("starting test: managing events")
+        logging.info("starting Test Case 3: managing events")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()
         login_page = LoginPage(self.driver)

@@ -56,12 +56,29 @@ class LoginScreen:
 
 class MainMenuScreen:
     """A class for main menu screen locators - first screen after correct login into the app."""
-    LOGOUT_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "LOGOUT")]]')
-    EVENTS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "EVENTS")]]')
-    LOCATION_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "LOCATION")]]')
-    MAP_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "MAP")]]')
-    PHOTO_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "PHOTO")]]')
     RISKS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "RISKS")]]')
+    EVENTS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "EVENTS")]]')
+    LOGS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "LOGS")]]')
+    REPORTS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "REPORTS")]]')
+    MAP_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "MAP")]]')
+    LOCATION_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "LOCATION")]]')
+    ASSETS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "ASSETS")]]')
+    MY_MESSAGES_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "MY MESSAGES")]]')
+    INBOX_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "INBOX")]]')
+    COMPOSE_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "COMPOSE")]]')
+    SENT_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "SENT")]]')
+    PHOTO_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "PHOTO")]]')
+    VIDEO_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "VIDEO")]]')
+    SOUND_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "SOUND")]]')
+    TASKS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "TASKS")]]')
+    DOCUMENTS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "DOCUMENTS")]]')
+    CONTACTS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "CONTACTS")]]')
+    ALLOCATE_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "ALLOCATE")]]')
+    SETTINGS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "SETTINGS")]]')
+    ACTIVATE_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "ACTIVATE")]]')
+    OFFLINE_SYNC_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "OFFLINE SYNC")]]')
+    ABOUT_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "ABOUT")]]')
+    LOGOUT_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "LOGOUT")]]')
 
 
 class LocationScreen:
@@ -194,17 +211,25 @@ class Map:
 class PhotoScreen:
     """A class for Photo screen locators - screen after clicking into Photo button in Main Menu."""
     PHOTO_PAGE_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Send a photo to OCA")]]')
-    GALLERY_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[2][@visible="false"]')  # appium can't tap that element - probably it's a bug in Appium
+    # GALLERY_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[2][@visible="false"]')  # appium can't tap that element - probably it's a bug in Appium
+    GALLERY_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[@name="Gallery"]')
     TAKE_NEW_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Take New")]]')
     DESCRIPTION_FIELD_ios = (MobileBy.CLASS_NAME, 'UIATextField')
     SEND_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Send"]')
     RESET_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Reset"]')
 
 
+class VideoScreen:
+    """A class for Video screen locators - screen after clicking into Photo button in Main Menu."""
+    VIDEO_PAGE_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Send a video to OCA")]]')
+    RECORD_NEW_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Record New")]]')
+
+
 class GalleryScreen:
     """A class for handling Gallery"""
-    GALLERY_PHOTO_1_ios = (MobileBy.XPATH, '//UIAPopover[1]/UIACollectionView[1]/UIACollectionCell[1]')
-    GALLERY_PHOTO_38_ios = (MobileBy.XPATH, '//UIAPopover[1]/UIACollectionView[1]/UIACollectionCell[38]')
+    GALLERY_ELEMENT_1_ios = (MobileBy.XPATH, '//UIAPopover[1]/UIACollectionView[1]/UIACollectionCell[1]')
+    GALLERY_VIDEOS_POPOVER_ios = (MobileBy.XPATH, '//UIAPopover[1]/UIATableView[1]/UIATableCell[@name="Videos"]')
+    USE_VIDEO_BUTTON_ios = (MobileBy.ACCESSIBILITY_ID, 'Use')
 
 
 class CameraScreen:
@@ -214,6 +239,8 @@ class CameraScreen:
     CAMERA_CHOOSER_ios = (MobileBy.ACCESSIBILITY_ID, 'FrontBackFacingCameraChooser')
     RETAKE_ios = (MobileBy.ACCESSIBILITY_ID, 'Retake')
     USE_PHOTO_ios = (MobileBy.ACCESSIBILITY_ID, 'Use Photo')
+    VIDEO_CAPTURE_ios = (MobileBy.ACCESSIBILITY_ID, 'VideoCapture')  # record and stop recording
+    USE_VIDEO_ios = (MobileBy.ACCESSIBILITY_ID, 'Use Video')
 
 
 class RisksScreen:
