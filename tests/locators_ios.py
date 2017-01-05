@@ -212,17 +212,29 @@ class PhotoScreen:
     """A class for Photo screen locators - screen after clicking into Photo button in Main Menu."""
     PHOTO_PAGE_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Send a photo to OCA")]]')
     # GALLERY_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[2][@visible="false"]')  # appium can't tap that element - probably it's a bug in Appium
-    GALLERY_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[@name="Gallery"]')
-    TAKE_NEW_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Take New")]]')
+    GALLERY_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[@name="Gallery"]')  # this locator will find only text, not the icon
+    TAKE_NEW_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Take New")]]')  # this locator will find only text, not the icon
     DESCRIPTION_FIELD_ios = (MobileBy.CLASS_NAME, 'UIATextField')
     SEND_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Send"]')
     RESET_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Reset"]')
 
 
 class VideoScreen:
-    """A class for Video screen locators - screen after clicking into Photo button in Main Menu."""
+    """A class for Video screen locators - screen after clicking into Video button in Main Menu."""
     VIDEO_PAGE_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Send a video to OCA")]]')
     RECORD_NEW_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Record New")]]')
+
+
+class SoundScreen:
+    """A class for Sound screen locators - screen after clicking into Sound button in Main Menu."""
+    SOUND_PAGE_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Send a sound recording to OCA")]]')
+    RECORD_SOUND_BUTTON_ios = (MobileBy.XPATH, '//UIAScrollView/UIAWebView/UIAStaticText[2]')  # appium can't tap that element - probably it's a bug in Appium - visible: false
+
+
+class SoundRecorderScreen:
+    """A class for Sound Recorder screen locators - screen after clicking into record sound button in Sound Page."""
+    RECORD_SOUND_ios = (MobileBy.ACCESSIBILITY_ID, 'toggle audio recording')
+    DONE_BUTTON_ios = (MobileBy.ACCESSIBILITY_ID, 'Done')
 
 
 class GalleryScreen:

@@ -76,7 +76,7 @@ class TestCase7Android(unittest.TestCase):
         android_device.alert_android_allow()
         camera_page = CameraPage(self.driver)
         camera_page.capture()
-        sleep(1)  # time for recording video
+        sleep(0.2)  # time for recording video
         camera_page.capture()
         camera_page.click_use()
         video_page.type_description("test Android - video 1")
@@ -85,11 +85,11 @@ class TestCase7Android(unittest.TestCase):
         main_page.open_VIDEO()
         video_page.click_record_new_button()
         camera_page.capture()
-        sleep(1)  # time for recording video
+        sleep(0.2)  # time for recording video
         camera_page.capture()
         camera_page.click_retake()
         camera_page.capture()
-        sleep(1)  # time for recording video
+        sleep(0.2)  # time for recording video
         camera_page.capture()
         camera_page.click_use()
         video_page.type_description("test Android - video 2")

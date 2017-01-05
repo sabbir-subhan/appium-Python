@@ -46,6 +46,7 @@ class BasePage(unittest.TestCase):
 
 
 class AndroidDevice(BasePage):
+    """A class for methods to handle iOS Device"""
 
     def hide_keyboard(self):
 
@@ -83,6 +84,7 @@ class AndroidDevice(BasePage):
 
 
 class WelcomePage(BasePage):
+    """A class for methods to handle Welcome Page"""
 
     def click_login_button(self):
 
@@ -97,6 +99,7 @@ class WelcomePage(BasePage):
 
 
 class LoginPage(BasePage):
+    """A class for methods to handle Login Page"""
 
     def type_username(self, username):
 
@@ -192,6 +195,7 @@ class LoginPage(BasePage):
 
 
 class MainPage(BasePage):
+    """A class for methods to handle Main Page"""
 
     def dismiss_android_notifications(self):
 
@@ -283,8 +287,16 @@ class MainPage(BasePage):
         self.assertIsNotNone(video_button, "VIDEO button not found")
         video_button.click()
 
+    def open_SOUND(self):
+
+        logging.info("clicking in Sound button")
+        sound_button = self.driver.find_element(*MainMenuScreen.SOUND_BUTTON)
+        self.assertIsNotNone(sound_button, "Sound button not found")
+        sound_button.click()
+
 
 class PhotoPage(BasePage):
+    """A class for methods to handle Photo Page"""
 
     def check_if_photo_page_was_opened(self):
 
@@ -324,11 +336,12 @@ class PhotoPage(BasePage):
         send_button = self.driver.find_element(*PhotoScreen.SEND_BUTTON)
         self.assertIsNotNone(send_button)
         send_button.click()
-        logging.info("sending photo")
-        WebDriverWait(self.driver, 360).until(
+        logging.info("sending file")
+        sleep(1)
+        WebDriverWait(self.driver, 420).until(
             expected_conditions.presence_of_element_located(MainMenuScreen.LOCATION_BUTTON),
-            "Failed to send photo")
-        logging.info("Photo was sent")
+            "Failed to send file")
+        logging.info("File was sent")
 
     def click_reset_button(self):
 
@@ -339,6 +352,7 @@ class PhotoPage(BasePage):
 
 
 class GalleryPage(BasePage):
+    """A class for methods to handle Gallery Page"""
 
     def choose_element_1(self):
 
@@ -371,12 +385,112 @@ class VideoPage(PhotoPage):
         # add coordinates for iPhones
 
 
+class SoundPage(PhotoPage):
+    """A class for methods to handle Sound Page"""
+
+    def check_if_sound_page_was_opened(self):
+
+        video_page_header = self.driver.find_element(*SoundScreen.SOUND_PAGE_HEADER)
+        self.assertIsNotNone(video_page_header, "Sound page header was not found")
+        logging.info("Sound page was opened")
+
+    def click_record_sound_icon(self):
+
+        logging.info("clicking in 'Record Sound' icon")
+        try:
+            record_sound_button = self.driver.find_element(*SoundScreen.RECORD_SOUND_BUTTON)
+            if record_sound_button.is_displayed():
+                self.assertIsNotNone(record_sound_button, "record sound button not found")
+                record_sound_button.click()
+        except NoSuchElementException:
+            self.fail("lipa")
+
+
+class SoundRecorder(BasePage):
+    """A class for methods to handle Sound Recorder"""
+
+    def record_sound(self):
+
+        logging.info("click record sound")
+        try:
+            sound_capture_android_6 = self.driver.find_element(*SoundRecorderScreen.RECORD_SOUND_android_6)
+            if sound_capture_android_6.is_displayed():
+                self.assertIsNotNone(sound_capture_android_6, "sound capture button not found")
+                sound_capture_android_6.click()
+        except NoSuchElementException:
+            pass
+        try:
+            sound_capture_android_5 = self.driver.find_element(*SoundRecorderScreen.RECORD_SOUND_android_5)
+            if sound_capture_android_5.is_displayed():
+                self.assertIsNotNone(sound_capture_android_5, "sound capture button not found")
+                sound_capture_android_5.click()
+        except NoSuchElementException:
+            pass
+        try:
+            sound_capture_android_4 = self.driver.find_element(*SoundRecorderScreen.RECORD_SOUND_android_4)
+            if sound_capture_android_4.is_displayed():
+                self.assertIsNotNone(sound_capture_android_4, "sound capture button not found")
+                sound_capture_android_4.click()
+        except NoSuchElementException:
+            pass
+
+    def stop_recording(self):
+
+        logging.info("stop recording")
+        try:
+            stop_recording_android_6 = self.driver.find_element(*SoundRecorderScreen.STOP_RECORDING_android_6)
+            if stop_recording_android_6.is_displayed():
+                self.assertIsNotNone(stop_recording_android_6, "stop recording button not found")
+                stop_recording_android_6.click()
+        except NoSuchElementException:
+            pass
+        try:
+            stop_recording_android_5 = self.driver.find_element(*SoundRecorderScreen.STOP_RECORDING_android_5)
+            if stop_recording_android_5.is_displayed():
+                self.assertIsNotNone(stop_recording_android_5, "stop recording button not found")
+                stop_recording_android_5.click()
+        except NoSuchElementException:
+            pass
+        try:
+            stop_recording_android_4 = self.driver.find_element(*SoundRecorderScreen.STOP_RECORDING_android_4)
+            if stop_recording_android_4.is_displayed():
+                self.assertIsNotNone(stop_recording_android_4, "stop recording button not found")
+                stop_recording_android_4.click()
+        except NoSuchElementException:
+            pass
+
+    def click_done_button(self):
+
+        logging.info("click click 'Done' button")
+        try:
+            done_button_android_6 = self.driver.find_element(*SoundRecorderScreen.DONE_BUTTON_android_6)
+            if done_button_android_6.is_displayed():
+                self.assertIsNotNone(done_button_android_6, "Done button not found")
+                done_button_android_6.click()
+        except NoSuchElementException:
+            pass
+        try:
+            done_button_android_5 = self.driver.find_element(*SoundRecorderScreen.DONE_BUTTON_android_5)
+            if done_button_android_5.is_displayed():
+                self.assertIsNotNone(done_button_android_5, "Done button not found")
+                done_button_android_5.click()
+        except NoSuchElementException:
+            pass
+        try:
+            done_button_android_4 = self.driver.find_element(*SoundRecorderScreen.DONE_BUTTON_android_4)
+            if done_button_android_4.is_displayed():
+                self.assertIsNotNone(done_button_android_4, "Done button not found")
+                done_button_android_4.click()
+        except NoSuchElementException:
+            pass
+
+
 class CameraPage(BasePage):
     """A class for methods to handle Camera"""
 
     def capture(self):
 
-        logging.info("taking photo")
+        logging.info("capture photo/video")
         try:
             photo_capture1 = self.driver.find_element(*CameraScreen.CAPTURE_BUTTON_ANDROID_6)
             if photo_capture1.is_displayed():
@@ -425,12 +539,19 @@ class CameraPage(BasePage):
 
     def click_retake(self):
 
-        logging.info("Retake photo")
+        logging.info("Retake")
         try:
-            retake_photo_android_4_and_5 = self.driver.find_element(*CameraScreen.RETAKE_ANDROID_4_and_5)
-            if retake_photo_android_4_and_5.is_displayed():
-                self.assertIsNotNone(retake_photo_android_4_and_5)
-                retake_photo_android_4_and_5.click()
+            retake_photo_android_4 = self.driver.find_element(*CameraScreen.RETAKE_ANDROID_4)
+            if retake_photo_android_4.is_displayed():
+                self.assertIsNotNone(retake_photo_android_4)
+                retake_photo_android_4.click()
+        except NoSuchElementException:
+            pass
+        try:
+            retake_photo_android_5 = self.driver.find_element(*CameraScreen.RETAKE_ANDROID_5)
+            if retake_photo_android_5.is_displayed():
+                self.assertIsNotNone(retake_photo_android_5)
+                retake_photo_android_5.click()
         except NoSuchElementException:
             pass
         try:
@@ -468,6 +589,7 @@ class CameraPage(BasePage):
 
 
 class LocationPage(BasePage):
+    """A class for methods to handle Location Page"""
 
     def check_if_location_page_was_opened(self):
 
@@ -562,6 +684,7 @@ class LocationPage(BasePage):
 
 
 class EventsPage(BasePage):
+    """A class for methods to handle Events Page"""
 
     def check_if_EVENTS_were_opened(self):
 
@@ -709,6 +832,7 @@ class EventsPage(BasePage):
 
 
 class EventsTypesPage(BasePage):
+    """A class for methods to handle Events Types Page"""
 
     def choose_Incident_type_of_event(self):
 
@@ -733,6 +857,7 @@ class EventsTypesPage(BasePage):
 
 
 class EventEditPage(BasePage):
+    """A class for methods to handle Event Edit Page"""
 
     def click_into_Name_input_field(self):
 
@@ -1161,6 +1286,7 @@ class EventEditPage(BasePage):
 
 
 class OptionList(BasePage):
+    """A class for methods to handle Option List inside form to create event"""
 
     def click_on_option_1(self):
 
@@ -1198,6 +1324,7 @@ class OptionList(BasePage):
 
 
 class MapPage(BasePage):
+    """A class for methods to handle Map"""
 
     def wait_for_map_to_load(self):
 
@@ -1309,6 +1436,7 @@ class MapPage(BasePage):
 
 
 class EventDetailsPage(BasePage):
+    """A class for methods to handle Event Details Page"""
 
     def click_edit_button(self):
 

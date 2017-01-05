@@ -265,6 +265,26 @@ class GalleryScreen:
     GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//android.widget.GridView[1]/android.widget.FrameLayout[1]')
 
 
+class SoundScreen:
+    """A class for Sound screen locators - screen after clicking into Sound button in Main Menu."""
+    SOUND_PAGE_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Send a sound recording to OCA')
+    RECORD_SOUND_BUTTON = (MobileBy.XPATH, '//android.webkit.WebView[1]/android.view.View[2]/android.view.View[2]')  # android 6 - by ID is not working
+
+
+class SoundRecorderScreen:
+    """A class for Sound Recorder screen locators - screen after clicking into record sound button in Sound Page."""
+    RECORD_SOUND_android_4 = (MobileBy.ID, 'com.android.soundrecorder:id/recordButton')  # android 4
+    STOP_RECORDING_android_4 = (MobileBy.ID, 'com.android.soundrecorder:id/stopButton')  # android 4
+    DONE_BUTTON_android_4 = (MobileBy.ID, 'com.android.soundrecorder:id/acceptButton')  # android 4
+    RECORD_SOUND_android_5 = (MobileBy.ID, 'com.tct.soundrecorder:id/recordButton')  # android 5
+    STOP_RECORDING_android_5 = (MobileBy.ID, 'com.tct.soundrecorder:id/wave_view')  # android 5  # to test
+    # STOP_RECORDING_android_5 = (MobileBy.ACCESSIBILITY_ID, 'Pause record')  # android 5  # not working
+    DONE_BUTTON_android_5 = (MobileBy.ACCESSIBILITY_ID, 'Save record')  # android 5
+    RECORD_SOUND_android_6 = (MobileBy.ACCESSIBILITY_ID, 'Record')  # android 6
+    STOP_RECORDING_android_6 = (MobileBy.ACCESSIBILITY_ID, 'Stop')  # android 6
+    DONE_BUTTON_android_6 = (MobileBy.ACCESSIBILITY_ID, 'Done')  # android 6
+
+
 class CameraScreen:
     """A class for handling Camera"""
     CAPTURE_BUTTON_ANDROID_4_and_5 = (MobileBy.ACCESSIBILITY_ID, 'Shutter')
@@ -273,7 +293,8 @@ class CameraScreen:
     CAMERA_CHOOSER_ANDROID4 = (MobileBy.ID, 'com.android.camera2:id/btn_switch_camera')
     CAMERA_CHOOSER = (MobileBy.ACCESSIBILITY_ID, 'Switch camera')  # for android 6
     CAMERA_CHOOSER2 = (MobileBy.ID, 'com.tct.camera:id/onscreen_camera_picker')
-    RETAKE_ANDROID_4_and_5 = (MobileBy.ACCESSIBILITY_ID, 'Review retake')  # com.tct.camera:id/btn_retake
+    RETAKE_ANDROID_4 = (MobileBy.ACCESSIBILITY_ID, 'Review retake')
+    RETAKE_ANDROID_5 = (MobileBy.ID, 'com.tct.camera:id/btn_retake')
     RETAKE_ANDROID_6 = (MobileBy.ID, 'com.sec.android.app.camera:id/retry')
     USE_PHOTO_ANDROID4 = (MobileBy.ACCESSIBILITY_ID, 'Review done')
     USE_PHOTO_ANDROID5 = (MobileBy.ACCESSIBILITY_ID, 'OK')  # com.tct.camera:id/btn_done

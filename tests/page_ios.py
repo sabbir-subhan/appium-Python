@@ -6,11 +6,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from appium.webdriver.common.touch_action import TouchAction
 # from appium import webdriver
-from selenium.webdriver.common.action_chains import ActionChains
-from appium.webdriver.common.multi_action import MultiAction
-from appium.webdriver.mobilecommand import MobileCommand
-from appium.webdriver import WebElement
-from appium.webdriver.webdriver import MobileWebElement
+# from selenium.webdriver.common.action_chains import ActionChains
+# from appium.webdriver.common.multi_action import MultiAction
+# from appium.webdriver.mobilecommand import MobileCommand
+# from appium.webdriver import WebElement
+# from appium.webdriver.webdriver import MobileWebElement
 from locators_ios import *
 from credentials import Credentials
 import logging
@@ -31,8 +31,7 @@ class BasePage(unittest.TestCase):
 
     # OCA top bar
     def hamburger_button(self):
-
-# add coordinates for iPhones - clicking is not working because button is invisible
+        # add coordinates for iPhones - clicking is not working because button is invisible
         logging.info("click hamburger button to go back to main menu")
         try:
             hamburger_button = self.driver.find_element(*TopBar.HAMBURGER_FOR_MAIN_MENU_ios)
@@ -68,10 +67,12 @@ class iOSdevice(BasePage):
 
 
 class WelcomePage(BasePage):
+    """A class for methods to handle Welcome Page"""
 
     def click_login_button(self):
 
-        sleep(10)
+        # sleep(10)
+        self.driver.reset()  # reset app to avoid problems with locating elements
         # try:
         #     positions_for_hamburger_button = [(730, 20)]
         #     sleep(1)
@@ -92,12 +93,21 @@ class WelcomePage(BasePage):
                 self.assertIsNotNone(login_button_by_index)
                 login_button_by_index.click()
         except NoSuchElementException:
-            action = TouchAction(self.driver)
-            action.tap(element=None, x=115, y=283, count=1).perform()
+            pass
+        try:
+            username_field = self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios)
+            if username_field.is_displayed():
+                pass
+            else:
+                action = TouchAction(self.driver)
+                action.tap(element=None, x=115, y=283, count=1).perform()
         # add coordinates for iPhones
+        except NoSuchElementException:
+            pass
 
 
 class LoginPage(BasePage):
+    """A class for methods to handle Login Page"""
 
     def type_username(self, username):
 
@@ -178,6 +188,7 @@ class LoginPage(BasePage):
 
 
 class MainPage(BasePage):
+    """A class for methods to handle Main Page"""
 
     def dismiss_ios_notifications(self):
 
@@ -269,8 +280,16 @@ class MainPage(BasePage):
         self.assertIsNotNone(video_button, "VIDEO button not found")
         video_button.click()
 
+    def open_SOUND(self):
+
+        logging.info("clicking in Sound button")
+        sound_button = self.driver.find_element(*MainMenuScreen.SOUND_BUTTON_ios)
+        self.assertIsNotNone(sound_button, "Sound button not found")
+        sound_button.click()
+
 
 class PhotoPage(BasePage):
+    """A class for methods to handle Photo Page"""
 
     def check_if_photo_page_was_opened(self):
 
@@ -301,26 +320,29 @@ class PhotoPage(BasePage):
                 gallery_button.click()
 
     def click_take_new_button(self):
-
+        # add coordinates for iPhones
         logging.info("clicking in 'Take new' button")
         try:
-            take_new_button = self.driver.find_element(*PhotoScreen.TAKE_NEW_BUTTON_ios)
-            if take_new_button.is_displayed():
-                self.assertIsNotNone(take_new_button, "Take new button not found")
-                take_new_button.click()
-        except NoSuchElementException:
             action = TouchAction(self.driver)
             action.tap(element=None, x=548, y=158, count=1).perform()
-        # add coordinates for iPhones
+            # take_new_button = self.driver.find_element(*PhotoScreen.TAKE_NEW_BUTTON_ios)
+            # if take_new_button.is_displayed():
+            #     self.assertIsNotNone(take_new_button, "Take new button not found")
+            #     take_new_button.click()
+        except NoSuchElementException:
+            self.fail("could not tap 'Take new' button")
 
     def click_send_button(self):
 
+        sleep(1)
         logging.info("click 'Send' button")
         send_button = self.driver.find_element(*PhotoScreen.SEND_BUTTON_ios)
         self.assertIsNotNone(send_button, "Send button not found")
         send_button.click()
-        WebDriverWait(self.driver, 360).until(
-            expected_conditions.presence_of_element_located(MainMenuScreen.LOCATION_BUTTON_ios),
+        sleep(2)
+        logging.info("sending file")
+        WebDriverWait(self.driver, 420).until(
+            expected_conditions.presence_of_element_located(MainMenuScreen.EVENTS_BUTTON_ios),
             "Failed to send file")
         logging.info("File was sent")
 
@@ -333,6 +355,7 @@ class PhotoPage(BasePage):
 
 
 class GalleryPage(BasePage):
+    """A class for methods to handle Gallery Page"""
 
     def choose_element_1(self):
 
@@ -377,6 +400,56 @@ class VideoPage(PhotoPage):
             action = TouchAction(self.driver)
             action.tap(element=None, x=548, y=158, count=1).perform()
         # add coordinates for iPhones
+
+
+class SoundPage(PhotoPage):
+    """A class for methods to handle Sound Page"""
+
+    def check_if_sound_page_was_opened(self):
+
+        video_page_header = self.driver.find_element(*SoundScreen.SOUND_PAGE_HEADER_ios)
+        self.assertIsNotNone(video_page_header, "Sound page header was not found")
+        logging.info("Sound page was opened")
+
+    def click_record_sound_icon(self):
+
+        logging.info("clicking in 'Record Sound' icon")
+        try:
+            # add coordinates for iPhones
+            action = TouchAction(self.driver)
+            action.tap(element=None, x=180, y=158, count=1).perform()
+        except NoSuchElementException:
+            record_sound_button = self.driver.find_element(*SoundScreen.RECORD_SOUND_BUTTON_ios)
+            if record_sound_button.is_displayed():
+                self.assertIsNotNone(record_sound_button, "record sound button not found")
+                record_sound_button.click()
+        #         logging.info("2")
+        # try:
+        #     action = TouchAction(self.driver)
+        #     action.tap(element=None, x=182, y=138, count=1).perform()
+        #     logging.info("3")
+        # except:
+        #     action = TouchAction(self.driver)
+        #     action.tap(element=None, x=182, y=141, count=1).perform()
+        #     logging.info("4")
+
+
+class SoundRecorder(BasePage):
+    """A class for methods to handle Sound Recorder"""
+
+    def record_sound(self):
+
+        logging.info("click record sound")
+        sound_capture = self.driver.find_element(*SoundRecorderScreen.RECORD_SOUND_ios)
+        self.assertIsNotNone(sound_capture, "sound capture button not found")
+        sound_capture.click()
+
+    def click_done_button(self):
+
+        logging.info("click click 'Done' button")
+        done_button = self.driver.find_element(*SoundRecorderScreen.DONE_BUTTON_ios)
+        self.assertIsNotNone(done_button, "Done button not found")
+        done_button.click()
 
 
 class CameraPage(BasePage):
@@ -434,6 +507,7 @@ class CameraPage(BasePage):
 
 
 class LocationPage(BasePage):
+    """A class for methods to handle Location Page"""
 
     def check_if_location_page_was_opened(self):
 
@@ -522,6 +596,7 @@ class LocationPage(BasePage):
 
 
 class EventsPage(BasePage):
+    """A class for methods to handle Events Page"""
 
     def check_if_EVENTS_were_opened(self):
 
@@ -653,6 +728,7 @@ class EventsPage(BasePage):
 
 
 class EventsTypesPage(BasePage):
+    """A class for methods to handle Events Types Page"""
 
     def choose_Incident_type_of_event(self):
 
@@ -677,6 +753,7 @@ class EventsTypesPage(BasePage):
 
 
 class EventEditPage(BasePage):
+    """A class for methods to handle Event Edit Page"""
 
     def click_into_Name_input_field(self):
 
@@ -901,6 +978,7 @@ class EventEditPage(BasePage):
 
 
 class OptionList(BasePage):
+    """A class for methods to handle Option List inside form to create event"""
 
     def click_on_option_1(self):
 
@@ -925,6 +1003,7 @@ class OptionList(BasePage):
 
 
 class MapPage(BasePage):
+    """A class for methods to handle Map"""
 
     def click_plot_button(self):
 
@@ -1026,6 +1105,7 @@ class MapPage(BasePage):
 
 
 class EventDetailsPage(BasePage):
+    """A class for methods to handle Event Details Page"""
 
     def click_edit_button(self):
 
