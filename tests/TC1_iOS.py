@@ -41,7 +41,7 @@ class TestCase1iOS(unittest.TestCase):
         welcome_page.click_login_button()
         login_page = LoginPage(self.driver)
         login_page.type_username('QA')  # change here login credentials (login and pass are defined in credentials.py)
-        login_page.type_password('QA')  # for example use: QA, general_user, admin, expired_1_day_ago, expire_today, expire_in_1_day, suspended
+        login_page.type_password('QA')  # for example use: QA, general_user, admin, expired_1_day_ago, expire_today, expire_in_1_day OR suspended
         login_page.type_domain_address('QA')
         ios_device = iOSdevice(self.driver)
         ios_device.hide_keyboard()

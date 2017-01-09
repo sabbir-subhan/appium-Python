@@ -403,7 +403,7 @@ class SoundPage(PhotoPage):
                 self.assertIsNotNone(record_sound_button, "record sound button not found")
                 record_sound_button.click()
         except NoSuchElementException:
-            self.fail("lipa")
+            self.fail("failed to click 'Record Sound'")
 
 
 class SoundRecorder(BasePage):

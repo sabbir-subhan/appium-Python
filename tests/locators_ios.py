@@ -56,6 +56,14 @@ class LoginScreen:
 
 class MainMenuScreen:
     """A class for main menu screen locators - first screen after correct login into the app."""
+    ACTIVATE_WORKFLOW_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "ACTIVATE WORKFLOW")]]')
+    CREATE_CONTACT_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "CREATE CONTACT")]]')
+    CREATE_TASK_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "CREATE A TASK")]]')
+    CREATE_REPORT_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "CREATE A REPORT")]]')
+    WEBSITE_LINK_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "WEBSITE LINK")]]')
+    INCIDENT_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "INCIDENT")]]')
+    CREATE_ASSETS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "CREATE ASSETS")]]')
+    CREATE_LOG_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "CREATE A LOG")]]')
     RISKS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "RISKS")]]')
     EVENTS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "EVENTS")]]')
     LOGS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "LOGS")]]')
@@ -79,6 +87,10 @@ class MainMenuScreen:
     OFFLINE_SYNC_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "OFFLINE SYNC")]]')
     ABOUT_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "ABOUT")]]')
     LOGOUT_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "LOGOUT")]]')
+
+    ALERT_ACTIVATE_BUTTON_ios = (MobileBy.XPATH, '//UIALink/UIAStaticText[@name="Activate"]')
+    ALERT_CANCEL_BUTTON_ios = (MobileBy.XPATH, '//UIALink/UIAStaticText[@name="Cancel"]')
+    ALERT_WORKFLOW_ACTIVATED_ios = (MobileBy.XPATH, '//UIAStaticText[@name="Workflow activated"]')
 
 
 class LocationScreen:
@@ -154,7 +166,6 @@ class EventEditScreen:
     CHOOSE_SEVERITY_LVL4_iPhone = (MobileBy.XPATH, '//UIAPicker/UIAPickerWheel[@value="Severity 4"]')
     SEVERITY_PICKER_ios = (MobileBy.XPATH, '//UIAApplication/UIAWindow/UIAPicker/UIAPickerWheel')
     FINISHED_FIELD_ios = (MobileBy.XPATH, '//UIAStaticText[@name="Finished"]')
-    SAVE_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Save"]')
     DESCRIPTION_FIELD_ios = (MobileBy.XPATH, '//UIATextField[3]')
 
     CREATE_MAPPING_DATA_ios = (MobileBy.XPATH, "//UIALink[@name[contains(., 'Create mapping data')]]")
@@ -172,7 +183,6 @@ class EventEditScreen:
     FIELD_TO_RESTORE_1_VALUE_ios = (MobileBy.XPATH, '//UIATextField[@value="value for field 1"]')
     FIELD_TO_RESTORE_2_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name="New email address"]')
     FIELD_TO_RESTORE_2_VALUE_ios = (MobileBy.XPATH, '//UIATextField[@value="test@noggin.com"]')
-    CANCEL_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Cancel"]')
     CHOOSER_FIELD_ios = (MobileBy.XPATH, '//UIAWebView/UIALink/UIALink[@name[contains(., "New events chooser")]]')
     PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains('
                                                                 '., "Test Appium iOS")]]')
@@ -257,6 +267,37 @@ class CameraScreen:
 
 class RisksScreen:
     """A class for handling Risks screen"""
+
+
+class SafariScreen:
+    """A class for handling Safari browser screen"""
+    # BACK_TO_OCA_BUTTON_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[4]/UIAStatusBar[1]/UIAButton[1]')
+    BACK_TO_OCA_BUTTON_ios = (MobileBy.XPATH, '//UIAStatusBar/UIAButton[@name="Back to OCA"]')
+# //UIAWindow[4]/UIAStatusBar/UIAButton[@name="Back to OCA"]
+
+class NewContactScreen:
+    """A class for handling New Contact screen"""
+    FIRST_NAME_ios = (MobileBy.XPATH, '//UIATextField [@name="First name"]')
+
+
+class NewTaskScreen:
+    """A class for handling New Task screen"""
+    TITLE_ios = (MobileBy.XPATH, '//UIATextField[1]')  # locating input field by xpath with name won't work
+    ASSIGNED_ios = (MobileBy.XPATH, '//UIAStaticText[@name="Assigned"]')
+    ADD_CONTACTS_AND_GROUPS_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Add contacts and groups")]]')
+    ADD_RESOURCE_STRUCTURE_NODES_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., '
+                                                        '"Add Resource structure nodes")]]')
+    ADD_RESOURCE_ASSIGNMENTS_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Add Resource assignments")]]')
+    CHOOSE_USERS_ios = (MobileBy.XPATH, '//UIAStaticText[@name="Users"]')
+    START_DATE_ios = (MobileBy.XPATH, '//UIAStaticText[@name="Start Date"]')
+    HIDE_DATE_PICKER_ios = (MobileBy.XPATH, '//UIAStaticText[@name="Completed Date"]')
+
+
+class CommonButtonsScreen:
+    """A class for handling Common buttons on different screen"""
+    SAVE_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Save"]')
+    CANCEL_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Cancel"]')
+    OK_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Ok"]')
 
 
 class iOS:
