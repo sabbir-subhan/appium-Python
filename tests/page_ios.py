@@ -234,6 +234,9 @@ class MainPage(BasePage):
 
         sleep(5)
         logging.info("logout if already logged in")
+
+        # BasePage.hamburger_button(self)
+
         try:
             logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
             self.assertIsNotNone(logout_button_ios, "Logout button not found")
@@ -352,6 +355,9 @@ class MainPage(BasePage):
         events_button = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON_ios)
         self.assertIsNotNone(events_button, "EVENTS button not found")
         events_button.click()
+        logging.info("check if Events were opened")
+        events_header = self.driver.find_element(*EventsScreen.EVENTS_HEADER_ios)
+        self.assertIsNotNone(events_header)
 
     def open_LOGS(self):
 
@@ -486,82 +492,6 @@ class MainPage(BasePage):
         about_button.click()
 
 
-class NewContactPage(CommonButtons):
-    """A class for methods to handle New Contact Page"""
-
-    def type_first_name(self, text):
-
-        logging.info("type first name")
-        first_name = self.driver.find_element(*NewContactScreen.FIRST_NAME_ios)
-        self.assertIsNotNone(first_name, "First name input field was not found")
-        first_name.click()
-        first_name.send_keys(text)
-
-
-class NewTaskPage(CommonButtons):
-    """A class for methods to handle New Task Page"""
-
-    def type_title(self, text):
-
-        logging.info("type title")
-        title = self.driver.find_element(*NewTaskScreen.TITLE_ios)
-        self.assertIsNotNone(title, "Title input field was not found")
-        title.click()
-        title.send_keys(text)
-
-    def click_on_assigned(self):
-
-        logging.info("click on Assigned field")
-        assigned = self.driver.find_element(*NewTaskScreen.ASSIGNED_ios)
-        self.assertIsNotNone(assigned, "Assigned field was not found")
-        assigned.click()
-
-    def add_contacts(self):
-
-        logging.info("Add Assignees")
-        assignees = self.driver.find_element(*NewTaskScreen.ADD_CONTACTS_AND_GROUPS_ios)
-        self.assertIsNotNone(assignees, "Assignees field was not found")
-        assignees.click()
-
-    def choose_users(self):
-
-        logging.info("Choose Users")
-        assignees = self.driver.find_element(*NewTaskScreen.CHOOSE_USERS_ios)
-        self.assertIsNotNone(assignees, "Users option list was not found")
-        assignees.click()
-
-    def choose_start_date(self):
-
-        logging.info("Choose Start Date")
-        start_date = self.driver.find_element(*NewTaskScreen.START_DATE_ios)
-        self.assertIsNotNone(start_date, "Start Date field was not found")
-        start_date.click()
-
-    def hide_date_picker(self):
-
-        logging.info("hide date picker")
-        hide_date_picker = self.driver.find_element(*NewTaskScreen.HIDE_DATE_PICKER_ios)
-        self.assertIsNotNone(hide_date_picker, "Completed Date field was not found")
-        hide_date_picker.click()
-
-
-class SafariBrowserPage(BasePage):
-    """A class for methods to handle Safari Browser Page"""
-
-    def click_back_to_oca(self):
-
-        logging.info("wait for page to load")
-        WebDriverWait(self.driver, 30).until(
-            expected_conditions.presence_of_element_located(SafariScreen.BACK_TO_OCA_BUTTON_ios),
-            "Failed to load web page")
-        logging.info("click back to oca button")
-        back_to_oca_button = self.driver.find_element(*SafariScreen.BACK_TO_OCA_BUTTON_ios)
-        self.assertIsNotNone(back_to_oca_button, "back to oca button was not found")
-        # back_to_oca_button.click()
-        action = TouchAction(self.driver)
-        action.tap(element=None, x=6, y=0, count=1).perform()
-
-
 class PhotoPage(BasePage):
     """A class for methods to handle Photo Page"""
 
@@ -665,15 +595,18 @@ class VideoPage(PhotoPage):
     def click_record_new_button(self):
 
         logging.info("clicking in 'Record new' button")
-        try:
-            record_new_button = self.driver.find_element(*VideoScreen.RECORD_NEW_BUTTON_ios)  # there is bug in app - clicking on empty space on 'Video' page causes to open Camera
-            if record_new_button.is_displayed():
-                self.assertIsNotNone(record_new_button, "record new button not found")
-                record_new_button.click()
-        except NoSuchElementException:
-            action = TouchAction(self.driver)
-            action.tap(element=None, x=548, y=158, count=1).perform()
+        # try:
+        #     record_new_button = self.driver.find_element(*VideoScreen.RECORD_NEW_BUTTON_ios)
+        #     if record_new_button.is_displayed():
+        #         self.assertIsNotNone(record_new_button, "record new button not found")
+        #         record_new_button.click()
+        # except NoSuchElementException:
+        #     action = TouchAction(self.driver)
+        #     action.tap(element=None, x=548, y=158, count=1).perform()
+
         # add coordinates for iPhones
+        action = TouchAction(self.driver)
+        action.tap(element=None, x=563, y=182, count=1).perform()
 
 
 class SoundPage(PhotoPage):
@@ -1029,22 +962,19 @@ class EventsTypesPage(BasePage):
 class EventEditPage(CommonButtons):
     """A class for methods to handle Event Edit Page"""
 
-    def click_into_name_input_field(self):
-
-        logging.info("click into Name input field")
-        try:
-            name_field = self.driver.find_element(*EventEditScreen.NAME_FIELD_ios)
-            name_field.click()
-        except NoSuchElementException:
-            self.driver.find_element(*EventEditScreen.NAME_FIELD_by_index_ios).click()
-
     def fill_Name_input_field(self, text):
 
-        logging.info("input Name for event")
+        logging.info("fill Name input field")
         try:
-            self.driver.find_element(*EventEditScreen.NAME_FIELD_ios).send_keys(text)
+            name_field = self.driver.find_element(*EventEditScreen.NAME_FIELD_ios)
+            if name_field.is_displayed():
+                name_field.click()
+                name_field.send_keys(text)
         except NoSuchElementException:
-            self.driver.find_element(*EventEditScreen.NAME_FIELD_by_index_ios).send_keys(text)
+            name_field_by_index = self.driver.find_element(*EventEditScreen.NAME_FIELD_by_index_ios)
+            if name_field_by_index.is_displayed():
+                name_field_by_index.click()
+                name_field_by_index.send_keys(text)
 
     def click_severity_lvl_picker(self):
 
@@ -1363,6 +1293,117 @@ class MapPage(BasePage):
         sleep(3)
 
 
+class NewContactPage(CommonButtons):
+    """A class for methods to handle New Contact Page"""
+
+    def type_first_name(self, text):
+
+        logging.info("type first name")
+        first_name = self.driver.find_element(*NewContactScreen.FIRST_NAME_ios)
+        self.assertIsNotNone(first_name, "First name input field was not found")
+        first_name.click()
+        first_name.send_keys(text)
+
+
+class NewTaskPage(CommonButtons):
+    """A class for methods to handle New Task Page"""
+
+    def type_title(self, text):
+
+        logging.info("type title")
+        title = self.driver.find_element(*NewTaskScreen.TITLE_ios)
+        self.assertIsNotNone(title, "Title input field was not found")
+        title.click()
+        title.send_keys(text)
+
+    def click_on_assigned(self):
+
+        logging.info("click on Assigned field")
+        assigned = self.driver.find_element(*NewTaskScreen.ASSIGNED_ios)
+        self.assertIsNotNone(assigned, "Assigned field was not found")
+        assigned.click()
+
+    def add_contacts(self):
+
+        logging.info("Add Assignees")
+        assignees = self.driver.find_element(*NewTaskScreen.ADD_CONTACTS_AND_GROUPS_ios)
+        self.assertIsNotNone(assignees, "Assignees field was not found")
+        assignees.click()
+
+    def choose_users(self):
+
+        logging.info("Choose Users")
+        assignees = self.driver.find_element(*NewTaskScreen.CHOOSE_USERS_ios)
+        self.assertIsNotNone(assignees, "Users option list was not found")
+        assignees.click()
+
+    def choose_start_date(self):
+
+        logging.info("Choose Start Date")
+        start_date = self.driver.find_element(*NewTaskScreen.START_DATE_ios)
+        self.assertIsNotNone(start_date, "Start Date field was not found")
+        start_date.click()
+
+    def hide_date_picker(self):
+
+        logging.info("hide date picker")
+        hide_date_picker = self.driver.find_element(*NewTaskScreen.HIDE_DATE_PICKER_ios)
+        self.assertIsNotNone(hide_date_picker, "Completed Date field was not found")
+        hide_date_picker.click()
+
+    # def wait_for_new_task_notification(self):  # test it - notification appears only when task is created for "Users" but it taking really long time until notification is displayed :/
+    #
+    #     logging.info("Wait for new task notification")
+    #     WebDriverWait(self.driver, 30).until(expected_conditions.presence_of_element_located(NewTaskScreen.NEW_TASK_NOTIFICATION_ios), "Failed to create a new task")
+
+
+class NewReportPage(NewTaskPage):
+    """A class for methods to handle New Report Page"""
+
+    def type_title(self, text):
+
+        NewTaskPage.type_title(self, text)
+
+    def click_on_lodging_agency_picker(self):
+
+        sleep(5)  # test it
+        logging.info("click on 'Lodging Agency' picker")
+        lodging_agency_picker = self.driver.find_element(*NewReportScreen.LODGING_AGENCY_PICKER_ios)
+        self.assertIsNotNone(lodging_agency_picker, "Lodging Agency picker was not found")
+        # lodging_agency_picker.click()
+        action = TouchAction(self.driver)
+        action.tap(element=lodging_agency_picker, count=1).perform()
+
+    def choose_lodging_agency(self):
+
+        logging.info("choose Lodging Agency")
+        lodging_agency = self.driver.find_element(*NewReportScreen.LODGING_AGENCY_ios)
+        self.assertIsNotNone(lodging_agency, "Lodging Agency inside picker was not found")
+        lodging_agency.click()
+
+    def click_publish_button(self):
+
+        logging.info("click Publish button")
+        publish_button = self.driver.find_element(*NewReportScreen.PUBLISH_BUTTON_ios)
+        self.assertIsNotNone(publish_button, "Publish button was not found")
+        publish_button.click()
+
+
+# Appium can't access another app directly only tapping on specific coordinates will work
+class SafariBrowserPage(BasePage):
+    """A class for methods to handle Safari Browser Page"""
+
+    def click_back_to_oca(self):
+
+        logging.info("wait for page to load")
+        sleep(10)
+        logging.info("click 'Back to OCA' button")
+        # add coordinates for iPhones
+        positions = [(15, 7)]
+        self.driver.tap(positions, duration=500)
+        sleep(2)
+
+
 class EventDetailsPage(BasePage):
     """A class for methods to handle Event Details Page"""
 
@@ -1388,3 +1429,34 @@ class EventDetailsPage(BasePage):
         self.assertIsNotNone(delete_confirm_button, "confirm delete button not found")
         delete_confirm_button.click()
         sleep(5)
+
+
+class NewAssetPage(EventEditPage):
+    """A class for methods to handle New Asset Page"""
+
+    def fill_Name_input_field(self, text):
+
+        EventEditPage.fill_Name_input_field(self, text)
+
+
+class NewLogPage(NewReportPage):
+    """A class for methods to handle New Log Page"""
+
+    def click_on_lodging_agency_picker(self):
+
+        logging.info("click on 'Lodging Agency' picker")
+        lodging_agency_picker = self.driver.find_element(*NewLogScreen.LODGING_AGENCY_PICKER_ios)
+        self.assertIsNotNone(lodging_agency_picker, "Lodging Agency picker was not found")
+        lodging_agency_picker.click()
+
+    def choose_lodging_agency(self):
+
+        NewReportPage.choose_lodging_agency(self)
+
+    def type_text_into_entry_field(self, text):
+
+        sleep(2)
+        logging.info("type text into 'Entry' field")
+        entry_field = self.driver.find_element(*NewLogScreen.ENTRY_FIELD_ios)
+        entry_field.click()
+        entry_field.send_keys(text)

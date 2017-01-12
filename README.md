@@ -141,8 +141,8 @@ RUNNING TESTS ON SIMULATORS:
 
 APP VERSIONS:
 
-- android: 8.1.11
-- iOS: 9.1.0 (dev branch)
+- android: 9.1.3
+- iOS: 9.1.4
 
 
 
@@ -158,3 +158,4 @@ Known issues:
 - Appium and OCA app sometime have problems to collaborate - if test fails, try to run it again or shutdown Appium and reconnect device
 - if tests are running fine but Appium inspector is not lunching on iOS - You need to rebuild app by cordova and xcode and reinstall it on device 
 - if after starting test, Appium throws errors like: "lockdown_receive_message error!" -- use sudo chmod -R 777 /var/db/lockdown/
+- Appium can't switch between apps so only tapping on specific coordinates will work in another app, for example when OCA will open Safari

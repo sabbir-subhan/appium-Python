@@ -232,7 +232,8 @@ class PhotoScreen:
 class VideoScreen:
     """A class for Video screen locators - screen after clicking into Video button in Main Menu."""
     VIDEO_PAGE_HEADER_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Send a video to OCA")]]')
-    RECORD_NEW_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Record New")]]')
+    # RECORD_NEW_BUTTON_ios = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Record New")]]')  # this locator will find only text, not the icon
+    RECORD_NEW_BUTTON_ios = (MobileBy.XPATH, 'UIAScrollView[2]/UIAWebView[1]/UIAStaticText[4]')  # appium can't tap that element - probably it's a bug in Appium - visible: false
 
 
 class SoundScreen:
@@ -269,12 +270,6 @@ class RisksScreen:
     """A class for handling Risks screen"""
 
 
-class SafariScreen:
-    """A class for handling Safari browser screen"""
-    # BACK_TO_OCA_BUTTON_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[4]/UIAStatusBar[1]/UIAButton[1]')
-    BACK_TO_OCA_BUTTON_ios = (MobileBy.XPATH, '//UIAStatusBar/UIAButton[@name="Back to OCA"]')
-# //UIAWindow[4]/UIAStatusBar/UIAButton[@name="Back to OCA"]
-
 class NewContactScreen:
     """A class for handling New Contact screen"""
     FIRST_NAME_ios = (MobileBy.XPATH, '//UIATextField [@name="First name"]')
@@ -289,8 +284,27 @@ class NewTaskScreen:
                                                         '"Add Resource structure nodes")]]')
     ADD_RESOURCE_ASSIGNMENTS_ios = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Add Resource assignments")]]')
     CHOOSE_USERS_ios = (MobileBy.XPATH, '//UIAStaticText[@name="Users"]')
+    CHOOSE_CONTACTS_ios = (MobileBy.XPATH, '//UIAStaticText[@name="Contacts"]')
     START_DATE_ios = (MobileBy.XPATH, '//UIAStaticText[@name="Start Date"]')
     HIDE_DATE_PICKER_ios = (MobileBy.XPATH, '//UIAStaticText[@name="Completed Date"]')
+    NEW_TASK_NOTIFICATION_ios = (MobileBy.XPATH, '//UIAStaticText[@name="New task assigned"]')  # not working ?
+
+
+class NewReportScreen:
+    """A class for handling New Report screen"""
+    LODGING_AGENCY_PICKER_ios = (MobileBy.XPATH, '//UIAWebView/UIAElement[2]')
+    LODGING_AGENCY_ios = (MobileBy.XPATH, '//UIAPopover/UIATableView/UIATableCell[2]')
+    PUBLISH_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Publish"]')
+
+
+class NewAssetScreen:
+    """A class for handling New Asset screen"""
+
+
+class NewLogScreen:
+    """A class for handling New Log screen"""
+    LODGING_AGENCY_PICKER_ios = (MobileBy.XPATH, '//UIAWebView/UIAElement[1]')
+    ENTRY_FIELD_ios = (MobileBy.XPATH, '//UIATextField[1]')
 
 
 class CommonButtonsScreen:

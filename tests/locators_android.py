@@ -58,6 +58,14 @@ class LoginScreen:
 class MainMenuScreen:
     """A class for main menu screen locators - first screen after correct login into the app."""
     BUTTONS = (MobileBy.CLASS_NAME, 'android.view.View')
+    ACTIVATE_WORKFLOW_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "ACTIVATE WORKFLOW")]]')
+    CREATE_CONTACT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "CREATE CONTACT")]]')
+    CREATE_TASK_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "CREATE A TASK")]]')
+    CREATE_REPORT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "CREATE A REPORT")]]')
+    WEBSITE_LINK_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "WEBSITE LINK")]]')
+    INCIDENT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "INCIDENT")]]')
+    CREATE_ASSETS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "CREATE ASSETS")]]')
+    CREATE_LOG_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "CREATE A LOG")]]')
     RISKS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "RISKS")]]')
     EVENTS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "EVENTS")]]')
     LOGS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "LOGS")]]')
@@ -81,6 +89,10 @@ class MainMenuScreen:
     OFFLINE_SYNC_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "OFFLINE SYNC")]]')
     ABOUT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "ABOUT")]]')
     LOGOUT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "LOGOUT")]]')  # there is problem with that locator because buttons suddenly don't have attribute content-desc
+    
+    ALERT_ACTIVATE_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Activate")]]')
+    ALERT_CANCEL_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Cancel")]]')
+    ALERT_WORKFLOW_ACTIVATED = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Workflow activated")]]')
 
 
 class LocationScreen:
@@ -164,7 +176,7 @@ class EventEditScreen:
     FINISHED_FIELD = (MobileBy.ACCESSIBILITY_ID, 'Finished')
     TIME_DATE = (MobileBy.ACCESSIBILITY_ID, 'Increase year')
     SET_BUTTON = (MobileBy.ID, 'android:id/button1')
-    SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
+    # SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
     DESCRIPTION_FIELD = (MobileBy.XPATH,
                          "//android.widget.ListView[@index='0']"
                          "//android.view.View[@index='8' and @content-desc[contains(., 'Description')]]"
@@ -190,8 +202,8 @@ class EventEditScreen:
     FIELD_TO_RESTORE_1_VALUE = (MobileBy.ACCESSIBILITY_ID, 'value for field 1')
     FIELD_TO_RESTORE_2_HEADER = (MobileBy.ACCESSIBILITY_ID, 'New email address')
     FIELD_TO_RESTORE_2_VALUE = (MobileBy.ACCESSIBILITY_ID, 'test@noggin.com')
-    CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Cancel')
-    CANCEL_BUTTON_by_index = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Button')
+    # CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Cancel')
+    # CANCEL_BUTTON_by_index = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Button')
     CHOOSER_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "New events chooser")]]')
     # CHOOSER_FIELD = (MobileBy.ACCESSIBILITY_ID, 'New events chooser - ')
     PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER = (MobileBy.XPATH, '//android.view.View[@content-desc['
@@ -305,9 +317,59 @@ class RisksScreen:
     """A class for handling Risks screen"""
 
 
+class NewContactScreen:
+    """A class for handling New Contact screen"""
+    FIRST_NAME = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="First name"]')
+
+
+class NewTaskScreen:
+    """A class for handling New Task screen"""
+    TITLE = (MobileBy.XPATH, '//android.view.View[1]/android.widget.EditText[1]')
+    ASSIGNED = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Assigned")]]')
+    ADD_CONTACTS_AND_GROUPS = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains'
+                                               '(., "Add contacts and groups")]]')
+    ADD_RESOURCE_STRUCTURE_NODES = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains'
+                                                    '(., "Add Resource structure nodes")]]')
+    ADD_RESOURCE_ASSIGNMENTS = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains'
+                                                '(., "Add Resource assignments")]]')
+    CHOOSE_USERS = (MobileBy.ACCESSIBILITY_ID, 'Users')
+    CHOOSE_CONTACTS = (MobileBy.ACCESSIBILITY_ID, 'Contacts')
+    START_DATE = (MobileBy.XPATH, '//android.view.View[2][@content-desc="Start Date"]')
+
+
+class NewReportScreen:
+    """A class for handling New Report screen"""
+    #LODGING_AGENCY_PICKER = (MobileBy.XPATH, '')
+    #LODGING_AGENCY = (MobileBy.XPATH, '')
+    #PUBLISH_BUTTON = (MobileBy.XPATH, '/android.view.View[@content-desc="Publish"]')
+
+
+class NewAssetScreen:
+    """A class for handling New Asset screen"""
+
+
+class NewLogScreen:
+    """A class for handling New Log screen"""
+    #LODGING_AGENCY_PICKER = (MobileBy.XPATH, '')
+    #ENTRY_FIELD = (MobileBy.XPATH, '')
+
+
+class CommonButtonsScreen:
+    """A class for handling Common buttons on different screen"""
+    SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
+    CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Cancel')
+    CANCEL_BUTTON_by_index = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Button')
+    OK_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Ok')
+
+
 class Android:
     """A class for handling Android device for example alerts"""
 
+    # Android alerts
     ANDROID_ALLOW = (MobileBy.ID, 'com.android.packageinstaller:id/permission_allow_button')
     ANDROID_DENY = (MobileBy.ID, 'com.android.packageinstaller:id/permission_deny_button')
 
+    # Set date and time
+    ANDROID_SET_BUTTON = (MobileBy.ID, 'android:id/button1')
+    ANDROID_CANCEL_BUTTON = (MobileBy.ID, 'android:id/button2')
+    ANDROID_CLEAR_BUTTON = (MobileBy.ID, 'android:id/button3')

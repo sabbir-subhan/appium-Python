@@ -82,6 +82,51 @@ class AndroidDevice(BasePage):
         except NoSuchElementException:
             pass
 
+    def click_set_button(self):
+
+        logging.info("Click 'Set' button")
+        set_button = self.driver.find_element(*Android.ANDROID_SET_BUTTON)
+        self.assertIsNotNone(set_button, "Set button was not found")
+        set_button.click()
+
+    def click_cancel_button(self):
+
+        logging.info("Click 'Cancel' button")
+        cancel_button = self.driver.find_element(*Android.ANDROID_CANCEL_BUTTON)
+        self.assertIsNotNone(cancel_button, "Cancel button was not found")
+        cancel_button.click()
+
+    def click_clear_button(self):
+
+        logging.info("Click 'Clear' button")
+        clear_button = self.driver.find_element(*Android.ANDROID_CLEAR_BUTTON)
+        self.assertIsNotNone(clear_button, "Clear button was not found")
+        clear_button.click()
+
+
+class CommonButtons(BasePage):
+    """A class for methods to handle Common buttons from different screens"""
+
+    def save_button(self):
+
+        logging.info("click Save button")
+        save_button = self.driver.find_element(*CommonButtonsScreen.SAVE_BUTTON)
+        self.assertIsNotNone(save_button, "Save button not found")
+        save_button.click()
+        sleep(10)
+
+    def cancel_button(self):
+        logging.info("click on Cancel button")
+        cancel_button = self.driver.find_element(*CommonButtonsScreen.CANCEL_BUTTON)
+        self.assertIsNotNone(cancel_button, "Cancel button not found")
+        cancel_button.click()
+
+    def ok_button(self):
+        logging.info("click on 'Ok' button")
+        ok_button = self.driver.find_element(*CommonButtonsScreen.OK_BUTTON)
+        self.assertIsNotNone(ok_button, "Ok button not found")
+        ok_button.click()
+
 
 class WelcomePage(BasePage):
     """A class for methods to handle Welcome Page"""
@@ -256,28 +301,159 @@ class MainPage(BasePage):
             logging.info("Failed to login")
             self.fail("Failed to login")
 
+    def click_ACTIVATE_BUTTON_on_alert(self):
+
+        logging.info("clicking in ACTIVATE button on alert")
+        alert_activate_button = self.driver.find_element(*MainMenuScreen.ALERT_ACTIVATE_BUTTON)
+        self.assertIsNotNone(alert_activate_button, "ACTIVATE button on alert not found")
+        alert_activate_button.click()
+        sleep(2)
+
+    def check_if_alert_WORKFLOW_ACTIVATED_is_present(self):
+
+        logging.info("check if alert 'Workflow activated' is present and click 'Ok'")
+        alert_workflow_activated = self.driver.find_element(*MainMenuScreen.ALERT_WORKFLOW_ACTIVATED)
+        self.assertIsNotNone(alert_workflow_activated, "alert WORKFLOW ACTIVATED is not present")
+        self.driver.find_element(*LoginScreen.OK_BUTTON).click()
+
+    def click_ACTIVATE_WORKFLOW(self):
+
+        logging.info("clicking in ACTIVATE WORKFLOW button")
+        activate_workflow_button = self.driver.find_element(*MainMenuScreen.ACTIVATE_WORKFLOW_BUTTON)
+        self.assertIsNotNone(activate_workflow_button, "ACTIVATE WORKFLOW button not found")
+        activate_workflow_button.click()
+
+    def open_CREATE_CONTACT(self):
+
+        logging.info("clicking in CREATE CONTACT button")
+        create_contact_button = self.driver.find_element(*MainMenuScreen.CREATE_CONTACT_BUTTON)
+        self.assertIsNotNone(create_contact_button, "CREATE CONTACT button not found")
+        create_contact_button.click()
+
+    def open_CREATE_TASK(self):
+
+        logging.info("clicking in CREATE TASK button")
+        create_task_button = self.driver.find_element(*MainMenuScreen.CREATE_TASK_BUTTON)
+        self.assertIsNotNone(create_task_button, "CREATE TASK button not found")
+        create_task_button.click()
+
+    def open_CREATE_REPORT(self):
+
+        logging.info("clicking in CREATE REPORT button")
+        create_report_button = self.driver.find_element(*MainMenuScreen.CREATE_REPORT_BUTTON)
+        self.assertIsNotNone(create_report_button, "CREATE REPORT button not found")
+        create_report_button.click()
+        sleep(2)
+
+    def open_WEBSITE_LINK(self):
+
+        logging.info("clicking in WEBSITE LINK button")
+        website_link_button = self.driver.find_element(*MainMenuScreen.WEBSITE_LINK_BUTTON)
+        self.assertIsNotNone(website_link_button, "WEBSITE LINK button not found")
+        website_link_button.click()
+
+    def open_INCIDENT(self):
+
+        logging.info("clicking in INCIDENT button")
+        incident_button = self.driver.find_element(*MainMenuScreen.INCIDENT_BUTTON)
+        self.assertIsNotNone(incident_button, "INCIDENT button not found")
+        incident_button.click()
+
+    def open_CREATE_ASSETS(self):
+
+        logging.info("clicking in CREATE ASSETS button")
+        create_assets_button = self.driver.find_element(*MainMenuScreen.CREATE_ASSETS_BUTTON)
+        self.assertIsNotNone(create_assets_button, "CREATE ASSETS button not found")
+        create_assets_button.click()
+
+    def open_CREATE_LOG(self):
+
+        logging.info("clicking in CREATE LOG button")
+        create_log_button = self.driver.find_element(*MainMenuScreen.CREATE_LOG_BUTTON)
+        self.assertIsNotNone(create_log_button, "CREATE LOG button not found")
+        create_log_button.click()
+
+    def open_RISKS(self):
+
+        logging.info("clicking in RISKS button")
+        risks_button = self.driver.find_element(*MainMenuScreen.RISKS_BUTTON)
+        self.assertIsNotNone(risks_button, "RISKS button not found")
+        risks_button.click()
+
     def open_EVENTS(self):
 
         logging.info("clicking in Events button")
         events_button = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON)
-        self.assertIsNotNone(events_button)
+        self.assertIsNotNone(events_button, "EVENTS button not found")
         events_button.click()
         logging.info("check if Events were opened")
         events_header = self.driver.find_element(*EventsScreen.EVENTS_HEADER)
         self.assertIsNotNone(events_header)
 
+    def open_LOGS(self):
+
+        logging.info("clicking in LOGS button")
+        logs_button = self.driver.find_element(*MainMenuScreen.LOGS_BUTTON)
+        self.assertIsNotNone(logs_button, "LOGS button not found")
+        logs_button.click()
+
+    def open_REPORTS(self):
+
+        logging.info("clicking in REPORTS button")
+        reports_button = self.driver.find_element(*MainMenuScreen.REPORTS_BUTTON)
+        self.assertIsNotNone(reports_button, "REPORTS button not found")
+        reports_button.click()
+
+    def open_MAP(self):
+
+        logging.info("clicking in Map button")
+        map_button = self.driver.find_element(*MainMenuScreen.MAP_BUTTON)
+        self.assertIsNotNone(map_button, "MAP button not found")
+        map_button.click()
+
     def open_LOCATION(self):
 
         logging.info("clicking in Location button")
         location_button = self.driver.find_element(*MainMenuScreen.LOCATION_BUTTON)
-        self.assertIsNotNone(location_button)
+        self.assertIsNotNone(location_button, "Location button not found")
         location_button.click()
+
+    def open_ASSETS(self):
+
+        logging.info("clicking in ASSETS button")
+        assets_button = self.driver.find_element(*MainMenuScreen.ASSETS_BUTTON)
+        self.assertIsNotNone(assets_button, "ASSETS button not found")
+        assets_button.click()
+
+    def open_MY_MESSAGES(self):
+        logging.info("clicking in MY MESSAGES button")
+        my_messages_button = self.driver.find_element(*MainMenuScreen.MY_MESSAGES_BUTTON)
+        self.assertIsNotNone(my_messages_button, "MY MESSAGES button not found")
+        my_messages_button.click()
+
+    def open_INBOX(self):
+        logging.info("clicking in INBOX button")
+        inbox_button = self.driver.find_element(*MainMenuScreen.INBOX_BUTTON)
+        self.assertIsNotNone(inbox_button, "INBOX button not found")
+        inbox_button.click()
+
+    def open_COMPOSE(self):
+        logging.info("clicking in COMPOSE button")
+        compose_button = self.driver.find_element(*MainMenuScreen.COMPOSE_BUTTON)
+        self.assertIsNotNone(compose_button, "COMPOSE button not found")
+        compose_button.click()
+
+    def open_SENT(self):
+        logging.info("clicking in SENT button")
+        sent_button = self.driver.find_element(*MainMenuScreen.SENT_BUTTON)
+        self.assertIsNotNone(sent_button, "SENT button not found")
+        sent_button.click()
 
     def open_PHOTO(self):
 
         logging.info("clicking in Photo button")
         photo_button = self.driver.find_element(*MainMenuScreen.PHOTO_BUTTON)
-        self.assertIsNotNone(photo_button)
+        self.assertIsNotNone(photo_button, "PHOTO button not found")
         photo_button.click()
 
     def open_VIDEO(self):
@@ -293,6 +469,58 @@ class MainPage(BasePage):
         sound_button = self.driver.find_element(*MainMenuScreen.SOUND_BUTTON)
         self.assertIsNotNone(sound_button, "Sound button not found")
         sound_button.click()
+
+    def open_TASKS(self):
+
+        logging.info("clicking in TASKS button")
+        tasks_button = self.driver.find_element(*MainMenuScreen.TASKS_BUTTON)
+        self.assertIsNotNone(tasks_button, "TASKS button not found")
+        tasks_button.click()
+
+    def open_DOCUMENTS(self):
+
+        logging.info("clicking in DOCUMENTS button")
+        documents_button = self.driver.find_element(*MainMenuScreen.DOCUMENTS_BUTTON)
+        self.assertIsNotNone(documents_button, "DOCUMENTS button not found")
+        documents_button.click()
+
+    def open_CONTACTS(self):
+
+        logging.info("clicking in CONTACTS button")
+        contacts_button = self.driver.find_element(*MainMenuScreen.CONTACTS_BUTTON)
+        self.assertIsNotNone(contacts_button, "CONTACTS button not found")
+        contacts_button.click()
+
+    def open_ALLOCATE(self):
+
+        logging.info("clicking in ALLOCATE button")
+        allocate_button = self.driver.find_element(*MainMenuScreen.ALLOCATE_BUTTON)
+        self.assertIsNotNone(allocate_button, "ALLOCATE button not found")
+        allocate_button.click()
+
+    def open_SETTINGS(self):
+        logging.info("clicking in SETTINGS button")
+        settings_button = self.driver.find_element(*MainMenuScreen.SETTINGS_BUTTON)
+        self.assertIsNotNone(settings_button, "SETTINGS button not found")
+        settings_button.click()
+
+    def open_ACTIVATE(self):
+        logging.info("clicking in ACTIVATE button")
+        activate_button = self.driver.find_element(*MainMenuScreen.ACTIVATE_BUTTON)
+        self.assertIsNotNone(activate_button, "ACTIVATE button not found")
+        activate_button.click()
+
+    def open_OFFLINE_SYNC(self):
+        logging.info("clicking in OFFLINE SYNC button")
+        offline_sync_button = self.driver.find_element(*MainMenuScreen.OFFLINE_SYNC_BUTTON)
+        self.assertIsNotNone(offline_sync_button, "OFFLINE SYNC button not found")
+        offline_sync_button.click()
+
+    def open_ABOUT(self):
+        logging.info("clicking in ABOUT button")
+        about_button = self.driver.find_element(*MainMenuScreen.ABOUT_BUTTON)
+        self.assertIsNotNone(about_button, "ABOUT button not found")
+        about_button.click()
 
 
 class PhotoPage(BasePage):
@@ -856,7 +1084,7 @@ class EventsTypesPage(BasePage):
         event_type_chooser.click()
 
 
-class EventEditPage(BasePage):
+class EventEditPage(CommonButtons):
     """A class for methods to handle Event Edit Page"""
 
     def click_into_Name_input_field(self):
@@ -950,29 +1178,6 @@ class EventEditPage(BasePage):
         create_mapping_data_button = self.driver.find_element(*EventEditScreen.CREATE_MAPPING_DATA)
         self.assertIsNotNone(create_mapping_data_button, "Button for creating map data is not present")
         create_mapping_data_button.click()
-
-    def save_event(self):
-
-        logging.info("Save event")
-        save_button = self.driver.find_element(*EventEditScreen.SAVE_BUTTON)
-        self.assertIsNotNone(save_button)
-        if save_button.is_displayed():
-            save_button.click()
-        else:
-            self.fail("Save event button not found")
-        sleep(5)
-
-    def cancel_button(self):
-
-        sleep(2)
-        logging.info("click on Cancel button")
-        cancel_button = self.driver.find_element(*EventEditScreen.CANCEL_BUTTON_by_index)
-        self.assertIsNotNone(cancel_button)
-        try:
-            self.driver.find_element(*EventEditScreen.CANCEL_BUTTON).click()
-        except NoSuchElementException:
-            cancel_button.click()
-        sleep(2)
 
     # only for event type: "event_for_on_load/save_test"
     def check_on_load_and_on_save_sequences(self):
@@ -1460,3 +1665,129 @@ class EventDetailsPage(BasePage):
         self.assertIsNotNone(delete_confirm_button, "confirm delete button not found")
         delete_confirm_button.click()
         sleep(5)
+
+
+class NewContactPage(CommonButtons):
+    """A class for methods to handle New Contact Page"""
+
+    def type_first_name(self, text):
+
+        logging.info("type first name")
+        first_name = self.driver.find_element(*NewContactScreen.FIRST_NAME)
+        self.assertIsNotNone(first_name, "First name input field was not found")
+        first_name.click()
+        first_name.send_keys(text)
+
+
+class NewTaskPage(AndroidDevice, CommonButtons):
+    """A class for methods to handle New Task Page"""
+
+    def type_title(self, text):
+
+        logging.info("type title")
+        title = self.driver.find_element(*NewTaskScreen.TITLE)
+        self.assertIsNotNone(title, "Title input field was not found")
+        title.click()
+        title.send_keys(text)
+
+    def click_on_assigned(self):
+
+        logging.info("click on Assigned field")
+        assigned = self.driver.find_element(*NewTaskScreen.ASSIGNED)
+        self.assertIsNotNone(assigned, "Assigned field was not found")
+        assigned.click()
+
+    def add_contacts(self):
+
+        logging.info("Add Assignees")
+        assignees = self.driver.find_element(*NewTaskScreen.ADD_CONTACTS_AND_GROUPS)
+        self.assertIsNotNone(assignees, "Assignees field was not found")
+        assignees.click()
+
+    def choose_users(self):
+
+        logging.info("Choose Users")
+        assignees = self.driver.find_element(*NewTaskScreen.CHOOSE_USERS)
+        self.assertIsNotNone(assignees, "Users option list was not found")
+        assignees.click()
+
+    def choose_start_date(self):
+
+        logging.info("Choose Start Date")
+        start_date = self.driver.find_element(*NewTaskScreen.START_DATE)
+        self.assertIsNotNone(start_date, "Start Date field was not found")
+        start_date.click()
+
+
+class NewReportPage(NewTaskPage):
+    """A class for methods to handle New Report Page"""
+
+    def type_title(self, text):
+
+        NewTaskPage.type_title(self, text)
+
+    def click_on_lodging_agency_picker(self):
+
+        logging.info("click on 'Lodging Agency' picker")
+        lodging_agency_picker = self.driver.find_element(*NewReportScreen.LODGING_AGENCY_PICKER)
+        self.assertIsNotNone(lodging_agency_picker, "Lodging Agency picker was not found")
+        lodging_agency_picker.click()
+
+    def choose_lodging_agency(self):
+
+        logging.info("choose Lodging Agency")
+        lodging_agency = self.driver.find_element(*NewReportScreen.LODGING_AGENCY)
+        self.assertIsNotNone(lodging_agency, "Lodging Agency inside picker was not found")
+        lodging_agency.click()
+
+    def click_publish_button(self):
+
+        logging.info("click Publish button")
+        publish_button = self.driver.find_element(*NewReportScreen.PUBLISH_BUTTON)
+        self.assertIsNotNone(publish_button, "Publish button was not found")
+        publish_button.click()
+
+
+# Appium can't access another app directly only tapping on specific coordinates will work
+class ChromeBrowserPage(BasePage):
+    """A class for methods to handle Chrome Browser Page"""
+
+    def click_back_to_oca(self):
+
+        logging.info("wait for page to load")
+        sleep(10)
+        logging.info("click 'Back to OCA' button")
+        # add coordinates for iPhones
+        positions = [(15, 7)]
+        self.driver.tap(positions, duration=500)
+        sleep(2)
+
+
+class NewAssetPage(EventEditPage):
+    """A class for methods to handle New Asset Page"""
+
+    def fill_Name_input_field(self, text):
+
+        EventEditPage.fill_Name_input_field(self, text)
+
+
+class NewLogPage(NewReportPage):
+    """A class for methods to handle New Log Page"""
+
+    def click_on_lodging_agency_picker(self):
+
+        logging.info("click on 'Lodging Agency' picker")
+        lodging_agency_picker = self.driver.find_element(*NewLogScreen.LODGING_AGENCY_PICKER)
+        self.assertIsNotNone(lodging_agency_picker, "Lodging Agency picker was not found")
+        lodging_agency_picker.click()
+
+    def choose_lodging_agency(self):
+
+        NewReportPage.choose_lodging_agency(self)
+
+    def type_text_into_entry_field(self, text):
+
+        logging.info("type text into 'Entry' field")
+        entry_field = self.driver.find_element(*NewLogScreen.ENTRY_FIELD)
+        entry_field.click()
+        entry_field.send_keys(text)
