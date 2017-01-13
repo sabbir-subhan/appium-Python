@@ -287,7 +287,6 @@ class NewTaskScreen:
     CHOOSE_CONTACTS_ios = (MobileBy.XPATH, '//UIAStaticText[@name="Contacts"]')
     START_DATE_ios = (MobileBy.XPATH, '//UIAStaticText[@name="Start Date"]')
     HIDE_DATE_PICKER_ios = (MobileBy.XPATH, '//UIAStaticText[@name="Completed Date"]')
-    NEW_TASK_NOTIFICATION_ios = (MobileBy.XPATH, '//UIAStaticText[@name="New task assigned"]')  # not working ?
 
 
 class NewReportScreen:
@@ -297,8 +296,8 @@ class NewReportScreen:
     PUBLISH_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Publish"]')
 
 
-class NewAssetScreen:
-    """A class for handling New Asset screen"""
+# class NewAssetScreen:
+#     """A class for handling New Asset screen"""
 
 
 class NewLogScreen:

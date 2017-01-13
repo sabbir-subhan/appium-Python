@@ -265,11 +265,12 @@ class MainPage(BasePage):
 
         try:
             WebDriverWait(self.driver, 20).until(
-                expected_conditions.presence_of_element_located(MainMenuScreen.EVENTS_BUTTON_ios), "Failed to login")
+                expected_conditions.presence_of_element_located(MainMenuScreen.EVENTS_BUTTON_ios),
+                "Events button in Main Menu is not present")
             logging.info("Events button in Main Menu is present")
         except NoSuchElementException:
-            logging.info("Failed to login")
-            self.fail("Failed to login")
+            logging.info("Events button in Main Menu is not present")
+            self.fail("Events button in Main Menu is not present")
 
     def click_ACTIVATE_BUTTON_on_alert(self):
 
@@ -1351,11 +1352,6 @@ class NewTaskPage(CommonButtons):
         self.assertIsNotNone(hide_date_picker, "Completed Date field was not found")
         hide_date_picker.click()
 
-    # def wait_for_new_task_notification(self):  # test it - notification appears only when task is created for "Users" but it taking really long time until notification is displayed :/
-    #
-    #     logging.info("Wait for new task notification")
-    #     WebDriverWait(self.driver, 30).until(expected_conditions.presence_of_element_located(NewTaskScreen.NEW_TASK_NOTIFICATION_ios), "Failed to create a new task")
-
 
 class NewReportPage(NewTaskPage):
     """A class for methods to handle New Report Page"""
@@ -1366,7 +1362,7 @@ class NewReportPage(NewTaskPage):
 
     def click_on_lodging_agency_picker(self):
 
-        sleep(5)  # test it
+        sleep(5)
         logging.info("click on 'Lodging Agency' picker")
         lodging_agency_picker = self.driver.find_element(*NewReportScreen.LODGING_AGENCY_PICKER_ios)
         self.assertIsNotNone(lodging_agency_picker, "Lodging Agency picker was not found")
@@ -1376,7 +1372,7 @@ class NewReportPage(NewTaskPage):
 
     def choose_lodging_agency(self):
 
-        logging.info("choose Lodging Agency")
+        logging.info("choose Lodging Agency - second position on the list")
         lodging_agency = self.driver.find_element(*NewReportScreen.LODGING_AGENCY_ios)
         self.assertIsNotNone(lodging_agency, "Lodging Agency inside picker was not found")
         lodging_agency.click()
@@ -1401,7 +1397,7 @@ class SafariBrowserPage(BasePage):
         # add coordinates for iPhones
         positions = [(15, 7)]
         self.driver.tap(positions, duration=500)
-        sleep(2)
+        # sleep(2)
 
 
 class EventDetailsPage(BasePage):
@@ -1455,7 +1451,7 @@ class NewLogPage(NewReportPage):
 
     def type_text_into_entry_field(self, text):
 
-        sleep(2)
+        sleep(5)
         logging.info("type text into 'Entry' field")
         entry_field = self.driver.find_element(*NewLogScreen.ENTRY_FIELD_ios)
         entry_field.click()

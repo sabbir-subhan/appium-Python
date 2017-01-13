@@ -40,7 +40,8 @@ Appium in CLI:
 - npm install wd
 appium -p 4723 -bp 5724 --session-override --log-level debug
 
-
+current GUI version - 1.5.3
+current CLI beta version - 1.6.3
 
 
 CONFIGURING ANDROID DEVICE:
@@ -60,17 +61,13 @@ PULLING APK FILE FROM ANDROID DEVICE:
 next open terminal and use:
 
 - adb devices
-- adb shell pm list packages | grep com.noggin
-- adb shell pm path com.noggin.
+- adb shell pm list packages | grep noggin
+- adb shell pm path <result from above command>
 - adb pull <path to package>
-(aapt dump badging com.noggin.oca.apk)
 
 finding app activity through adb - appActivity:
-- android adb devices
-- adb shell
-- dumpsys window windows | grep -E ‘mCurrentFocus|mFocusedApp’
+- adb shell dumpsys activity activities | grep com.noggin.oca
  (app need to be open on device)
-
 
 
 BUILDING .APP FILE ON OSX:

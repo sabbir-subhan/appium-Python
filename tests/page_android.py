@@ -11,6 +11,7 @@ from locators_android import *
 from credentials import Credentials
 import logging
 
+
 logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/TCs.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())
@@ -54,7 +55,7 @@ class AndroidDevice(BasePage):
             logging.info("hide screen keyboard")
             self.driver.hide_keyboard()
             sleep(3)
-        except:
+        except NoSuchElementException:
             logging.info("screen keyboard not found")
 
     def click_Go_button_on_keyboard(self):
@@ -126,6 +127,105 @@ class CommonButtons(BasePage):
         ok_button = self.driver.find_element(*CommonButtonsScreen.OK_BUTTON)
         self.assertIsNotNone(ok_button, "Ok button not found")
         ok_button.click()
+
+    def test_scroll(self):
+        """Method to scroll down to bottom of the screen - to 'Save' button"""
+
+        web_view = self.driver.find_element(*CommonButtonsScreen.WEB_VIEW)
+        save_button = self.driver.find_element(*CommonButtonsScreen.SAVE_BUTTON)
+        action = TouchAction(self.driver)
+        # action.press(el=web_view).perform()
+        # action.move_to(el=save_button, x=1, y=-20000).perform()
+        # sleep(10)
+
+        # if save_button.is_displayed():
+        #     save_button.click()
+        # else:
+        #
+        #
+        # action.press(el=web_view).perform()
+        # action.move_to(el=save_button, x=1, y=-100).perform()
+        #
+        # action.press(el=web_view).perform()
+        # action.move_to(el=save_button, x=1, y=-100).perform()
+        #
+        # action.press(el=web_view).perform()
+        # action.move_to(el=save_button, x=1, y=-100).perform()
+        #
+        # action.press(el=web_view).perform()
+        # action.move_to(el=save_button, x=1, y=-100).perform()
+        #
+        # action.press(el=web_view).perform()
+        # action.move_to(el=save_button, x=1, y=-100).perform()
+        #
+        # action.press(el=web_view).perform()
+        # action.move_to(el=save_button, x=1, y=-100).perform()
+
+        logging.info("scroll ???")
+        #el1 = []
+        while 1 > 0:  # executes a target statement as long as a given condition is true
+            action.press(el=None, x=1, y=100).perform()
+            action.move_to(el=None, x=1, y=500).perform()
+            # try:
+            #     save_button.click()
+            #     if events_button.is_displayed():
+            #         break
+            #     else:
+            #         continue
+            # except NoSuchElementException:
+            #     pass
+
+        # logging.info("test4")
+        # start_x = [1]
+        # end_x = [1]
+        # start_y = [100]
+        # end_y = [2000]
+        # self.driver.swipe(start_x, start_y, end_x, end_y)
+        # self.driver.swipe(start_x=1, start_y=200, end_x=1, end_y=2000)
+        # try:
+        #     elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
+        #     action.press(elm1).perform()
+        #     action.move_to(x=1, y=100).perform()
+        # except NoSuchElementException:
+        #     logging.info("can't find FINISHED_HEADER")
+        # sleep(1)
+
+        # action.press(el=web_view).perform()
+        #
+        # while el1 == []
+        #     action.move_to(el=save_button, x=[], y=[]).perform()
+
+        # self.driver.execute_script("mobile: scroll", {"direction": "down"})
+
+        # el = CommonButtonsScreen.WEB_VIEW
+        # self.driver.execute_script("mobile: scroll", {"direction": 'down', 'element': el})
+
+        # origin_el = self.driver.find_element(*NewContactScreen.FIRST_NAME)
+        # destination_el = self.driver.find_element(*CommonButtonsScreen.SAVE_BUTTON)
+        # action = TouchAction(self)
+        # action.press(origin_el).move_to(destination_el).release().perform()
+
+        # logging.info("scroll down to find element")
+        # element_on_the_list = None
+        # try:
+        #     element_on_the_list = self.driver.find_element(*CommonButtonsScreen.SAVE_BUTTON)
+        #     # that is element what You are looking for
+        # except NoSuchElementException:
+        #     element_to_scroll = self.driver.find_element(*CommonButtonsScreen.WEB_VIEW)
+        #     # that is id/xpath/name of whole list
+        #     scroll_object = dict(direction="down", element=element_to_scroll)
+        #     self.driver.execute_script("mobile: scroll", scroll_object)
+
+        # logging.info("finding element on the list")
+        # element_on_the_list = None
+        # if element_on_the_list is not None:
+        #     element_on_the_list = self.driver.find_element(*CommonButtonsScreen.SAVE_BUTTON).click()
+        #     sleep(2)
+        # else:
+        #     element_to_scroll = self.driver.find_element(*CommonButtonsScreen.WEB_VIEW)
+        #     scrollobject = dict(direction="down", element=element_to_scroll.id)
+        #     self.driver.execute_script("mobile: moveTo", scrollobject)
+        # element_on_the_list.click()
 
 
 class WelcomePage(BasePage):
@@ -295,11 +395,12 @@ class MainPage(BasePage):
 
         try:
             WebDriverWait(self.driver, 20).until(
-                expected_conditions.presence_of_element_located(MainMenuScreen.EVENTS_BUTTON), "Failed to login")
+                expected_conditions.presence_of_element_located(MainMenuScreen.EVENTS_BUTTON),
+                "Events button in Main Menu is not present")
             logging.info("Events button in Main Menu is present")
         except NoSuchElementException:
-            logging.info("Failed to login")
-            self.fail("Failed to login")
+            logging.info("Events button in Main Menu is not present")
+            self.fail("Events button in Main Menu is not present")
 
     def click_ACTIVATE_BUTTON_on_alert(self):
 
@@ -347,6 +448,7 @@ class MainPage(BasePage):
 
     def open_WEBSITE_LINK(self):
 
+        sleep(2)
         logging.info("clicking in WEBSITE LINK button")
         website_link_button = self.driver.find_element(*MainMenuScreen.WEBSITE_LINK_BUTTON)
         self.assertIsNotNone(website_link_button, "WEBSITE LINK button not found")
@@ -1728,7 +1830,7 @@ class NewReportPage(NewTaskPage):
 
     def click_on_lodging_agency_picker(self):
 
-        logging.info("click on 'Lodging Agency' picker")
+        logging.info("choose Lodging Agency - second position on the list")
         lodging_agency_picker = self.driver.find_element(*NewReportScreen.LODGING_AGENCY_PICKER)
         self.assertIsNotNone(lodging_agency_picker, "Lodging Agency picker was not found")
         lodging_agency_picker.click()
@@ -1756,10 +1858,10 @@ class ChromeBrowserPage(BasePage):
 
         logging.info("wait for page to load")
         sleep(10)
-        logging.info("click 'Back to OCA' button")
-        # add coordinates for iPhones
-        positions = [(15, 7)]
-        self.driver.tap(positions, duration=500)
+        logging.info("click 'Back' button")
+        # self.driver.back()
+        self.driver.press_keycode(4)
+        self.driver.keyevent(4)
         sleep(2)
 
 

@@ -33,9 +33,9 @@ class TestCase9iOS(unittest.TestCase):
         # choose desired capabilities from desired_capabilities.py
         desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad
 
-        self.driver = webdriver.Remote("http://localhost:4725/wd/hub", desired_capabilities)
+        self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
-        self.driver.implicitly_wait(15)  # seconds
+        self.driver.implicitly_wait(20)  # seconds
 
     def tearDown(self):
 
@@ -64,11 +64,13 @@ class TestCase9iOS(unittest.TestCase):
         main_page.click_ACTIVATE_WORKFLOW()
         main_page.click_ACTIVATE_BUTTON_on_alert()
         main_page.check_if_alert_WORKFLOW_ACTIVATED_is_present()
+        main_page.check_presence_of_events_button()
         main_page.open_CREATE_CONTACT()
         new_contact_page = NewContactPage(self.driver)
         new_contact_page.type_first_name("Name for new contact test - iOS")
         ios_device.hide_keyboard()
         new_contact_page.save_button()
+        main_page.check_presence_of_events_button()
         main_page.open_CREATE_TASK()
         new_task_page = NewTaskPage(self.driver)
         new_task_page.type_title("Title for new task test - iOS")
@@ -80,6 +82,7 @@ class TestCase9iOS(unittest.TestCase):
         new_task_page.choose_start_date()
         new_task_page.hide_date_picker()
         new_task_page.save_button()
+        main_page.check_presence_of_events_button()
         main_page.open_CREATE_REPORT()
         new_report_page = NewReportPage(self.driver)
         new_report_page.type_title("Title for new report test - iOS")
@@ -87,19 +90,23 @@ class TestCase9iOS(unittest.TestCase):
         new_report_page.click_on_lodging_agency_picker()
         new_report_page.choose_lodging_agency()
         new_report_page.click_publish_button()
+        main_page.check_presence_of_events_button()
         main_page.open_WEBSITE_LINK()
         safari_page = SafariBrowserPage(self.driver)
         safari_page.click_back_to_oca()  # Appium can't switch between apps so this click is based on coordinates
+        main_page.check_presence_of_events_button()
         main_page.open_INCIDENT()
         incident_page = EventEditPage(self.driver)
         incident_page.fill_Name_input_field("Name for new incident test - iOS")
         ios_device.hide_keyboard()
         incident_page.save_button()
+        main_page.check_presence_of_events_button()
         main_page.open_CREATE_ASSETS()
         new_asset_page = NewAssetPage(self.driver)
         new_asset_page.fill_Name_input_field("Name for new asset test - iOS")
         ios_device.hide_keyboard()
         new_asset_page.save_button()
+        main_page.check_presence_of_events_button()
         main_page.open_CREATE_LOG()
         new_log_page = NewLogPage(self.driver)
         new_log_page.click_on_lodging_agency_picker()

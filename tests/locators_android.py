@@ -90,7 +90,7 @@ class MainMenuScreen:
     ABOUT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "ABOUT")]]')
     LOGOUT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "LOGOUT")]]')  # there is problem with that locator because buttons suddenly don't have attribute content-desc
     
-    ALERT_ACTIVATE_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Activate")]]')
+    ALERT_ACTIVATE_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc="Activate" and @focusable ="true"]')
     ALERT_CANCEL_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Cancel")]]')
     ALERT_WORKFLOW_ACTIVATED = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Workflow activated")]]')
 
@@ -339,9 +339,9 @@ class NewTaskScreen:
 
 class NewReportScreen:
     """A class for handling New Report screen"""
-    #LODGING_AGENCY_PICKER = (MobileBy.XPATH, '')
-    #LODGING_AGENCY = (MobileBy.XPATH, '')
-    #PUBLISH_BUTTON = (MobileBy.XPATH, '/android.view.View[@content-desc="Publish"]')
+    LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//android.view.View[4]/android.widget.Spinner[1]')
+    LODGING_AGENCY = (MobileBy.XPATH, '//android.widget.CheckedTextView[2]')
+    PUBLISH_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Publish')
 
 
 class NewAssetScreen:
@@ -350,8 +350,9 @@ class NewAssetScreen:
 
 class NewLogScreen:
     """A class for handling New Log screen"""
-    #LODGING_AGENCY_PICKER = (MobileBy.XPATH, '')
-    #ENTRY_FIELD = (MobileBy.XPATH, '')
+    LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Spinner[1]')
+    ENTRY_FIELD = (MobileBy.XPATH, '//android.view.View[1]/android.view.View[1]/android.view.View'
+                                   '[@focusable="true" and @clickable="true" and @scrollable="false" and @index="0"]')
 
 
 class CommonButtonsScreen:
@@ -360,6 +361,7 @@ class CommonButtonsScreen:
     CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Cancel')
     CANCEL_BUTTON_by_index = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Button')
     OK_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Ok')
+    WEB_VIEW = (MobileBy.XPATH, '//android.webkit.WebView[@scrollable="true"]')
 
 
 class Android:
