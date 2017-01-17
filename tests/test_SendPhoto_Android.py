@@ -27,7 +27,7 @@ from desired_capabilities import DesiredCapabilities
 from page_android import *
 
 
-class TestCase5android(unittest.TestCase):
+class test_SendPhoto_Android(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
@@ -98,5 +98,5 @@ class TestCase5android(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestCase5android)
+    suite = unittest.TestLoader().loadTestsFromTestCase(test_SendPhoto_Android)
     unittest.TextTestRunner(verbosity=2).run(suite)

@@ -17,20 +17,20 @@
 
 from appium import webdriver
 from desired_capabilities import DesiredCapabilities
-from page_ios import *
+from page_android import *
 
 
-class TestCase8iOS(unittest.TestCase):
+class test_SendAudio_Android(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
         # choose desired capabilities from desired_capabilities.py
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_6
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
-        self.driver.implicitly_wait(15)  # seconds
+        self.driver.implicitly_wait(20)  # seconds
 
     def tearDown(self):
 
@@ -39,9 +39,6 @@ class TestCase8iOS(unittest.TestCase):
 
     def test_send_sound(self):
 
-        main_page = MainPage(self.driver)
-        main_page.dismiss_ios_notifications()
-        main_page.logout_if_already_logged_in()
         logging.info("starting Test Case 8: Send Audio to OCA")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()
@@ -49,12 +46,13 @@ class TestCase8iOS(unittest.TestCase):
         login_page.type_username('QA')
         login_page.type_password('QA')
         login_page.type_domain_address('QA')
-        ios_device = iOSdevice(self.driver)
-        ios_device.hide_keyboard()
+        android_device = AndroidDevice(self.driver)
+        android_device.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
+        main_page = MainPage(self.driver)
         main_page.alert_expiring_password()
-        main_page.dismiss_ios_notifications()
+        main_page.dismiss_android_notifications()
         main_page.check_presence_of_events_button()
         main_page.open_SOUND()
         sound_page = SoundPage(self.driver)
@@ -63,14 +61,15 @@ class TestCase8iOS(unittest.TestCase):
         sound_recorder = SoundRecorder(self.driver)
         sound_recorder.record_sound()
         sleep(0.2)  # time for recording sound
-        sound_recorder.record_sound()
+        sound_recorder.stop_recording()
         sound_recorder.click_done_button()
-        sound_page.type_description("test iOS - sound")
-        ios_device.hide_keyboard()
+        android_device.alert_android_allow()
+        sound_page.type_description("test Android - sound")
+        android_device.hide_keyboard()
         sound_page.click_send_button()
         main_page.check_presence_of_events_button()
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestCase8iOS)
+    suite = unittest.TestLoader().loadTestsFromTestCase(test_SendAudio_Android)
     unittest.TextTestRunner(verbosity=2).run(suite)

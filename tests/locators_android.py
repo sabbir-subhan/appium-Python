@@ -176,7 +176,6 @@ class EventEditScreen:
     FINISHED_FIELD = (MobileBy.ACCESSIBILITY_ID, 'Finished')
     TIME_DATE = (MobileBy.ACCESSIBILITY_ID, 'Increase year')
     SET_BUTTON = (MobileBy.ID, 'android:id/button1')
-    # SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
     DESCRIPTION_FIELD = (MobileBy.XPATH,
                          "//android.widget.ListView[@index='0']"
                          "//android.view.View[@index='8' and @content-desc[contains(., 'Description')]]"
@@ -202,10 +201,7 @@ class EventEditScreen:
     FIELD_TO_RESTORE_1_VALUE = (MobileBy.ACCESSIBILITY_ID, 'value for field 1')
     FIELD_TO_RESTORE_2_HEADER = (MobileBy.ACCESSIBILITY_ID, 'New email address')
     FIELD_TO_RESTORE_2_VALUE = (MobileBy.ACCESSIBILITY_ID, 'test@noggin.com')
-    # CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Cancel')
-    # CANCEL_BUTTON_by_index = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Button')
     CHOOSER_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "New events chooser")]]')
-    # CHOOSER_FIELD = (MobileBy.ACCESSIBILITY_ID, 'New events chooser - ')
     PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER = (MobileBy.XPATH, '//android.view.View[@content-desc['
                                                             'contains(., "Test Appium Android")]]')
     SUBFORM_FIELD_ADD_ROW = (MobileBy.ACCESSIBILITY_ID, 'Add row')
@@ -215,7 +211,7 @@ class EventEditScreen:
                                                      '/android.view.View[@index="1"]')
     PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER = (MobileBy.XPATH, '//android.view.View[@content-desc['
                                                                     'contains(., "Test Android to create")]]')
-    # headers for scrolling
+    # headers
     FINISHED_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Finished')
     LEADAGENCY_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Lead agency')
     IMPACT_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Impact')
@@ -352,7 +348,7 @@ class NewLogScreen:
     """A class for handling New Log screen"""
     LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Spinner[1]')
     ENTRY_FIELD = (MobileBy.XPATH, '//android.view.View[1]/android.view.View[1]/android.view.View'
-                                   '[@focusable="true" and @clickable="true" and @scrollable="false" and @index="0"]')
+                                   '[@focusable="true" and @clickable="true" and @scrollable="false"]')
 
 
 class CommonButtonsScreen:

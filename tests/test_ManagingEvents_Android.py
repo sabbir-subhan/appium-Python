@@ -6,7 +6,7 @@ from desired_capabilities import DesiredCapabilities
 from page_android import *
 
 
-class TestCase3Android(unittest.TestCase):
+class test_ManagingEvents_Android(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
@@ -25,7 +25,6 @@ class TestCase3Android(unittest.TestCase):
 
     def test_managing_events(self):
 
-        # login
         logging.info("starting Test Case 3: managing events")
         top_bar = BasePage(self.driver)
         welcome_page = WelcomePage(self.driver)
@@ -43,7 +42,6 @@ class TestCase3Android(unittest.TestCase):
         main_page.dismiss_android_notifications()
         main_page.check_presence_of_events_button()
 
-        # moving to EVENTS
         logging.info("TC info: filter events, create first Event and delete it")
         main_page.open_EVENTS()
         events_page = EventsPage(self.driver)
@@ -72,10 +70,10 @@ class TestCase3Android(unittest.TestCase):
         events_page.open_previously_created_event1()
         event_details_page = EventDetailsPage(self.driver)
         event_details_page.click_edit_button()
-        event_edit_page.scroll_down_to_leadagency_header_field()
+        event_edit_page.scroll_down_one_view()
         event_edit_page.type_text_into_description_field()  # this step will be passed on older android devices to avoid errors
         android_device.hide_keyboard()
-        event_edit_page.scroll_down_from_description_field()
+        event_edit_page.scroll_down()
         event_edit_page.save_button()
         events_page.click_More_button()
         event_details_page.click_Delete_button()
@@ -165,7 +163,7 @@ class TestCase3Android(unittest.TestCase):
         event_edit_page.click_into_Name_input_field()
         event_edit_page.fill_Name_input_field("Test Event with on load and on save sequence")
         android_device.hide_keyboard()
-        event_edit_page.scroll_down_to_leadagency_header_field()
+        event_edit_page.scroll_down_one_view()
         event_edit_page.check_on_load_and_on_save_sequences()
         event_edit_page.click_on_option_list()
         option_list_in_event = OptionList(self.driver)
@@ -178,7 +176,7 @@ class TestCase3Android(unittest.TestCase):
         event_edit_page.click_on_option_list()
         option_list_in_event.click_on_option_3()
         event_edit_page.check_hidden_fields_1_and_2()
-        event_edit_page.scroll_down_from_leadagency_to_buttons()
+        event_edit_page.scroll_down()
         event_edit_page.cancel_button()
 
         logging.info("create new type of event, but do not save it - event with chooser field for another event "
@@ -190,18 +188,18 @@ class TestCase3Android(unittest.TestCase):
         event_edit_page.click_into_Name_input_field()
         event_edit_page.fill_Name_input_field("Test Event with chooser fields")
         android_device.hide_keyboard()
-        event_edit_page.scroll_down_to_leadagency_header_field()
+        event_edit_page.scroll_down_one_view()
         event_edit_page.click_on_event_chooser_field()
         events_page.click_on_previously_created_event_for_chooser_field()
         event_edit_page.click_button_add_row()
         event_edit_page.click_on_choose_field_inside_subform()
         events_page.click_on_previously_created_event_for_subform_chooser()
         event_edit_page.delete_chosen_event_inside_subform()
-        event_edit_page.scroll_down_from_leadagency_to_buttons()
+        event_edit_page.scroll_down()
         event_edit_page.cancel_button()
         events_page.check_if_EVENTS_were_opened()
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestCase3Android)
+    suite = unittest.TestLoader().loadTestsFromTestCase(test_ManagingEvents_Android)
     unittest.TextTestRunner(verbosity=2).run(suite)

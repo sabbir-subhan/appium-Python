@@ -47,7 +47,7 @@ class BasePage(unittest.TestCase):
 
 
 class AndroidDevice(BasePage):
-    """A class for methods to handle iOS Device"""
+    """A class for methods to handle Android Device"""
 
     def hide_keyboard(self):
 
@@ -66,6 +66,12 @@ class AndroidDevice(BasePage):
             sleep(3)
         except NoSuchElementException:
             logging.info("keyboard not found")
+
+    def click_back_button(self):
+
+        logging.info("click 'Back' button")
+        self.driver.press_keycode(4)
+        sleep(5)
 
     def alert_android_allow(self):
 
@@ -128,104 +134,72 @@ class CommonButtons(BasePage):
         self.assertIsNotNone(ok_button, "Ok button not found")
         ok_button.click()
 
-    def test_scroll(self):
+    def scroll_down(self):
         """Method to scroll down to bottom of the screen - to 'Save' button"""
 
-        web_view = self.driver.find_element(*CommonButtonsScreen.WEB_VIEW)
-        save_button = self.driver.find_element(*CommonButtonsScreen.SAVE_BUTTON)
-        action = TouchAction(self.driver)
-        # action.press(el=web_view).perform()
-        # action.move_to(el=save_button, x=1, y=-20000).perform()
-        # sleep(10)
+        window_size = self.driver.get_window_size()  # this returns dictionary
+        start_x = window_size["width"]*0.25
+        # end_x = window_size["width"]*0.75
+        start_y = window_size["height"]*0.20
+        end_y = window_size["height"]*0.80
+        logging.info("scroll down")
+        sleep(2)
+        scrolls = 13
+        while scrolls > 0:
+            self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen
+            scrolls -= 1
+        sleep(2)
 
-        # if save_button.is_displayed():
-        #     save_button.click()
-        # else:
-        #
-        #
-        # action.press(el=web_view).perform()
-        # action.move_to(el=save_button, x=1, y=-100).perform()
-        #
-        # action.press(el=web_view).perform()
-        # action.move_to(el=save_button, x=1, y=-100).perform()
-        #
-        # action.press(el=web_view).perform()
-        # action.move_to(el=save_button, x=1, y=-100).perform()
-        #
-        # action.press(el=web_view).perform()
-        # action.move_to(el=save_button, x=1, y=-100).perform()
-        #
-        # action.press(el=web_view).perform()
-        # action.move_to(el=save_button, x=1, y=-100).perform()
-        #
-        # action.press(el=web_view).perform()
-        # action.move_to(el=save_button, x=1, y=-100).perform()
+    def scroll_up(self):
+        """Method to scroll up to top of the screen"""
 
-        logging.info("scroll ???")
-        #el1 = []
-        while 1 > 0:  # executes a target statement as long as a given condition is true
-            action.press(el=None, x=1, y=100).perform()
-            action.move_to(el=None, x=1, y=500).perform()
-            # try:
-            #     save_button.click()
-            #     if events_button.is_displayed():
-            #         break
-            #     else:
-            #         continue
-            # except NoSuchElementException:
-            #     pass
+        window_size = self.driver.get_window_size()  # this will give You a dictionary
+        start_x = window_size["width"]*0.25
+        # end_x = window_size["width"]*0.75
+        start_y = window_size["height"]*0.25
+        end_y = window_size["height"]*0.80
+        logging.info("scroll up")
+        sleep(2)
+        scrolls = 13
+        while scrolls > 0:
+            self.driver.swipe(start_x, start_y, start_x, end_y, 3000)  # each swipe is scrolling one screen
+            scrolls -= 1
+        sleep(1)
 
-        # logging.info("test4")
-        # start_x = [1]
-        # end_x = [1]
-        # start_y = [100]
-        # end_y = [2000]
-        # self.driver.swipe(start_x, start_y, end_x, end_y)
-        # self.driver.swipe(start_x=1, start_y=200, end_x=1, end_y=2000)
-        # try:
-        #     elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
-        #     action.press(elm1).perform()
-        #     action.move_to(x=1, y=100).perform()
-        # except NoSuchElementException:
-        #     logging.info("can't find FINISHED_HEADER")
-        # sleep(1)
+    def scroll_down_one_view(self):
+        """Method to scroll down only one screen"""
 
-        # action.press(el=web_view).perform()
-        #
-        # while el1 == []
-        #     action.move_to(el=save_button, x=[], y=[]).perform()
+        window_size = self.driver.get_window_size()  # this will give You a dictionary
+        start_x = window_size["width"] * 0.25
+        start_y = window_size["height"] * 0.15
+        end_y = window_size["height"] * 0.8
+        logging.info("scroll down only one screen")
+        sleep(2)
+        self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen
+        sleep(1)
 
-        # self.driver.execute_script("mobile: scroll", {"direction": "down"})
-
-        # el = CommonButtonsScreen.WEB_VIEW
-        # self.driver.execute_script("mobile: scroll", {"direction": 'down', 'element': el})
-
-        # origin_el = self.driver.find_element(*NewContactScreen.FIRST_NAME)
-        # destination_el = self.driver.find_element(*CommonButtonsScreen.SAVE_BUTTON)
-        # action = TouchAction(self)
-        # action.press(origin_el).move_to(destination_el).release().perform()
-
-        # logging.info("scroll down to find element")
-        # element_on_the_list = None
-        # try:
-        #     element_on_the_list = self.driver.find_element(*CommonButtonsScreen.SAVE_BUTTON)
-        #     # that is element what You are looking for
-        # except NoSuchElementException:
-        #     element_to_scroll = self.driver.find_element(*CommonButtonsScreen.WEB_VIEW)
-        #     # that is id/xpath/name of whole list
-        #     scroll_object = dict(direction="down", element=element_to_scroll)
-        #     self.driver.execute_script("mobile: scroll", scroll_object)
-
-        # logging.info("finding element on the list")
-        # element_on_the_list = None
-        # if element_on_the_list is not None:
-        #     element_on_the_list = self.driver.find_element(*CommonButtonsScreen.SAVE_BUTTON).click()
-        #     sleep(2)
-        # else:
-        #     element_to_scroll = self.driver.find_element(*CommonButtonsScreen.WEB_VIEW)
-        #     scrollobject = dict(direction="down", element=element_to_scroll.id)
-        #     self.driver.execute_script("mobile: moveTo", scrollobject)
-        # element_on_the_list.click()
+    # def scroll_down_test(self):
+    #     """Method to scroll down to bottom of the screen - to 'Save' button"""
+    #
+    #     logging.info("scroll down with loop")
+    #     var = 1
+    #     while var == 1:
+    #         try:
+    #             logging.info("try")
+    #             save_button = self.driver.find_element(*CommonButtonsScreen.SAVE_BUTTON)
+    #             if save_button.is_displayed():  # this returns always true - bug in Appium?
+    #                 break
+    #         except NoSuchElementException:
+    #             logging.info("except")
+    #             window_size = self.driver.get_window_size()  # this will give You a dictionary
+    #             start_x = window_size["width"]*0.25
+    #             # end_x = window_size["width"]*0.75
+    #             start_y = window_size["height"]*0.25
+    #             end_y = window_size["height"]*0.75
+    #             logging.info("scroll down")
+    #             sleep(2)
+    #             self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen
+    #             sleep(1)
 
 
 class WelcomePage(BasePage):
@@ -453,6 +427,8 @@ class MainPage(BasePage):
         website_link_button = self.driver.find_element(*MainMenuScreen.WEBSITE_LINK_BUTTON)
         self.assertIsNotNone(website_link_button, "WEBSITE LINK button not found")
         website_link_button.click()
+        logging.info("wait for page to load")
+        sleep(10)
 
     def open_INCIDENT(self):
 
@@ -1111,9 +1087,9 @@ class EventsPage(BasePage):
         clear_primary_event_button = self.driver.find_element(*EventsScreen.CLEAR_PRIMARY_EVENT_BUTTON)
         self.assertIsNotNone(clear_primary_event_button)
         clear_primary_event_button.click()
-        logging.info("checking notification - 'Primary event cleared'")
-        notification = self.driver.find_element(*EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED)
-        self.assertIsNotNone(notification)
+        # logging.info("checking notification - 'Primary event cleared'")
+        # notification = self.driver.find_element(*EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED)
+        # self.assertIsNotNone(notification)
 
     def open_previously_created_event1(self):
 
@@ -1184,6 +1160,7 @@ class EventsTypesPage(BasePage):
         self.assertIsNotNone(event_type_chooser)
         logging.info("choose type of event = event for chooser fields")
         event_type_chooser.click()
+        sleep(5)
 
 
 class EventEditPage(CommonButtons):
@@ -1197,7 +1174,7 @@ class EventEditPage(CommonButtons):
 
     def fill_Name_input_field(self, text):
 
-        logging.info("input Name for event")
+        logging.info("input Name input field")
         self.driver.find_element(*EventEditScreen.NAME_FIELD).send_keys(text)
 
     def click_severity_lvl_picker(self):
@@ -1419,177 +1396,6 @@ class EventEditPage(CommonButtons):
             self.assertIsNone(previously_created_event_for_subform_chooser)
         except NoSuchElementException:
             pass
-
-    def scroll_down(self):
-
-        logging.info("scroll down")
-        action = TouchAction(self.driver)
-        sleep(2)
-        try:
-            elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
-            action.press(elm1).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find FINISHED_HEADER")
-        sleep(1)
-        try:
-            elm2 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
-            action.press(elm2).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find LEADAGENCY_HEADER")
-        try:
-            elm3 = self.driver.find_element(*EventEditScreen.IMPACT_HEADER)
-            action.press(elm3).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find IMPACT_HEADER")
-        try:
-            elm4 = self.driver.find_element(*EventEditScreen.CAUSE_HEADER)
-            action.press(elm4).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find CAUSE_HEADER")
-        try:
-            elm5 = self.driver.find_element(*EventEditScreen.SITUATION_HEADER)
-            action.press(elm5).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find SITUATION_HEADER")
-        try:
-            elm6 = self.driver.find_element(*EventEditScreen.ISSUES_HEADER)
-            action.press(elm6).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find ISSUES_HEADER")
-        try:
-            elm7 = self.driver.find_element(*EventEditScreen.OBJECTIVES_HEADER)
-            action.press(elm7).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find OBJECTIVES_HEADER")
-        try:
-            elm8 = self.driver.find_element(*EventEditScreen.STRATEGIES_HEADER)
-            action.press(elm8).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find STRATEGIES_HEADER")
-        try:
-            elm9 = self.driver.find_element(*EventEditScreen.TACTICS_HEADER)
-            action.press(elm9).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find TACTICS_HEADER")
-        try:
-            elm10 = self.driver.find_element(*EventEditScreen.COMMUNICATIONS_HEADER)
-            action.press(elm10).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find COMMUNICATIONS_HEADER")
-        try:
-            elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
-            action.press(elm11).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find RELATED_HEADER")
-
-    def scroll_down_to_leadagency_header_field(self):
-
-        logging.info("scroll down to lead agency header field")
-        action = TouchAction(self.driver)
-        try:
-            elm1 = self.driver.find_element(*EventEditScreen.FINISHED_HEADER)
-            action.press(elm1).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find FINISHED_HEADER")
-        sleep(1)
-        try:
-            elm2 = self.driver.find_element(*EventEditScreen.LEADAGENCY_HEADER)
-            action.press(elm2).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find LEADAGENCY_HEADER")
-
-    def scroll_down_from_leadagency_to_buttons(self):
-
-        logging.info("scroll down from lead agency header field to Related header")
-        sleep(2)
-        action = TouchAction(self.driver)
-        try:
-            related_header = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
-            self.assertIsNotNone(related_header, msg="RELATED_HEADER not found")
-            action.press(related_header).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find RELATED_HEADER")
-        sleep(2)
-        try:
-            related_header = self.driver.find_element(*EventEditScreen.MAPPING_HEADER)
-            self.assertIsNotNone(related_header, msg="MAPPING_HEADER not found")
-            action.press(related_header).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find MAPPING_HEADER")
-
-    def scroll_down_from_description_field(self):
-
-        logging.info("scroll down from Description field")
-        action = TouchAction(self.driver)
-        try:
-            elm3 = self.driver.find_element(*EventEditScreen.IMPACT_HEADER)
-            action.press(elm3).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find IMPACT_HEADER")
-        try:
-            elm4 = self.driver.find_element(*EventEditScreen.CAUSE_HEADER)
-            action.press(elm4).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find CAUSE_HEADER")
-        try:
-            elm5 = self.driver.find_element(*EventEditScreen.SITUATION_HEADER)
-            action.press(elm5).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find SITUATION_HEADER")
-        try:
-            elm6 = self.driver.find_element(*EventEditScreen.ISSUES_HEADER)
-            action.press(elm6).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find ISSUES_HEADER")
-        try:
-            elm7 = self.driver.find_element(*EventEditScreen.OBJECTIVES_HEADER)
-            action.press(elm7).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find OBJECTIVES_HEADER")
-        try:
-            elm8 = self.driver.find_element(*EventEditScreen.STRATEGIES_HEADER)
-            action.press(elm8).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find STRATEGIES_HEADER")
-        try:
-            elm9 = self.driver.find_element(*EventEditScreen.TACTICS_HEADER)
-            action.press(elm9).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find TACTICS_HEADER")
-        try:
-            elm10 = self.driver.find_element(*EventEditScreen.COMMUNICATIONS_HEADER)
-            action.press(elm10).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find COMMUNICATIONS_HEADER")
-        try:
-            elm11 = self.driver.find_element(*EventEditScreen.RELATED_HEADER)
-            action.press(elm11).perform()
-            action.move_to(x=1, y=100).perform()
-        except NoSuchElementException:
-            logging.info("can't find RELATED_HEADER")
 
 
 class OptionList(BasePage):
@@ -1847,22 +1653,15 @@ class NewReportPage(NewTaskPage):
         logging.info("click Publish button")
         publish_button = self.driver.find_element(*NewReportScreen.PUBLISH_BUTTON)
         self.assertIsNotNone(publish_button, "Publish button was not found")
-        publish_button.click()
+        sleep(1)
+        action = TouchAction(self.driver)
+        action.tap(element=publish_button, count=1).perform()
+        # publish_button.click()
 
 
 # Appium can't access another app directly only tapping on specific coordinates will work
 class ChromeBrowserPage(BasePage):
     """A class for methods to handle Chrome Browser Page"""
-
-    def click_back_to_oca(self):
-
-        logging.info("wait for page to load")
-        sleep(10)
-        logging.info("click 'Back' button")
-        # self.driver.back()
-        self.driver.press_keycode(4)
-        self.driver.keyevent(4)
-        sleep(2)
 
 
 class NewAssetPage(EventEditPage):
@@ -1889,6 +1688,7 @@ class NewLogPage(NewReportPage):
 
     def type_text_into_entry_field(self, text):
 
+        sleep(1)
         logging.info("type text into 'Entry' field")
         entry_field = self.driver.find_element(*NewLogScreen.ENTRY_FIELD)
         entry_field.click()

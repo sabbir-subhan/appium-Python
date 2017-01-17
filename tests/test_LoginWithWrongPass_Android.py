@@ -16,7 +16,7 @@ from desired_capabilities import DesiredCapabilities
 from page_android import *
 
 
-class TestCase2Android(unittest.TestCase):
+class test_LoginWithWrongPass_Android(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
@@ -146,5 +146,5 @@ class TestCase2Android(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestCase2Android)
+    suite = unittest.TestLoader().loadTestsFromTestCase(test_LoginWithWrongPass_Android)
     unittest.TextTestRunner(verbosity=2).run(suite)

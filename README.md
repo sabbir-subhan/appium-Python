@@ -38,7 +38,8 @@ Appium in CLI:
 
 - npm install -g appium
 - npm install wd
-appium -p 4723 -bp 5724 --session-override --log-level debug
+- appium -p 4723
+(appium -p 4723 -bp 5724 --session-override --log-level debug)
 
 current GUI version - 1.5.3
 current CLI beta version - 1.6.3

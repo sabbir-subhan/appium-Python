@@ -6,7 +6,7 @@ from desired_capabilities import DesiredCapabilities
 from page_ios import *
 
 
-class TestCase3iOS(unittest.TestCase):
+class test_ManagingEvents_iOS(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
@@ -204,5 +204,5 @@ class TestCase3iOS(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestCase3iOS)
+    suite = unittest.TestLoader().loadTestsFromTestCase(test_ManagingEvents_iOS)
     unittest.TextTestRunner(verbosity=2).run(suite)

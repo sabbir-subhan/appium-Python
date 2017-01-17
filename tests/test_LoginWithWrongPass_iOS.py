@@ -16,7 +16,7 @@ from desired_capabilities import DesiredCapabilities
 from page_ios import *
 
 
-class TestCase2iOS(unittest.TestCase):
+class test_LoginWithWrongPass_iOS(unittest.TestCase):
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
@@ -164,5 +164,5 @@ class TestCase2iOS(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestCase2iOS)
+    suite = unittest.TestLoader().loadTestsFromTestCase(test_LoginWithWrongPass_iOS)
     unittest.TextTestRunner(verbosity=2).run(suite)
