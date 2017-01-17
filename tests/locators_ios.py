@@ -309,7 +309,7 @@ class NewLogScreen:
     ENTRY_FIELD_ios = (MobileBy.XPATH, '//UIATextField[1]')
 
 
-class CommonButtonsScreen:
+class CommonScreen:
     """A class for handling Common buttons on different screen"""
     SAVE_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Save"]')
     CANCEL_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Cancel"]')

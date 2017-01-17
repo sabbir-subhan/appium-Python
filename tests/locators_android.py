@@ -312,6 +312,12 @@ class CameraScreen:
 
 class RisksScreen:
     """A class for handling Risks screen"""
+    CREATE_RISK_REGISTER = (MobileBy.ACCESSIBILITY_ID, 'Create risk register')
+
+
+class RiskRegisterEditScreen:
+    """A class for handling Risk Register edit screen"""
+    RISK_REGISTER_NAME = (MobileBy.XPATH, '//android.view.View[1]/android.widget.EditText[1]')
 
 
 class NewContactScreen:
@@ -352,7 +358,7 @@ class NewLogScreen:
                                    '[@focusable="true" and @clickable="true" and @scrollable="false"]')
 
 
-class CommonButtonsScreen:
+class CommonScreen:
     """A class for handling Common buttons on different screen"""
     SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
     CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Cancel')

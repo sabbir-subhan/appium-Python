@@ -1,11 +1,11 @@
 # Test Case 1 - Log Into OCA mobile via direct Login -- OCAMOB-38
+
 # open OCA app
-# dismiss iOS notifications
 # input login, password and domain
 # click on Submit button
 # accept terms if needed
 # dismiss alert about expiring password
-# dismiss iOS notifications
+# dismiss notifications
 # check if button "EVENTS" is present
 
 

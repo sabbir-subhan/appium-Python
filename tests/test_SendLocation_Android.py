@@ -1,6 +1,7 @@
 # Test Case 4 - Send location to OCA -- OCAMOB-41
 
-# (before running test, enable location on device)
+# before running this test, enable location on device
+
 # open OCA app
 # dismiss iOS notifications
 # input login, password and domain

@@ -1,6 +1,5 @@
 # Test Case 8 - Send Audio to OCA -- OCAMOB-51
 
-
 # open OCA app
 # dismiss iOS notifications
 # input login, password and domain
@@ -54,6 +53,7 @@ class test_SendAudio_Android(unittest.TestCase):
         main_page.alert_expiring_password()
         main_page.dismiss_android_notifications()
         main_page.check_presence_of_events_button()
+        main_page.scroll_down_one_view()
         main_page.open_SOUND()
         sound_page = SoundPage(self.driver)
         sound_page.check_if_sound_page_was_opened()

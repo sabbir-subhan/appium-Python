@@ -1,6 +1,5 @@
 # Test Case 8 - Send Audio to OCA -- OCAMOB-51
 
-
 # open OCA app
 # dismiss iOS notifications
 # input login, password and domain

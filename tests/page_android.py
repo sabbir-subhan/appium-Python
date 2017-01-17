@@ -1,6 +1,7 @@
 # from appium import webdriver
 # from selenium.webdriver.common.action_chains import ActionChains
 # import time
+import os
 from selenium.common.exceptions import NoSuchElementException
 import unittest
 from time import sleep
@@ -45,6 +46,12 @@ class BasePage(unittest.TestCase):
             sleep(1)
             self.driver.tap(positions_for_hamburger_button)
         sleep(2)
+
+    def take_screenshot(self, file_name):
+
+        logging.info("taking screenshot")
+        sleep(2)
+        self.driver.save_screenshot(file_name)
 
 
 class AndroidDevice(BasePage):
@@ -112,26 +119,26 @@ class AndroidDevice(BasePage):
         clear_button.click()
 
 
-class CommonButtons(BasePage):
+class Common(BasePage):
     """A class for methods to handle Common buttons from different screens"""
 
     def save_button(self):
 
         logging.info("click Save button")
-        save_button = self.driver.find_element(*CommonButtonsScreen.SAVE_BUTTON)
+        save_button = self.driver.find_element(*CommonScreen.SAVE_BUTTON)
         self.assertIsNotNone(save_button, "Save button not found")
         save_button.click()
         sleep(10)
 
     def cancel_button(self):
         logging.info("click on Cancel button")
-        cancel_button = self.driver.find_element(*CommonButtonsScreen.CANCEL_BUTTON)
+        cancel_button = self.driver.find_element(*CommonScreen.CANCEL_BUTTON)
         self.assertIsNotNone(cancel_button, "Cancel button not found")
         cancel_button.click()
 
     def ok_button(self):
         logging.info("click on 'Ok' button")
-        ok_button = self.driver.find_element(*CommonButtonsScreen.OK_BUTTON)
+        ok_button = self.driver.find_element(*CommonScreen.OK_BUTTON)
         self.assertIsNotNone(ok_button, "Ok button not found")
         ok_button.click()
 
@@ -187,7 +194,7 @@ class CommonButtons(BasePage):
     #     while var == 1:
     #         try:
     #             logging.info("try")
-    #             save_button = self.driver.find_element(*CommonButtonsScreen.SAVE_BUTTON)
+    #             save_button = self.driver.find_element(*CommonScreen.SAVE_BUTTON)
     #             if save_button.is_displayed():  # this returns always true - bug in Appium?
     #                 break
     #         except NoSuchElementException:
@@ -201,9 +208,17 @@ class CommonButtons(BasePage):
     #             sleep(2)
     #             self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen
     #             sleep(1)
+        
+    def fill_Name_input_field(self, text):
+
+        logging.info("input Name input field")
+        name_field = self.driver.find_element(*EventEditScreen.NAME_FIELD)
+        self.assertIsNotNone(name_field)
+        name_field.click()
+        name_field.send_keys(text)
 
 
-class WelcomePage(CommonButtons):
+class WelcomePage(Common):
     """A class for methods to handle Welcome Page"""
 
     def click_login_button(self):
@@ -229,7 +244,9 @@ class WelcomePage(CommonButtons):
         logging.info("type contact identifier")
         contact_identifier_field = self.driver.find_element(*WelcomeScreen.SETTINGS_CONTACT_IDENTIFIER_FIELD)
         self.assertIsNotNone(contact_identifier_field)
-        contact_identifier_field.click()
+        action = TouchAction(self.driver)
+        action.long_press(el=contact_identifier_field, duration=1000).perform()
+        self.driver.keyevent(67)
         contact_identifier_field.send_keys(ContactIdentifierPIN.get_contact_identifier_pin(test_pin))
 
     def check_if_app_was_activated(self):
@@ -335,7 +352,7 @@ class LoginPage(BasePage):
             self.fail("failed - there is no alert message")
 
 
-class MainPage(BasePage):
+class MainPage(Common):
     """A class for methods to handle Main Page"""
 
     def dismiss_android_notifications(self):
@@ -548,6 +565,7 @@ class MainPage(BasePage):
         sent_button = self.driver.find_element(*MainMenuScreen.SENT_BUTTON)
         self.assertIsNotNone(sent_button, "SENT button not found")
         sent_button.click()
+        sleep(2)
 
     def open_PHOTO(self):
 
@@ -1147,6 +1165,7 @@ class EventsPage(BasePage):
 
     def click_on_previously_created_event_for_subform_chooser(self):
 
+        sleep(5)
         logging.info("click_on_previously_created_event_for_subform_chooser")
         event_for_subform = self.driver.find_element(*EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER)
         self.assertIsNotNone(event_for_subform)
@@ -1185,19 +1204,8 @@ class EventsTypesPage(BasePage):
         sleep(5)
 
 
-class EventEditPage(CommonButtons):
+class EventEditPage(Common):
     """A class for methods to handle Event Edit Page"""
-
-    def click_into_Name_input_field(self):
-
-        name_field = self.driver.find_element(*EventEditScreen.NAME_FIELD)
-        self.assertIsNotNone(name_field)
-        name_field.click()
-
-    def fill_Name_input_field(self, text):
-
-        logging.info("input Name input field")
-        self.driver.find_element(*EventEditScreen.NAME_FIELD).send_keys(text)
 
     def click_severity_lvl_picker(self):
 
@@ -1565,7 +1573,6 @@ class MapPage(BasePage):
         logging.info("Save map")
         save_map_button = self.driver.find_element(*Map.SAVE_MAP_BUTTON)
         self.assertIsNotNone(save_map_button, "save map button not found")
-        # self.driver.save_screenshot("screen_map.png")
         save_map_button.click()
         sleep(3)
 
@@ -1597,7 +1604,7 @@ class EventDetailsPage(BasePage):
         sleep(5)
 
 
-class NewContactPage(CommonButtons):
+class NewContactPage(Common):
     """A class for methods to handle New Contact Page"""
 
     def type_first_name(self, text):
@@ -1609,7 +1616,7 @@ class NewContactPage(CommonButtons):
         first_name.send_keys(text)
 
 
-class NewTaskPage(AndroidDevice, CommonButtons):
+class NewTaskPage(AndroidDevice, Common):
     """A class for methods to handle New Task Page"""
 
     def type_title(self, text):
@@ -1686,12 +1693,12 @@ class ChromeBrowserPage(BasePage):
     """A class for methods to handle Chrome Browser Page"""
 
 
-class NewAssetPage(EventEditPage):
+class NewAssetPage(Common):
     """A class for methods to handle New Asset Page"""
 
     def fill_Name_input_field(self, text):
 
-        EventEditPage.fill_Name_input_field(self, text)
+        Common.fill_Name_input_field(self, text)
 
 
 class NewLogPage(NewReportPage):
@@ -1715,3 +1722,31 @@ class NewLogPage(NewReportPage):
         entry_field = self.driver.find_element(*NewLogScreen.ENTRY_FIELD)
         entry_field.click()
         entry_field.send_keys(text)
+
+
+class RisksPage(Common):
+    """A class for methods to handle Risks Page"""
+
+    def create_new_risk_register(self):
+
+        logging.info("create risk register")
+        create_risk_register_button = self.driver.find_element(*RisksScreen.CREATE_RISK_REGISTER)
+        self.assertIsNotNone(create_risk_register_button, "Create Risk Register button not found")
+        create_risk_register_button.click()
+
+
+class RiskRegisterEditPage(Common):
+    """A class for methods to handle Risk Register Edit Page"""
+
+    def fill_Name_input_field(self, text):
+
+        Common.fill_Name_input_field(self, text)
+
+
+class SentPage(BasePage):
+    """A class for methods to handle Sent Page"""
+
+
+
+
+

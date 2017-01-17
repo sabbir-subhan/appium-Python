@@ -1,5 +1,21 @@
 # Test Case 3 - Managing events  -- OCAMOB-64
 
+# before test run - prepare events types on OCA web page
+
+# - 3 types of events (Incident, event_for_chooser_fields, event_for_on_load/save_test)
+# - option list inside "Central list templates" with values; "1", "2", "3"
+# that list is added as a option list to event type: event_for_on_load/save_test
+# - two sequences for events (on load and on save) - that sequences are added to event type: event_for_on_load/save_test
+# - EVENT TYPE: event_for_on_load/save_test, should have two single line fields with properties
+# "Sequential prefix" pinpointing to correct sequences ("sequence_onload" with vaule: "test on load",
+# and second; "sequence_onsave" with value: "test on save") and two fields with visibility rules
+# ("field to restore" with value: "value for field 1" and visibility rule pointing to "New option list"
+# with value "1",and second field; "New email address" with value: "test@noggin.com" and visibility
+# rule pointing to "new option list" with value "2")
+# - EVENT TYPE: event_for_chooser_fields, should have "event chooser" field (name: "New events chooser")
+# with property "Minimum selected options" set to "1", and second event chooser field inside sub form
+# with name: "New events chooser inside sub form"
+
 
 from appium import webdriver
 from desired_capabilities import DesiredCapabilities
@@ -14,7 +30,7 @@ class test_ManagingEvents_iOS(unittest.TestCase):
         # choose desired capabilities from desired_capabilities.py
         desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad
 
-        self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
+        self.driver = webdriver.Remote("http://localhost:4745/wd/hub", desired_capabilities)
 
         self.driver.implicitly_wait(20)  # seconds
 

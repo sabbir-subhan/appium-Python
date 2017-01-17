@@ -1,4 +1,4 @@
-# Test Case 5 - Send Photo -- OCAMOB-43
+# Test Case 10 - Set Contact Identifier -- OCAMOB-40
 
 # before test run - send invitation email from OCA web page -
 #  (Contacts - Mobile - Send Invite) to obtain Contact Identifier PIN

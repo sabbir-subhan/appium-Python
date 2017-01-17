@@ -67,31 +67,45 @@ class iOSdevice(BasePage):
         sleep(1)
 
 
-class CommonButtons(BasePage):
+class Common(BasePage):
     """A class for methods to handle Common buttons from different screens"""
 
     def save_button(self):
 
         logging.info("click Save button")
-        save_button = self.driver.find_element(*CommonButtonsScreen.SAVE_BUTTON_ios)
+        save_button = self.driver.find_element(*CommonScreen.SAVE_BUTTON_ios)
         self.assertIsNotNone(save_button, "Save button not found")
         save_button.click()
         sleep(10)
 
     def cancel_button(self):
         logging.info("click on Cancel button")
-        cancel_button = self.driver.find_element(*CommonButtonsScreen.CANCEL_BUTTON_ios)
+        cancel_button = self.driver.find_element(*CommonScreen.CANCEL_BUTTON_ios)
         self.assertIsNotNone(cancel_button, "Cancel button not found")
         cancel_button.click()
 
     def ok_button(self):
         logging.info("click on 'Ok' button")
-        ok_button = self.driver.find_element(*CommonButtonsScreen.OK_BUTTON_ios)
+        ok_button = self.driver.find_element(*CommonScreen.OK_BUTTON_ios)
         self.assertIsNotNone(ok_button, "Ok button not found")
         ok_button.click()
 
+    def fill_Name_input_field(self, text):
 
-class WelcomePage(CommonButtons):
+        logging.info("fill Name input field")
+        try:
+            name_field = self.driver.find_element(*EventEditScreen.NAME_FIELD_ios)
+            if name_field.is_displayed():
+                name_field.click()
+                name_field.send_keys(text)
+        except NoSuchElementException:
+            name_field_by_index = self.driver.find_element(*EventEditScreen.NAME_FIELD_by_index_ios)
+            if name_field_by_index.is_displayed():
+                name_field_by_index.click()
+                name_field_by_index.send_keys(text)
+
+
+class WelcomePage(Common):
     """A class for methods to handle Welcome Page"""
 
     def click_login_button(self):
@@ -990,22 +1004,8 @@ class EventsTypesPage(BasePage):
         event_type_chooser.click()
 
 
-class EventEditPage(CommonButtons):
+class EventEditPage(Common):
     """A class for methods to handle Event Edit Page"""
-
-    def fill_Name_input_field(self, text):
-
-        logging.info("fill Name input field")
-        try:
-            name_field = self.driver.find_element(*EventEditScreen.NAME_FIELD_ios)
-            if name_field.is_displayed():
-                name_field.click()
-                name_field.send_keys(text)
-        except NoSuchElementException:
-            name_field_by_index = self.driver.find_element(*EventEditScreen.NAME_FIELD_by_index_ios)
-            if name_field_by_index.is_displayed():
-                name_field_by_index.click()
-                name_field_by_index.send_keys(text)
 
     def click_severity_lvl_picker(self):
 
@@ -1324,7 +1324,7 @@ class MapPage(BasePage):
         sleep(3)
 
 
-class NewContactPage(CommonButtons):
+class NewContactPage(Common):
     """A class for methods to handle New Contact Page"""
 
     def type_first_name(self, text):
@@ -1336,7 +1336,7 @@ class NewContactPage(CommonButtons):
         first_name.send_keys(text)
 
 
-class NewTaskPage(CommonButtons):
+class NewTaskPage(Common):
     """A class for methods to handle New Task Page"""
 
     def type_title(self, text):
@@ -1457,12 +1457,12 @@ class EventDetailsPage(BasePage):
         sleep(5)
 
 
-class NewAssetPage(EventEditPage):
+class NewAssetPage(Common):
     """A class for methods to handle New Asset Page"""
 
     def fill_Name_input_field(self, text):
 
-        EventEditPage.fill_Name_input_field(self, text)
+        Common.fill_Name_input_field(self, text)
 
 
 class NewLogPage(NewReportPage):

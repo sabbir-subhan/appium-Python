@@ -1,5 +1,21 @@
 # Test Case 3 - Managing events  -- OCAMOB-64
 
+# before test run - prepare events types on OCA web page
+
+# - 3 types of events (Incident, event_for_chooser_fields, event_for_on_load/save_test)
+# - option list inside "Central list templates" with values; "1", "2", "3"
+# that list is added as a option list to event type: event_for_on_load/save_test
+# - two sequences for events (on load and on save) - that sequences are added to event type: event_for_on_load/save_test
+# - EVENT TYPE: event_for_on_load/save_test, should have two single line fields with properties
+# "Sequential prefix" pinpointing to correct sequences ("sequence_onload" with vaule: "test on load",
+# and second; "sequence_onsave" with value: "test on save") and two fields with visibility rules
+# ("field to restore" with value: "value for field 1" and visibility rule pointing to "New option list"
+# with value "1",and second field; "New email address" with value: "test@noggin.com" and visibility
+# rule pointing to "new option list" with value "2")
+# - EVENT TYPE: event_for_chooser_fields, should have "event chooser" field (name: "New events chooser")
+# with property "Minimum selected options" set to "1", and second event chooser field inside sub form
+# with name: "New events chooser inside sub form"
+
 
 from appium import webdriver
 from desired_capabilities import DesiredCapabilities
@@ -60,7 +76,6 @@ class test_ManagingEvents_Android(unittest.TestCase):
         events_types_page = EventsTypesPage(self.driver)
         events_types_page.choose_Incident_type_of_event()
         event_edit_page = EventEditPage(self.driver)
-        event_edit_page.click_into_Name_input_field()
         event_edit_page.fill_Name_input_field("Test Appium Android")
         android_device.hide_keyboard()
         event_edit_page.click_severity_lvl_picker()
@@ -84,7 +99,6 @@ class test_ManagingEvents_Android(unittest.TestCase):
         events_page.click_More_button()
         events_page.click_New_event_button()
         events_types_page.choose_Incident_type_of_event()
-        event_edit_page.click_into_Name_input_field()
         event_edit_page.fill_Name_input_field("Test Appium Android - second event")
         android_device.hide_keyboard()
         event_edit_page.click_severity_lvl_picker()
@@ -129,7 +143,6 @@ class test_ManagingEvents_Android(unittest.TestCase):
         events_page.click_More_button()
         events_page.click_New_event_button()
         events_types_page.choose_Incident_type_of_event()
-        event_edit_page.click_into_Name_input_field()
         event_edit_page.fill_Name_input_field("Test Android to create sub event")
         android_device.hide_keyboard()
         event_edit_page.click_severity_lvl_picker()
@@ -141,7 +154,6 @@ class test_ManagingEvents_Android(unittest.TestCase):
         events_page.click_More_button()
         events_page.click_New_sub_event()
         events_types_page.choose_Incident_type_of_event()
-        event_edit_page.click_into_Name_input_field()
         event_edit_page.fill_Name_input_field("Test Android sub event")
         android_device.hide_keyboard()
         event_edit_page.click_severity_lvl_picker()
@@ -160,7 +172,6 @@ class test_ManagingEvents_Android(unittest.TestCase):
         events_page.click_More_button()
         events_page.click_New_event_button()
         events_types_page.choose_Event_for_on_load_save_type_of_event()
-        event_edit_page.click_into_Name_input_field()
         event_edit_page.fill_Name_input_field("Test Event with on load and on save sequence")
         android_device.hide_keyboard()
         event_edit_page.scroll_down_one_view()
@@ -185,7 +196,6 @@ class test_ManagingEvents_Android(unittest.TestCase):
         events_page.click_More_button()
         events_page.click_New_event_button()
         events_types_page.choose_Event_for_chooser_fields_type_of_event()
-        event_edit_page.click_into_Name_input_field()
         event_edit_page.fill_Name_input_field("Test Event with chooser fields")
         android_device.hide_keyboard()
         event_edit_page.scroll_down_one_view()
