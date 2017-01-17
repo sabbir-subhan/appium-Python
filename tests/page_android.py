@@ -9,6 +9,7 @@ from selenium.webdriver.support import expected_conditions
 from appium.webdriver.common.touch_action import TouchAction
 from locators_android import *
 from credentials import Credentials
+from credentials import ContactIdentifierPIN
 import logging
 
 
@@ -202,7 +203,7 @@ class CommonButtons(BasePage):
     #             sleep(1)
 
 
-class WelcomePage(BasePage):
+class WelcomePage(CommonButtons):
     """A class for methods to handle Welcome Page"""
 
     def click_login_button(self):
@@ -215,6 +216,27 @@ class WelcomePage(BasePage):
             self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON).click()
         except NoSuchElementException:
             self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_by_index).click()
+
+    def click_settings_button(self):
+
+        logging.info("click Settings button")
+        settings_button = self.driver.find_element(*WelcomeScreen.SETTINGS_BUTTON)
+        self.assertIsNotNone(settings_button)
+        settings_button.click()
+
+    def type_contact_identifier(self, test_pin):
+
+        logging.info("type contact identifier")
+        contact_identifier_field = self.driver.find_element(*WelcomeScreen.SETTINGS_CONTACT_IDENTIFIER_FIELD)
+        self.assertIsNotNone(contact_identifier_field)
+        contact_identifier_field.click()
+        contact_identifier_field.send_keys(ContactIdentifierPIN.get_contact_identifier_pin(test_pin))
+
+    def check_if_app_was_activated(self):
+
+        logging.info("check if app was activated")
+        alert = self.driver.find_element(*WelcomeScreen.SETTINGS_ALERT_APP_HAS_BEEN_ACTIVATED)
+        self.assertIsNotNone(alert, "App was not activated")
 
 
 class LoginPage(BasePage):

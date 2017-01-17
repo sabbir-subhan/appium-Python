@@ -4,24 +4,36 @@
 from generators import RandomGenerator
 
 
-class Credentials(object):
-    """A class containing credentials for accounts on OCA webpage"""
+class ContactIdentifierPIN:
+    """A class containing Contact Identifier PIN from invitation email"""
+
+    pin = "abgersb"  # here You can change Contact Identifier PIN
+
+    @staticmethod
+    def get_contact_identifier_pin(test_pin):
+
+        if test_pin == 'test_pin':
+            return ContactIdentifierPIN.pin
+
+
+class Credentials:
+    """A class containing credentials for accounts on OCA web page"""
 
     # domain
-    QA_domain = "https://bitnoiseqa.nogginoca.com"
-    production_domain = 'https://nogginoca.com'
+    QA_domain = "https://bitnoiseqa.nogginoca.com"  # here You can change domain for tests
+    production_domain = 'https://nogginoca.com'  # here You can change domain for production
 
     # QA
-    QA_username = "bitnoise"
-    QA_password = "Bitn0!$e"
+    QA_username = "bitnoise"  # here You can change username for QA
+    QA_password = "Bitn0!$e"  # here You can change password for QA
 
     # general_user
-    general_username = "test_general"
-    general_password = "test_general"
+    general_username = "test_general"  # here You can change username for general user
+    general_password = "test_general"  # here You can change password for general user
 
     # admin
-    admin_username = "test_admin"
-    admin_password = "test_admin"
+    admin_username = "test_admin"  # here You can change username for admin
+    admin_password = "test_admin"  # here You can change password for admin
 
     # expired_1_day_ago
     expired_username = "test_expired_1_day_ago"
@@ -51,7 +63,7 @@ class Credentials(object):
         elif username == 'expired_1_day_ago':
             return Credentials.expired_username
         elif username == 'expire_today':
-            return  Credentials.expire_today_username
+            return Credentials.expire_today_username
         elif username == 'expire_in_1_day':
             return Credentials.expire_in_1_day_username
         elif username == 'suspended':
@@ -73,7 +85,7 @@ class Credentials(object):
         elif password == 'expired_1_day_ago':
             return Credentials.expired_password
         elif password == 'expire_today':
-            return  Credentials.expire_today_password
+            return Credentials.expire_today_password
         elif password == 'expire_in_1_day':
             return Credentials.expire_in_1_day_password
         elif password == 'suspended':
@@ -90,6 +102,7 @@ class Credentials(object):
             return Credentials.production_domain
         else:
             pass
+
 
 
 

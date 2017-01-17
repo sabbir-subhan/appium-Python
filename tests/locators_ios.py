@@ -10,10 +10,20 @@ class TopBar:
 
 class WelcomeScreen:
     """A class for welcome screen locators - first screen after lunching the app."""
+    LOCATION_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "LOCATION")]]')
+    MY_MESSAGES_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "MY MESSAGES")]]')
+    PHOTO_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "PHOTO")]]')
+    VIDEO_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "VIDEO")]]')
+    SOUND_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "SOUND")]]')
+    SETTINGS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "SETTINGS")]]')
+    ABOUT_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "ABOUT")]]')
     LOGIN_BUTTON_ios = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "LOGIN")]]')
     LOGIN_BUTTON_by_index_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]'
                                                  '/UIAScrollView[2]/UIAWebView[1]/UIALink[9]'
                                                  '[@name[contains(., "LOGIN")]]')
+    SETTINGS_CONTACT_IDENTIFIER_FIELD_ios = (MobileBy.CLASS_NAME, 'UIATextField')
+    SETTINGS_ALERT_APP_HAS_BEEN_ACTIVATED_ios = (MobileBy.XPATH, '//UIAStaticText[@name="App has been activated."]')
+    SETTINGS_OK_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name="Ok"]')
 
 
 class LoginScreen:
@@ -54,7 +64,7 @@ class LoginScreen:
     OK_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name="Ok"]')
 
 
-class MainMenuScreen:
+class MainMenuScreen(WelcomeScreen):
     """A class for main menu screen locators - first screen after correct login into the app."""
     ACTIVATE_WORKFLOW_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "ACTIVATE WORKFLOW")]]')
     CREATE_CONTACT_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "CREATE CONTACT")]]')
@@ -69,23 +79,16 @@ class MainMenuScreen:
     LOGS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "LOGS")]]')
     REPORTS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "REPORTS")]]')
     MAP_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "MAP")]]')
-    LOCATION_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "LOCATION")]]')
     ASSETS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "ASSETS")]]')
-    MY_MESSAGES_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "MY MESSAGES")]]')
     INBOX_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "INBOX")]]')
     COMPOSE_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "COMPOSE")]]')
     SENT_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "SENT")]]')
-    PHOTO_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "PHOTO")]]')
-    VIDEO_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "VIDEO")]]')
-    SOUND_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "SOUND")]]')
     TASKS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "TASKS")]]')
     DOCUMENTS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "DOCUMENTS")]]')
     CONTACTS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "CONTACTS")]]')
     ALLOCATE_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "ALLOCATE")]]')
-    SETTINGS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "SETTINGS")]]')
     ACTIVATE_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "ACTIVATE")]]')
     OFFLINE_SYNC_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "OFFLINE SYNC")]]')
-    ABOUT_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "ABOUT")]]')
     LOGOUT_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "LOGOUT")]]')
 
     ALERT_ACTIVATE_BUTTON_ios = (MobileBy.XPATH, '//UIALink/UIAStaticText[@name="Activate"]')

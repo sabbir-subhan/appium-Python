@@ -13,6 +13,7 @@ from appium.webdriver.common.touch_action import TouchAction
 # from appium.webdriver.webdriver import MobileWebElement
 from locators_ios import *
 from credentials import Credentials
+from credentials import ContactIdentifierPIN
 import logging
 logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/TCs.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
@@ -90,7 +91,7 @@ class CommonButtons(BasePage):
         ok_button.click()
 
 
-class WelcomePage(BasePage):
+class WelcomePage(CommonButtons):
     """A class for methods to handle Welcome Page"""
 
     def click_login_button(self):
@@ -128,6 +129,35 @@ class WelcomePage(BasePage):
         # add coordinates for iPhones
         except NoSuchElementException:
             pass
+
+    def click_settings_button(self):
+
+        logging.info("click Settings button")
+        settings_button = self.driver.find_element(*WelcomeScreen.SETTINGS_BUTTON_ios)
+        self.assertIsNotNone(settings_button)
+        settings_button.click()
+
+    def type_contact_identifier(self, test_pin):
+
+        logging.info("type contact identifier")
+        contact_identifier_field = self.driver.find_element(*WelcomeScreen.SETTINGS_CONTACT_IDENTIFIER_FIELD_ios)
+        self.assertIsNotNone(contact_identifier_field)
+        contact_identifier_field.clear()
+        contact_identifier_field.click()
+        contact_identifier_field.send_keys(ContactIdentifierPIN.get_contact_identifier_pin(test_pin))
+
+    def check_if_app_was_activated(self):
+
+        logging.info("check if app was activated")
+        alert = self.driver.find_element(*WelcomeScreen.SETTINGS_ALERT_APP_HAS_BEEN_ACTIVATED_ios)
+        self.assertIsNotNone(alert, "App was not activated")
+
+    def click_ok_button(self):
+
+        logging.info("click ok button")
+        ok_button = self.driver.find_element(*WelcomeScreen.SETTINGS_OK_BUTTON_ios)
+        self.assertIsNotNone(ok_button, "OK button not found")
+        ok_button.click()
 
 
 class LoginPage(BasePage):

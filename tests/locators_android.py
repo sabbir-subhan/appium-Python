@@ -12,9 +12,18 @@ class TopBar:
 
 class WelcomeScreen:
     """A class for welcome screen locators - first screen after lunching the app."""
+    LOCATION_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "LOCATION")]]')
+    MY_MESSAGES_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "MY MESSAGES")]]')
+    PHOTO_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "PHOTO")]]')
+    VIDEO_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "VIDEO")]]')
+    SOUND_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "SOUND")]]')
+    SETTINGS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "SETTINGS")]]')
+    ABOUT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "ABOUT")]]')
     LOGIN_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "LOGIN")]]')
     LOGIN_BUTTON_by_index = (MobileBy.XPATH, '//android.webkit.WebView/android.view.View/'
                                              'android.view.View[@index="6"]/android.view.View[@index="0"]')
+    SETTINGS_CONTACT_IDENTIFIER_FIELD = (MobileBy.CLASS_NAME, 'android.widget.EditText')
+    SETTINGS_ALERT_APP_HAS_BEEN_ACTIVATED = (MobileBy.ACCESSIBILITY_ID, 'App has been activated.')
 
 
 class LoginScreen:
@@ -55,7 +64,7 @@ class LoginScreen:
     OK_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Ok')
 
 
-class MainMenuScreen:
+class MainMenuScreen(WelcomeScreen):
     """A class for main menu screen locators - first screen after correct login into the app."""
     BUTTONS = (MobileBy.CLASS_NAME, 'android.view.View')
     ACTIVATE_WORKFLOW_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "ACTIVATE WORKFLOW")]]')
@@ -71,25 +80,17 @@ class MainMenuScreen:
     LOGS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "LOGS")]]')
     REPORTS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "REPORTS")]]')
     MAP_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "MAP")]]')
-    LOCATION_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "LOCATION")]]')
     ASSETS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "ASSETS")]]')
-    MY_MESSAGES_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "MY MESSAGES")]]')
     INBOX_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "INBOX")]]')
     COMPOSE_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "COMPOSE")]]')
     SENT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "SENT")]]')
-    PHOTO_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "PHOTO")]]')
-    VIDEO_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "VIDEO")]]')
-    SOUND_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "SOUND")]]')
     TASKS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "TASKS")]]')
     DOCUMENTS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "DOCUMENTS")]]')
     CONTACTS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "CONTACTS")]]')
     ALLOCATE_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "ALLOCATE")]]')
-    SETTINGS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "SETTINGS")]]')
     ACTIVATE_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "ACTIVATE")]]')
     OFFLINE_SYNC_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "OFFLINE SYNC")]]')
-    ABOUT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "ABOUT")]]')
     LOGOUT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "LOGOUT")]]')  # there is problem with that locator because buttons suddenly don't have attribute content-desc
-    
     ALERT_ACTIVATE_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc="Activate" and @focusable ="true"]')
     ALERT_CANCEL_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Cancel")]]')
     ALERT_WORKFLOW_ACTIVATED = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Workflow activated")]]')
