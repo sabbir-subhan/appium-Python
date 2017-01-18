@@ -2,6 +2,19 @@
 from appium.webdriver.common.mobileby import MobileBy
 
 
+class CommonScreen:
+    """A class for handling Common buttons on different screen"""
+    SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
+    CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Cancel')
+    CANCEL_BUTTON_by_index = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Button')
+    OK_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Ok')
+    WEB_VIEW = (MobileBy.XPATH, '//android.webkit.WebView[@scrollable="true"]')
+    SPINNER_ON_THE_RIGHT = (MobileBy.XPATH, '//android.widget.ListView[1]/android.view.View[2]'
+                                            '/android.widget.Spinner[@clickable="true"]')
+    SPINNER_ON_THE_LEFT = (MobileBy.XPATH, '//android.widget.ListView[1]/android.view.View[1]'
+                                           '/android.widget.Spinner[@clickable="true"]')
+
+
 class TopBar:
     """A class for top bar locators."""
     HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, "//android.webkit.WebView[@index='0']"
@@ -142,7 +155,6 @@ class EventsScreen:
     EVENTS_HEADER_AFTER_SEARCH = (MobileBy.XPATH, '//android.view.View[@index="5"]')
 
     # creating and editing Events
-    MORE_BUTTON = (MobileBy.XPATH, '//android.widget.Spinner[@content-desc[contains(., "More")]]')
     NEW_EVENT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "New event")]]')
 
     # previously created event
@@ -177,14 +189,8 @@ class EventEditScreen:
     FINISHED_FIELD = (MobileBy.ACCESSIBILITY_ID, 'Finished')
     TIME_DATE = (MobileBy.ACCESSIBILITY_ID, 'Increase year')
     SET_BUTTON = (MobileBy.ID, 'android:id/button1')
-    DESCRIPTION_FIELD = (MobileBy.XPATH,
-                         "//android.widget.ListView[@index='0']"
-                         "//android.view.View[@index='8' and @content-desc[contains(., 'Description')]]"
-                         "//android.view.View[@index='1']"
-                         "//android.view.View[@index='1']"
-                         "//android.view.View[@index='0']"
-                         "//android.view.View[@index='0']"
-                         "//android.view.View[@index='0' and @clickable='true']")
+    DESCRIPTION_FIELD = (MobileBy.XPATH, '//android.widget.ListView[1]/android.view.View[9]/android.view.View[2]'
+                                         '/android.view.View[2]/android.view.View[1]/android.view.View[1]')
     CREATE_MAPPING_DATA = (MobileBy.XPATH, "//android.view.View[@content-desc[contains(., 'Create mapping data')]]")
     ADD_MEDIA_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Add media')
     EDIT_MAPPING_DATA = (MobileBy.XPATH, "//android.view.View[@content-desc[contains(., 'Edit mapping data')]]")
@@ -313,11 +319,25 @@ class CameraScreen:
 class RisksScreen:
     """A class for handling Risks screen"""
     CREATE_RISK_REGISTER = (MobileBy.ACCESSIBILITY_ID, 'Create risk register')
+    FIRST_RISK_REGISTER_ON_THE_LIST = (MobileBy.XPATH, '//android.view.View[2]/'
+                                                       'android.widget.ListView[1]/android.view.View[1]')
+    ADD_NEW_CONTEXT = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Add new context")]]')
 
 
 class RiskRegisterEditScreen:
     """A class for handling Risk Register edit screen"""
     RISK_REGISTER_NAME = (MobileBy.XPATH, '//android.view.View[1]/android.widget.EditText[1]')
+
+
+class ContextEditScreen:
+    """A class for handling New Context Edit screen"""
+    NAME_FIELD = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="Name"]')
+
+
+class ContextScreen:
+    """A class for handling Context screen"""
+    FIRST_CONTEXT_ON_THE_LIST = (MobileBy.XPATH, '//android.widget.ListView[1]/android.view.View[1]'
+                                                 '/android.view.View[2]')
 
 
 class NewContactScreen:
@@ -356,15 +376,6 @@ class NewLogScreen:
     LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Spinner[1]')
     ENTRY_FIELD = (MobileBy.XPATH, '//android.view.View[1]/android.view.View[1]/android.view.View'
                                    '[@focusable="true" and @clickable="true" and @scrollable="false"]')
-
-
-class CommonScreen:
-    """A class for handling Common buttons on different screen"""
-    SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
-    CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Cancel')
-    CANCEL_BUTTON_by_index = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Button')
-    OK_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Ok')
-    WEB_VIEW = (MobileBy.XPATH, '//android.webkit.WebView[@scrollable="true"]')
 
 
 class Android:

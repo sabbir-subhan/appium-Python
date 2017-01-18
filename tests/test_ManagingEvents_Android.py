@@ -63,7 +63,7 @@ class test_ManagingEvents_Android(unittest.TestCase):
         events_page = EventsPage(self.driver)
         events_page.filter_events_by_Type()
         events_page.filter_events_by_Status()
-        events_page.filter_events_by_Search_field()  # it's not working on android 4.4.2 and 5.1 - Appium can't send keys to Search field
+        events_page.filter_events_by_Search_field()
         android_device.click_Go_button_on_keyboard()
         android_device.hide_keyboard()
         events_page.clear_Search_field()
@@ -86,7 +86,7 @@ class test_ManagingEvents_Android(unittest.TestCase):
         event_details_page = EventDetailsPage(self.driver)
         event_details_page.click_edit_button()
         event_edit_page.scroll_down_one_view()
-        event_edit_page.type_text_into_description_field()  # this step will be passed on older android devices to avoid errors
+        event_edit_page.type_text_into_description_field()
         android_device.hide_keyboard()
         event_edit_page.scroll_down()
         event_edit_page.save_button()
@@ -187,7 +187,7 @@ class test_ManagingEvents_Android(unittest.TestCase):
         event_edit_page.click_on_option_list()
         option_list_in_event.click_on_option_3()
         event_edit_page.check_hidden_fields_1_and_2()
-        event_edit_page.scroll_down()
+        event_edit_page.scroll_down_one_view()
         event_edit_page.cancel_button()
 
         logging.info("create new type of event, but do not save it - event with chooser field for another event "
@@ -201,11 +201,14 @@ class test_ManagingEvents_Android(unittest.TestCase):
         event_edit_page.scroll_down_one_view()
         event_edit_page.click_on_event_chooser_field()
         events_page.click_on_previously_created_event_for_chooser_field()
+        event_edit_page.scroll_up_one_view()
+        event_edit_page.scroll_down_one_view()
         event_edit_page.click_button_add_row()
         event_edit_page.click_on_choose_field_inside_subform()
         events_page.click_on_previously_created_event_for_subform_chooser()
         event_edit_page.delete_chosen_event_inside_subform()
-        event_edit_page.scroll_down()
+        event_edit_page.scroll_down_one_view()
+        event_edit_page.scroll_down_one_view()
         event_edit_page.cancel_button()
         events_page.check_if_EVENTS_were_opened()
 

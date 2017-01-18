@@ -26,6 +26,10 @@ for OSX all above plus:
 (sudo xcode-select -switch /Applications/Xcode8.app/Contents/Developer/)
 
 
+TO RUN APPIUM AND iOS 10:
+https://github.com/appium/appium-xcuitest-driver
+
+
 desired_capabilities.py and appium settings:
 
 - UDID from real device - open iTunes with connected device and click on serial number or use terminal command: "idevice_id -l"
@@ -69,6 +73,14 @@ next open terminal and use:
 finding app activity through adb - appActivity:
 - adb shell dumpsys activity activities | grep com.noggin.oca
  (app need to be open on device)
+
+
+CONFIGURING IOS DEVICE:
+
+1. for iOS 9.3.5 and older - enable UI Automation
+2. prevent device from disabling - enable option stay awake while plugged in
+3. unlock device and prevent automatic locking
+4. for iOS 10 and newer - allow all permissions for the app (because Appium can't auto accept alerts on iOS higher than 9.3.5) 
 
 
 BUILDING .APP FILE ON OSX:

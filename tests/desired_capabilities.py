@@ -12,7 +12,7 @@ class DesiredCapabilities(object):
         "platformName": "ANDROID",
         "platformVersion": "4.4.2",
         "deviceName": "QUANTUM_2_400",
-        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.2.1.apk"),
+        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.2.2.apk"),
         "apppackage": "com.noggin.oca",
         "appactivity": "com.noggin.oca.MainActivity",
         "newCommandTimeout": "80",
@@ -24,7 +24,7 @@ class DesiredCapabilities(object):
         "platformName": "ANDROID",
         "platformVersion": "4.4.4",
         "deviceName": "Samsung Galaxy Note 3",
-        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.2.1.apk"),
+        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.2.2.apk"),
         "apppackage": "com.noggin.oca",
         "appactivity": "com.noggin.oca.MainActivity",
         "newCommandTimeout": "80",
@@ -36,7 +36,7 @@ class DesiredCapabilities(object):
         "platformVersion": "5.1.1",
         "deviceName": "POP 3",
         # "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
-        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.2.1.apk"),
+        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.2.2.apk"),
         "apppackage": "com.noggin.oca",
         "appactivity": "com.noggin.oca.MainActivity",
         "newCommandTimeout": "45",
@@ -50,7 +50,7 @@ class DesiredCapabilities(object):
         "deviceName": "SM-G930F",
         # "app": PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk"),
         # "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
-        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.2.1.apk"),
+        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.2.2.apk"),
         # "apppackage": "com.noggin.ocalukasl",
         # "appactivity": "com.noggin.ocalukasl.MainActivity",
         "apppackage": "com.noggin.oca",
@@ -65,7 +65,7 @@ class DesiredCapabilities(object):
         "platformName": "ANDROID",
         "platformVersion": "6.0.0",
         "deviceName": "android6",
-        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.2.1.apk"),
+        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.2.2.apk"),
         "apppackage": "com.noggin.oca",
         "appactivity": "com.noggin.oca.MainActivity",
         "newCommandTimeout": "60",
@@ -77,18 +77,31 @@ class DesiredCapabilities(object):
         "platformName": "ANDROID",
         "platformVersion": "7.0.0",
         "deviceName": "Google Nexus 5X",
-        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.2.1.apk"),
+        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.2.2.apk"),
         "apppackage": "com.noggin.oca",
         "appactivity": "com.noggin.oca.MainActivity",
         "newCommandTimeout": "60",
         "androidDeviceReadyTimeout": "60"
     }
 
+    desired_capabilities_for_iOS_iPhone6 = {
+        # iPhone 6 with iOS 10.2 - new iOS needs XCuit
+        "platformName": "iOS",
+        "platformVersion": "10.2",
+        "deviceName": "iPhone 6",
+        "app": PATH("/Users/lukasl/Build_xcode/Products/Debug-iphoneos/OCA.app"),
+        "bundleId": "com.noggin.ocalukasl",
+        "autoAcceptAlerts": "true",
+        "xcodeOrgId": "",
+        "xcodeSigningId": "iPhone Developer",
+        "udid": ""
+    }
+
     desired_capabilities_for_iOS_iPad = {
         # iPad mini with iOS 9.3.5
         "platformName": "iOS",
         "platformVersion": "9.3",
-        "deviceName": "iPad 2",
+        "deviceName": "iPad mini",
         "app": PATH("/Users/lukasl/Build_xcode/Products/Debug-iphoneos/OCA.app"),
         "bundleId": "com.noggin.ocalukasl",
         # "newCommandTimeout": "45",
@@ -118,7 +131,7 @@ class DesiredCapabilities(object):
         "autoAcceptAlerts": "true"
     }
 
-    desired_capabilities_for_iOS_iPhone6 = {
+    desired_capabilities_for_iOS_iPhone6s = {
         # iPhone 6s simulator with iOS 9.3
         "platformName": "iOS",
         "platformVersion": "9.3",

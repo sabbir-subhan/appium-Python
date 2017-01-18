@@ -23,11 +23,11 @@ class test_Risk_Android(unittest.TestCase):
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
         # choose desired capabilities from desired_capabilities.py
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_4
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_6
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
-        self.driver.implicitly_wait(20)  # seconds
+        self.driver.implicitly_wait(25)  # seconds
 
     def tearDown(self):
 
@@ -53,12 +53,24 @@ class test_Risk_Android(unittest.TestCase):
         main_page.check_presence_of_events_button()
         main_page.open_RISKS()
         risks_page = RisksPage(self.driver)
-        risks_page.create_new_risk_register()
+        risks_page.click_new_risk_register()
         risk_register_edit_page = RiskRegisterEditPage(self.driver)
-        risk_register_edit_page.fill_Name_input_field("Name for new Risk Register - test Android")
+        risk_register_edit_page.fill_Name_input_field("New Risk Register - test Android")
+        android_device.hide_keyboard()
         risk_register_edit_page.scroll_down_one_view()
         risk_register_edit_page.save_button()
-        risks_page.open_created_risk_register()
+        risks_page.open_existing_risk_register()
+        risks_page.click_new_button()
+        risks_page.click_add_new_context()
+        context_edit_page = ContextEditPage(self.driver)
+        context_edit_page.fill_Name_input_field("New context - test Android")
+        android_device.hide_keyboard()
+        context_edit_page.scroll_down_one_view()
+        context_edit_page.save_button()
+        context_page = ContextPage(self.driver)
+        context_page.open_existing_context()
+        context_page.click_new_button()
+
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(test_Risk_Android)

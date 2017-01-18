@@ -53,6 +53,11 @@ class BasePage(unittest.TestCase):
         sleep(2)
         self.driver.save_screenshot(file_name)
 
+    def reset(self):
+        """This method will reset driver - so for example app will be force to logout"""
+        logging.info("reset")
+        self.driver.reset()
+
 
 class AndroidDevice(BasePage):
     """A class for methods to handle Android Device"""
@@ -63,7 +68,7 @@ class AndroidDevice(BasePage):
             logging.info("hide screen keyboard")
             self.driver.hide_keyboard()
             sleep(3)
-        except NoSuchElementException:
+        except:
             logging.info("screen keyboard not found")
 
     def click_Go_button_on_keyboard(self):
@@ -186,6 +191,18 @@ class Common(BasePage):
         self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen
         sleep(1)
 
+    def scroll_up_one_view(self):
+        """Method to scroll down only one screen"""
+
+        window_size = self.driver.get_window_size()  # this will give You a dictionary
+        start_x = window_size["width"] * 0.25
+        start_y = window_size["height"] * 0.15
+        end_y = window_size["height"] * 0.8
+        logging.info("scroll down only one screen")
+        sleep(2)
+        self.driver.swipe(start_x, start_y, start_x, end_y, 3000)  # each swipe is scrolling one screen
+        sleep(1)
+
     # def scroll_down_test(self):
     #     """Method to scroll down to bottom of the screen - to 'Save' button"""
     #
@@ -208,14 +225,20 @@ class Common(BasePage):
     #             sleep(2)
     #             self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen
     #             sleep(1)
-        
-    def fill_Name_input_field(self, text):
 
-        logging.info("input Name input field")
-        name_field = self.driver.find_element(*EventEditScreen.NAME_FIELD)
-        self.assertIsNotNone(name_field)
-        name_field.click()
-        name_field.send_keys(text)
+    def spinner_button_on_the_right(self):
+
+        logging.info("click spinner button on the right")
+        spinner_button_on_the_right = self.driver.find_element(*CommonScreen.SPINNER_ON_THE_RIGHT)
+        self.assertIsNotNone(spinner_button_on_the_right, "Spinner button on the right not found")
+        spinner_button_on_the_right.click()
+
+    def spinner_button_on_the_left(self):
+
+        logging.info("click spinner button on the left")
+        spinner_button_on_the_left = self.driver.find_element(*CommonScreen.SPINNER_ON_THE_RIGHT)
+        self.assertIsNotNone(spinner_button_on_the_left, "Spinner button on the left not found")
+        spinner_button_on_the_left.click()
 
 
 class WelcomePage(Common):
@@ -1029,7 +1052,7 @@ class LocationPage(BasePage):
             self.fail("button Start was not clicked")
 
 
-class EventsPage(BasePage):
+class EventsPage(Common):
     """A class for methods to handle Events Page"""
 
     def check_if_EVENTS_were_opened(self):
@@ -1069,15 +1092,18 @@ class EventsPage(BasePage):
 
     def filter_events_by_Search_field(self):
 
+        # android 4.4.2 and 5.1 can't click correctly in "Search field" because of that
+        #  Appium can't send keys into text field
+        # - icon is on top of the text field and Appium is trying to send keys to it
         logging.info("search field - search event named: 'search'")
+        sleep(2)
         search_field = self.driver.find_element(*EventsScreen.SEARCH_FIELD)
-        screen_size = self.driver.get_window_size(windowHandle='current')  # it creates dictionary
-        if screen_size['width'] < 1000:         # android 4.4.2 and 5.1 can't click correctly in "Search field" because of that Appium can't send keys into text field
-            pass
-        else:
-            search_field.click()
-            logging.info("sending keys")
-            search_field.send_keys('search')
+        search_field.click()
+        logging.info("sending keys")
+        self.driver.keyevent(47)  # send letter 'S'
+        self.driver.keyevent(33)  # send letter 'E'
+        self.driver.keyevent(29)  # send letter 'A'
+        self.driver.keyevent(46)  # send letter 'R'
 
     def clear_Search_field(self):
 
@@ -1090,10 +1116,11 @@ class EventsPage(BasePage):
     def click_More_button(self):
 
         sleep(1)
-        logging.info("clicking in 'More' button")
-        more_button = self.driver.find_element(*EventsScreen.MORE_BUTTON)
-        self.assertIsNotNone(more_button, "More button was not found")
-        more_button.click()
+        logging.info("click 'More' button")
+        Common.spinner_button_on_the_right(self)
+        # more_button = self.driver.find_element(*CommonScreen.SPINNER_ON_THE_RIGHT)
+        # self.assertIsNotNone(more_button, "More button was not found")
+        # more_button.click()
         sleep(0.5)
 
     def click_New_event_button(self):
@@ -1158,24 +1185,27 @@ class EventsPage(BasePage):
     # only for events list, opened from chooser fields inside other event
     def click_on_previously_created_event_for_chooser_field(self):
 
+        sleep(5)
         logging.info("click_on_previously_created_event_for_chooser_field")
         event_for_chooser_field = self.driver.find_element(*EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER)
         self.assertIsNotNone(event_for_chooser_field)
         event_for_chooser_field.click()
+        sleep(5)
 
     def click_on_previously_created_event_for_subform_chooser(self):
 
-        sleep(5)
+        sleep(10)
         logging.info("click_on_previously_created_event_for_subform_chooser")
         event_for_subform = self.driver.find_element(*EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER)
         self.assertIsNotNone(event_for_subform)
-        sleep(1)
-        try:
-            event_for_subform.click()
-        except NoSuchElementException:
-            action = TouchAction(self.driver)
-            action.tap(element=event_for_subform, count=1).perform()
-        sleep(1)
+        event_for_subform.click()
+        # sleep(1)
+        # try:
+        #     event_for_subform.click()
+        # except NoSuchElementException:
+        #     action = TouchAction(self.driver)
+        #     action.tap(element=event_for_subform, count=1).perform()
+        sleep(5)
 
 
 class EventsTypesPage(BasePage):
@@ -1206,6 +1236,13 @@ class EventsTypesPage(BasePage):
 
 class EventEditPage(Common):
     """A class for methods to handle Event Edit Page"""
+
+    def fill_Name_input_field(self, text):
+        logging.info("input Name input field")
+        name_field = self.driver.find_element(*EventEditScreen.NAME_FIELD)
+        self.assertIsNotNone(name_field)
+        name_field.click()
+        name_field.send_keys(text)
 
     def click_severity_lvl_picker(self):
 
@@ -1270,16 +1307,8 @@ class EventEditPage(Common):
     def type_text_into_description_field(self):
 
         sleep(1)
-        try:
-            screen_size = self.driver.get_window_size(windowHandle='current')  # it creates dictionary
-            if screen_size['width'] > 1000:
-                logging.info("type some text into description field")
-                self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD).click()
-                self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD).send_keys("test Android")
-            else:
-                logging.info("passing sending text into Description field to avoid problems on older android devices")
-        except NoSuchElementException:
-            self.fail("text field couldn't be selected")
+        logging.info("type some text into description field")
+        self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD).send_keys("test Android")
 
     def click_create_mapping_data(self):
 
@@ -1392,10 +1421,13 @@ class EventEditPage(Common):
     # only for event type: "event_for_on_load/save_test"
     def click_button_add_row(self):
 
+        sleep(1)
         logging.info("click button Add row")
         add_row = self.driver.find_element(*EventEditScreen.SUBFORM_FIELD_ADD_ROW)
         self.assertIsNotNone(add_row, "add_row button not found")
-        add_row.click()
+        action = TouchAction(self.driver)
+        action.tap(element=add_row, count=1).perform()
+        # add_row.click()
 
     def click_on_event_chooser_field(self):
 
@@ -1407,19 +1439,21 @@ class EventEditPage(Common):
 
     def click_on_choose_field_inside_subform(self):
 
+        sleep(5)
         logging.info("click_on_choose_field_inside_subform")
         event_chooser_in_subform = self.driver.find_element(*EventEditScreen.NEW_EVENTS_CHOOSER_IN_SUB_FORM)
-        self.assertIsNotNone(event_chooser_in_subform, "event_chooser_in_subform not found")
+        self.assertIsNotNone(event_chooser_in_subform, "event chooser in subform not found")
         event_chooser_in_subform.click()
-        sleep(1)
+        sleep(5)
 
     def delete_chosen_event_inside_subform(self):
 
-        sleep(1)
+        sleep(5)
         logging.info("delete chosen event inside sub form")
         delete_button_inside_sub_form = self.driver.find_element(*EventEditScreen.DELETE_SUB_EVENT_FROM_CHOOSER)
-        self.assertIsNotNone(delete_button_inside_sub_form, "delete_button_inside_sub_form not found")
+        self.assertIsNotNone(delete_button_inside_sub_form, "delete button inside sub form not found")
         delete_button_inside_sub_form.click()
+        sleep(5)
         try:
             previously_created_event_for_subform_chooser = self.driver.find_element(
                 *EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER)
@@ -1727,20 +1761,69 @@ class NewLogPage(NewReportPage):
 class RisksPage(Common):
     """A class for methods to handle Risks Page"""
 
-    def create_new_risk_register(self):
+    def click_new_risk_register(self):
 
         logging.info("create risk register")
         create_risk_register_button = self.driver.find_element(*RisksScreen.CREATE_RISK_REGISTER)
         self.assertIsNotNone(create_risk_register_button, "Create Risk Register button not found")
         create_risk_register_button.click()
 
+    def open_existing_risk_register(self):
 
-class RiskRegisterEditPage(Common):
+        logging.info("open first risk register on the list")
+        open_existing_risk_register = self.driver.find_element(*RisksScreen.FIRST_RISK_REGISTER_ON_THE_LIST)
+        self.assertIsNotNone(open_existing_risk_register, "open existing Risk Register")
+        open_existing_risk_register.click()
+
+    def click_new_button(self):
+
+        logging.info("click new button")
+        Common.spinner_button_on_the_right(self)
+        # click_new_button = self.driver.find_element(*CommonScreen.SPINNER_ON_THE_RIGHT)
+        # self.assertIsNotNone(click_new_button, "New button not found")
+        # click_new_button.click()
+
+    def click_add_new_context(self):
+
+        logging.info("click add new context")
+        click_add_new_context = self.driver.find_element(*RisksScreen.ADD_NEW_CONTEXT)
+        self.assertIsNotNone(click_add_new_context, "Add new context button not found")
+        click_add_new_context.click()
+
+
+class RiskRegisterEditPage(EventEditPage):
     """A class for methods to handle Risk Register Edit Page"""
 
     def fill_Name_input_field(self, text):
 
-        Common.fill_Name_input_field(self, text)
+        EventEditPage.fill_Name_input_field(self, text)
+
+
+class ContextEditPage(Common):
+    """A class for methods to handle Context Edit Page"""
+
+    def fill_Name_input_field(self, text):
+        logging.info("input Name input field")
+        name_field = self.driver.find_element(*ContextEditScreen.NAME_FIELD)
+        self.assertIsNotNone(name_field)
+        name_field.click()
+        name_field.send_keys(text)
+
+
+class ContextPage(Common):
+    """A class for methods to handle Context Page"""
+
+    def open_existing_context(self):
+
+        logging.info("open existing context")
+        open_existing_context = self.driver.find_element(*ContextScreen.FIRST_CONTEXT_ON_THE_LIST)
+        self.assertIsNotNone(open_existing_context, "open existing context")
+        open_existing_context.click()
+
+    def click_new_button(self):
+
+        logging.info("click new button")
+        Common.spinner_button_on_the_right(self)
 
 
 class SentPage(BasePage):
