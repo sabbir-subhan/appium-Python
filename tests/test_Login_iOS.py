@@ -20,11 +20,8 @@ class test_Login_iOS(unittest.TestCase):
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
         # choose desired capabilities from desired_capabilities.py
-<<<<<<< Updated upstream
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad
-=======
+
         desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_10_iPhone6
->>>>>>> Stashed changes
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 

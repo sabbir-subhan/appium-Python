@@ -17,10 +17,12 @@ class WelcomeScreen:
     SOUND_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "SOUND")]]')
     SETTINGS_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "SETTINGS")]]')
     ABOUT_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name[contains(., "ABOUT")]]')
-    LOGIN_BUTTON_ios = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "LOGIN")]]')
-    LOGIN_BUTTON_by_index_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]'
-                                                 '/UIAScrollView[2]/UIAWebView[1]/UIALink[9]'
-                                                 '[@name[contains(., "LOGIN")]]')
+    # LOGIN_BUTTON_ios = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "LOGIN")]]')
+    # LOGIN_BUTTON_by_index_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]'
+    #                                              '/UIAScrollView[2]/UIAWebView[1]/UIALink[9]'
+    #                                              '[@name[contains(., "LOGIN")]]')
+    LOGIN_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "LOGIN")]]')
+    LOGIN_BUTTON_by_index_ios = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[7]/XCUIElementTypeLink[1]')
     SETTINGS_CONTACT_IDENTIFIER_FIELD_ios = (MobileBy.CLASS_NAME, 'UIATextField')
     SETTINGS_ALERT_APP_HAS_BEEN_ACTIVATED_ios = (MobileBy.XPATH, '//UIAStaticText[@name="App has been activated."]')
     SETTINGS_OK_BUTTON_ios = (MobileBy.XPATH, '//UIALink[@name="Ok"]')

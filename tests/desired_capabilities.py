@@ -84,17 +84,20 @@ class DesiredCapabilities(object):
         "androidDeviceReadyTimeout": "60"
     }
 
-    desired_capabilities_for_iOS_iPhone6 = {
+    desired_capabilities_for_iOS_10_iPhone6 = {
         # iPhone 6 with iOS 10.2 - new iOS needs XCuit
         "platformName": "iOS",
         "platformVersion": "10.2",
         "deviceName": "iPhone 6",
         "app": PATH("/Users/lukasl/Build_xcode/Products/Debug-iphoneos/OCA.app"),
         "bundleId": "com.noggin.ocalukasl",
-        "autoAcceptAlerts": "true",
-        "xcodeOrgId": "",
+        # "autoAcceptAlerts": "true",
+        "xcodeOrgId": "5MJR4HSABR",
         "xcodeSigningId": "iPhone Developer",
-        "udid": ""
+        "useNewWDA": "true",  # If true, forces uninstall of any existing WebDriverAgent app on device
+        "showXcodeLog": "true",  # show more logs in console
+        "automationName": "XCUITest",
+        "udid": "4b15c4284897fa6f9b4c5205325a9cece997ad35"
     }
 
     desired_capabilities_for_iOS_iPad = {
