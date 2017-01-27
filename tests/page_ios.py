@@ -5,13 +5,14 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from appium.webdriver.common.touch_action import TouchAction
-# from appium import webdriver
+from appium import webdriver
 # from selenium.webdriver.common.action_chains import ActionChains
 # from appium.webdriver.common.multi_action import MultiAction
 # from appium.webdriver.mobilecommand import MobileCommand
 # from appium.webdriver import WebElement
 # from appium.webdriver.webdriver import MobileWebElement
-from locators_ios import *
+#from locators_ios import *
+from locators_ios10 import *
 from credentials import Credentials
 from credentials import ContactIdentifierPIN
 import logging
@@ -119,30 +120,36 @@ class WelcomePage(Common):
         # except:
         #     logging.info("pass tapping into positions")
         logging.info("click in LOGIN button")
-        try:
-            login_button = self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_ios)
-            if login_button.is_displayed():
-                self.assertIsNotNone(login_button, "Login button not found")
-                login_button.click()
-        except NoSuchElementException:
-            pass
-        try:
-            login_button_by_index = self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_by_index_ios)
-            if login_button_by_index.is_displayed():
-                self.assertIsNotNone(login_button_by_index)
-                login_button_by_index.click()
-        except NoSuchElementException:
-            pass
-        try:
-            username_field = self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios)
-            if username_field.is_displayed():
-                pass
-            else:
-                action = TouchAction(self.driver)
-                action.tap(element=None, x=115, y=283, count=1).perform()
-        # add coordinates for iPhones
-        except NoSuchElementException:
-            pass
+        login_button = self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_ios)
+        self.assertIsNotNone(login_button, "Login button not found")
+        login_button.click()
+
+        # TEST IT ON IOS 9.3
+
+        # try:
+        #     login_button = self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_ios)
+        #     if login_button.is_displayed():
+        #         self.assertIsNotNone(login_button, "Login button not found")
+        #         login_button.click()
+        # except NoSuchElementException:
+        #     pass
+        # try:
+        #     login_button_by_index = self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_by_index_ios)
+        #     if login_button_by_index.is_displayed():
+        #         self.assertIsNotNone(login_button_by_index)
+        #         login_button_by_index.click()
+        # except NoSuchElementException:
+        #     pass
+        # try:
+        #     username_field = self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios)
+        #     if username_field.is_displayed():
+        #         pass
+        #     else:
+        #         action = TouchAction(self.driver)
+        #         action.tap(element=None, x=115, y=283, count=1).perform()
+        # # add coordinates for iPhones
+        # except NoSuchElementException:
+        #     pass
 
     def click_settings_button(self):
 

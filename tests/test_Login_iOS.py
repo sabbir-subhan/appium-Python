@@ -9,7 +9,6 @@
 # check if button "EVENTS" is present
 
 
-from appium import webdriver
 from desired_capabilities import DesiredCapabilities
 from page_ios import *
 

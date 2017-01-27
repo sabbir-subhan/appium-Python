@@ -28,9 +28,9 @@ class test_ManagingEvents_iOS(unittest.TestCase):
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
         # choose desired capabilities from desired_capabilities.py
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_10_iPhone6
 
-        self.driver = webdriver.Remote("http://localhost:4745/wd/hub", desired_capabilities)
+        self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
         self.driver.implicitly_wait(20)  # seconds
 
