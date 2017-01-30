@@ -17,7 +17,6 @@
 # with name: "New events chooser inside sub form"
 
 
-from appium import webdriver
 from desired_capabilities import DesiredCapabilities
 from page_ios import *
 
@@ -32,7 +31,7 @@ class test_ManagingEvents_iOS(unittest.TestCase):
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
-        self.driver.implicitly_wait(20)  # seconds
+        self.driver.implicitly_wait(25)  # seconds
 
     def tearDown(self):
 

@@ -200,10 +200,14 @@ class LoginPage(BasePage):
 
     def type_domain_address(self, domain):
 
-        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).click()
-        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).clear()
         logging.info("type domain address")
-        self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios).send_keys(Credentials.get_domain(domain))
+        domain_textfield = self.driver.find_element(*LoginScreen.TEXTFIELD_DOMAIN_ios)
+        domain_textfield.clear()
+        domain_textfield.click()
+        domain_textfield.clear()
+        # domain_textfield.click()
+        # domain_textfield.clear()
+        domain_textfield.send_keys(Credentials.get_domain(domain))
 
     def click_submit_button(self):
 
@@ -267,7 +271,7 @@ class MainPage(BasePage):
 
     def dismiss_ios_notifications(self):
 
-        logging.info("dismiss iOS notifications")
+        logging.info("dismiss notifications")
         try:
             notification_msg_on_ios = self.driver.find_element(*LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES_ios)
             if notification_msg_on_ios.is_displayed():
@@ -279,14 +283,20 @@ class MainPage(BasePage):
             else:
                 pass
         except NoSuchElementException:
-            pass
+            logging.info("notifications alert not present")
 
     def logout_if_already_logged_in(self):
 
         sleep(5)
         logging.info("logout if already logged in")
 
-        # BasePage.hamburger_button(self)
+        # window_size = self.driver.get_window_size()  # this will give You a dictionary
+        # start_x = window_size["width"] * 0.10
+        # start_y = window_size["height"] * 0.10
+        # end_y = window_size["height"] * 0.85
+        # logging.info("scroll down only one screen")
+        # self.driver.swipe(start_x, end_y, start_x, start_y, 9000)  # each swipe is scrolling one screen
+        # sleep(1)
 
         try:
             logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
@@ -1031,6 +1041,9 @@ class EventEditPage(Common):
                 self.assertIsNotNone(choose_severity_lvl1, "choose_severity_lvl1 not found")
                 choose_severity_lvl1.click()
             else:
+                picker_wheel = self.driver.find_element(*CommonScreen.PICKER_WHEEL_ios)
+                print(picker_wheel.get_attribute('value'))
+                picker_wheel.send_keys('Severity 1')
                 # NEED A WAY TO SCROLL WHEEL PICKER ON iPhones, scroll, tap and move, click on element,
                 #  send keys are not working - this step is not required in TC
                 # try to use self.driver.swipe

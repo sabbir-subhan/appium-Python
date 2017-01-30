@@ -1,3 +1,8 @@
+*Appium POC*
+
+Functional tests for OCA mobile app, using Appium and Python.
+
+
 SOFT NEEDED:
 
 - Java

@@ -4,8 +4,8 @@ from appium.webdriver.common.mobileby import MobileBy
 
 class TopBar:
     """A class for top bar locators."""
-    HAMBURGER_FOR_MAIN_MENU_ios = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeScrollView[2]'
-                                                   '/XCUIElementTypeWindow[1]/XCUIElementTypeLink[3]/XCUIElementTypeStaticText[1]')
+    HAMBURGER_FOR_MAIN_MENU_ios = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeScrollView[2]'
+                                                   '/XCUIElementTypeLink[3]/XCUIElementTypeStaticText[1]')
 
 
 class WelcomeScreen:
@@ -38,7 +38,7 @@ class LoginScreen:
     # SUBMIT_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Submit')  # not working
 
     # Notification alert: "OCA now supports sending 'App Messages' to your device as notifications."
-    NOTIFICATION_ABOUT_SENDING_MESSAGES_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]/XCUIElementTypeStaticText[@name[contains(., '
+    NOTIFICATION_ABOUT_SENDING_MESSAGES_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., '
                                                                '"OCA now supports ")]]')
 
     # "No" button for sending notifications on iOS
@@ -48,11 +48,11 @@ class LoginScreen:
     ACCEPT_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Accept"]')
 
     # alert message with word "Invalid"
-    ALERT_MSG_INVALID_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]/XCUIElementTypeStaticText[@name="Invalid username and/or password"]')
+    ALERT_MSG_INVALID_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Invalid username and/or password"]')
 
     # alert message with "Your temporary account has been expired"
 
-    ALERT_MSG_EXPIRED_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]/XCUIElementTypeStaticText[@name[contains'
+    ALERT_MSG_EXPIRED_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains'
                                              '(., "Your temporary account has been expired")]]')
 
     # alert message with "The password for the current user is about to expire"
@@ -61,7 +61,7 @@ class LoginScreen:
                                                  '., "The password for the current user is about to expire")]]')
 
     # alert message with word "inactive"
-    ALERT_MSG_SUSPENDED_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow/XCUIElementTypeStaticText['
+    ALERT_MSG_SUSPENDED_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText['
                                                '@name[contains(., "Your account is currently inactive")]]')
     # OK button on alert messages"
     OK_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="Ok"]')
@@ -102,12 +102,12 @@ class MainMenuScreen(WelcomeScreen):
 class LocationScreen:
     """A class for Location screen locators - screen after clicking into Location button in Main Menu."""
     SEND_ONCE_NOW_ios = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Send once now")]]')
-    SEND_EVERY_SPINNER_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow/XCUIElementTypeElement[@name="Send every"]')
-    CHOOSE_5_MINUTES_OPTION_iPad = (MobileBy.XPATH, '//XCUIElementTypeWindow/XCUIElementTypePopover/XCUIElementTypeTableView/XCUIElementTypeTableCell[2]')
-    ASSERT_5_MINUTES_OPTION_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]/XCUIElementTypeStaticText[@name="5 minutes"]')
-    FOR_THE_NEXT_SPINNER_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow/XCUIElementTypeElement[@name="For the next"]')
-    CHOOSE_1_HOUR_OPTION_iPad = (MobileBy.XPATH, '//XCUIElementTypeWindow/XCUIElementTypePopover/XCUIElementTypeTableView/XCUIElementTypeTableCell[3]')
-    ASSERT_1_HOUR_OPTION_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]/XCUIElementTypeStaticText[@name="1 hour"]')
+    SEND_EVERY_SPINNER_ios = (MobileBy.XPATH, '//XCUIElementTypeElement[@name="Send every"]')
+    CHOOSE_5_MINUTES_OPTION_iPad = (MobileBy.XPATH, '//XCUIElementTypePopover/XCUIElementTypeTableView/XCUIElementTypeTableCell[2]')
+    ASSERT_5_MINUTES_OPTION_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="5 minutes"]')
+    FOR_THE_NEXT_SPINNER_ios = (MobileBy.XPATH, '//XCUIElementTypeElement[@name="For the next"]')
+    CHOOSE_1_HOUR_OPTION_iPad = (MobileBy.XPATH, '//XCUIElementTypePopover/XCUIElementTypeTableView/XCUIElementTypeTableCell[3]')
+    ASSERT_1_HOUR_OPTION_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="1 hour"]')
     START_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Start")]]')
     LOCATION_PAGE_HEADER_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "Your location was last sent")]]')
     LOCATION_STATUS_ios = (MobileBy.XPATH, "//XCUIElementTypeStaticText[@name[contains(., 'few seconds ago')]]")
@@ -115,10 +115,10 @@ class LocationScreen:
 
 class EventsScreen:
     """A class for Events screen locators - screen after clicking into Events button in Main Menu."""
-    EVENTS_HEADER_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]/XCUIElementTypeStaticText[@name="Events"]')
+    EVENTS_HEADER_ios = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="Events"]')
 
     # filtering events by Type
-    ANY_TYPE_EXPAND_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]/XCUIElementTypeLink[@name[contains(., "Any Type click to expand")]]')
+    ANY_TYPE_EXPAND_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Any Type click to expand")]]')
     CHOOSE_TYPE_INCIDENT_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Incident"]')
     INCIDENT_TYPE_EXPAND_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Incident click to expand")]]')
     CHOOSE_TYPE_ANY_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Any Type"]')
@@ -128,13 +128,14 @@ class EventsScreen:
     CHOOSE_ACTIVE_STATUS_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="Active"]')
     ACTIVE_STATUS_EXPAND_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Active click to expand")]]')
     CHOOSE_INACTIVE_STATUS_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="Inactive"]')
-    INACTIVE_STATUS_EXPAND_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Inactive click to expand")]]')
+    INACTIVE_STATUS_EXPAND_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name['
+                                                  'contains(., "Inactive click to expand")]]')
     CHOOSE_DRAFT_STATUS_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="Draft"]')
     DRAFT_STATUS_EXPAND_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Draft click to expand")]]')
     CHOOSE_ANY_STATUS_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="Any Status"]')
 
     # filtering events using search field
-    SEARCH_FIELD_ios = (MobileBy.XPATH, '//XCUIElementTypeTextField[@name="Search:"]')
+    SEARCH_FIELD_ios = (MobileBy.CLASS_NAME, 'XCUIElementTypeTextField')
 
     # creating and editing Events
     MORE_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "More")]]')
@@ -144,24 +145,24 @@ class EventsScreen:
     CREATED_EVENT_1_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Test Appium iOS")]]')
     CREATED_EVENT_2_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Test Appium iOS - second event")]]')
     CREATED_EVENT_3_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "iOS to create sub")]]')
-    CLEAR_PRIMARY_EVENT_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]/XCUIElementTypeStaticText[@name'
+    CLEAR_PRIMARY_EVENT_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name'
                                                       '[contains(., "Clear primary event")]]')
-    NOTIFICATION_PRIMARY_EVENT_CLEARED_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]/XCUIElementTypeStaticText['
+    NOTIFICATION_PRIMARY_EVENT_CLEARED_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText['
                                                               '@name="Primary event cleared"]')
 
 
 class TypesOfEventsScreen:
     """A class for Type of Events screen locators - first screen after creating new event with types of events."""
-    INCIDENT_TYPE_OF_EVENT_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]/XCUIElementTypeLink[@name[contains(., "Incident")]]')
-    EVENT_FOR_ON_LOAD_SAVE_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]/XCUIElementTypeLink[@name[contains(., "event_for_on_load")]]')
-    EVENT_FOR_CHOOSER_FIELDS_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]/XCUIElementTypeLink[@name[contains(., "event_for_chooser")]]')
+    INCIDENT_TYPE_OF_EVENT_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Incident")]]')
+    EVENT_FOR_ON_LOAD_SAVE_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "event_for_on_load")]]')
+    EVENT_FOR_CHOOSER_FIELDS_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "event_for_chooser")]]')
 
 
 class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
-    NAME_FIELD_ios = (MobileBy.XPATH, '//XCUIElementTypeScrollView/XCUIElementTypeWindow/XCUIElementTypeTextField[@name="Name"]')
-    NAME_FIELD_by_index_ios = (MobileBy.XPATH, '//XCUIElementTypeScrollView/XCUIElementTypeWindow/XCUIElementTypeTextField[1]')
-    SEVERITY_LEVEL_SELECTOR_ios = (MobileBy.XPATH, '//XCUIElementTypeElement[2]')
+    NAME_FIELD_ios = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
+    NAME_FIELD_by_index_ios = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTextField[1]')
+    SEVERITY_LEVEL_SELECTOR_ios = (MobileBy.XPATH, '//XCUIElementTypeOther[4]/XCUIElementTypeOther[3]')
     CHOOSE_SEVERITY_LVL1_iPad = (MobileBy.XPATH, '//XCUIElementTypeTableCell[@name="Severity 1"]')
     CHOOSE_SEVERITY_LVL1_iPhone = (MobileBy.XPATH, '//XCUIElementTypePicker/XCUIElementTypePickerWheel[@value="Severity 1"]')
     CHOOSE_SEVERITY_LVL2_iPad = (MobileBy.XPATH, '//XCUIElementTypeTableCell[@name="Severity 2"]')
@@ -176,7 +177,7 @@ class EventEditScreen:
 
     CREATE_MAPPING_DATA_ios = (MobileBy.XPATH, "//XCUIElementTypeLink[@name[contains(., 'Create mapping data')]]")
     EDIT_MAPPING_DATA_ios = (MobileBy.XPATH, "//XCUIElementTypeLink[@name[contains(., 'Create mapping data')]]")
-    ELEMENT_TO_SCROLL_ios = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeScrollView[2]/XCUIElementTypeImage[1]')
+    ELEMENT_TO_SCROLL_ios = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeScrollView[2]/XCUIElementTypeImage[1]')
     SEQUENCE_ONLOAD_HEADER_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="sequence_onload"]')
     SEQUENCE_ONLOAD_VALUE_ios = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="test on load"]')
     SEQUENCE_ONSAVE_HEADER_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="sequence_onsave"]')
@@ -189,11 +190,11 @@ class EventEditScreen:
     FIELD_TO_RESTORE_1_VALUE_ios = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="value for field 1"]')
     FIELD_TO_RESTORE_2_HEADER_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="New email address"]')
     FIELD_TO_RESTORE_2_VALUE_ios = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="test@noggin.com"]')
-    CHOOSER_FIELD_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow/XCUIElementTypeLink/XCUIElementTypeLink[@name[contains(., "New events chooser")]]')
+    CHOOSER_FIELD_ios = (MobileBy.XPATH, '//XCUIElementTypeLink/XCUIElementTypeLink[@name[contains(., "New events chooser")]]')
     PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains('
                                                                 '., "Test Appium iOS")]]')
     SUBFORM_FIELD_ADD_ROW_ios = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Add row"]')
-    NEW_EVENTS_CHOOSER_IN_SUB_FORM_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow/XCUIElementTypeLink/XCUIElementTypeLink[@name[contains('
+    NEW_EVENTS_CHOOSER_IN_SUB_FORM_ios = (MobileBy.XPATH, '//XCUIElementTypeLink/XCUIElementTypeLink[@name[contains('
                                                           '., "New events chooser inside sub form")]]')
     PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "Test")]]')
     DELETE_SUB_EVENT_FROM_CHOOSER_ios = (MobileBy.XPATH, '//XCUIElementTypeScrollView/XCUIElementTypeWindow/XCUIElementTypeLink[6]')
@@ -202,9 +203,9 @@ class EventEditScreen:
 class EventDetailsScreen:
     """A class for Event Details screen locators - screen with event details - after opening event."""
     EDIT_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Edit"]')
-    DELETE_EVENT_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]/XCUIElementTypeLink[@name[contains(., "Delete event")]]')
+    DELETE_EVENT_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Delete event")]]')
     DELETE_CONFIRM_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="Delete"]')
-    NEW_SUB_EVENT_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]/XCUIElementTypeLink[@name[contains(., "New sub event")]]')
+    NEW_SUB_EVENT_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "New sub event")]]')
     SET_AS_PRIMARY_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "Set as primary")]]')
 
 
@@ -214,12 +215,12 @@ class Map:
     TOOL_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Tool")]]')
     POINT_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Point click to expand")]]')
     DEFAULT_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Default"]')
-    MAP_AREA_12_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]/XCUIElementTypeImage[12]')
-    MAP_AREA_13_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]/XCUIElementTypeImage[13]')
-    MAP_AREA_17_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]/XCUIElementTypeImage[17]')
-    MAP_AREA_18_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]/XCUIElementTypeImage[18]')
+    MAP_AREA_12_ios = (MobileBy.XPATH, '//XCUIElementTypeImage[12]')
+    MAP_AREA_13_ios = (MobileBy.XPATH, '//XCUIElementTypeImage[13]')
+    MAP_AREA_17_ios = (MobileBy.XPATH, '//XCUIElementTypeImage[17]')
+    MAP_AREA_18_ios = (MobileBy.XPATH, '//XCUIElementTypeImage[18]')
     LINE_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Line")]]')
-    CIRCLE_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeScrollView[2]/XCUIElementTypeWindow[1]/XCUIElementTypeLink[@name[contains(., "Circle")]]')
+    CIRCLE_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeScrollView[2]/XCUIElementTypeLink[@name[contains(., "Circle")]]')
     POLYGON_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Polygon")]]')
     SAVE_MAP_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Save")]]')
 
@@ -239,7 +240,7 @@ class VideoScreen:
     """A class for Video screen locators - screen after clicking into Video button in Main Menu."""
     VIDEO_PAGE_HEADER_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "Send a video to OCA")]]')
     # RECORD_NEW_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "Record New")]]')  # this locator will find only text, not the icon
-    RECORD_NEW_BUTTON_ios = (MobileBy.XPATH, 'XCUIElementTypeScrollView[2]/XCUIElementTypeWindow[1]/XCUIElementTypeStaticText[4]')  # appium can't tap that element - probably it's a bug in Appium - visible: false
+    RECORD_NEW_BUTTON_ios = (MobileBy.XPATH, 'XCUIElementTypeScrollView[2]/XCUIElementTypeStaticText[4]')  # appium can't tap that element - probably it's a bug in Appium - visible: false
 
 
 class SoundScreen:
@@ -297,7 +298,7 @@ class NewTaskScreen:
 
 class NewReportScreen:
     """A class for handling New Report screen"""
-    LODGING_AGENCY_PICKER_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow/XCUIElementTypeElement[2]')
+    LODGING_AGENCY_PICKER_ios = (MobileBy.XPATH, '//XCUIElementTypeElement[2]')
     LODGING_AGENCY_ios = (MobileBy.XPATH, '//XCUIElementTypePopover/XCUIElementTypeTableView/XCUIElementTypeTableCell[2]')
     PUBLISH_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Publish"]')
 
@@ -308,7 +309,7 @@ class NewReportScreen:
 
 class NewLogScreen:
     """A class for handling New Log screen"""
-    LODGING_AGENCY_PICKER_ios = (MobileBy.XPATH, '//XCUIElementTypeWindow/XCUIElementTypeElement[1]')
+    LODGING_AGENCY_PICKER_ios = (MobileBy.XPATH, '//XCUIElementTypeElement[1]')
     ENTRY_FIELD_ios = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
 
 
@@ -317,6 +318,7 @@ class CommonScreen:
     SAVE_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Save"]')
     CANCEL_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Cancel"]')
     OK_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Ok"]')
+    PICKER_WHEEL_ios = (MobileBy.CLASS_NAME, 'XCUIElementTypePickerWheel')
 
 
 class iOS:
