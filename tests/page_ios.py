@@ -31,20 +31,6 @@ class BasePage(unittest.TestCase):
         super().__init__()
         self.driver = driver
 
-    # OCA top bar
-    def hamburger_button(self):
-        # add coordinates for iPhones - clicking is not working because button is invisible
-        logging.info("click hamburger button to go back to main menu")
-        try:
-            hamburger_button = self.driver.find_element(*TopBar.HAMBURGER_FOR_MAIN_MENU_ios)
-            if hamburger_button.is_displayed():
-                self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
-                hamburger_button.click()
-        except NoSuchElementException:
-            positions_for_hamburger_button = [(730, 20)]
-            sleep(1)
-            self.driver.tap(positions_for_hamburger_button)
-
 
 class iOSdevice(BasePage):
     """A class for methods to handle iOS Device"""
@@ -67,9 +53,27 @@ class iOSdevice(BasePage):
         self.driver.find_element(*iOS.RETURN_BUTTON_ios).click()
         sleep(1)
 
+    def done_button(self):
+
+        self.driver.find_element(*iOS.BUTTON_DONE_TO_HIDE_KEYBOARD_ios).click()
+
 
 class Common(BasePage):
     """A class for methods to handle Common buttons from different screens"""
+
+    # OCA top bar
+    def hamburger_button(self):
+        # add coordinates for iPhones - clicking is not working because button is invisible
+        logging.info("click hamburger button to go back to main menu")
+        try:
+            hamburger_button = self.driver.find_element(*TopBar.HAMBURGER_FOR_MAIN_MENU_ios)
+            if hamburger_button.is_displayed():
+                self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
+                hamburger_button.click()
+        except NoSuchElementException:
+            positions_for_hamburger_button = [(730, 20)]
+            sleep(1)
+            self.driver.tap(positions_for_hamburger_button)
 
     def save_button(self):
 
@@ -104,6 +108,42 @@ class Common(BasePage):
             if name_field_by_index.is_displayed():
                 name_field_by_index.click()
                 name_field_by_index.send_keys(text)
+
+    # def scroll_to_save_button(self):  # NOT WORKING
+    #
+    #     logging.info("scroll to Save button")
+    #     el = self.driver.find_element(*CommonScreen.SAVE_BUTTON_ios)
+    #     self.driver.execute_script('mobile: scroll', {"element": el, "toVisible": True})
+    #     el.click()
+    #
+    # def scroll_down_one_view(self):  # NOT WORKING
+    #     """Method to scroll down only one screen"""
+    #
+    #     window_size = self.driver.get_window_size()  # this will give You a dictionary
+    #     start_x = window_size["width"] * 0.25
+    #     start_y = window_size["height"] * 0.15
+    #     end_y = window_size["height"] * 0.8
+    #     print(start_x)
+    #     print(start_y)
+    #     print(end_y)
+    #     logging.info("scroll down only one screen")
+    #     sleep(2)
+    #     self.driver.swipe(start_x, end_y, start_x, start_y, 12000)  # each swipe is scrolling one screen
+    #     sleep(1)
+    #     logging.info("test1")
+    #     origin = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON_ios)
+    #     destination = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
+    #     self.driver.scroll(origin_el=origin, destination_el=destination)
+    #     logging.info("test2")
+    #     elm = self.driver.find_element(*MainMenuScreen.LOCATION_BUTTON_ios)
+    #     action = TouchAction(self.driver)
+    #     action.press(elm).perform()
+    #     action.move_to(x=0, y=100).perform()
+
+    def scroll_to_bottom(self):
+
+        logging.info("scroll down")
+        self.driver.execute_script("mobile: scroll", {"direction": "down"})
 
 
 class WelcomePage(Common):
@@ -266,7 +306,7 @@ class LoginPage(BasePage):
             self.fail("failed - there is no alert message")
 
 
-class MainPage(BasePage):
+class MainPage(Common):
     """A class for methods to handle Main Page"""
 
     def dismiss_ios_notifications(self):
@@ -1021,7 +1061,7 @@ class EventsTypesPage(BasePage):
         event_type_chooser.click()
 
 
-class EventEditPage(Common):
+class EventEditPage(Common, iOSdevice):
     """A class for methods to handle Event Edit Page"""
 
     def click_severity_lvl_picker(self):
@@ -1034,23 +1074,29 @@ class EventEditPage(Common):
 
     def choose_severity_level_1(self):
 
-        try:
-            logging.info("choose_severity_lvl1")
-            choose_severity_lvl1 = self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL1_iPad)
-            if choose_severity_lvl1.is_displayed():
-                self.assertIsNotNone(choose_severity_lvl1, "choose_severity_lvl1 not found")
-                choose_severity_lvl1.click()
-            else:
-                picker_wheel = self.driver.find_element(*CommonScreen.PICKER_WHEEL_ios)
-                print(picker_wheel.get_attribute('value'))
-                picker_wheel.send_keys('Severity 1')
-                # NEED A WAY TO SCROLL WHEEL PICKER ON iPhones, scroll, tap and move, click on element,
-                #  send keys are not working - this step is not required in TC
-                # try to use self.driver.swipe
-                pass
-        except NoSuchElementException:
-            pass
-        sleep(1)
+        picker_wheel = self.driver.find_element(*CommonScreen.PICKER_WHEEL_ios)
+        print(picker_wheel.get_attribute('value'))
+        picker_wheel.send_keys('Severity 1')
+        print(picker_wheel.get_attribute('value'))
+        iOSdevice.done_button(self)
+
+        # try:
+        #     logging.info("choose_severity_lvl1")
+        #     choose_severity_lvl1 = self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL1_iPad)
+        #     if choose_severity_lvl1.is_displayed():
+        #         self.assertIsNotNone(choose_severity_lvl1, "choose_severity_lvl1 not found")
+        #         choose_severity_lvl1.click()
+        #     else:
+        #         picker_wheel = self.driver.find_element(*CommonScreen.PICKER_WHEEL_ios)
+        #         print(picker_wheel.get_attribute('value'))
+        #         picker_wheel.send_keys('2')
+        #         # NEED A WAY TO SCROLL WHEEL PICKER ON iPhones, scroll, tap and move, click on element,
+        #         #  send keys are not working - this step is not required in TC
+        #         # try to use self.driver.swipe
+        #         pass
+        # except NoSuchElementException:
+        #     pass
+        # sleep(1)
 
     def choose_severity_level_2(self):
 

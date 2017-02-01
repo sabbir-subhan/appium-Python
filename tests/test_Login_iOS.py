@@ -20,7 +20,7 @@ class test_Login_iOS(unittest.TestCase):
 
         # choose desired capabilities from desired_capabilities.py
 
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_10_iPhone6
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
@@ -35,6 +35,7 @@ class test_Login_iOS(unittest.TestCase):
 
         main_page = MainPage(self.driver)
         main_page.dismiss_ios_notifications()
+        main_page.scroll_to_bottom()
         main_page.logout_if_already_logged_in()
         logging.info("starting Test Case 1: login into active account")
         welcome_page = WelcomePage(self.driver)

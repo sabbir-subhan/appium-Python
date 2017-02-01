@@ -2,6 +2,15 @@
 from appium.webdriver.common.mobileby import MobileBy
 
 
+class CommonScreen:
+    """A class for handling Common buttons on different screen"""
+    SAVE_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Save"]')
+    CANCEL_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Cancel"]')
+    OK_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Ok"]')
+    PICKER_WHEEL_ios = (MobileBy.CLASS_NAME, 'XCUIElementTypePickerWheel')
+    WEB_VIEW = (MobileBy.CLASS_NAME, 'XCUIElementTypeScrollView')
+
+
 class TopBar:
     """A class for top bar locators."""
     HAMBURGER_FOR_MAIN_MENU_ios = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeScrollView[2]'
@@ -311,14 +320,6 @@ class NewLogScreen:
     """A class for handling New Log screen"""
     LODGING_AGENCY_PICKER_ios = (MobileBy.XPATH, '//XCUIElementTypeElement[1]')
     ENTRY_FIELD_ios = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
-
-
-class CommonScreen:
-    """A class for handling Common buttons on different screen"""
-    SAVE_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Save"]')
-    CANCEL_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Cancel"]')
-    OK_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Ok"]')
-    PICKER_WHEEL_ios = (MobileBy.CLASS_NAME, 'XCUIElementTypePickerWheel')
 
 
 class iOS:
