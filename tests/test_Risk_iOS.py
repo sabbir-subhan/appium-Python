@@ -21,7 +21,6 @@
 # Click on Risk >Risk register>View>View Register
 
 
-from appium import webdriver
 from desired_capabilities import DesiredCapabilities
 from page_ios import *
 

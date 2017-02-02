@@ -20,7 +20,6 @@
 # Click on Create event ,Asset,Log quick access links
 
 
-from appium import webdriver
 from desired_capabilities import DesiredCapabilities
 from page_ios import *
 
@@ -69,7 +68,7 @@ class test_QuickAccessButtons_iOS(unittest.TestCase):
         new_contact_page = NewContactPage(self.driver)
         new_contact_page.type_first_name("Name for new contact test - iOS")
         ios_device.hide_keyboard()
-        new_contact_page.save_button()
+        new_contact_page.click_save_button()
         main_page.check_presence_of_events_button()
         main_page.open_CREATE_TASK()
         new_task_page = NewTaskPage(self.driver)
@@ -78,10 +77,10 @@ class test_QuickAccessButtons_iOS(unittest.TestCase):
         new_task_page.click_on_assigned()
         new_task_page.add_contacts()
         new_task_page.choose_users()
-        new_task_page.ok_button()
+        new_task_page.click_ok_button()
         new_task_page.choose_start_date()
         new_task_page.hide_date_picker()
-        new_task_page.save_button()
+        new_task_page.click_save_button()
         main_page.check_presence_of_events_button()
         main_page.open_CREATE_REPORT()
         new_report_page = NewReportPage(self.driver)
@@ -99,13 +98,13 @@ class test_QuickAccessButtons_iOS(unittest.TestCase):
         incident_page = EventEditPage(self.driver)
         incident_page.fill_Name_input_field("Name for new incident test - iOS")
         ios_device.hide_keyboard()
-        incident_page.save_button()
+        incident_page.click_save_button()
         main_page.check_presence_of_events_button()
         main_page.open_CREATE_ASSETS()
         new_asset_page = NewAssetPage(self.driver)
         new_asset_page.fill_Name_input_field("Name for new asset test - iOS")
         ios_device.hide_keyboard()
-        new_asset_page.save_button()
+        new_asset_page.click_save_button()
         main_page.check_presence_of_events_button()
         main_page.open_CREATE_LOG()
         new_log_page = NewLogPage(self.driver)
@@ -113,7 +112,7 @@ class test_QuickAccessButtons_iOS(unittest.TestCase):
         new_log_page.choose_lodging_agency()
         new_log_page.type_text_into_entry_field("Entry for new log test - iOS")
         ios_device.hide_keyboard()
-        new_log_page.save_button()
+        new_log_page.click_save_button()
         main_page.check_presence_of_events_button()
 
 

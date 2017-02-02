@@ -2,6 +2,7 @@
 # from selenium.webdriver.common.action_chains import ActionChains
 # import time
 import os
+from appium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 import unittest
 from time import sleep
@@ -28,24 +29,6 @@ class BasePage(unittest.TestCase):
 
         super().__init__()
         self.driver = driver
-
-    # OCA top bar
-    def hamburger_button(self):
-
-        logging.info("click hamburger button to go back to main menu")
-        try:
-            hamburger_button = self.driver.find_element(*TopBar.HAMBURGER_FOR_MAIN_MENU)
-            self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
-            if hamburger_button.is_displayed():
-                hamburger_button.click()
-            else:
-                pass
-            # probably that element cannot be clicked because attribute visible is "false"
-        except NoSuchElementException:
-            positions_for_hamburger_button = [(730, 20)]
-            sleep(1)
-            self.driver.tap(positions_for_hamburger_button)
-        sleep(2)
 
     def take_screenshot(self, file_name):
 
@@ -127,7 +110,25 @@ class AndroidDevice(BasePage):
 class Common(BasePage):
     """A class for methods to handle Common buttons from different screens"""
 
-    def save_button(self):
+    # OCA top bar
+    def hamburger_button(self):
+
+        logging.info("click hamburger button to go back to main menu")
+        try:
+            hamburger_button = self.driver.find_element(*TopBar.HAMBURGER_FOR_MAIN_MENU)
+            self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
+            if hamburger_button.is_displayed():
+                hamburger_button.click()
+            else:
+                pass
+            # probably that element cannot be clicked because attribute visible is "false"
+        except NoSuchElementException:
+            positions_for_hamburger_button = [(730, 20)]
+            sleep(1)
+            self.driver.tap(positions_for_hamburger_button)
+        sleep(2)
+
+    def click_save_button(self):
 
         logging.info("click Save button")
         save_button = self.driver.find_element(*CommonScreen.SAVE_BUTTON)
@@ -135,13 +136,13 @@ class Common(BasePage):
         save_button.click()
         sleep(10)
 
-    def cancel_button(self):
+    def click_cancel_button(self):
         logging.info("click on Cancel button")
         cancel_button = self.driver.find_element(*CommonScreen.CANCEL_BUTTON)
         self.assertIsNotNone(cancel_button, "Cancel button not found")
         cancel_button.click()
 
-    def ok_button(self):
+    def click_ok_button(self):
         logging.info("click on 'Ok' button")
         ok_button = self.driver.find_element(*CommonScreen.OK_BUTTON)
         self.assertIsNotNone(ok_button, "Ok button not found")
@@ -1826,7 +1827,7 @@ class ContextPage(Common):
         Common.spinner_button_on_the_right(self)
 
 
-class SentPage(BasePage):
+class SentPage(Common):
     """A class for methods to handle Sent Page"""
 
 

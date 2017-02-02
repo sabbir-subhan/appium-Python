@@ -22,7 +22,7 @@
 # Press Retake and take another photo.
 # Repeat steps 7 & 8.
 
-from appium import webdriver
+
 from desired_capabilities import DesiredCapabilities
 from page_ios import *
 

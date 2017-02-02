@@ -7,7 +7,6 @@
 # Press Contact Identifier. Enter contact identifier and save.
 
 
-from appium import webdriver
 from desired_capabilities import DesiredCapabilities
 from page_ios import *
 
@@ -40,7 +39,7 @@ class test_SetContactIdentifier_iOS(unittest.TestCase):
         welcome_page.type_contact_identifier("test_pin")  # to change Contact Identifier PIN - edit it in credentials.py
         ios_device = iOSdevice(self.driver)
         ios_device.hide_keyboard()
-        welcome_page.save_button()
+        welcome_page.click_save_button()
         welcome_page.check_if_app_was_activated()
         welcome_page.click_ok_button()
 

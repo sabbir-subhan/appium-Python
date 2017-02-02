@@ -17,7 +17,6 @@
 # with name: "New events chooser inside sub form"
 
 
-from appium import webdriver
 from desired_capabilities import DesiredCapabilities
 from page_android import *
 
@@ -42,7 +41,7 @@ class test_ManagingEvents_Android(unittest.TestCase):
     def test_managing_events(self):
 
         logging.info("starting Test Case 3: managing events")
-        top_bar = BasePage(self.driver)
+        top_bar = Common(self.driver)
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()
         login_page = LoginPage(self.driver)
@@ -81,7 +80,7 @@ class test_ManagingEvents_Android(unittest.TestCase):
         event_edit_page.click_severity_lvl_picker()
         event_edit_page.choose_severity_level_1()
         event_edit_page.scroll_down()
-        event_edit_page.save_button()
+        event_edit_page.click_save_button()
         events_page.open_previously_created_event1()
         event_details_page = EventDetailsPage(self.driver)
         event_details_page.click_edit_button()
@@ -89,7 +88,7 @@ class test_ManagingEvents_Android(unittest.TestCase):
         event_edit_page.type_text_into_description_field()
         android_device.hide_keyboard()
         event_edit_page.scroll_down()
-        event_edit_page.save_button()
+        event_edit_page.click_save_button()
         events_page.click_More_button()
         event_details_page.click_Delete_button()
         event_details_page.alert_confirm_delete()
@@ -104,7 +103,7 @@ class test_ManagingEvents_Android(unittest.TestCase):
         event_edit_page.click_severity_lvl_picker()
         event_edit_page.choose_severity_level_4()
         event_edit_page.scroll_down()
-        event_edit_page.save_button()
+        event_edit_page.click_save_button()
         events_page.check_if_EVENTS_were_opened()
         events_page.open_previously_created_event2()
         event_details_page.click_edit_button()
@@ -133,7 +132,7 @@ class test_ManagingEvents_Android(unittest.TestCase):
         map_page.click_in_map_area_3()
         map_page.double_click_in_map_area_6()
         map_page.save_map()
-        event_edit_page.save_button()
+        event_edit_page.click_save_button()
 
         logging.info("TC info: crete sub event, set event as primary and after that clear it. Next create, "
                      "but do not save; events with on load/save sequence and with hidden fields"
@@ -148,7 +147,7 @@ class test_ManagingEvents_Android(unittest.TestCase):
         event_edit_page.click_severity_lvl_picker()
         event_edit_page.choose_severity_level_3()
         event_edit_page.scroll_down()
-        event_edit_page.save_button()
+        event_edit_page.click_save_button()
         events_page.check_if_EVENTS_were_opened()
         events_page.open_previously_created_event3()
         events_page.click_More_button()
@@ -159,7 +158,7 @@ class test_ManagingEvents_Android(unittest.TestCase):
         event_edit_page.click_severity_lvl_picker()
         event_edit_page.choose_severity_level_2()
         event_edit_page.scroll_down()
-        event_edit_page.save_button()
+        event_edit_page.click_save_button()
         events_page.click_More_button()
         events_page.set_as_primary_event()
         top_bar.hamburger_button()
@@ -188,7 +187,7 @@ class test_ManagingEvents_Android(unittest.TestCase):
         option_list_in_event.click_on_option_3()
         event_edit_page.check_hidden_fields_1_and_2()
         event_edit_page.scroll_down_one_view()
-        event_edit_page.cancel_button()
+        event_edit_page.click_cancel_button()
 
         logging.info("create new type of event, but do not save it - event with chooser field for another event "
                      "and sub form with chooser field")
@@ -209,7 +208,7 @@ class test_ManagingEvents_Android(unittest.TestCase):
         event_edit_page.delete_chosen_event_inside_subform()
         event_edit_page.scroll_down_one_view()
         event_edit_page.scroll_down_one_view()
-        event_edit_page.cancel_button()
+        event_edit_page.click_cancel_button()
         events_page.check_if_EVENTS_were_opened()
 
 

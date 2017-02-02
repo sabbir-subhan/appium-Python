@@ -11,7 +11,6 @@
 # test7: login_into_suspended_account
 
 
-from appium import webdriver
 from desired_capabilities import DesiredCapabilities
 from page_ios import *
 
@@ -22,11 +21,11 @@ class test_LoginWithWrongPass_iOS(unittest.TestCase):
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
         # choose desired capabilities from desired_capabilities.py
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_10_iPhone6
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
-        self.driver.implicitly_wait(15)  # seconds
+        self.driver.implicitly_wait(25)  # seconds
 
     def tearDown(self):
 
@@ -38,6 +37,7 @@ class test_LoginWithWrongPass_iOS(unittest.TestCase):
         logging.info("starting Test Case 2: Logging in as a suspended account and with a wrong password")
         main_page = MainPage(self.driver)
         main_page.dismiss_ios_notifications()
+        main_page.scroll_down_one_view()
         main_page.logout_if_already_logged_in()
         logging.info("starting test1: login_into_general_user__account_with_incorrect_password")
         welcome_page = WelcomePage(self.driver)
@@ -55,6 +55,7 @@ class test_LoginWithWrongPass_iOS(unittest.TestCase):
 
         main_page = MainPage(self.driver)
         main_page.dismiss_ios_notifications()
+        main_page.scroll_down_one_view()
         main_page.logout_if_already_logged_in()
         logging.info("starting test2: login_into_general_user_account_with_correct_credentials")
         welcome_page = WelcomePage(self.driver)
@@ -75,6 +76,7 @@ class test_LoginWithWrongPass_iOS(unittest.TestCase):
 
         main_page = MainPage(self.driver)
         main_page.dismiss_ios_notifications()
+        main_page.scroll_down_one_view()
         main_page.logout_if_already_logged_in()
         logging.info("starting test3: login_into_admin_account_with_correct_credentials")
         welcome_page = WelcomePage(self.driver)
@@ -95,6 +97,7 @@ class test_LoginWithWrongPass_iOS(unittest.TestCase):
 
         main_page = MainPage(self.driver)
         main_page.dismiss_ios_notifications()
+        main_page.scroll_down_one_view()
         main_page.logout_if_already_logged_in()
         logging.info("starting test4: login_using_account_expired_1_day_ago")
         welcome_page = WelcomePage(self.driver)
@@ -112,6 +115,7 @@ class test_LoginWithWrongPass_iOS(unittest.TestCase):
 
         main_page = MainPage(self.driver)
         main_page.dismiss_ios_notifications()
+        main_page.scroll_down_one_view()
         main_page.logout_if_already_logged_in()
         logging.info("starting test5: login_using_account_that_expires_today")
         welcome_page = WelcomePage(self.driver)
@@ -129,6 +133,7 @@ class test_LoginWithWrongPass_iOS(unittest.TestCase):
 
         main_page = MainPage(self.driver)
         main_page.dismiss_ios_notifications()
+        main_page.scroll_down_one_view()
         main_page.logout_if_already_logged_in()
         logging.info("starting test6: login_using_account_that_will_expire_in_1_day")
         welcome_page = WelcomePage(self.driver)
@@ -149,6 +154,7 @@ class test_LoginWithWrongPass_iOS(unittest.TestCase):
 
         main_page = MainPage(self.driver)
         main_page.dismiss_ios_notifications()
+        main_page.scroll_down_one_view()
         main_page.logout_if_already_logged_in()
         logging.info("starting test7: login_into_suspended_account")
         welcome_page = WelcomePage(self.driver)

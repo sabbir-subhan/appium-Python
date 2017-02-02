@@ -3,4 +3,5 @@
 tests/*.log
 *.log
 .tmp/
-
+tests/__pycache__/
+*.pyc

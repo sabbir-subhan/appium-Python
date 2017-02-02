@@ -12,7 +12,6 @@
 # Create a new Risk Register
 
 
-from appium import webdriver
 from desired_capabilities import DesiredCapabilities
 from page_android import *
 
@@ -58,7 +57,7 @@ class test_Risk_Android(unittest.TestCase):
         risk_register_edit_page.fill_Name_input_field("New Risk Register - test Android")
         android_device.hide_keyboard()
         risk_register_edit_page.scroll_down_one_view()
-        risk_register_edit_page.save_button()
+        risk_register_edit_page.click_save_button()
         risks_page.open_existing_risk_register()
         risks_page.click_new_button()
         risks_page.click_add_new_context()
@@ -66,7 +65,7 @@ class test_Risk_Android(unittest.TestCase):
         context_edit_page.fill_Name_input_field("New context - test Android")
         android_device.hide_keyboard()
         context_edit_page.scroll_down_one_view()
-        context_edit_page.save_button()
+        context_edit_page.click_save_button()
         context_page = ContextPage(self.driver)
         context_page.open_existing_context()
         context_page.click_new_button()

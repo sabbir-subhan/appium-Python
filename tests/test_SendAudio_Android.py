@@ -14,7 +14,6 @@
 # Enter a description and press send.
 
 
-from appium import webdriver
 from desired_capabilities import DesiredCapabilities
 from page_android import *
 

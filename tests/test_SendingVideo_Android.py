@@ -21,7 +21,6 @@
 # Press retake, and record a new video.
 # Repeat steps 6 & 7.
 
-from appium import webdriver
 from desired_capabilities import DesiredCapabilities
 from page_android import *
 

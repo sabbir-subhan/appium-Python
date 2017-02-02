@@ -35,7 +35,7 @@ class test_Login_iOS(unittest.TestCase):
 
         main_page = MainPage(self.driver)
         main_page.dismiss_ios_notifications()
-        main_page.scroll_to_bottom()
+        main_page.scroll_down_one_view()
         main_page.logout_if_already_logged_in()
         logging.info("starting Test Case 1: login into active account")
         welcome_page = WelcomePage(self.driver)

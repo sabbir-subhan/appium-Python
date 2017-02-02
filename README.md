@@ -1,9 +1,9 @@
-*Appium POC*
+# Appium POC #
 
-Functional tests for OCA mobile app, using Appium and Python.
+## Functional tests for OCA mobile app, using Appium and Python. ##
 
 
-SOFT NEEDED:
+## **SOFT NEEDED:** ##
 
 - Java
 - Android studio and APIs for android - android avd
@@ -14,7 +14,7 @@ SOFT NEEDED:
 - PyCharm - for opening and running tests (also could be run from terminal)
 
 
-for OSX all above plus:
+**for OSX all above plus:**
 
 - xcode 8.1 (version 8 is not supported by appium but brew need version 8.1 to install libimobiledevice - so install xcode 8.1 from appstore)
 - node
@@ -31,8 +31,27 @@ for OSX all above plus:
 (sudo xcode-select -switch /Applications/Xcode8.app/Contents/Developer/)
 
 
-TO RUN APPIUM AND iOS 10:
+### **TO RUN APPIUM AND iOS 10:** ###
+- You have to lunch Appium in CLI and use version starting from 1.6.0 - currently 1.6.3 is the latest 
 https://github.com/appium/appium-xcuitest-driver
+
+CONFIG APPIUM 1.6.3:
+
+- brew install ideviceinstaller
+- brew install carthage
+- npm install -g ios-deploy
+- npm install -g deviceconsole
+- n stable
+- npm install -g npm@latest
+- npm install -g appium@1.6.3 (or just appium or appium@beta)
+
+- go to: /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent
+- run: ./Scripts/bootstrap.sh
+- run: open WebDriverAgent.xcodeproject -- and set iOS Developer in Build Settings and add unique BundleID and choose dev Team
+- run: xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination 'id=4b15c4284897fa6f9b4c5205325a9cece997ad35' test  --id is a UDID of the device
+
+Last line on build output above command should be Listening on USB. Then you are all set!
+
 
 
 desired_capabilities.py and appium settings:
@@ -49,12 +68,13 @@ Appium in CLI:
 - npm install wd
 - appium -p 4723
 (appium -p 4723 -bp 5724 --session-override --log-level debug)
+(appium --full-reset)
 
 current GUI version - 1.5.3
 current CLI beta version - 1.6.3
 
 
-CONFIGURING ANDROID DEVICE:
+### **CONFIGURING ANDROID DEVICE:** ###
 
 1. enable developer mode
 2. enable USB debugging
@@ -80,7 +100,7 @@ finding app activity through adb - appActivity:
  (app need to be open on device)
 
 
-CONFIGURING IOS DEVICE:
+### **CONFIGURING IOS DEVICE:** ###
 
 1. for iOS 9.3.5 and older - enable UI Automation
 2. prevent device from disabling - enable option stay awake while plugged in
@@ -98,7 +118,7 @@ BUILDING .APP FILE ON OSX:
 - on real device, first You need to run app from xcode - it will install it on the device (You have to TRUST app in General - Device management)
 
 
-CONFIGURE APPIUM:
+### **CONFIGURE APPIUM GUI:** ###
 
 - provide paths for android sdk and xcode
 - provide path to app file (android - .apk file, ios - .app file from xcode(xcode build the app file for example in /Users/$USER/Library/Developer/Xcode/DerivedData/) or in other location(ProjectSettings))
@@ -136,7 +156,7 @@ with name: "New events chooser inside sub form"
 
 
 
-BEFORE EACH NEW RUN OF TESTS:
+### **BEFORE EACH NEW RUN OF TESTS:** ###
 
 - for some reason on iOS -- "No reset" checkbox in Appium setting is not working, so tests for iOS are written to compensate it, but remember to run Android tests with checkbox "No reset" checked
 - make sure to lunch appium server
@@ -145,7 +165,7 @@ BEFORE EACH NEW RUN OF TESTS:
 - make sure that users accounts in OCA webpage have correct properties (for example expiration dates) and other tests have proper configurations in OCA webpage
 
 
-RUNNING TESTS ON SIMULATORS:
+### **RUNNING TESTS ON SIMULATORS:** ###
 
 - change desired_capabilities
 - for Android, open Appium settings, check "Launch AVD" and choose created simulator from the list (first You need to create simulator) and add udid of the simulator (from adb devices), start emulator and then run Appium
@@ -160,10 +180,7 @@ APP VERSIONS:
 - iOS: 9.1.4
 
 
-
-
-
-Known issues:
+### **Known issues:** ###
 
 - some elements have attribute "visible: false" and appium is unable to interact with those elements for example map --that is bug in Appium https://github.com/appium/appium/issues/4131
 - for some reason test sometimes fail to start on the first run, but after running it again it is working correctly (it may depends on that how fast device/simulator is starting)

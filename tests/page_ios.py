@@ -11,14 +11,15 @@ from appium import webdriver
 # from appium.webdriver.mobilecommand import MobileCommand
 # from appium.webdriver import WebElement
 # from appium.webdriver.webdriver import MobileWebElement
-#from locators_ios import *
-from locators_ios10 import *
 from credentials import Credentials
 from credentials import ContactIdentifierPIN
 import logging
 logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/TCs.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())
+
+#from locators_for_ios_9 import *
+from locators_for_ios_10 import *
 
 
 class BasePage(unittest.TestCase):
@@ -75,7 +76,7 @@ class Common(BasePage):
             sleep(1)
             self.driver.tap(positions_for_hamburger_button)
 
-    def save_button(self):
+    def click_save_button(self):
 
         logging.info("click Save button")
         save_button = self.driver.find_element(*CommonScreen.SAVE_BUTTON_ios)
@@ -83,13 +84,13 @@ class Common(BasePage):
         save_button.click()
         sleep(10)
 
-    def cancel_button(self):
+    def click_cancel_button(self):
         logging.info("click on Cancel button")
         cancel_button = self.driver.find_element(*CommonScreen.CANCEL_BUTTON_ios)
         self.assertIsNotNone(cancel_button, "Cancel button not found")
         cancel_button.click()
 
-    def ok_button(self):
+    def click_ok_button(self):
         logging.info("click on 'Ok' button")
         ok_button = self.driver.find_element(*CommonScreen.OK_BUTTON_ios)
         self.assertIsNotNone(ok_button, "Ok button not found")
@@ -109,41 +110,24 @@ class Common(BasePage):
                 name_field_by_index.click()
                 name_field_by_index.send_keys(text)
 
-    # def scroll_to_save_button(self):  # NOT WORKING
-    #
-    #     logging.info("scroll to Save button")
-    #     el = self.driver.find_element(*CommonScreen.SAVE_BUTTON_ios)
-    #     self.driver.execute_script('mobile: scroll', {"element": el, "toVisible": True})
-    #     el.click()
-    #
-    # def scroll_down_one_view(self):  # NOT WORKING
-    #     """Method to scroll down only one screen"""
-    #
-    #     window_size = self.driver.get_window_size()  # this will give You a dictionary
-    #     start_x = window_size["width"] * 0.25
-    #     start_y = window_size["height"] * 0.15
-    #     end_y = window_size["height"] * 0.8
-    #     print(start_x)
-    #     print(start_y)
-    #     print(end_y)
-    #     logging.info("scroll down only one screen")
-    #     sleep(2)
-    #     self.driver.swipe(start_x, end_y, start_x, start_y, 12000)  # each swipe is scrolling one screen
-    #     sleep(1)
-    #     logging.info("test1")
-    #     origin = self.driver.find_element(*MainMenuScreen.EVENTS_BUTTON_ios)
-    #     destination = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
-    #     self.driver.scroll(origin_el=origin, destination_el=destination)
-    #     logging.info("test2")
-    #     elm = self.driver.find_element(*MainMenuScreen.LOCATION_BUTTON_ios)
-    #     action = TouchAction(self.driver)
-    #     action.press(elm).perform()
-    #     action.move_to(x=0, y=100).perform()
+    def scroll_down_one_view(self):
 
-    def scroll_to_bottom(self):
-
-        logging.info("scroll down")
+        logging.info("scroll down one view")
         self.driver.execute_script("mobile: scroll", {"direction": "down"})
+
+    def scroll_down_to_save_button(self):
+        """Method to scroll down to bottom of the screen - to 'Save' button"""
+
+        logging.info("scroll down with loop")
+        var = 1
+        while var == 1:
+            logging.info("check if save button is visible")
+            save_button = self.driver.find_element(*CommonScreen.SAVE_BUTTON_ios)
+            if save_button.is_displayed():
+                break
+            else:
+                logging.info("scroll down")
+                self.driver.execute_script("mobile: scroll", {"direction": "down"})
 
 
 class WelcomePage(Common):
@@ -329,15 +313,6 @@ class MainPage(Common):
 
         sleep(5)
         logging.info("logout if already logged in")
-
-        # window_size = self.driver.get_window_size()  # this will give You a dictionary
-        # start_x = window_size["width"] * 0.10
-        # start_y = window_size["height"] * 0.10
-        # end_y = window_size["height"] * 0.85
-        # logging.info("scroll down only one screen")
-        # self.driver.swipe(start_x, end_y, start_x, start_y, 9000)  # each swipe is scrolling one screen
-        # sleep(1)
-
         try:
             logout_button_ios = self.driver.find_element(*MainMenuScreen.LOGOUT_BUTTON_ios)
             self.assertIsNotNone(logout_button_ios, "Logout button not found")
@@ -1074,67 +1049,77 @@ class EventEditPage(Common, iOSdevice):
 
     def choose_severity_level_1(self):
 
-        picker_wheel = self.driver.find_element(*CommonScreen.PICKER_WHEEL_ios)
-        print(picker_wheel.get_attribute('value'))
-        picker_wheel.send_keys('Severity 1')
-        print(picker_wheel.get_attribute('value'))
-        iOSdevice.done_button(self)
-
-        # try:
-        #     logging.info("choose_severity_lvl1")
-        #     choose_severity_lvl1 = self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL1_iPad)
-        #     if choose_severity_lvl1.is_displayed():
-        #         self.assertIsNotNone(choose_severity_lvl1, "choose_severity_lvl1 not found")
-        #         choose_severity_lvl1.click()
-        #     else:
-        #         picker_wheel = self.driver.find_element(*CommonScreen.PICKER_WHEEL_ios)
-        #         print(picker_wheel.get_attribute('value'))
-        #         picker_wheel.send_keys('2')
-        #         # NEED A WAY TO SCROLL WHEEL PICKER ON iPhones, scroll, tap and move, click on element,
-        #         #  send keys are not working - this step is not required in TC
-        #         # try to use self.driver.swipe
-        #         pass
-        # except NoSuchElementException:
-        #     pass
-        # sleep(1)
+        logging.info("choose_severity_lvl1")
+        try:
+            choose_severity_lvl1 = self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL1_iPad)
+            self.assertIsNotNone(choose_severity_lvl1, "choose_severity_lvl1 not found")
+            choose_severity_lvl1.click()
+        except NoSuchElementException:
+            picker_wheel = self.driver.find_element(*CommonScreen.PICKER_WHEEL_ios)
+            picker_wheel.send_keys('Severity 1')
+            iOSdevice.done_button(self)
 
     def choose_severity_level_2(self):
 
+        logging.info("choose_severity_lvl2")
         try:
-            logging.info("choose_severity_lvl2")
             choose_severity_lvl2 = self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL2_iPad)
-            if choose_severity_lvl2.is_displayed():
-                self.assertIsNotNone(choose_severity_lvl2, "choose_severity_lvl2 not found")
-                choose_severity_lvl2.click()
+            self.assertIsNotNone(choose_severity_lvl2, "choose_severity_lvl2 not found")
+            choose_severity_lvl2.click()
         except NoSuchElementException:
-            pass
-        sleep(1)
+            picker_wheel = self.driver.find_element(*CommonScreen.PICKER_WHEEL_ios)
+            picker_wheel.send_keys('Severity 2')
+            iOSdevice.done_button(self)
         
     def choose_severity_level_3(self):
 
+        logging.info("choose_severity_lvl3")
         try:
-            logging.info("choose_severity_lvl3")
             choose_severity_lvl3 = self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL3_iPad)
-            if choose_severity_lvl3.is_displayed():
-                self.assertIsNotNone(choose_severity_lvl3, "choose_severity_lvl3 not found")
-                choose_severity_lvl3.click()
+            self.assertIsNotNone(choose_severity_lvl3, "choose_severity_lvl3 not found")
+            choose_severity_lvl3.click()
         except NoSuchElementException:
-            pass
-        sleep(1)
-        
+            picker_wheel = self.driver.find_element(*CommonScreen.PICKER_WHEEL_ios)
+            picker_wheel.send_keys('Severity 3')
+            iOSdevice.done_button(self)
+
     def choose_severity_level_4(self):
         
+        logging.info("choose_severity_lvl4")
         try:
-            logging.info("choose_severity_lvl4")
             choose_severity_lvl4 = self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL4_iPad)
-            if choose_severity_lvl4.is_displayed():
-                choose_severity_lvl4.click()
-            else:
-                pass
+            self.assertIsNotNone(choose_severity_lvl4, "choose_severity_lvl4 not found")
+            choose_severity_lvl4.click()
         except NoSuchElementException:
-            pass
-        sleep(1)
-        
+            picker_wheel = self.driver.find_element(*CommonScreen.PICKER_WHEEL_ios)
+            picker_wheel.send_keys('Severity 4')
+            iOSdevice.done_button(self)
+
+    def choose_severity_level_5(self):
+
+        logging.info("choose_severity_lvl5")
+        try:
+            choose_severity_lvl5 = self.driver.find_element(*EventEditScreen.CHOOSE_SEVERITY_LVL5_iPad)
+            self.assertIsNotNone(choose_severity_lvl5, "choose_severity_lvl5 not found")
+            choose_severity_lvl5.click()
+        except NoSuchElementException:
+            picker_wheel = self.driver.find_element(*CommonScreen.PICKER_WHEEL_ios)
+            picker_wheel.send_keys('Severity 5')
+            iOSdevice.done_button(self)
+
+    def scroll_down_to_description_field(self):
+
+        logging.info("scroll down with loop")
+        var = 1
+        while var == 1:
+            logging.info("check if description field is visible")
+            save_button = self.driver.find_element(*EventEditScreen.DESCRIPTION_FIELD_ios)
+            if save_button.is_displayed():
+                break
+            else:
+                logging.info("scroll down")
+                self.driver.execute_script("mobile: scroll", {"direction": "down"})
+
     def type_text_into_description_field(self):
 
         try:
@@ -1164,6 +1149,19 @@ class EventEditPage(Common, iOSdevice):
         sequence_onsave_value = self.driver.find_element(*EventEditScreen.SEQUENCE_ONSAVE_VALUE_ios)
         self.assertIsNotNone(sequence_onsave_header)
         self.assertIsNotNone(sequence_onsave_value)
+
+    def scroll_down_to_option_list(self):
+
+        logging.info("scroll down with loop")
+        var = 1
+        while var == 1:
+            logging.info("check if option list is visible")
+            save_button = self.driver.find_element(*EventEditScreen.NEW_OPTION_LIST_HEADER_ios)
+            if save_button.is_displayed():
+                break
+            else:
+                logging.info("scroll down")
+                self.driver.execute_script("mobile: scroll", {"direction": "down"})
 
     def click_on_option_list(self):
 
@@ -1217,6 +1215,19 @@ class EventEditPage(Common, iOSdevice):
             logging.info("fields are not visible = OK")
             pass
 
+    def scroll_down_to_add_row_button(self):
+
+        logging.info("scroll down with loop")
+        var = 1
+        while var == 1:
+            logging.info("check if add row button is visible")
+            save_button = self.driver.find_element(*EventEditScreen.SUBFORM_FIELD_ADD_ROW_ios)
+            if save_button.is_displayed():
+                break
+            else:
+                logging.info("scroll down")
+                self.driver.execute_script("mobile: scroll", {"direction": "down"})
+
     # only for event type: "event_for_on_load/save_test"
     def click_button_add_row(self):
 
@@ -1224,6 +1235,19 @@ class EventEditPage(Common, iOSdevice):
         add_row = self.driver.find_element(*EventEditScreen.SUBFORM_FIELD_ADD_ROW_ios)
         self.assertIsNotNone(add_row, "add_row button not found")
         add_row.click()
+
+    def scroll_down_to_event_chooser_field(self):
+
+        logging.info("scroll down with loop")
+        var = 1
+        while var == 1:
+            logging.info("check if event_chooser_field is visible")
+            save_button = self.driver.find_element(*EventEditScreen.CHOOSER_FIELD_ios)
+            if save_button.is_displayed():
+                break
+            else:
+                logging.info("scroll down")
+                self.driver.execute_script("mobile: scroll", {"direction": "down"})
 
     def click_on_event_chooser_field(self):
 
@@ -1481,7 +1505,7 @@ class NewReportPage(NewTaskPage):
         publish_button.click()
 
 
-# Appium can't access another app directly only tapping on specific coordinates will work
+# Appium can't access another app directly, only tapping on specific coordinates will work
 class SafariBrowserPage(BasePage):
     """A class for methods to handle Safari Browser Page"""
 

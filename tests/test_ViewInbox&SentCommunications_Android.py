@@ -15,7 +15,6 @@
 # From the main menu press the Inbox button.
 
 
-from appium import webdriver
 from desired_capabilities import DesiredCapabilities
 from page_android import *
 

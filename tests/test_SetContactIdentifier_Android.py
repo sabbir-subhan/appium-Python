@@ -7,7 +7,6 @@
 # Press Contact Identifier. Enter contact identifier and save.
 
 
-from appium import webdriver
 from desired_capabilities import DesiredCapabilities
 from page_android import *
 
@@ -37,9 +36,9 @@ class test_SetContactIdentifier_Android(unittest.TestCase):
         welcome_page.type_contact_identifier("test_pin")  # to change Contact Identifier PIN - edit it in credentials.py
         android_device = AndroidDevice(self.driver)
         android_device.hide_keyboard()
-        welcome_page.save_button()
+        welcome_page.click_save_button()
         welcome_page.check_if_app_was_activated()
-        welcome_page.ok_button()
+        welcome_page.click_ok_button()
 
 
 if __name__ == '__main__':

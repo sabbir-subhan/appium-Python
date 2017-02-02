@@ -13,7 +13,6 @@
 # Setup sending location every 5 minutes for an hour
 
 
-from appium import webdriver
 from desired_capabilities import DesiredCapabilities
 from page_android import *
 
