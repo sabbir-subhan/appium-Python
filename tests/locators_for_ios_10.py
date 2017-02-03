@@ -238,8 +238,7 @@ class Map:
     MAP_AREA_17_ios = (MobileBy.XPATH, '//XCUIElementTypeImage[2]')
     MAP_AREA_18_ios = (MobileBy.XPATH, '//XCUIElementTypeImage[3]')
     LINE_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Line")]]')
-    CIRCLE_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeScrollView[2]/XCUIElementTypeLink['
-                                         '@name[contains(., "Circle")]]')
+    CIRCLE_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Circle")]]')
     POLYGON_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Polygon")]]')
     SAVE_MAP_BUTTON_ios = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Save")]]')
 

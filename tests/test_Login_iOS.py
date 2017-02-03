@@ -20,7 +20,7 @@ class test_Login_iOS(unittest.TestCase):
 
         # choose desired capabilities from desired_capabilities.py
 
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_10_iPhone6
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 

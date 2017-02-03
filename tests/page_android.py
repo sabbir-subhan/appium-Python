@@ -3,7 +3,7 @@
 # import time
 import os
 from appium import webdriver
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import *
 import unittest
 from time import sleep
 from selenium.webdriver.support.ui import WebDriverWait
@@ -13,8 +13,6 @@ from locators_android import *
 from credentials import Credentials
 from credentials import ContactIdentifierPIN
 import logging
-
-
 logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/TCs.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())
@@ -148,6 +146,13 @@ class Common(BasePage):
         self.assertIsNotNone(ok_button, "Ok button not found")
         ok_button.click()
 
+    def fill_Name_input_field(self, text):
+
+        logging.info("fill Name input field")
+        name_field = self.driver.find_element(*EventEditScreen.NAME_FIELD)
+        name_field.click()
+        name_field.send_keys(text)
+
     def scroll_down(self):
         """Method to scroll down to bottom of the screen - to 'Save' button"""
 
@@ -213,7 +218,7 @@ class Common(BasePage):
     #         try:
     #             logging.info("try")
     #             save_button = self.driver.find_element(*CommonScreen.SAVE_BUTTON)
-    #             if save_button.is_displayed():  # this returns always true - bug in Appium?
+    #             if save_button.is_displayed():  # this returns always true - bug in Appium
     #                 break
     #         except NoSuchElementException:
     #             logging.info("except")

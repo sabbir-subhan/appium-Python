@@ -1,4 +1,4 @@
-# Appium POC #
+# **Appium POC** #
 
 ## Functional tests for OCA mobile app, using Appium and Python. ##
 
@@ -16,7 +16,7 @@
 
 **for OSX all above plus:**
 
-- xcode 8.1 (version 8 is not supported by appium but brew need version 8.1 to install libimobiledevice - so install xcode 8.1 from appstore)
+- xcode 8.1 is needed for testing iOS10 (version 8 is not supported by appium 1.5.3 but brew need version 8.1 to install libimobiledevice - so install xcode 8.1 from appstore)
 - node
 - npm
 - brew
@@ -28,7 +28,7 @@
 - download xcode 7.3 and install - open appium and add path to xcode 7.3
 
 - to switch between xcode versions, for example: sudo xcode-select -switch /Applications/Xcode8.app
-(sudo xcode-select -switch /Applications/Xcode8.app/Contents/Developer/)
+(for testing iOS10 You need Xcode in version 8 - so rename old version of Xcode7 and leave 8 as a default version) 
 
 
 ### **TO RUN APPIUM AND iOS 10:** ###
@@ -50,7 +50,7 @@ CONFIG APPIUM 1.6.3:
 - run: open WebDriverAgent.xcodeproject -- and set iOS Developer in Build Settings and add unique BundleID and choose dev Team
 - run: xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination 'id=4b15c4284897fa6f9b4c5205325a9cece997ad35' test  --id is a UDID of the device
 
-Last line on build output above command should be Listening on USB. Then you are all set!
+Last line output after using above command should be; "Listening on USB". Then you are all set!
 
 
 
@@ -191,3 +191,4 @@ APP VERSIONS:
 - if tests are running fine but Appium inspector is not lunching on iOS - You need to rebuild app by cordova and xcode and reinstall it on device 
 - if after starting test, Appium throws errors like: "lockdown_receive_message error!" -- use sudo chmod -R 777 /var/db/lockdown/
 - Appium can't switch between apps so only tapping on specific coordinates will work in another app, for example when OCA will open Safari
+- Appium 1.6.3 - "Could not proxy command to remote server. Original error: Error: socket hang up" - lunch Xcode and rebuild WebDriverAgentRunner

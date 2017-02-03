@@ -1,7 +1,7 @@
 import unittest
 from time import sleep
 # import time
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import *
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from appium.webdriver.common.touch_action import TouchAction
@@ -1356,18 +1356,21 @@ class MapPage(BasePage):
 
     def click_circle_button(self):
 
+        logging.info("click circle button")
         circle_button = self.driver.find_element(*Map.CIRCLE_BUTTON_ios)
         self.assertIsNotNone(circle_button, "circle button not found")
         circle_button.click()
         
     def click_polygon_button(self):
 
+        logging.info("click polygon button")
         polygon_button = self.driver.find_element(*Map.POLYGON_BUTTON_ios)
         self.assertIsNotNone(polygon_button, "polygon button not found")
         polygon_button.click()
 
     def click_default_button(self):
 
+        logging.info("click default button")
         default_button = self.driver.find_element(*Map.DEFAULT_BUTTON_ios)
         self.assertIsNotNone(default_button, "default button not found")
         default_button.click()
@@ -1376,34 +1379,62 @@ class MapPage(BasePage):
     def click_in_map_area_12(self):
 
         logging.info("click on map")
-        position = [(350, 550)]
-        self.driver.tap(position)
-        # self.driver.find_element(*Map.MAP_AREA_12_ios).click()
-        sleep(1)
+        window_size = self.driver.get_window_size()  # this returns dictionary
+        position_x = window_size["width"] * 0.30
+        position_y = window_size["height"] * 0.60
+        positions = [(position_x, position_y)]
+        #action = TouchAction(self.driver)
+        #action.tap(element=None, x=position_x, y=position_y, count=1).perform()
+        #position = [(350, 550)]
+        self.driver.tap(positions)
+        sleep(2)
 
     def click_in_map_area_13(self):
 
         logging.info("click on map")
-        position = [(300, 500)]
-        self.driver.tap(position)
-        # self.driver.find_element(*Map.MAP_AREA_13_ios).click()
-        sleep(1)
+        window_size = self.driver.get_window_size()  # this returns dictionary
+        position_x = window_size["width"] * 0.5
+        position_y = window_size["height"] * 0.5
+        positions = [(position_x, position_y)]
+        #position = [(300, 500)]
+        self.driver.tap(positions)
+        sleep(2)
 
     def click_in_map_area_17(self):
 
         logging.info("click on map")
-        position = [(0, 0)]
-        self.driver.tap(position)
-        # self.driver.find_element(*Map.MAP_AREA_17_ios).click()
-        sleep(1)
+        window_size = self.driver.get_window_size()  # this returns dictionary
+        position_x = window_size["width"] * 0.70
+        position_y = window_size["height"] * 0.70
+        positions = [(position_x, position_y)]
+        #position = [(0, 0)]
+        self.driver.tap(positions)
+        sleep(2)
 
-    def double_click_in_map_area_18(self):
+    def double_click_in_map_area_18(self):  # PROBLEM WITH DOUBLE TAP - new appium can't handle that method????????????????
 
         logging.info("double click on map")
-        action = TouchAction(self.driver)
-        action.tap(element=None, x=450, y=350, count=2).perform()
-        # self.driver.find_element(*Map.MAP_AREA_18_ios).click()
-        sleep(1)
+        window_size = self.driver.get_window_size()  # this returns dictionary
+        position_x = window_size["width"] * 0.75
+        position_y = window_size["height"] * 0.75
+        positions = [(position_x, position_y)]
+        print(position_x)
+        print(position_y)
+        # positions = [(position_x, position_y)]
+        # try:
+        #     el = self.driver.find_element(*Map.MAP_AREA_18_ios)
+        #     action.tap(element=el, x=450, y=350, count=2).perform()
+        # except ElementNotVisibleException:
+        #     action.tap(element=None, x=450, y=350, count=2).perform()
+                                                                                                            # TEST IT ON IOS 9
+        try:
+            action = TouchAction(self.driver)
+            el = self.driver.find_element(*Map.MAP_AREA_18_ios)
+            action.tap(element=el, x=position_x, y=position_y, count=2).perform()
+        except ElementNotVisibleException:
+            action = TouchAction(self.driver)
+            action.tap(element=None, x=position_x, y=position_y, count=2).perform()
+        sleep(2)
 
     def save_map(self):
 
