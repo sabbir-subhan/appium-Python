@@ -2,20 +2,22 @@ from locators_for_ios_9 import *
 #from locators_for_ios_10 import *
 import unittest
 from time import sleep
-# import time
+import sys
+from importlib import import_module
+import importlib
+import time
+import pprint
 from selenium.common.exceptions import *
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from appium.webdriver.common.touch_action import TouchAction
 from appium import webdriver
-from desired_capabilities import DesiredCapabilities
-# from selenium.webdriver.common.action_chains import ActionChains
-# from appium.webdriver.common.multi_action import MultiAction
-# from appium.webdriver.mobilecommand import MobileCommand
-# from appium.webdriver import WebElement
-# from appium.webdriver.webdriver import MobileWebElement
-from credentials import Credentials
-from credentials import ContactIdentifierPIN
+from selenium.webdriver.common.action_chains import ActionChains
+from appium.webdriver.common.multi_action import MultiAction
+from appium.webdriver.mobilecommand import MobileCommand
+from appium.webdriver import WebElement
+from appium.webdriver.webdriver import MobileWebElement
+from credentials import Credentials, ContactIdentifierPIN
 import logging
 logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/TCs.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
@@ -31,6 +33,36 @@ class BasePage(unittest.TestCase):
 
         super().__init__()
         self.driver = driver
+        
+        platform_name = self.driver.capabilities["platformName"]
+        print(platform_name)
+        platform_version = self.driver.capabilities["platformVersion"]
+        print(platform_version)
+
+        if platform_name == "iOS" and platform_version == "9.3":
+            logging.info("platformName = iOS and platformVersion = 9.3")
+            from locators_for_ios_9 import iOS, WelcomeScreen, LoginScreen
+        elif platform_name == "iOS" and platform_version == "10.2":
+            logging.info("platformName = iOS and platformVersion = 10.2")
+            from locators_for_ios_10 import iOS, WelcomeScreen, LoginScreen
+        else:
+            self.fail("I don't know that platform Name or Version")
+
+        # driver.__getattribute__(self.driver.capabilities["platformName"])
+        # importlib.import_module(locators_for_ios_9, locators_for_ios_9)
+        # self.importModule = import_module('locators_for_ios_10')
+
+    def platform_name(self):  # needed to use in specific methods
+
+        logging.info("identify platform_name")
+        platform_name = self.driver.capabilities["platformName"]
+        logging.info(platform_name)
+
+    def platform_version(self):
+
+        logging.info("identify platform_version")
+        platform_version = self.driver.capabilities["platformVersion"]
+        logging.info(platform_version)
 
 
 class iOSdevice(BasePage):
@@ -118,17 +150,21 @@ class Common(BasePage):
     def scroll_down_to_save_button(self):
         """Method to scroll down to bottom of the screen - to 'Save' button"""
 
-        logging.info("scroll down with loop")
-        scroll = 15
-        while scroll > 0:
-            logging.info("check if save button is visible")
-            save_button = self.driver.find_element(*CommonScreen.SAVE_BUTTON_ios)
-            if save_button.is_displayed():
-                break
-            else:
-                logging.info("scroll down")
-                self.driver.execute_script("mobile: scroll", {"direction": "down"})
-            scroll -= 1
+        if BasePage.platform_name(self) == iOS and BasePage.platform_version(self) == 10.2:
+
+            logging.info("scroll down with loop")
+            scroll = 0
+            while scroll == 0:
+                logging.info("check if save button is visible")
+                save_button = self.driver.find_element(*CommonScreen.SAVE_BUTTON_ios)
+                if save_button.is_displayed():
+                    break
+                else:
+                    logging.info("scroll down")
+                    self.driver.execute_script("mobile: scroll", {"direction": "down"})
+                # scroll -= 1
+        else:
+            pass
 
 
 class WelcomePage(Common):
@@ -1427,9 +1463,11 @@ class MapPage(BasePage):
         #     action.tap(element=None, x=450, y=350, count=2).perform()
                                                                                                        # TEST IT ON IOS 9
         try:
+            logging.info("try")
             el = self.driver.find_element(*Map.MAP_AREA_18_ios)
             action.tap(element=el, x=position_x, y=position_y, count=2).perform()
         except ElementNotVisibleException:
+            logging.info("except")
             action.tap(element=None, x=position_x, y=position_y, count=2).perform()
         sleep(2)
 
