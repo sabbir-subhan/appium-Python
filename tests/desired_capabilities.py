@@ -110,7 +110,7 @@ class DesiredCapabilities(object):
         "platformName": "iOS",
         "platformVersion": "9.3",
         "deviceName": "iPad mini",
-        "app": PATH("/Users/lukasl/Build_xcode/Products/Debug-iphoneos/OCA.app"),
+        "app": PATH("/Users/lukasl/Build_xcode/Products/iPad9.3.5/OCA.app"),
         "bundleId": "com.noggin.ocalukasl",
         # "newCommandTimeout": "45",
         "autoAcceptAlerts": "true",

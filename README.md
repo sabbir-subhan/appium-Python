@@ -3,7 +3,7 @@
 ## Functional tests for OCA mobile app, using Appium and Python. ##
 
 
-## **SOFT NEEDED:** ##
+## **NEEDED SOFTWARE:** ##
 
 - Java
 - Android studio and APIs for android - android avd
@@ -14,7 +14,7 @@
 - PyCharm - for opening and running tests (also could be run from terminal)
 
 
-**for OSX all above plus:**
+**for OSX all above, plus:**
 
 - xcode 8.1 is needed for testing iOS10 (version 8 is not supported by appium 1.5.3 but brew need version 8.1 to install libimobiledevice - so install xcode 8.1 from appstore)
 - node
@@ -59,7 +59,6 @@ desired_capabilities.py and appium settings:
 - UDID from real device - open iTunes with connected device and click on serial number or use terminal command: "idevice_id -l"
 - iOS version and device name
 - path to app - to get app file You need to build it in xcode
-
 
 
 Appium in CLI:
@@ -173,6 +172,14 @@ with name: "New events chooser inside sub form"
 - for iOS - open Appium settings and uncheck UDID checkbox and change device name - choose from dropdown in Appium settings
 
 
+### **RUNNING TESTS BOTH ON IOS9 AND IOS10:** ###
+
+- You need two versions of Appium and two versions of Xcode
+- Appium 1.6.3 in CLI and Xcode in version 8 and Appium GUI in version 1.5.3 and Xcode 7 (Xcode7 must have different name because appium in CLI will search for app "Xcode" so that should be version 8)
+- in CLI (Appium 1.6.3) You can run tests for iOS10 and in GUI You can run tests for iOS9
+- in GUI change path to app, path to Xcode 7, device name, OS version and UDID (everything must match dictionary in desired_capabilities.py)
+- after that uncomment line in page_ios.py: "from locators_for_ios_9.py import *" and comment line: "from locators_for_ios_10.py import *"
+
 
 APP VERSIONS:
 
@@ -189,6 +196,6 @@ APP VERSIONS:
 - for some reason on iOS -- "No reset" checkbox in Appium setting is not working, so tests for iOS are written to compensate it, but remember to run Android tests with checkbox "No reset" checked -- https://github.com/appium/appium/issues/4956
 - Appium and OCA app sometime have problems to collaborate - if test fails, try to run it again or shutdown Appium and reconnect device
 - if tests are running fine but Appium inspector is not lunching on iOS - You need to rebuild app by cordova and xcode and reinstall it on device 
-- if after starting test, Appium throws errors like: "lockdown_receive_message error!" -- use sudo chmod -R 777 /var/db/lockdown/
+- if after starting test, Appium throws errors like: "lockdown_receive_message error!" -- also try to use sudo chmod -R 777 /var/db/lockdown/
 - Appium can't switch between apps so only tapping on specific coordinates will work in another app, for example when OCA will open Safari
 - Appium 1.6.3 - "Could not proxy command to remote server. Original error: Error: socket hang up" - lunch Xcode and rebuild WebDriverAgentRunner

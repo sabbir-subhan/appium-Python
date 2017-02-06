@@ -1,3 +1,5 @@
+from locators_for_ios_9 import *
+#from locators_for_ios_10 import *
 import unittest
 from time import sleep
 # import time
@@ -6,6 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from appium.webdriver.common.touch_action import TouchAction
 from appium import webdriver
+from desired_capabilities import DesiredCapabilities
 # from selenium.webdriver.common.action_chains import ActionChains
 # from appium.webdriver.common.multi_action import MultiAction
 # from appium.webdriver.mobilecommand import MobileCommand
@@ -17,9 +20,6 @@ import logging
 logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/TCs.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())
-
-#from locators_for_ios_9 import *
-from locators_for_ios_10 import *
 
 
 class BasePage(unittest.TestCase):
@@ -119,8 +119,8 @@ class Common(BasePage):
         """Method to scroll down to bottom of the screen - to 'Save' button"""
 
         logging.info("scroll down with loop")
-        var = 1
-        while var == 1:
+        scroll = 15
+        while scroll > 0:
             logging.info("check if save button is visible")
             save_button = self.driver.find_element(*CommonScreen.SAVE_BUTTON_ios)
             if save_button.is_displayed():
@@ -128,6 +128,7 @@ class Common(BasePage):
             else:
                 logging.info("scroll down")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
+            scroll -= 1
 
 
 class WelcomePage(Common):
@@ -1414,25 +1415,21 @@ class MapPage(BasePage):
     def double_click_in_map_area_18(self):  # PROBLEM WITH DOUBLE TAP - new appium can't handle that method????????????????
 
         logging.info("double click on map")
+        sleep(2)
         window_size = self.driver.get_window_size()  # this returns dictionary
         position_x = window_size["width"] * 0.75
         position_y = window_size["height"] * 0.75
-        positions = [(position_x, position_y)]
-        print(position_x)
-        print(position_y)
-        # positions = [(position_x, position_y)]
+        action = TouchAction(self.driver)
         # try:
         #     el = self.driver.find_element(*Map.MAP_AREA_18_ios)
         #     action.tap(element=el, x=450, y=350, count=2).perform()
         # except ElementNotVisibleException:
         #     action.tap(element=None, x=450, y=350, count=2).perform()
-                                                                                                            # TEST IT ON IOS 9
+                                                                                                       # TEST IT ON IOS 9
         try:
-            action = TouchAction(self.driver)
             el = self.driver.find_element(*Map.MAP_AREA_18_ios)
             action.tap(element=el, x=position_x, y=position_y, count=2).perform()
         except ElementNotVisibleException:
-            action = TouchAction(self.driver)
             action.tap(element=None, x=position_x, y=position_y, count=2).perform()
         sleep(2)
 
