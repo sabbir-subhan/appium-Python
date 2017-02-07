@@ -2,6 +2,14 @@
 from appium.webdriver.common.mobileby import MobileBy
 
 
+class CommonScreen:
+    """A class for handling Common buttons on different screen"""
+    SAVE_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Save"]')
+    CANCEL_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Cancel"]')
+    OK_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Ok"]')
+    PICKER_WHEEL_ios = (MobileBy.CLASS_NAME, '//UIPickerWheel')  # need class name from simulator of ios 9 ??????????????
+
+
 class TopBar:
     """A class for top bar locators."""
     HAMBURGER_FOR_MAIN_MENU_ios = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
@@ -303,13 +311,6 @@ class NewLogScreen:
     """A class for handling New Log screen"""
     LODGING_AGENCY_PICKER_ios = (MobileBy.XPATH, '//UIAWebView/UIAElement[1]')
     ENTRY_FIELD_ios = (MobileBy.XPATH, '//UIATextField[1]')
-
-
-class CommonScreen:
-    """A class for handling Common buttons on different screen"""
-    SAVE_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Save"]')
-    CANCEL_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Cancel"]')
-    OK_BUTTON_ios = (MobileBy.XPATH, '//UIAButton[@name="Ok"]')
 
 
 class iOS:

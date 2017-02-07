@@ -9,35 +9,27 @@
 # check if button "EVENTS" is present
 
 
-from desired_capabilities import DesiredCapabilities
-from page_ios import *
+from methods import *
+from setup import SetupTestCase
 
 
-class test_Login_iOS(unittest.TestCase):
+class test_Login(SetupTestCase):
+    """ Setup test """
 
     def setUp(self):
 
-        logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
-
-        # choose desired capabilities from desired_capabilities.py
-
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad
-
-        self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
-
-        self.driver.implicitly_wait(15)  # seconds
+        super(SetupTestCase, self).setUp()
 
     def tearDown(self):
 
-        logging.info("Quitting")
-        self.driver.quit()
+        SetupTestCase.tearDown(self)
 
     def test_login(self):
 
-        main_page = MainPage(self.driver)
-        main_page.dismiss_ios_notifications()
-        main_page.scroll_down_one_view()
-        main_page.logout_if_already_logged_in()
+        # main_page = MainPage(self.driver)
+        # main_page.dismiss_ios_notifications()
+        # main_page.scroll_down_one_view()
+        # main_page.logout_if_already_logged_in()
         logging.info("starting Test Case 1: login into active account")
         welcome_page = WelcomePage(self.driver)
         welcome_page.click_login_button()
@@ -49,11 +41,12 @@ class test_Login_iOS(unittest.TestCase):
         ios_device.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
+        main_page = MainPage(self.driver)
         main_page.alert_expiring_password()
         main_page.dismiss_ios_notifications()
         main_page.check_presence_of_events_button()
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(test_Login_iOS)
+    suite = unittest.TestLoader().loadTestsFromTestCase(test_Login)
     unittest.TextTestRunner(verbosity=2).run(suite)

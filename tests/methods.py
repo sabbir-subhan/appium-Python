@@ -1,5 +1,6 @@
-from locators_for_ios_9 import *
+#from locators_for_ios_9 import *
 #from locators_for_ios_10 import *
+from locators import CommonLocators
 import unittest
 from time import sleep
 import sys
@@ -34,24 +35,6 @@ class BasePage(unittest.TestCase):
 
         super().__init__()
         self.driver = driver
-
-        # platform_name = self.driver.capabilities["platformName"]
-        # print(platform_name)
-        # platform_version = self.driver.capabilities["platformVersion"]
-        # print(platform_version)
-        #
-        # if platform_name == "iOS" and platform_version == "9.3":
-        #     logging.info("platformName = iOS and platformVersion = 9.3")
-        #     from locators_for_ios_9 import iOS, WelcomeScreen, LoginScreen
-        # elif platform_name == "iOS" and platform_version == "10.2":
-        #     logging.info("platformName = iOS and platformVersion = 10.2")
-        #     from locators_for_ios_10 import iOS, WelcomeScreen, LoginScreen
-        # else:
-        #     self.fail("I don't know that platform Name or Version")
-
-        # driver.__getattribute__(self.driver.capabilities["platformName"])
-        # importlib.import_module(locators_for_ios_9, locators_for_ios_9)
-        # self.importModule = import_module('locators_for_ios_10')
 
     def platform_name(self):  # needed to use in specific methods
 
@@ -182,7 +165,7 @@ class WelcomePage(Common):
         # except:
         #     logging.info("pass tapping into positions")
         logging.info("click in LOGIN button")
-        login_button = self.driver.find_element(*WelcomeScreen.LOGIN_BUTTON_ios)
+        login_button = self.driver.find_element(CommonLocators.common_login_button)
         self.assertIsNotNone(login_button, "Login button not found")
         login_button.click()
 
@@ -248,7 +231,7 @@ class LoginPage(BasePage):
 
     def type_username(self, username):
 
-        self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).click()
+        self.driver.find_element(TEXTFIELD_USERNAME_ios).click()
         self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).clear()
         logging.info("type username")
         self.driver.find_element(*LoginScreen.TEXTFIELD_USERNAME_ios).send_keys(Credentials.get_username(username))

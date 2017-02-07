@@ -19,24 +19,37 @@
 
 from desired_capabilities import DesiredCapabilities
 from page_ios import *
+from setup import SetupTestCase
 
 
-class test_ManagingEvents_iOS(unittest.TestCase):
+class test_ManagingEvents_iOS(SetupTestCase):
+    """ Setup test """
+
     def setUp(self):
 
-        logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
-
-        # choose desired capabilities from desired_capabilities.py
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad
-
-        self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
-
-        self.driver.implicitly_wait(25)  # seconds
+        super(SetupTestCase, self).setUp()
 
     def tearDown(self):
 
-        logging.info("Quitting")
-        self.driver.quit()
+        SetupTestCase.tearDown(self)
+
+# class test_ManagingEvents_iOS(unittest.TestCase):
+
+    # def setUp(self):
+    #
+    #     logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
+    #
+    #     # choose desired capabilities from desired_capabilities.py
+    #     desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad
+    #
+    #     self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
+    #
+    #     self.driver.implicitly_wait(25)  # seconds
+    #
+    # def tearDown(self):
+    #
+    #     logging.info("Quitting")
+    #     self.driver.quit()
 
     def test_1_managing_events(self):
 
