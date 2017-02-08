@@ -1,26 +1,17 @@
 #from locators_for_ios_9 import *
-#from locators_for_ios_10 import *
-from locators import CommonLocators
+import logging
 import unittest
 from time import sleep
-import sys
-from importlib import import_module
-import importlib
-import time
-import pprint
-from setup import SetupTestCase
-from selenium.common.exceptions import *
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions
+
 from appium.webdriver.common.touch_action import TouchAction
-from appium import webdriver
-from selenium.webdriver.common.action_chains import ActionChains
-from appium.webdriver.common.multi_action import MultiAction
-from appium.webdriver.mobilecommand import MobileCommand
-from appium.webdriver import WebElement
-from appium.webdriver.webdriver import MobileWebElement
+from selenium.common.exceptions import *
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
+
 from credentials import Credentials, ContactIdentifierPIN
-import logging
+from locators import CommonLocators
+from locators_for_ios_10 import *
+
 logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/TCs.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())

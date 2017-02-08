@@ -1,11 +1,12 @@
 from desired_capabilities import DesiredCapabilities
 from methods import *
 from appium import webdriver
-# import unittest
-# import logging
-# logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/TCs.log', level=logging.INFO,
-#                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
-# logging.getLogger().addHandler(logging.StreamHandler())
+import unittest
+import logging
+from configuration import ENVIRONMENT_TEST
+logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/TCs.log', level=logging.INFO,
+                    format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+logging.getLogger().addHandler(logging.StreamHandler())
 
 
 class SetupTestCase(unittest.TestCase):

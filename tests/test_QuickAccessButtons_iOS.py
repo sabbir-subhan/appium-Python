@@ -20,17 +20,20 @@
 # Click on Create event ,Asset,Log quick access links
 
 
-from desired_capabilities import DesiredCapabilities
-from page_ios import *
+from configuration import ENVIRONMENT_TEST
+from Modules.Setup import SetupTestCase
+from Modules import MainPage
 
 
 class test_QuickAccessButtons_iOS(unittest.TestCase):
+
     def setUp(self):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
         # choose desired capabilities from desired_capabilities.py
-        desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad
+        desired_capabilities = DesiredCapabilities.desired_capabilities_for_android_6
+        desired_capabilities = DesiredCapabilities.getDesiredCapabitities(os.environ['test_mobile_env'])
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
@@ -42,9 +45,9 @@ class test_QuickAccessButtons_iOS(unittest.TestCase):
         self.driver.quit()
 
     def test_Quick_Access_buttons(self):
-
-        main_page = MainPage(self.driver)
-        main_page.dismiss_ios_notifications()
+        main_page = self.load_class('MainPage', ENVIRONMENT_TEST)
+        #main_page = MainPage.IOS9(self.driver)
+        main_page.dismiss_notifications()
         main_page.logout_if_already_logged_in()
         logging.info("starting Test Case 9: Quick Access buttons on OCA app")
         welcome_page = WelcomePage(self.driver)
@@ -115,6 +118,15 @@ class test_QuickAccessButtons_iOS(unittest.TestCase):
         new_log_page.click_save_button()
         main_page.check_presence_of_events_button()
 
+    def load_class(self, package, device, middleClass):
+        package = "MainPage";
+        device = "IOS9";
+        'modules.MainPage.IOS9'
+        'modules.MainPage.MainPage'
+        mod = __import__(package)
+        #sprawdzic warunek czy klasa device istnieje, jezeli nie to sprobowac zaladowac klase package
+        mod = getattr(mod, device)
+        return mod
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(test_QuickAccessButtons_iOS)

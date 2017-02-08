@@ -1,8 +1,6 @@
-from selenium.webdriver.common.by import By
-from appium.webdriver.common.mobileby import MobileBy
 from AndroidConf import AndroidConf
 from iOSConf import iOSConf
-from setup import SetupTestCase
+from Modules.setup import SetupTestCase
 
 
 class CommonLocators(SetupTestCase, AndroidConf, iOSConf):

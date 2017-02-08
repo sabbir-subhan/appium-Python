@@ -1,4 +1,5 @@
 import os
+from configuration import ENVIRONMENT_TEST
 
 
 PATH = lambda p: os.path.abspath(
@@ -7,8 +8,9 @@ PATH = lambda p: os.path.abspath(
 
 
 class DesiredCapabilities(object):
+
     capabilities = {
-        "android_4" : {
+        "Android4.2.2": {
             "platformName": "ANDROID",
             "platformVersion": "4.4.2",
             "deviceName": "QUANTUM_2_400",
@@ -18,22 +20,37 @@ class DesiredCapabilities(object):
             "newCommandTimeout": "80",
             "androidDeviceReadyTimeout": "60",
             "udid": "0123456789ABCDEF"
+        },
+
+        "Android4.4.4": {
+            "platformName": "ANDROID",
+            "platformVersion": "4.4.4",
+            "deviceName": "Samsung Galaxy Note 3",
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.2.2.apk"),
+            "apppackage": "com.noggin.oca",
+            "appactivity": "com.noggin.oca.MainActivity",
+            "newCommandTimeout": "80",
+            "androidDeviceReadyTimeout": "60"
+        },
+
+        "IOS9": {
+            # iPad mini with iOS 9.3.5
+            "platformName": "iOS",
+            "platformVersion": "9.3",
+            "deviceName": "iPad mini",
+            "app": PATH("/Users/lukasl/Build_xcode/Products/iPad9.3.5/OCA.app"),
+            "bundleId": "com.noggin.ocalukasl",
+            # "newCommandTimeout": "45",
+            "autoAcceptAlerts": "true",
+            "udid": "db55c238e873230ee454c54a63724397a2981acd"
         }
+
     }
 
-    def getDesiredCapabitities(self, type):
-        return self.capabilities[type]
+    @staticmethod
+    def get_desired_capabilities():
 
-    desired_capabilities_for_android_simulator_4 = {
-        "platformName": "ANDROID",
-        "platformVersion": "4.4.4",
-        "deviceName": "Samsung Galaxy Note 3",
-        "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.2.2.apk"),
-        "apppackage": "com.noggin.oca",
-        "appactivity": "com.noggin.oca.MainActivity",
-        "newCommandTimeout": "80",
-        "androidDeviceReadyTimeout": "60"
-    }
+        return DesiredCapabilities.capabilities[ENVIRONMENT_TEST]
 
     desired_capabilities_for_android_5 = {
         "platformName": "ANDROID",

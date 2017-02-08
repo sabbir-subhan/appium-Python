@@ -17,9 +17,8 @@
 # with name: "New events chooser inside sub form"
 
 
-from desired_capabilities import DesiredCapabilities
+from Modules.setup import SetupTestCase
 from page_ios import *
-from setup import SetupTestCase
 
 
 class test_ManagingEvents_iOS(SetupTestCase):
