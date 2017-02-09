@@ -22,7 +22,7 @@
 
 from configuration import ENVIRONMENT_TEST
 from Modules.Setup import SetupTestCase
-from Modules import MainPage
+from Modules import main_page
 
 
 class test_QuickAccessButtons_iOS(unittest.TestCase):

@@ -1,14 +1,14 @@
 import logging
 import unittest
 from time import sleep
-
+from appium import webdriver
 from appium.webdriver.common.touch_action import TouchAction
 from selenium.common.exceptions import *
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 
-from credentials import Credentials, ContactIdentifierPIN
-from locators_for_ios_9 import *
+from tests.credentials import Credentials, ContactIdentifierPIN
+from tests.locators_for_ios_9 import *
 
 logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/TCs.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')

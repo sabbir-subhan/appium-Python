@@ -1,5 +1,5 @@
 import logging
-from Modules.BasePage import BasePage
+from Modules.base_page.BasePage import BasePage
 
 
 class MainPage(BasePage):

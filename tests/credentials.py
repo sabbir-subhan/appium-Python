@@ -1,7 +1,7 @@
 # credentials - to change username, password or domain, change values in quotations ""
 
 
-from generators import RandomGenerator
+from tests.generators import RandomGenerator
 
 
 class ContactIdentifierPIN:

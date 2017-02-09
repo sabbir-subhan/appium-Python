@@ -9,8 +9,8 @@
 # check if button "EVENTS" is present
 
 
-from desired_capabilities import DesiredCapabilities
-from page_ios import *
+from tests.desired_capabilities import DesiredCapabilities
+from tests.page_ios import *
 
 
 class test_Login_iOS(unittest.TestCase):

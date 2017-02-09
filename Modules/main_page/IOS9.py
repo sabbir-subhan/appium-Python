@@ -1,13 +1,13 @@
 """ Methods for IOS9 on Main Page """
 
-from Modules.MainPage import IOS
+#from Modules.MainPage import IOS
 
 
 class IOS9():
 
     def __init__(self):
         pass
-        #MainPage.__init__(self)
+        # MainPage.__init__(self)
 
     def dissmise_notification(self):
         logging.info("dismiss notifications")
