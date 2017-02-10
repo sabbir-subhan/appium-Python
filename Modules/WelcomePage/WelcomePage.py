@@ -1,5 +1,5 @@
 import logging
-from Modules.base_page.BasePage import BasePage
+from Modules.BasePage.BasePage import BasePage
 
 
 class WelcomePage(BasePage):
@@ -7,18 +7,21 @@ class WelcomePage(BasePage):
 
     def click_login_button(self):
 
-        # sleep(10)
-        self.driver.reset()  # reset app to avoid problems with locating elements
-        # try:
-        #     positions_for_hamburger_button = [(730, 20)]
-        #     sleep(1)
-        #     self.driver.tap(positions_for_hamburger_button)
-        # except:
-        #     logging.info("pass tapping into positions")
-        logging.info("click in LOGIN button")
-        login_button = self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON)
-        self.assertIsNotNone(login_button, "Login button not found")
-        login_button.click()
+        logging.info("from WelcomePage")
+        pass
+
+        # # sleep(10)
+        # self.driver.reset()  # reset app to avoid problems with locating elements
+        # # try:
+        # #     positions_for_hamburger_button = [(730, 20)]
+        # #     sleep(1)
+        # #     self.driver.tap(positions_for_hamburger_button)
+        # # except:
+        # #     logging.info("pass tapping into positions")
+        # logging.info("click in LOGIN button")
+        # login_button = self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON)
+        # self.assertIsNotNone(login_button, "Login button not found")
+        # login_button.click()
 
         # TEST IT ON IOS 9.3
 

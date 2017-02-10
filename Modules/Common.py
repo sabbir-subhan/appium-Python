@@ -1,4 +1,4 @@
-from Modules.base_page import BasePage
+from Modules.BasePage import BasePage
 
 
 class Common(BasePage):

@@ -7,20 +7,17 @@ from selenium.common.exceptions import *
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 #from credentials import Credentials, ContactIdentifierPIN
+import unittest
 
 
-class BasePage(SetupTestCase):
+class BasePage(unittest.TestCase):
     """
     :type driver: appium.webdriver.Remote
     """
 
     configuration = None
 
-    def __init__(self):
-
-        super().__init__()
-
     def setDriver(self, driver):
 
         self.driver = driver
-        self.configuration = import_module('locators_' + ENVIRONMENT_TEST)
+        self.configuration = import_module('Conf.locators_' + ENVIRONMENT_TEST)

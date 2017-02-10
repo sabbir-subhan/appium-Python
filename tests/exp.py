@@ -13,9 +13,10 @@ import logging
 from importlib import import_module
 from Modules.Setup import SetupTestCase
 from configuration import ENVIRONMENT_TEST
+from Modules.load_class import LoadClass
 
 
-class test_Login(SetupTestCase, unittest.TestCase):
+class test_Login(SetupTestCase):
     """ Setup test """
 
     def setUp(self):
@@ -27,30 +28,35 @@ class test_Login(SetupTestCase, unittest.TestCase):
         SetupTestCase.tearDown(self)
 
     def test_exp(self):
-
+        """
+        :param welcome_page:
+        :type Modules.WelcomePage.WelcomePage:
+        """
         logging.info("starting Test Case 1: login into active account")
-        welcome_page = self.load_page('WelcomePage')
+
+        welcome_page = LoadClass.load_page('WelcomePage')
+        welcome_page.setDriver(self.driver)
         welcome_page.click_login_button()
-        login_page = self.load_page('LoginPage', ENVIRONMENT_TEST)
-        login_page.type_username('QA')  # change here login credentials (login and pass are defined in credentials.py)
-        login_page.type_password('QA')  # for example use: QA, general_user, admin, expired_1_day_ago, expire_today, expire_in_1_day OR suspended
-        login_page.type_domain_address('QA')
-        device = self.load_page('Device', ENVIRONMENT_TEST)
-        device.hide_keyboard()
-        login_page.click_submit_button()
-        login_page.accept_terms()
-        main_page = self.load_page('MainPage', ENVIRONMENT_TEST)
-        main_page.alert_expiring_password()
-        main_page.dismiss_ios_notifications()
-        main_page.check_presence_of_events_button()
+        # login_page = LoadClass.load_page('LoginPage')
+        # login_page.type_username('QA')  # change here login credentials (login and pass are defined in credentials.py)
+        # login_page.type_password('QA')  # for example use: QA, general_user, admin, expired_1_day_ago, expire_today, expire_in_1_day OR suspended
+        # login_page.type_domain_address('QA')
+        # device = LoadClass.load_page('Device')
+        # device.hide_keyboard()
+        # login_page.click_submit_button()
+        # login_page.accept_terms()
+        # main_page = LoadClass.load_page('MainPage')
+        # main_page.alert_expiring_password()
+        # main_page.dismiss_ios_notifications()
+        # main_page.check_presence_of_events_button()
 
-    def load_page(self, page):
-
-        device = ENVIRONMENT_TEST
-
-        page = "Modules.welcome_page.WelcomePage"
-        module = import_module(page)
-        return getattr(module, page)()
+    # def load_page(self, page):
+    #
+    #     device = ENVIRONMENT_TEST
+    #
+    #     page = "Modules.welcome_page.WelcomePage"
+    #     module = import_module(page)
+    #     return getattr(module, page)()
 
 
     # def __init__(self, module_name, class_name):
@@ -137,6 +143,32 @@ class test_Login(SetupTestCase, unittest.TestCase):
 
 
 
+
+
+
+    # class Loader(engine.core.Core):
+    # def __init__(self, class_name, method_name):
+    #     engine.core.Core.__init__(self)
+    #     try:
+    #         instance = self._call("controllers", class_name)()
+    #         if method_name is not None:
+    #             getattr(instance, method_name)()
+    #     except:
+    #         error = engine.error.Error(self.config)
+    #         sys.exit(error.log(traceback=True))
+
+    # def _call(self, module_name, class_name):
+    #     c = class_name.lower()
+    #     dependency = '{module}.{class_name}'.format(module=module_name, class_name=c)
+    #     try:
+    #         module = import_module(dependency)
+    #         obj = getattr(module, c.capitalize())
+    #         return obj
+    #     except ImportError:
+    #         sys.exit("Class '{}' doesn't exist in the current context. "
+    #                  "Check your naming conventions. "
+    #                  "Lower case for files and first letter uppercase for class.".format(class_name))
+
 # class Loader(engine.core.Core):
     # def __init__(self, class_name, method_name):
     #     engine.core.Core.__init__(self)
@@ -159,6 +191,8 @@ class test_Login(SetupTestCase, unittest.TestCase):
     #         sys.exit("Class '{}' doesn't exist in the current context. "
     #                  "Check your naming conventions. "
     #                  "Lower case for files and first letter uppercase for class.".format(class_name))
+
+
 
 # +    def load_class(self, package, device, middle_class=None):
 # +        """

@@ -1,10 +1,10 @@
 import logging
 from time import sleep
 from selenium.common.exceptions import *
-from Modules.base_page import BasePage
+from Modules.BasePage import BasePage
 
 
-class Device(BasePage):
+class IOS(BasePage):
     """A class for methods to handle iOS Device"""
 
     def hide_keyboard(self):
