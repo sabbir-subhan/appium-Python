@@ -43,7 +43,7 @@ class LoginScreen:
     """A class for login screen locators - screen after clicking into LOGIN."""
     TEXTFIELD_USERNAME = (MobileBy.ACCESSIBILITY_ID, 'Username')
     TEXTFIELD_PASSWORD = (MobileBy.XPATH, '//android.widget.EditText[@index="3"]')
-    TEXTFIELD_DOMAIN = (MobileBy.XPATH, '//android.widget.EditText[@index="5"]')
+    TEXTFIELD_DOMAIN = (MobileBy.XPATH, '//android.widget.EditText[@index="1"]')
     SUBMIT_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Submit')
 
     # Notification alert: "OCA now supports sending 'App Messages' to your device as notifications."

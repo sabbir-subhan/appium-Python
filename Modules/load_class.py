@@ -1,3 +1,5 @@
+""" Method for loading classes """
+
 from configuration import ENVIRONMENT_TEST
 from configuration import ENVIRONMENT_MIDDLE_CLASS
 from importlib import import_module

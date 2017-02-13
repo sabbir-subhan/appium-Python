@@ -1,3 +1,5 @@
+""" Setup class and methods """
+
 from Conf.desired_capabilities import DesiredCapabilities
 from configuration import ENVIRONMENT_TEST
 from appium import webdriver

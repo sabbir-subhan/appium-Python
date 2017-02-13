@@ -98,6 +98,9 @@ finding app activity through adb - appActivity:
 - adb shell dumpsys activity activities | grep com.noggin.oca
  (app need to be open on device)
 
+- if You have multiple devices connected:
+ (adb -s <device id> shell ...)
+
 
 ### **CONFIGURING IOS DEVICE:** ###
 
