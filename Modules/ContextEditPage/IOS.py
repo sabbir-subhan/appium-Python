@@ -1,10 +1,10 @@
-""" Methods for IOS"""
+""" Methods for IOS to handle Context Edit Page """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.ContextEditPage.ContextEditPage import ContextEditPage
 import logging
 
 
-class IOS(WelcomePage):
+class IOS(ContextEditPage):
 
     pass
 

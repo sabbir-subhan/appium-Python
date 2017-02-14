@@ -1,10 +1,10 @@
-""" Methods for IOS"""
+""" Methods for IOS to handle Photo Page """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.PhotoPage.PhotoPage import PhotoPage
 import logging
 
 
-class IOS(WelcomePage):
+class IOS(PhotoPage):
 
     pass
 

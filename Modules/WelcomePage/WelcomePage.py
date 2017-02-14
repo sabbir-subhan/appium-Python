@@ -1,10 +1,11 @@
+"""A class for methods to handle Welcome Page """
+
 import logging
 from Modules.BasePage.BasePage import BasePage
 from credentials import ContactIdentifierPIN
 
 
 class WelcomePage(BasePage):
-    """A class for methods to handle Welcome Page"""
 
     def click_login_button(self):
 

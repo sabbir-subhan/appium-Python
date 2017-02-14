@@ -176,7 +176,7 @@ class Common(BasePage):
 
 
 class WelcomePage(Common):
-    """A class for methods to handle Welcome Page"""
+    """A class for methods to handle WelcomePage Page"""
 
     def click_login_button(self):
 

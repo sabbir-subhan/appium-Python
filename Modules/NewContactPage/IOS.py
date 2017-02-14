@@ -1,10 +1,10 @@
-""" Methods for IOS"""
+""" Methods for IOS to handle New Contact Page """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.NewContactPage.NewContactPage import NewContactPage
 import logging
 
 
-class IOS(WelcomePage):
+class IOS(NewContactPage):
 
     pass
 

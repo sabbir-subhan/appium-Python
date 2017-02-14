@@ -1,7 +1,8 @@
-from Modules.BasePage import BasePage
+"""A class for methods to handle Events Types Page """
+
+from Modules.BasePage.BasePage import BasePage
 
 
-class PhotoPage(BasePage):
-    """A class for methods to handle Photo Page"""
+class EventsTypesPage(BasePage):
 
     pass

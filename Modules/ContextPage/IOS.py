@@ -1,10 +1,10 @@
-""" Methods for IOS"""
+""" Methods for IOS to handle ContextPage """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.ContextPage.ContextPage import ContextPage
 import logging
 
 
-class IOS(WelcomePage):
+class IOS(ContextPage):
 
     pass
 

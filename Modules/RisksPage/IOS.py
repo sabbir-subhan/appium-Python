@@ -1,10 +1,10 @@
-""" Methods for IOS"""
+""" Methods for IOS to handle Risks Page """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.RisksPage.RisksPage import RisksPage
 import logging
 
 
-class IOS(WelcomePage):
+class IOS(RisksPage):
 
     pass
 

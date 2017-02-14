@@ -1,13 +1,13 @@
-""" Methods for Android on Welcome Page"""
+""" Methods for Android on Map Page """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.MapPage.MapPage import MapPage
 from selenium.common.exceptions import *
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 import logging
 
 
-class Android(WelcomePage):
+class Android(MapPage):
 
     pass
 

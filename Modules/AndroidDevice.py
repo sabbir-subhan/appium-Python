@@ -1,3 +1,5 @@
+""" A class for methods to handle Android Device """
+
 import logging
 from time import sleep
 from selenium.common.exceptions import *
@@ -5,7 +7,6 @@ from Modules.BasePage.BasePage import BasePage
 
 
 class AndroidDevice(BasePage):
-    """ A class for methods to handle Android Device """
 
     def hide_keyboard(self):
 
@@ -16,7 +17,7 @@ class AndroidDevice(BasePage):
         except:
             logging.info("screen keyboard not found")
 
-    def click_Go_button_on_keyboard(self):
+    def click_Return_button_on_keyboard(self):
 
         try:
             logging.info("click Go on keyboard")

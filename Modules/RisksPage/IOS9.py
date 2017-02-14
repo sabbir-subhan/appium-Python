@@ -1,6 +1,6 @@
-""" Methods for IOS9 on Welcome Page """
+""" Methods for IOS9 on Risks Page """
 
-from Modules.WelcomePage.IOS import IOS
+from Modules.RisksPage.IOS import IOS
 
 
 class IOS9(IOS):

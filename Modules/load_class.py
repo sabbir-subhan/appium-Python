@@ -15,7 +15,7 @@ class LoadClass:
         try:
             m = import_module(module)
             return m
-        except ImportError:
+        except ImportError as e:
             return False
 
     @staticmethod

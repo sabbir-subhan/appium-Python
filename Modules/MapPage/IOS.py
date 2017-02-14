@@ -1,10 +1,10 @@
-""" Methods for IOS"""
+""" Methods for IOS to handle Map Page """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.MapPage.MapPage import MapPage
 import logging
 
 
-class IOS(WelcomePage):
+class IOS(MapPage):
 
     pass
 

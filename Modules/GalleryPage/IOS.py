@@ -1,10 +1,10 @@
-""" Methods for IOS"""
+""" Methods for IOS to handle GalleryPage """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.GalleryPage.GalleryPage import GalleryPage
 import logging
 
 
-class IOS(WelcomePage):
+class IOS(GalleryPage):
 
     pass
 

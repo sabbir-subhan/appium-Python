@@ -1,10 +1,10 @@
-""" Methods for IOS"""
+""" Methods for IOS to handle New Task Page """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.NewTaskPage.NewTaskPage import NewTaskPage
 import logging
 
 
-class IOS(WelcomePage):
+class IOS(NewTaskPage):
 
     pass
 

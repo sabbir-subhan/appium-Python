@@ -1,10 +1,10 @@
-""" Methods for IOS"""
+""" Methods for IOS Location Page """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.LocationPage.LocationPage import LocationPage
 import logging
 
 
-class IOS(WelcomePage):
+class IOS(LocationPage):
 
     pass
 

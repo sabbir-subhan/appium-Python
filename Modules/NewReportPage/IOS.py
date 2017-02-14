@@ -1,10 +1,10 @@
-""" Methods for IOS"""
+""" Methods for IOS to handle New Report Page """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.NewReportPage.NewReportPage import NewReportPage
 import logging
 
 
-class IOS(WelcomePage):
+class IOS(NewReportPage):
 
     pass
 

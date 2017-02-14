@@ -1,13 +1,13 @@
-""" Methods for Android on Welcome Page"""
+""" Methods for Android on Sent Page """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.SentPage.SentPage import SentPage
 from selenium.common.exceptions import *
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 import logging
 
 
-class Android(WelcomePage):
+class Android(SentPage):
 
     pass
 

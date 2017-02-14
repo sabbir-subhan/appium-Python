@@ -1,4 +1,4 @@
-""" Methods for IOS9 on Welcome Page """
+""" Methods for IOS9 on Login Page """
 
 from Modules.LoginPage.IOS import IOS
 

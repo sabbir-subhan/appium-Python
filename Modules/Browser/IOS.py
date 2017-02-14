@@ -1,10 +1,10 @@
-""" Methods for IOS"""
+""" Methods for IOS to handle browser"""
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.Browser.Browser import Browser
 import logging
 
 
-class IOS(WelcomePage):
+class IOS(Browser):
 
     pass
 

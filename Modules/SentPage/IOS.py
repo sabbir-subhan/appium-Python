@@ -1,10 +1,10 @@
-""" Methods for IOS"""
+""" Methods for IOS to handle Sent Page """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.SentPage.SentPage import SentPage
 import logging
 
 
-class IOS(WelcomePage):
+class IOS(SentPage):
 
     pass
 

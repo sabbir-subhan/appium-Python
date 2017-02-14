@@ -1,3 +1,5 @@
+"""A class for methods to handle Main Page """
+
 import logging
 from time import sleep
 from selenium.common.exceptions import *
@@ -7,7 +9,6 @@ from Modules.BasePage.BasePage import BasePage
 
 
 class MainPage(BasePage):
-    """A class for methods to handle Main Page"""
 
     def dismiss_notifications(self):
 
@@ -16,10 +17,10 @@ class MainPage(BasePage):
             notification_msg_on = self.driver.find_element(*self.configuration.LoginScreen.
                                                            NOTIFICATION_ABOUT_SENDING_MESSAGES)
             if notification_msg_on.is_displayed():
-                logging.info("click 'No' for sending notifications on iOS")
+                logging.info("click 'No' for sending notifications")
                 notification_msg_on = self.driver.find_element(
                     *self.configuration.LoginScreen.NOTIFICATION_ABOUT_SENDING_MESSAGES)
-                self.assertIsNotNone(notification_msg_on, "Notification msg on iOS not found")
+                self.assertIsNotNone(notification_msg_on, "Notification msg not found")
                 self.driver.find_element(*self.configuration.LoginScreen.NO_FOR_SENDING_NOTIFICATIONS_ON).click()
             else:
                 pass

@@ -1,6 +1,6 @@
-""" Methods for IOS9 on Welcome Page """
+""" Methods for IOS9 on Gallery Page """
 
-from Modules.WelcomePage.IOS import IOS
+from Modules.GalleryPage.IOS import IOS
 
 
 class IOS9(IOS):

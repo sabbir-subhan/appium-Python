@@ -1,3 +1,5 @@
+"""A class for methods to handle Login Page """
+
 from time import sleep
 import logging
 from selenium.common.exceptions import *
@@ -5,7 +7,6 @@ from Modules.BasePage.BasePage import BasePage
 
 
 class LoginPage(BasePage):
-    """A class for methods to handle Login Page"""
 
     def type_username(self, username):
 

@@ -1,10 +1,10 @@
-""" Methods for IOS"""
+""" Methods for IOS to handle New Log Page """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.NewLogPage.NewLogPage import NewLogPage
 import logging
 
 
-class IOS(WelcomePage):
+class IOS(NewLogPage):
 
     pass
 

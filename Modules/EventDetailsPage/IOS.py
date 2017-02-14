@@ -1,10 +1,10 @@
-""" Methods for IOS"""
+""" Methods for IOS to handle Event Details Page """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.EventDetailsPage.EventDetailsPage import EventDetailsPage
 import logging
 
 
-class IOS(WelcomePage):
+class IOS(EventDetailsPage):
 
     pass
 

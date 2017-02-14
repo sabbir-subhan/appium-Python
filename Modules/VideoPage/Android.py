@@ -1,13 +1,13 @@
-""" Methods for Android on Welcome Page"""
+""" Methods for Android on Video Page """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.VideoPage.VideoPage import VideoPage
 from selenium.common.exceptions import *
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 import logging
 
 
-class Android(WelcomePage):
+class Android(VideoPage):
 
     pass
 

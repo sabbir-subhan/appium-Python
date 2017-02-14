@@ -1,6 +1,6 @@
-""" Methods for IOS9 on Welcome Page """
+""" Methods for IOS9 on Sent Page """
 
-from Modules.WelcomePage.IOS import IOS
+from Modules.SentPage.IOS import IOS
 
 
 class IOS9(IOS):

@@ -1,10 +1,10 @@
-""" Methods for IOS"""
+""" Methods for IOS to handle Sound Recorder Page """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.SoundRecorderPage.SoundRecorderPage import SoundRecorderPage
 import logging
 
 
-class IOS(WelcomePage):
+class IOS(SoundRecorderPage):
 
     pass
 

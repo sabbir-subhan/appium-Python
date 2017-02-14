@@ -1,7 +1,8 @@
-from Modules.BasePage import BasePage
+"""A class for methods to handle Camera Page """
+
+from Modules.BasePage.BasePage import BasePage
 
 
-class PhotoPage(BasePage):
-    """A class for methods to handle Photo Page"""
+class CameraPage(BasePage):
 
     pass

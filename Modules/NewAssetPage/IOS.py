@@ -1,10 +1,10 @@
-""" Methods for IOS"""
+""" Methods for IOS to handle New Asset Page """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.NewAssetPage.NewAssetPage import NewAssetPage
 import logging
 
 
-class IOS(WelcomePage):
+class IOS(NewAssetPage):
 
     pass
 

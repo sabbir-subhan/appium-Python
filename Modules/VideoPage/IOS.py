@@ -1,10 +1,10 @@
-""" Methods for IOS"""
+""" Methods for IOS to handle Video Page """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.VideoPage.VideoPage import VideoPage
 import logging
 
 
-class IOS(WelcomePage):
+class IOS(VideoPage):
 
     pass
 

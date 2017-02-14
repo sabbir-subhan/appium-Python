@@ -1,7 +1,6 @@
 """ Credentials - to change username, password or domain, change values in quotations """
 
-
-from tests.generators import RandomGenerator
+from Modules.generators import RandomGenerator
 
 
 class ContactIdentifierPIN:

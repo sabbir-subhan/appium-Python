@@ -7,6 +7,17 @@ from Modules.BasePage.BasePage import BasePage
 class Common(BasePage):
     """A class for methods to handle Common buttons from different screens"""
 
+    def take_screenshot(self, file_name):
+
+        logging.info("taking screenshot")
+        sleep(2)
+        self.driver.save_screenshot(file_name)
+
+    def reset(self):
+        """This method will reset driver - so for example app will be force to logout"""
+        logging.info("reset")
+        self.driver.reset()
+
     # OCA top bar
     def hamburger_button(self):
         # add coordinates for iPhones - clicking is not working because button is invisible
@@ -41,16 +52,3 @@ class Common(BasePage):
         self.assertIsNotNone(ok_button, "Ok button not found")
         ok_button.click()
 
-    def fill_Name_input_field(self, text):
-
-        logging.info("fill Name input field")
-        try:
-            name_field = self.driver.find_element(*self.configuration.EventEditScreen.NAME_FIELD)
-            if name_field.is_displayed():
-                name_field.click()
-                name_field.send_keys(text)
-        except NoSuchElementException:
-            name_field_by_index = self.driver.find_element(*self.configuration.EventEditScreen.NAME_FIELD_by_index)
-            if name_field_by_index.is_displayed():
-                name_field_by_index.click()
-                name_field_by_index.send_keys(text)

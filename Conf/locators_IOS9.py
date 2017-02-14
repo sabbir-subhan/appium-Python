@@ -146,13 +146,13 @@ class EventsScreen:
     NEW_EVENT_BUTTON = (MobileBy.XPATH, '//UIALink[@name[contains(., "New event")]]')
 
     # previously created event
-    CREATED_EVENT_1 = (MobileBy.XPATH, '//UIALink[@name[contains(., "Test Appium iOS")]]')
-    CREATED_EVENT_2 = (MobileBy.XPATH, '//UIALink[@name[contains(., "Test Appium iOS - second event")]]')
-    CREATED_EVENT_3 = (MobileBy.XPATH, '//UIALink[@name[contains(., "iOS to create sub")]]')
+    CREATED_EVENT_1 = (MobileBy.XPATH, '//UIALink[@name[contains(., "Test Appium")]]')
+    CREATED_EVENT_2 = (MobileBy.XPATH, '//UIALink[@name[contains(., "Test Appium - second event")]]')
+    CREATED_EVENT_3 = (MobileBy.XPATH, '//UIALink[@name[contains(., "to create sub")]]')
     CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText[@name'
-                                                      '[contains(., "Clear primary event")]]')
+                                                  '[contains(., "Clear primary event")]]')
     NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText['
-                                                              '@name="Primary event cleared"]')
+                                                          '@name="Primary event cleared"]')
 
 
 class TypesOfEventsScreen:
@@ -192,10 +192,10 @@ class EventEditScreen:
     FIELD_TO_RESTORE_2_VALUE = (MobileBy.XPATH, '//UIATextField[@value="test@noggin.com"]')
     CHOOSER_FIELD = (MobileBy.XPATH, '//UIAWebView/UIALink/UIALink[@name[contains(., "New events chooser")]]')
     PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER = (MobileBy.XPATH, '//UIAStaticText[@name[contains('
-                                                                '., "Test Appium iOS")]]')
+                                                            '., "Test Appium")]]')
     SUBFORM_FIELD_ADD_ROW = (MobileBy.XPATH, '//UIAButton[@name="Add row"]')
     NEW_EVENTS_CHOOSER_IN_SUB_FORM = (MobileBy.XPATH, '//UIAWebView/UIALink/UIALink[@name[contains('
-                                                          '., "New events chooser inside sub form")]]')
+                                                      '., "New events chooser inside sub form")]]')
     PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Test")]]')
     DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.XPATH, '//UIAScrollView/UIAWebView/UIALink[6]')
 
@@ -288,7 +288,7 @@ class NewTaskScreen:
     ASSIGNED = (MobileBy.XPATH, '//UIAStaticText[@name="Assigned"]')
     ADD_CONTACTS_AND_GROUPS = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Add contacts and groups")]]')
     ADD_RESOURCE_STRUCTURE_NODES = (MobileBy.XPATH, '//UIAButton[@name[contains(., '
-                                                        '"Add Resource structure nodes")]]')
+                                                    '"Add Resource structure nodes")]]')
     ADD_RESOURCE_ASSIGNMENTS = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Add Resource assignments")]]')
     CHOOSE_USERS = (MobileBy.XPATH, '//UIAStaticText[@name="Users"]')
     CHOOSE_CONTACTS = (MobileBy.XPATH, '//UIAStaticText[@name="Contacts"]')
@@ -318,6 +318,6 @@ class iOS:
     BUTTON_DONE_TO_HIDE_KEYBOARD = (MobileBy.XPATH, '//UIAWindow[2]/UIAToolbar[1]/UIAButton[@name="Done"]')
     RETURN_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Return"]')
     BUTTON_ALLOW_LOCATION = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]'
-                                                 '/UIACollectionCell[2]/UIAButton[@name="Allow"]')
+                                             '/UIACollectionCell[2]/UIAButton[@name="Allow"]')
     BUTTON_ALLOW_ACCESS_TO_CAMERA = (MobileBy.ACCESSIBILITY_ID, 'OK')
 

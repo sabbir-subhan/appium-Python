@@ -1,10 +1,10 @@
-""" Methods for IOS"""
+""" Methods for IOS to handle Risk Register Edit Page """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.RiskRegisterEditPage.RiskRegisterEditPage import RiskRegisterEditPage
 import logging
 
 
-class IOS(WelcomePage):
+class IOS(RiskRegisterEditPage):
 
     pass
 

@@ -1,4 +1,4 @@
-""" Methods for Android on Welcome Page"""
+""" Methods for Android on Welcome Page """
 
 from Modules.WelcomePage.WelcomePage import WelcomePage
 from selenium.common.exceptions import *

@@ -11,6 +11,7 @@ class BasePage(unittest.TestCase):
     configuration = None
 
     def setDriver(self, driver):
+        """ Method to create appium driver """
 
         self.driver = driver
         self.configuration = import_module('Conf.locators_' + ENVIRONMENT_TEST)

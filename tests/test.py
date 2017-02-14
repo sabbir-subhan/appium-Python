@@ -23,10 +23,11 @@ class test_Login(SetupTestCase):
 
     def tearDown(self):
 
-        SetupTestCase.tearDown(self)
+        super(SetupTestCase, self).tearDown()
+        #SetupTestCase.tearDown(self)
 
     def test_exp(self):
-        """ :type Modules.WelcomePage.WelcomePage """
+        #""" :type Modules.WelcomePage.WelcomePage """
 
         logging.info("starting Test Case 1: login into active account")
         welcome_page = LoadClass.load_page('WelcomePage')
@@ -48,6 +49,8 @@ class test_Login(SetupTestCase):
         main_page.alert_expiring_password()
         main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
+        main_page.open_EVENTS()
+
 
     # def load_page(self, page):
     #
