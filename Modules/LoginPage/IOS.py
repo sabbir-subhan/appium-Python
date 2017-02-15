@@ -3,10 +3,9 @@
 from credentials import Credentials
 from Modules.LoginPage.LoginPage import LoginPage
 import logging
-from Modules.iOSDevice import iOSDevice
 
 
-class IOS(LoginPage, iOSDevice):
+class IOS(LoginPage):
 
     def type_username(self, username):
 

@@ -7,13 +7,13 @@ class CommonScreen:
     SAVE_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Save"]')
     CANCEL_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Cancel"]')
     OK_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Ok"]')
-    PICKER_WHEEL = (MobileBy.CLASS_NAME, '//UIPickerWheel')  # need class name from simulator of ios 9 ??????????????
+    PICKER_WHEEL = (MobileBy.CLASS_NAME, '//UIPickerWheel')  # need class name from simulator of ios 9 ????????????????????
 
 
 class TopBar:
     """A class for top bar locators."""
     HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
-                                                   '/UIAWebView[1]/UIALink[3]/UIAStaticText[1]')
+                                               '/UIAWebView[1]/UIALink[3]/UIAStaticText[1]')
 
 
 class WelcomeScreen:

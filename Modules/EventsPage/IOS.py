@@ -21,3 +21,10 @@ class IOS(EventsPage):
         self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD_ios).clear()
         sleep(1)
 
+    def click_More_button(self):
+
+        logging.info("clicking in More button")
+        more_button = self.driver.find_element(*self.configuration.EventsScreen.MORE_BUTTON)
+        self.assertIsNotNone(more_button, "More button not found")
+        more_button.click()
+

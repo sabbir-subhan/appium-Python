@@ -1,13 +1,13 @@
 """ Methods for Android on Events Page """
 
 from Modules.EventsPage.EventsPage import EventsPage
-from Modules.AndroidDevice import AndroidDevice
 from appium.webdriver.common.touch_action import TouchAction
 import logging
 from time import sleep
+from Modules.load_class import LoadClass
 
 
-class Android(EventsPage, AndroidDevice):
+class Android(EventsPage, LoadClass):
 
     def filter_events_by_Search_field(self):
 
@@ -32,3 +32,26 @@ class Android(EventsPage, AndroidDevice):
         action.long_press(el=search_field, duration=1000).perform()
         self.driver.keyevent(67)
 
+        # after clearing search filed on Android device - "More" button is dropped to the bottom of the events list,
+        # so to avoid unnecessary scrolling Appium will tap on hamburger button to go to main menu and reopen Events
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.click_Return_button_on_keyboard()
+
+        common_page.hide_keyboard()
+
+        common_page.hamburger_button()
+        sleep(2)
+        main_page = LoadClass.load_page('MainPage')
+        main_page.setDriver(self.driver)
+        main_page.open_EVENTS()
+
+    def click_More_button(self):
+
+        sleep(1)
+        logging.info("click 'More' button")
+        more_button = self.driver.find_element(*self.configuration.CommonScreen.SPINNER_ON_THE_RIGHT)
+        self.assertIsNotNone(more_button, "More button was not found")
+        more_button.click()
+        sleep(0.5)

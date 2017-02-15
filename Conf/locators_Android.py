@@ -158,7 +158,7 @@ class EventsScreen:
     NEW_EVENT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "New event")]]')
 
     # previously created event
-    CREATED_EVENT_1 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Test Appium Android")]]')
+    CREATED_EVENT_1 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Test Appium")]]')
     CREATED_EVENT_2 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., " second event")]]')
     CREATED_EVENT_3 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., " to create sub event")]]')
 
@@ -186,6 +186,7 @@ class EventEditScreen:
     CHOOSE_SEVERITY_LVL2 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 2"]')
     CHOOSE_SEVERITY_LVL3 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 3"]')
     CHOOSE_SEVERITY_LVL4 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 4"]')
+    CHOOSE_SEVERITY_LVL5 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 5"]')
     FINISHED_FIELD = (MobileBy.ACCESSIBILITY_ID, 'Finished')
     TIME_DATE = (MobileBy.ACCESSIBILITY_ID, 'Increase year')
     SET_BUTTON = (MobileBy.ID, 'android:id/button1')
@@ -210,14 +211,14 @@ class EventEditScreen:
     FIELD_TO_RESTORE_2_VALUE = (MobileBy.ACCESSIBILITY_ID, 'test@noggin.com')
     CHOOSER_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "New events chooser")]]')
     PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER = (MobileBy.XPATH, '//android.view.View[@content-desc['
-                                                            'contains(., "Test Appium Android")]]')
+                                                            'contains(., "Test Appium")]]')
     SUBFORM_FIELD_ADD_ROW = (MobileBy.ACCESSIBILITY_ID, 'Add row')
     NEW_EVENTS_CHOOSER_IN_SUB_FORM = (MobileBy.XPATH, '//android.view.View[@content-desc['
                                                       'contains(., "New events chooser inside sub form")]]')
     DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View[@index="8"]'
                                                      '/android.view.View[@index="1"]')
     PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER = (MobileBy.XPATH, '//android.view.View[@content-desc['
-                                                                    'contains(., "Test Android to create")]]')
+                                                                    'contains(., "Test to create")]]')
     # headers
     FINISHED_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Finished')
     LEADAGENCY_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Lead agency')

@@ -16,3 +16,4 @@ class BasePage(unittest.TestCase):
         self.driver = driver
         self.configuration = import_module('Conf.locators_' + ENVIRONMENT_TEST)
 
+

@@ -1,13 +1,13 @@
 """ Methods for IOS to handle Welcome Page """
 
 from Modules.WelcomePage.WelcomePage import WelcomePage
-from Modules.iOSDevice import iOSDevice
+from Modules.load_class import LoadClass
 import logging
 from time import sleep
 from selenium.common.exceptions import *
 
 
-class IOS(WelcomePage, iOSDevice):
+class IOS(WelcomePage, LoadClass):
 
     def click_login_button(self):
 
@@ -16,7 +16,9 @@ class IOS(WelcomePage, iOSDevice):
         sleep(5)
         logging.info("logout if already logged in")
         try:
-            iOSDevice.scroll_down_one_view(self)
+            common_page = LoadClass.load_page('CommonPage')
+            common_page.setDriver(self.driver)
+            common_page.scroll_down_one_view()
             sleep(2)
             logout_button_ios = self.driver.find_element(*self.configuration.MainMenuScreen.LOGOUT_BUTTON)
             self.assertIsNotNone(logout_button_ios, "Logout button not found")

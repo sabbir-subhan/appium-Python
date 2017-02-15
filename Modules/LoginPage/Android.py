@@ -1,13 +1,12 @@
 """ Methods for Android on Login Page """
 
 from Modules.LoginPage.LoginPage import LoginPage
-from Modules.AndroidDevice import AndroidDevice
 from appium.webdriver.common.touch_action import TouchAction
 from credentials import Credentials
 import logging
 
 
-class Android(LoginPage, AndroidDevice):
+class Android(LoginPage):
 
     def type_username(self, username):
 

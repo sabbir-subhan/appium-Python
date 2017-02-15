@@ -30,6 +30,8 @@ class test_Login(SetupTestCase):
     def test_login(self):
 
         logging.info("starting Test Case 1: login into active account")
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
         welcome_page = LoadClass.load_page('WelcomePage')
         welcome_page.setDriver(self.driver)
         welcome_page.click_login_button()
@@ -38,7 +40,7 @@ class test_Login(SetupTestCase):
         login_page.type_username('QA')  # change here login credentials (login and pass are defined in credentials.py)
         login_page.type_password('QA')  # for example use: QA, general_user, admin, expired_1_day_ago, expire_today, expire_in_1_day OR suspended
         login_page.type_domain_address('QA')
-        login_page.hide_keyboard()
+        common_page.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
         main_page = LoadClass.load_page('MainPage')

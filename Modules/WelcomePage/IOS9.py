@@ -1,7 +1,6 @@
 """ Methods for IOS9 on Welcome Page """
 
 from Modules.WelcomePage.IOS import IOS
-from Modules.iOSDevice import iOSDevice
 import logging
 from time import sleep
 from selenium.common.exceptions import *
@@ -10,8 +9,6 @@ from selenium.common.exceptions import *
 class IOS9(IOS):
 
     def click_login_button(self):
-
-        # super().click_login_button()
 
         # iOS can not be reset by appium - "No reset" and "session-override" flags are not working,
         #  only "Full reset" will work, but app will be uninstalled
