@@ -2,6 +2,19 @@
 from appium.webdriver.common.mobileby import MobileBy
 
 
+class Android:
+    """A class for handling Android device for example alerts"""
+
+    # Android alerts
+    ANDROID_ALLOW = (MobileBy.ID, 'com.android.packageinstaller:id/permission_allow_button')
+    ANDROID_DENY = (MobileBy.ID, 'com.android.packageinstaller:id/permission_deny_button')
+
+    # Set date and time
+    ANDROID_SET_BUTTON = (MobileBy.ID, 'android:id/button1')
+    ANDROID_CANCEL_BUTTON = (MobileBy.ID, 'android:id/button2')
+    ANDROID_CLEAR_BUTTON = (MobileBy.ID, 'android:id/button3')
+
+
 class CommonScreen:
     """A class for handling Common buttons on different screen"""
     SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
@@ -378,15 +391,3 @@ class NewLogScreen:
     ENTRY_FIELD = (MobileBy.XPATH, '//android.view.View[1]/android.view.View[1]/android.view.View'
                                    '[@focusable="true" and @clickable="true" and @scrollable="false"]')
 
-
-class Android:
-    """A class for handling Android device for example alerts"""
-
-    # Android alerts
-    ANDROID_ALLOW = (MobileBy.ID, 'com.android.packageinstaller:id/permission_allow_button')
-    ANDROID_DENY = (MobileBy.ID, 'com.android.packageinstaller:id/permission_deny_button')
-
-    # Set date and time
-    ANDROID_SET_BUTTON = (MobileBy.ID, 'android:id/button1')
-    ANDROID_CANCEL_BUTTON = (MobileBy.ID, 'android:id/button2')
-    ANDROID_CLEAR_BUTTON = (MobileBy.ID, 'android:id/button3')

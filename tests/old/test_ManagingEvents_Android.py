@@ -17,6 +17,35 @@
 # with name: "New events chooser inside sub form"
 
 
+
+
+
+
+
+
+def scroll_down_to_save_button(self):
+    """Method to scroll down to bottom of the screen - to 'Save' button"""
+
+    logging.info("scroll down to Save button")
+    scroll = 0
+    while scroll == 0:
+        logging.info("check if save button is visible")
+        save_button = self.driver.find_element(*self.configuration.CommonScreen.SAVE_BUTTON)
+        if save_button.is_displayed():
+            break
+        else:
+            logging.info("scroll down to save button")
+            window_size = self.driver.get_window_size()  # this returns dictionary
+            start_x = window_size["width"] * 0.25
+            # end_x = window_size["width"]*0.75
+            start_y = window_size["height"] * 0.20
+            end_y = window_size["height"] * 0.80
+            sleep(2)
+            self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen
+            sleep(2)
+
+
+
 from desired_capabilities import DesiredCapabilities
 from page_android import *
 
@@ -84,7 +113,7 @@ class test_ManagingEvents_Android(unittest.TestCase):
         events_page.open_previously_created_event1()
         event_details_page = EventDetailsPage(self.driver)
         event_details_page.click_edit_button()
-        event_edit_page.scroll_down_one_view()
+        event_edit_page.scroll_down_one_view(
         event_edit_page.type_text_into_description_field()
         android_device.hide_keyboard()
         event_edit_page.scroll_down()

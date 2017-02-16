@@ -7,10 +7,6 @@ from credentials import ContactIdentifierPIN
 
 class WelcomePage(BasePage):
 
-    def click_login_button(self):
-
-        pass
-
     def click_settings_button(self):
 
         logging.info("click Settings button")

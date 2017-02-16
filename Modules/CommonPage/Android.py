@@ -8,9 +8,21 @@ from Modules.CommonPage.CommonPage import CommonPage
 
 class Android(CommonPage):
 
-    def hamburger_button(self):
+    def alert_popup_allow(self):
 
-        super().hamburger_button()
+        try:
+            button_allow_location = self.driver.find_element(*self.configuration.Android.ANDROID_ALLOW)
+            if button_allow_location.is_displayed():
+                logging.info("Accept for example using location - device will store that info for later use")
+                button_allow_location.click()
+        except NoSuchElementException:
+            pass
+        try:
+            button_allow_location = self.driver.find_element(*self.configuration.Android.ANDROID_ALLOW)
+            if button_allow_location.is_displayed():
+                button_allow_location.click()
+        except NoSuchElementException:
+            pass
 
     def hide_keyboard(self):
 
@@ -29,10 +41,6 @@ class Android(CommonPage):
             sleep(3)
         except NoSuchElementException:
             logging.info("keyboard not found")
-
-    def done_button(self):
-
-        super().done_button()
 
     def scroll_down_one_view(self):
         """Method to scroll down only one screen"""
@@ -89,38 +97,6 @@ class Android(CommonPage):
         self.assertIsNotNone(clear_button, "Clear button was not found")
         clear_button.click()
 
-    # def scroll_down(self):
-    #     """Method to scroll down to bottom of the screen """
-    #
-    #     window_size = self.driver.get_window_size()  # this returns dictionary
-    #     start_x = window_size["width"]*0.25
-    #     # end_x = window_size["width"]*0.75
-    #     start_y = window_size["height"]*0.20
-    #     end_y = window_size["height"]*0.80
-    #     logging.info("scroll down")
-    #     sleep(2)
-    #     scrolls = 13
-    #     while scrolls > 0:
-    #         self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen
-    #         scrolls -= 1
-    #     sleep(2)
-
-    # def scroll_up(self):
-    #     """Method to scroll up to top of the screen"""
-    #
-    #     window_size = self.driver.get_window_size()  # this will give You a dictionary
-    #     start_x = window_size["width"]*0.25
-    #     # end_x = window_size["width"]*0.75
-    #     start_y = window_size["height"]*0.25
-    #     end_y = window_size["height"]*0.80
-    #     logging.info("scroll up")
-    #     sleep(2)
-    #     scrolls = 13
-    #     while scrolls > 0:
-    #         self.driver.swipe(start_x, start_y, start_x, end_y, 3000)  # each swipe is scrolling one screen
-    #         scrolls -= 1
-    #     sleep(1)
-
     def scroll_up_one_view(self):
         """Method to scroll down only one screen"""
 
@@ -133,22 +109,3 @@ class Android(CommonPage):
         self.driver.swipe(start_x, start_y, start_x, end_y, 3000)  # each swipe is scrolling one screen
         sleep(1)
 
-    def take_screenshot(self, file_name):
-
-        super().take_screenshot(file_name)
-
-    def reset(self):
-
-        super().reset()
-
-    # def click_save_button(self):
-    #
-    #     super().click_save_button()
-    #
-    # def click_cancel_button(self):
-    #
-    #     super().click_cancel_button()
-
-    def click_ok_button(self):
-
-        super().click_ok_button()

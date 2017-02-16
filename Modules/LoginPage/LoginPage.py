@@ -8,18 +8,6 @@ from Modules.BasePage.BasePage import BasePage
 
 class LoginPage(BasePage):
 
-    def type_username(self, username):
-
-        pass
-
-    def type_password(self, password):
-
-        pass
-
-    def type_domain_address(self, domain):
-
-        pass
-
     def click_submit_button(self):
 
         logging.info("click in Submit button")

@@ -8,9 +8,9 @@ from Modules.CommonPage.CommonPage import CommonPage
 
 class IOS(CommonPage):
 
-    def hamburger_button(self):
+    def alert_popup_allow(self):
 
-        super().hamburger_button()
+        pass  # something for iOS10 only - iOS9 will auto accept alerts
 
     def hide_keyboard(self):
 
@@ -39,55 +39,4 @@ class IOS(CommonPage):
         logging.info("scroll down one view")
         self.driver.execute_script("mobile: scroll", {"direction": "down"})
 
-    def click_back_button(self):
-
-        super().click_back_button()
-
-    def alert_android_allow(self):
-
-        super().alert_android_allow()
-
-    def click_set_button(self):
-
-        super().click_set_button()
-
-    def click_device_cancel_button(self):
-
-        super().click_device_cancel_button()
-
-    def click_clear_button(self):
-
-        super().click_clear_button()
-
-    # def scroll_down(self):
-    #
-    #     super().scroll_down()
-
-    # def scroll_up(self):
-    #
-    #     super().scroll_up()
-
-    def scroll_up_one_view(self):
-
-        super().scroll_up_one_view()
-
-    def take_screenshot(self, file_name):
-
-        super().take_screenshot(file_name)
-
-    def reset(self):
-
-        super().reset()
-
-    # def click_save_button(self):
-    #
-    #     super().click_save_button()
-    #
-    # def click_cancel_button(self):
-    #
-    #     super().click_cancel_button()
-
-    def click_ok_button(self):
-
-        super().click_ok_button()
 

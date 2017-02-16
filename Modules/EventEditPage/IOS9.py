@@ -1,11 +1,10 @@
-""" Methods for IOS9 on Event Edit Page """
+""" Methods for IOS 9 to handle Event Edit Page"""
 
 from Modules.EventEditPage.IOS import IOS
 
 
 class IOS9(IOS):
 
-    pass
+    def scroll_down_to_save_button(self):
 
-
-
+        pass
