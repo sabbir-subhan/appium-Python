@@ -8,6 +8,10 @@ from selenium.common.exceptions import *
 
 class IOS9(IOS):
 
+    def alert_popup_allow(self):
+
+        pass  # iOS9 will auto accept alerts
+
     def hide_keyboard(self):
 
         logging.info("hide keyboard")

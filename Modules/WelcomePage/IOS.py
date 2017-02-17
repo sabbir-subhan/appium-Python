@@ -5,6 +5,8 @@ from Modules.load_class import LoadClass
 import logging
 from time import sleep
 from selenium.common.exceptions import *
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class IOS(WelcomePage, LoadClass):
@@ -34,6 +36,10 @@ class IOS(WelcomePage, LoadClass):
         logging.info("relaunching app")
         self.driver.reset()  # reset app to avoid problems with locating elements
         logging.info("click in LOGIN button")
-        login_button = self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON)
-        self.assertIsNotNone(login_button, "Login button not found")
-        login_button.click()
+        try:
+            WebDriverWait(self.driver, 20).until(
+                expected_conditions.presence_of_element_located(self.configuration.WelcomeScreen.LOGIN_BUTTON),
+                "Login button not found")
+            self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON).click()
+        except NoSuchElementException:
+            self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON_by_index).click()

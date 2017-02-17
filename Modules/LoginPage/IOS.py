@@ -3,12 +3,14 @@
 from credentials import Credentials
 from Modules.LoginPage.LoginPage import LoginPage
 import logging
+from time import sleep
 
 
 class IOS(LoginPage):
 
     def type_username(self, username):
 
+        sleep(2)
         self.driver.find_element(*self.configuration.LoginScreen.TEXTFIELD_USERNAME).click()
         self.driver.find_element(*self.configuration.LoginScreen.TEXTFIELD_USERNAME).clear()
         logging.info("type username")

@@ -19,9 +19,16 @@ class CommonPage(BasePage):
                 self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
                 hamburger_button.click()
         except NoSuchElementException:
-            positions_for_hamburger_button = [(730, 20)]
+            window_size = self.driver.get_window_size()  # this returns dictionary
+            logging.info(window_size)
+            position_x = window_size["width"] * 0.95
+            position_y = window_size["height"] * 0.95
+            logging.info(position_x)
+            logging.info(position_y)
+            positions = [(position_x, position_y)]
+            # positions_for_hamburger_button = [(730, 20)]  # this was for iPad
             sleep(1)
-            self.driver.tap(positions_for_hamburger_button)
+            self.driver.tap(positions)
 
     def click_device_cancel_button(self):
 

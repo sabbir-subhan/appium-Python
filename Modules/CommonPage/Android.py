@@ -13,7 +13,7 @@ class Android(CommonPage):
         try:
             button_allow_location = self.driver.find_element(*self.configuration.Android.ANDROID_ALLOW)
             if button_allow_location.is_displayed():
-                logging.info("Accept for example using location - device will store that info for later use")
+                # logging.info("Accept for example using location - device will store that info for later use")
                 button_allow_location.click()
         except NoSuchElementException:
             pass
@@ -59,22 +59,6 @@ class Android(CommonPage):
         logging.info("click 'Back' button")
         self.driver.press_keycode(4)
         sleep(5)
-
-    def alert_android_allow(self):
-
-        try:
-            button_allow_location = self.driver.find_element(*self.configuration.Android.ANDROID_ALLOW)
-            if button_allow_location.is_displayed():
-                logging.info("Accept for example using location - device will store that info for later use")
-                button_allow_location.click()
-        except NoSuchElementException:
-            pass
-        try:
-            button_allow_location = self.driver.find_element(*self.configuration.Android.ANDROID_ALLOW)
-            if button_allow_location.is_displayed():
-                button_allow_location.click()
-        except NoSuchElementException:
-            pass
 
     def click_set_button(self):
 

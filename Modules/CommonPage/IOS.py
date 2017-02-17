@@ -10,7 +10,19 @@ class IOS(CommonPage):
 
     def alert_popup_allow(self):
 
-        pass  # something for iOS10 only - iOS9 will auto accept alerts
+        try:
+            button_allow_location = self.driver.find_element(*self.configuration.iOS.IOS_ALLOW)
+            if button_allow_location.is_displayed():
+                logging.info("Accept for example using location - device will store that info for later use")
+                button_allow_location.click()
+        except NoSuchElementException:
+            pass
+        try:
+            button_allow_location = self.driver.find_element(*self.configuration.iOS.IOS_OK)
+            if button_allow_location.is_displayed():
+                button_allow_location.click()
+        except NoSuchElementException:
+            pass
 
     def hide_keyboard(self):
 

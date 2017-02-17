@@ -1,6 +1,18 @@
 from appium.webdriver.common.mobileby import MobileBy
 
 
+class iOS:
+    """A class for handling iOS device for example keyboard"""
+    BUTTON_DONE_TO_HIDE_KEYBOARD = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Done"]')
+    RETURN_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Return"]')
+    BUTTON_ALLOW_LOCATION = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[7]/'
+                                             'XCUIElementTypeAlert[1]/XCUIElementTypeCollectionView[1]'
+                                             '/XCUIElementTypeCollectionCell[2]/XCUIElementTypeButton['
+                                             '@name="Allow"]')
+    IOS_OK = (MobileBy.ACCESSIBILITY_ID, 'OK')
+    IOS_ALLOW = (MobileBy.XPATH, "//XCUIElementTypeOther[3]/XCUIElementTypeButton[1]")
+
+
 class CommonScreen:
     """A class for handling Common buttons on different screen"""
     SAVE_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Save"]')
@@ -12,8 +24,12 @@ class CommonScreen:
 
 class TopBar:
     """A class for top bar locators."""
-    HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeScrollView[2]'
-                                               '/XCUIElementTypeLink[3]/XCUIElementTypeStaticText[1]')
+    HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]'
+                                               '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
+                                               '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
+                                               '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
+                                               '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
+                                               '/XCUIElementTypeLink[1]')
 
 
 class WelcomeScreen:
@@ -42,7 +58,7 @@ class LoginScreen:
     """A class for login screen locators - screen after clicking into LOGIN."""
     TEXTFIELD_USERNAME = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
     TEXTFIELD_PASSWORD = (MobileBy.XPATH, '//XCUIElementTypeSecureTextField[1]')
-    TEXTFIELD_DOMAIN = (MobileBy.XPATH, '//XCUIElementTypeTextField[2]')
+    TEXTFIELD_DOMAIN = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
     SUBMIT_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Submit"]')
 
     # Notification alert: "OCA now supports sending 'App Messages' to your device as notifications."
@@ -336,14 +352,4 @@ class NewLogScreen:
     LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//XCUIElementTypeElement[1]')
     ENTRY_FIELD = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
 
-
-class iOS:
-    """A class for handling iOS device for example keyboard"""
-    BUTTON_DONE_TO_HIDE_KEYBOARD = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Done"]')
-    RETURN_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Return"]')
-    BUTTON_ALLOW_LOCATION = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[7]/'
-                                             'XCUIElementTypeAlert[1]/XCUIElementTypeCollectionView[1]'
-                                             '/XCUIElementTypeCollectionCell[2]/XCUIElementTypeButton['
-                                             '@name="Allow"]')
-    BUTTON_ALLOW_ACCESS_TO_CAMERA = (MobileBy.ACCESSIBILITY_ID, 'OK')
 

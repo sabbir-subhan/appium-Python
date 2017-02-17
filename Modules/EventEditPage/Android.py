@@ -113,9 +113,11 @@ class Android(EventEditPage, LoadClass):
 
     def type_text_into_description_field(self):
 
-        sleep(2)
+        sleep(4)
         logging.info("type some text into description field")
-        self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD).send_keys("test Android")
+        description_field = self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD)
+        sleep(1)
+        description_field.send_keys("test Android")
         sleep(2)
 
     def click_on_option_list(self):

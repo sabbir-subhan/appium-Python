@@ -27,8 +27,8 @@
 - rename xcode - applications - xcode --rename to: xcode8
 - download xcode 7.3 and install - open appium and add path to xcode 7.3
 
-- to switch between xcode versions, for example: sudo xcode-select -switch /Applications/Xcode8.app
-(for testing iOS10 You need Xcode in version 8 - so rename old version of Xcode7 and leave 8 as a default version) 
+- to switch between xcode versions, for example: sudo xcode-select -switch /Applications/Xcode.app
+(for testing iOS10 You need Xcode in version 8 - so rename old version of Xcode7 and leave 8 as a default version = Xcode.app) 
 
 
 ### **TO RUN APPIUM AND iOS 10:** ###
@@ -202,3 +202,4 @@ APP VERSIONS:
 - if after starting test, Appium throws errors like: "lockdown_receive_message error!" -- also try to use sudo chmod -R 777 /var/db/lockdown/
 - Appium can't switch between apps so only tapping on specific coordinates will work in another app, for example when OCA will open Safari
 - Appium 1.6.3 - "Could not proxy command to remote server. Original error: Error: socket hang up" - lunch Xcode and rebuild WebDriverAgentRunner
+- Appium > 1.6 - can't handle double tap method

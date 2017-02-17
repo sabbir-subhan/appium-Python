@@ -27,8 +27,8 @@ class WelcomeScreen:
     ABOUT_BUTTON = (MobileBy.XPATH, '//UIALink[@name[contains(., "ABOUT")]]')
     LOGIN_BUTTON = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "LOGIN")]]')
     LOGIN_BUTTON_by_index = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]'
-                                                 '/UIAScrollView[2]/UIAWebView[1]/UIALink[9]'
-                                                 '[@name[contains(., "LOGIN")]]')
+                                             '/UIAScrollView[2]/UIAWebView[1]/UIALink[9]'
+                                             '[@name[contains(., "LOGIN")]]')
     SETTINGS_CONTACT_IDENTIFIER_FIELD = (MobileBy.CLASS_NAME, 'UIATextField')
     SETTINGS_ALERT_APP_HAS_BEEN_ACTIVATED = (MobileBy.XPATH, '//UIAStaticText[@name="App has been activated."]')
     SETTINGS_OK_BUTTON = (MobileBy.XPATH, '//UIALink[@name="Ok"]')
@@ -38,7 +38,7 @@ class LoginScreen:
     """A class for login screen locators - screen after clicking into LOGIN."""
     TEXTFIELD_USERNAME = (MobileBy.XPATH, '//UIAWebView[1]/UIATextField[1]')
     TEXTFIELD_PASSWORD = (MobileBy.XPATH, '//UIAWebView[1]/UIASecureTextField[1]')
-    TEXTFIELD_DOMAIN = (MobileBy.XPATH, '//UIAWebView[1]/UIATextField[2]')
+    TEXTFIELD_DOMAIN = (MobileBy.XPATH, '//UIAWebView[1]/UIATextField[1]')
     SUBMIT_BUTTON = (MobileBy.XPATH, '//UIAWebView[1]/UIAButton[@name="Submit"]')
     # SUBMIT_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Submit')  # not working
 
