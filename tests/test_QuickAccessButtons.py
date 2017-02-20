@@ -20,13 +20,13 @@
 # Click on Create event ,Asset,Log quick access links
 
 
-import unittest
-import logging
 from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
+import logging
+import unittest
 
 
-class test_Login(SetupTestCase):
+class test_QuickAccessButtons(SetupTestCase):
     """ Setup test """
 
     def setUp(self):
@@ -35,41 +35,48 @@ class test_Login(SetupTestCase):
 
     def tearDown(self):
 
-        SetupTestCase.tearDown(self)
+        logging.info("Quitting")
+        self.driver.quit()
 
     def test_Quick_Access_buttons(self):
-        main_page = self.load_class('MainPage', ENVIRONMENT_TEST)
-        #main_page = MainPage.IOS9(self.driver)
-        main_page.dismiss_notifications()
-        main_page.logout_if_already_logged_in()
+
         logging.info("starting Test Case 9: Quick Access buttons on OCA app")
-        welcome_page = WelcomePage(self.driver)
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        welcome_page = LoadClass.load_page('WelcomePage')
+        welcome_page.setDriver(self.driver)
         welcome_page.click_login_button()
-        login_page = LoginPage(self.driver)
+        login_page = LoadClass.load_page('LoginPage')
+        login_page.setDriver(self.driver)
+        login_page.type_domain_address('QA')
+        common_page.hide_keyboard()
+        login_page.click_submit_button()
         login_page.type_username('QA')
         login_page.type_password('QA')
-        login_page.type_domain_address('QA')
-        ios_device = iOSdevice(self.driver)
-        ios_device.hide_keyboard()
+        common_page.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
+        main_page = LoadClass.load_page('MainPage')
+        main_page.setDriver(self.driver)
         main_page.alert_expiring_password()
-        main_page.dismiss_ios_notifications()
+        main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
         main_page.click_ACTIVATE_WORKFLOW()
         main_page.click_ACTIVATE_BUTTON_on_alert()
         main_page.check_if_alert_WORKFLOW_ACTIVATED_is_present()
         main_page.check_presence_of_events_button()
         main_page.open_CREATE_CONTACT()
-        new_contact_page = NewContactPage(self.driver)
-        new_contact_page.type_first_name("Name for new contact test - iOS")
-        ios_device.hide_keyboard()
+        new_contact_page = LoadClass.load_page('NewContactPage')
+        new_contact_page.setDriver(self.driver)
+        new_contact_page.type_first_name("Name for new contact test")
+        common_page.hide_keyboard()
         new_contact_page.click_save_button()
         main_page.check_presence_of_events_button()
         main_page.open_CREATE_TASK()
-        new_task_page = NewTaskPage(self.driver)
-        new_task_page.type_title("Title for new task test - iOS")
-        ios_device.hide_keyboard()
+        new_task_page = LoadClass.load_page('NewTaskPage')
+        new_task_page.setDriver(self.driver)
+        new_task_page.type_title("Title for new task test")
+        common_page.hide_keyboard()
         new_task_page.click_on_assigned()
         new_task_page.add_contacts()
         new_task_page.choose_users()
@@ -79,48 +86,42 @@ class test_Login(SetupTestCase):
         new_task_page.click_save_button()
         main_page.check_presence_of_events_button()
         main_page.open_CREATE_REPORT()
-        new_report_page = NewReportPage(self.driver)
-        new_report_page.type_title("Title for new report test - iOS")
-        ios_device.hide_keyboard()
+        new_report_page = LoadClass.load_page('NewReportPage')
+        new_report_page.setDriver(self.driver)
+        new_report_page.type_title("Title for new report test")
+        common_page.hide_keyboard()
         new_report_page.click_on_lodging_agency_picker()
         new_report_page.choose_lodging_agency()
         new_report_page.click_publish_button()
         main_page.check_presence_of_events_button()
         main_page.open_WEBSITE_LINK()
-        safari_page = SafariBrowserPage(self.driver)
-        safari_page.click_back_to_oca()  # Appium can't switch between apps so this click is based on coordinates
+        common_page.click_back_button()
         main_page.check_presence_of_events_button()
         main_page.open_INCIDENT()
-        incident_page = EventEditPage(self.driver)
-        incident_page.fill_Name_input_field("Name for new incident test - iOS")
-        ios_device.hide_keyboard()
-        incident_page.click_save_button()
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.fill_Name_input_field("Name for new incident test")
+        common_page.hide_keyboard()
+        event_edit_page.click_save_button()
         main_page.check_presence_of_events_button()
         main_page.open_CREATE_ASSETS()
-        new_asset_page = NewAssetPage(self.driver)
-        new_asset_page.fill_Name_input_field("Name for new asset test - iOS")
-        ios_device.hide_keyboard()
+        new_asset_page = LoadClass.load_page('NewAssetPage')
+        new_asset_page.setDriver(self.driver)
+        new_asset_page.fill_Name_input_field("Name for new asset test")
+        common_page.hide_keyboard()
         new_asset_page.click_save_button()
         main_page.check_presence_of_events_button()
         main_page.open_CREATE_LOG()
-        new_log_page = NewLogPage(self.driver)
+        new_log_page = LoadClass.load_page('NewLogPage')
+        new_log_page.setDriver(self.driver)
         new_log_page.click_on_lodging_agency_picker()
         new_log_page.choose_lodging_agency()
-        new_log_page.type_text_into_entry_field("Entry for new log test - iOS")
-        ios_device.hide_keyboard()
+        new_log_page.type_text_into_entry_field("Entry for new log test")
+        common_page.hide_keyboard()
         new_log_page.click_save_button()
         main_page.check_presence_of_events_button()
 
-    def load_class(self, package, device, middleClass):
-        package = "MainPage";
-        device = "IOS9";
-        'modules.MainPage.IOS9'
-        'modules.MainPage.MainPage'
-        mod = __import__(package)
-        #sprawdzic warunek czy klasa device istnieje, jezeli nie to sprobowac zaladowac klase package
-        mod = getattr(mod, device)
-        return mod
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(test_QuickAccessButtons_iOS)
+    suite = unittest.TestLoader().loadTestsFromTestCase(test_QuickAccessButtons)
     unittest.TextTestRunner(verbosity=2).run(suite)

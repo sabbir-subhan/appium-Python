@@ -24,7 +24,7 @@ class CommonScreen:
 
 class TopBar:
     """A class for top bar locators."""
-    HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]'
+    HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]'
                                                '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
                                                '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
                                                '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'

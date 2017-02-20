@@ -8,6 +8,17 @@ from Modules.CommonPage.CommonPage import CommonPage
 
 class Android(CommonPage):
 
+    # OCA top bar
+    def hamburger_button(self):
+
+        logging.info("click hamburger button to go back to main menu")
+        hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU)
+        if hamburger_button.is_displayed():
+            self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
+            hamburger_button.click()
+        else:
+            self.fail("Hamburger button not found")
+
     def alert_popup_allow(self):
 
         try:

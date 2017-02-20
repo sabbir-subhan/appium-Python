@@ -76,8 +76,8 @@ class EventsPage(BasePage):
         self.assertIsNotNone(clear_primary_event_button, "Clear primary event button not found")
         clear_primary_event_button.click()
         logging.info("checking notification - 'Primary event cleared'")
-        notification = self.driver.find_element(*self.configuration.EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED)
-        self.assertIsNotNone(notification)
+        # notification = self.driver.find_element(*self.configuration.EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED)
+        # self.assertIsNotNone(notification)
 
     def open_previously_created_event1(self):
 

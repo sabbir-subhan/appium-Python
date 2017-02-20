@@ -6,5 +6,11 @@ import logging
 
 class IOS(VideoPage):
 
-    pass
+    def click_record_new_button(self):
+
+        logging.info("clicking in 'Record new' button")
+        record_new_button = self.driver.find_element(*self.configuration.VideoScreen.RECORD_NEW_BUTTON)
+        record_new_button.click()
+
+
 

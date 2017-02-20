@@ -8,6 +8,51 @@ from Modules.CommonPage.CommonPage import CommonPage
 
 class IOS(CommonPage):
 
+    def click_back_button(self):
+        """ Method to handle back button in Safari Browser """
+        # Appium can't access another app directly, only tapping on specific coordinates will work
+
+        logging.info("wait for page to load")
+        sleep(10)
+        logging.info("click 'Back to OCA' button")
+        # positions = [(15, 7)]
+        # self.driver.tap(positions)
+
+        window_size = self.driver.get_window_size()  # this returns dictionary
+        logging.info(window_size)
+        position_x = window_size["width"] * 0.04
+        position_y = window_size["height"] * 0.03
+        logging.info(position_x)
+        logging.info(position_y)
+        sleep(2)
+        positions = [(position_x, position_y)]
+        self.driver.tap(positions)
+
+    # OCA top bar
+    def hamburger_button(self):
+
+        logging.info("click hamburger button to go back to main menu - IOS ")
+        hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU)
+        # self.assertIsNotNone(hamburger_button, "Hamburger button is not present")  #button is invisible by appium
+        # but version 1.6.3 can click it
+        hamburger_button.click()
+        # try:
+        #     hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU)
+        #     if hamburger_button.is_displayed():
+        #         self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
+        #         hamburger_button.click()
+        # except ElementNotVisibleException:
+        #     logging.info("except")
+        #     window_size = self.driver.get_window_size()  # this returns dictionary
+        #     logging.info(window_size)
+        #     position_x = window_size["width"] * 0.98
+        #     position_y = window_size["height"] * 0.04
+        #     logging.info(position_x)
+        #     logging.info(position_y)
+        #     positions = [(position_x, position_y)]
+        #     self.driver.tap(positions)
+        #     sleep(2)
+
     def alert_popup_allow(self):
 
         try:
@@ -50,5 +95,8 @@ class IOS(CommonPage):
 
         logging.info("scroll down one view")
         self.driver.execute_script("mobile: scroll", {"direction": "down"})
+        sleep(1)
+        self.driver.execute_script("mobile: scroll", {"direction": "down"})  # sometimes one is not enough
+
 
 

@@ -12,6 +12,7 @@ class LoginPage(BasePage):
 
         logging.info("click in Submit button")
         self.driver.find_element(*self.configuration.LoginScreen.SUBMIT_BUTTON).click()
+        sleep(2)
 
     def accept_terms(self):
 

@@ -63,6 +63,20 @@ class Android(EventEditPage, LoadClass):
             scrolls -= 1
         sleep(1)
 
+    def scroll_down_to_description_field(self):
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.scroll_down_one_view()
+
+    def scroll_down_to_option_list(self):
+
+        Android.scroll_down_to_description_field(self)
+        
+    def scroll_down_to_event_chooser_field(self):
+
+        Android.scroll_down_to_description_field(self)
+
     def fill_Name_input_field(self, text):
 
         logging.info("fill Name input field")
@@ -104,12 +118,6 @@ class Android(EventEditPage, LoadClass):
         choose_severity_lvl5 = self.driver.find_element(*self.configuration.EventEditScreen.CHOOSE_SEVERITY_LVL5)
         choose_severity_lvl5.click()
         sleep(1)
-
-    def scroll_down_to_description_field(self):
-
-        common_page = LoadClass.load_page('CommonPage')
-        common_page.setDriver(self.driver)
-        common_page.scroll_down_one_view()
 
     def type_text_into_description_field(self):
 

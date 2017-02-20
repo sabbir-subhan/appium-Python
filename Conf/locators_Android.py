@@ -30,10 +30,11 @@ class CommonScreen:
 
 class TopBar:
     """A class for top bar locators."""
-    HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, "//android.webkit.WebView[@index='0']"
-                                               "/android.view.View[@index='0']"
-                                               "/android.view.View[@index='2']"
-                                               "/android.view.View[@index='0']")
+    # HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, "//android.webkit.WebView[@index='0']"
+    #                                            "/android.view.View[@index='0']"
+    #                                            "/android.view.View[@index='2']"
+    #                                            "/android.view.View[@index='0']")
+    HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, '//android.webkit.WebView[1]/android.view.View[1]/android.view.View[2]')
 
 
 class WelcomeScreen:
