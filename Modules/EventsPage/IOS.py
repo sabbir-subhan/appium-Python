@@ -28,3 +28,14 @@ class IOS(EventsPage):
         self.assertIsNotNone(more_button, "More button not found")
         more_button.click()
 
+    def clear_primary_event(self):
+
+        logging.info("clicking in 'Clear primary event' button")
+        clear_primary_event_button = self.driver.find_element(*self.configuration.EventsScreen.
+                                                              CLEAR_PRIMARY_EVENT_BUTTON)
+        self.assertIsNotNone(clear_primary_event_button, "Clear primary event button not found")
+        clear_primary_event_button.click()
+        logging.info("checking notification - 'Primary event cleared'")
+        notification = self.driver.find_element(*self.configuration.EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED)
+        self.assertIsNotNone(notification)
+

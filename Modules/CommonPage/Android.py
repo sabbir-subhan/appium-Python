@@ -18,6 +18,7 @@ class Android(CommonPage):
             hamburger_button.click()
         else:
             self.fail("Hamburger button not found")
+        sleep(4)
 
     def alert_popup_allow(self):
 

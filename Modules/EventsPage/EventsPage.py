@@ -68,17 +68,6 @@ class EventsPage(BasePage):
         set_as_primary_button.click()
         sleep(2)
 
-    def clear_primary_event(self):
-
-        logging.info("clicking in 'Clear primary event' button")
-        clear_primary_event_button = self.driver.find_element(*self.configuration.EventsScreen.
-                                                              CLEAR_PRIMARY_EVENT_BUTTON)
-        self.assertIsNotNone(clear_primary_event_button, "Clear primary event button not found")
-        clear_primary_event_button.click()
-        logging.info("checking notification - 'Primary event cleared'")
-        # notification = self.driver.find_element(*self.configuration.EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED)
-        # self.assertIsNotNone(notification)
-
     def open_previously_created_event1(self):
 
         logging.info("open created event")
@@ -122,3 +111,4 @@ class EventsPage(BasePage):
         self.assertIsNotNone(event_for_subform, "event_for_subform not found")
         event_for_subform.click()
         sleep(5)
+

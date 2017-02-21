@@ -33,8 +33,8 @@ class IOS(WelcomePage, LoadClass):
         except NoSuchElementException:
             logging.info("Your are already logged out")
 
-        logging.info("relaunching app")
-        self.driver.reset()  # reset app to avoid problems with locating elements
+        logging.info("relaunching app to avoid problems with locating elements")
+        self.driver.reset()
         logging.info("click in LOGIN button")
         try:
             WebDriverWait(self.driver, 20).until(

@@ -36,7 +36,7 @@ class test_ManagingEvents(SetupTestCase):
         self.driver.quit()
 
     def test_1_managing_events(self):
-        """ :type cos: Modules.WelcomePage.WelcomePage.WelcomePage """
+        """#type: Modules.WelcomePage.WelcomePage.WelcomePage"""
 
         # login
         logging.info("starting Test Case 3: managing events")
@@ -102,22 +102,12 @@ class test_ManagingEvents(SetupTestCase):
         event_details_page.click_Delete_button()
         event_details_page.alert_confirm_delete()
 
-    # def test_2_managing_events(self):
-
         logging.info("TC info: create second event and add map")
-        # main_page = LoadClass.load_page('MainPage')
-        # main_page.setDriver(self.driver)
-        # events_page = LoadClass.load_page('EventsPage')
-        # events_page.setDriver(self.driver)
-        common_page.hamburger_button()  # NOT WORKING - element not found on IOS 10
+        common_page.hamburger_button()
         main_page.open_EVENTS()
         events_page.click_More_button()
         events_page.click_New_event_button()
-        # events_types_page = LoadClass.load_page('EventsTypesPage')
-        # events_types_page.setDriver(self.driver)
         events_types_page.choose_Incident_type_of_event()
-        # event_edit_page = LoadClass.load_page('EventEditPage')
-        # event_edit_page.setDriver(self.driver)
         event_edit_page.fill_Name_input_field("Test Appium - second event")
         common_page.hide_keyboard()
         event_edit_page.click_severity_lvl_picker()
@@ -126,8 +116,6 @@ class test_ManagingEvents(SetupTestCase):
         event_edit_page.click_save_button()
         events_page.check_if_EVENTS_were_opened()
         events_page.open_previously_created_event1()
-        # event_details_page = LoadClass.load_page('EventDetailsPage')
-        # event_details_page.setDriver(self.driver)
         event_details_page.click_edit_button()
         event_edit_page.scroll_down_to_save_button()
         event_edit_page.click_create_mapping_data()
@@ -158,25 +146,14 @@ class test_ManagingEvents(SetupTestCase):
         event_edit_page.scroll_down_to_save_button()
         event_edit_page.click_save_button()
 
-    # def test_3_managing_events(self):
-
         logging.info("TC info: crete sub event, set event as primary and after that clear it. Next create, "
                      "but do not save; events with on load/save sequence and with hidden fields"
                      " and another with chooser fields")
         common_page.hamburger_button()
-        # main_page = LoadClass.load_page('MainPage')
-        # main_page.setDriver(self.driver)
         main_page.open_EVENTS()
-        # events_page = LoadClass.load_page('EventsPage')
-        # events_page.setDriver(self.driver)
-        events_page.check_if_EVENTS_were_opened()
         events_page.click_More_button()
         events_page.click_New_event_button()
-        # events_types_page = LoadClass.load_page('EventsTypesPage')
-        # events_types_page.setDriver(self.driver)
         events_types_page.choose_Incident_type_of_event()
-        # event_edit_page = LoadClass.load_page('EventEditPage')
-        # event_edit_page.setDriver(self.driver)
         event_edit_page.fill_Name_input_field("Test to create sub event")
         common_page.hide_keyboard()
         event_edit_page.click_severity_lvl_picker()
@@ -196,7 +173,7 @@ class test_ManagingEvents(SetupTestCase):
         event_edit_page.click_save_button()
         events_page.click_More_button()
         events_page.set_as_primary_event()
-        common_page.hamburger_button()
+        #common_page.hamburger_button()
         main_page.open_EVENTS()
         events_page.click_More_button()
         events_page.clear_primary_event()

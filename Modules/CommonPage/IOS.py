@@ -31,7 +31,11 @@ class IOS(CommonPage):
     # OCA top bar
     def hamburger_button(self):
 
+        logging.info("close and reopen app to avoid problems with locating elements")
+        self.driver.reset()
+
         logging.info("click hamburger button to go back to main menu - IOS ")
+        sleep(1)
         hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU)
         # self.assertIsNotNone(hamburger_button, "Hamburger button is not present")  #button is invisible by appium
         # but version 1.6.3 can click it
@@ -51,7 +55,7 @@ class IOS(CommonPage):
         #     logging.info(position_y)
         #     positions = [(position_x, position_y)]
         #     self.driver.tap(positions)
-        #     sleep(2)
+        sleep(4)
 
     def alert_popup_allow(self):
 

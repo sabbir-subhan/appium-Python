@@ -1294,13 +1294,6 @@ class EventEditPage(Common, iOSdevice):
                 logging.info("scroll down")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
 
-    def click_on_event_chooser_field(self):
-
-        logging.info("click_on_event_chooser_field")
-        chooser_field_for_event = self.driver.find_element(*EventEditScreen.CHOOSER_FIELD_ios)
-        self.assertIsNotNone(chooser_field_for_event, "chooser_field_for_event not found")
-        chooser_field_for_event.click()
-        sleep(1)
 
     def click_on_choose_field_inside_subform(self):
 

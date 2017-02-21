@@ -20,7 +20,7 @@ class IOS9(IOS):
         logging.info(position_y)
         positions = [(position_x, position_y)]
         self.driver.tap(positions)
-        sleep(2)
+        sleep(4)
 
     def alert_popup_allow(self):
 

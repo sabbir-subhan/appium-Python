@@ -204,3 +204,4 @@ APP VERSIONS:
 - Appium 1.6.3 - "Could not proxy command to remote server. Original error: Error: socket hang up" - lunch Xcode and rebuild WebDriverAgentRunner
 - Appium > 1.6 - can't handle double tap method
 - Error about Xcode version, to switch xcode version use: sudo xcode-select -switch /Applications/Xcode.app
+- Appium 1.6 -- "socket hang up" - rebuild WebDriver Runner

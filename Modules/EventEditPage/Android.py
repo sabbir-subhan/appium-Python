@@ -77,6 +77,10 @@ class Android(EventEditPage, LoadClass):
 
         Android.scroll_down_to_description_field(self)
 
+    def scroll_down_to_add_row_button(self):
+
+        Android.scroll_down_to_description_field(self)
+
     def fill_Name_input_field(self, text):
 
         logging.info("fill Name input field")
@@ -202,6 +206,7 @@ class Android(EventEditPage, LoadClass):
             action.tap(element=option_3, count=1).perform()
         except:
             option_3.click()
+
 
 
 

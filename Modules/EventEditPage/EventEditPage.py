@@ -111,6 +111,15 @@ class EventEditPage(BasePage):
         self.assertIsNotNone(cancel_button, "Cancel button not found")
         cancel_button.click()
 
+    def click_on_event_chooser_field(self):
+
+        logging.info("click_on_event_chooser_field")
+        chooser_field_for_event = self.driver.find_element(*self.configuration.EventEditScreen.CHOOSER_FIELD)
+        self.assertIsNotNone(chooser_field_for_event, "chooser_field_for_event not found")
+        chooser_field_for_event.click()
+        sleep(1)
+
+
 
 
 

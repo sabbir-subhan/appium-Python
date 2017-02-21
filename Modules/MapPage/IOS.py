@@ -14,7 +14,7 @@ class IOS(MapPage):
     def wait_for_map_to_load(self):
 
         logging.info("Waiting for map to load")
-        sleep(5)
+        sleep(4)
         try:
             WebDriverWait(self.driver, 30).until(
                 expected_conditions.presence_of_element_located(self.configuration.Map.MAP_AREA_12),
@@ -23,6 +23,7 @@ class IOS(MapPage):
         except NoSuchElementException:
             logging.info("Failed to load map")
             self.fail("Map was not found")
+        sleep(1)
 
     def click_in_map_area_1(self):
 

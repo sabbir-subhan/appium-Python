@@ -16,10 +16,11 @@ class MapPage(BasePage):
 
     def click_tool_button(self):
 
-        sleep(1.5)
+        sleep(2)
         logging.info("click tool button")
         tool_button = self.driver.find_element(*self.configuration.Map.TOOL_BUTTON)
         self.assertIsNotNone(tool_button, "Tool button is not present")
+        sleep(1)
         tool_button.click()
 
     def click_point_button(self):
