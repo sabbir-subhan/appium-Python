@@ -173,7 +173,7 @@ class test_ManagingEvents(SetupTestCase):
         event_edit_page.click_save_button()
         events_page.click_More_button()
         events_page.set_as_primary_event()
-        #common_page.hamburger_button()
+        common_page.hamburger_button()
         main_page.open_EVENTS()
         events_page.click_More_button()
         events_page.clear_primary_event()

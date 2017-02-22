@@ -15,6 +15,16 @@ class PhotoPage(BasePage):
         self.assertIsNotNone(photo_page_header, "Photo page header was not found")
         logging.info("Photo page was opened")
 
+    def type_description(self, description):
+
+        WebDriverWait(self.driver, 35).until(
+            expected_conditions.presence_of_element_located(self.configuration.PhotoScreen.DESCRIPTION_FIELD),
+            "Failed to locate description field for photo")
+        logging.info("type text into description field")
+        description_field = self.driver.find_element(*self.configuration.PhotoScreen.DESCRIPTION_FIELD)
+        self.assertIsNotNone(description_field, "Description field not found")
+        description_field.send_keys(description)
+
     def click_send_button(self):
 
         sleep(1)
@@ -29,9 +39,23 @@ class PhotoPage(BasePage):
             "Failed to send file")
         logging.info("File was sent")
 
+    def click_gallery_button(self):
+
+        logging.info("clicking in Gallery button")
+        gallery_button = self.driver.find_element(*self.configuration.PhotoScreen.GALLERY_BUTTON)
+        self.assertIsNotNone(gallery_button, "Gallery button not found")
+        gallery_button.click()
+
     def click_reset_button(self):
 
         logging.info("click 'Reset' button")
         reset_button = self.driver.find_element(*self.configuration.PhotoScreen.RESET_BUTTON)
         self.assertIsNotNone(reset_button, "Reset button not found")
         reset_button.click()
+
+    def click_take_new_button(self):
+
+        logging.info("clicking in Take new button")
+        take_new_button = self.driver.find_element(*self.configuration.PhotoScreen.TAKE_NEW_BUTTON)
+        self.assertIsNotNone(take_new_button, "Take new button not found")
+        take_new_button.click()

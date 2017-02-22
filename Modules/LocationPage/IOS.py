@@ -6,7 +6,7 @@ from selenium.common.exceptions import *
 import logging
 
 
-class IOS(LocationPage, LoadClass):
+class IOS(LocationPage):
 
     def check_if_start_button_was_clicked(self):
 

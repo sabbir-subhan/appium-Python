@@ -8,10 +8,14 @@ class IOS(SoundRecorderPage):
 
     def record_sound(self):
 
-        logging.info("click record sound")
+        logging.info("click record/stop button")
         sound_capture = self.driver.find_element(*self.configuration.SoundRecorderScreen.RECORD_SOUND)
         self.assertIsNotNone(sound_capture, "sound capture button not found")
         sound_capture.click()
+
+    def stop_recording(self):
+
+        IOS.record_sound(self)
 
     def click_done_button(self):
 

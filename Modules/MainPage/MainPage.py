@@ -6,6 +6,7 @@ from selenium.common.exceptions import *
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from Modules.BasePage.BasePage import BasePage
+from Modules.load_class import LoadClass
 
 
 class MainPage(BasePage):
@@ -177,10 +178,9 @@ class MainPage(BasePage):
 
     def open_LOCATION(self):
 
-        logging.info("clicking in Location button")
-        location_button = self.driver.find_element(*self.configuration.MainMenuScreen.LOCATION_BUTTON)
-        self.assertIsNotNone(location_button, "Location button not found")
-        location_button.click()
+        welcome_page = LoadClass.load_page('WelcomePage')
+        welcome_page.setDriver(self.driver)
+        welcome_page.open_LOCATION()
 
     def open_ASSETS(self):
 
@@ -190,24 +190,27 @@ class MainPage(BasePage):
         assets_button.click()
 
     def open_MY_MESSAGES(self):
-        logging.info("clicking in MY MESSAGES button")
-        my_messages_button = self.driver.find_element(*self.configuration.MainMenuScreen.MY_MESSAGES_BUTTON)
-        self.assertIsNotNone(my_messages_button, "MY MESSAGES button not found")
-        my_messages_button.click()
+
+        welcome_page = LoadClass.load_page('WelcomePage')
+        welcome_page.setDriver(self.driver)
+        welcome_page.open_MY_MESSAGES()
 
     def open_INBOX(self):
+        
         logging.info("clicking in INBOX button")
         inbox_button = self.driver.find_element(*self.configuration.MainMenuScreen.INBOX_BUTTON)
         self.assertIsNotNone(inbox_button, "INBOX button not found")
         inbox_button.click()
 
     def open_COMPOSE(self):
+        
         logging.info("clicking in COMPOSE button")
         compose_button = self.driver.find_element(*self.configuration.MainMenuScreen.COMPOSE_BUTTON)
         self.assertIsNotNone(compose_button, "COMPOSE button not found")
         compose_button.click()
 
     def open_SENT(self):
+        
         logging.info("clicking in SENT button")
         sent_button = self.driver.find_element(*self.configuration.MainMenuScreen.SENT_BUTTON)
         self.assertIsNotNone(sent_button, "SENT button not found")
@@ -215,24 +218,21 @@ class MainPage(BasePage):
 
     def open_PHOTO(self):
 
-        logging.info("clicking in Photo button")
-        photo_button = self.driver.find_element(*self.configuration.MainMenuScreen.PHOTO_BUTTON)
-        self.assertIsNotNone(photo_button, "PHOTO button not found")
-        photo_button.click()
+        welcome_page = LoadClass.load_page('WelcomePage')
+        welcome_page.setDriver(self.driver)
+        welcome_page.open_PHOTO()
 
     def open_VIDEO(self):
 
-        logging.info("clicking in Video button")
-        video_button = self.driver.find_element(*self.configuration.MainMenuScreen.VIDEO_BUTTON)
-        self.assertIsNotNone(video_button, "VIDEO button not found")
-        video_button.click()
+        welcome_page = LoadClass.load_page('WelcomePage')
+        welcome_page.setDriver(self.driver)
+        welcome_page.open_VIDEO()
 
     def open_SOUND(self):
 
-        logging.info("clicking in Sound button")
-        sound_button = self.driver.find_element(*self.configuration.MainMenuScreen.SOUND_BUTTON)
-        self.assertIsNotNone(sound_button, "Sound button not found")
-        sound_button.click()
+        welcome_page = LoadClass.load_page('WelcomePage')
+        welcome_page.setDriver(self.driver)
+        welcome_page.open_SOUND()
 
     def open_TASKS(self):
 
@@ -263,25 +263,34 @@ class MainPage(BasePage):
         allocate_button.click()
 
     def open_SETTINGS(self):
-        logging.info("clicking in SETTINGS button")
-        settings_button = self.driver.find_element(*self.configuration.MainMenuScreen.SETTINGS_BUTTON)
-        self.assertIsNotNone(settings_button, "SETTINGS button not found")
-        settings_button.click()
+
+        welcome_page = LoadClass.load_page('WelcomePage')
+        welcome_page.setDriver(self.driver)
+        welcome_page.open_SETTINGS()
 
     def open_ACTIVATE(self):
+
         logging.info("clicking in ACTIVATE button")
         activate_button = self.driver.find_element(*self.configuration.MainMenuScreen.ACTIVATE_BUTTON)
         self.assertIsNotNone(activate_button, "ACTIVATE button not found")
         activate_button.click()
 
     def open_OFFLINE_SYNC(self):
+
         logging.info("clicking in OFFLINE SYNC button")
         offline_sync_button = self.driver.find_element(*self.configuration.MainMenuScreen.OFFLINE_SYNC_BUTTON)
         self.assertIsNotNone(offline_sync_button, "OFFLINE SYNC button not found")
         offline_sync_button.click()
 
     def open_ABOUT(self):
-        logging.info("clicking in ABOUT button")
-        about_button = self.driver.find_element(*self.configuration.MainMenuScreen.ABOUT_BUTTON)
-        self.assertIsNotNone(about_button, "ABOUT button not found")
-        about_button.click()
+
+        welcome_page = LoadClass.load_page('WelcomePage')
+        welcome_page.setDriver(self.driver)
+        welcome_page.open_ABOUT()
+    
+    def click_logout_button(self):
+
+        logout_button = self.driver.find_element(*self.configuration.MainMenuScreen.LOGOUT_BUTTON)
+        self.assertIsNotNone(logout_button, "Logout button not found")
+        logging.info("Your are already logged in - logging out")
+        logout_button.click()

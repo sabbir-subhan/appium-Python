@@ -8,7 +8,7 @@ from appium.webdriver.common.touch_action import TouchAction
 from selenium.common.exceptions import *
 
 
-class Android(EventEditPage, LoadClass):
+class Android(EventEditPage):
 
     def scroll_down_to_save_button(self):
         """Method to scroll down to bottom of the screen """

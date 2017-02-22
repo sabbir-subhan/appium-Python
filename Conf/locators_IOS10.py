@@ -261,10 +261,11 @@ class Map:
 class PhotoScreen:
     """A class for Photo screen locators - screen after clicking into Photo button in Main Menu."""
     PHOTO_PAGE_HEADER = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "Send a photo to OCA")]]')
-    # GALLERY_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeStaticText[2][@visible="false"]')  # appium can't tap that element - probably it's a bug in Appium
-    GALLERY_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Gallery"]')  # this locator will find only text, not the icon
-    TAKE_NEW_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "Take New")]]')  # this locator will find only text, not the icon
-    DESCRIPTION_FIELD = (MobileBy.CLASS_NAME, 'XCUIElementTypeTextField')
+    GALLERY_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]'
+                                      '/XCUIElementTypeStaticText[1]')
+    TAKE_NEW_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]'
+                                       '/XCUIElementTypeStaticText[1]')
+    DESCRIPTION_FIELD = (MobileBy.CLASS_NAME, 'XCUIElementTypeTextView')
     SEND_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Send"]')
     RESET_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Reset"]')
 
@@ -272,8 +273,7 @@ class PhotoScreen:
 class VideoScreen:
     """A class for Video screen locators - screen after clicking into Video button in Main Menu."""
     VIDEO_PAGE_HEADER = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "Send a video to OCA")]]')
-    # RECORD_NEW_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "Record New")]]')  # this locator will find only text, not the icon
-    RECORD_NEW_BUTTON = (MobileBy.XPATH, 'XCUIElementTypeScrollView[2]/XCUIElementTypeStaticText[4]')  # appium can't tap that element - probably it's a bug in Appium - visible: false
+    RECORD_NEW_BUTTON = (MobileBy.XPATH, 'XCUIElementTypeScrollView[2]/XCUIElementTypeStaticText[4]')
 
 
 class SoundScreen:
@@ -281,7 +281,7 @@ class SoundScreen:
     SOUND_PAGE_HEADER = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name['
                                          'contains(., "Send a sound recording to OCA")]]')
     RECORD_SOUND_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeScrollView/XCUIElementTypeWindow/'
-                                           'XCUIElementTypeStaticText[2]')  # appium can't tap that element - probably it's a bug in Appium - visible: false
+                                           'XCUIElementTypeStaticText[2]')
 
 
 class SoundRecorderScreen:
@@ -292,11 +292,9 @@ class SoundRecorderScreen:
 
 class GalleryScreen:
     """A class for handling Gallery"""
-    GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//XCUIElementTypePopover[1]/XCUIElementTypeCollectionView[1]/'
-                                         'XCUIElementTypeCollectionCell[1]')
-    GALLERY_VIDEOS_POPOVER = (MobileBy.XPATH, '//XCUIElementTypePopover[1]/XCUIElementTypeTableView[1]/'
-                                              'XCUIElementTypeTableCell[@name="Videos"]')
-    USE_VIDEO_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Use')
+    GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//XCUIElementTypeCell[1]')
+    GALLERY_VIDEOS_POPOVER = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Videos"]')
+    CHOOSE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Choose')
 
 
 class CameraScreen:
@@ -343,8 +341,9 @@ class NewReportScreen:
     PUBLISH_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Publish"]')
 
 
-# class NewAssetScreen:
-#     """A class for handling New Asset screen"""
+class NewAssetScreen:
+    """A class for handling New Asset screen"""
+    pass
 
 
 class NewLogScreen:

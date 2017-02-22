@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 
 
-class IOS(WelcomePage, LoadClass):
+class IOS(WelcomePage):
 
     def click_login_button(self):
 

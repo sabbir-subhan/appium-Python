@@ -12,7 +12,7 @@ class Android(LoginPage):
 
         username_field = self.driver.find_element(*self.configuration.LoginScreen.TEXTFIELD_USERNAME)
         action = TouchAction(self.driver)
-        action.long_press(el=username_field, duration=1000).perform()
+        action.long_press(el=username_field, duration=1500).perform()
         self.driver.keyevent(67)
         logging.info("type username")
         username_field.send_keys(Credentials.get_username(username))
@@ -21,7 +21,7 @@ class Android(LoginPage):
 
         password_field = self.driver.find_element(*self.configuration.LoginScreen.TEXTFIELD_PASSWORD)
         action = TouchAction(self.driver)
-        action.long_press(el=password_field, duration=1000).perform()
+        action.long_press(el=password_field, duration=1500).perform()
         self.driver.keyevent(67)
         logging.info("type password")
         password_field.send_keys(Credentials.get_password(password))
@@ -30,7 +30,7 @@ class Android(LoginPage):
 
         domain_field = self.driver.find_element(*self.configuration.LoginScreen.TEXTFIELD_DOMAIN)
         action = TouchAction(self.driver)
-        action.long_press(el=domain_field, duration=1000).perform()
+        action.long_press(el=domain_field, duration=1500).perform()
         self.driver.keyevent(67)
         logging.info("type domain address")
         domain_field.send_keys(Credentials.get_domain(domain))

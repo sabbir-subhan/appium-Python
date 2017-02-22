@@ -7,7 +7,7 @@ from time import sleep
 from Modules.load_class import LoadClass
 
 
-class Android(EventsPage, LoadClass):
+class Android(EventsPage):
 
     def filter_events_by_Search_field(self):
 

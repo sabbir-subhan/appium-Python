@@ -1,5 +1,13 @@
-# from selenium.webdriver.common.by import By
 from appium.webdriver.common.mobileby import MobileBy
+
+
+class iOS:
+    """A class for handling iOS device for example keyboard"""
+    BUTTON_DONE_TO_HIDE_KEYBOARD = (MobileBy.XPATH, '//UIAWindow[2]/UIAToolbar[1]/UIAButton[@name="Done"]')
+    RETURN_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Return"]')
+    BUTTON_ALLOW_LOCATION = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]'
+                                             '/UIACollectionCell[2]/UIAButton[@name="Allow"]')
+    IOS_OK = (MobileBy.ACCESSIBILITY_ID, 'OK')
 
 
 class CommonScreen:
@@ -259,7 +267,7 @@ class GalleryScreen:
     """A class for handling Gallery"""
     GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//UIAPopover[1]/UIACollectionView[1]/UIACollectionCell[1]')
     GALLERY_VIDEOS_POPOVER = (MobileBy.XPATH, '//UIAPopover[1]/UIATableView[1]/UIATableCell[@name="Videos"]')
-    USE_VIDEO_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Use')
+    USE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Use')
 
 
 class CameraScreen:
@@ -312,12 +320,4 @@ class NewLogScreen:
     LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//UIAWebView/UIAElement[1]')
     ENTRY_FIELD = (MobileBy.XPATH, '//UIATextField[1]')
 
-
-class iOS:
-    """A class for handling iOS device for example keyboard"""
-    BUTTON_DONE_TO_HIDE_KEYBOARD = (MobileBy.XPATH, '//UIAWindow[2]/UIAToolbar[1]/UIAButton[@name="Done"]')
-    RETURN_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Return"]')
-    BUTTON_ALLOW_LOCATION = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]'
-                                             '/UIACollectionCell[2]/UIAButton[@name="Allow"]')
-    BUTTON_ALLOW_ACCESS_TO_CAMERA = (MobileBy.ACCESSIBILITY_ID, 'OK')
 

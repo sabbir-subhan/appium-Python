@@ -1,4 +1,3 @@
-# from selenium.webdriver.common.by import By
 from appium.webdriver.common.mobileby import MobileBy
 
 
@@ -30,10 +29,6 @@ class CommonScreen:
 
 class TopBar:
     """A class for top bar locators."""
-    # HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, "//android.webkit.WebView[@index='0']"
-    #                                            "/android.view.View[@index='0']"
-    #                                            "/android.view.View[@index='2']"
-    #                                            "/android.view.View[@index='0']")
     HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, '//android.webkit.WebView[1]/android.view.View[1]/android.view.View[2]')
 
 
@@ -51,6 +46,7 @@ class WelcomeScreen:
                                              'android.view.View[@index="6"]/android.view.View[@index="0"]')
     SETTINGS_CONTACT_IDENTIFIER_FIELD = (MobileBy.CLASS_NAME, 'android.widget.EditText')
     SETTINGS_ALERT_APP_HAS_BEEN_ACTIVATED = (MobileBy.ACCESSIBILITY_ID, 'App has been activated.')
+    SETTINGS_OK_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Ok')
 
 
 class LoginScreen:

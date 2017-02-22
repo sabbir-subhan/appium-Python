@@ -64,10 +64,12 @@ class test_SendAudio(SetupTestCase):
         sound_page.click_record_sound_icon()
         sound_recorder = LoadClass.load_page('SoundRecorderPage')
         sound_recorder.setDriver(self.driver)
+        common_page.alert_popup_allow()
         sound_recorder.record_sound()
-        sleep(0.2)  # time for recording sound
-        sound_recorder.record_sound()
+        sleep(1)  # time for recording sound
+        sound_recorder.stop_recording()
         sound_recorder.click_done_button()
+        common_page.alert_popup_allow()
         sound_page.type_description("test - sound")
         common_page.hide_keyboard()
         sound_page.click_send_button()

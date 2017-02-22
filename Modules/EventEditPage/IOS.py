@@ -7,7 +7,7 @@ import logging
 from time import sleep
 
 
-class IOS(EventEditPage, LoadClass):
+class IOS(EventEditPage):
 
     def scroll_down_to_save_button(self):
         """Method to scroll down to bottom of the screen - to 'Save' button"""
