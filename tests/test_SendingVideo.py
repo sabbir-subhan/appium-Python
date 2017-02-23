@@ -22,13 +22,14 @@
 # Repeat steps 6 & 7.
 
 
-import unittest
-import logging
 from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
+import logging
+import unittest
+from time import sleep
 
 
-class test_Login(SetupTestCase):
+class test_SendingVideo(SetupTestCase):
     """ Setup test """
 
     def setUp(self):
@@ -37,47 +38,56 @@ class test_Login(SetupTestCase):
 
     def tearDown(self):
 
-        SetupTestCase.tearDown(self)
+        logging.info("Quitting")
+        self.driver.quit()
 
     def test_send_video(self):
 
-        main_page = MainPage(self.driver)
-        main_page.dismiss_ios_notifications()
-        main_page.logout_if_already_logged_in()
         logging.info("starting Test Case 7: Sending Video")
-        welcome_page = WelcomePage(self.driver)
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        welcome_page = LoadClass.load_page('WelcomePage')
+        welcome_page.setDriver(self.driver)
         welcome_page.click_login_button()
-        login_page = LoginPage(self.driver)
+        login_page = LoadClass.load_page('LoginPage')
+        login_page.setDriver(self.driver)
+        login_page.type_domain_address('QA')
+        common_page.hide_keyboard()
+        login_page.click_submit_button()
         login_page.type_username('QA')
         login_page.type_password('QA')
-        login_page.type_domain_address('QA')
-        ios_device = iOSdevice(self.driver)
-        ios_device.hide_keyboard()
+        common_page.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
+        main_page = LoadClass.load_page('MainPage')
+        main_page.setDriver(self.driver)
         main_page.alert_expiring_password()
-        main_page.dismiss_ios_notifications()
+        main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
         main_page.open_VIDEO()
-        video_page = VideoPage(self.driver)
+        video_page = LoadClass.load_page('VideoPage')
+        video_page.setDriver(self.driver)
         video_page.check_if_video_page_was_opened()
         video_page.click_gallery_button()
-        gallery_video_page = GalleryPage(self.driver)
+        gallery_video_page = LoadClass.load_page('GalleryPage')
+        gallery_video_page.setDriver(self.driver)
+        common_page.alert_popup_allow()
         gallery_video_page.choose_videos_gallery()
         gallery_video_page.choose_element_1()
-        gallery_video_page.click_use_video_button()
-        video_page.type_description("test iOS - video 1 from gallery")
-        ios_device.hide_keyboard()
+        gallery_video_page.click_use_button()
+        video_page.type_description("test - video 1 from gallery")
+        common_page.hide_keyboard()
         video_page.click_send_button()
         main_page.open_VIDEO()
         video_page.click_record_new_button()
-        camera_page = CameraPage(self.driver)
+        camera_page = LoadClass.load_page('CameraPage')
+        camera_page.setDriver(self.driver)
         camera_page.capture_video()
         sleep(1)  # time for recording video
         camera_page.capture_video()
         camera_page.click_use_video()
-        video_page.type_description("test iOS - video 1")
-        ios_device.hide_keyboard()
+        video_page.type_description("test - video 1")
+        common_page.hide_keyboard()
         video_page.click_send_button()
         main_page.open_VIDEO()
         video_page.click_record_new_button()
@@ -89,11 +99,12 @@ class test_Login(SetupTestCase):
         sleep(1)  # time for recording video
         camera_page.capture_video()
         camera_page.click_use_video()
-        video_page.type_description("test iOS - video 2")
+        video_page.type_description("test- video 2")
+        common_page.hide_keyboard()
         video_page.click_send_button()
         main_page.check_presence_of_events_button()
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(test_SendingVideo_iOS)
+    suite = unittest.TestLoader().loadTestsFromTestCase(test_SendingVideo)
     unittest.TextTestRunner(verbosity=2).run(suite)

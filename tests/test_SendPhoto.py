@@ -95,11 +95,12 @@ class test_SendPhoto(SetupTestCase):
         photo_page.click_take_new_button()
         camera_page.choose_camera()
         camera_page.choose_camera()
-        camera_page.take_a_photo()
+        camera_page.capture_photo()
         camera_page.click_retake()
         camera_page.capture_photo()
         camera_page.click_use_photo()
         photo_page.type_description("test - take a photo 2")
+        common_page.hide_keyboard()
         photo_page.click_send_button()
         main_page.check_presence_of_events_button()
 

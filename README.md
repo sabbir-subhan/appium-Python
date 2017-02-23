@@ -72,6 +72,9 @@ Appium in CLI:
 current GUI version - 1.5.3
 current CLI beta version - 1.6.3
 
+-- If You want to run iOS9 and iOS10 You need to install Xcode 7 and Xcode 8, Appium 1.6 in CLI mode can run both iOS versions but You need to switch between Xcode versions
+('sudo xcode-select -switch /Applications/Xcode.app' and run 'appium' - for iOS10 and
+'sudo xcode-select -switch /Applications/Xcode7.app' and run 'appium' - for iOS 9)
 
 ### **CONFIGURING ANDROID DEVICE:** ###
 

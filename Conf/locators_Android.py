@@ -173,7 +173,8 @@ class EventsScreen:
     CREATED_EVENT_3 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., " to create sub event")]]')
 
     CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc="Clear primary event"]')
-    NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.XPATH, '//android.view.View[@content-desc="Primary event cleared"]')
+    NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.XPATH, '//android.view.View[@content-desc[contains'
+                                                          '(., "Primary event cleared")]]')
     GO_BACK_TO_MAIN_MENU_ARROW_BUTTON = (MobileBy.XPATH, "//android.webkit.WebView[@index='0']"
                                                          "//android.view.View[@index='0']"
                                                          "//android.view.View[@index='0']")
@@ -333,6 +334,8 @@ class RisksScreen:
     FIRST_RISK_REGISTER_ON_THE_LIST = (MobileBy.XPATH, '//android.view.View[2]/'
                                                        'android.widget.ListView[1]/android.view.View[1]')
     ADD_NEW_CONTEXT = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Add new context")]]')
+    NEW_BUTTON = CommonScreen.SPINNER_ON_THE_RIGHT
+    VIEW_BUTTON = CommonScreen.SPINNER_ON_THE_LEFT
 
 
 class RiskRegisterEditScreen:

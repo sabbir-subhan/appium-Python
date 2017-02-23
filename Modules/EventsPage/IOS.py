@@ -1,6 +1,7 @@
 """ Methods for IOS to handle Events Page """
 
 from Modules.EventsPage.EventsPage import EventsPage
+from selenium.common.exceptions import *
 import logging
 from time import sleep
 
@@ -35,7 +36,11 @@ class IOS(EventsPage):
                                                               CLEAR_PRIMARY_EVENT_BUTTON)
         self.assertIsNotNone(clear_primary_event_button, "Clear primary event button not found")
         clear_primary_event_button.click()
-        logging.info("checking notification - 'Primary event cleared'")
-        notification = self.driver.find_element(*self.configuration.EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED)
-        self.assertIsNotNone(notification)
+        try:
+            logging.info("checking notification - 'Primary event cleared'")
+            sleep(1)
+            notification = self.driver.find_element(*self.configuration.EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED)
+            self.assertIsNotNone(notification)
+        except NoSuchElementException:
+            logging.info("notification not found")
 

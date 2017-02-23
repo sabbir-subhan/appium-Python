@@ -13,6 +13,7 @@ class CameraPage(BasePage):
         photo_capture = self.driver.find_element(*self.configuration.CameraScreen.PHOTO_CAPTURE)
         self.assertIsNotNone(photo_capture, "photo capture button not found")
         photo_capture.click()
+        sleep(4)
 
     def capture_video(self):
 

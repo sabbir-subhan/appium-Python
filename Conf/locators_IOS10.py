@@ -5,12 +5,8 @@ class iOS:
     """A class for handling iOS device for example keyboard"""
     BUTTON_DONE_TO_HIDE_KEYBOARD = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Done"]')
     RETURN_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Return"]')
-    BUTTON_ALLOW_LOCATION = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[7]/'
-                                             'XCUIElementTypeAlert[1]/XCUIElementTypeCollectionView[1]'
-                                             '/XCUIElementTypeCollectionCell[2]/XCUIElementTypeButton['
-                                             '@name="Allow"]')
     IOS_OK = (MobileBy.ACCESSIBILITY_ID, 'OK')
-    IOS_ALLOW = (MobileBy.XPATH, "//XCUIElementTypeOther[3]/XCUIElementTypeButton[1]")
+    IOS_ALLOW = (MobileBy.ACCESSIBILITY_ID, "Allow")
 
 
 class CommonScreen:
@@ -310,6 +306,9 @@ class CameraScreen:
 
 class RisksScreen:
     """A class for handling Risks screen"""
+
+    NEW_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "New")]]')
+    VIEW_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "View")]]')
 
 
 class NewContactScreen:

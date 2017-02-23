@@ -27,11 +27,11 @@ class IOS9(IOS):
         try:
             action = TouchAction(self.driver)
             action.tap(element=None, x=548, y=158, count=1).perform()
-            # take_new_button = self.driver.find_element(*self.configuration.PhotoScreen.TAKE_NEW_BUTTON)
-            # if take_new_button.is_displayed():
-            #     self.assertIsNotNone(take_new_button, "Take new button not found")
-            #     take_new_button.click()
         except NoSuchElementException:
-            self.fail("could not tap 'Take new' button")
+            take_new_button = self.driver.find_element(*self.configuration.PhotoScreen.TAKE_NEW_BUTTON)
+            if take_new_button.is_displayed():
+                self.assertIsNotNone(take_new_button, "Take new button not found")
+                take_new_button.click()
+
 
 

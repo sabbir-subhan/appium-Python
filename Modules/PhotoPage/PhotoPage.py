@@ -23,6 +23,7 @@ class PhotoPage(BasePage):
         logging.info("type text into description field")
         description_field = self.driver.find_element(*self.configuration.PhotoScreen.DESCRIPTION_FIELD)
         self.assertIsNotNone(description_field, "Description field not found")
+        description_field.click()
         description_field.send_keys(description)
 
     def click_send_button(self):

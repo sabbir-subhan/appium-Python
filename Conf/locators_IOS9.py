@@ -159,8 +159,8 @@ class EventsScreen:
     CREATED_EVENT_3 = (MobileBy.XPATH, '//UIALink[@name[contains(., "to create sub")]]')
     CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText[@name'
                                                   '[contains(., "Clear primary event")]]')
-    NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText['
-                                                          '@name="Primary event cleared"]')
+    NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.XPATH, '//UIAStaticText[@name[contains'
+                                                          '(., "Primary event cleared")]]')
 
 
 class TypesOfEventsScreen:
@@ -236,9 +236,10 @@ class Map:
 class PhotoScreen:
     """A class for Photo screen locators - screen after clicking into Photo button in Main Menu."""
     PHOTO_PAGE_HEADER = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Send a photo to OCA")]]')
-    # GALLERY_BUTTON = (MobileBy.XPATH, '//UIAStaticText[2][@visible="false"]')  # appium can't tap that element - probably it's a bug in Appium
-    GALLERY_BUTTON = (MobileBy.XPATH, '//UIAStaticText[@name="Gallery"]')  # this locator will find only text, not the icon
-    TAKE_NEW_BUTTON = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Take New")]]')  # this locator will find only text, not the icon
+    GALLERY_BUTTON = (MobileBy.XPATH, '//UIAStaticText[2]')  # appium 1.5.3 can't tap that element - probably it's a bug in Appium - visible: false
+    # GALLERY_BUTTON = (MobileBy.XPATH, '//UIAStaticText[@name="Gallery"]')  # this locator will find only text, not the icon
+    # TAKE_NEW_BUTTON = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Take New")]]')  # this locator will find only text, not the icon
+    TAKE_NEW_BUTTON = (MobileBy.XPATH, '//UIAStaticText[4]')  # appium 1.5.3 can't tap that element - probably it's a bug in Appium - visible: false
     DESCRIPTION_FIELD = (MobileBy.CLASS_NAME, 'UIATextField')
     SEND_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Send"]')
     RESET_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Reset"]')
@@ -248,13 +249,13 @@ class VideoScreen:
     """A class for Video screen locators - screen after clicking into Video button in Main Menu."""
     VIDEO_PAGE_HEADER = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Send a video to OCA")]]')
     # RECORD_NEW_BUTTON = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Record New")]]')  # this locator will find only text, not the icon
-    RECORD_NEW_BUTTON = (MobileBy.XPATH, 'UIAScrollView[2]/UIAWebView[1]/UIAStaticText[4]')  # appium can't tap that element - probably it's a bug in Appium - visible: false
+    RECORD_NEW_BUTTON = (MobileBy.XPATH, '//UIAStaticText[4]')  # appium 1.5.3 can't tap that element - probably it's a bug in Appium - visible: false
 
 
 class SoundScreen:
     """A class for Sound screen locators - screen after clicking into Sound button in Main Menu."""
     SOUND_PAGE_HEADER = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Send a sound recording to OCA")]]')
-    RECORD_SOUND_BUTTON = (MobileBy.XPATH, '//UIAScrollView/UIAWebView/UIAStaticText[2]')  # appium can't tap that element - probably it's a bug in Appium - visible: false
+    RECORD_SOUND_BUTTON = (MobileBy.XPATH, '//UIAStaticText[2]')  # appium 1.5.3 can't tap that element - probably it's a bug in Appium - visible: false
 
 
 class SoundRecorderScreen:
@@ -283,6 +284,9 @@ class CameraScreen:
 
 class RisksScreen:
     """A class for handling Risks screen"""
+
+    NEW_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "New")]]')
+    VIEW_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "View")]]')
 
 
 class NewContactScreen:
