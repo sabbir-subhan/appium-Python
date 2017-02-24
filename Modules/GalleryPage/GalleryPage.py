@@ -13,6 +13,16 @@ class GalleryPage(BasePage):
         self.assertIsNotNone(choose_element_1, "first element in gallery not found")
         choose_element_1.click()
 
+    def choose_videos_gallery(self):
+
+        pass
+
+    def click_use_button(self):
+
+        pass
+
+
+
 
 
 

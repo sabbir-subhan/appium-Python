@@ -106,5 +106,12 @@ class test_SendingVideo(SetupTestCase):
 
 
 if __name__ == '__main__':
+    HTMLTestRunner.main()
     suite = unittest.TestLoader().loadTestsFromTestCase(test_SendingVideo)
     unittest.TextTestRunner(verbosity=2).run(suite)
+
+
+
+
+
+

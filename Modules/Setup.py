@@ -38,8 +38,7 @@ class SetupTestCase(unittest.TestCase):
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
-        self.driver.implicitly_wait(30)  # seconds
-        # self.driver = None
+        self.driver.implicitly_wait(30)  # seconds - depends on device and connection speed
 
     # def tear_down(self):
     #

@@ -36,7 +36,6 @@ class test_ManagingEvents(SetupTestCase):
         self.driver.quit()
 
     def test_1_managing_events(self):
-        """#type: Modules.WelcomePage.WelcomePage.WelcomePage"""
 
         # login
         logging.info("starting Test Case 3: managing events")

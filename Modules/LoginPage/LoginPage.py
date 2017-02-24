@@ -23,7 +23,7 @@ class LoginPage(BasePage):
                 self.assertIsNotNone(accept_terms_button, "accept button not found")
                 logging.info("Accepting terms and conditions")
                 accept_terms_button.click()
-                sleep(10)
+                sleep(5)
             else:
                 pass
         except NoSuchElementException:

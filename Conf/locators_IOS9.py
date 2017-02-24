@@ -198,14 +198,14 @@ class EventEditScreen:
     FIELD_TO_RESTORE_1_VALUE = (MobileBy.XPATH, '//UIATextField[@value="value for field 1"]')
     FIELD_TO_RESTORE_2_HEADER = (MobileBy.XPATH, '//UIAStaticText[@name="New email address"]')
     FIELD_TO_RESTORE_2_VALUE = (MobileBy.XPATH, '//UIATextField[@value="test@noggin.com"]')
-    CHOOSER_FIELD = (MobileBy.XPATH, '//UIAWebView/UIALink/UIALink[@name[contains(., "New events chooser")]]')
+    CHOOSER_FIELD = (MobileBy.XPATH, '//UIAStaticText[@name="New events chooser"]')
     PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER = (MobileBy.XPATH, '//UIAStaticText[@name[contains('
                                                             '., "Test Appium")]]')
     SUBFORM_FIELD_ADD_ROW = (MobileBy.XPATH, '//UIAButton[@name="Add row"]')
-    NEW_EVENTS_CHOOSER_IN_SUB_FORM = (MobileBy.XPATH, '//UIAWebView/UIALink/UIALink[@name[contains('
-                                                      '., "New events chooser inside sub form")]]')
+    NEW_EVENTS_CHOOSER_IN_SUB_FORM = (MobileBy.XPATH, '//UIAStaticText[@name[contains'
+                                                      '(., "New events chooser inside sub form")]]')
     PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Test")]]')
-    DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.XPATH, '//UIAScrollView/UIAWebView/UIALink[6]')
+    DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.XPATH, '//UIAWebView[1]/UIALink[4]/UIAStaticText[1]')
 
 
 class EventDetailsScreen:

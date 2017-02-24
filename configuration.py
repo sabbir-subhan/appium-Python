@@ -1,6 +1,6 @@
 """ Choose platform to run tests """
 
-platform = "IOS 9"
+platform = "Android 4"
 
 # Android 4
 # Android 5
@@ -26,7 +26,7 @@ elif platform == "Android 7":
 
     ENVIRONMENT_TEST = "Android"
     ENVIRONMENT_MIDDLE_CLASS = None
-    PLATFORM_VERSION = "7.0.0"
+    PLATFORM_VERSION = "7.0"
 
 elif platform == "Android 6":
 

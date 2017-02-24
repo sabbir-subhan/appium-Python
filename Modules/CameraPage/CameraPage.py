@@ -17,7 +17,7 @@ class CameraPage(BasePage):
 
     def capture_video(self):
 
-        logging.info("recording new video")
+        logging.info("record/stop")
         record_new_video = self.driver.find_element(*self.configuration.CameraScreen.VIDEO_CAPTURE)
         self.assertIsNotNone(record_new_video, "video capture button not found")
         record_new_video.click()

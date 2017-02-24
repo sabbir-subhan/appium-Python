@@ -290,7 +290,7 @@ class GalleryScreen:
     """A class for handling Gallery"""
     GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//XCUIElementTypeCell[1]')
     GALLERY_VIDEOS_POPOVER = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Videos"]')
-    CHOOSE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Choose')
+    USE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Choose')
 
 
 class CameraScreen:
