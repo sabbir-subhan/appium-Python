@@ -35,6 +35,20 @@ class DesiredCapabilities(object):
             "udid": "7d7d9a62"
         },
 
+        "Android6.0": {
+            "platformName": "ANDROID",
+            "platformVersion": "6.0",
+            "deviceName": "Google Nexus 5X",
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.2.apk"),
+            "apppackage": "com.noggin.oca",
+            "appactivity": "com.noggin.oca.MainActivity",
+            "autoAcceptAlerts": True,
+            "browserName": "Android",
+            "fullReset": True,
+            "newCommandTimeout": "60",
+            "androidDeviceReadyTimeout": "300"
+        },
+
         "Android6.0.1": {
             "platformName": "ANDROID",
             "platformVersion": "6.0.1",
@@ -48,8 +62,8 @@ class DesiredCapabilities(object):
             "apppackage": "com.noggin.oca",
             "appactivity": "com.noggin.oca.MainActivity",
             "newCommandTimeout": "60",
-            # "unicodekeyboard": "True",
-            # "resetkeyboard": "True",
+            # "unicodekeyboard": True,
+            # "resetkeyboard": True,
             "udid": "ad0816033848eb0443"
         },
 
@@ -64,20 +78,6 @@ class DesiredCapabilities(object):
             "udid": "ad0816033848eb0443"
         },
 
-        "Android7.0.0": {
-            "platformName": "ANDROID",
-            "platformVersion": "7.0.0",
-            "deviceName": "Google Nexus 5X",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.2.apk"),
-            "apppackage": "com.noggin.oca",
-            "appactivity": "com.noggin.oca.MainActivity",
-            "autoAcceptAlerts": "True",
-            "browserName": "Android",
-            "fullReset": True,
-            "newCommandTimeout": "60",
-            "androidDeviceReadyTimeout": "60"
-        },
-
         "IOS9": {
             # iPad mini with iOS 9.3.5
             "platformName": "iOS",
@@ -86,7 +86,7 @@ class DesiredCapabilities(object):
             "app": PATH("/Users/lukasl/Build_xcode/Products/iPad9.3.5/OCA.app"),
             "bundleId": "com.noggin.ocalukasl",
             # "newCommandTimeout": "60",
-            "autoAcceptAlerts": "True",
+            "autoAcceptAlerts": True,
             "udid": "db55c238e873230ee454c54a63724397a2981acd"
         },
 
@@ -98,7 +98,7 @@ class DesiredCapabilities(object):
         #     "app": PATH("/Users/lukasl/Build_xcode/Products/Debug-iphonesimulator/OCA.app"),
         #     "bundleId": "com.noggin.ocalukasl",
         #     "newCommandTimeout": "60",
-        #     "autoAcceptAlerts": "True"
+        #     "autoAcceptAlerts": True
         # },
 
         "IOS10": {
@@ -165,8 +165,8 @@ class DesiredCapabilities(object):
 #     "apppackage": "com.noggin.oca",
 #     "appactivity": "com.noggin.oca.MainActivity",
 #     "newCommandTimeout": "60",
-#     # "unicodekeyboard": "True",
-#     # "resetkeyboard": "True",
+#     # "unicodekeyboard": True,
+#     # "resetkeyboard": True,
 #     "udid": "ad0816033848eb0443"
 # }
 #
@@ -222,7 +222,7 @@ class DesiredCapabilities(object):
 #     "app": PATH("/Users/lukasl/Build_xcode/Products/iPad9.3.5/OCA.app"),
 #     "bundleId": "com.noggin.ocalukasl",
 #     # "newCommandTimeout": "45",
-#     "autoAcceptAlerts": "True",
+#     "autoAcceptAlerts": True,
 #     "udid": "db55c238e873230ee454c54a63724397a2981acd"
 # }
 #
@@ -234,7 +234,7 @@ class DesiredCapabilities(object):
 #     "app": PATH("/Users/lukasl/Build_xcode/Products/Debug-iphonesimulator/OCA.app"),
 #     "bundleId": "com.noggin.ocalukasl",
 #     "newCommandTimeout": "45",
-#     "autoAcceptAlerts": "True"
+#     "autoAcceptAlerts": True
 # }
 #
 # desired_capabilities_for_iOS_iPhone5 = {
@@ -245,7 +245,7 @@ class DesiredCapabilities(object):
 #     "app": PATH("/Users/lukasl/Build_xcode/Products/Debug-iphonesimulator/OCA.app"),
 #     "bundleId": "com.noggin.ocalukasl",
 #     "newCommandTimeout": "45",
-#     "autoAcceptAlerts": "True"
+#     "autoAcceptAlerts": True
 # }
 #
 # desired_capabilities_for_iOS_iPhone6s = {
@@ -256,5 +256,5 @@ class DesiredCapabilities(object):
 #     "app": PATH("/Users/lukasl/Build_xcode/Products/Debug-iphonesimulator/OCA.app"),
 #     "bundleId": "com.noggin.ocalukasl",
 #     "newCommandTimeout": "45",
-#     "autoAcceptAlerts": "True"
+#     "autoAcceptAlerts": True
 # }

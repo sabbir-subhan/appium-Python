@@ -208,3 +208,4 @@ APP VERSIONS:
 - Appium > 1.6 - can't handle double tap method
 - Error about Xcode version, to switch xcode version use: sudo xcode-select -switch /Applications/Xcode.app
 - Appium 1.6 -- "socket hang up" - rebuild WebDriver Runner
+- error containing "adbExec" - uninstall apps from device: "Unlock", "Appium Settings" -- Appium will install them automatically 

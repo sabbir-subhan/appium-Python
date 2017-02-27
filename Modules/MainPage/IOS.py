@@ -32,3 +32,17 @@ class IOS(MainPage):
                 logging.info("scroll down")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
 
+    def scroll_down_to_video_button(self):
+
+        logging.info("scroll down with loop")
+        var = 1
+        while var == 1:
+            logging.info("check if video button is visible")
+            photo_button = self.driver.find_element(*self.configuration.WelcomeScreen.VIDEO_BUTTON)
+            if photo_button.is_displayed():
+                break
+            else:
+                logging.info("scroll down")
+                self.driver.execute_script("mobile: scroll", {"direction": "down"})
+
+

@@ -4,7 +4,7 @@ import logging
 from time import sleep
 from selenium.common.exceptions import *
 from Modules.CommonPage.CommonPage import CommonPage
-# from Conf.desired_capabilities import DesiredCapabilities
+from Conf.desired_capabilities import DesiredCapabilities
 
 
 class Android(CommonPage):
@@ -113,7 +113,8 @@ class Android(CommonPage):
     #     logging.info(desired_capabilities)
     #     platform_version = desired_capabilities.get('platformVersion')
     #     logging.info(platform_version)
-    #     if platform_version == "6.0.1":
-    #         print(":)")
-    #     else:
-    #         print("x")
+
+        # if platform_version == "6.0.1":
+        #     print(":)")
+        # else:
+        #     print("x")

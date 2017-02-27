@@ -6,7 +6,7 @@ from appium import webdriver
 import unittest
 from importlib import import_module
 import logging
-logging.basicConfig(filename='/Users/lukasl/repos/appium-poc/TCs.log', level=logging.INFO,
+logging.basicConfig(filename='TCs.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())
 

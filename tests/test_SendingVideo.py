@@ -64,6 +64,7 @@ class test_SendingVideo(SetupTestCase):
         main_page.alert_expiring_password()
         main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
+        main_page.scroll_down_to_video_button()
         main_page.open_VIDEO()
         video_page = LoadClass.load_page('VideoPage')
         video_page.setDriver(self.driver)
@@ -106,7 +107,6 @@ class test_SendingVideo(SetupTestCase):
 
 
 if __name__ == '__main__':
-    HTMLTestRunner.main()
     suite = unittest.TestLoader().loadTestsFromTestCase(test_SendingVideo)
     unittest.TextTestRunner(verbosity=2).run(suite)
 

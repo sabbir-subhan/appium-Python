@@ -290,6 +290,7 @@ class VideoScreen:
 class GalleryScreen:
     """A class for handling Gallery"""
     GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//android.widget.GridView[1]/android.widget.FrameLayout[1]')
+    GALLERY_ELEMENT_1_android7 = (MobileBy.XPATH, '//android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]')
 
 
 class SoundScreen:
@@ -315,7 +316,7 @@ class SoundRecorderScreen:
 class CameraScreen:
     """A class for handling Camera"""
     CAPTURE_BUTTON_ANDROID_4_and_5 = (MobileBy.ACCESSIBILITY_ID, 'Shutter')
-    CAPTURE_BUTTON_ANDROID_6 = (MobileBy.XPATH, '//GLButton[@text="Shutter"]')
+    CAPTURE_BUTTON_ANDROID_6 = (MobileBy.XPATH, '//GLButton[@text="Shutter"]')  # and for Android 7
     CANCEL_PHOTO_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Review cancel')
     CAMERA_CHOOSER_ANDROID4 = (MobileBy.ID, 'com.android.camera2:id/btn_switch_camera')
     CAMERA_CHOOSER = (MobileBy.ACCESSIBILITY_ID, 'Switch camera')  # for android 6

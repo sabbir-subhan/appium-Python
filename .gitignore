@@ -1,6 +1,5 @@
 .idea/
 .DS_Store
-tests/*.log
 *.log
 .tmp/
 tests/__pycache__/
