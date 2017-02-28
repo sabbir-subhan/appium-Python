@@ -1,6 +1,7 @@
 """A class for methods to handle New Contact Page """
 
 from Modules.BasePage.BasePage import BasePage
+from Modules.load_class import LoadClass
 import logging
 
 
@@ -13,3 +14,10 @@ class NewContactPage(BasePage):
         self.assertIsNotNone(first_name, "First name input field was not found")
         first_name.click()
         first_name.send_keys(text)
+
+    def click_save_button(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.click_save_button()
+

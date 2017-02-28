@@ -19,3 +19,5 @@ class Android(WelcomePage):
             self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON).click()
         except NoSuchElementException:
             self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON_by_index).click()
+
+

@@ -61,6 +61,7 @@ class test_QuickAccessButtons(SetupTestCase):
         main_page.alert_expiring_password()
         main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
+
         main_page.click_ACTIVATE_WORKFLOW()
         main_page.click_ACTIVATE_BUTTON_on_alert()
         main_page.check_if_alert_WORKFLOW_ACTIVATED_is_present()
@@ -70,6 +71,7 @@ class test_QuickAccessButtons(SetupTestCase):
         new_contact_page.setDriver(self.driver)
         new_contact_page.type_first_name("Name for new contact test")
         common_page.hide_keyboard()
+        new_contact_page.scroll_down_to_save_button()
         new_contact_page.click_save_button()
         main_page.check_presence_of_events_button()
         main_page.open_CREATE_TASK()

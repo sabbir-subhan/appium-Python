@@ -27,7 +27,7 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
-
+from time import sleep
 
 class test_SendPhoto(SetupTestCase):
     """ Setup test """
@@ -64,6 +64,7 @@ class test_SendPhoto(SetupTestCase):
         main_page.alert_expiring_password()
         main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
+
         main_page.scroll_down_to_photo_button()
         main_page.open_PHOTO()
         photo_page = LoadClass.load_page('PhotoPage')

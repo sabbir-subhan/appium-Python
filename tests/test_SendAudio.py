@@ -56,6 +56,7 @@ class test_SendAudio(SetupTestCase):
         main_page.alert_expiring_password()
         main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
+
         main_page.scroll_down_to_sound_button()
         main_page.open_SOUND()
         sound_page = LoadClass.load_page('SoundPage')

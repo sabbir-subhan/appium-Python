@@ -19,7 +19,7 @@ class DesiredCapabilities(object):
             "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.2.apk"),
             "apppackage": "com.noggin.oca",
             "appactivity": "com.noggin.oca.MainActivity",
-            "newCommandTimeout": "80",
+            "newCommandTimeout": "120",
             "androidDeviceReadyTimeout": "60",
             "udid": "0123456789ABCDEF"
         },
@@ -31,14 +31,14 @@ class DesiredCapabilities(object):
             "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.2.apk"),
             "apppackage": "com.noggin.oca",
             "appactivity": "com.noggin.oca.MainActivity",
-            "newCommandTimeout": "45",
+            "newCommandTimeout": "60",
             "udid": "7d7d9a62"
         },
 
         "Android6.0": {
             "platformName": "ANDROID",
             "platformVersion": "6.0",
-            "deviceName": "emulator-5554",
+            "deviceName": "192.168.56.101:5555",
             "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.2.apk"),
             "apppackage": "com.noggin.oca",
             "appactivity": "com.noggin.oca.MainActivity",
@@ -74,7 +74,7 @@ class DesiredCapabilities(object):
             "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.2.apk"),
             "apppackage": "com.noggin.oca",
             "appactivity": "com.noggin.oca.MainActivity",
-            "autoAcceptAlerts": True,
+            #"autoAcceptAlerts": True,
             "newCommandTimeout": "60",
             "udid": "ad0816033848eb0443"
         },

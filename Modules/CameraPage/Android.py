@@ -5,6 +5,7 @@ from selenium.common.exceptions import *
 from appium.webdriver.common.touch_action import TouchAction
 import logging
 from Conf.desired_capabilities import DesiredCapabilities
+from time import sleep
 
 
 class Android(CameraPage):
@@ -56,6 +57,7 @@ class Android(CameraPage):
             self.assertIsNotNone(use_photo2)
             action = TouchAction(self.driver)
             action.tap(element=use_photo2, count=1).perform()
+        sleep(5)
 
     def click_use_video(self):
 
