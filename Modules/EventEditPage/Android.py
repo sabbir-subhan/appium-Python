@@ -65,9 +65,18 @@ class Android(EventEditPage):
 
     def scroll_down_to_description_field(self):
 
-        common_page = LoadClass.load_page('CommonPage')
-        common_page.setDriver(self.driver)
-        common_page.scroll_down_one_view()
+        window_size = self.driver.get_window_size()  # this will give You a dictionary
+        start_x = window_size["width"] * 0.25
+        start_y = window_size["height"] * 0.15
+        end_y = window_size["height"] * 0.95
+        logging.info("scroll down only one screen")
+        sleep(2)
+        self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen
+        sleep(1)
+
+        # common_page = LoadClass.load_page('CommonPage')
+        # common_page.setDriver(self.driver)
+        # common_page.scroll_down_one_view()
 
     def scroll_down_to_option_list(self):
 
@@ -126,11 +135,14 @@ class Android(EventEditPage):
     def type_text_into_description_field(self):
 
         sleep(4)
-        logging.info("type some text into description field")
-        description_field = self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD)
-        sleep(1)
-        description_field.send_keys("test Android")
-        sleep(2)
+        try:
+            logging.info("type some text into description field")
+            description_field = self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD)
+            sleep(1)
+            description_field.send_keys("test Android")
+            sleep(2)
+        except NoSuchElementException:
+            pass
 
     def click_on_option_list(self):
 

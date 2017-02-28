@@ -38,7 +38,7 @@ class DesiredCapabilities(object):
         "Android6.0": {
             "platformName": "ANDROID",
             "platformVersion": "6.0",
-            "deviceName": "Google Nexus 5X",
+            "deviceName": "emulator-5554",
             "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.2.apk"),
             "apppackage": "com.noggin.oca",
             "appactivity": "com.noggin.oca.MainActivity",
@@ -49,23 +49,23 @@ class DesiredCapabilities(object):
             "androidDeviceReadyTimeout": "300"
         },
 
-        "Android6.0.1": {
-            "platformName": "ANDROID",
-            "platformVersion": "6.0.1",
-            # "automationName": "Appium",                       # probably necessary to enable this and disable platformVersion when switching to webview context, but currently there is only NATIVE_APP context
-            "deviceName": "SM-G930F",
-            # "app": PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk"),
-            # "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.2.apk"),
-            # "apppackage": "com.noggin.ocalukasl",
-            # "appactivity": "com.noggin.ocalukasl.MainActivity",
-            "apppackage": "com.noggin.oca",
-            "appactivity": "com.noggin.oca.MainActivity",
-            "newCommandTimeout": "60",
-            # "unicodekeyboard": True,
-            # "resetkeyboard": True,
-            "udid": "ad0816033848eb0443"
-        },
+        # "Android6.0.1": {
+        #     "platformName": "ANDROID",
+        #     "platformVersion": "6.0.1",
+        #     # "automationName": "Appium",                       # probably necessary to enable this and disable platformVersion when switching to webview context, but currently there is only NATIVE_APP context
+        #     "deviceName": "SM-G930F",
+        #     # "app": PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk"),
+        #     # "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
+        #     "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.2.apk"),
+        #     # "apppackage": "com.noggin.ocalukasl",
+        #     # "appactivity": "com.noggin.ocalukasl.MainActivity",
+        #     "apppackage": "com.noggin.oca",
+        #     "appactivity": "com.noggin.oca.MainActivity",
+        #     "newCommandTimeout": "60",
+        #     # "unicodekeyboard": True,
+        #     # "resetkeyboard": True,
+        #     "udid": "ad0816033848eb0443"
+        # },
 
         "Android7.0": {
             "platformName": "ANDROID",
@@ -74,6 +74,7 @@ class DesiredCapabilities(object):
             "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.2.apk"),
             "apppackage": "com.noggin.oca",
             "appactivity": "com.noggin.oca.MainActivity",
+            "autoAcceptAlerts": True,
             "newCommandTimeout": "60",
             "udid": "ad0816033848eb0443"
         },

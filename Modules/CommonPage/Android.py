@@ -4,7 +4,7 @@ import logging
 from time import sleep
 from selenium.common.exceptions import *
 from Modules.CommonPage.CommonPage import CommonPage
-from Conf.desired_capabilities import DesiredCapabilities
+# from Conf.desired_capabilities import DesiredCapabilities
 
 
 class Android(CommonPage):

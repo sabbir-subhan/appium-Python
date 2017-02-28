@@ -16,10 +16,19 @@ class Android(GalleryPage):
             self.assertIsNotNone(choose_element_1, "first element in gallery not found")
             choose_element_1.click()
         except NoSuchElementException:
-            choose_element_1_android7 = self.driver.find_element(*self.configuration.GalleryScreen.
-                                                                 GALLERY_ELEMENT_1_android7)
-            self.assertIsNotNone(choose_element_1_android7, "first element in gallery not found")
-            choose_element_1_android7.click()
+            window_size = self.driver.get_window_size()  # this will give You a dictionary
+            logging.info(window_size)
+            x = window_size["width"] * 0.30
+            logging.info(x)
+            y = window_size["height"] * 0.30
+            logging.info(y)
+            position = [(x, y)]
+            self.driver.tap(position)
+            # choose_element_1_android7 = self.driver.find_element(*self.configuration.GalleryScreen.
+            #                                                      GALLERY_ELEMENT_1_android7)
+            # self.assertIsNotNone(choose_element_1_android7, "first element in gallery not found")
+            # logging.info("A TU NIE")
+            # choose_element_1_android7.click()
 
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
