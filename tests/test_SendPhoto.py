@@ -27,7 +27,7 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
-from time import sleep
+
 
 class test_SendPhoto(SetupTestCase):
     """ Setup test """
@@ -74,7 +74,7 @@ class test_SendPhoto(SetupTestCase):
         common_page.alert_popup_allow()
         gallery_page = LoadClass.load_page('GalleryPage')
         gallery_page.setDriver(self.driver)
-        gallery_page.choose_element_1()
+        gallery_page.choose_element_1()  # problem on android 6 and 7
         common_page.alert_popup_allow()
         photo_page.type_description("test - photo 1 from gallery")
         common_page.hide_keyboard()

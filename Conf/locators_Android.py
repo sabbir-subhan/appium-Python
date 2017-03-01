@@ -39,6 +39,8 @@ class WelcomeScreen:
     PHOTO_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "PHOTO")]]')
     VIDEO_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "VIDEO")]]')
     SOUND_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "SOUND")]]')
+    #SOUND_BUTTON = (MobileBy.ACCESSIBILITY_ID, '&#10;SOUND')
+    # SOUND_BUTTON = (MobileBy.XPATH, '//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.webkit.WebView[1]/android.view.View[3]/android.view.View[22]/android.view.View[1]')
     SETTINGS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "SETTINGS")]]')
     ABOUT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "ABOUT")]]')
     LOGIN_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "LOGIN")]]')
@@ -290,7 +292,7 @@ class VideoScreen:
 class GalleryScreen:
     """A class for handling Gallery"""
     GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//android.widget.GridView[1]/android.widget.FrameLayout[1]')
-    GALLERY_ELEMENT_1_android7 = (MobileBy.XPATH, '//android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]')
+    GALLERY_ELEMENT_1_android7 = (MobileBy.XPATH, '//android.widget.RelativeLayout[1]/android.view.View[1]')
 
 
 class SoundScreen:

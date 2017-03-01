@@ -4,7 +4,6 @@ from Modules.EventEditPage.EventEditPage import EventEditPage
 from Modules.load_class import LoadClass
 from selenium.common.exceptions import *
 import logging
-from time import sleep
 
 
 class IOS(EventEditPage):
@@ -195,23 +194,39 @@ class IOS(EventEditPage):
     def delete_chosen_event_inside_subform(self):
 
         logging.info("delete chosen event inside sub form")
-        sleep(1)
         try:
             delete_x = self.driver.find_element(*self.configuration.EventEditScreen.DELETE_SUB_EVENT_FROM_CHOOSER)
             if delete_x.is_displayed():
-                self.assertIsNotNone(delete_x)
                 delete_x.click()
             else:
-                pass
+                location = delete_x.location
+                print(location)
+                x = location["x"]
+                y = location["y"]
+                print(x)
+                print(y)
+                positions = [(x, y)]
+                self.driver.tap(positions)
         except NoSuchElementException:
-            positions_for_delete_button = [(16, 608)]
-            self.driver.tap(positions_for_delete_button)
-            try:
-                previously_created_event_for_subform_chooser = self.driver.find_element(
-                    *self.configuration.EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER)
-                self.assertIsNone(previously_created_event_for_subform_chooser)
-            except NoSuchElementException:
-                pass
+            pass
+
+        # sleep(1)
+        # try:
+        #     delete_x = self.driver.find_element(*self.configuration.EventEditScreen.DELETE_SUB_EVENT_FROM_CHOOSER)
+        #     if delete_x.is_displayed():
+        #         self.assertIsNotNone(delete_x)
+        #         delete_x.click()
+        #     else:
+        #         pass
+        # except NoSuchElementException:
+        #     positions_for_delete_button = [(16, 608)]
+        #     self.driver.tap(positions_for_delete_button)
+        #     try:
+        #         previously_created_event_for_subform_chooser = self.driver.find_element(
+        #             *self.configuration.EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER)
+        #         self.assertIsNone(previously_created_event_for_subform_chooser)
+        #     except NoSuchElementException:
+        #         pass
 
     def click_on_option_1(self):
 

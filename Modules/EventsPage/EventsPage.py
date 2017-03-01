@@ -104,6 +104,7 @@ class EventsPage(BasePage):
         sleep(5)
 
     def click_on_previously_created_event_for_subform_chooser(self):
+
         sleep(10)
         logging.info("click_on_previously_created_event_for_subform_chooser")
         event_for_subform = self.driver.find_element(*self.configuration.EventEditScreen.
@@ -111,4 +112,5 @@ class EventsPage(BasePage):
         self.assertIsNotNone(event_for_subform, "event_for_subform not found")
         event_for_subform.click()
         sleep(5)
+
 

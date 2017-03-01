@@ -218,15 +218,13 @@ class EventEditScreen:
     FIELD_TO_RESTORE_2_HEADER = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="New email address"]')
     FIELD_TO_RESTORE_2_VALUE = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="test@noggin.com"]')
     CHOOSER_FIELD = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "New events chooser")]]')
-    PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains('
-                                                            '., "Test Appium")]]')
+    PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER = (MobileBy.XPATH, '//XCUIElementTypeOther[2]/XCUIElementTypeOther[6]'
+                                                            '/XCUIElementTypeOther[2]')
     SUBFORM_FIELD_ADD_ROW = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Add row"]')
     NEW_EVENTS_CHOOSER_IN_SUB_FORM = (MobileBy.XPATH, '//XCUIElementTypeStaticText['
                                                       '@name="New events chooser inside sub form"]')
-    PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER = (MobileBy.XPATH, '//XCUIElementTypeLink['
-                                                                    '@name[contains(., "Test")]]')
-    DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.XPATH, '//XCUIElementTypeScrollView/XCUIElementTypeWindow/'
-                                                     'XCUIElementTypeLink[6]')
+    PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER = PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER
+    DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.XPATH, '//XCUIElementTypeOther[9]/XCUIElementTypeLink[1]/XCUIElementTypeStaticText[1][@name=""]')
 
 
 class EventDetailsScreen:

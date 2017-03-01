@@ -106,6 +106,15 @@ class Android(CommonPage):
         self.driver.swipe(start_x, start_y, start_x, end_y, 3000)  # each swipe is scrolling one screen
         sleep(1)
 
+    def additional_appium_actions(self):
+
+        # print(self.driver.contexts)
+        # self.driver.refresh()  # Method has not yet been implemented
+        print(self.driver.page_source)
+        self.driver.keyevent(3)  # Press Home Key
+        self.driver.keyevent(187)  # KEYCODE_APP_SWITCH
+        self.driver.find_element_by_accessibility_id('OCA')  # maximize app
+
     # @staticmethod
     # def get_platform_version():
     #
