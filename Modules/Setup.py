@@ -2,6 +2,7 @@
 
 from Conf.desired_capabilities import DesiredCapabilities
 from configuration import ENVIRONMENT_TEST
+from configuration import PORT
 from appium import webdriver
 import unittest
 from importlib import import_module
@@ -36,7 +37,8 @@ class SetupTestCase(unittest.TestCase):
 
         self.configuration = import_module('Conf.locators_' + ENVIRONMENT_TEST)
 
-        self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
+        # self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
+        self.driver = webdriver.Remote("http://localhost:" + PORT + "/wd/hub", desired_capabilities)
 
         self.driver.implicitly_wait(30)  # seconds - depends on device and connection speed
 

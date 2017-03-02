@@ -224,7 +224,8 @@ class EventEditScreen:
     NEW_EVENTS_CHOOSER_IN_SUB_FORM = (MobileBy.XPATH, '//XCUIElementTypeStaticText['
                                                       '@name="New events chooser inside sub form"]')
     PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER = PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER
-    DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.XPATH, '//XCUIElementTypeOther[9]/XCUIElementTypeLink[1]/XCUIElementTypeStaticText[1][@name=""]')
+    DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.XPATH, '//XCUIElementTypeOther[9]/XCUIElementTypeLink[1]'
+                                                     '/XCUIElementTypeStaticText[1][@name=""]')
 
 
 class EventDetailsScreen:

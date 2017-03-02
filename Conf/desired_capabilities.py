@@ -42,10 +42,8 @@ class DesiredCapabilities(object):
             "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.2.apk"),
             "apppackage": "com.noggin.oca",
             "appactivity": "com.noggin.oca.MainActivity",
-            "autoAcceptAlerts": True,
-            "browserName": "Android",
-            "fullReset": True,
-            "newCommandTimeout": "20",
+            # "fullReset": True,
+            "newCommandTimeout": "40",
             "androidDeviceReadyTimeout": "300"
         },
 
@@ -74,7 +72,7 @@ class DesiredCapabilities(object):
             "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.2.apk"),
             "apppackage": "com.noggin.oca",
             "appactivity": "com.noggin.oca.MainActivity",
-            #"autoAcceptAlerts": True,
+            #"autoAcceptAlerts": True,  # not working with Android
             "newCommandTimeout": "20",
             "udid": "ad0816033848eb0443"
         },
@@ -119,7 +117,7 @@ class DesiredCapabilities(object):
             # "locationServicesEnabled": True,  # test it
             # "locationServicesAuthorized": True,  # test it
             # "autoWebview": True,
-            "newCommandTimeout": "20",
+            "newCommandTimeout": "40",
             "udid": "4b15c4284897fa6f9b4c5205325a9cece997ad35"
         }
 

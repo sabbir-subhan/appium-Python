@@ -58,18 +58,7 @@ class test_SendAudio(SetupTestCase):
         main_page.check_presence_of_events_button()
 
         main_page.scroll_down_to_sound_button()
-
-        delete_x = self.driver.find_element(*self.configuration.WelcomeScreen.SOUND_BUTTON)
-        location = delete_x.location
-        print(location)
-        x = location["x"]
-        y = location["y"]
-        print(x)
-        print(y)
-        positions = [(x, y)]
-        self.driver.tap(positions)
-
-        #main_page.open_SOUND()
+        main_page.open_SOUND()
         sound_page = LoadClass.load_page('SoundPage')
         sound_page.setDriver(self.driver)
         sound_page.check_if_sound_page_was_opened()

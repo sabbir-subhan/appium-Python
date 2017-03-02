@@ -10,6 +10,8 @@ platform = "Android 7"
 # IOS 10
 
 
+PORT = "4723"  # port on which Appium server is running
+
 if platform == "IOS 9":
 
     ENVIRONMENT_TEST = "IOS9"

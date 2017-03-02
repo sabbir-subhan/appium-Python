@@ -210,24 +210,6 @@ class IOS(EventEditPage):
         except NoSuchElementException:
             pass
 
-        # sleep(1)
-        # try:
-        #     delete_x = self.driver.find_element(*self.configuration.EventEditScreen.DELETE_SUB_EVENT_FROM_CHOOSER)
-        #     if delete_x.is_displayed():
-        #         self.assertIsNotNone(delete_x)
-        #         delete_x.click()
-        #     else:
-        #         pass
-        # except NoSuchElementException:
-        #     positions_for_delete_button = [(16, 608)]
-        #     self.driver.tap(positions_for_delete_button)
-        #     try:
-        #         previously_created_event_for_subform_chooser = self.driver.find_element(
-        #             *self.configuration.EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER)
-        #         self.assertIsNone(previously_created_event_for_subform_chooser)
-        #     except NoSuchElementException:
-        #         pass
-
     def click_on_option_1(self):
 
         logging.info("choose '1' in option list")

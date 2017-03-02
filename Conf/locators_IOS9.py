@@ -255,7 +255,7 @@ class VideoScreen:
 class SoundScreen:
     """A class for Sound screen locators - screen after clicking into Sound button in Main Menu."""
     SOUND_PAGE_HEADER = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Send a sound recording to OCA")]]')
-    RECORD_SOUND_BUTTON = (MobileBy.XPATH, '//UIAStaticText[2]')  # appium 1.5.3 can't tap that element - probably it's a bug in Appium - visible: false
+    RECORD_SOUND_BUTTON = (MobileBy.XPATH, '//UIAWebView[1]/UIAStaticText[2]')  # appium 1.5.3 can't tap that element - probably it's a bug in Appium - visible: false
 
 
 class SoundRecorderScreen:

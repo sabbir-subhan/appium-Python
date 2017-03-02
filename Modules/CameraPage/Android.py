@@ -1,7 +1,6 @@
 """ Methods for Android on Camera Page """
 
 from Modules.CameraPage.CameraPage import CameraPage
-from selenium.common.exceptions import *
 from appium.webdriver.common.touch_action import TouchAction
 import logging
 from Conf.desired_capabilities import DesiredCapabilities
@@ -17,14 +16,16 @@ class Android(CameraPage):
         platform_version = desired_capabilities.get('platformVersion')
         # logging.info(platform_version)
         logging.info("capture")
-        if platform_version >= "6":
+        sleep(4)
+        if platform_version > "5":
             photo_capture1 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_6)
             self.assertIsNotNone(photo_capture1)
             photo_capture1.click()
         else:
-            photo_capture2 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_4_and_5)
-            self.assertIsNotNone(photo_capture2)
-            photo_capture2.click()
+            photo_capture3 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_4_and_5)
+            self.assertIsNotNone(photo_capture3)
+            photo_capture3.click()
+        sleep(2)
 
     def capture_video(self):
 
@@ -84,23 +85,41 @@ class Android(CameraPage):
     def choose_camera(self):
 
         logging.info("click choose camera")
-        try:
-            chooser_camera = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER)
-            self.assertIsNotNone(chooser_camera)
-            chooser_camera.click()
-        except NoSuchElementException:
-            pass
-        try:
-            chooser_camera2 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER2)
-            self.assertIsNotNone(chooser_camera2)
-            chooser_camera2.click()
-        except NoSuchElementException:
-            pass
-        try:
-            chooser_camera_for_android_4 = self.driver.find_element(*self.configuration.CameraScreen.
-                                                                    CAMERA_CHOOSER_ANDROID4)
-            self.assertIsNotNone(chooser_camera_for_android_4)
-            chooser_camera_for_android_4.click()
-        except NoSuchElementException:
-            pass
+        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        platform_version = desired_capabilities.get('platformVersion')
+        if platform_version >= "7":
+            chooser_camera_android7 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID7)
+            self.assertIsNotNone(chooser_camera_android7)
+            chooser_camera_android7.click()
+        elif "6" <= platform_version < "7":
+            chooser_camera_android6 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID6)
+            self.assertIsNotNone(chooser_camera_android6)
+            chooser_camera_android6.click()
+        elif platform_version < "5":
+            chooser_camera_android4 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID4)
+            self.assertIsNotNone(chooser_camera_android4)
+            chooser_camera_android4.click()
+        else:
+            chooser_camera_android5 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID5)
+            self.assertIsNotNone(chooser_camera_android5)
+            chooser_camera_android5.click()
+        # try:
+        #     chooser_camera = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER)
+        #     self.assertIsNotNone(chooser_camera)
+        #     chooser_camera.click()
+        # except NoSuchElementException:
+        #     pass
+        # try:
+        #     chooser_camera2 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER2)
+        #     self.assertIsNotNone(chooser_camera2)
+        #     chooser_camera2.click()
+        # except NoSuchElementException:
+        #     pass
+        # try:
+        #     chooser_camera_for_android_4 = self.driver.find_element(*self.configuration.CameraScreen.
+        #                                                             CAMERA_CHOOSER_ANDROID4)
+        #     self.assertIsNotNone(chooser_camera_for_android_4)
+        #     chooser_camera_for_android_4.click()
+        # except NoSuchElementException:
+        #     pass
 

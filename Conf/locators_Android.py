@@ -39,8 +39,7 @@ class WelcomeScreen:
     PHOTO_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "PHOTO")]]')
     VIDEO_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "VIDEO")]]')
     SOUND_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "SOUND")]]')
-    #SOUND_BUTTON = (MobileBy.ACCESSIBILITY_ID, '&#10;SOUND')
-    # SOUND_BUTTON = (MobileBy.XPATH, '//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.webkit.WebView[1]/android.view.View[3]/android.view.View[22]/android.view.View[1]')
+    # SOUND_BUTTON = (MobileBy.ACCESSIBILITY_ID, '&#10;SOUND')
     SETTINGS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "SETTINGS")]]')
     ABOUT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "ABOUT")]]')
     LOGIN_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "LOGIN")]]')
@@ -318,11 +317,14 @@ class SoundRecorderScreen:
 class CameraScreen:
     """A class for handling Camera"""
     CAPTURE_BUTTON_ANDROID_4_and_5 = (MobileBy.ACCESSIBILITY_ID, 'Shutter')
-    CAPTURE_BUTTON_ANDROID_6 = (MobileBy.XPATH, '//GLButton[@text="Shutter"]')  # and for Android 7
+    CAPTURE_BUTTON_ANDROID_6 = (MobileBy.XPATH, '//GLButton[@text="Shutter"]')  # Android 7 too
+    # CAPTURE_BUTTON_ANDROID_7 = (MobileBy.XPATH, '//GLViewGroup[3]/GLViewGroup[1]/GLButton[2]')
     CANCEL_PHOTO_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Review cancel')
     CAMERA_CHOOSER_ANDROID4 = (MobileBy.ID, 'com.android.camera2:id/btn_switch_camera')
-    CAMERA_CHOOSER = (MobileBy.ACCESSIBILITY_ID, 'Switch camera')  # for android 6
-    CAMERA_CHOOSER2 = (MobileBy.ID, 'com.tct.camera:id/onscreen_camera_picker')
+    CAMERA_CHOOSER_ANDROID5 = (MobileBy.ID, 'com.tct.camera:id/onscreen_camera_picker')
+    CAMERA_CHOOSER_ANDROID6 = (MobileBy.ACCESSIBILITY_ID, 'Switch camera')
+    CAMERA_CHOOSER_ANDROID7 = (MobileBy.XPATH, '//SideQuickSetting[1]/SideQuickSettingItem[3]'
+                                               '/ItemDataButton[1]/GLButton[1]')
     RETAKE_ANDROID_4 = (MobileBy.ACCESSIBILITY_ID, 'Review retake')
     RETAKE_ANDROID_5 = (MobileBy.ID, 'com.tct.camera:id/btn_retake')
     RETAKE_ANDROID_6 = (MobileBy.ID, 'com.sec.android.app.camera:id/retry')
