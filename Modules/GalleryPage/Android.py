@@ -17,16 +17,16 @@ class Android(GalleryPage):
         if platform_version >= "7":
             choose_element_1_android7 = self.driver.find_element(*self.configuration.GalleryScreen.
                                                                  GALLERY_ELEMENT_1_android7)
-            # choose_element_1_android7.click()  # for some reason it is not working with Android 7
-            location = choose_element_1_android7.location
-            print(location)
-            x = location["x"]
-            y = location["y"]
-            print(x)
-            print(y)
-            positions = [(x + 1, y + 1)]
-            print(positions)
-            self.driver.tap(positions)  # not working, also Touch Action is not working in Android 7 Gallery
+            choose_element_1_android7.click()  # for some reason it is not working with Android 7
+            # location = choose_element_1_android7.location
+            # print(location)
+            # x = location["x"]
+            # y = location["y"]
+            # print(x)
+            # print(y)
+            # positions = [(x, y)]
+            # print(positions)
+            # self.driver.tap(positions)  # not working, also Touch Action is not working in Android 7 Gallery
         else:
             choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1)
             choose_element_1.click()
@@ -56,3 +56,10 @@ class Android(GalleryPage):
         #     Android.choose_element_1(self)
         # except:
         #     pass
+
+    def choose_video_from_gallery(self):
+
+        common_page = LoadClass.load_page('GalleryPage')
+        common_page.setDriver(self.driver)
+        common_page.choose_element_1()
+

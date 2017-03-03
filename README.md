@@ -72,7 +72,7 @@ Appium in CLI:
 current GUI version - 1.5.3
 current CLI beta version - 1.6.3
 
--- If You want to run iOS9 and iOS10 You need to install Xcode 7 and Xcode 8, Appium 1.6 in CLI mode can run both iOS versions but You need to switch between Xcode versions
+-- If You want to **run iOS9 and iOS10 You need to install Xcode 7 and Xcode 8, Appium 1.6 in CLI mode can run both iOS versions but You need to switch between Xcode versions**
 ('sudo xcode-select -switch /Applications/Xcode.app' and run 'appium' - for iOS10 and
 'sudo xcode-select -switch /Applications/Xcode7.app' and run 'appium' - for iOS 9)
 
@@ -138,16 +138,12 @@ file desired_capabilities.py need to be updated accordingly to used device:
 - OS version and name
 - paths to .apk and .app files
 
-to use device defined in desired_capabilities.py You need to open test case and change line;
-- "desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad" for example to:
-- "desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPhone6"
-
 
 Additional info:
 
-Locators for elements are based mostly on visible texts, so if in OCA webpage some name, for example, for event type will be changed it will stop working.
+Locators for elements are based mostly on visible texts, so if in OCA webpage, for example event type name, will be changed it will stop working.
 
-Required configuration on OCA webpage:
+Some required configuration on OCA webpage:
 
 - users accounts with correct settings (see credentials.py)
 - 3 types of events (Incident, event_for_chooser_fields, event_for_on_load/save_test)
@@ -166,7 +162,6 @@ with name: "New events chooser inside sub form"
 - for some reason on iOS -- "No reset" checkbox in Appium setting is not working, so tests for iOS are written to compensate it, but remember to run Android tests with checkbox "No reset" checked
 - make sure to lunch appium server
 - make sure that real devices are connected and unlocked 
-- make sure line in test case: "desired_capabilities = DesiredCapabilities.desired_capabilities_for_iOS_iPad" is pinpointing to correct desired_capabilities for Your real device (see desired_capabilities.py)
 - make sure that users accounts in OCA webpage have correct properties (for example expiration dates) and other tests have proper configurations in OCA webpage
 
 
@@ -184,7 +179,11 @@ with name: "New events chooser inside sub form"
 - Appium 1.6.3 in CLI and Xcode in version 8 and Appium GUI in version 1.5.3 and Xcode 7 (Xcode7 must have different name because appium in CLI will search for app "Xcode" so that should be version 8)
 - in CLI (Appium 1.6.3) You can run tests for iOS10 and in GUI You can run tests for iOS9
 - in GUI change path to app, path to Xcode 7, device name, OS version and UDID (everything must match dictionary in desired_capabilities.py)
-- after that uncomment line in page_ios.py: "from locators_for_ios_9.py import *" and comment line: "from locators_for_ios_10.py import *"
+
+
+starting appium with logging to file:
+
+appium --log-timestamp --log /file_path
 
 
 APP VERSIONS:

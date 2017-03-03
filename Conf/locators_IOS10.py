@@ -287,8 +287,9 @@ class SoundRecorderScreen:
 
 class GalleryScreen:
     """A class for handling Gallery"""
-    GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//XCUIElementTypeCell[1]')
+    GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//XCUIElementTypeCell[5]')
     GALLERY_VIDEOS_POPOVER = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Videos"]')
+    GALLERY_VIDEO_ELEMENT_1 = (MobileBy.XPATH, '//XCUIElementTypeCell[1]')
     USE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Choose')
 
 
