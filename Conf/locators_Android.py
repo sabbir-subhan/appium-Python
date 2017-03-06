@@ -134,7 +134,8 @@ class LocationScreen:
     START_BUTTON_disabled = (MobileBy.XPATH, '//android.widget.Button[@content-desc['
                                              'contains(., "Start")] and @enabled="false"]')
     LOCATION_PAGE_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Your location was last sent')
-    LOCATION_STATUS = (MobileBy.ACCESSIBILITY_ID, 'a few seconds ago')
+    #LOCATION_STATUS = (MobileBy.ACCESSIBILITY_ID, 'a few seconds ago')
+    LOCATION_STATUS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., " seconds ago")]]')
 
 
 class EventsScreen:

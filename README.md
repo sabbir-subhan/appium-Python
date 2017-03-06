@@ -72,9 +72,14 @@ Appium in CLI:
 current GUI version - 1.5.3
 current CLI beta version - 1.6.3
 
--- If You want to **run iOS9 and iOS10 You need to install Xcode 7 and Xcode 8, Appium 1.6 in CLI mode can run both iOS versions but You need to switch between Xcode versions**
+
+### **run iOS9 and iOS10** ###
+You need to install Xcode 7 and Xcode 8, Appium >= 1.6 in CLI mode, can run both iOS versions but You need to switch between Xcode versions
 ('sudo xcode-select -switch /Applications/Xcode.app' and run 'appium' - for iOS10 and
 'sudo xcode-select -switch /Applications/Xcode7.app' and run 'appium' - for iOS 9)
+- remember to restart Appium server after changing Xcode version
+
+
 
 ### **CONFIGURING ANDROID DEVICE:** ###
 
@@ -208,3 +213,4 @@ APP VERSIONS:
 - Error about Xcode version, to switch xcode version use: sudo xcode-select -switch /Applications/Xcode.app
 - Appium 1.6 -- "socket hang up" - rebuild WebDriver Runner
 - error containing "adbExec" - uninstall apps from device: "Unlock", "Appium Settings" -- Appium will install them automatically 
+- real devices can overheat, which is causing test to fail 

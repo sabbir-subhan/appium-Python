@@ -120,18 +120,20 @@ class MainMenuScreen(WelcomeScreen):
 class LocationScreen:
     """A class for Location screen locators - screen after clicking into Location button in Main Menu."""
     SEND_ONCE_NOW = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Send once now")]]')
-    SEND_EVERY_SPINNER = (MobileBy.XPATH, '//XCUIElementTypeElement[@name="Send every"]')
+    SEND_EVERY_SPINNER = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="Send every"]')
     CHOOSE_5_MINUTES_OPTION_iPad = (MobileBy.XPATH, '//XCUIElementTypePopover/XCUIElementTypeTableView'
                                                     '/XCUIElementTypeTableCell[2]')
     ASSERT_5_MINUTES_OPTION = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="5 minutes"]')
-    FOR_THE_NEXT_SPINNER = (MobileBy.XPATH, '//XCUIElementTypeElement[@name="For the next"]')
+    FOR_THE_NEXT_SPINNER = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="For the next"]')
     CHOOSE_1_HOUR_OPTION_iPad = (MobileBy.XPATH, '//XCUIElementTypePopover/XCUIElementTypeTableView'
                                                  '/XCUIElementTypeTableCell[3]')
     ASSERT_1_HOUR_OPTION = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="1 hour"]')
     START_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Start")]]')
+    STOP_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Stop")]]')
+    TRACKING_HISTORY_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Tracking history"]')
     LOCATION_PAGE_HEADER = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains('
                                             '., "Your location was last sent")]]')
-    LOCATION_STATUS = (MobileBy.XPATH, "//XCUIElementTypeStaticText[@name[contains(., 'few seconds ago')]]")
+    LOCATION_STATUS = (MobileBy.XPATH, "//XCUIElementTypeStaticText[@name[contains(., ' seconds ago')]]")
 
 
 class EventsScreen:
@@ -268,7 +270,8 @@ class PhotoScreen:
 class VideoScreen:
     """A class for Video screen locators - screen after clicking into Video button in Main Menu."""
     VIDEO_PAGE_HEADER = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "Send a video to OCA")]]')
-    RECORD_NEW_BUTTON = (MobileBy.XPATH, 'XCUIElementTypeScrollView[2]/XCUIElementTypeStaticText[4]')
+    # RECORD_NEW_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]')  # works too
+    RECORD_NEW_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Record New"]')
 
 
 class SoundScreen:
