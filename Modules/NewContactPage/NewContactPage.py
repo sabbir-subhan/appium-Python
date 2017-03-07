@@ -15,9 +15,16 @@ class NewContactPage(BasePage):
         first_name.click()
         first_name.send_keys(text)
 
+    def scroll_down_to_save_button(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.scroll_down_to_save_button()
+
     def click_save_button(self):
 
         event_edit_page = LoadClass.load_page('EventEditPage')
         event_edit_page.setDriver(self.driver)
         event_edit_page.click_save_button()
+
 

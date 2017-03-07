@@ -20,13 +20,18 @@ class IOS(CommonPage):
 
         window_size = self.driver.get_window_size()  # this returns dictionary
         logging.info(window_size)
-        position_x = window_size["width"] * 0.04
-        position_y = window_size["height"] * 0.03
+        # position_x = window_size["width"] * 0.04
+        # position_y = window_size["height"] * 0.03
+
+        position_x = window_size["width"] * 0.008  # works for iPad
+        position_y = window_size["height"] * 0.009
+
         logging.info(position_x)
         logging.info(position_y)
-        sleep(2)
         positions = [(position_x, position_y)]
-        self.driver.tap(positions)
+        sleep(2)
+        self.driver.tap(positions, duration=1200)
+        sleep(2)
 
     # OCA top bar
     def hamburger_button(self):

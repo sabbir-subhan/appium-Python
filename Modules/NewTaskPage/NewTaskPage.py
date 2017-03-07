@@ -1,6 +1,7 @@
 """A class for methods to handle New Task Page """
 
 from Modules.BasePage.BasePage import BasePage
+from Modules.load_class import LoadClass
 import logging
 
 
@@ -35,9 +36,28 @@ class NewTaskPage(BasePage):
         self.assertIsNotNone(assignees, "Users option list was not found")
         assignees.click()
 
-    def choose_start_date(self):
+    def click_start_date(self):
 
         logging.info("Choose Start Date")
         start_date = self.driver.find_element(*self.configuration.NewTaskScreen.START_DATE)
         self.assertIsNotNone(start_date, "Start Date field was not found")
         start_date.click()
+
+    def click_ok_button(self):
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.click_ok_button()
+
+    def scroll_down_to_save_button(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.scroll_down_to_save_button()
+
+    def click_save_button(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.click_save_button()
+

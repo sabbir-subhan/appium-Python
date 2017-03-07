@@ -19,7 +19,7 @@ class PhotoPage(BasePage):
 
         WebDriverWait(self.driver, 35).until(
             expected_conditions.presence_of_element_located(self.configuration.PhotoScreen.DESCRIPTION_FIELD),
-            "Failed to locate description field for photo")
+            "Failed to locate description field")
         logging.info("type text into description field")
         description_field = self.driver.find_element(*self.configuration.PhotoScreen.DESCRIPTION_FIELD)
         self.assertIsNotNone(description_field, "Description field not found")
