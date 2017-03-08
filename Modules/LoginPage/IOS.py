@@ -32,6 +32,6 @@ class IOS(LoginPage):
         domain_textfield.clear()
         domain_textfield.click()
         domain_textfield.clear()
-        # domain_textfield.click()
-        # domain_textfield.clear()
+        domain_textfield.click()
+        domain_textfield.clear()
         domain_textfield.send_keys(Credentials.get_domain(domain))

@@ -5,6 +5,8 @@ from Modules.load_class import LoadClass
 import logging
 from time import sleep
 from appium.webdriver.common.touch_action import TouchAction
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class NewReportPage(BasePage):
@@ -39,4 +41,7 @@ class NewReportPage(BasePage):
         sleep(1)
         action = TouchAction(self.driver)
         action.tap(element=publish_button, count=1).perform()
-
+        sleep(2)
+        WebDriverWait(self.driver, 30).until(
+            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
+            "Failed to locate description field")

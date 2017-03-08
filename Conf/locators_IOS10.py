@@ -316,7 +316,7 @@ class RisksScreen:
 
 class NewContactScreen:
     """A class for handling New Contact screen"""
-    FIRST_NAME = (MobileBy.XPATH, '//XCUIElementTypeTextField [@name="First name"]')
+    FIRST_NAME = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="First name"]')
 
 
 class NewTaskScreen:
@@ -337,7 +337,7 @@ class NewTaskScreen:
 
 class NewReportScreen:
     """A class for handling New Report screen"""
-    LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//XCUIElementTypeElement[2]')
+    LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//XCUIElementTypeOther[4]/XCUIElementTypeOther[3]')
     LODGING_AGENCY = (MobileBy.XPATH, '//XCUIElementTypePopover/XCUIElementTypeTableView/'
                                       'XCUIElementTypeTableCell[2]')
     PUBLISH_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Publish"]')
