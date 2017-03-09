@@ -29,17 +29,26 @@ class IOS(WelcomePage):
             submit_button_ios = self.driver.find_element(*self.configuration.LoginScreen.SUBMIT_BUTTON)
             self.assertIsNotNone(submit_button_ios, "Submit button not found")
             submit_button_ios.click()
-            sleep(7)
+            sleep(8)
         except NoSuchElementException:
             logging.info("Your are already logged out")
 
         logging.info("relaunching app to avoid problems with locating elements")
-        self.driver.reset()
+        self.driver.reset()  # reset app to avoid problems with locating elements
         logging.info("click in LOGIN button")
+        sleep(2)
         try:
-            WebDriverWait(self.driver, 20).until(
+            WebDriverWait(self.driver, 30).until(
                 expected_conditions.presence_of_element_located(self.configuration.WelcomeScreen.LOGIN_BUTTON),
                 "Login button not found")
             self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON).click()
         except NoSuchElementException:
-            self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON_by_index).click()
+            try:
+                WebDriverWait(self.driver, 30).until(
+                    expected_conditions.presence_of_element_located(self.configuration.WelcomeScreen.
+                                                                    LOGIN_BUTTON_by_index),
+                    "Login button not found")
+                self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON_by_index).click()
+            except NoSuchElementException:
+                self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON).click()
+

@@ -15,7 +15,7 @@ class Android(NewReportPage):
         # end_x = window_size["width"]*0.75
         start_y = window_size["height"]*0.20
         end_y = window_size["height"]*0.80
-        logging.info("scroll down to Publish button")
+        logging.info("scrolling down to Publish button")
         sleep(1)
         scrolls = 10
         while scrolls > 0:

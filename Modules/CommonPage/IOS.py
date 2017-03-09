@@ -4,6 +4,8 @@ import logging
 from time import sleep
 from selenium.common.exceptions import *
 from Modules.CommonPage.CommonPage import CommonPage
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class IOS(CommonPage):
@@ -12,26 +14,34 @@ class IOS(CommonPage):
         """ Method to handle back button in Safari Browser """
         # Appium can't access another app directly, only tapping on specific coordinates will work
 
-        logging.info("wait for page to load")
-        sleep(10)
         logging.info("click 'Back to OCA' button")
-        # positions = [(15, 7)]
-        # self.driver.tap(positions)
 
         window_size = self.driver.get_window_size()  # this returns dictionary
         logging.info(window_size)
-        # position_x = window_size["width"] * 0.04
-        # position_y = window_size["height"] * 0.03
+        width = window_size["width"]
+        # height = window_size["height"]
 
-        position_x = window_size["width"] * 0.008  # works for iPad
-        position_y = window_size["height"] * 0.009
+        sleep(4)
+        if width > 376:
+            position_x = window_size["width"] * 0.008
+            position_y = window_size["height"] * 0.009
+            logging.info(position_x)
+            logging.info(position_y)
+            positions = [(position_x, position_y)]
+            self.driver.tap(positions)
+            sleep(2)
+        else:
+            position_x = window_size["width"] * 0.03
+            position_y = window_size["height"] * 0.02
+            logging.info(position_x)
+            logging.info(position_y)
+            positions = [(position_x, position_y)]
+            self.driver.tap(positions)
+            sleep(2)
 
-        logging.info(position_x)
-        logging.info(position_y)
-        positions = [(position_x, position_y)]
-        sleep(2)
-        self.driver.tap(positions, duration=1200)
-        sleep(2)
+        WebDriverWait(self.driver, 30).until(
+            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
+            "Failed to locate Events button")
 
     # OCA top bar
     def hamburger_button(self):

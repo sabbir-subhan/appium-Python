@@ -58,14 +58,10 @@ class MainPage(BasePage):
 
     def check_presence_of_events_button(self):
 
-        try:
-            WebDriverWait(self.driver, 20).until(
-                expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
-                "Events button in Main Menu is not present")
-            logging.info("Events button in Main Menu is present")
-        except NoSuchElementException:
-            logging.info("Events button in Main Menu is not present")
-            self.fail("Events button in Main Menu is not present")
+        sleep(2)
+        WebDriverWait(self.driver, 25).until(
+            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
+            "Events button in Main Menu is not present")
 
     def click_ACTIVATE_BUTTON_on_alert(self):
 

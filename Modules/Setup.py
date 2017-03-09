@@ -1,9 +1,8 @@
 """ Setup class and methods """
 
 from time import sleep
-import shlex
-import os
 import subprocess
+import os
 from Conf.desired_capabilities import DesiredCapabilities
 from configuration import ENVIRONMENT_TEST
 from configuration import PORT
@@ -35,23 +34,19 @@ class SetupTestCase(unittest.TestCase):
 
     def setUp(self):
 
-        #logging.info('starting Appium server')
-# trying to open new terminal window and start appium server
+        # need a method to open new terminal window and execute cli command in it
+
+        # logging.info('starting terminal')
+        #
         # if os.name == 'nt':
         #     console = ['cmd.exe', '/c']
         # else:
-        #     console = ['xterm', '-e']  # specify your favorite terminal emulator here
-
-        #subprocess.call(['appium'], shell=True)
-
-        # cli_line = "appium"
+        #     console = subprocess.Popen(['open', '-W', '-a', 'Terminal.app'])
         #
-        # subprocess.Popen('sh', '/K', 'appium')
+        # sleep(4)
+        # logging.info('starting Appium server')
         #
-        # subprocess.call(['open', '-W', '-a', 'Terminal.app', cli_line])
-
-        # cli_line = "appium"
-        # subprocess.run([cli_line])
+        # subprocess.Popen(["appium"])
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
@@ -64,8 +59,4 @@ class SetupTestCase(unittest.TestCase):
 
         self.driver.implicitly_wait(30)  # seconds - depends on device and connection speed
 
-    # def tear_down(self):
-    #
-    #     logging.info("Quitting")
-    #     self.driver.quit()
 

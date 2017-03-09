@@ -350,7 +350,8 @@ class NewAssetScreen:
 
 class NewLogScreen:
     """A class for handling New Log screen"""
-    LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//XCUIElementTypeElement[1]')
-    ENTRY_FIELD = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
+    LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/'  # # different locator than in New Report Page
+                                             'XCUIElementTypeOther[3]')
+    ENTRY_FIELD = (MobileBy.CLASS_NAME, 'XCUIElementTypeTextView')
 
 

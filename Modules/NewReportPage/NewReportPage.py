@@ -25,6 +25,7 @@ class NewReportPage(BasePage):
         self.assertIsNotNone(lodging_agency_picker, "Lodging Agency picker was not found")
         action = TouchAction(self.driver)
         action.tap(element=lodging_agency_picker, count=1).perform()
+        sleep(1)
 
     def choose_lodging_agency(self):
 

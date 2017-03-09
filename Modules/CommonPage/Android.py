@@ -4,6 +4,8 @@ import logging
 from time import sleep
 from selenium.common.exceptions import *
 from Modules.CommonPage.CommonPage import CommonPage
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
 # from Conf.desired_capabilities import DesiredCapabilities
 
 
@@ -68,10 +70,16 @@ class Android(CommonPage):
         sleep(1)
 
     def click_back_button(self):
+        """ Method to handle back button for Android """
 
         logging.info("click 'Back' button")
         self.driver.press_keycode(4)
-        sleep(5)
+        # self.driver.keyevent(4)
+        # self.driver.back()
+        sleep(4)
+        WebDriverWait(self.driver, 30).until(
+            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
+            "Failed to locate Events button")
 
     def click_set_button(self):
 

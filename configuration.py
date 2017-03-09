@@ -1,6 +1,6 @@
 """ Choose platform to run tests """
 
-platform = "IOS 9"
+platform = "IOS 10"
 
 # You can use:
 
@@ -9,12 +9,19 @@ platform = "IOS 9"
 # Android 6
 # Android 7
 # IOS 9
+# IOS 9 emulator
 # IOS 10
 
 
 PORT = "4723"  # port on which Appium server is running
 
 if platform == "IOS 9":
+
+    ENVIRONMENT_TEST = "IOS9"
+    ENVIRONMENT_MIDDLE_CLASS = "IOS"
+    PLATFORM_VERSION = ""
+
+elif platform == "IOS 9 emulator":
 
     ENVIRONMENT_TEST = "IOS9"
     ENVIRONMENT_MIDDLE_CLASS = "IOS"
@@ -52,5 +59,6 @@ elif platform == "Android 4":
 
 else:
     print("fail to load ENVIRONMENT FOR TESTS")
+
 
 

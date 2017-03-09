@@ -24,7 +24,7 @@ class Credentials:
 
     # QA
     QA_username = "bitnoise"  # here You can change username for QA
-    QA_password = "Bitn0!$e"  # here You can change password for QA
+    QA_password = "bitnoise1"  # here You can change password for QA
 
     # general_user
     general_username = "test_general"  # here You can change username for general user

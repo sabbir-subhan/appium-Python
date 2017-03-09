@@ -24,6 +24,7 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
+from time import sleep
 
 
 class test_QuickAccessButtons(SetupTestCase):
@@ -62,6 +63,9 @@ class test_QuickAccessButtons(SetupTestCase):
         main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
 
+        print(self.driver.current_context)
+        print(self.driver.contexts)
+
         main_page.click_ACTIVATE_WORKFLOW()
         main_page.click_ACTIVATE_BUTTON_on_alert()
         main_page.check_if_alert_WORKFLOW_ACTIVATED_is_present()
@@ -99,6 +103,7 @@ class test_QuickAccessButtons(SetupTestCase):
         new_report_page.click_publish_button()
         main_page.check_presence_of_events_button()
         main_page.open_WEBSITE_LINK()
+        sleep(10)  # wait for page to load
         common_page.click_back_button()
         main_page.check_presence_of_events_button()
         main_page.open_INCIDENT()
@@ -106,6 +111,7 @@ class test_QuickAccessButtons(SetupTestCase):
         event_edit_page.setDriver(self.driver)
         event_edit_page.fill_Name_input_field("Name for new incident test")
         common_page.hide_keyboard()
+        event_edit_page.scroll_down_to_save_button()
         event_edit_page.click_save_button()
         main_page.check_presence_of_events_button()
         main_page.open_CREATE_ASSETS()
@@ -113,6 +119,7 @@ class test_QuickAccessButtons(SetupTestCase):
         new_asset_page.setDriver(self.driver)
         new_asset_page.fill_Name_input_field("Name for new asset test")
         common_page.hide_keyboard()
+        new_asset_page.scroll_down_to_save_button()
         new_asset_page.click_save_button()
         main_page.check_presence_of_events_button()
         main_page.open_CREATE_LOG()
@@ -122,6 +129,7 @@ class test_QuickAccessButtons(SetupTestCase):
         new_log_page.choose_lodging_agency()
         new_log_page.type_text_into_entry_field("Entry for new log test")
         common_page.hide_keyboard()
+        new_log_page.scroll_down_to_save_button()
         new_log_page.click_save_button()
         main_page.check_presence_of_events_button()
 

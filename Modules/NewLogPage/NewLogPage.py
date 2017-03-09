@@ -11,9 +11,10 @@ class NewLogPage(BasePage):
     def click_on_lodging_agency_picker(self):
 
         logging.info("click on 'Lodging Agency' picker")
-        lodging_agency_picker = self.driver.find_element(*self.configuration.NewLogScreen.LODGING_AGENCY_PICKER)
+        lodging_agency_picker = self.driver.find_element(*self.configuration.NewLogScreen.LODGING_AGENCY_PICKER)  # different locator than in New Report Page
         self.assertIsNotNone(lodging_agency_picker, "Lodging Agency picker was not found")
         lodging_agency_picker.click()
+        sleep(1)
 
     def choose_lodging_agency(self):
 
@@ -29,3 +30,14 @@ class NewLogPage(BasePage):
         entry_field.click()
         entry_field.send_keys(text)
 
+    def scroll_down_to_save_button(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.scroll_down_to_save_button()
+
+    def click_save_button(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.click_save_button()

@@ -7,13 +7,14 @@
 # Press Contact Identifier. Enter contact identifier and save.
 
 
-import unittest
-import logging
 from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
+import logging
+import unittest
+from time import sleep
 
 
-class test_Login(SetupTestCase):
+class test_SetContactIdentifier(SetupTestCase):
     """ Setup test """
 
     def setUp(self):
@@ -22,24 +23,26 @@ class test_Login(SetupTestCase):
 
     def tearDown(self):
 
-        SetupTestCase.tearDown(self)
+        logging.info("Quitting")
+        self.driver.quit()
 
     def test_Set_Contact_Identifier(self):
 
-        main_page = MainPage(self.driver)
-        main_page.dismiss_ios_notifications()
-        main_page.logout_if_already_logged_in()
         logging.info("starting Test Case 10: Set Contact Identifier")
-        welcome_page = WelcomePage(self.driver)
-        welcome_page.click_settings_button()
-        welcome_page.type_contact_identifier("test_pin")  # to change Contact Identifier PIN - edit it in credentials.py
-        ios_device = iOSdevice(self.driver)
-        ios_device.hide_keyboard()
-        welcome_page.click_save_button()
-        welcome_page.check_if_app_was_activated()
-        welcome_page.click_ok_button()
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        welcome_page = LoadClass.load_page('WelcomePage')
+        welcome_page.setDriver(self.driver)
+        welcome_page.open_SETTINGS()
+        settings_page = LoadClass.load_page('SettingsPage')
+        settings_page.setDriver(self.driver)
+        settings_page.type_contact_identifier("test_pin")  # to change Contact Identifier PIN - edit it in credentials.py
+        common_page.hide_keyboard()
+        settings_page.click_save_button()
+        settings_page.check_if_app_was_activated()
+        settings_page.click_ok_button()
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(test_SetContactIdentifier_iOS)
+    suite = unittest.TestLoader().loadTestsFromTestCase(test_SetContactIdentifier)
     unittest.TextTestRunner(verbosity=2).run(suite)

@@ -1,6 +1,5 @@
 import os
-from configuration import ENVIRONMENT_TEST
-from configuration import PLATFORM_VERSION
+from configuration import platform
 
 
 PATH = lambda p: os.path.abspath(
@@ -12,19 +11,19 @@ class DesiredCapabilities(object):
 
     capabilities = {
 
-        "Android4.4.2": {
+        "Android 4": {
             "platformName": "ANDROID",
             "platformVersion": "4.4.2",
             "deviceName": "QUANTUM_2_400",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.5.apk"),
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.5.apk"),  # path to .apk file
             "apppackage": "com.noggin.oca",
             "appactivity": "com.noggin.oca.MainActivity",
-            "newCommandTimeout": 60,
-            "androidDeviceReadyTimeout": 60,
+            "newCommandTimeout": 60,  # How long (in seconds) Appium will wait for a new command from the client before assuming the client quit and ending the session
+            "DeviceReadyTimeout": 60,
             "udid": "0123456789ABCDEF"
         },
-        
-        "Android5.1.1": {
+
+        "Android 5": {
             "platformName": "ANDROID",
             "platformVersion": "5.1.1",
             "deviceName": "POP 3",
@@ -35,7 +34,7 @@ class DesiredCapabilities(object):
             "udid": "7d7d9a62"
         },
 
-        "Android6.0": {
+        "Android 6": {
             "platformName": "ANDROID",
             "platformVersion": "6.0",
             "deviceName": "192.168.56.101:5555",
@@ -44,40 +43,34 @@ class DesiredCapabilities(object):
             "appactivity": "com.noggin.oca.MainActivity",
             # "fullReset": True,
             "newCommandTimeout": 60,
-            "androidDeviceReadyTimeout": 300
+            "DeviceReadyTimeout": 300  # Android only
         },
 
-        # "Android6.0.1": {
+        # "Android6.0.1": {  # THAT PHONE WAS UPDATED TO ANDROID 7.0
         #     "platformName": "ANDROID",
         #     "platformVersion": "6.0.1",
-        #     # "automationName": "Appium",                       # probably necessary to enable this and disable platformVersion when switching to webview context, but currently there is only NATIVE_APP context
+        #     # "automationName": "Appium",  # probably necessary to enable this and disable platformVersion when switching to webview context, but currently there is only NATIVE_APP context
         #     "deviceName": "SM-G930F",
-        #     # "app": PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk"),
-        #     # "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
         #     "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.5.apk"),
-        #     # "apppackage": "com.noggin.ocalukasl",
-        #     # "appactivity": "com.noggin.ocalukasl.MainActivity",
         #     "apppackage": "com.noggin.oca",
         #     "appactivity": "com.noggin.oca.MainActivity",
         #     "newCommandTimeout": 60,
-        #     # "unicodekeyboard": True,
-        #     # "resetkeyboard": True,
         #     "udid": "ad0816033848eb0443"
         # },
 
-        "Android7.0": {
+        "Android 7": {
             "platformName": "ANDROID",
             "platformVersion": "7.0",
             "deviceName": "SM-G930F",
             "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.5.apk"),
             "apppackage": "com.noggin.oca",
             "appactivity": "com.noggin.oca.MainActivity",
-            #"autoAcceptAlerts": True,  # not working with Android
+            # "autoAcceptAlerts": True,  # not working with Android
             "newCommandTimeout": 60,
             "udid": "ad0816033848eb0443"
         },
 
-        "IOS9": {
+        "IOS 9": {
             # iPad mini with iOS 9.3.5
             "platformName": "iOS",
             "platformVersion": "9.3",
@@ -89,19 +82,19 @@ class DesiredCapabilities(object):
             "udid": "db55c238e873230ee454c54a63724397a2981acd"
         },
 
-        # "IOS9": {
-        #     # iPhone 5 simulator with iOS 9.3.5
-        #     "platformName": "iOS",
-        #     "platformVersion": "9.3",
-        #     "deviceName": "iPhone 5",
-        #     "app": PATH("/Users/lukasl/Build_xcode/Products/iPhone9.3/OCA.app"),
-        #     "bundleId": "com.noggin.ocalukasl",
-        #     "newCommandTimeout": 400,
-        #     "launchTimeout": 400000,
-        #     "autoAcceptAlerts": True
-        # },
+        "IOS 9 emulator": {
+            # iPhone 5 simulator with iOS 9.3.5
+            "platformName": "iOS",
+            "platformVersion": "9.3",
+            "deviceName": "iPhone 5",
+            "app": PATH("/Users/lukasl/Build_xcode/Products/iPhone9.3/OCA.app"),
+            "bundleId": "com.noggin.ocalukasl",
+            "newCommandTimeout": 120,
+            "launchTimeout": 400000,  # iOS only
+            "autoAcceptAlerts": True
+        },
 
-        "IOS10": {
+        "IOS 10": {
             # iPhone 6 with iOS 10.2 - new iOS need Xcuit Test
             "platformName": "iOS",
             "platformVersion": "10.2",
@@ -127,135 +120,5 @@ class DesiredCapabilities(object):
     @staticmethod
     def get_desired_capabilities():
 
-        return DesiredCapabilities.capabilities[ENVIRONMENT_TEST + PLATFORM_VERSION]
-
-
-# desired_capabilities_for_android_simulator_4 = {
-#     "platformName": "ANDROID",
-#     "platformVersion": "4.4.4",
-#     "deviceName": "Samsung Galaxy Note 3",
-#     "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.2.2.apk"),
-#     "apppackage": "com.noggin.oca",
-#     "appactivity": "com.noggin.oca.MainActivity",
-#     "newCommandTimeout": 80,
-#     "androidDeviceReadyTimeout": 60
-# }
-#
-# desired_capabilities_for_android_5 = {
-#     "platformName": "ANDROID",
-#     "platformVersion": "5.1.1",
-#     "deviceName": "POP 3",
-#     # "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
-#     "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.2.2.apk"),
-#     "apppackage": "com.noggin.oca",
-#     "appactivity": "com.noggin.oca.MainActivity",
-#     "newCommandTimeout": 45,
-#     "udid": "7d7d9a62"
-# }
-#
-# desired_capabilities_for_android_6 = {
-#     "platformName": "ANDROID",
-#     "platformVersion": "6.0.1",
-#     # "automationName": "Appium",                       # probably necessary to enable this and disable platformVersion when switching to webview context, but currently there is only NATIVE_APP context
-#     "deviceName": "SM-G930F",
-#     # "app": PATH("E:/repos/appium_OCA_mobile_app/testing-oca-mobile-app/com.noggin.oca.apk"),
-#     # "app": PATH("/Users/lukasl/repos/appium-poc/com.noggin.oca.apk"),
-#     "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.2.2.apk"),
-#     # "apppackage": "com.noggin.ocalukasl",
-#     # "appactivity": "com.noggin.ocalukasl.MainActivity",
-#     "apppackage": "com.noggin.oca",
-#     "appactivity": "com.noggin.oca.MainActivity",
-#     "newCommandTimeout": 20,
-#     # "unicodekeyboard": True,
-#     # "resetkeyboard": True,
-#     "udid": "ad0816033848eb0443"
-# }
-#
-# desired_capabilities_for_android_simulator_6 = {
-#     "platformName": "ANDROID",
-#     "platformVersion": "6.0.0",
-#     "deviceName": "android6",
-#     "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.2.2.apk"),
-#     "apppackage": "com.noggin.oca",
-#     "appactivity": "com.noggin.oca.MainActivity",
-#     "newCommandTimeout": 20,
-#     "androidDeviceReadyTimeout": 60,
-#     "udid": "emulator-5554"
-# }
-#
-# desired_capabilities_for_android_simulator_7 = {
-#     "platformName": "ANDROID",
-#     "platformVersion": "7.0.0",
-#     "deviceName": "Google Nexus 5X",
-#     "app": PATH("/Users/lukasl/repos/appium-poc/oca-v9.2.2.apk"),
-#     "apppackage": "com.noggin.oca",
-#     "appactivity": "com.noggin.oca.MainActivity",
-#     "newCommandTimeout": 20,
-#     "androidDeviceReadyTimeout": 60
-# }
-#
-# desired_capabilities_for_iOS_10_iPhone6 = {
-#     # iPhone 6 with iOS 10.2 - new iOS needs Xcuit
-#     "platformName": "iOS",
-#     "platformVersion": "10.2",
-#     "deviceName": "iPhone 6",
-#     "app": PATH("/Users/lukasl/Build_xcode/Products/Debug-iphoneos/OCA.app"),
-#     "bundleId": "com.noggin.ocalukasl",
-#     # "autoAcceptAlerts": True,  # not working on iOS10
-#     "xcodeOrgId": "5MJR4HSABR",  # 10 characters string generated by Apple - search for it in Xcode
-#     "xcodeSigningId": "iPhone Developer",
-#     # "useNewWDA": True,  # If True, forces uninstall of any existing WebDriverAgent app on device
-#     "usePrebuiltWDA": True,  # Skips the build phase of running the WDA app - build WDA by Xcode
-#     "showXcodeLog": True,  # show more logs in console
-#     "automationName": "XCUITest",
-#     # "realDeviceLogger": "/usr/local/bin/idevicesyslog",  # not working - tested on iOS10
-#     # "locationServicesEnabled": True,  # test it
-#     # "locationServicesAuthorized": True,  # test it
-#     # "autoWebview": False,
-#     "udid": "4b15c4284897fa6f9b4c5205325a9cece997ad35"
-# }
-#
-# desired_capabilities_for_iOS_iPad = {
-#     # iPad mini with iOS 9.3.5
-#     "platformName": "iOS",
-#     "platformVersion": "9.3",
-#     "deviceName": "iPad mini",
-#     "app": PATH("/Users/lukasl/Build_xcode/Products/iPad9.3.5/OCA.app"),
-#     "bundleId": "com.noggin.ocalukasl",
-#     # "newCommandTimeout": 45,
-#     "autoAcceptAlerts": True,
-#     "udid": "db55c238e873230ee454c54a63724397a2981acd"
-# }
-#
-# desired_capabilities_for_iOS_iPhone4 = {
-#     # iPhone 4s simulator with iOS 9.3
-#     "platformName": "iOS",
-#     "platformVersion": "9.3",
-#     "deviceName": "iPhone 4s",
-#     "app": PATH("/Users/lukasl/Build_xcode/Products/Debug-iphonesimulator/OCA.app"),
-#     "bundleId": "com.noggin.ocalukasl",
-#     "newCommandTimeout": 45,
-#     "autoAcceptAlerts": True
-# }
-#
-# desired_capabilities_for_iOS_iPhone5 = {
-#     # iPhone 5 simulator with iOS 9.3
-#     "platformName": "iOS",
-#     "platformVersion": "9.3",
-#     "deviceName": "iPhone 5",
-#     "app": PATH("/Users/lukasl/Build_xcode/Products/Debug-iphonesimulator/OCA.app"),
-#     "bundleId": "com.noggin.ocalukasl",
-#     "newCommandTimeout": 45,
-#     "autoAcceptAlerts": True
-# }
-#
-# desired_capabilities_for_iOS_iPhone6s = {
-#     # iPhone 6s simulator with iOS 9.3
-#     "platformName": "iOS",
-#     "platformVersion": "9.3",
-#     "deviceName": "iPhone 6s",
-#     "app": PATH("/Users/lukasl/Build_xcode/Products/Debug-iphonesimulator/OCA.app"),
-#     "bundleId": "com.noggin.ocalukasl",
-#     "newCommandTimeout": 45,
-#     "autoAcceptAlerts": True
-# }
+        # return DesiredCapabilities.capabilities[ENVIRONMENT_TEST + PLATFORM_VERSION]
+        return DesiredCapabilities.capabilities[platform]
