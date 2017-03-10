@@ -7,6 +7,7 @@ from time import sleep
 from appium.webdriver.common.touch_action import TouchAction
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import *
 
 
 class NewReportPage(BasePage):
@@ -21,7 +22,10 @@ class NewReportPage(BasePage):
 
         sleep(5)
         logging.info("click on 'Lodging Agency' picker")
-        lodging_agency_picker = self.driver.find_element(*self.configuration.NewReportScreen.LODGING_AGENCY_PICKER)
+        try:
+            lodging_agency_picker = self.driver.find_element(*self.configuration.NewReportScreen.LODGING_AGENCY_PICKER)
+        except NoSuchElementException:
+            lodging_agency_picker = self.driver.find_element(*self.configuration.NewReportScreen.LODGING_AGENCY_PICKER2)
         self.assertIsNotNone(lodging_agency_picker, "Lodging Agency picker was not found")
         action = TouchAction(self.driver)
         action.tap(element=lodging_agency_picker, count=1).perform()

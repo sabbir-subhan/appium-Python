@@ -93,7 +93,10 @@ class Android(EventEditPage):
     def fill_Name_input_field(self, text):
 
         logging.info("fill Name input field")
-        name_field = self.driver.find_element(*self.configuration.EventEditScreen.NAME_FIELD)
+        try:
+            name_field = self.driver.find_element(*self.configuration.EventEditScreen.NAME_FIELD)
+        except NoSuchElementException:
+            name_field = self.driver.find_element(*self.configuration.EventEditScreen.NAME_FIELD2)
         name_field.click()
         name_field.send_keys(text)
 

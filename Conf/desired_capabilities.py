@@ -15,7 +15,7 @@ class DesiredCapabilities(object):
             "platformName": "ANDROID",
             "platformVersion": "4.4.2",
             "deviceName": "QUANTUM_2_400",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.5.apk"),  # path to .apk file
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.6.apk"),  # path to .apk file
             "apppackage": "com.noggin.oca",
             "appactivity": "com.noggin.oca.MainActivity",
             "newCommandTimeout": 60,  # How long (in seconds) Appium will wait for a new command from the client before assuming the client quit and ending the session
@@ -27,18 +27,29 @@ class DesiredCapabilities(object):
             "platformName": "ANDROID",
             "platformVersion": "5.1.1",
             "deviceName": "POP 3",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.5.apk"),
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.6.apk"),
             "apppackage": "com.noggin.oca",
             "appactivity": "com.noggin.oca.MainActivity",
             "newCommandTimeout": 60,
             "udid": "7d7d9a62"
         },
 
-        "Android 6": {
+        "Android 5 emulator": {
+            "platformName": "ANDROID",
+            "platformVersion": "5.1.0",
+            "deviceName": "192.168.56.101:5555",
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.6.apk"),
+            "apppackage": "com.noggin.oca",
+            "appactivity": "com.noggin.oca.MainActivity",
+            "newCommandTimeout": 60,
+            "DeviceReadyTimeout": 300  # Android only
+        },
+
+        "Android 6 emulator": {
             "platformName": "ANDROID",
             "platformVersion": "6.0",
             "deviceName": "192.168.56.101:5555",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.5.apk"),
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.6.apk"),
             "apppackage": "com.noggin.oca",
             "appactivity": "com.noggin.oca.MainActivity",
             # "fullReset": True,
@@ -46,28 +57,39 @@ class DesiredCapabilities(object):
             "DeviceReadyTimeout": 300  # Android only
         },
 
-        # "Android6.0.1": {  # THAT PHONE WAS UPDATED TO ANDROID 7.0
-        #     "platformName": "ANDROID",
-        #     "platformVersion": "6.0.1",
-        #     # "automationName": "Appium",  # probably necessary to enable this and disable platformVersion when switching to webview context, but currently there is only NATIVE_APP context
-        #     "deviceName": "SM-G930F",
-        #     "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.5.apk"),
-        #     "apppackage": "com.noggin.oca",
-        #     "appactivity": "com.noggin.oca.MainActivity",
-        #     "newCommandTimeout": 60,
-        #     "udid": "ad0816033848eb0443"
-        # },
+        "Android 6": {  # UPDATED TO ANDROID 7.0
+            "platformName": "ANDROID",
+            "platformVersion": "6.0.1",
+            # "automationName": "Appium",  # probably necessary to enable this and disable platformVersion when switching to webview context, but currently there is only NATIVE_APP context
+            "deviceName": "SM-G930F",
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.6.apk"),
+            "apppackage": "com.noggin.oca",
+            "appactivity": "com.noggin.oca.MainActivity",
+            "newCommandTimeout": 60,
+            "udid": "ad0816033848eb0443"
+        },
 
         "Android 7": {
             "platformName": "ANDROID",
             "platformVersion": "7.0",
             "deviceName": "SM-G930F",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.5.apk"),
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.6.apk"),
             "apppackage": "com.noggin.oca",
             "appactivity": "com.noggin.oca.MainActivity",
             # "autoAcceptAlerts": True,  # not working with Android
             "newCommandTimeout": 60,
             "udid": "ad0816033848eb0443"
+        },
+
+        "Android 7 emulator": {
+            "platformName": "ANDROID",
+            "platformVersion": "7.0",
+            "deviceName": "192.168.56.101:5555",
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.6.apk"),
+            "apppackage": "com.noggin.oca",
+            "appactivity": "com.noggin.oca.MainActivity",
+            "newCommandTimeout": 60,
+            "DeviceReadyTimeout": 300  # Android only
         },
 
         "IOS 9": {

@@ -134,7 +134,7 @@ class LocationScreen:
     START_BUTTON_disabled = (MobileBy.XPATH, '//android.widget.Button[@content-desc['
                                              'contains(., "Start")] and @enabled="false"]')
     LOCATION_PAGE_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Your location was last sent')
-    #LOCATION_STATUS = (MobileBy.ACCESSIBILITY_ID, 'a few seconds ago')
+    # LOCATION_STATUS = (MobileBy.ACCESSIBILITY_ID, 'a few seconds ago')
     LOCATION_STATUS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., " seconds ago")]]')
 
 
@@ -191,10 +191,12 @@ class TypesOfEventsScreen:
 
 class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
-    NAME_FIELD = (MobileBy.XPATH, '//android.widget.EditText[@index="1"]')
-    SEVERITY_LEVEL_SELECTOR = (MobileBy.XPATH, '//android.widget.ListView[@index="0"]/android.view.View['
-                                               '@index="3" and @content-desc[contains(., "Severity")]]/'
-                                               'android.widget.Spinner[@index="2"]')
+    NAME_FIELD = (MobileBy.ID, 'name')
+    NAME_FIELD2 = (MobileBy.XPATH, '//android.widget.EditText[@index="1"]')
+    SEVERITY_LEVEL_SELECTOR = (MobileBy.ID, 'field-1801')
+    # SEVERITY_LEVEL_SELECTOR = (MobileBy.XPATH, '//android.widget.ListView[@index="0"]/android.view.View['
+    #                                            '@index="3" and @content-desc[contains(., "Severity")]]/'
+    #                                            'android.widget.Spinner[@index="2"]')
     CHOOSE_SEVERITY_LVL1 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 1"]')
     CHOOSE_SEVERITY_LVL2 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 2"]')
     CHOOSE_SEVERITY_LVL3 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 3"]')
@@ -362,12 +364,14 @@ class ContextScreen:
 
 class NewContactScreen:
     """A class for handling New Contact screen"""
-    FIRST_NAME = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="First name"]')
+    FIRST_NAME = (MobileBy.ID, 'first name')
+    FIRST_NAME2 = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="First name"]')
 
 
 class NewTaskScreen:
     """A class for handling New Task screen"""
-    TITLE = (MobileBy.XPATH, '//android.view.View[1]/android.widget.EditText[1]')
+    TITLE = (MobileBy.ID, 'title')
+    TITLE2 = (MobileBy.XPATH, '//android.view.View[1]/android.widget.EditText[1]')
     ASSIGNED = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Assigned")]]')
     ADD_CONTACTS_AND_GROUPS = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains'
                                                '(., "Add contacts and groups")]]')
@@ -377,12 +381,14 @@ class NewTaskScreen:
                                                 '(., "Add Resource assignments")]]')
     CHOOSE_USERS = (MobileBy.ACCESSIBILITY_ID, 'Users')
     CHOOSE_CONTACTS = (MobileBy.ACCESSIBILITY_ID, 'Contacts')
-    START_DATE = (MobileBy.XPATH, '//android.view.View[2][@content-desc="Start Date"]')
+    START_DATE = (MobileBy.ID, 'start date')
+    START_DATE2 = (MobileBy.XPATH, '//android.view.View[2][@content-desc="Start Date"]')
 
 
 class NewReportScreen:
     """A class for handling New Report screen"""
-    LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//android.view.View[4]/android.widget.Spinner[1]')
+    LODGING_AGENCY_PICKER = (MobileBy.ID, 'field-1201')
+    LODGING_AGENCY_PICKER2 = (MobileBy.XPATH, '//android.view.View[4]/android.widget.Spinner[1]')
     LODGING_AGENCY = (MobileBy.XPATH, '//android.widget.CheckedTextView[2]')
     PUBLISH_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Publish')
 
@@ -393,7 +399,13 @@ class NewAssetScreen:
 
 class NewLogScreen:
     """A class for handling New Log screen"""
-    LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Spinner[1]')
-    ENTRY_FIELD = (MobileBy.XPATH, '//android.view.View[1]/android.view.View[1]/android.view.View'
-                                   '[@focusable="true" and @clickable="true" and @scrollable="false"]')
+    LODGING_AGENCY_PICKER = (MobileBy.ID, 'field-201')
+    LODGING_AGENCY_PICKER2 = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Spinner[1]')
+    ENTRY_FIELD = (MobileBy.ID, 'cke_entry')
+    ENTRY_FIELD2 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "entry")]and @clickable="true"]')
+    ENTRY_FIELD3 = (MobileBy.XPATH, '//android.view.View[1]/android.view.View[1]/android.view.View'
+                                    '[@focusable="true" and @clickable="true" and @scrollable="false"]')
+
+
+
 

@@ -2,6 +2,7 @@
 
 from Modules.BasePage.BasePage import BasePage
 from Modules.load_class import LoadClass
+from selenium.common.exceptions import *
 import logging
 
 
@@ -10,7 +11,10 @@ class NewTaskPage(BasePage):
     def type_title(self, text):
 
         logging.info("type title")
-        title = self.driver.find_element(*self.configuration.NewTaskScreen.TITLE)
+        try:
+            title = self.driver.find_element(*self.configuration.NewTaskScreen.TITLE)
+        except NoSuchElementException:
+            title = self.driver.find_element(*self.configuration.NewTaskScreen.TITLE2)
         self.assertIsNotNone(title, "Title input field was not found")
         title.click()
         title.send_keys(text)
@@ -39,7 +43,10 @@ class NewTaskPage(BasePage):
     def click_start_date(self):
 
         logging.info("Choose Start Date")
-        start_date = self.driver.find_element(*self.configuration.NewTaskScreen.START_DATE)
+        try:
+            start_date = self.driver.find_element(*self.configuration.NewTaskScreen.START_DATE)
+        except NoSuchElementException:
+            start_date = self.driver.find_element(*self.configuration.NewTaskScreen.START_DATE2)
         self.assertIsNotNone(start_date, "Start Date field was not found")
         start_date.click()
 

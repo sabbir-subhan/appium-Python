@@ -34,19 +34,11 @@ class SetupTestCase(unittest.TestCase):
 
     def setUp(self):
 
-        # need a method to open new terminal window and execute cli command in it
-
-        # logging.info('starting terminal')
-        #
-        # if os.name == 'nt':
-        #     console = ['cmd.exe', '/c']
-        # else:
-        #     console = subprocess.Popen(['open', '-W', '-a', 'Terminal.app'])
-        #
-        # sleep(4)
         # logging.info('starting Appium server')
         #
-        # subprocess.Popen(["appium"])
+        # subprocess.call(['/Users/lukasl/repos/appium-poc/cli.sh'])  # call shell script that will start appium in new terminal
+        #
+        # sleep(40)  # wait for appium server to start
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 

@@ -4,6 +4,7 @@ from Modules.LoginPage.LoginPage import LoginPage
 from appium.webdriver.common.touch_action import TouchAction
 from credentials import Credentials
 import logging
+from time import sleep
 
 
 class Android(LoginPage):
@@ -32,6 +33,7 @@ class Android(LoginPage):
         action = TouchAction(self.driver)
         action.long_press(el=domain_field, duration=1500).perform()
         self.driver.keyevent(67)
+        sleep(1)
         logging.info("type domain address")
         domain_field.send_keys(Credentials.get_domain(domain))
 
