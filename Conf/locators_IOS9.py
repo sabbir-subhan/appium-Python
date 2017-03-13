@@ -12,6 +12,7 @@ class iOS:
 
 class CommonScreen:
     """A class for handling Common buttons on different screen"""
+    LOADING = (MobileBy.XPATH, '//UIAStaticText[@name="loading"]')
     SAVE_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Save"]')
     CANCEL_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Cancel"]')
     OK_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Ok"]')
@@ -37,6 +38,10 @@ class WelcomeScreen:
     LOGIN_BUTTON_by_index = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]'
                                              '/UIAScrollView[2]/UIAWebView[1]/UIALink[9]'
                                              '[@name[contains(., "LOGIN")]]')
+
+
+class SettingsScreen:
+    """A class for settings screen locators - screen after clicking settings button"""
     SETTINGS_CONTACT_IDENTIFIER_FIELD = (MobileBy.CLASS_NAME, 'UIATextField')
     SETTINGS_ALERT_APP_HAS_BEEN_ACTIVATED = (MobileBy.XPATH, '//UIAStaticText[@name="App has been activated."]')
     SETTINGS_OK_BUTTON = (MobileBy.XPATH, '//UIALink[@name="Ok"]')
@@ -315,13 +320,13 @@ class NewReportScreen:
     PUBLISH_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Publish"]')
 
 
-# class NewAssetScreen:
-#     """A class for handling New Asset screen"""
+class NewAssetScreen:
+    """A class for handling New Asset screen"""
 
 
 class NewLogScreen:
     """A class for handling New Log screen"""
     LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//UIAWebView/UIAElement[1]')
-    ENTRY_FIELD = (MobileBy.XPATH, '//UIATextField[1]')
+    ENTRY_FIELD = (MobileBy.CLASS_NAME, 'UIATextField')
 
 

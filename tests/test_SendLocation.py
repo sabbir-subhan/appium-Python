@@ -33,7 +33,7 @@ class test_SendLocation(SetupTestCase):
 
     def test_send_location(self):
 
-        logging.info("starting Test Case 4: Send location to OCA")
+        logging.info("starting Test Case: Send location to OCA")
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         welcome_page = LoadClass.load_page('WelcomePage')

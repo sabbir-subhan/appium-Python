@@ -26,27 +26,6 @@ class NewLogPage(BasePage):
         new_report_page.setDriver(self.driver)
         new_report_page.choose_lodging_agency()
 
-    def type_text_into_entry_field(self, text):
-
-        sleep(1)
-        window_size = self.driver.get_window_size()  # this will give You a dictionary
-        start_x = window_size["width"] * 0.25
-        start_y = window_size["height"] * 0.15
-        end_y = window_size["height"] * 0.6
-        logging.info("scroll down only one screen")
-        self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen
-        logging.info("type text into 'Entry' field")
-        try:
-            entry_field = self.driver.find_element(*self.configuration.NewLogScreen.ENTRY_FIELD)
-        except NoSuchElementException:
-            try:
-                entry_field = self.driver.find_element(*self.configuration.NewLogScreen.ENTRY_FIELD2)
-            except NoSuchElementException:
-                entry_field = self.driver.find_element(*self.configuration.NewLogScreen.ENTRY_FIELD3)
-        entry_field.click()
-        sleep(1)
-        entry_field.send_keys(text)
-
     def scroll_down_to_save_button(self):
 
         event_edit_page = LoadClass.load_page('EventEditPage')

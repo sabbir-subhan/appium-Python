@@ -42,7 +42,7 @@ class PhotoPage(BasePage):
 
     def click_gallery_button(self):
 
-        logging.info("clicking in Gallery button")
+        logging.info("click in Gallery button")
         gallery_button = self.driver.find_element(*self.configuration.PhotoScreen.GALLERY_BUTTON)
         self.assertIsNotNone(gallery_button, "Gallery button not found")
         gallery_button.click()

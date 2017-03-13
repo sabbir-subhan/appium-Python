@@ -15,13 +15,13 @@
 # From the main menu press the Inbox button.
 
 
-import unittest
-import logging
 from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
+import logging
+import unittest
 
 
-class test_Login(SetupTestCase):
+class test_ViewInboxSentCommunications(SetupTestCase):
     """ Setup test """
 
     def setUp(self):
@@ -30,28 +30,37 @@ class test_Login(SetupTestCase):
 
     def tearDown(self):
 
-        SetupTestCase.tearDown(self)
+        logging.info("Quitting")
+        self.driver.quit()
 
     def test_login(self):
 
-        logging.info("starting Test Case 11: View Inbox & Sent Communications")
-        welcome_page = WelcomePage(self.driver)
+        logging.info("starting Test Case: View Inbox & Sent Communications")
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        welcome_page = LoadClass.load_page('WelcomePage')
+        welcome_page.setDriver(self.driver)
         welcome_page.click_login_button()
-        login_page = LoginPage(self.driver)
+        login_page = LoadClass.load_page('LoginPage')
+        login_page.setDriver(self.driver)
+        login_page.type_domain_address('QA')
+        common_page.hide_keyboard()
+        login_page.click_submit_button()
         login_page.type_username('QA')
         login_page.type_password('QA')
-        login_page.type_domain_address('QA')
-        android_device = AndroidDevice(self.driver)
-        android_device.hide_keyboard()
+        common_page.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
-        main_page = MainPage(self.driver)
+        main_page = LoadClass.load_page('MainPage')
+        main_page.setDriver(self.driver)
         main_page.alert_expiring_password()
-        main_page.dismiss_android_notifications()
+        main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
+
         main_page.scroll_down_one_view()
         main_page.open_SENT()
-        sent_page = SentPage(self.driver)
+        sent_page = LoadClass.load_page('SentPage')
+        sent_page.setDriver(self.driver)
         sent_page.take_screenshot("screenshot.png")  # screenshot will be saved in /tests directory
         sent_page.hamburger_button()
         main_page.scroll_down_one_view()
@@ -59,5 +68,5 @@ class test_Login(SetupTestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(test_ViewInboxSentCommunications_Android)
+    suite = unittest.TestLoader().loadTestsFromTestCase(test_ViewInboxSentCommunications)
     unittest.TextTestRunner(verbosity=2).run(suite)

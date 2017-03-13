@@ -103,7 +103,7 @@ next open terminal and use:
 - adb pull <path to package>
 
 finding app activity through adb - appActivity:
-- adb shell dumpsys activity activities | grep com.noggin.oca
+- adb shell dumpsys activity activities | grep com.noggin.oca or dumpsys window windows | grep -E mCurrentFocus
  (app need to be open on device)
 
 - if You have multiple devices connected:
@@ -164,11 +164,10 @@ with name: "New events chooser inside sub form"
 
 ### **BEFORE EACH NEW RUN OF TESTS:** ###
 
-- for some reason on iOS -- "No reset" checkbox in Appium setting is not working, so tests for iOS are written to compensate it, but remember to run Android tests with checkbox "No reset" checked
 - make sure to lunch appium server
 - make sure that real devices are connected and unlocked 
 - make sure that users accounts in OCA webpage have correct properties (for example expiration dates) and other tests have proper configurations in OCA webpage
-
+- disable PIN authentication in OCA webpage 
 
 ### **RUNNING TESTS ON SIMULATORS:** ###
 
@@ -213,4 +212,6 @@ APP VERSIONS:
 - Error about Xcode version, to switch xcode version use: sudo xcode-select -switch /Applications/Xcode.app
 - Appium 1.6 -- "socket hang up" - rebuild WebDriver Runner
 - error containing "adbExec" - uninstall apps from device: "Unlock", "Appium Settings" -- Appium will install them automatically 
-- real devices can overheat, which is causing test to fail 
+- real devices can overheat, which is causing test to fail
+- for some reason on iOS -- "No reset" checkbox in Appium setting is not working, so tests for iOS are written to compensate it, but remember to run Android tests with checkbox "No reset" checked
+

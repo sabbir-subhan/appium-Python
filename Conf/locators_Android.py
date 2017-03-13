@@ -16,6 +16,7 @@ class Android:
 
 class CommonScreen:
     """A class for handling Common buttons on different screen"""
+    LOADING = (MobileBy.XPATH, '//android.view.View[@content-desc="loading"]')
     SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
     CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Cancel')
     CANCEL_BUTTON_by_index = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Button')
@@ -45,6 +46,10 @@ class WelcomeScreen:
     LOGIN_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "LOGIN")]]')
     LOGIN_BUTTON_by_index = (MobileBy.XPATH, '//android.webkit.WebView/android.view.View/'
                                              'android.view.View[@index="6"]/android.view.View[@index="0"]')
+
+
+class SettingsScreen:
+    """A class for settings screen locators - screen after clicking settings button"""
     SETTINGS_CONTACT_IDENTIFIER_FIELD = (MobileBy.CLASS_NAME, 'android.widget.EditText')
     SETTINGS_ALERT_APP_HAS_BEEN_ACTIVATED = (MobileBy.ACCESSIBILITY_ID, 'App has been activated.')
     SETTINGS_OK_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Ok')
@@ -401,10 +406,9 @@ class NewLogScreen:
     """A class for handling New Log screen"""
     LODGING_AGENCY_PICKER = (MobileBy.ID, 'field-201')
     LODGING_AGENCY_PICKER2 = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Spinner[1]')
-    ENTRY_FIELD = (MobileBy.ID, 'cke_entry')
-    ENTRY_FIELD2 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "entry")]and @clickable="true"]')
-    ENTRY_FIELD3 = (MobileBy.XPATH, '//android.view.View[1]/android.view.View[1]/android.view.View'
-                                    '[@focusable="true" and @clickable="true" and @scrollable="false"]')
+    ENTRY_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc="Rich Text Editor, entry"]/android.view.View[2]')
+
+
 
 
 

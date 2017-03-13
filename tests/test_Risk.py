@@ -21,13 +21,13 @@
 # Click on Risk >Risk register>View>View Register
 
 
-import unittest
-import logging
 from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
+import logging
+import unittest
 
 
-class test_Login(SetupTestCase):
+class test_Risk(SetupTestCase):
     """ Setup test """
 
     def setUp(self):
@@ -36,29 +36,36 @@ class test_Login(SetupTestCase):
 
     def tearDown(self):
 
-        SetupTestCase.tearDown(self)
+        logging.info("Quitting")
+        self.driver.quit()
 
     def test_manage_risks(self):
 
-        main_page = MainPage(self.driver)
-        main_page.dismiss_ios_notifications()
-        main_page.logout_if_already_logged_in()
-        logging.info("starting Test Case 6: Risk")
-        welcome_page = WelcomePage(self.driver)
+        logging.info("starting Test Case: Risk")
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        welcome_page = LoadClass.load_page('WelcomePage')
+        welcome_page.setDriver(self.driver)
         welcome_page.click_login_button()
-        login_page = LoginPage(self.driver)
+        login_page = LoadClass.load_page('LoginPage')
+        login_page.setDriver(self.driver)
+        login_page.type_domain_address('QA')
+        common_page.hide_keyboard()
+        login_page.click_submit_button()
         login_page.type_username('QA')
         login_page.type_password('QA')
-        login_page.type_domain_address('QA')
-        ios_device = iOSdevice(self.driver)
-        ios_device.hide_keyboard()
+        common_page.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
+        main_page = LoadClass.load_page('MainPage')
+        main_page.setDriver(self.driver)
         main_page.alert_expiring_password()
-        main_page.dismiss_ios_notifications()
+        main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
+
+        main_page.open_RISKS()
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(test_Risk_iOS)
+    suite = unittest.TestLoader().loadTestsFromTestCase(test_Risk)
     unittest.TextTestRunner(verbosity=2).run(suite)

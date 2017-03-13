@@ -38,7 +38,7 @@ class test_ManagingEvents(SetupTestCase):
     def test_1_managing_events(self):
 
         # login
-        logging.info("starting Test Case 3: managing events")
+        logging.info("starting Test Case: managing events")
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         welcome_page = LoadClass.load_page('WelcomePage')

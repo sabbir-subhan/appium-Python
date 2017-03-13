@@ -4,7 +4,6 @@ from Modules.CameraPage.CameraPage import CameraPage
 from appium.webdriver.common.touch_action import TouchAction
 import logging
 from Conf.desired_capabilities import DesiredCapabilities
-from selenium.common.exceptions import *
 from time import sleep
 
 
@@ -18,12 +17,6 @@ class Android(CameraPage):
         # logging.info(platform_version)
         logging.info("capture")
         sleep(4)
-        # try:
-        #     photo_capture = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_6)
-        # except NoSuchElementException:
-        #     photo_capture = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_4_and_5)
-        # self.assertIsNotNone(photo_capture)
-        # photo_capture.click()
         if platform_version > "5":
             photo_capture1 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_6)
             self.assertIsNotNone(photo_capture1)
@@ -48,18 +41,6 @@ class Android(CameraPage):
     def click_use_photo(self):
 
         logging.info("Use")
-
-        # try:
-        #     use_photo = self.driver.find_element(*self.configuration.CameraScreen.USE_PHOTO_ANDROID6)
-        # except NoSuchElementException:
-        #     try:
-        #         use_photo = self.driver.find_element(*self.configuration.CameraScreen.USE_PHOTO_ANDROID5)
-        #     except NoSuchElementException:
-        #         use_photo = self.driver.find_element(*self.configuration.CameraScreen.USE_PHOTO_ANDROID4)
-        # self.assertIsNotNone(use_photo)
-        # action = TouchAction(self.driver)
-        # action.tap(element=use_photo, count=1).perform()
-        # sleep(5)
 
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()
         platform_version = desired_capabilities.get('platformVersion')

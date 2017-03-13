@@ -11,6 +11,7 @@ class iOS:
 
 class CommonScreen:
     """A class for handling Common buttons on different screen"""
+    LOADING = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="loading"]')
     SAVE_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Save"]')
     CANCEL_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Cancel"]')
     OK_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Ok"]')
@@ -44,6 +45,10 @@ class WelcomeScreen:
                                              '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
                                              '/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]'
                                              '/XCUIElementTypeOther[7]/XCUIElementTypeLink[1]')
+
+
+class SettingsScreen:
+    """A class for settings screen locators - screen after clicking settings button"""
     SETTINGS_CONTACT_IDENTIFIER_FIELD = (MobileBy.CLASS_NAME, 'XCUIElementTypeTextField')
     SETTINGS_ALERT_APP_HAS_BEEN_ACTIVATED = (MobileBy.XPATH, '//XCUIElementTypeStaticText['
                                                              '@name="App has been activated."]')
@@ -51,7 +56,7 @@ class WelcomeScreen:
 
 
 class LoginScreen:
-    """A class for login screen locators - screen after clicking into LOGIN."""
+    """A class for login screen locators - screen after clicking LOGIN button"""
     TEXTFIELD_USERNAME = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
     TEXTFIELD_PASSWORD = (MobileBy.XPATH, '//XCUIElementTypeSecureTextField[1]')
     TEXTFIELD_DOMAIN = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
@@ -290,7 +295,7 @@ class SoundRecorderScreen:
 
 class GalleryScreen:
     """A class for handling Gallery"""
-    GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//XCUIElementTypeCell[5]')  # there is a problem with selecting first element
+    GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//XCUIElementTypeCell[@name[contains(., "Photo")]][1]')
     GALLERY_VIDEOS_POPOVER = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Videos"]')
     GALLERY_VIDEO_ELEMENT_1 = (MobileBy.XPATH, '//XCUIElementTypeCell[1]')
     USE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Choose')

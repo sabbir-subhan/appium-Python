@@ -3,6 +3,8 @@
 from Modules.BasePage.BasePage import BasePage
 import logging
 from time import sleep
+# from selenium.webdriver.support import expected_conditions
+# from selenium.webdriver.support.ui import WebDriverWait
 
 
 class CommonPage(BasePage):
@@ -32,3 +34,10 @@ class CommonPage(BasePage):
         ok_button = self.driver.find_element(*self.configuration.CommonScreen.OK_BUTTON)
         self.assertIsNotNone(ok_button, "Ok button not found")
         ok_button.click()
+
+    # def wait_for_app_loading(self):
+    #     # on iOS that element have visible: false
+    #     logging.info("wait")
+    #     WebDriverWait(self.driver, 35).until(
+    #         expected_conditions.invisibility_of_element_located(self.configuration.CommonScreen.LOADING),
+    #         "loading animation is present")

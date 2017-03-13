@@ -52,3 +52,4 @@ class SetupTestCase(unittest.TestCase):
         self.driver.implicitly_wait(30)  # seconds - depends on device and connection speed
 
 
+

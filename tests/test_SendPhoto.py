@@ -43,7 +43,7 @@ class test_SendPhoto(SetupTestCase):
 
     def test_send_photo(self):
 
-        logging.info("starting Test Case 5: send photo")
+        logging.info("starting Test Case: send photo")
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         welcome_page = LoadClass.load_page('WelcomePage')
@@ -74,7 +74,7 @@ class test_SendPhoto(SetupTestCase):
         common_page.alert_popup_allow()
         gallery_page = LoadClass.load_page('GalleryPage')
         gallery_page.setDriver(self.driver)
-        gallery_page.choose_element_1()  # bug in appium
+        gallery_page.choose_element_1()
         common_page.alert_popup_allow()
         photo_page.type_description("test - photo 1 from gallery")
         common_page.hide_keyboard()

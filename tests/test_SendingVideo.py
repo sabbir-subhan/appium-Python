@@ -43,7 +43,7 @@ class test_SendingVideo(SetupTestCase):
 
     def test_send_video(self):
 
-        logging.info("starting Test Case 7: Sending Video")
+        logging.info("starting Test Case: Sending Video")
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         welcome_page = LoadClass.load_page('WelcomePage')

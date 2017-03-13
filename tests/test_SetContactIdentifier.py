@@ -28,7 +28,7 @@ class test_SetContactIdentifier(SetupTestCase):
 
     def test_Set_Contact_Identifier(self):
 
-        logging.info("starting Test Case 10: Set Contact Identifier")
+        logging.info("starting Test Case: Set Contact Identifier") # need to logout on ios
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         welcome_page = LoadClass.load_page('WelcomePage')
@@ -39,7 +39,7 @@ class test_SetContactIdentifier(SetupTestCase):
         settings_page.type_contact_identifier("test_pin")  # to change Contact Identifier PIN - edit it in credentials.py
         common_page.hide_keyboard()
         settings_page.click_save_button()
-        settings_page.check_if_app_was_activated()
+        #settings_page.check_if_app_was_activated()
         settings_page.click_ok_button()
 
 

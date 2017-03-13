@@ -2,15 +2,24 @@
 
 from Modules.GalleryPage.GalleryPage import GalleryPage
 import logging
+from time import sleep
 
 
 class IOS(GalleryPage):
 
     def choose_element_1(self):
 
+        sleep(2)
+        scroll = 0
+        while scroll == 0:
+            choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1)
+            if choose_element_1.is_displayed():
+                break
+            else:
+                self.driver.execute_script("mobile: scroll", {"direction": "up"})
+        sleep(1)
         logging.info("choosing element 1")
         choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1)
-        self.assertIsNotNone(choose_element_1, "first element in gallery not found")
         choose_element_1.click()
 
     def choose_video_from_gallery(self):

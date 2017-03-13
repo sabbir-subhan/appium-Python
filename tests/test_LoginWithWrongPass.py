@@ -31,7 +31,7 @@ class test_LoginWithWrongPass(SetupTestCase):
 
     def test_1_login_into_general_user_account_with_incorrect_password(self):
 
-        logging.info("starting Test Case 2: Logging in as a suspended account and with a wrong password")
+        logging.info("starting Test Case: Logging in as a suspended account and with a wrong password")
         logging.info("starting test1: login into general user account with incorrect password")
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
