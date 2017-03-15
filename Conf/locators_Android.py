@@ -40,7 +40,6 @@ class WelcomeScreen:
     PHOTO_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "PHOTO")]]')
     VIDEO_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "VIDEO")]]')
     SOUND_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "SOUND")]]')
-    # SOUND_BUTTON = (MobileBy.ACCESSIBILITY_ID, '&#10;SOUND')
     SETTINGS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "SETTINGS")]]')
     ABOUT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "ABOUT")]]')
     LOGIN_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "LOGIN")]]')
@@ -175,9 +174,9 @@ class EventsScreen:
     NEW_EVENT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "New event")]]')
 
     # previously created event
-    CREATED_EVENT_1 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Test Appium")]]')
-    CREATED_EVENT_2 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., " second event")]]')
-    CREATED_EVENT_3 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., " to create sub event")]]')
+    PREVIOUSLY_CREATED_EVENT = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Appium")]]')
+    # CREATED_EVENT_2 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "second event")]]')
+    #CREATED_EVENT_2 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "sub event")]]')
 
     CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc="Clear primary event"]')
     NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.XPATH, '//android.view.View[@content-desc[contains'
@@ -199,9 +198,9 @@ class EventEditScreen:
     NAME_FIELD = (MobileBy.ID, 'name')
     NAME_FIELD2 = (MobileBy.XPATH, '//android.widget.EditText[@index="1"]')
     SEVERITY_LEVEL_SELECTOR = (MobileBy.ID, 'field-1801')
-    # SEVERITY_LEVEL_SELECTOR = (MobileBy.XPATH, '//android.widget.ListView[@index="0"]/android.view.View['
-    #                                            '@index="3" and @content-desc[contains(., "Severity")]]/'
-    #                                            'android.widget.Spinner[@index="2"]')
+    SEVERITY_LEVEL_SELECTOR2 = (MobileBy.XPATH, '//android.widget.ListView[@index="0"]/android.view.View['  # for Android 4
+                                                '@index="3" and @content-desc[contains(., "Severity")]]/'
+                                                'android.widget.Spinner[@index="2"]')
     CHOOSE_SEVERITY_LVL1 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 1"]')
     CHOOSE_SEVERITY_LVL2 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 2"]')
     CHOOSE_SEVERITY_LVL3 = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Severity 3"]')
@@ -219,8 +218,11 @@ class EventEditScreen:
     SEQUENCE_ONLOAD_VALUE = (MobileBy.ACCESSIBILITY_ID, 'test on load')
     SEQUENCE_ONSAVE_HEADER = (MobileBy.ACCESSIBILITY_ID, 'sequence_onsave')
     SEQUENCE_ONSAVE_VALUE = (MobileBy.ACCESSIBILITY_ID, '(auto)')
-    NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View'
-                                              '[@content-desc[contains(., "New option list")]]/android.widget.Spinner')
+    NEW_OPTION_LIST_HEADER = (MobileBy.ACCESSIBILITY_ID, 'New option list')
+    # NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="New option list"]')
+    # NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View'
+    #                                           '[@content-desc[contains(., "New option list")]]/android.widget.Spinner')
+
     HEADER_ON_OPTION_LIST_PAGE = (MobileBy.ACCESSIBILITY_ID, 'New option list')
     OPTION_LIST_VALUE_1 = (MobileBy.ACCESSIBILITY_ID, '1')
     OPTION_LIST_VALUE_2 = (MobileBy.ACCESSIBILITY_ID, '2')
@@ -230,15 +232,16 @@ class EventEditScreen:
     FIELD_TO_RESTORE_2_HEADER = (MobileBy.ACCESSIBILITY_ID, 'New email address')
     FIELD_TO_RESTORE_2_VALUE = (MobileBy.ACCESSIBILITY_ID, 'test@noggin.com')
     CHOOSER_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "New events chooser")]]')
-    PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER = (MobileBy.XPATH, '//android.view.View[@content-desc['
-                                                            'contains(., "Test Appium")]]')
+    # PREVIOUSLY_CREATED_EVENT = (MobileBy.XPATH, '//android.view.View[@content-desc['
+    #                                             'contains(., "Appium")]]')
     SUBFORM_FIELD_ADD_ROW = (MobileBy.ACCESSIBILITY_ID, 'Add row')
     NEW_EVENTS_CHOOSER_IN_SUB_FORM = (MobileBy.XPATH, '//android.view.View[@content-desc['
                                                       'contains(., "New events chooser inside sub form")]]')
     DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View[@index="8"]'
                                                      '/android.view.View[@index="1"]')
-    PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER = (MobileBy.XPATH, '//android.view.View[@content-desc['
-                                                                    'contains(., "Test to create")]]')
+    # PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER = (MobileBy.XPATH, '//android.view.View[@content-desc['
+    #                                                                 'contains(., "Test to create")]]')
+
     # headers
     FINISHED_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Finished')
     LEADAGENCY_HEADER = (MobileBy.ACCESSIBILITY_ID, 'Lead agency')

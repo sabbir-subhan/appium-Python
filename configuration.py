@@ -1,6 +1,6 @@
 """ Choose platform to run tests """
 
-platform = "IOS 9"
+platform = "IOS 10"
 
 # You can use:
 
@@ -16,7 +16,7 @@ platform = "IOS 9"
 # IOS 10
 
 
-# devices are defined in Conf/desired_capabilities.py
+# devices are defined in /Conf/desired_capabilities.py
 
 PORT = "4723"  # port on which Appium server is running
 

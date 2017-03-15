@@ -151,15 +151,28 @@ class Android(EventEditPage):
 
         sleep(4)
         logging.info("click on option list")
-        action = TouchAction(self.driver)
-        screen_size = self.driver.get_window_size(windowHandle='current')  # it creates dictionary
-        if screen_size['width'] < 1000:
-            action.tap(element=None, x=250, y=530, count=1).perform()  # coordinates for clicking into "Option List"
-        else:
-            action.tap(element=None, x=700, y=1430, count=1).perform()
+
+        new_option_list = self.driver.find_element(*self.configuration.EventEditScreen.NEW_OPTION_LIST_HEADER)
+        location = new_option_list.location
+        print(location)
+        x = location["x"]
+        y = location["y"]
+        print(x)
+        print(y)
+        positions = [(x, y)]
+        self.driver.tap(positions)
+
+        # action = TouchAction(self.driver)
+        # screen_size = self.driver.get_window_size(windowHandle='current')  # it creates dictionary
+        # sleep(2)
+        # if screen_size['width'] < 1000:
+        #     action.tap(element=None, x=250, y=530, count=1).perform()  # coordinates for clicking into "Option List"
+        # else:
+        #     action.tap(element=None, x=700, y=1430, count=1).perform()
+        # sleep(1)
         header_after_opening_option_list = self.driver.find_element(*self.configuration.EventEditScreen.
                                                                     HEADER_ON_OPTION_LIST_PAGE)
-        self.assertIsNotNone(header_after_opening_option_list)
+        self.assertIsNotNone(header_after_opening_option_list, 'header_after_opening_option_list was not found')
 
     # only for event type: "event_for_on_load/save_test"
     def click_button_add_row(self):
@@ -181,12 +194,12 @@ class Android(EventEditPage):
         self.assertIsNotNone(delete_button_inside_sub_form, "delete button inside sub form not found")
         delete_button_inside_sub_form.click()
         sleep(5)
-        try:
-            previously_created_event_for_subform_chooser = self.driver.find_element(
-                *self.configuration.EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER)
-            self.assertIsNone(previously_created_event_for_subform_chooser)
-        except NoSuchElementException:
-            pass
+        # try:
+        #     previously_created_event_for_subform_chooser = self.driver.find_element(
+        #         *self.configuration.EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER)
+        #     self.assertIsNone(previously_created_event_for_subform_chooser)
+        # except NoSuchElementException:
+        #     pass
 
     def click_on_option_1(self):
 

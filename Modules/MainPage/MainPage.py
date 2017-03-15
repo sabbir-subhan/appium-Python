@@ -147,9 +147,9 @@ class MainPage(BasePage):
         events_button = self.driver.find_element(*self.configuration.MainMenuScreen.EVENTS_BUTTON)
         self.assertIsNotNone(events_button, "EVENTS button not found")
         events_button.click()
-        logging.info("check if Events were opened")
-        events_header = self.driver.find_element(*self.configuration.EventsScreen.EVENTS_HEADER)
-        self.assertIsNotNone(events_header)
+        # logging.info("check if Events were opened")
+        # events_header = self.driver.find_element(*self.configuration.EventsScreen.EVENTS_HEADER)
+        # self.assertIsNotNone(events_header)
 
     def open_LOGS(self):
 

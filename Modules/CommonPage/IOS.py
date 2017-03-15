@@ -46,8 +46,8 @@ class IOS(CommonPage):
     # OCA top bar
     def hamburger_button(self):
 
-        logging.info("close and reopen app to avoid problems with locating elements")
-        self.driver.reset()
+        # logging.info("close and reopen app to avoid problems with locating elements")
+        # self.driver.reset()
 
         logging.info("click hamburger button to go back to main menu - IOS ")
         sleep(1)

@@ -11,10 +11,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 class IOS(WelcomePage):
 
-    def click_login_button(self):
+    def logout(self):
 
         # iOS can not be reset by appium - "No reset" and "session-override" flags are not working,
         #  only "Full reset" will work, but app will be uninstalled
+
         sleep(5)
         logging.info("logout if already logged in")
         try:
@@ -22,19 +23,25 @@ class IOS(WelcomePage):
             common_page.setDriver(self.driver)
             common_page.scroll_down_one_view()
             sleep(2)
-            logout_button_ios = self.driver.find_element(*self.configuration.MainMenuScreen.LOGOUT_BUTTON)
-            self.assertIsNotNone(logout_button_ios, "Logout button not found")
+            logout_button = self.driver.find_element(*self.configuration.MainMenuScreen.LOGOUT_BUTTON)
+            self.assertIsNotNone(logout_button, "Logout button not found")
             logging.info("Your are already logged in - logging out")
-            logout_button_ios.click()
-            submit_button_ios = self.driver.find_element(*self.configuration.LoginScreen.SUBMIT_BUTTON)
-            self.assertIsNotNone(submit_button_ios, "Submit button not found")
-            submit_button_ios.click()
+            logout_button.click()
+            submit_button = self.driver.find_element(*self.configuration.LoginScreen.SUBMIT_BUTTON)
+            self.assertIsNotNone(submit_button, "Submit button not found")
+            submit_button.click()
             sleep(8)
         except NoSuchElementException:
             logging.info("Your are already logged out")
 
-        logging.info("relaunching app to avoid problems with locating elements")
-        self.driver.reset()  # reset app to avoid problems with locating elements
+    def click_login_button(self):
+
+        # welcome_page = LoadClass.load_page('WelcomePage')
+        # welcome_page.setDriver(self.driver)
+        # welcome_page.logout()
+
+        # logging.info("relaunching app to avoid problems with locating elements")
+        # self.driver.reset()  # reset app to avoid problems with locating elements
         logging.info("click in LOGIN button")
         sleep(2)
         try:

@@ -4,6 +4,7 @@ import logging
 from Modules.BasePage.BasePage import BasePage
 from time import sleep
 from selenium.common.exceptions import *
+from Conf.desired_capabilities import DesiredCapabilities
 
 
 class EventEditPage(BasePage):
@@ -11,7 +12,14 @@ class EventEditPage(BasePage):
     def click_severity_lvl_picker(self):
 
         logging.info("click on severity level field")
-        self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR).click()
+        # self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR).click()
+        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        platform_name = desired_capabilities.get('platformName')
+        platform_version = desired_capabilities.get('platformVersion')
+        if platform_name == "ANDROID" and platform_version < "5":
+            self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR2).click()
+        else:
+            self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR).click()
 
     # only for event type: "event_for_on_load/save_test"
     def check_on_load_and_on_save_sequences(self):

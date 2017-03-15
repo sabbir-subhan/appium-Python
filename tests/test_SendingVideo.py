@@ -79,7 +79,7 @@ class test_SendingVideo(SetupTestCase):
         gallery_video_page.click_use_button()
         video_page.type_description("test - video 1 from gallery")
         common_page.hide_keyboard()
-        video_page.click_send_button()
+        video_page.click_send_button()  # click and wait for 600s
         main_page.open_VIDEO()
         video_page.click_record_new_button()
         camera_page = LoadClass.load_page('CameraPage')
@@ -90,7 +90,7 @@ class test_SendingVideo(SetupTestCase):
         camera_page.click_use_video()
         video_page.type_description("test - video 1")
         common_page.hide_keyboard()
-        video_page.click_send_button()
+        video_page.click_send_button()  # click and wait for 600s
         main_page.open_VIDEO()
         video_page.click_record_new_button()
         camera_page.capture_video()
@@ -103,7 +103,7 @@ class test_SendingVideo(SetupTestCase):
         camera_page.click_use_video()
         video_page.type_description("test- video 2")
         common_page.hide_keyboard()
-        video_page.click_send_button()
+        video_page.click_send_button()  # click and wait for 600s
         main_page.check_presence_of_events_button()
 
 

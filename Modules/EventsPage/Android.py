@@ -25,6 +25,17 @@ class Android(EventsPage):
         self.driver.keyevent(29)  # send letter 'A'
         self.driver.keyevent(46)  # send letter 'R'
 
+    def filter_events_to_find_previous_event(self):
+
+        logging.info("search field - search event named: 'app'")
+        sleep(2)
+        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+        search_field.click()
+        logging.info("sending keys")
+        self.driver.keyevent(29)  # send letter 'A'
+        self.driver.keyevent(44)  # send letter 'P'
+        self.driver.keyevent(44)  # send letter 'P'
+
     def clear_Search_field(self):
 
         logging.info("clear search field")
@@ -36,17 +47,17 @@ class Android(EventsPage):
         # after clearing search filed on Android device - "More" button is dropped to the bottom of the events list,
         # so to avoid unnecessary scrolling Appium will tap on hamburger button to go to main menu and reopen Events
 
-        common_page = LoadClass.load_page('CommonPage')
-        common_page.setDriver(self.driver)
-        common_page.click_Return_button_on_keyboard()
-
-        common_page.hide_keyboard()
-
-        common_page.hamburger_button()
-        sleep(2)
-        main_page = LoadClass.load_page('MainPage')
-        main_page.setDriver(self.driver)
-        main_page.open_EVENTS()
+        # common_page = LoadClass.load_page('CommonPage')
+        # common_page.setDriver(self.driver)
+        # common_page.click_Return_button_on_keyboard()
+        #
+        # common_page.hide_keyboard()
+        #
+        # common_page.hamburger_button()
+        # sleep(2)
+        # main_page = LoadClass.load_page('MainPage')
+        # main_page.setDriver(self.driver)
+        # main_page.open_EVENTS()
 
     def click_More_button(self):
 

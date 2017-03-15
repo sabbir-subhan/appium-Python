@@ -10,13 +10,15 @@ class IOS(GalleryPage):
     def choose_element_1(self):
 
         sleep(2)
-        scroll = 0
-        while scroll == 0:
-            choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1)
-            if choose_element_1.is_displayed():
-                break
-            else:
-                self.driver.execute_script("mobile: scroll", {"direction": "up"})
+        self.driver.execute_script("mobile: scroll", {"direction": "up"})
+        # scroll = 0
+        # while scroll == 0:
+        #     choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1)
+        #     if choose_element_1.is_displayed():
+        #         break
+        #     else:
+        #         logging.info("scroll up to find first element")
+        #         self.driver.execute_script("mobile: scroll", {"direction": "up"})
         sleep(1)
         logging.info("choosing element 1")
         choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1)

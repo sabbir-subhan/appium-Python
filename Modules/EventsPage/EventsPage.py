@@ -68,49 +68,49 @@ class EventsPage(BasePage):
         set_as_primary_button.click()
         sleep(2)
 
-    def open_previously_created_event1(self):
+    def open_previously_created_event(self):
 
         logging.info("open created event")
-        created_event1 = self.driver.find_element(*self.configuration.EventsScreen.CREATED_EVENT_1)
-        self.assertIsNotNone(created_event1, "Created event 1 not found")
-        created_event1.click()
+        created_event = self.driver.find_element(*self.configuration.EventsScreen.PREVIOUSLY_CREATED_EVENT)
+        self.assertIsNotNone(created_event, "Previously created event not found")
+        created_event.click()
         sleep(5)
 
-    def open_previously_created_event2(self):
+    # def open_previously_created_event2(self):
+    #
+    #     logging.info("open previously created Event, Edit and Create mapping data")
+    #     created_event2 = self.driver.find_element(*self.configuration.EventsScreen.CREATED_EVENT_2)
+    #     self.assertIsNotNone(created_event2, "Created event 2 not found")
+    #     created_event2.click()
+    #     sleep(5)
 
-        logging.info("open previously created Event, Edit and Create mapping data")
-        created_event2 = self.driver.find_element(*self.configuration.EventsScreen.CREATED_EVENT_2)
-        self.assertIsNotNone(created_event2, "Created event 2 not found")
-        created_event2.click()
-        sleep(5)
-
-    def open_previously_created_event3(self):
-
-        logging.info("open previously created Event, Edit and Create mapping data")
-        created_event3 = self.driver.find_element(*self.configuration.EventsScreen.CREATED_EVENT_3)
-        self.assertIsNotNone(created_event3, "Created event 3 not found")
-        created_event3.click()
-        sleep(5)
+    # def open_previously_created_event3(self):
+    #
+    #     logging.info("open previously created Event, Edit and Create mapping data")
+    #     created_event3 = self.driver.find_element(*self.configuration.EventsScreen.CREATED_EVENT_3)
+    #     self.assertIsNotNone(created_event3, "Created event 3 not found")
+    #     created_event3.click()
+    #     sleep(5)
 
     # only for events list, opened from chooser fields inside other event
-    def click_on_previously_created_event_for_chooser_field(self):
-
-        sleep(5)
-        logging.info("click_on_previously_created_event_for_chooser_field")
-        event_for_chooser_field = self.driver.find_element(*self.configuration.EventEditScreen.
-                                                           PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER)
-        self.assertIsNotNone(event_for_chooser_field, "event_for_chooser_field not found")
-        event_for_chooser_field.click()
-        sleep(5)
-
-    def click_on_previously_created_event_for_subform_chooser(self):
-
-        sleep(10)
-        logging.info("click_on_previously_created_event_for_subform_chooser")
-        event_for_subform = self.driver.find_element(*self.configuration.EventEditScreen.
-                                                     PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER)
-        self.assertIsNotNone(event_for_subform, "event_for_subform not found")
-        event_for_subform.click()
-        sleep(5)
+    # def click_on_previously_created_event_for_chooser_field(self):
+    #
+    #     sleep(5)
+    #     logging.info("click_on_previously_created_event_for_chooser_field")
+    #     event_for_chooser_field = self.driver.find_element(*self.configuration.EventEditScreen.
+    #                                                        PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER)
+    #     self.assertIsNotNone(event_for_chooser_field, "event_for_chooser_field not found")
+    #     event_for_chooser_field.click()
+    #     sleep(5)
+    #
+    # def click_on_previously_created_event_for_subform_chooser(self):
+    #
+    #     sleep(10)
+    #     logging.info("click_on_previously_created_event_for_subform_chooser")
+    #     event_for_subform = self.driver.find_element(*self.configuration.EventEditScreen.
+    #                                                  PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER)
+    #     self.assertIsNotNone(event_for_subform, "event_for_subform not found")
+    #     event_for_subform.click()
+    #     sleep(5)
 
 

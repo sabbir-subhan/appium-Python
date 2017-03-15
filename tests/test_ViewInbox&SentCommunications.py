@@ -61,7 +61,7 @@ class test_ViewInboxSentCommunications(SetupTestCase):
         main_page.open_SENT()
         sent_page = LoadClass.load_page('SentPage')
         sent_page.setDriver(self.driver)
-        sent_page.take_screenshot("screenshot.png")  # screenshot will be saved in /tests directory
+        #sent_page.take_screenshot("screenshot.png")  # screenshot will be saved in /tests directory
         sent_page.hamburger_button()
         main_page.scroll_down_one_view()
         main_page.open_COMPOSE()

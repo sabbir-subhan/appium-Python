@@ -55,6 +55,8 @@ class test_SendLocation(SetupTestCase):
         main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
 
+        print(self.driver.contexts)
+
         main_page.open_LOCATION()
         location_page = LoadClass.load_page('LocationPage')
         location_page.setDriver(self.driver)

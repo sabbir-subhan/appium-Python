@@ -35,7 +35,7 @@ class PhotoPage(BasePage):
         send_button.click()
         sleep(2)
         logging.info("sending file")
-        WebDriverWait(self.driver, 450).until(
+        WebDriverWait(self.driver, 600).until(
             expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
             "Failed to send file")
         logging.info("File was sent")
