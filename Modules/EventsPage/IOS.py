@@ -31,10 +31,21 @@ class IOS(EventsPage):
 
     def click_More_button(self):
 
+        sleep(1)
         logging.info("clicking in More button")
         more_button = self.driver.find_element(*self.configuration.EventsScreen.MORE_BUTTON)
         self.assertIsNotNone(more_button, "More button not found")
-        more_button.click()
+
+        location = more_button.location
+        print(location)
+        x = location["x"]
+        y = location["y"]
+        print(x)
+        print(y)
+        positions = [(x, y)]
+        self.driver.tap(positions)
+
+        # more_button.click()
 
     def clear_primary_event(self):
 

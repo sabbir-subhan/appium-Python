@@ -39,6 +39,7 @@ class IOS9(IOS):
                 pass
         except NoSuchElementException:
             self.driver.hide_keyboard(key_name="Hide keyboard")
+        sleep(1)
 
     def click_Return_button_on_keyboard(self):
 

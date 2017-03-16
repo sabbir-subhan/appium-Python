@@ -42,7 +42,7 @@ INSTALL APPIUM 1.6.3 TO WORK WITH iOS10: (CLI commands)
 - n stable
 - npm install -g npm@latest
 - npm install -g appium@1.6.3
-- cd usr/local/lib/node_modules/appium/node_modules/
+- cd /usr/local/lib/node_modules/appium/node_modules/
 - sudo npm install appium-xcuitest-driver@latest (or @2.5.2)
 - cd /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent
 - mkdir -p Resources/WebDriverAgent.bundle
@@ -67,13 +67,17 @@ file /Conf/desired_capabilities.py and appium settings:
 - appium -p 4735  # to change port use "-p" flag
 - appium --log-timestamp --log /file_path  # starting appium with logging to file
 
+
 ### **run iOS9 and iOS10** ###
-You need to install Xcode 7 and Xcode 8, Appium >= 1.6 in CLI mode, can run both iOS versions but You need to switch between Xcode versions
-('sudo xcode-select -switch /Applications/Xcode.app' and run 'appium' - for iOS10 and
-'sudo xcode-select -switch /Applications/Xcode7.app' and run 'appium' - for iOS 9)
+
+- You need to install Xcode 7 and Xcode 8, Appium >= 1.6 in CLI mode, can run both iOS versions but You need to switch between Xcode versions 
+(Xcode7 must have different name because appium in CLI will search for app "Xcode" so that should be version 8)
+(with Xcode 8 You can run tests for iOS10 and to run tests for iOS9 You have to switch to Xcode 7)
+- 'sudo xcode-select -switch /Applications/Xcode.app' and run 'appium' - for iOS10 and 'sudo xcode-select -switch /Applications/Xcode7.app' and run 'appium' - for iOS 9)
 - remember to restart Appium server after changing Xcode version
+(Appium 1.5.3 can run only iOS9)
 
-
+- in CLI (Appium 1.6.3) 
 
 ### **CONFIGURING ANDROID DEVICE:** ###
 
@@ -171,14 +175,7 @@ with name: "New events chooser inside sub form"
 - for iOS - open Appium settings and uncheck UDID checkbox and change device name - choose from dropdown in Appium settings
 
 
-### **RUNNING TESTS BOTH ON IOS9 AND IOS10:** ###
-
-- You need two versions of Xcode
-- Appium 1.6.3 in CLI and Xcode in version 8 and Xcode 7 (Xcode7 must have different name because appium in CLI will search for app "Xcode" so that should be version 8)
-- in CLI (Appium 1.6.3) with Xcode 8 You can run tests for iOS10 and to run tests for iOS9 You have to switch to Xcode 7
-
-
-APP VERSIONS:
+OCA APP VERSIONS:
 
 - android: 10.0.7
 - iOS: 10.0.8

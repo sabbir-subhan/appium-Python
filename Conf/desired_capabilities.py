@@ -100,7 +100,7 @@ class DesiredCapabilities(object):
             "deviceName": "iPad mini",
             "app": PATH("/Users/lukasl/Build_xcode/Products/iPad9.3.5/OCA.app"),
             "bundleId": "com.noggin.ocalukasl",
-            "newCommandTimeout": 80,
+            "newCommandTimeout": 90,
             "autoAcceptAlerts": True,
             "automationName": "Appium",
             "udid": "db55c238e873230ee454c54a63724397a2981acd"

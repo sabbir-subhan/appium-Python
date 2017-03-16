@@ -1,41 +1,21 @@
-""" Methods for IOS to handle Welcome Page """
+""" Methods for IOS9 on Welcome Page """
 
-from Modules.WelcomePage.WelcomePage import WelcomePage
+from Modules.WelcomePage.IOS import IOS
 from Modules.load_class import LoadClass
-import logging
-from time import sleep
 from selenium.common.exceptions import *
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
+import logging
+from time import sleep
 
 
-class IOS(WelcomePage):
-
-    def logout(self):
-
-        sleep(5)
-        logging.info("logout if already logged in")
-        try:
-            common_page = LoadClass.load_page('CommonPage')
-            common_page.setDriver(self.driver)
-            common_page.scroll_down_one_view()
-            sleep(2)
-            logout_button = self.driver.find_element(*self.configuration.MainMenuScreen.LOGOUT_BUTTON)
-            self.assertIsNotNone(logout_button, "Logout button not found")
-            logging.info("Your are already logged in - logging out")
-            logout_button.click()
-            submit_button = self.driver.find_element(*self.configuration.LoginScreen.SUBMIT_BUTTON)
-            self.assertIsNotNone(submit_button, "Submit button not found")
-            submit_button.click()
-            sleep(8)
-        except NoSuchElementException:
-            logging.info("Your are already logged out")
+class IOS9(IOS):
 
     def click_login_button(self):
 
-        # welcome_page = LoadClass.load_page('WelcomePage')
-        # welcome_page.setDriver(self.driver)
-        # welcome_page.logout()
+        welcome_page = LoadClass.load_page('WelcomePage')
+        welcome_page.setDriver(self.driver)
+        welcome_page.logout()
 
         # logging.info("relaunching app to avoid problems with locating elements")
         # self.driver.reset()  # reset app to avoid problems with locating elements
@@ -56,4 +36,6 @@ class IOS(WelcomePage):
                 self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON_by_index).click()
             except NoSuchElementException:
                 self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON).click()
+
+
 

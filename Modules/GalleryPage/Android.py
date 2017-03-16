@@ -14,34 +14,22 @@ class Android(GalleryPage):
 
         logging.info("choosing element 1 - Android")
 
-        self.driver.find_element_by_id('com.android.documentsui:id/menu_list').click()
-        sleep(2)
-        self.driver.find_element_by_xpath(
-            '//android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.view.ViewGroup[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[2]/android.widget.LinearLayout[1]').click()
-        sleep(2)
-
-        # desired_capabilities = DesiredCapabilities.get_desired_capabilities()
-        # platform_version = desired_capabilities.get('platformVersion')
-        # if platform_version >= "7":
-        #     choose_element_1_android7 = self.driver.find_element(*self.configuration.GalleryScreen.
-        #                                                          GALLERY_ELEMENT_1_android7)
-        #     # choose_element_1_android7.click()  # for some reason it is not working with Android 7
-        #     location = choose_element_1_android7.location
-        #     logging.info(location)
-        #     x = location["x"]
-        #     y = location["y"]
-        #     logging.info(x)
-        #     logging.info(y)
-            # positions = [(x, y)]
-            # action = TouchAction(self.driver)
-            # action.press(el=choose_element_1_android7, x=x, y=y).release().perform()
-            # action.tap(element=choose_element_1_android7, x=x, y=y, count=1).perform()
-            #print(positions)
-            #self.driver.tap(positions)  # not working, also Touch Action is not working in Android 7 Gallery
-        #     logging.info("log after tap - to test Android 7")  # TEST
-        # else:
-        #     choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1)
-        #     choose_element_1.click()
+        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        platform_version = desired_capabilities.get('platformVersion')
+        if platform_version >= "7":
+            gallery_elements_android7 = self.driver.find_elements(*self.configuration.GalleryScreen.
+                                                                  GALLERY_ELEMENTS_android7)
+            location = gallery_elements_android7[1].location
+            logging.info(location)
+            x = location["x"]
+            y = location["y"]
+            logging.info(x)
+            logging.info(y)
+            positions = [(x, y)]
+            self.driver.tap(positions)
+        else:
+            choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1)
+            choose_element_1.click()
 
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)

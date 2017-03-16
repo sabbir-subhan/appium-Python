@@ -28,4 +28,4 @@ class EventDetailsPage(BasePage):
         delete_confirm_button = self.driver.find_element(*self.configuration.EventDetailsScreen.DELETE_CONFIRM_BUTTON)
         self.assertIsNotNone(delete_confirm_button, "confirm delete button not found")
         delete_confirm_button.click()
-        sleep(5)
+        sleep(7)

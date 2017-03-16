@@ -118,6 +118,7 @@ class EventEditPage(BasePage):
         cancel_button = self.driver.find_element(*self.configuration.CommonScreen.CANCEL_BUTTON)
         self.assertIsNotNone(cancel_button, "Cancel button not found")
         cancel_button.click()
+        sleep(4)
 
     def click_on_event_chooser_field(self):
 

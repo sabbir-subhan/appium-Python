@@ -17,6 +17,7 @@ class Android(LoginPage):
         self.driver.keyevent(67)
         logging.info("type username")
         username_field.send_keys(Credentials.get_username(username))
+        sleep(1)
 
     def type_password(self, password):
 

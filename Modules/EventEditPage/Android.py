@@ -88,7 +88,9 @@ class Android(EventEditPage):
 
     def scroll_down_to_add_row_button(self):
 
-        Android.scroll_down_to_description_field(self)
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.scroll_down_one_view()
 
     def fill_Name_input_field(self, text):
 
@@ -192,6 +194,14 @@ class Android(EventEditPage):
         delete_button_inside_sub_form = self.driver.find_element(*self.configuration.EventEditScreen.
                                                                  DELETE_SUB_EVENT_FROM_CHOOSER)
         self.assertIsNotNone(delete_button_inside_sub_form, "delete button inside sub form not found")
+        # location = delete_button_inside_sub_form.location
+        # print(location)
+        # x = location["x"]
+        # y = location["y"]
+        # print(x)
+        # print(y)
+        # positions = [(x, y)]
+        # self.driver.tap(positions)
         delete_button_inside_sub_form.click()
         sleep(5)
         # try:

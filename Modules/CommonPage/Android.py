@@ -14,14 +14,20 @@ class Android(CommonPage):
     # OCA top bar
     def hamburger_button(self):
 
+        sleep(1)
         logging.info("click hamburger button to go back to main menu")
         hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU)
-        if hamburger_button.is_displayed():
-            self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
-            hamburger_button.click()
-        else:
-            self.fail("Hamburger button not found")
-        sleep(4)
+        self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
+        location = hamburger_button.location
+        print(location)
+        x = location["x"]
+        y = location["y"]
+        print(x)
+        print(y)
+        positions = [(x, y)]
+        self.driver.tap(positions)
+        # hamburger_button.click()
+        sleep(5)
 
     def alert_popup_allow(self):
 
@@ -63,7 +69,10 @@ class Android(CommonPage):
         window_size = self.driver.get_window_size()  # this will give You a dictionary
         start_x = window_size["width"] * 0.25
         start_y = window_size["height"] * 0.15
-        end_y = window_size["height"] * 0.8
+        if window_size["height"] <= 800:
+            end_y = window_size["height"] * 0.6
+        else:
+            end_y = window_size["height"] * 0.8
         logging.info("scroll down only one screen")
         sleep(2)
         self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen

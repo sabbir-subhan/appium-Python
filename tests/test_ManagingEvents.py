@@ -73,10 +73,8 @@ class test_ManagingEvents(SetupTestCase):
         events_page.clear_Search_field()
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
-
         common_page.hamburger_button()
         main_page.open_EVENTS()
-
         events_page.click_More_button()
         events_page.click_New_event_button()
         events_types_page = LoadClass.load_page('EventsTypesPage')
@@ -90,12 +88,10 @@ class test_ManagingEvents(SetupTestCase):
         event_edit_page.choose_severity_level_1()
         event_edit_page.scroll_down_to_save_button()
         event_edit_page.click_save_button()
-
         events_page.clear_Search_field()
         events_page.filter_events_to_find_previous_event()
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
-
         events_page.open_previously_created_event()
         event_details_page = LoadClass.load_page('EventDetailsPage')
         event_details_page.setDriver(self.driver)
@@ -123,13 +119,10 @@ class test_ManagingEvents(SetupTestCase):
         event_edit_page.choose_severity_level_4()
         event_edit_page.scroll_down_to_save_button()
         event_edit_page.click_save_button()
-        #events_page.check_if_EVENTS_were_opened()
-
         events_page.clear_Search_field()
         events_page.filter_events_to_find_previous_event()
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
-
         events_page.open_previously_created_event()
         event_details_page.click_edit_button()
         event_edit_page.scroll_down_to_save_button()
@@ -166,22 +159,10 @@ class test_ManagingEvents(SetupTestCase):
                      " and another with chooser fields")
         common_page.hamburger_button()
         main_page.open_EVENTS()
-        # events_page.click_More_button()
-        # events_page.click_New_event_button()
-        # events_types_page.choose_Incident_type_of_event()
-        # event_edit_page.fill_Name_input_field("Appium event for sub event")
-        # common_page.hide_keyboard()
-        # event_edit_page.click_severity_lvl_picker()
-        # event_edit_page.choose_severity_level_3()
-        # event_edit_page.scroll_down_to_save_button()
-        # event_edit_page.click_save_button()
-        # events_page.check_if_EVENTS_were_opened()
-
         events_page.clear_Search_field()
         events_page.filter_events_to_find_previous_event()
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
-
         events_page.open_previously_created_event()
         events_page.click_More_button()
         events_page.click_New_sub_event()
@@ -230,25 +211,19 @@ class test_ManagingEvents(SetupTestCase):
         events_types_page.choose_Event_for_chooser_fields_type_of_event()
         event_edit_page.scroll_down_to_event_chooser_field()
         event_edit_page.click_on_event_chooser_field()
-
         events_page.clear_Search_field()
         events_page.filter_events_to_find_previous_event()
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
-
         events_page.open_previously_created_event()
-        # events_page.click_on_previously_created_event_for_chooser_field()
         event_edit_page.scroll_down_to_add_row_button()
         event_edit_page.click_button_add_row()
         event_edit_page.click_on_choose_field_inside_subform()
-
         events_page.clear_Search_field()
         events_page.filter_events_to_find_previous_event()
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
-
         events_page.open_previously_created_event()
-        # events_page.click_on_previously_created_event_for_subform_chooser()
         event_edit_page.delete_chosen_event_inside_subform()
         event_edit_page.scroll_down_to_save_button()
         event_edit_page.click_cancel_button()

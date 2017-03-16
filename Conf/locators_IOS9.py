@@ -330,3 +330,7 @@ class NewLogScreen:
     ENTRY_FIELD = (MobileBy.CLASS_NAME, 'UIATextField')
 
 
+class SentScreen:
+    """A class for handling Sent screen"""
+    SEARCH = (MobileBy.XPATH, '//UIATextField[@name="Search"]')
+    SENT_COMMUNICATIONS_EMAIL = (MobileBy.XPATH, '//UIALink[@name[contains(., "Short message, Email")]]')

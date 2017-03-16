@@ -302,7 +302,9 @@ class VideoScreen:
 class GalleryScreen:
     """A class for handling Gallery"""
     GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//android.widget.GridView[1]/android.widget.FrameLayout[1]')
-    GALLERY_ELEMENT_1_android7 = (MobileBy.XPATH, '//android.widget.RelativeLayout[1]/android.view.View[1]')
+    GALLERY_ELEMENT_1_android7 = (MobileBy.XPATH, 'android.support.v7.widget.RecyclerView[1]'
+                                                  '/android.widget.RelativeLayout[2]/android.view.View[1]')
+    GALLERY_ELEMENTS_android7 = (MobileBy.ID, 'android:id/title')
 
 
 class SoundScreen:
