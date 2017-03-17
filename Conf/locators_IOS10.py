@@ -21,12 +21,14 @@ class CommonScreen:
 
 class TopBar:
     """A class for top bar locators."""
-    HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]'
-                                               '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
-                                               '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
-                                               '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
-                                               '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
-                                               '/XCUIElementTypeLink[1]')
+    # HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]'
+    #                                            '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
+    #                                            '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
+    #                                            '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
+    #                                            '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
+    #                                            '/XCUIElementTypeLink[1]')
+
+    HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeLink[1]/XCUIElementTypeStaticText[1]')
 
 
 class WelcomeScreen:
@@ -358,5 +360,11 @@ class NewLogScreen:
     LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/'  # # different locator than in New Report Page
                                              'XCUIElementTypeOther[3]')
     ENTRY_FIELD = (MobileBy.CLASS_NAME, 'XCUIElementTypeTextView')
+
+
+class SentScreen:
+    """A class for handling Sent screen"""
+    SEARCH = EventsScreen.SEARCH_FIELD
+    SENT_COMMUNICATIONS_EMAIL = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Short message, Email")]]')
 
 

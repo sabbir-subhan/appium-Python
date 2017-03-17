@@ -414,6 +414,42 @@ class NewLogScreen:
     ENTRY_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc="Rich Text Editor, entry"]/android.view.View[2]')
 
 
+class SentScreen:
+    """A class for handling Sent screen"""
+    SEARCH = EventsScreen.SEARCH_FIELD
+    SENT_COMMUNICATIONS_EMAIL = (MobileBy.XPATH, '//android.view.View[@content-desc'
+                                                 '[contains(., "Short message, Email")]]')
+
+
+class ComposeScreen:
+    """A class for handling Compose screen"""
+    ADD_RECIPIENTS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Add recipients")]]')
+    MESSAGE_EMAIL = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Email")]]')
+    MESSAGE_SMS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "SMS")]]')
+    MESSAGE_VOICE = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Voice")]]')
+    MESSAGE_FAX = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Fax")]]')
+    REQUIRE_ACKNOWLEDGMENT = (MobileBy.XPATH, '//android.view.View[@content-desc'
+                                              '[contains(., "Require acknowledgment")]]')
+    REPLY_TRACKING = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Reply tracking")]]')
+    READ_ACCESS_LEVEL = (MobileBy.XPATH, '')
+    ADD_CONTACTS_AND_GROUPS = (MobileBy.XPATH, '//android.widget.Button[@content-desc'
+                                               '[contains(., "Add contacts and groups")]]')
+    ADD_RESOURCES_STRUCTURE_NODES = (MobileBy.XPATH, '//android.widget.Button[@content-desc'
+                                                     '[contains(., "Add Resource structure ")]]')
+    CONTACTS_ARROW = (MobileBy.XPATH, '//android.view.View[@content-desc[contains'
+                                      '(., "Contacts")]]/android.view.View[@index="2"]')
+    USERS_ARROW = (MobileBy.XPATH, '//android.view.View[@content-desc[contains'
+                                   '(., "Users")]]/android.view.View[@index="2"]')
+    MAILING_LIST_UNSUBSCRIBES_ARROW = (MobileBy.XPATH, '//android.view.View[@content-desc'
+                                                       '[contains(., "Mailing list unsubscribes ")]]'
+                                                       '/android.view.View[@index="2"]')
+    CONTACT_FOR_APPIUM_TESTS = (MobileBy.XPATH, '//android.view.View[@content-desc="CONTACT_FOR_APPIUM_TESTS"]')
+    ALERT_SEND_BUTTON = (MobileBy.ID, 'messageSend')   # test it on Android 5 and 4
+    # ALERT_SEND_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Send"]')
+
+
+
+
 
 
 

@@ -46,22 +46,36 @@ class IOS(CommonPage):
     # OCA top bar
     def hamburger_button(self):
 
-        # logging.info("close and reopen app to avoid problems with locating elements")
-        # self.driver.reset()
-
-        logging.info("click hamburger button to go back to main menu - IOS ")
-        sleep(2)
-        hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU)
-        self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
-        location = hamburger_button.location
-        print(location)
-        x = location["x"]
-        y = location["y"]
-        print(x)
-        print(y)
-        positions = [(x, y)]
+        logging.info("click hamburger button to go back to main menu - IOS")
+        window_size = self.driver.get_window_size()  # this returns dictionary
+        logging.info(window_size)
+        position_x = window_size["width"] * 0.98
+        position_y = window_size["height"] * 0.04
+        logging.info(position_x)
+        logging.info(position_y)
+        positions = [(position_x, position_y)]
         self.driver.tap(positions)
         sleep(5)
+
+    # # OCA top bar
+    # def hamburger_button(self):
+    #
+    #     # logging.info("close and reopen app to avoid problems with locating elements")
+    #     # self.driver.reset()
+    #
+    #     logging.info("click hamburger button to go back to main menu - IOS ")
+    #     sleep(2)
+    #     hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU)
+    #     self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
+    #     location = hamburger_button.location
+    #     print(location)
+    #     x = location["x"]
+    #     y = location["y"]
+    #     print(x)
+    #     print(y)
+    #     positions = [(x, y)]
+    #     self.driver.tap(positions)
+    #     sleep(5)
 
     def alert_popup_allow(self):
 

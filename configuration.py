@@ -1,6 +1,6 @@
 """ Choose platform to run tests """
 
-platform = "IOS 10"
+platform = "Android 4"
 
 # You can use:
 
@@ -14,6 +14,7 @@ platform = "IOS 10"
 # IOS 9
 # IOS 9 emulator
 # IOS 10
+# IOS 10 emulator
 
 
 # devices are defined in /Conf/desired_capabilities.py
@@ -33,6 +34,12 @@ elif platform == "IOS 9 emulator":
     PLATFORM_VERSION = ""
 
 elif platform == "IOS 10":
+
+    ENVIRONMENT_TEST = "IOS10"
+    ENVIRONMENT_MIDDLE_CLASS = "IOS"
+    PLATFORM_VERSION = ""
+
+elif platform == "IOS 10 emulator":
 
     ENVIRONMENT_TEST = "IOS10"
     ENVIRONMENT_MIDDLE_CLASS = "IOS"

@@ -201,4 +201,5 @@ OCA APP VERSIONS:
 - Appium server hangs on: "Waiting for WebDriverAgent server to finish loading..." -- problem with WebDriver build
 - info XCUITest xcodebuild exited with code '65' and signal 'null' -- This usually means that the necessary code signing is not set up correctly
 - if You open WebDriverAgent project in Xcode and there is lack of Routing Http Server - open WebDriverAgent directory and run ./Scripts/bootstrap.sh
-
+- "Instruments exited with code 255" = "Instruments exited with code 251" = We exceeded the number of retries allowed for instruments to successfully start; failing launch"  -- kill Appium server, 
+    switch to proper Xcode version, restart host and device, ? 

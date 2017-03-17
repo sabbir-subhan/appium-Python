@@ -16,9 +16,9 @@ class IOS(WelcomePage):
         sleep(5)
         logging.info("logout if already logged in")
         try:
-            common_page = LoadClass.load_page('CommonPage')
-            common_page.setDriver(self.driver)
-            common_page.scroll_down_one_view()
+            main_page = LoadClass.load_page('MainPage')
+            main_page.setDriver(self.driver)
+            main_page.scroll_down_to_logout_button()
             sleep(2)
             logout_button = self.driver.find_element(*self.configuration.MainMenuScreen.LOGOUT_BUTTON)
             self.assertIsNotNone(logout_button, "Logout button not found")

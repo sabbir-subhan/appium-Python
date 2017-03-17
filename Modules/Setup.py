@@ -38,7 +38,7 @@ class SetupTestCase(unittest.TestCase):
         #
         # subprocess.call(['/Users/lukasl/repos/appium-poc/cli.sh'])  # call shell script that will start appium in new terminal
         #
-        # sleep(40)  # wait for appium server to start
+        # sleep(45)  # wait for appium server to start
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 

@@ -34,7 +34,7 @@ class test_ViewInboxSentCommunications(SetupTestCase):
         logging.info("Quitting")
         self.driver.quit()
 
-    def test_login(self):
+    def test_ViewInboxSentCommunications(self):
 
         logging.info("starting Test Case: View Inbox & Sent Communications")
         common_page = LoadClass.load_page('CommonPage')
@@ -58,15 +58,46 @@ class test_ViewInboxSentCommunications(SetupTestCase):
         main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
 
-        main_page.scroll_down_one_view()
+        main_page.scroll_down_to_sent_button()
         main_page.open_SENT()
         sent_page = LoadClass.load_page('SentPage')
         sent_page.setDriver(self.driver)
         sent_page.check_sent_communications()
-        # sent_page.take_screenshot("screenshot.png")  # screenshot will be saved in /tests directory
-        sent_page.hamburger_button()
-        main_page.scroll_down_one_view()
+        common_page.hamburger_button()
+
         main_page.open_COMPOSE()
+        compose_page = LoadClass.load_page('ComposePage')
+        compose_page.setDriver(self.driver)
+
+        compose_page.add_recipients()
+        compose_page.add_contacts_and_groups()
+        compose_page.contacts_arrow()
+        compose_page.choose_contact_for_appium_tests()
+        compose_page.ok_button()
+
+        #add kind of msg
+
+        compose_page.click_send_button()
+        compose_page.alert_send_button()
+
+        #send email
+        #send sms
+        #send Voice
+        #send Fax
+
+        common_page.hamburger_button()
+
+        main_page.scroll_down_to_sent_button()
+        main_page.open_SENT()
+        sent_page.check_sent_sms()  # add this method
+        sent_page.check_sent_email()  # add this method
+        sent_page.check_sent_voice()  # add this method
+        sent_page.check_sent_fax()  # add this method
+        common_page.hamburger_button()
+
+        main_page.open_INBOX()
+        inbox_page = LoadClass.load_page('InboxPage')
+        inbox_page.setDriver(self.driver)
 
 
 if __name__ == '__main__':

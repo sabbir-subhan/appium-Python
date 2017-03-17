@@ -19,7 +19,6 @@ class DesiredCapabilities(object):
             "appPackage": "com.noggin.oca",
             "appActivity": "com.noggin.oca.MainActivity",
             "newCommandTimeout": 60,  # How long (in seconds) Appium will wait for a new command from the client before assuming the client quit and ending the session
-            "DeviceReadyTimeout": 60,
             "udid": "0123456789ABCDEF"
         },
 
@@ -79,6 +78,7 @@ class DesiredCapabilities(object):
             # "autoAcceptAlerts": True,  # not working with Android
             "newCommandTimeout": 60,
             "automationName": "Appium",
+            "clearSystemFiles": True,
             "udid": "ad0816033848eb0443"
         },
 
@@ -131,7 +131,7 @@ class DesiredCapabilities(object):
             # s"useNewWDA": True,  # If True, forces uninstall of any existing WebDriverAgent app on device
             "usePrebuiltWDA": True,  # Skips the build phase of running the WDA app - build WDA by Xcode
             # "preventWDAAttachments": True,  # capability to help with XCUITest speed and disk usage
-            # "showXcodeLog": True,
+            "showXcodeLog": True,
             # "showIOSLog": True,
             "automationName": "XCUITest",
             # "locationServicesEnabled": True,  # test it
@@ -139,7 +139,23 @@ class DesiredCapabilities(object):
             # "autoWebview": True,
             "newCommandTimeout": 60,
             "udid": "4b15c4284897fa6f9b4c5205325a9cece997ad35"
-        }
+        },
+
+        "IOS 10 emulator": {
+            # iPhone 7 simulator with iOS 10.2
+            "platformName": "iOS",
+            "platformVersion": "10.2",
+            "deviceName": "iPhone 7",
+            "app": PATH("/Users/lukasl/Build_xcode/Products/iPhone7/OCA.app"),
+            "bundleId": "com.noggin.ocalukasl",
+            "newCommandTimeout": 120,
+            "launchTimeout": 400000,  # iOS only
+            "automationName": "XCUITest",
+            "xcodeOrgId": "5MJR4HSABR",
+            "xcodeSigningId": "iPhone Developer",
+            "showXcodeLog": True,
+            "usePrebuiltWDA": True
+        },
 
     }
 

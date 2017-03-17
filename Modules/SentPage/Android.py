@@ -1,13 +1,18 @@
 """ Methods for Android on Sent Page """
 
 from Modules.SentPage.SentPage import SentPage
-from selenium.common.exceptions import *
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.ui import WebDriverWait
 import logging
+from time import sleep
 
 
 class Android(SentPage):
 
-    pass
+    def search_for_sent_communications(self):
 
+        logging.info("search field - search event named: 'QA'")
+        sleep(2)
+        search_field = self.driver.find_element(*self.configuration.SentScreen.SEARCH_FIELD)
+        search_field.click()
+        logging.info("sending keys")
+        self.driver.keyevent(45)  # send letter 'Q'
+        self.driver.keyevent(29)  # send letter 'A'
