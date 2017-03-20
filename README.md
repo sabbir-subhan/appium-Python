@@ -158,6 +158,7 @@ Locators for elements are based mostly on visible texts, so if in OCA webpage, f
 - EVENT TYPE: event_for_chooser_fields, should have "event chooser" field (name: "New events chooser") with property "Minimum selected options" set to "1", and second event chooser field inside sub form
 with name: "New events chooser inside sub form"
 - for Test Cases: Send Photo and Send Video - it is necessary to prepare some photo and video on device before running tests
+- go to OCA webpage - Settings - Settings - Security tab and in section Mobile, uncheck "Encrypt saved data in the app" and "Block jailbroken/rooted devices from using the app"
 
 
 ### **BEFORE EACH NEW RUN OF TESTS:** ###

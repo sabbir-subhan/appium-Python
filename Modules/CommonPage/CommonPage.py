@@ -34,6 +34,7 @@ class CommonPage(BasePage):
         ok_button = self.driver.find_element(*self.configuration.CommonScreen.OK_BUTTON)
         self.assertIsNotNone(ok_button, "Ok button not found")
         ok_button.click()
+        sleep(1)
 
     # def wait_for_app_loading(self):
     #     # on iOS that element have visible: false

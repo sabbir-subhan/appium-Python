@@ -197,6 +197,7 @@ class MainPage(BasePage):
         inbox_button = self.driver.find_element(*self.configuration.MainMenuScreen.INBOX_BUTTON)
         self.assertIsNotNone(inbox_button, "INBOX button not found")
         inbox_button.click()
+        sleep(2)
 
     def open_COMPOSE(self):
         
@@ -211,6 +212,7 @@ class MainPage(BasePage):
         sent_button = self.driver.find_element(*self.configuration.MainMenuScreen.SENT_BUTTON)
         self.assertIsNotNone(sent_button, "SENT button not found")
         sent_button.click()
+        sleep(2)
 
     def open_PHOTO(self):
 

@@ -19,6 +19,7 @@ class DesiredCapabilities(object):
             "appPackage": "com.noggin.oca",
             "appActivity": "com.noggin.oca.MainActivity",
             "newCommandTimeout": 60,  # How long (in seconds) Appium will wait for a new command from the client before assuming the client quit and ending the session
+            "clearSystemFiles": True,
             "udid": "0123456789ABCDEF"
         },
 
@@ -30,6 +31,7 @@ class DesiredCapabilities(object):
             "appPackage": "com.noggin.oca",
             "appActivity": "com.noggin.oca.MainActivity",
             "newCommandTimeout": 60,
+            "clearSystemFiles": True,
             "udid": "7d7d9a62"
         },
 
@@ -41,6 +43,7 @@ class DesiredCapabilities(object):
             "appPackage": "com.noggin.oca",
             "appActivity": "com.noggin.oca.MainActivity",
             "newCommandTimeout": 60,
+            "clearSystemFiles": True,
             "DeviceReadyTimeout": 300  # Android only
         },
 
@@ -53,6 +56,7 @@ class DesiredCapabilities(object):
             "appActivity": "com.noggin.oca.MainActivity",
             # "fullReset": True,
             "newCommandTimeout": 60,
+            "clearSystemFiles": True,
             "DeviceReadyTimeout": 300  # Android only
         },
 
@@ -65,6 +69,7 @@ class DesiredCapabilities(object):
             "appPackage": "com.noggin.oca",
             "appActivity": ".MainActivity",
             "newCommandTimeout": 60,
+            "clearSystemFiles": True,
             "udid": "ad0816033848eb0443"
         },
 
@@ -90,6 +95,7 @@ class DesiredCapabilities(object):
             "appPackage": "com.noggin.oca",
             "appActivity": "com.noggin.oca.MainActivity",
             "newCommandTimeout": 60,
+            "clearSystemFiles": True,
             "DeviceReadyTimeout": 300  # Android only
         },
 
@@ -103,6 +109,7 @@ class DesiredCapabilities(object):
             "newCommandTimeout": 90,
             "autoAcceptAlerts": True,
             "automationName": "Appium",
+            "clearSystemFiles": True,
             "udid": "db55c238e873230ee454c54a63724397a2981acd"
         },
 
@@ -115,6 +122,7 @@ class DesiredCapabilities(object):
             "bundleId": "com.noggin.ocalukasl",
             "newCommandTimeout": 120,
             "launchTimeout": 400000,  # iOS only
+            "clearSystemFiles": True,
             "autoAcceptAlerts": True
         },
 
@@ -138,6 +146,7 @@ class DesiredCapabilities(object):
             # "locationServicesAuthorized": True,  # test it
             # "autoWebview": True,
             "newCommandTimeout": 60,
+            "clearSystemFiles": True,
             "udid": "4b15c4284897fa6f9b4c5205325a9cece997ad35"
         },
 
@@ -154,6 +163,7 @@ class DesiredCapabilities(object):
             "xcodeOrgId": "5MJR4HSABR",
             "xcodeSigningId": "iPhone Developer",
             "showXcodeLog": True,
+            "clearSystemFiles": True,
             "usePrebuiltWDA": True
         },
 

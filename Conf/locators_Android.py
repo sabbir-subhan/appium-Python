@@ -425,9 +425,23 @@ class ComposeScreen:
     """A class for handling Compose screen"""
     ADD_RECIPIENTS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Add recipients")]]')
     MESSAGE_EMAIL = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Email")]]')
+    EMAIL_SUBJECT_FIELD = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="Subject"]')
+    EMAIL_TEXT_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "emailBody")]]'
+                                        '/android.view.View/android.view.View/android.view.View'
+                                        '/android.view.View')
+    #'/android.view.View[@clickable="true"]')
     MESSAGE_SMS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "SMS")]]')
+    SMS_TEXT_FIELD = (MobileBy.CLASS_NAME, 'android.widget.EditText')
     MESSAGE_VOICE = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Voice")]]')
+    VOICE_TEXT_FIELD = (MobileBy.CLASS_NAME, 'android.widget.EditText')
+    TEXT_TO_SPEECH_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc="Text-to-speech"]')
     MESSAGE_FAX = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Fax")]]')
+    FAX_DOCUMENT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Fax document")] '
+                                           'and @clickable="true"]')
+    COMMS_DOCUMENTS_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc="Comms documents "]')
+    FILES_LIST = (MobileBy.CLASS_NAME, 'android.widget.ListView')
+    FAX_PDF_FILE = (MobileBy.ACCESSIBILITY_ID, 'OCA Generic Escalation Fax.pdf')
+    FAX_OK_BUTTON = (MobileBy.ID, 'faxOK')
     REQUIRE_ACKNOWLEDGMENT = (MobileBy.XPATH, '//android.view.View[@content-desc'
                                               '[contains(., "Require acknowledgment")]]')
     REPLY_TRACKING = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Reply tracking")]]')

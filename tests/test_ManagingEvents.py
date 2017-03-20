@@ -35,7 +35,7 @@ class test_ManagingEvents(SetupTestCase):
         logging.info("Quitting")
         self.driver.quit()
 
-    def test_1_managing_events(self):
+    def test_managing_events(self):
 
         # login
         logging.info("starting Test Case: managing events")

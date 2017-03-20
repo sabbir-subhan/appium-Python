@@ -368,3 +368,41 @@ class SentScreen:
     SENT_COMMUNICATIONS_EMAIL = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Short message, Email")]]')
 
 
+class ComposeScreen:
+    """A class for handling Compose screen"""
+    ADD_RECIPIENTS_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Add recipients")]]')
+    MESSAGE_EMAIL = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Email")]]')
+    EMAIL_SUBJECT_FIELD = (MobileBy.XPATH, '//[@name="Subject"]')
+    EMAIL_TEXT_FIELD = (MobileBy.XPATH, '')
+    MESSAGE_SMS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "SMS")]]')
+    SMS_TEXT_FIELD = (MobileBy.CLASS_NAME, '')
+    MESSAGE_VOICE = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Voice")]]')
+    VOICE_TEXT_FIELD = (MobileBy.CLASS_NAME, '')
+    TEXT_TO_SPEECH_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="Text-to-speech"]')
+    MESSAGE_FAX = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Fax")]]')
+    FAX_DOCUMENT_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Fax document")] '
+                                           'and @clickable="true"]')
+    COMMS_DOCUMENTS_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="Comms documents "]')
+    FILES_LIST = (MobileBy.CLASS_NAME, '')
+    FAX_PDF_FILE = (MobileBy.ACCESSIBILITY_ID, 'OCA Generic Escalation Fax.pdf')
+    FAX_OK_BUTTON = (MobileBy.ID, 'faxOK')
+    REQUIRE_ACKNOWLEDGMENT = (MobileBy.XPATH, '//XCUIElementTypeLink[@name'
+                                              '[contains(., "Require acknowledgment")]]')
+    REPLY_TRACKING = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Reply tracking")]]')
+    READ_ACCESS_LEVEL = (MobileBy.XPATH, '')
+    ADD_CONTACTS_AND_GROUPS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name'
+                                               '[contains(., "Add contacts and groups")]]')
+    ADD_RESOURCES_STRUCTURE_NODES = (MobileBy.XPATH, '//XCUIElementTypeLink[@name'
+                                                     '[contains(., "Add Resource structure ")]]')
+    CONTACTS_ARROW = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains'
+                                      '(., "Contacts")]]/android.view.View[@index="2"]')
+    USERS_ARROW = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains'
+                                   '(., "Users")]]/XCUIElementTypeLink[@index="2"]')
+    MAILING_LIST_UNSUBSCRIBES_ARROW = (MobileBy.XPATH, '//XCUIElementTypeLink[@name'
+                                                       '[contains(., "Mailing list unsubscribes ")]]'
+                                                       '/XCUIElementTypeLink[@index="2"]')
+    CONTACT_FOR_APPIUM_TESTS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="CONTACT_FOR_APPIUM_TESTS"]')
+    ALERT_SEND_BUTTON = (MobileBy.ID, 'messageSend')   # test it on Android 5 and 4
+    # ALERT_SEND_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@name="Send"]')
+
+

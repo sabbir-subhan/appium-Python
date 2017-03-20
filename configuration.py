@@ -1,6 +1,6 @@
 """ Choose platform to run tests """
 
-platform = "Android 4"
+platform = "IOS 10"
 
 # You can use:
 
