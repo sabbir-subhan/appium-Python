@@ -6,6 +6,7 @@ import logging
 from time import sleep
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
+from Conf.desired_capabilities import DesiredCapabilities
 
 
 class ComposePage(BasePage):
@@ -19,7 +20,12 @@ class ComposePage(BasePage):
     def click_fax_ok_button(self):
 
         logging.info("click 'Ok' button")
-        fax_ok_button = self.driver.find_element(*self.configuration.ComposeScreen.FAX_OK_BUTTON)
+        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        platform_version = desired_capabilities.get('platformVersion')
+        if platform_version < "5":
+            fax_ok_button = self.driver.find_element(*self.configuration.CommonScreen.OK_BUTTON)
+        else:
+            fax_ok_button = self.driver.find_element(*self.configuration.ComposeScreen.FAX_OK_BUTTON)
         self.assertIsNotNone(fax_ok_button, "Ok button not found")
         fax_ok_button.click()
         sleep(2)
@@ -35,7 +41,12 @@ class ComposePage(BasePage):
     def alert_send_button(self):
 
         logging.info("click 'Send' button on alert")
-        send_button_on_alert = self.driver.find_element(*self.configuration.ComposeScreen.ALERT_SEND_BUTTON)
+        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        platform_version = desired_capabilities.get('platformVersion')
+        if platform_version < "5":
+            send_button_on_alert = self.driver.find_element(*self.configuration.ComposeScreen.ALERT_SEND_BUTTON_by_name)
+        else:
+            send_button_on_alert = self.driver.find_element(*self.configuration.ComposeScreen.ALERT_SEND_BUTTON_by_id)
         self.assertIsNotNone(send_button_on_alert, "Send button on alert not found")
         send_button_on_alert.click()
         sleep(2)

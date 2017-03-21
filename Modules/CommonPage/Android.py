@@ -6,7 +6,7 @@ from selenium.common.exceptions import *
 from Modules.CommonPage.CommonPage import CommonPage
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
-# from Conf.desired_capabilities import DesiredCapabilities
+from Conf.desired_capabilities import DesiredCapabilities
 
 
 class Android(CommonPage):
@@ -16,7 +16,12 @@ class Android(CommonPage):
 
         sleep(1)
         logging.info("click hamburger button to go back to main menu")
-        hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU)
+        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        platform_version = desired_capabilities.get('platformVersion')
+        if platform_version < "5":
+            hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU_by_xpath)
+        else:
+            hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU_by_id)
         self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
         location = hamburger_button.location
         print(location)

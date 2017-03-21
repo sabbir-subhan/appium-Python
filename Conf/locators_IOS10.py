@@ -1,4 +1,5 @@
 from appium.webdriver.common.mobileby import MobileBy
+from selenium.webdriver.common.by import By
 
 
 class iOS:
@@ -40,7 +41,8 @@ class WelcomeScreen:
     SOUND_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "SOUND")]]')
     SETTINGS_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "SETTINGS")]]')
     ABOUT_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "ABOUT")]]')
-    LOGIN_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "LOGIN")]]')
+    LOGIN_BUTTON = (By.CSS_SELECTOR, 'div#sessionMenu')
+    #LOGIN_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "LOGIN")]]')
     LOGIN_BUTTON_by_index = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]'
                                              '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
                                              '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
@@ -61,7 +63,8 @@ class LoginScreen:
     """A class for login screen locators - screen after clicking LOGIN button"""
     TEXTFIELD_USERNAME = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
     TEXTFIELD_PASSWORD = (MobileBy.XPATH, '//XCUIElementTypeSecureTextField[1]')
-    TEXTFIELD_DOMAIN = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
+    #TEXTFIELD_DOMAIN = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
+    TEXTFIELD_DOMAIN = (MobileBy.CSS_SELECTOR, 'input#sessionDomain')
     SUBMIT_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Submit"]')
 
     # Notification alert: "OCA now supports sending 'App Messages' to your device as notifications."
@@ -372,12 +375,12 @@ class ComposeScreen:
     """A class for handling Compose screen"""
     ADD_RECIPIENTS_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Add recipients")]]')
     MESSAGE_EMAIL = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Email")]]')
-    EMAIL_SUBJECT_FIELD = (MobileBy.XPATH, '//[@name="Subject"]')
-    EMAIL_TEXT_FIELD = (MobileBy.XPATH, '')
+    EMAIL_SUBJECT_FIELD = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
+    EMAIL_TEXT_FIELD = (MobileBy.CLASS_NAME, 'XCUIElementTypeTextView')
     MESSAGE_SMS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "SMS")]]')
-    SMS_TEXT_FIELD = (MobileBy.CLASS_NAME, '')
+    SMS_TEXT_FIELD = (MobileBy.CLASS_NAME, 'XCUIElementTypeTextView')
     MESSAGE_VOICE = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Voice")]]')
-    VOICE_TEXT_FIELD = (MobileBy.CLASS_NAME, '')
+    VOICE_TEXT_FIELD = (MobileBy.CLASS_NAME, 'XCUIElementTypeTextView')
     TEXT_TO_SPEECH_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="Text-to-speech"]')
     MESSAGE_FAX = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Fax")]]')
     FAX_DOCUMENT_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Fax document")] '
@@ -390,19 +393,18 @@ class ComposeScreen:
                                               '[contains(., "Require acknowledgment")]]')
     REPLY_TRACKING = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Reply tracking")]]')
     READ_ACCESS_LEVEL = (MobileBy.XPATH, '')
-    ADD_CONTACTS_AND_GROUPS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name'
+    ADD_CONTACTS_AND_GROUPS = (MobileBy.XPATH, '//XCUIElementTypeButton[@name'
                                                '[contains(., "Add contacts and groups")]]')
-    ADD_RESOURCES_STRUCTURE_NODES = (MobileBy.XPATH, '//XCUIElementTypeLink[@name'
+    ADD_RESOURCES_STRUCTURE_NODES = (MobileBy.XPATH, '//XCUIElementTypeButton[@name'
                                                      '[contains(., "Add Resource structure ")]]')
-    CONTACTS_ARROW = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains'
-                                      '(., "Contacts")]]/android.view.View[@index="2"]')
-    USERS_ARROW = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains'
-                                   '(., "Users")]]/XCUIElementTypeLink[@index="2"]')
-    MAILING_LIST_UNSUBSCRIBES_ARROW = (MobileBy.XPATH, '//XCUIElementTypeLink[@name'
-                                                       '[contains(., "Mailing list unsubscribes ")]]'
-                                                       '/XCUIElementTypeLink[@index="2"]')
-    CONTACT_FOR_APPIUM_TESTS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="CONTACT_FOR_APPIUM_TESTS"]')
-    ALERT_SEND_BUTTON = (MobileBy.ID, 'messageSend')   # test it on Android 5 and 4
+    CONTACTS_ARROW = (MobileBy.XPATH, '//XCUIElementTypeOther[2]/XCUIElementTypeLink[1]/XCUIElementTypeLink[1]/XCUIElementTypeStaticText[1]')
+    # USERS_ARROW = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains'
+    #                                '(., "Users")]]/XCUIElementTypeLink[@index="2"]')
+    # MAILING_LIST_UNSUBSCRIBES_ARROW = (MobileBy.XPATH, '//XCUIElementTypeLink[@name'
+    #                                                    '[contains(., "Mailing list unsubscribes ")]]'
+    #                                                    '/XCUIElementTypeLink[@index="2"]')
+    CONTACT_FOR_APPIUM_TESTS = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="CONTACT_FOR_APPIUM_TESTS"]')
+    ALERT_SEND_BUTTON = (MobileBy.ID, 'messageSend')
     # ALERT_SEND_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@name="Send"]')
 
 

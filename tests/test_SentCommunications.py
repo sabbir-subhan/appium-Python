@@ -36,6 +36,14 @@ class test_SentCommunications(SetupTestCase):
 
     def test_sent_communications(self):
 
+        current = self.driver.current_context
+        logging.info('current context is: ' + current)
+        contexts = self.driver.contexts
+        logging.info(contexts)
+        self.driver.switch_to.context(contexts[1])
+        current_after_switch = self.driver.current_context
+        logging.info('current context is: ' + current_after_switch)
+
         logging.info("starting Test Case: View Inbox & Sent Communications")
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)

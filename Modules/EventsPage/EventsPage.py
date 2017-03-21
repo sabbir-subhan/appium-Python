@@ -70,6 +70,7 @@ class EventsPage(BasePage):
 
     def open_previously_created_event(self):
 
+        sleep(2)
         logging.info("open created event")
         created_event = self.driver.find_element(*self.configuration.EventsScreen.PREVIOUSLY_CREATED_EVENT)
         self.assertIsNotNone(created_event, "Previously created event not found")

@@ -30,7 +30,8 @@ class CommonScreen:
 
 class TopBar:
     """A class for top bar locators."""
-    HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, '//android.webkit.WebView[1]/android.view.View[1]/android.view.View[2]')
+    HAMBURGER_FOR_MAIN_MENU_by_xpath = (MobileBy.XPATH, '//android.webkit.WebView[1]/android.view.View[1]/android.view.View[2]')
+    HAMBURGER_FOR_MAIN_MENU_by_id = (MobileBy.ID, 'iconbar')
 
 
 class WelcomeScreen:
@@ -458,8 +459,8 @@ class ComposeScreen:
                                                        '[contains(., "Mailing list unsubscribes ")]]'
                                                        '/android.view.View[@index="2"]')
     CONTACT_FOR_APPIUM_TESTS = (MobileBy.XPATH, '//android.view.View[@content-desc="CONTACT_FOR_APPIUM_TESTS"]')
-    ALERT_SEND_BUTTON = (MobileBy.ID, 'messageSend')   # test it on Android 5 and 4
-    # ALERT_SEND_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Send"]')
+    ALERT_SEND_BUTTON_by_id = (MobileBy.ID, 'messageSend')
+    ALERT_SEND_BUTTON_by_name = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Send"]')
 
 
 
