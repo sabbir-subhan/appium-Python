@@ -168,7 +168,7 @@ class IOS(MainPage):
         var = 1
         while var == 1:
             logging.info("check if logout button is visible")
-            logout_button = self.driver.find_element(*self.configuration.WelcomeScreen.LOGOUT_BUTTON)
+            logout_button = self.driver.find_element(*self.configuration.MainMenuScreen.LOGOUT_BUTTON)
             if logout_button.is_displayed():
                 break
             else:

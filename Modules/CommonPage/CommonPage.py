@@ -3,8 +3,8 @@
 from Modules.BasePage.BasePage import BasePage
 import logging
 from time import sleep
-# from selenium.webdriver.support import expected_conditions
-# from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class CommonPage(BasePage):
@@ -36,9 +36,32 @@ class CommonPage(BasePage):
         ok_button.click()
         sleep(1)
 
-    # def wait_for_app_loading(self):
-    #     # on iOS that element have visible: false
-    #     logging.info("wait")
-    #     WebDriverWait(self.driver, 35).until(
-    #         expected_conditions.invisibility_of_element_located(self.configuration.CommonScreen.LOADING),
-    #         "loading animation is present")
+    def wait_for_app_loading(self):
+
+        # on iOS that element have visible: false
+        logging.info("wait")
+        WebDriverWait(self.driver, 35).until(
+            expected_conditions.invisibility_of_element_located(self.configuration.CommonScreen.LOADING),
+            "loading animation is present")
+
+    def switch_context_to_webview(self):
+
+        logging.info("switching context")
+        current = self.driver.current_context
+        logging.info('current context is: ' + current)
+        contexts = self.driver.contexts
+        logging.info(contexts)
+        self.driver.switch_to.context(contexts[1])
+        current_after_switch = self.driver.current_context
+        logging.info('current context is: ' + current_after_switch)
+
+    def switch_context_to_native(self):
+
+        logging.info("switching context")
+        current = self.driver.current_context
+        logging.info('current context is: ' + current)
+        contexts = self.driver.contexts
+        logging.info(contexts)
+        self.driver.switch_to.context(contexts[0])
+        current_after_switch = self.driver.current_context
+        logging.info('current context is: ' + current_after_switch)

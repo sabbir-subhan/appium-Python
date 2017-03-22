@@ -36,17 +36,12 @@ class test_SentCommunications(SetupTestCase):
 
     def test_sent_communications(self):
 
-        current = self.driver.current_context
-        logging.info('current context is: ' + current)
-        contexts = self.driver.contexts
-        logging.info(contexts)
-        self.driver.switch_to.context(contexts[1])
-        current_after_switch = self.driver.current_context
-        logging.info('current context is: ' + current_after_switch)
-
         logging.info("starting Test Case: View Inbox & Sent Communications")
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
+
+        # common_page.switch_context_to_webview()
+
         welcome_page = LoadClass.load_page('WelcomePage')
         welcome_page.setDriver(self.driver)
         welcome_page.click_login_button()
@@ -78,7 +73,13 @@ class test_SentCommunications(SetupTestCase):
         compose_page.add_recipients()
         compose_page.add_contacts_and_groups()
         compose_page.contacts_arrow()
+
+        common_page.switch_context_to_webview()
+
         compose_page.choose_contact_for_test()
+
+        common_page.switch_context_to_native()
+
         compose_page.click_ok_button()
         compose_page.choose_sms_message()
         compose_page.type_sms_message()

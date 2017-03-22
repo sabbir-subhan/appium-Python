@@ -15,7 +15,7 @@ class DesiredCapabilities(object):
             "platformName": "ANDROID",
             "platformVersion": "4.4.2",
             "deviceName": "QUANTUM_2_400",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.7.apk"),  # path to .apk file
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),  # path to .apk file
             "appPackage": "com.noggin.oca",
             "appActivity": "com.noggin.oca.MainActivity",
             "newCommandTimeout": 60,  # How long (in seconds) Appium will wait for a new command from the client before assuming the client quit and ending the session
@@ -27,11 +27,12 @@ class DesiredCapabilities(object):
             "platformName": "ANDROID",
             "platformVersion": "5.1.1",
             "deviceName": "POP 3",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.7.apk"),
-            "appPackage": "com.noggin.oca",
-            "appActivity": "com.noggin.oca.MainActivity",
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),
+            "appPackage": "com.noggin.ocalukasl",
+            "appActivity": "com.noggin.ocalukasl.MainActivity",
             "newCommandTimeout": 60,
             "clearSystemFiles": True,
+            "startIWDP": True,
             "udid": "7d7d9a62"
         },
 
@@ -39,7 +40,7 @@ class DesiredCapabilities(object):
             "platformName": "ANDROID",
             "platformVersion": "5.1.0",
             "deviceName": "192.168.56.101:5555",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.7.apk"),
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),
             "appPackage": "com.noggin.oca",
             "appActivity": "com.noggin.oca.MainActivity",
             "newCommandTimeout": 60,
@@ -51,7 +52,7 @@ class DesiredCapabilities(object):
             "platformName": "ANDROID",
             "platformVersion": "6.0",
             "deviceName": "192.168.56.101:5555",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.7.apk"),
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),
             "appPackage": "com.noggin.oca",
             "appActivity": "com.noggin.oca.MainActivity",
             # "fullReset": True,
@@ -65,7 +66,7 @@ class DesiredCapabilities(object):
             "platformVersion": "6.0.1",
             # "automationName": "Appium",  # probably necessary to enable this and disable platformVersion when switching to webview context, but currently there is only NATIVE_APP context
             "deviceName": "SM-G930F",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.7.apk"),
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),
             "appPackage": "com.noggin.oca",
             "appActivity": ".MainActivity",
             "newCommandTimeout": 60,
@@ -77,13 +78,17 @@ class DesiredCapabilities(object):
             "platformName": "ANDROID",
             "platformVersion": "7.0",
             "deviceName": "SM-G930F",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.7.apk"),
-            "appPackage": "com.noggin.oca",
-            "appActivity": "com.noggin.oca.MainActivity",
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),
+            # "appPackage": "com.noggin.oca",
+            # "appActivity": "com.noggin.oca.MainActivity",
+            "appPackage": "com.noggin.ocalukasl",
+            "appActivity": "com.noggin.ocalukasl.MainActivity",
             # "autoAcceptAlerts": True,  # not working with Android
             "newCommandTimeout": 60,
             "automationName": "Appium",
             "clearSystemFiles": True,
+            # "chromedriverExecutable": "/Users/lukasl/Dropbox/chromedriver_2_23_patched_x64",
+            # "androidDeviceSocket": "chrome_devtools_remote",
             "udid": "ad0816033848eb0443"
         },
 
@@ -91,7 +96,7 @@ class DesiredCapabilities(object):
             "platformName": "ANDROID",
             "platformVersion": "7.0",
             "deviceName": "192.168.56.101:5555",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.7.apk"),
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),
             "appPackage": "com.noggin.oca",
             "appActivity": "com.noggin.oca.MainActivity",
             "newCommandTimeout": 60,
@@ -110,6 +115,7 @@ class DesiredCapabilities(object):
             "autoAcceptAlerts": True,
             "automationName": "Appium",
             "clearSystemFiles": True,
+            "startIWDP": True,
             "udid": "db55c238e873230ee454c54a63724397a2981acd"
         },
 
@@ -123,6 +129,7 @@ class DesiredCapabilities(object):
             "newCommandTimeout": 120,
             "launchTimeout": 400000,  # iOS only
             "clearSystemFiles": True,
+            "startIWDP": True,
             "autoAcceptAlerts": True
         },
 
@@ -139,15 +146,13 @@ class DesiredCapabilities(object):
             # "useNewWDA": True,  # If True, forces uninstall of any existing WebDriverAgent app on device
             "usePrebuiltWDA": True,  # Skips the build phase of running the WDA app
             "preventWDAAttachments": True,  # capability to help with XCUITest speed and disk usage
-            #"showXcodeLog": True,
+            # "showXcodeLog": True,
             # "showIOSLog": True,
             "automationName": "XCUITest",
             # "autoWebview": True,
             "newCommandTimeout": 60,
             "clearSystemFiles": True,
-            "startIWDP": True,
-            "fullReset": False,
-            "noRest": True,
+            "startIWDP": True,  # start ios-webkit-debug-proxy
             "udid": "4b15c4284897fa6f9b4c5205325a9cece997ad35"
         },
 
@@ -165,6 +170,8 @@ class DesiredCapabilities(object):
             "xcodeSigningId": "iPhone Developer",
             "showXcodeLog": True,
             "clearSystemFiles": True,
+            "startIWDP": True,
+            "preventWDAAttachments": True,  # capability to help with XCUITest speed and disk usage
             "usePrebuiltWDA": True
         },
 

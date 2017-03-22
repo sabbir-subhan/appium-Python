@@ -82,7 +82,7 @@ class ComposePage(BasePage):
 
         logging.info('choose contact for test')
         choose_contact_for_test = self.driver.find_element(*self.configuration.ComposeScreen.CONTACT_FOR_APPIUM_TESTS)
-        self.assertIsNotNone(choose_contact_for_test, 'add recipients button not found')
+        self.assertIsNotNone(choose_contact_for_test, 'contact not found')
         choose_contact_for_test.click()
 
     def choose_sms_message(self):

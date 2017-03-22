@@ -41,8 +41,8 @@ class WelcomeScreen:
     SOUND_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "SOUND")]]')
     SETTINGS_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "SETTINGS")]]')
     ABOUT_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "ABOUT")]]')
-    LOGIN_BUTTON = (By.CSS_SELECTOR, 'div#sessionMenu')
-    #LOGIN_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "LOGIN")]]')
+    #LOGIN_BUTTON = (By.CSS_SELECTOR, 'a.sessionMenu.ui-link')
+    LOGIN_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "LOGIN")]]')
     LOGIN_BUTTON_by_index = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]'
                                              '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
                                              '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
@@ -63,8 +63,8 @@ class LoginScreen:
     """A class for login screen locators - screen after clicking LOGIN button"""
     TEXTFIELD_USERNAME = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
     TEXTFIELD_PASSWORD = (MobileBy.XPATH, '//XCUIElementTypeSecureTextField[1]')
-    #TEXTFIELD_DOMAIN = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
-    TEXTFIELD_DOMAIN = (MobileBy.CSS_SELECTOR, 'input#sessionDomain')
+    TEXTFIELD_DOMAIN = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
+    #TEXTFIELD_DOMAIN = (MobileBy.CSS_SELECTOR, 'input#sessionDomain')
     SUBMIT_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Submit"]')
 
     # Notification alert: "OCA now supports sending 'App Messages' to your device as notifications."
@@ -383,9 +383,8 @@ class ComposeScreen:
     VOICE_TEXT_FIELD = (MobileBy.CLASS_NAME, 'XCUIElementTypeTextView')
     TEXT_TO_SPEECH_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="Text-to-speech"]')
     MESSAGE_FAX = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Fax")]]')
-    FAX_DOCUMENT_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Fax document")] '
-                                           'and @clickable="true"]')
-    COMMS_DOCUMENTS_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="Comms documents "]')
+    FAX_DOCUMENT_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Fax document")]]')
+    COMMS_DOCUMENTS_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="Comms documents"]')
     FILES_LIST = (MobileBy.CLASS_NAME, '')
     FAX_PDF_FILE = (MobileBy.ACCESSIBILITY_ID, 'OCA Generic Escalation Fax.pdf')
     FAX_OK_BUTTON = (MobileBy.ID, 'faxOK')
@@ -403,8 +402,8 @@ class ComposeScreen:
     # MAILING_LIST_UNSUBSCRIBES_ARROW = (MobileBy.XPATH, '//XCUIElementTypeLink[@name'
     #                                                    '[contains(., "Mailing list unsubscribes ")]]'
     #                                                    '/XCUIElementTypeLink[@index="2"]')
-    CONTACT_FOR_APPIUM_TESTS = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="CONTACT_FOR_APPIUM_TESTS"]')
+    #CONTACT_FOR_APPIUM_TESTS = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="CONTACT_FOR_APPIUM_TESTS"]')
+    CONTACT_FOR_APPIUM_TESTS = (MobileBy.CSS_SELECTOR, "input[data-label='CONTACT_FOR_APPIUM_TESTS']")
     ALERT_SEND_BUTTON = (MobileBy.ID, 'messageSend')
     # ALERT_SEND_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@name="Send"]')
-
 
