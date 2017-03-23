@@ -460,7 +460,7 @@ class ComposeScreen:
                                                        '/android.view.View[@index="2"]')
     CONTACT_FOR_APPIUM_TESTS = (MobileBy.XPATH, '//android.view.View[@content-desc="CONTACT_FOR_APPIUM_TESTS"]')
     ALERT_SEND_BUTTON_by_id = (MobileBy.ID, 'messageSend')
-    ALERT_SEND_BUTTON_by_name = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Send"]')
+    ALERT_SEND_BUTTON_by_name = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Send"]')  # for Android < 4
 
 
 

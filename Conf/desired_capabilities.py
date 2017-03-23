@@ -87,8 +87,14 @@ class DesiredCapabilities(object):
             "newCommandTimeout": 60,
             "automationName": "Appium",
             "clearSystemFiles": True,
+            # "chromedriverExecutable": "/Users/lukasl/Downloads/crosswalk-web-driver-master/bin/xwalkdriver64_release",
+            # "chromedriverExecutable": "/Users/lukasl/Downloads/chromedriver",
             # "chromedriverExecutable": "/Users/lukasl/Dropbox/chromedriver_2_23_patched_x64",
-            # "androidDeviceSocket": "chrome_devtools_remote",
+            # "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
+            # "chromeOptions": {
+            #     "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
+            # },
+            # "ChromeOptions.CAPABILITY": "chromeOptions",
             "udid": "ad0816033848eb0443"
         },
 
@@ -116,6 +122,7 @@ class DesiredCapabilities(object):
             "automationName": "Appium",
             "clearSystemFiles": True,
             "startIWDP": True,
+            "noReset": False,
             "udid": "db55c238e873230ee454c54a63724397a2981acd"
         },
 
@@ -146,7 +153,7 @@ class DesiredCapabilities(object):
             # "useNewWDA": True,  # If True, forces uninstall of any existing WebDriverAgent app on device
             "usePrebuiltWDA": True,  # Skips the build phase of running the WDA app
             "preventWDAAttachments": True,  # capability to help with XCUITest speed and disk usage
-            # "showXcodeLog": True,
+            "showXcodeLog": True,
             # "showIOSLog": True,
             "automationName": "XCUITest",
             # "autoWebview": True,

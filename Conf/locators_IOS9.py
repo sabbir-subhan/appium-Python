@@ -22,8 +22,10 @@ class CommonScreen:
 
 class TopBar:
     """A class for top bar locators."""
-    HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
-                                               '/UIAWebView[1]/UIALink[3]/UIAStaticText[1]')
+    HAMBURGER_FOR_MAIN_MENU = (MobileBy.CSS_SELECTOR, 'div#iconbar>a')
+    #HAMBURGER_FOR_MAIN_MENU = (MobileBy.CSS_SELECTOR, 'div#iconbar')
+    # HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
+    #                                            '/UIAWebView[1]/UIALink[3]/UIAStaticText[1]')
 
 
 class WelcomeScreen:
@@ -35,11 +37,11 @@ class WelcomeScreen:
     SOUND_BUTTON = (MobileBy.XPATH, '//UIALink[@name[contains(., "SOUND")]]')
     SETTINGS_BUTTON = (MobileBy.XPATH, '//UIALink[@name[contains(., "SETTINGS")]]')
     ABOUT_BUTTON = (MobileBy.XPATH, '//UIALink[@name[contains(., "ABOUT")]]')
-    #LOGIN_BUTTON = (By.CSS_SELECTOR, 'a.sessionMenu.ui-link')
-    LOGIN_BUTTON = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "LOGIN")]]')
-    LOGIN_BUTTON_by_index = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]'
-                                             '/UIAScrollView[2]/UIAWebView[1]/UIALink[9]'
-                                             '[@name[contains(., "LOGIN")]]')
+    #LOGIN_BUTTON = (By.CSS_SELECTOR, 'div#sessionMenu>a')
+    #LOGIN_BUTTON = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "LOGIN")]]')
+    # LOGIN_BUTTON_by_index = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]'
+    #                                          '/UIAScrollView[2]/UIAWebView[1]/UIALink[9]'
+    #                                          '[@name[contains(., "LOGIN")]]')
 
 
 class SettingsScreen:

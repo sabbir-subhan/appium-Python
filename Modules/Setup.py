@@ -44,7 +44,7 @@ class SetupTestCase(unittest.TestCase):
 
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()
 
-        #self.configuration = import_module('Conf.locators')
+        #self.configuration = import_module('Conf.locators_for_webview')
         self.configuration = import_module('Conf.locators_' + ENVIRONMENT_TEST)
 
         # self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)

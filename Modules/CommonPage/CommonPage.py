@@ -5,6 +5,8 @@ import logging
 from time import sleep
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
+from importlib import import_module
+from configuration import ENVIRONMENT_TEST
 
 
 class CommonPage(BasePage):
@@ -46,22 +48,28 @@ class CommonPage(BasePage):
 
     def switch_context_to_webview(self):
 
-        logging.info("switching context")
+        print("switching context")
+
+        self.configuration = import_module('Conf.locators_for_webview')  # NOT WORKING
+
         current = self.driver.current_context
-        logging.info('current context is: ' + current)
+        print('current context is: ' + current)
         contexts = self.driver.contexts
-        logging.info(contexts)
+        print(contexts)
         self.driver.switch_to.context(contexts[1])
         current_after_switch = self.driver.current_context
-        logging.info('current context is: ' + current_after_switch)
+        print('current context is: ' + current_after_switch)
 
     def switch_context_to_native(self):
 
-        logging.info("switching context")
+        print("switching context")
+
+        self.configuration = import_module('Conf.locators_' + ENVIRONMENT_TEST)
+
         current = self.driver.current_context
-        logging.info('current context is: ' + current)
+        print('current context is: ' + current)
         contexts = self.driver.contexts
-        logging.info(contexts)
+        print(contexts)
         self.driver.switch_to.context(contexts[0])
         current_after_switch = self.driver.current_context
-        logging.info('current context is: ' + current_after_switch)
+        print('current context is: ' + current_after_switch)

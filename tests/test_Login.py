@@ -38,6 +38,7 @@ class test_Login(SetupTestCase):
         login_page = LoadClass.load_page('LoginPage')
         login_page.setDriver(self.driver)
         login_page.type_domain_address('QA')
+        common_page.hide_keyboard()
         login_page.click_submit_button()
         login_page.type_username('QA')  # change here login credentials (login and pass are defined in credentials.py)
         login_page.type_password('QA')  # for example use: QA, general_user, admin, expired_1_day_ago, expire_today, expire_in_1_day OR suspended

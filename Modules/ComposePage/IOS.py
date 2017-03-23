@@ -5,6 +5,8 @@ from Modules.load_class import LoadClass
 from selenium.common.exceptions import *
 import logging
 from time import sleep
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class IOS(ComposePage):
@@ -43,4 +45,23 @@ class IOS(ComposePage):
         positions = [(x, y)]
         self.driver.tap(positions)
         sleep(1)
+
+    def alert_send_button(self):
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.switch_context_to_webview()
+
+        logging.info("click 'Send' button on alert")
+        send_button_on_alert = self.driver.find_element(*self.configuration.ComposeScreen.ALERT_SEND_BUTTON)
+        send_button_on_alert.click()
+        sleep(2)
+
+        common_page.switch_context_to_native()
+
+        logging.info("sending message")
+        WebDriverWait(self.driver, 10).until(
+            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
+            "Failed to send message")
+        logging.info("Message was sent")
 

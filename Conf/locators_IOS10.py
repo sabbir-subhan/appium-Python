@@ -22,14 +22,9 @@ class CommonScreen:
 
 class TopBar:
     """A class for top bar locators."""
-    # HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, '//XCUIElementTypeWindow[1]'
-    #                                            '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
-    #                                            '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
-    #                                            '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
-    #                                            '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
-    #                                            '/XCUIElementTypeLink[1]')
-
-    HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeLink[1]/XCUIElementTypeStaticText[1]')
+    HAMBURGER_FOR_MAIN_MENU = (MobileBy.CSS_SELECTOR, 'div#iconbar>a')
+    #HAMBURGER_FOR_MAIN_MENU = (MobileBy.CSS_SELECTOR, 'div#iconbar')
+    #HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeLink[1]/XCUIElementTypeStaticText[1]')
 
 
 class WelcomeScreen:
@@ -41,14 +36,14 @@ class WelcomeScreen:
     SOUND_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "SOUND")]]')
     SETTINGS_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "SETTINGS")]]')
     ABOUT_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "ABOUT")]]')
-    #LOGIN_BUTTON = (By.CSS_SELECTOR, 'a.sessionMenu.ui-link')
-    LOGIN_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "LOGIN")]]')
-    LOGIN_BUTTON_by_index = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]'
-                                             '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
-                                             '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
-                                             '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
-                                             '/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]'
-                                             '/XCUIElementTypeOther[7]/XCUIElementTypeLink[1]')
+    LOGIN_BUTTON = (By.CSS_SELECTOR, 'div#sessionMenu>a')
+    #LOGIN_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "LOGIN")]]')
+    # LOGIN_BUTTON_by_index = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]'
+    #                                          '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
+    #                                          '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
+    #                                          '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
+    #                                          '/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]'
+    #                                          '/XCUIElementTypeOther[7]/XCUIElementTypeLink[1]')
 
 
 class SettingsScreen:
@@ -402,8 +397,8 @@ class ComposeScreen:
     # MAILING_LIST_UNSUBSCRIBES_ARROW = (MobileBy.XPATH, '//XCUIElementTypeLink[@name'
     #                                                    '[contains(., "Mailing list unsubscribes ")]]'
     #                                                    '/XCUIElementTypeLink[@index="2"]')
-    #CONTACT_FOR_APPIUM_TESTS = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="CONTACT_FOR_APPIUM_TESTS"]')
-    CONTACT_FOR_APPIUM_TESTS = (MobileBy.CSS_SELECTOR, "input[data-label='CONTACT_FOR_APPIUM_TESTS']")
-    ALERT_SEND_BUTTON = (MobileBy.ID, 'messageSend')
-    # ALERT_SEND_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@name="Send"]')
+    CONTACT_FOR_APPIUM_TESTS = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="CONTACT_FOR_APPIUM_TESTS"]')
+    #CONTACT_FOR_APPIUM_TESTS = (By.CSS_SELECTOR, "input[data-label='CONTACT_FOR_APPIUM_TESTS']")
+    #ALERT_SEND_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Send"]')
+    ALERT_SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'a#messageSend')
 

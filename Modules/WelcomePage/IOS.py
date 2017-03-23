@@ -42,18 +42,32 @@ class IOS(WelcomePage):
 
         logging.info("click in LOGIN button")
         sleep(2)
-        try:
-            WebDriverWait(self.driver, 30).until(
-                expected_conditions.presence_of_element_located(self.configuration.WelcomeScreen.LOGIN_BUTTON),
-                "Login button not found")
-            self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON).click()
-        except NoSuchElementException:
-            try:
-                WebDriverWait(self.driver, 30).until(
-                    expected_conditions.presence_of_element_located(self.configuration.WelcomeScreen.
-                                                                    LOGIN_BUTTON_by_index),
-                    "Login button not found")
-                self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON_by_index).click()
-            except NoSuchElementException:
-                self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON).click()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.switch_context_to_webview()
+
+        WebDriverWait(self.driver, 20).until(
+            expected_conditions.presence_of_element_located(self.configuration.WelcomeScreen.LOGIN_BUTTON),
+            "Login button not found")
+        self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON).click()
+        sleep(2)
+
+        common_page.switch_context_to_native()
+
+        sleep(2)
+        # try:
+        #     WebDriverWait(self.driver, 30).until(
+        #         expected_conditions.presence_of_element_located(self.configuration.WelcomeScreen.LOGIN_BUTTON),
+        #         "Login button not found")
+        #     self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON).click()
+        # except NoSuchElementException:
+        #     try:
+        #         WebDriverWait(self.driver, 30).until(
+        #             expected_conditions.presence_of_element_located(self.configuration.WelcomeScreen.
+        #                                                             LOGIN_BUTTON_by_index),
+        #             "Login button not found")
+        #         self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON_by_index).click()
+        #     except NoSuchElementException:
+        #         self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON).click()
 

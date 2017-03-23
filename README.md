@@ -205,3 +205,4 @@ OCA APP VERSIONS:
 - if You open WebDriverAgent project in Xcode and there is lack of Routing Http Server - open WebDriverAgent directory and run ./Scripts/bootstrap.sh
 - "Instruments exited with code 255" = "Instruments exited with code 251" = We exceeded the number of retries allowed for instruments to successfully start; failing launch"  -- kill Appium server, 
     switch to proper Xcode version, restart host and device, ? 
+- Instruments exited with error 253 - rebuild OCA app through Xcode
