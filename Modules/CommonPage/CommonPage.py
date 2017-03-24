@@ -46,30 +46,4 @@ class CommonPage(BasePage):
             expected_conditions.invisibility_of_element_located(self.configuration.CommonScreen.LOADING),
             "loading animation is present")
 
-    def switch_context_to_webview(self):
 
-        print("switching context")
-
-        self.configuration = import_module('Conf.locators_for_webview')  # NOT WORKING
-
-        current = self.driver.current_context
-        print('current context is: ' + current)
-        contexts = self.driver.contexts
-        print(contexts)
-        self.driver.switch_to.context(contexts[1])
-        current_after_switch = self.driver.current_context
-        print('current context is: ' + current_after_switch)
-
-    def switch_context_to_native(self):
-
-        print("switching context")
-
-        self.configuration = import_module('Conf.locators_' + ENVIRONMENT_TEST)
-
-        current = self.driver.current_context
-        print('current context is: ' + current)
-        contexts = self.driver.contexts
-        print(contexts)
-        self.driver.switch_to.context(contexts[0])
-        current_after_switch = self.driver.current_context
-        print('current context is: ' + current_after_switch)

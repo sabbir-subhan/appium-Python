@@ -17,3 +17,7 @@ class IOS9(IOS):
 
         pass
 
+    def scroll_down_to_logout_button(self):
+
+        pass
+

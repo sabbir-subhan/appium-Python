@@ -59,17 +59,49 @@ class ComposePage(BasePage):
     def add_recipients(self):
 
         logging.info('add recipients')
+
+        self.switch_context_to_webview()
+
         add_recipients_button = self.driver.find_element(*self.configuration.ComposeScreen.ADD_RECIPIENTS_BUTTON)
         self.assertIsNotNone(add_recipients_button, 'add recipients button not found')
         add_recipients_button.click()
 
+        self.switch_context_to_native()
+
+        sleep(2)
+
+        # desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        # platform_name = desired_capabilities.get('platformName')
+        # print('platform name: ' + str(platform_name))
+        # if "iOS" in str(platform_name):
+        #     self.switch_context_to_webview()
+        #     add_recipients_button = self.driver.find_element(*self.configuration.ComposeScreen.ADD_RECIPIENTS_BUTTON)
+        # else:
+        #     add_recipients_button = self.driver.find_element(*self.configuration.ComposeScreen.ADD_RECIPIENTS_BUTTON)
+        # self.assertIsNotNone(add_recipients_button, 'add recipients button not found')
+        # add_recipients_button.click()
+        #
+        # self.switch_context_to_native()
+        #
+        # sleep(2)
+        # add_recipients_button = self.driver.find_element(*self.configuration.ComposeScreen.ADD_RECIPIENTS_BUTTON)
+        # self.assertIsNotNone(add_recipients_button, 'add recipients button not found')
+        # add_recipients_button.click()
+
     def add_contacts_and_groups(self):
 
         logging.info('add contacts and groups')
-        add_contacts_and_groups_button = self.driver.find_element(*self.configuration.
-                                                                  ComposeScreen.ADD_CONTACTS_AND_GROUPS)
+
+        self.switch_context_to_webview()
+
+        add_contacts_and_groups_button = self.driver.find_elements(*self.configuration.
+                                                                   ComposeScreen.ADD_CONTACTS_AND_GROUPS)
         self.assertIsNotNone(add_contacts_and_groups_button, 'add recipients button not found')
-        add_contacts_and_groups_button.click()
+        add_contacts_and_groups_button[0].click()
+
+        self.switch_context_to_native()
+
+        sleep(2)
 
     def contacts_arrow(self):
 

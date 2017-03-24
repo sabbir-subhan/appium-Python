@@ -430,7 +430,6 @@ class ComposeScreen:
     EMAIL_TEXT_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "emailBody")]]'
                                         '/android.view.View/android.view.View/android.view.View'
                                         '/android.view.View')
-    #'/android.view.View[@clickable="true"]')
     MESSAGE_SMS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "SMS")]]')
     SMS_TEXT_FIELD = (MobileBy.CLASS_NAME, 'android.widget.EditText')
     MESSAGE_VOICE = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Voice")]]')

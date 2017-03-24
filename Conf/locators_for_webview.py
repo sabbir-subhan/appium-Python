@@ -236,29 +236,29 @@ class SoundScreen:
     RECORD_SOUND_BUTTON = (MobileBy.CSS_SELECTOR, '')
 
 
-class SoundRecorderScreen:
-    """A class for Sound Recorder screen locators - screen after clicking into record sound button in Sound Page."""
-    RECORD_SOUND = (MobileBy.CSS_SELECTOR, 'toggle audio recording')
-    DONE_BUTTON = (MobileBy.CSS_SELECTOR, 'Done')
+# class SoundRecorderScreen:
+#     """A class for Sound Recorder screen locators - screen after clicking into record sound button in Sound Page."""
+#     RECORD_SOUND = (MobileBy.CSS_SELECTOR, 'toggle audio recording')
+#     DONE_BUTTON = (MobileBy.CSS_SELECTOR, 'Done')
+#
+#
+# class GalleryScreen:
+#     """A class for handling Gallery"""
+#     GALLERY_ELEMENT_1 = (MobileBy.CSS_SELECTOR, '//XCUIElementTypeCell[@name[contains(., "Photo")]][1]')
+#     GALLERY_VIDEOS_POPOVER = (MobileBy.CSS_SELECTOR, '//XCUIElementTypeButton[@name="Videos"]')
+#     GALLERY_VIDEO_ELEMENT_1 = (MobileBy.CSS_SELECTOR, '//XCUIElementTypeCell[1]')
+#     USE_BUTTON = (MobileBy.CSS_SELECTOR, 'Choose')
 
 
-class GalleryScreen:
-    """A class for handling Gallery"""
-    GALLERY_ELEMENT_1 = (MobileBy.CSS_SELECTOR, '//XCUIElementTypeCell[@name[contains(., "Photo")]][1]')
-    GALLERY_VIDEOS_POPOVER = (MobileBy.CSS_SELECTOR, '//XCUIElementTypeButton[@name="Videos"]')
-    GALLERY_VIDEO_ELEMENT_1 = (MobileBy.CSS_SELECTOR, '//XCUIElementTypeCell[1]')
-    USE_BUTTON = (MobileBy.CSS_SELECTOR, 'Choose')
-
-
-class CameraScreen:
-    """A class for handling Camera"""
-    PHOTO_CAPTURE = (MobileBy.CSS_SELECTOR, 'PhotoCapture')
-    CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'Cancel')
-    CAMERA_CHOOSER = (MobileBy.CSS_SELECTOR, 'FrontBackFacingCameraChooser')
-    RETAKE = (MobileBy.CSS_SELECTOR, 'Retake')
-    USE_PHOTO = (MobileBy.CSS_SELECTOR, 'Use Photo')
-    VIDEO_CAPTURE = (MobileBy.CSS_SELECTOR, 'VideoCapture')  # record and stop recording
-    USE_VIDEO = (MobileBy.CSS_SELECTOR, 'Use Video')
+# class CameraScreen:
+#     """A class for handling Camera"""
+#     PHOTO_CAPTURE = (MobileBy.CSS_SELECTOR, 'PhotoCapture')
+#     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'Cancel')
+#     CAMERA_CHOOSER = (MobileBy.CSS_SELECTOR, 'FrontBackFacingCameraChooser')
+#     RETAKE = (MobileBy.CSS_SELECTOR, 'Retake')
+#     USE_PHOTO = (MobileBy.CSS_SELECTOR, 'Use Photo')
+#     VIDEO_CAPTURE = (MobileBy.CSS_SELECTOR, 'VideoCapture')  # record and stop recording
+#     USE_VIDEO = (MobileBy.CSS_SELECTOR, 'Use Video')
 
 
 class RisksScreen:
@@ -312,7 +312,7 @@ class SentScreen:
 
 class ComposeScreen:
     """A class for handling Compose screen"""
-    ADD_RECIPIENTS_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    ADD_RECIPIENTS_BUTTON = (MobileBy.CSS_SELECTOR, 'div#messagePage>div.ui-content>ul.recipients.ui-listview')
     MESSAGE_EMAIL = (MobileBy.CSS_SELECTOR, '')
     EMAIL_SUBJECT_FIELD = (MobileBy.CSS_SELECTOR, '')
     EMAIL_TEXT_FIELD = (MobileBy.CSS_SELECTOR, '')
@@ -330,10 +330,10 @@ class ComposeScreen:
     REQUIRE_ACKNOWLEDGMENT = (MobileBy.CSS_SELECTOR, '')
     REPLY_TRACKING = (MobileBy.CSS_SELECTOR, '')
     READ_ACCESS_LEVEL = (MobileBy.CSS_SELECTOR, '')
-    ADD_CONTACTS_AND_GROUPS = (MobileBy.CSS_SELECTOR, '')
-    ADD_RESOURCES_STRUCTURE_NODES = (MobileBy.CSS_SELECTOR, '')
-    CONTACTS_ARROW = (MobileBy.CSS_SELECTOR, '')
-    USERS_ARROW = (MobileBy.CSS_SELECTOR, '')
+    ADD_CONTACTS_AND_GROUPS = (MobileBy.CSS_SELECTOR, 'a.maywrap.ui-link.ui-btn.ui-shadow.ui-corner-all')  # list of two elements - select [0]
+    ADD_RESOURCES_STRUCTURE_NODES = (MobileBy.CSS_SELECTOR, 'a.maywrap.ui-link.ui-btn.ui-shadow.ui-corner-all')  # list of two elements - select [1]
+    CONTACTS_ARROW = (MobileBy.CSS_SELECTOR, 'a[href="#contactgroupTreeView?selector=true&id=4"]')  # test it
+    USERS_ARROW = (MobileBy.CSS_SELECTOR, 'a[href="#contactgroupTreeView?selector=true&id=3"]')  # test it
     MAILING_LIST_UNSUBSCRIBES_ARROW = (MobileBy.CSS_SELECTOR, '')
     CONTACT_FOR_APPIUM_TESTS = (MobileBy.CSS_SELECTOR, 'input[data-label="CONTACT_FOR_APPIUM_TESTS"]')
     ALERT_SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'a#messageSend')

@@ -3,9 +3,29 @@
 import logging
 from Modules.BasePage.BasePage import BasePage
 from credentials import ContactIdentifierPIN
+from time import sleep
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class WelcomePage(BasePage):
+
+    def click_login_button(self):
+
+        logging.info("click in LOGIN button")
+        sleep(2)
+
+        self.switch_context_to_webview()
+
+        WebDriverWait(self.driver, 20).until(
+            expected_conditions.presence_of_element_located(self.configuration.WelcomeScreen.LOGIN_BUTTON),
+            "Login button not found")
+        self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON).click()
+        sleep(2)
+
+        self.switch_context_to_native()
+
+        sleep(2)
 
     def open_LOCATION(self):
 

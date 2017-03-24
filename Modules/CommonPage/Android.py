@@ -18,10 +18,10 @@ class Android(CommonPage):
         logging.info("click hamburger button to go back to main menu")
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()
         platform_version = desired_capabilities.get('platformVersion')
-        if platform_version < "5":
-            hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU_by_xpath)
-        else:
-            hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU_by_id)
+        # if platform_version < "5":
+        hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU_by_xpath)
+        # else:
+        #     hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU_by_id)
         self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
         location = hamburger_button.location
         print(location)

@@ -1,5 +1,4 @@
 from appium.webdriver.common.mobileby import MobileBy
-from selenium.webdriver.common.by import By
 
 
 class iOS:
@@ -22,8 +21,7 @@ class CommonScreen:
 
 class TopBar:
     """A class for top bar locators."""
-    HAMBURGER_FOR_MAIN_MENU = (MobileBy.CSS_SELECTOR, 'div#iconbar>a')
-    #HAMBURGER_FOR_MAIN_MENU = (MobileBy.CSS_SELECTOR, 'div#iconbar')
+    # HAMBURGER_FOR_MAIN_MENU = (MobileBy.CSS_SELECTOR, 'div#iconbar')
     # HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]'
     #                                            '/UIAWebView[1]/UIALink[3]/UIAStaticText[1]')
 
@@ -37,8 +35,7 @@ class WelcomeScreen:
     SOUND_BUTTON = (MobileBy.XPATH, '//UIALink[@name[contains(., "SOUND")]]')
     SETTINGS_BUTTON = (MobileBy.XPATH, '//UIALink[@name[contains(., "SETTINGS")]]')
     ABOUT_BUTTON = (MobileBy.XPATH, '//UIALink[@name[contains(., "ABOUT")]]')
-    #LOGIN_BUTTON = (By.CSS_SELECTOR, 'div#sessionMenu>a')
-    #LOGIN_BUTTON = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "LOGIN")]]')
+    # LOGIN_BUTTON = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "LOGIN")]]')
     # LOGIN_BUTTON_by_index = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]'
     #                                          '/UIAScrollView[2]/UIAWebView[1]/UIALink[9]'
     #                                          '[@name[contains(., "LOGIN")]]')
@@ -338,3 +335,30 @@ class SentScreen:
     """A class for handling Sent screen"""
     SEARCH = (MobileBy.XPATH, '//UIATextField[@name="Search"]')
     SENT_COMMUNICATIONS_EMAIL = (MobileBy.XPATH, '//UIALink[@name[contains(., "Short message, Email")]]')
+
+
+class ComposeScreen:
+    """A class for handling Compose screen"""
+    ADD_RECIPIENTS_BUTTON = (MobileBy.XPATH, '//UIALink[@name[contains(., "Add recipients")]]')
+    MESSAGE_EMAIL = (MobileBy.XPATH, '//UIALink[@name[contains(., "Email")]]')
+    EMAIL_SUBJECT_FIELD = (MobileBy.XPATH, '//UIATextField[1]')
+    EMAIL_TEXT_FIELD = (MobileBy.XPATH, '//UIATextField[2]')
+    MESSAGE_SMS = (MobileBy.XPATH, '//UIALink[@name[contains(., "SMS")]]')
+    SMS_TEXT_FIELD = (MobileBy.CLASS_NAME, 'UIATextField')
+    MESSAGE_VOICE = (MobileBy.XPATH, '//UIALink[@name[contains(., "Voice")]]')
+    VOICE_TEXT_FIELD = (MobileBy.CLASS_NAME, 'UIATextField')
+    TEXT_TO_SPEECH_BUTTON = (MobileBy.XPATH, '//UIALink[@name="Text-to-speech"]')
+    MESSAGE_FAX = (MobileBy.XPATH, '//UIALink[@name[contains(., "Fax")]]')
+    FAX_DOCUMENT_BUTTON = (MobileBy.XPATH, '//UIALink[@name[contains(., "Fax document")]]')
+    COMMS_DOCUMENTS_BUTTON = (MobileBy.XPATH, '//UIALink[@name="Comms documents"]')
+    FAX_PDF_FILE = (MobileBy.XPATH, '//UIAStaticText[@name="OCA Generic Escalation Fax.pdf"]')
+    FAX_OK_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Ok"]')
+    REQUIRE_ACKNOWLEDGMENT = (MobileBy.XPATH, '//UIALink[@name'
+                                              '[contains(., "Require acknowledgment")]]')
+    REPLY_TRACKING = (MobileBy.XPATH, '//UIALink[@name[contains(., "Reply tracking")]]')
+    ADD_CONTACTS_AND_GROUPS = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Add contacts and groups")]]')
+    ADD_RESOURCES_STRUCTURE_NODES = (MobileBy.XPATH, '//UIAButton[@name'
+                                                     '[contains(., "Add Resource structure ")]]')
+    CONTACTS_ARROW = (MobileBy.XPATH, '//UIAScrollView[2]/UIAWebView[1]/UIALink[5]')
+    CONTACT_FOR_APPIUM_TESTS = (MobileBy.XPATH, '//UIAStaticText[@name="CONTACT_FOR_APPIUM_TESTS"]')
+    ALERT_SEND_BUTTON = (MobileBy.XPATH, '//UIAButton[4][@name="Send"]')

@@ -1,5 +1,4 @@
 from appium.webdriver.common.mobileby import MobileBy
-from selenium.webdriver.common.by import By
 
 
 class iOS:
@@ -22,9 +21,8 @@ class CommonScreen:
 
 class TopBar:
     """A class for top bar locators."""
-    HAMBURGER_FOR_MAIN_MENU = (MobileBy.CSS_SELECTOR, 'div#iconbar>a')
-    #HAMBURGER_FOR_MAIN_MENU = (MobileBy.CSS_SELECTOR, 'div#iconbar')
-    #HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeLink[1]/XCUIElementTypeStaticText[1]')
+    # HAMBURGER_FOR_MAIN_MENU = (MobileBy.CSS_SELECTOR, 'div#iconbar')
+    # HAMBURGER_FOR_MAIN_MENU = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeLink[1]/XCUIElementTypeStaticText[1]')
 
 
 class WelcomeScreen:
@@ -36,8 +34,7 @@ class WelcomeScreen:
     SOUND_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "SOUND")]]')
     SETTINGS_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "SETTINGS")]]')
     ABOUT_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "ABOUT")]]')
-    LOGIN_BUTTON = (By.CSS_SELECTOR, 'div#sessionMenu>a')
-    #LOGIN_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "LOGIN")]]')
+    # LOGIN_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "LOGIN")]]')
     # LOGIN_BUTTON_by_index = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]'
     #                                          '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
     #                                          '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
@@ -59,7 +56,6 @@ class LoginScreen:
     TEXTFIELD_USERNAME = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
     TEXTFIELD_PASSWORD = (MobileBy.XPATH, '//XCUIElementTypeSecureTextField[1]')
     TEXTFIELD_DOMAIN = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
-    #TEXTFIELD_DOMAIN = (MobileBy.CSS_SELECTOR, 'input#sessionDomain')
     SUBMIT_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Submit"]')
 
     # Notification alert: "OCA now supports sending 'App Messages' to your device as notifications."
@@ -398,7 +394,5 @@ class ComposeScreen:
     #                                                    '[contains(., "Mailing list unsubscribes ")]]'
     #                                                    '/XCUIElementTypeLink[@index="2"]')
     CONTACT_FOR_APPIUM_TESTS = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="CONTACT_FOR_APPIUM_TESTS"]')
-    #CONTACT_FOR_APPIUM_TESTS = (By.CSS_SELECTOR, "input[data-label='CONTACT_FOR_APPIUM_TESTS']")
-    #ALERT_SEND_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Send"]')
-    ALERT_SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'a#messageSend')
+    ALERT_SEND_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Send"]')
 

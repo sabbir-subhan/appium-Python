@@ -36,18 +36,16 @@ class SetupTestCase(unittest.TestCase):
 
         # logging.info('starting Appium server')
         #
-        # subprocess.call(['/Users/lukasl/repos/appium-poc/cli.sh'])  # call shell script that will start appium in new terminal
-        #
+        # subprocess.call(['/Users/lukasl/repos/appium-poc/cli.sh'])  # call shell script that will start appium server in new terminal
+
         # sleep(45)  # wait for appium server to start
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()
 
-        #self.configuration = import_module('Conf.locators_for_webview')
-        self.configuration = import_module('Conf.locators_' + ENVIRONMENT_TEST)
+        # self.configuration = import_module('Conf.locators_' + ENVIRONMENT_TEST)
 
-        # self.driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
         self.driver = webdriver.Remote("http://localhost:" + PORT + "/wd/hub", desired_capabilities)
 
         self.driver.implicitly_wait(30)  # seconds - depends on device and connection speed

@@ -46,7 +46,7 @@ class IOS(CommonPage):
     # OCA top bar
     def hamburger_button(self):
 
-        CommonPage.switch_context_to_webview(self)
+        self.switch_context_to_webview()
 
         logging.info("click hamburger button to go back to main menu - IOS")
         hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU)
@@ -61,7 +61,7 @@ class IOS(CommonPage):
         # self.driver.tap(positions)
         sleep(5)
 
-        CommonPage.switch_context_to_native(self)
+        self.switch_context_to_native()
 
     # # OCA top bar
     # def hamburger_button(self):
