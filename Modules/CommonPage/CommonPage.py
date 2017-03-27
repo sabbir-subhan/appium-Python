@@ -11,6 +11,19 @@ from configuration import ENVIRONMENT_TEST
 
 class CommonPage(BasePage):
 
+    def hamburger_button(self):
+
+        sleep(1)
+        logging.info("click hamburger button to go back to main menu")
+
+        self.switch_context_to_webview()
+
+        hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU)
+        hamburger_button.click()
+
+        self.switch_context_to_native()
+        sleep(5)
+
     def click_device_cancel_button(self):
 
         logging.info("Click 'Cancel' button")
@@ -40,10 +53,13 @@ class CommonPage(BasePage):
 
     def wait_for_app_loading(self):
 
-        # on iOS that element have visible: false
-        logging.info("wait")
+        self.switch_context_to_webview()
+
+        logging.info("wait for app loading")
         WebDriverWait(self.driver, 35).until(
             expected_conditions.invisibility_of_element_located(self.configuration.CommonScreen.LOADING),
             "loading animation is present")
+
+        self.switch_context_to_native()
 
 

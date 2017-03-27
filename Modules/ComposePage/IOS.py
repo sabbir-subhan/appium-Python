@@ -33,35 +33,29 @@ class IOS(ComposePage):
         positions = [(x, y)]
         self.driver.tap(positions)
 
-    def choose_comms_documents(self):
+    # def choose_comms_documents(self):
+    #
+    #     logging.info('choose comms documents button')
+    #     comms_documents_button = self.driver.find_element(*self.configuration.ComposeScreen.COMMS_DOCUMENTS_BUTTON)
+    #     self.assertIsNotNone(comms_documents_button, 'comms documents button not found')
+    #     location = comms_documents_button.location
+    #     print(location)
+    #     x = location["x"]
+    #     y = location["y"]
+    #     positions = [(x, y)]
+    #     self.driver.tap(positions)
+    #     sleep(1)
 
-        logging.info('choose comms documents button')
-        comms_documents_button = self.driver.find_element(*self.configuration.ComposeScreen.COMMS_DOCUMENTS_BUTTON)
-        self.assertIsNotNone(comms_documents_button, 'comms documents button not found')
-        location = comms_documents_button.location
-        print(location)
-        x = location["x"]
-        y = location["y"]
-        positions = [(x, y)]
-        self.driver.tap(positions)
-        sleep(1)
-
-    def alert_send_button(self):
-
-        common_page = LoadClass.load_page('CommonPage')
-        common_page.setDriver(self.driver)
-        common_page.switch_context_to_webview()
-
-        logging.info("click 'Send' button on alert")
-        send_button_on_alert = self.driver.find_element(*self.configuration.ComposeScreen.ALERT_SEND_BUTTON)
-        send_button_on_alert.click()
-        sleep(2)
-
-        common_page.switch_context_to_native()
-
-        logging.info("sending message")
-        WebDriverWait(self.driver, 10).until(
-            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
-            "Failed to send message")
-        logging.info("Message was sent")
+    # def alert_send_button(self):
+    #
+    #     logging.info("click 'Send' button on alert")
+    #     send_button_on_alert = self.driver.find_element(*self.configuration.ComposeScreen.ALERT_SEND_BUTTON)
+    #     send_button_on_alert.click()
+    #     sleep(2)
+    #
+    #     logging.info("sending message")
+    #     WebDriverWait(self.driver, 10).until(
+    #         expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
+    #         "Failed to send message")
+    #     logging.info("Message was sent")
 

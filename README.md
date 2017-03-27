@@ -24,6 +24,7 @@
 - brew link --overwrite libimobiledevice
 - brew install ideviceinstaller
 - brew link --overwrite ideviceinstaller
+- brew install ios-webkit-debug-proxy
 
 - to switch between xcode versions, use: sudo xcode-select -switch /Applications/Xcode7.app
 
@@ -66,6 +67,8 @@ file /Conf/desired_capabilities.py and appium settings:
 - appium  # this will launch Appium server on default port = 4723
 - appium -p 4735  # to change port use "-p" flag
 - appium --log-timestamp --log /file_path  # starting appium with logging to file
+
+- another console: ios_webkit_debug_proxy -c <device uuid>:27753
 
 
 ### **run iOS9 and iOS10** ###

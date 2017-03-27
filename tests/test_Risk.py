@@ -11,7 +11,7 @@
 # From the main menu click on Risks.
 # Create a new Risk Register
 # Click on Risk >Click on Existing library >Click Add Control
-# CClick on Risk Register>Click on new>Click on Add new Context
+# Click on Risk Register>Click on new>Click on Add new Context
 # Click on Risk Register>Click on New>Click on Add new Risk
 # Click on Risk Register>Click on New>Click on Add new library Risk
 # Click on Risk>Select a Risk Register>Select a Context>Click on Context>Click on more >Add new control
@@ -57,6 +57,7 @@ class test_Risk(SetupTestCase):
         common_page.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
+        common_page.wait_for_app_loading()
         main_page = LoadClass.load_page('MainPage')
         main_page.setDriver(self.driver)
         main_page.alert_expiring_password()
@@ -64,6 +65,13 @@ class test_Risk(SetupTestCase):
         main_page.check_presence_of_events_button()
 
         main_page.open_RISKS()
+        risks_page = LoadClass.load_page('RisksPage')
+        risks_page.setDriver(self.driver)
+        risks_page.create_risk_register()
+        risks_page.type_name_for_new_risk_register()
+        risks_page.create_new_context()
+        risks_page.scroll_down_to_save_button()
+        risks_page.click_save_button()
 
 
 if __name__ == '__main__':

@@ -25,19 +25,19 @@ class IOS(EventEditPage):
         # else:
         #     pass
 
-    def fill_Name_input_field(self, text):
-
-        logging.info("fill Name input field")
-        try:
-            name_field = self.driver.find_element(*self.configuration.EventEditScreen.NAME_FIELD)
-            if name_field.is_displayed():
-                name_field.click()
-                name_field.send_keys(text)
-        except NoSuchElementException:
-            name_field_by_index = self.driver.find_element(*self.configuration.EventEditScreen.NAME_FIELD_by_index)
-            if name_field_by_index.is_displayed():
-                name_field_by_index.click()
-                name_field_by_index.send_keys(text)
+    # def fill_Name_input_field(self, text):
+    #
+    #     logging.info("fill Name input field")
+    #     try:
+    #         name_field = self.driver.find_element(*self.configuration.EventEditScreen.NAME_FIELD)
+    #         if name_field.is_displayed():
+    #             name_field.click()
+    #             name_field.send_keys(text)
+    #     except NoSuchElementException:
+    #         name_field_by_index = self.driver.find_element(*self.configuration.EventEditScreen.NAME_FIELD_by_index)
+    #         if name_field_by_index.is_displayed():
+    #             name_field_by_index.click()
+    #             name_field_by_index.send_keys(text)
 
     def choose_severity_level_1(self):
 
@@ -127,15 +127,15 @@ class IOS(EventEditPage):
                 logging.info("scroll down to description field")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
 
-    def type_text_into_description_field(self):
-
-        try:
-            logging.info("type some text into description field")
-            self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD).click()
-            self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD).send_keys("test ios")
-        except NoSuchElementException:
-            logging.info("text field couldn't be selected")
-            pass
+    # def type_text_into_description_field(self):
+    #
+    #     try:
+    #         logging.info("type some text into description field")
+    #         self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD).click()
+    #         self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD).send_keys("test ios")
+    #     except NoSuchElementException:
+    #         logging.info("text field couldn't be selected")
+    #         pass
 
     def scroll_down_to_option_list(self):
 

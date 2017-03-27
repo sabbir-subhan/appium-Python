@@ -347,32 +347,6 @@ class CameraScreen:
     USE_PHOTO_ANDROID6 = (MobileBy.ID, 'com.sec.android.app.camera:id/okay')
 
 
-class RisksScreen:
-    """A class for handling Risks screen"""
-    CREATE_RISK_REGISTER = (MobileBy.ACCESSIBILITY_ID, 'Create risk register')
-    FIRST_RISK_REGISTER_ON_THE_LIST = (MobileBy.XPATH, '//android.view.View[2]/'
-                                                       'android.widget.ListView[1]/android.view.View[1]')
-    ADD_NEW_CONTEXT = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Add new context")]]')
-    NEW_BUTTON = CommonScreen.SPINNER_ON_THE_RIGHT
-    VIEW_BUTTON = CommonScreen.SPINNER_ON_THE_LEFT
-
-
-class RiskRegisterEditScreen:
-    """A class for handling Risk Register edit screen"""
-    RISK_REGISTER_NAME = (MobileBy.XPATH, '//android.view.View[1]/android.widget.EditText[1]')
-
-
-class ContextEditScreen:
-    """A class for handling New Context Edit screen"""
-    NAME_FIELD = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="Name"]')
-
-
-class ContextScreen:
-    """A class for handling Context screen"""
-    FIRST_CONTEXT_ON_THE_LIST = (MobileBy.XPATH, '//android.widget.ListView[1]/android.view.View[1]'
-                                                 '/android.view.View[2]')
-
-
 class NewContactScreen:
     """A class for handling New Contact screen"""
     FIRST_NAME = (MobileBy.ID, 'first name')
@@ -457,11 +431,23 @@ class ComposeScreen:
     MAILING_LIST_UNSUBSCRIBES_ARROW = (MobileBy.XPATH, '//android.view.View[@content-desc'
                                                        '[contains(., "Mailing list unsubscribes ")]]'
                                                        '/android.view.View[@index="2"]')
-    CONTACT_FOR_APPIUM_TESTS = (MobileBy.XPATH, '//android.view.View[@content-desc="CONTACT_FOR_APPIUM_TESTS"]')
+    CONTACT_FOR_APPIUM_TESTS = (MobileBy.XPATH, '//android.view.View[@content-desc="A_CONTACT_FOR_APPIUM_TESTS"]')
     ALERT_SEND_BUTTON_by_id = (MobileBy.ID, 'messageSend')
     ALERT_SEND_BUTTON_by_name = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Send"]')  # for Android < 4
 
 
+class RisksScreen:
+    """A class for handling Risks screen"""
+    CREATE_RISK_REGISTER = (MobileBy.ACCESSIBILITY_ID, 'Create risk register')
+    NAME_FOR_NEW_RISK_REGISTER = (MobileBy.XPATH, '//android.view.View[1]/android.widget.EditText[1]')
+    FIRST_RISK_REGISTER_ON_THE_LIST = (MobileBy.XPATH, '//android.view.View[2]/'
+                                                       'android.widget.ListView[1]/android.view.View[1]')
+    ADD_NEW_CONTEXT = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Add new context")]]')
+    NEW_BUTTON = CommonScreen.SPINNER_ON_THE_RIGHT
+    VIEW_BUTTON = CommonScreen.SPINNER_ON_THE_LEFT
+    NAME_FIELD_FOR_CONTEXT = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="Name"]')
+    FIRST_CONTEXT_ON_THE_LIST = (MobileBy.XPATH, '//android.widget.ListView[1]/android.view.View[1]'
+                                                 '/android.view.View[2]')
 
 
 

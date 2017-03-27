@@ -207,12 +207,16 @@ class MainPage(BasePage):
         compose_button.click()
 
     def open_SENT(self):
-        
+
+        self.switch_context_to_webview()
+
         logging.info("clicking in SENT button")
         sent_button = self.driver.find_element(*self.configuration.MainMenuScreen.SENT_BUTTON)
         self.assertIsNotNone(sent_button, "SENT button not found")
         sent_button.click()
         sleep(2)
+
+        self.switch_context_to_native()
 
     def open_PHOTO(self):
 

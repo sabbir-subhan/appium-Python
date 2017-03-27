@@ -12,27 +12,28 @@ from Conf.desired_capabilities import DesiredCapabilities
 class Android(CommonPage):
 
     # OCA top bar
-    def hamburger_button(self):
+    # def hamburger_button(self):
+    #
+    #     sleep(1)
+    #     logging.info("click hamburger button to go back to main menu")
 
-        sleep(1)
-        logging.info("click hamburger button to go back to main menu")
-        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
-        platform_version = desired_capabilities.get('platformVersion')
-        # if platform_version < "5":
-        hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU_by_xpath)
-        # else:
-        #     hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU_by_id)
-        self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
-        location = hamburger_button.location
-        print(location)
-        x = location["x"]
-        y = location["y"]
-        print(x)
-        print(y)
-        positions = [(x, y)]
-        self.driver.tap(positions)
+        # desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        # platform_version = desired_capabilities.get('platformVersion')
+        # # if platform_version < "5":
+        # hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU_by_xpath)
+        # # else:
+        # #     hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU_by_id)
+        # self.assertIsNotNone(hamburger_button, "Hamburger button is not present")
+        # location = hamburger_button.location
+        # print(location)
+        # x = location["x"]
+        # y = location["y"]
+        # print(x)
+        # print(y)
+        # positions = [(x, y)]
+        # self.driver.tap(positions)
         # hamburger_button.click()
-        sleep(5)
+        # sleep(5)
 
     def alert_popup_allow(self):
 

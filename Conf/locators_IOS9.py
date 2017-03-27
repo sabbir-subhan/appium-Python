@@ -288,13 +288,6 @@ class CameraScreen:
     USE_VIDEO = (MobileBy.ACCESSIBILITY_ID, 'Use Video')
 
 
-class RisksScreen:
-    """A class for handling Risks screen"""
-
-    NEW_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "New")]]')
-    VIEW_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "View")]]')
-
-
 class NewContactScreen:
     """A class for handling New Contact screen"""
     FIRST_NAME = (MobileBy.XPATH, '//UIATextField [@name="First name"]')
@@ -359,6 +352,18 @@ class ComposeScreen:
     ADD_CONTACTS_AND_GROUPS = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Add contacts and groups")]]')
     ADD_RESOURCES_STRUCTURE_NODES = (MobileBy.XPATH, '//UIAButton[@name'
                                                      '[contains(., "Add Resource structure ")]]')
-    CONTACTS_ARROW = (MobileBy.XPATH, '//UIAScrollView[2]/UIAWebView[1]/UIALink[5]')
-    CONTACT_FOR_APPIUM_TESTS = (MobileBy.XPATH, '//UIAStaticText[@name="CONTACT_FOR_APPIUM_TESTS"]')
+    CONTACT_FOR_APPIUM_TESTS = (MobileBy.XPATH, '//UIAStaticText[@name="A_CONTACT_FOR_APPIUM_TESTS"]')
     ALERT_SEND_BUTTON = (MobileBy.XPATH, '//UIAButton[4][@name="Send"]')
+
+
+class RisksScreen:
+    """A class for handling Risks screen"""
+    CREATE_RISK_REGISTER = (MobileBy.ACCESSIBILITY_ID, 'Create risk register')
+    NAME_FOR_NEW_RISK_REGISTER = (MobileBy.XPATH, '')
+    FIRST_RISK_REGISTER_ON_THE_LIST = (MobileBy.XPATH, '')
+    ADD_NEW_CONTEXT = (MobileBy.XPATH, '')
+    NEW_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "New")]]')
+    VIEW_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "View")]]')
+    NAME_FIELD_FOR_CONTEXT = (MobileBy.XPATH, '')
+    FIRST_CONTEXT_ON_THE_LIST = (MobileBy.XPATH, '')
+

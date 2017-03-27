@@ -45,6 +45,7 @@ class test_Login(SetupTestCase):
         common_page.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
+        common_page.wait_for_app_loading()
         main_page = LoadClass.load_page('MainPage')
         main_page.setDriver(self.driver)
         main_page.alert_expiring_password()

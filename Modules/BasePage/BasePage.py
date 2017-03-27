@@ -3,6 +3,7 @@
 from importlib import import_module
 from configuration import ENVIRONMENT_TEST
 import unittest
+from time import sleep
 
 
 class BasePage(unittest.TestCase):
@@ -18,12 +19,10 @@ class BasePage(unittest.TestCase):
 
     def switch_context_to_webview(self):
 
-        # maybe create BasePage - IOS and BasePage Android to separate this
-
         print("switching context")
-        print(self.configuration)
+        # print(self.configuration)
         self.configuration = import_module('Conf.locators_for_webview')
-        print(self.configuration)
+        # print(self.configuration)
         current = self.driver.current_context
         print('current context is: ' + current)
         contexts = self.driver.contexts
@@ -31,13 +30,14 @@ class BasePage(unittest.TestCase):
         self.driver.switch_to.context(contexts[1])
         current_after_switch = self.driver.current_context
         print('current context is: ' + current_after_switch)
+        sleep(0.5)
 
     def switch_context_to_native(self):
 
         print("switching context")
-        print(self.configuration)
+        # print(self.configuration)
         self.configuration = import_module('Conf.locators_' + ENVIRONMENT_TEST)
-        print(self.configuration)
+        # print(self.configuration)
         current = self.driver.current_context
         print('current context is: ' + current)
         contexts = self.driver.contexts
@@ -45,3 +45,4 @@ class BasePage(unittest.TestCase):
         self.driver.switch_to.context(contexts[0])
         current_after_switch = self.driver.current_context
         print('current context is: ' + current_after_switch)
+        sleep(0.5)

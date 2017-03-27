@@ -168,6 +168,7 @@ class DesiredCapabilities(object):
             "launchTimeout": 400000,  # iOS only
             "clearSystemFiles": True,
             "startIWDP": True,
+            "fullReset": True,
             "autoAcceptAlerts": True
         },
 

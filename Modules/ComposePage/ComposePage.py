@@ -40,21 +40,36 @@ class ComposePage(BasePage):
 
     def alert_send_button(self):
 
+        self.switch_context_to_webview()
+
         logging.info("click 'Send' button on alert")
-        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
-        platform_version = desired_capabilities.get('platformVersion')
-        if platform_version < "5":
-            send_button_on_alert = self.driver.find_element(*self.configuration.ComposeScreen.ALERT_SEND_BUTTON_by_name)
-        else:
-            send_button_on_alert = self.driver.find_element(*self.configuration.ComposeScreen.ALERT_SEND_BUTTON_by_id)
-        self.assertIsNotNone(send_button_on_alert, "Send button on alert not found")
+        send_button_on_alert = self.driver.find_element(*self.configuration.ComposeScreen.ALERT_SEND_BUTTON)
         send_button_on_alert.click()
         sleep(2)
+
         logging.info("sending message")
         WebDriverWait(self.driver, 10).until(
             expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
             "Failed to send message")
         logging.info("Message was sent")
+
+        self.switch_context_to_native()
+
+        # logging.info("click 'Send' button on alert")
+        # desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        # platform_version = desired_capabilities.get('platformVersion')
+        # if platform_version < "5":
+        #     send_button_on_alert = self.driver.find_element(*self.configuration.ComposeScreen.ALERT_SEND_BUTTON_by_name)
+        # else:
+        #     send_button_on_alert = self.driver.find_element(*self.configuration.ComposeScreen.ALERT_SEND_BUTTON_by_id)
+        # self.assertIsNotNone(send_button_on_alert, "Send button on alert not found")
+        # send_button_on_alert.click()
+        # sleep(2)
+        # logging.info("sending message")
+        # WebDriverWait(self.driver, 10).until(
+        #     expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
+        #     "Failed to send message")
+        # logging.info("Message was sent")
 
     def add_recipients(self):
 
@@ -105,24 +120,33 @@ class ComposePage(BasePage):
 
     def contacts_arrow(self):
 
+        self.switch_context_to_webview()
+
         logging.info('click in Contacts arrow to choose specific contact')
         contacts_arrow = self.driver.find_element(*self.configuration.ComposeScreen.CONTACTS_ARROW)
         self.assertIsNotNone(contacts_arrow, 'add recipients button not found')
         contacts_arrow.click()
 
+        self.switch_context_to_native()
+
     def choose_contact_for_test(self):
 
         logging.info('choose contact for test')
+        sleep(2)
         choose_contact_for_test = self.driver.find_element(*self.configuration.ComposeScreen.CONTACT_FOR_APPIUM_TESTS)
         self.assertIsNotNone(choose_contact_for_test, 'contact not found')
         choose_contact_for_test.click()
 
     def choose_sms_message(self):
 
+        self.switch_context_to_webview()
+
         logging.info('choose sms msg')
         choose_sms_msg = self.driver.find_element(*self.configuration.ComposeScreen.MESSAGE_SMS)
         self.assertIsNotNone(choose_sms_msg, 'sms msg button not found')
         choose_sms_msg.click()
+
+        self.switch_context_to_native()
 
     def type_sms_message(self):
 
@@ -134,13 +158,19 @@ class ComposePage(BasePage):
 
     def choose_email_message(self):
 
+        self.switch_context_to_webview()
+
         logging.info('choose email msg')
         choose_email_msg = self.driver.find_element(*self.configuration.ComposeScreen.MESSAGE_EMAIL)
         self.assertIsNotNone(choose_email_msg, 'email msg button not found')
         choose_email_msg.click()
         sleep(2)
 
+        self.switch_context_to_native()
+
     def type_email_subject(self):
+
+        self.switch_context_to_webview()
 
         logging.info('type email subject')
         email_subject_text_field = self.driver.find_element(*self.configuration.ComposeScreen.EMAIL_SUBJECT_FIELD)
@@ -149,7 +179,11 @@ class ComposePage(BasePage):
         email_subject_text_field.send_keys('Test email subject')
         sleep(2)
 
+        self.switch_context_to_native()
+
     def type_email_message(self):
+
+        self.switch_context_to_webview()
 
         sleep(4)
         logging.info('type email msg')
@@ -158,19 +192,29 @@ class ComposePage(BasePage):
         email_text_field.click()
         email_text_field.send_keys('Test email')
 
+        self.switch_context_to_native()
+
     def choose_voice_message(self):
+
+        self.switch_context_to_webview()
 
         logging.info('choose voice msg')
         choose_voice_msg = self.driver.find_element(*self.configuration.ComposeScreen.MESSAGE_VOICE)
         self.assertIsNotNone(choose_voice_msg, 'voice msg button not found')
         choose_voice_msg.click()
 
+        self.switch_context_to_native()
+
     def click_text_to_speech(self):
+
+        self.switch_context_to_webview()
 
         logging.info('click Text to speech')
         text_to_speech_button = self.driver.find_element(*self.configuration.ComposeScreen.TEXT_TO_SPEECH_BUTTON)
         self.assertIsNotNone(text_to_speech_button, 'Text to speech button not found')
         text_to_speech_button.click()
+
+        self.switch_context_to_native()
 
     def type_voice_message(self):
 
@@ -182,13 +226,19 @@ class ComposePage(BasePage):
 
     def choose_fax_message(self):
 
+        self.switch_context_to_webview()
+
         logging.info('choose fax msg')
         choose_fax_msg = self.driver.find_element(*self.configuration.ComposeScreen.MESSAGE_FAX)
         self.assertIsNotNone(choose_fax_msg, 'fax msg button not found')
         choose_fax_msg.click()
         sleep(1)
 
+        self.switch_context_to_native()
+
     def choose_fax_document(self):
+
+        self.switch_context_to_webview()
 
         logging.info('choose fax document button')
         fax_document_button = self.driver.find_element(*self.configuration.ComposeScreen.FAX_DOCUMENT_BUTTON)
@@ -196,13 +246,19 @@ class ComposePage(BasePage):
         fax_document_button.click()
         sleep(1)
 
+        self.switch_context_to_native()
+
     def choose_comms_documents(self):
+
+        self.switch_context_to_webview()
 
         logging.info('choose comms documents button')
         comms_documents_button = self.driver.find_element(*self.configuration.ComposeScreen.COMMS_DOCUMENTS_BUTTON)
         self.assertIsNotNone(comms_documents_button, 'comms documents button not found')
         comms_documents_button.click()
         sleep(1)
+
+        self.switch_context_to_native()
 
     def choose_file(self):
 
@@ -215,3 +271,4 @@ class ComposePage(BasePage):
         self.assertIsNotNone(file, 'file in documents not found')
         file.click()
         sleep(1)
+

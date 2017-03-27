@@ -4,19 +4,29 @@ from time import sleep
 import logging
 from selenium.common.exceptions import *
 from Modules.BasePage.BasePage import BasePage
+from Modules.load_class import LoadClass
 
 
 class LoginPage(BasePage):
 
     def click_submit_button(self):
 
+        self.switch_context_to_webview()
+
         logging.info("click in Submit button")
         self.driver.find_element(*self.configuration.LoginScreen.SUBMIT_BUTTON).click()
         sleep(2)
 
+        self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
     def accept_terms(self):
 
-        logging.info("check Terms and Conditions")
+        self.switch_context_to_webview()
+
         try:
             accept_terms_button = self.driver.find_element(*self.configuration.LoginScreen.ACCEPT_BUTTON)
             if accept_terms_button.is_displayed():
@@ -28,6 +38,8 @@ class LoginPage(BasePage):
                 pass
         except NoSuchElementException:
             logging.info("Terms are already accepted - Accept button is not present")
+
+        self.switch_context_to_native()
 
     def alert_wrong_password(self):
 

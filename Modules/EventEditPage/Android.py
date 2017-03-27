@@ -92,15 +92,15 @@ class Android(EventEditPage):
         common_page.setDriver(self.driver)
         common_page.scroll_down_one_view()
 
-    def fill_Name_input_field(self, text):
-
-        logging.info("fill Name input field")
-        try:
-            name_field = self.driver.find_element(*self.configuration.EventEditScreen.NAME_FIELD)
-        except NoSuchElementException:
-            name_field = self.driver.find_element(*self.configuration.EventEditScreen.NAME_FIELD2)
-        name_field.click()
-        name_field.send_keys(text)
+    # def fill_Name_input_field(self, text):
+    #
+    #     logging.info("fill Name input field")
+    #     try:
+    #         name_field = self.driver.find_element(*self.configuration.EventEditScreen.NAME_FIELD)
+    #     except NoSuchElementException:
+    #         name_field = self.driver.find_element(*self.configuration.EventEditScreen.NAME_FIELD2)
+    #     name_field.click()
+    #     name_field.send_keys(text)
 
     def choose_severity_level_1(self):
 
@@ -137,17 +137,17 @@ class Android(EventEditPage):
         choose_severity_lvl5.click()
         sleep(1)
 
-    def type_text_into_description_field(self):
-
-        sleep(4)
-        try:
-            logging.info("type some text into description field")
-            description_field = self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD)
-            sleep(1)
-            description_field.send_keys("test Android")
-            sleep(2)
-        except NoSuchElementException:
-            pass
+    # def type_text_into_description_field(self):
+    #
+    #     sleep(4)
+    #     try:
+    #         logging.info("type some text into description field")
+    #         description_field = self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD)
+    #         sleep(1)
+    #         description_field.send_keys("test Android")
+    #         sleep(2)
+    #     except NoSuchElementException:
+    #         pass
 
     def click_on_option_list(self):
 

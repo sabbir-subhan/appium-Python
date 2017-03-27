@@ -9,6 +9,28 @@ from Conf.desired_capabilities import DesiredCapabilities
 
 class EventEditPage(BasePage):
 
+    def fill_Name_input_field(self, text):
+
+        self.switch_context_to_webview()
+
+        logging.info("fill Name input field")
+        name_field = self.driver.find_element(*self.configuration.EventEditScreen.NAME_FIELD)
+        name_field.click()
+        name_field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def type_text_into_description_field(self):
+
+        self.switch_context_to_webview()
+
+        sleep(4)
+        logging.info("type some text into description field")
+        self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD).click()
+        self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD).send_keys("test appium")
+
+        self.switch_context_to_native()
+
     def click_severity_lvl_picker(self):
 
         logging.info("click on severity level field")
@@ -106,11 +128,16 @@ class EventEditPage(BasePage):
 
     def click_save_button(self):
 
+        self.switch_context_to_webview()
+
+        sleep(1)
         logging.info("click Save button")
         save_button = self.driver.find_element(*self.configuration.CommonScreen.SAVE_BUTTON)
         self.assertIsNotNone(save_button, "Save button not found")
         save_button.click()
         sleep(10)
+
+        self.switch_context_to_native()
 
     def click_cancel_button(self):
 
