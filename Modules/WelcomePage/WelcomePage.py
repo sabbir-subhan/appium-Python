@@ -29,52 +29,80 @@ class WelcomePage(BasePage):
 
     def open_LOCATION(self):
 
+        self.switch_context_to_webview()
+
         logging.info("clicking in Location button")
         location_button = self.driver.find_element(*self.configuration.WelcomeScreen.LOCATION_BUTTON)
         self.assertIsNotNone(location_button, "Location button not found")
         location_button.click()
 
+        self.switch_context_to_native()
+
     def open_MY_MESSAGES(self):
+
+        self.switch_context_to_webview()
 
         logging.info("clicking in MY MESSAGES button")
         my_messages_button = self.driver.find_element(*self.configuration.WelcomeScreen.MY_MESSAGES_BUTTON)
         self.assertIsNotNone(my_messages_button, "MY MESSAGES button not found")
         my_messages_button.click()
 
+        self.switch_context_to_native()
+
     def open_PHOTO(self):
+
+        self.switch_context_to_webview()
 
         logging.info("clicking in Photo button")
         photo_button = self.driver.find_element(*self.configuration.WelcomeScreen.PHOTO_BUTTON)
         self.assertIsNotNone(photo_button, "PHOTO button not found")
         photo_button.click()
 
+        self.switch_context_to_native()
+
     def open_VIDEO(self):
+
+        self.switch_context_to_webview()
 
         logging.info("clicking in Video button")
         video_button = self.driver.find_element(*self.configuration.WelcomeScreen.VIDEO_BUTTON)
         self.assertIsNotNone(video_button, "VIDEO button not found")
         video_button.click()
 
+        self.switch_context_to_native()
+
     def open_SOUND(self):
+
+        self.switch_context_to_webview()
 
         logging.info("clicking in Sound button")
         sound_button = self.driver.find_element(*self.configuration.WelcomeScreen.SOUND_BUTTON)
         self.assertIsNotNone(sound_button, "Sound button not found")
         sound_button.click()
 
+        self.switch_context_to_native()
+
     def open_SETTINGS(self):
+
+        self.switch_context_to_webview()
 
         logging.info("clicking in SETTINGS button")
         settings_button = self.driver.find_element(*self.configuration.WelcomeScreen.SETTINGS_BUTTON)
         self.assertIsNotNone(settings_button, "SETTINGS button not found")
         settings_button.click()
 
+        self.switch_context_to_native()
+
     def open_ABOUT(self):
+
+        self.switch_context_to_webview()
 
         logging.info("clicking in ABOUT button")
         about_button = self.driver.find_element(*self.configuration.WelcomeScreen.ABOUT_BUTTON)
         self.assertIsNotNone(about_button, "ABOUT button not found")
         about_button.click()
+
+        self.switch_context_to_native()
 
     def click_settings_ok_button(self):
 

@@ -4,8 +4,6 @@ from appium.webdriver.common.mobileby import MobileBy
 class CommonScreen:
     """A class for handling Common buttons on different screen"""
     LOADING = (MobileBy.CSS_SELECTOR, 'span.ui-icon-loading')
-    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeNew>div[data-role="footer"]>div>ul>li>a[href="#save"]')
-    CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, '')
     OK_BUTTON = (MobileBy.CSS_SELECTOR, '')
 
 
@@ -41,10 +39,10 @@ class LoginScreen:
     SUBMIT_BUTTON = (MobileBy.CSS_SELECTOR, 'a#sessionSubmit')
 
     # Notification alert: "OCA now supports sending 'App Messages' to your device as notifications."
-    NOTIFICATION_ABOUT_SENDING_MESSAGES = (MobileBy.CSS_SELECTOR, '')
+    NOTIFICATION_ABOUT_SENDING_MESSAGES = (MobileBy.CSS_SELECTOR, 'div#menu>div.ui-popup-container.ui-popup-active>div[data-role="popup"]>div.ng-dialog-container>p')
 
     # "No" button for sending notifications on iOS
-    NO_FOR_SENDING_NOTIFICATIONS_ON = (MobileBy.CSS_SELECTOR, '')
+    NO_FOR_SENDING_NOTIFICATIONS_ON = (MobileBy.CSS_SELECTOR, 'div#menu>div.ui-popup-container.ui-popup-active>div[data-role="popup"]>div[data-role="controlgroup"]>div>a[data-button-index="2"]')
 
     # ACCEPT_BUTTON on Terms and Conditions"
     ACCEPT_BUTTON = (MobileBy.CSS_SELECTOR, 'a#sessionTermsAccept')
@@ -70,7 +68,7 @@ class MainMenuScreen(WelcomeScreen):
     CREATE_CONTACT_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#contactNew?parent=4&type=1"]')
     CREATE_TASK_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#taskNew"]')
     CREATE_REPORT_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#reportNew?type=1"]')
-    WEBSITE_LINK_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    #WEBSITE_LINK_BUTTON = (MobileBy.CSS_SELECTOR, '')
     INCIDENT_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#emeNew?type=1"]')
     CREATE_ASSETS_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#assetNew?type=1"]')
     CREATE_LOG_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#logNew?type=1"]')
@@ -114,33 +112,33 @@ class LocationScreen:
 
 class EventsScreen:
     """A class for Events screen locators - screen after clicking into Events button in Main Menu."""
-    EVENTS_HEADER = (MobileBy.CSS_SELECTOR, '')
+    #EVENTS_HEADER = (MobileBy.CSS_SELECTOR, '')
 
-    # filtering events by Type
-    ANY_TYPE_EXPAND = (MobileBy.CSS_SELECTOR, '')
-    CHOOSE_TYPE_INCIDENT = (MobileBy.CSS_SELECTOR, '')
-    INCIDENT_TYPE_EXPAND = (MobileBy.CSS_SELECTOR, '')
-    CHOOSE_TYPE_ANY = (MobileBy.CSS_SELECTOR, '')
-
-    # filtering events by Status
-    ANY_STATUS_EXPAND = (MobileBy.CSS_SELECTOR, '')
-    CHOOSE_ACTIVE_STATUS = (MobileBy.CSS_SELECTOR, '')
-    ACTIVE_STATUS_EXPAND = (MobileBy.CSS_SELECTOR, '')
-    CHOOSE_INACTIVE_STATUS = (MobileBy.CSS_SELECTOR, '')
-    INACTIVE_STATUS_EXPAND = (MobileBy.CSS_SELECTOR, '')
-    CHOOSE_DRAFT_STATUS = (MobileBy.CSS_SELECTOR, '')
-    DRAFT_STATUS_EXPAND = (MobileBy.CSS_SELECTOR, '')
-    CHOOSE_ANY_STATUS = (MobileBy.CSS_SELECTOR, '')
+    # # filtering events by Type
+    # ANY_TYPE_EXPAND = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div[data-role="main"]>div.filters>div[data-role="collapsible"]>h2>a>span[data-translate="Any Type"]')
+    # CHOOSE_TYPE_INCIDENT = (MobileBy.CSS_SELECTOR, '')
+    # INCIDENT_TYPE_EXPAND = (MobileBy.CSS_SELECTOR, '')
+    # CHOOSE_TYPE_ANY = (MobileBy.CSS_SELECTOR, '')
+    #
+    # # filtering events by Status
+    # ANY_STATUS_EXPAND = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div[data-role="main"]>div.filters>div[data-role="collapsible"]>h2>a>span[data-translate="Any Status"]')
+    # CHOOSE_ACTIVE_STATUS = (MobileBy.CSS_SELECTOR, '')
+    # ACTIVE_STATUS_EXPAND = (MobileBy.CSS_SELECTOR, '')
+    # CHOOSE_INACTIVE_STATUS = (MobileBy.CSS_SELECTOR, '')
+    # INACTIVE_STATUS_EXPAND = (MobileBy.CSS_SELECTOR, '')
+    # CHOOSE_DRAFT_STATUS = (MobileBy.CSS_SELECTOR, '')
+    # DRAFT_STATUS_EXPAND = (MobileBy.CSS_SELECTOR, '')
+    # CHOOSE_ANY_STATUS = (MobileBy.CSS_SELECTOR, '')
 
     # filtering events using search field
-    SEARCH_FIELD = (MobileBy.CSS_SELECTOR, '')
+    #SEARCH_FIELD = (MobileBy.CSS_SELECTOR, '')
 
     # creating and editing Events
-    MORE_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    NEW_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div[data-role="footer"]>div[data-role="navbar"]>ul>li.ui-block-b>a.morearrow')
+    NEW_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#emeNew?parent=0"]')
 
     # previously created event
-    PREVIOUSLY_CREATED_EVENT = (MobileBy.CSS_SELECTOR, '')
+    #PREVIOUSLY_CREATED_EVENT = (MobileBy.CSS_SELECTOR, '')
 
     CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, '')
     NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.CSS_SELECTOR, '')
@@ -155,7 +153,10 @@ class TypesOfEventsScreen:
 
 class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
-    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeNew>div[data-role="footer"]>div>ul>li>a[href="#save"]')
+    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                          'a[href="#save"]')
+    CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                            'a[href="#cancel"]')
     NAME_FIELD = (MobileBy.CSS_SELECTOR, 'div#emeNew>div>ul>li>div>input#name')
     SEVERITY_LEVEL_SELECTOR = (MobileBy.CSS_SELECTOR, '')
     CHOOSE_SEVERITY_LVL1_iPad = (MobileBy.CSS_SELECTOR, '')
@@ -166,7 +167,7 @@ class EventEditScreen:
     SEVERITY_PICKER = (MobileBy.XPATH, '//XCUIElementTypeApplication/XCUIElementTypeWindow'
                                        '/XCUIElementTypePicker/XCUIElementTypePickerWheel')
     FINISHED_FIELD = (MobileBy.CSS_SELECTOR, '')
-    DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'div#cke_230_contents>iframe[title="Rich Text Editor, description"]')
+    DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'div#cke_description>div>div#cke_1_contents>iframe[title="Rich Text Editor, description"]')
     CREATE_MAPPING_DATA = (MobileBy.CSS_SELECTOR, '')
     EDIT_MAPPING_DATA = (MobileBy.CSS_SELECTOR, '')
     ELEMENT_TO_SCROLL = (MobileBy.CSS_SELECTOR, '')
@@ -199,18 +200,26 @@ class EventDetailsScreen:
 
 class Map:
     """A class for Map screen locators."""
-    PLOT_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    TOOL_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    POINT_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    MAP_AREA_12 = (MobileBy.CSS_SELECTOR, '')
-    MAP_AREA_13 = (MobileBy.CSS_SELECTOR, '')
-    MAP_AREA_17 = (MobileBy.CSS_SELECTOR, '')
-    MAP_AREA_18 = (MobileBy.CSS_SELECTOR, '')
-    LINE_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    CIRCLE_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    POLYGON_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    SAVE_MAP_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    PLOT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                          'a[data-translate="Plot"]')
+    TOOL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                          'a[href="#mapToolMore"]')
+    POINT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="POINT"]>h2>a')
+    POINT_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="POINT"]>div>ul>li>a')
+    LINE_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="LINESTRING"]>div>ul>li>a')
+    CIRCLE_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="CIRCLE"]>div>ul>li>a')
+    POLYGON_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="POLYGON"]>div>ul>li>a')
+    # MAP_AREA_12 = (MobileBy.CSS_SELECTOR, '')
+    # MAP_AREA_13 = (MobileBy.CSS_SELECTOR, '')
+    # MAP_AREA_17 = (MobileBy.CSS_SELECTOR, '')
+    # MAP_AREA_18 = (MobileBy.CSS_SELECTOR, '')
+    LINE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="LINESTRING"]>h2>a')
+    CIRCLE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="CIRCLE"]>h2>a')
+    POLYGON_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="POLYGON"]>h2>a')
+    SAVE_MAP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                              'a[data-translate="Save"]')
+    CANCEL_MAP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                                'a[data-translate="Cancel"]')
 
 
 class PhotoScreen:
@@ -219,7 +228,8 @@ class PhotoScreen:
     GALLERY_BUTTON = (MobileBy.CSS_SELECTOR, '')
     TAKE_NEW_BUTTON = (MobileBy.CSS_SELECTOR, '')
     DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, '')
-    SEND_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'div#Photo>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                              'a[data-translate="Send"]')
     RESET_BUTTON = (MobileBy.CSS_SELECTOR, '')
 
 
@@ -262,13 +272,19 @@ class SoundScreen:
 
 class NewContactScreen:
     """A class for handling New Contact screen"""
-    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactNew>div[data-role="footer"]>div>ul>li>a[href="#save"]')
+    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                          'a[href="#save"]')
+    CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                            'a[href="#cancel"]')
     FIRST_NAME = (MobileBy.CSS_SELECTOR, 'input[id="first name"]')
 
 
 class NewTaskScreen:
     """A class for handling New Task screen"""
-    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskNew>div[data-role="footer"]>div>ul>li>a[href="#save"]')
+    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                          'a[href="#save"]')
+    CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                            'a[href="#cancel"]')
     TITLE = (MobileBy.CSS_SELECTOR, '')
     ASSIGNED = (MobileBy.CSS_SELECTOR, '')
     ADD_CONTACTS_AND_GROUPS = (MobileBy.CSS_SELECTOR, '')
@@ -289,19 +305,25 @@ class NewReportScreen:
 
 class NewAssetScreen:
     """A class for handling New Asset screen"""
-    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div[data-role="footer"]>div>ul>li>a[href="#save"]')
+    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                          'a[href="#save"]')
+    CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                            'a[href="#cancel"]')
 
 
 class NewLogScreen:
     """A class for handling New Log screen"""
-    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logNew>div[data-role="footer"]>div>ul>li>a[href="#save"]')
+    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                          'a[href="#save"]')
+    CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                            'a[href="#cancel"]')
     LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, '')
     ENTRY_FIELD = (MobileBy.CSS_SELECTOR, '')
 
 
 class SentScreen:
     """A class for handling Sent screen"""
-    SEARCH = EventsScreen.SEARCH_FIELD
+    #SEARCH = EventsScreen.SEARCH_FIELD
     SENT_COMMUNICATIONS_EMAIL = (MobileBy.CSS_SELECTOR, '')
 
 
@@ -321,6 +343,7 @@ class ComposeScreen:
     VOICE_OK = (MobileBy.CSS_SELECTOR, '#voiceOK')
     MESSAGE_FAX = (MobileBy.CSS_SELECTOR, 'a[href="#messageFax"]')
     FAX_DOCUMENT_BUTTON = (MobileBy.CSS_SELECTOR, '#faxDocumentMethod')
+    FAX_OK_BUTTON = (MobileBy.CSS_SELECTOR, 'div#messageFax>div[data-role="footer"]>div[data-role="navbar"]>ul>li.ui-block-a>a')
     COMMS_DOCUMENTS_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#documentfolderTreeView?selector=true&id=2"]')
     ADD_CONTACTS_AND_GROUPS = (MobileBy.CSS_SELECTOR, 'a.maywrap.ui-link.ui-btn.ui-shadow.ui-corner-all')  # list of two elements - select [0]
     ADD_RESOURCES_STRUCTURE_NODES = (MobileBy.CSS_SELECTOR, 'a.maywrap.ui-link.ui-btn.ui-shadow.ui-corner-all')  # list of two elements - select [1]
@@ -336,6 +359,10 @@ class RisksScreen:
     CREATE_RISK_REGISTER = (MobileBy.CSS_SELECTOR, 'a[href="#riskregisterNew"]')
     NAME_FOR_NEW_RISK_REGISTER = (MobileBy.CSS_SELECTOR, 'input#name')
     CREATE_NEW_CONTEXT_INPUT_FIELD = (MobileBy.CSS_SELECTOR, 'input[id="or create new context"]')
+    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#riskregisterNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                          'a[href="#save"]')
+    CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#riskregisterNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                            'a[href="#cancel"]')
     FIRST_RISK_REGISTER_ON_THE_LIST = (MobileBy.CSS_SELECTOR, '')
     ADD_NEW_CONTEXT = (MobileBy.CSS_SELECTOR, '')
     NEW_BUTTON = (MobileBy.CSS_SELECTOR, '')

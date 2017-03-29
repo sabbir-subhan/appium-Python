@@ -17,32 +17,37 @@ class BasePage(unittest.TestCase):
         self.driver = driver
         self.configuration = import_module('Conf.locators_' + ENVIRONMENT_TEST)
 
+        # self.configuration = import_module('Conf.locators_for_webview')
+        # sleep(5)
+        # contexts = self.driver.contexts
+        # self.driver.switch_to.context(contexts[1])
+
     def switch_context_to_webview(self):
 
-        print("switching context")
+        # print("switching context")
         # print(self.configuration)
         self.configuration = import_module('Conf.locators_for_webview')
         # print(self.configuration)
-        current = self.driver.current_context
-        print('current context is: ' + current)
+        # current = self.driver.current_context
+        # print('current context is: ' + current)
         contexts = self.driver.contexts
-        print('available contexts: ' + str(contexts))
+        # print('available contexts: ' + str(contexts))
         self.driver.switch_to.context(contexts[1])
-        current_after_switch = self.driver.current_context
-        print('current context is: ' + current_after_switch)
+        # current_after_switch = self.driver.current_context
+        # print('current context is: ' + current_after_switch)
         sleep(0.5)
 
     def switch_context_to_native(self):
 
-        print("switching context")
+        # print("switching context")
         # print(self.configuration)
         self.configuration = import_module('Conf.locators_' + ENVIRONMENT_TEST)
         # print(self.configuration)
-        current = self.driver.current_context
-        print('current context is: ' + current)
+        # current = self.driver.current_context
+        # print('current context is: ' + current)
         contexts = self.driver.contexts
-        print('available contexts: ' + str(contexts))
+        # print('available contexts: ' + str(contexts))
         self.driver.switch_to.context(contexts[0])
-        current_after_switch = self.driver.current_context
-        print('current context is: ' + current_after_switch)
+        # current_after_switch = self.driver.current_context
+        # print('current context is: ' + current_after_switch)
         sleep(0.5)

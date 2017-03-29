@@ -40,7 +40,7 @@ class SetupTestCase(unittest.TestCase):
 
         # sleep(45)  # wait for appium server to start
 
-        logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
+        logging.info(" WebDriver request initiated. Waiting for response, this may take a while.")
 
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()
 

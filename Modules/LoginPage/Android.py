@@ -38,3 +38,4 @@ class Android(LoginPage):
         logging.info("type domain address")
         domain_field.send_keys(Credentials.get_domain(domain))
 
+

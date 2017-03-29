@@ -7,6 +7,25 @@ import logging
 
 class EventsPage(BasePage):
 
+    def click_More_button(self):
+
+        self.switch_context_to_webview()
+
+        # sleep(1)
+        # logging.info("click 'More' button")
+        # more_button = self.driver.find_element(*self.configuration.CommonScreen.SPINNER_ON_THE_RIGHT)
+        # self.assertIsNotNone(more_button, "More button was not found")
+        # more_button.click()
+        # sleep(0.5)
+        sleep(1)
+        logging.info("click 'More' button")
+        more_button = self.driver.find_element(*self.configuration.EventsScreen.MORE_BUTTON)
+        self.assertIsNotNone(more_button, "More button was not found")
+        more_button.click()
+        sleep(0.5)
+
+        self.switch_context_to_native()
+
     def check_if_EVENTS_were_opened(self):
 
         sleep(2)
@@ -44,12 +63,16 @@ class EventsPage(BasePage):
 
     def click_New_event_button(self):
 
+        self.switch_context_to_webview()
+
         sleep(1)
         logging.info("clicking in New event button")
         new_event_button = self.driver.find_element(*self.configuration.EventsScreen.NEW_EVENT_BUTTON)
         self.assertIsNotNone(new_event_button, "New Event button not found")
         new_event_button.click()
         sleep(0.5)
+
+        self.switch_context_to_native()
 
     def click_New_sub_event(self):
 

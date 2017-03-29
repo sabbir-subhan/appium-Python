@@ -20,6 +20,9 @@ class DesiredCapabilities(object):
             # "appActivity": "com.noggin.oca.MainActivity",
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
+            "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
+            "appWaitDuration": 20000,
+            "deviceReadyTimeout": 15,
             "newCommandTimeout": 60,  # How long (in seconds) Appium will wait for a new command from the client before assuming the client quit and ending the session
             "clearSystemFiles": True,
             "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
@@ -37,6 +40,9 @@ class DesiredCapabilities(object):
             "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
+            "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
+            "appWaitDuration": 20000,
+            "deviceReadyTimeout": 5,
             "newCommandTimeout": 60,
             "clearSystemFiles": True,
             "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
@@ -48,12 +54,16 @@ class DesiredCapabilities(object):
         },
 
         "Android 5 emulator": {
+            # Google Nexus 4 - 5.0.0 - API 21 - 768x1280
             "platformName": "ANDROID",
-            "platformVersion": "5.1.0",
+            "platformVersion": "5.0.0",
             "deviceName": "192.168.56.101:5555",
             "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
+            "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
+            "appWaitDuration": 20000,
+            "deviceReadyTimeout": 5,
             "newCommandTimeout": 60,
             "clearSystemFiles": True,
             "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
@@ -61,16 +71,20 @@ class DesiredCapabilities(object):
             "chromeOptions": {
                 "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
             },
-            "DeviceReadyTimeout": 300  # Android only
+            "androidDeviceReadyTimeout": 60  # Android only
         },
 
         "Android 6 emulator": {
+            # Google Nexus 5 - 6.0.0 - API 23 - 1080x1920
             "platformName": "ANDROID",
             "platformVersion": "6.0",
             "deviceName": "192.168.56.101:5555",
             "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
+            "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
+            "appWaitDuration": 20000,
+            "deviceReadyTimeout": 5,
             # "fullReset": True,
             "newCommandTimeout": 60,
             "clearSystemFiles": True,
@@ -79,7 +93,7 @@ class DesiredCapabilities(object):
             "chromeOptions": {
                 "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
             },
-            "DeviceReadyTimeout": 300  # Android only
+            "androidDeviceReadyTimeout": 60  # Android only
         },
 
         "Android 6": {  # UPDATED TO ANDROID 7.0
@@ -90,6 +104,9 @@ class DesiredCapabilities(object):
             "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
+            "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
+            "appWaitDuration": 20000,
+            "deviceReadyTimeout": 5,
             "newCommandTimeout": 60,
             "clearSystemFiles": True,
             "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
@@ -109,9 +126,12 @@ class DesiredCapabilities(object):
             # "appActivity": "com.noggin.oca.MainActivity",
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
-            # "autoAcceptAlerts": True,  # not working with Android
+            "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
+            "appWaitDuration": 20000,
+            "deviceReadyTimeout": 5,
             "newCommandTimeout": 60,
             "automationName": "Appium",
+            # "autoAcceptAlerts": True,  # not working with Android
             # "browserName": "Chromium",
             "clearSystemFiles": True,
             # "fullReset": True,
@@ -124,12 +144,16 @@ class DesiredCapabilities(object):
         },
 
         "Android 7 emulator": {
+            # Google Nexus 5X - 7.0.0 - API 24 - 1080x1920
             "platformName": "ANDROID",
             "platformVersion": "7.0",
             "deviceName": "192.168.56.101:5555",
             "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
+            "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
+            "appWaitDuration": 20000,
+            "deviceReadyTimeout": 5,
             "newCommandTimeout": 60,
             "clearSystemFiles": True,
             "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
@@ -137,7 +161,7 @@ class DesiredCapabilities(object):
             "chromeOptions": {
                 "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
             },
-            "DeviceReadyTimeout": 300  # Android only
+            "androidDeviceReadyTimeout": 60  # Android only
         },
 
         "IOS 9": {
@@ -200,7 +224,7 @@ class DesiredCapabilities(object):
         "IOS 10 emulator": {
             # iPhone 7 simulator with iOS 10.2
             "platformName": "iOS",
-            "platformVersion": "10.2",
+            "platformVersion": "10.3",
             "deviceName": "iPhone 7",
             "app": PATH("/Users/lukasl/Build_xcode/Products/iPhone7/OCA.app"),
             "bundleId": "com.noggin.ocalukasl",

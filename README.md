@@ -70,6 +70,9 @@ file /Conf/desired_capabilities.py and appium settings:
 
 - another console: ios_webkit_debug_proxy -c <device uuid>:27753
 
+iPhone: ios_webkit_debug_proxy -c 4b15c4284897fa6f9b4c5205325a9cece997ad35:27753
+iPad: ios_webkit_debug_proxy -c db55c238e873230ee454c54a63724397a2981acd:27753
+
 
 ### **run iOS9 and iOS10** ###
 

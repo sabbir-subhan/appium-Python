@@ -38,11 +38,15 @@ class Android(EventsPage):
 
     def clear_Search_field(self):
 
+        self.switch_context_to_native()
+
         logging.info("clear search field")
         search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
         action = TouchAction(self.driver)
         action.long_press(el=search_field, duration=1000).perform()
         self.driver.keyevent(67)
+
+        self.switch_context_to_webview()
 
         # after clearing search filed on Android device - "More" button is dropped to the bottom of the events list,
         # so to avoid unnecessary scrolling Appium will tap on hamburger button to go to main menu and reopen Events
@@ -59,14 +63,14 @@ class Android(EventsPage):
         # main_page.setDriver(self.driver)
         # main_page.open_EVENTS()
 
-    def click_More_button(self):
-
-        sleep(1)
-        logging.info("click 'More' button")
-        more_button = self.driver.find_element(*self.configuration.CommonScreen.SPINNER_ON_THE_RIGHT)
-        self.assertIsNotNone(more_button, "More button was not found")
-        more_button.click()
-        sleep(0.5)
+    # def click_More_button(self):
+    #
+    #     sleep(1)
+    #     logging.info("click 'More' button")
+    #     more_button = self.driver.find_element(*self.configuration.CommonScreen.SPINNER_ON_THE_RIGHT)
+    #     self.assertIsNotNone(more_button, "More button was not found")
+    #     more_button.click()
+    #     sleep(0.5)
 
     def clear_primary_event(self):
 

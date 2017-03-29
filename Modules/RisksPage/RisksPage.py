@@ -1,7 +1,6 @@
 """A class for methods to handle Risks Page """
 
 from Modules.BasePage.BasePage import BasePage
-from Modules.load_class import LoadClass
 import logging
 
 
@@ -16,8 +15,6 @@ class RisksPage(BasePage):
         self.assertIsNotNone(create_risk_register_button, "Create Risk Register button not found")
         create_risk_register_button.click()
 
-        self.switch_context_to_native()
-
     def type_name_for_new_risk_register(self):
 
         self.switch_context_to_webview()
@@ -27,8 +24,6 @@ class RisksPage(BasePage):
         self.assertIsNotNone(name, "name input field was not found")
         name.click()
         name.send_keys('Appium - new risk register')
-
-        self.switch_context_to_native()
 
     def create_new_context(self):
 
@@ -40,13 +35,14 @@ class RisksPage(BasePage):
         name.click()
         name.send_keys('Appium - new context')
 
-        self.switch_context_to_native()
-
     def click_save_button(self):
 
-        event_edit_page = LoadClass.load_page('EventEditPage')
-        event_edit_page.setDriver(self.driver)
-        event_edit_page.click_save_button()
+        self.switch_context_to_webview()
+
+        logging.info("click save button")
+        click_save_button = self.driver.find_element(*self.configuration.RiskScreen.SAVE_BUTTON)
+        self.assertIsNotNone(click_save_button, "Save button not found")
+        click_save_button.click()
 
     def open_existing_risk_register(self):
 
