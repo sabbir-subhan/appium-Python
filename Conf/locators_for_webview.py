@@ -4,7 +4,7 @@ from appium.webdriver.common.mobileby import MobileBy
 class CommonScreen:
     """A class for handling Common buttons on different screen"""
     LOADING = (MobileBy.CSS_SELECTOR, 'span.ui-icon-loading')
-    OK_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    #OK_BUTTON = (MobileBy.CSS_SELECTOR, '')
 
 
 class TopBar:
@@ -26,9 +26,9 @@ class WelcomeScreen:
 
 class SettingsScreen:
     """A class for settings screen locators - screen after clicking settings button"""
-    SETTINGS_CONTACT_IDENTIFIER_FIELD = (MobileBy.CSS_SELECTOR, '')
-    SETTINGS_ALERT_APP_HAS_BEEN_ACTIVATED = (MobileBy.CSS_SELECTOR, '')
-    SETTINGS_OK_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    # SETTINGS_CONTACT_IDENTIFIER_FIELD = (MobileBy.CSS_SELECTOR, '')
+    # SETTINGS_ALERT_APP_HAS_BEEN_ACTIVATED = (MobileBy.CSS_SELECTOR, '')
+    # SETTINGS_OK_BUTTON = (MobileBy.CSS_SELECTOR, '')
 
 
 class LoginScreen:
@@ -47,19 +47,19 @@ class LoginScreen:
     # ACCEPT_BUTTON on Terms and Conditions"
     ACCEPT_BUTTON = (MobileBy.CSS_SELECTOR, 'a#sessionTermsAccept')
 
-    # alert message with word "Invalid"
-    ALERT_MSG_INVALID = (MobileBy.CSS_SELECTOR, '')
-
-    # alert message with "Your temporary account has been expired"
-    ALERT_MSG_EXPIRED = (MobileBy.CSS_SELECTOR, '')
-
-    # alert message with "The password for the current user is about to expire"
-    ALERT_MSG_WILL_EXPIRE = (MobileBy.CSS_SELECTOR, '')
-
-    # alert message with word "inactive"
-    ALERT_MSG_SUSPENDED = (MobileBy.CSS_SELECTOR, '')
-    # OK button on alert messages"
-    OK_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    # # alert message with word "Invalid"
+    # ALERT_MSG_INVALID = (MobileBy.CSS_SELECTOR, '')
+    #
+    # # alert message with "Your temporary account has been expired"
+    # ALERT_MSG_EXPIRED = (MobileBy.CSS_SELECTOR, '')
+    #
+    # # alert message with "The password for the current user is about to expire"
+    # ALERT_MSG_WILL_EXPIRE = (MobileBy.CSS_SELECTOR, '')
+    #
+    # # alert message with word "inactive"
+    # ALERT_MSG_SUSPENDED = (MobileBy.CSS_SELECTOR, '')
+    # # OK button on alert messages"
+    # OK_BUTTON = (MobileBy.CSS_SELECTOR, '')
 
 
 class MainMenuScreen(WelcomeScreen):
@@ -89,9 +89,9 @@ class MainMenuScreen(WelcomeScreen):
     OFFLINE_SYNC_BUTTON = (MobileBy.CSS_SELECTOR, 'div#outboxMenu>a')
     LOGOUT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#sessionMenu>a')
 
-    ALERT_ACTIVATE_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    ALERT_CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    ALERT_WORKFLOW_ACTIVATED = (MobileBy.CSS_SELECTOR, '')
+    # ALERT_ACTIVATE_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    # ALERT_CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    # ALERT_WORKFLOW_ACTIVATED = (MobileBy.CSS_SELECTOR, '')
 
 
 class LocationScreen:
@@ -140,15 +140,15 @@ class EventsScreen:
     # previously created event
     #PREVIOUSLY_CREATED_EVENT = (MobileBy.CSS_SELECTOR, '')
 
-    CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.CSS_SELECTOR, '')
+    # CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    # NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.CSS_SELECTOR, '')
 
 
 class TypesOfEventsScreen:
     """A class for Type of Events screen locators - first screen after creating new event with types of events."""
-    INCIDENT_TYPE_OF_EVENT = (MobileBy.CSS_SELECTOR, '')
-    EVENT_FOR_ON_LOAD_SAVE = (MobileBy.CSS_SELECTOR, '')
-    EVENT_FOR_CHOOSER_FIELDS = (MobileBy.CSS_SELECTOR, '')
+    # INCIDENT_TYPE_OF_EVENT = (MobileBy.CSS_SELECTOR, '')
+    # EVENT_FOR_ON_LOAD_SAVE = (MobileBy.CSS_SELECTOR, '')
+    # EVENT_FOR_CHOOSER_FIELDS = (MobileBy.CSS_SELECTOR, '')
 
 
 class EventEditScreen:
@@ -158,12 +158,12 @@ class EventEditScreen:
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
     NAME_FIELD = (MobileBy.CSS_SELECTOR, 'div#emeNew>div>ul>li>div>input#name')
-    SEVERITY_LEVEL_SELECTOR = (MobileBy.CSS_SELECTOR, '')
-    CHOOSE_SEVERITY_LVL1_iPad = (MobileBy.CSS_SELECTOR, '')
-    CHOOSE_SEVERITY_LVL2_iPad = (MobileBy.CSS_SELECTOR, '')
-    CHOOSE_SEVERITY_LVL3_iPad = (MobileBy.CSS_SELECTOR, '')
-    CHOOSE_SEVERITY_LVL4_iPad = (MobileBy.CSS_SELECTOR, '')
-    CHOOSE_SEVERITY_LVL5_iPad = (MobileBy.CSS_SELECTOR, '')
+    # SEVERITY_LEVEL_SELECTOR = (MobileBy.CSS_SELECTOR, '')
+    # CHOOSE_SEVERITY_LVL1_iPad = (MobileBy.CSS_SELECTOR, '')
+    # CHOOSE_SEVERITY_LVL2_iPad = (MobileBy.CSS_SELECTOR, '')
+    # CHOOSE_SEVERITY_LVL3_iPad = (MobileBy.CSS_SELECTOR, '')
+    # CHOOSE_SEVERITY_LVL4_iPad = (MobileBy.CSS_SELECTOR, '')
+    # CHOOSE_SEVERITY_LVL5_iPad = (MobileBy.CSS_SELECTOR, '')
     SEVERITY_PICKER = (MobileBy.XPATH, '//XCUIElementTypeApplication/XCUIElementTypeWindow'
                                        '/XCUIElementTypePicker/XCUIElementTypePickerWheel')
     FINISHED_FIELD = (MobileBy.CSS_SELECTOR, '')
@@ -224,7 +224,7 @@ class Map:
 
 class PhotoScreen:
     """A class for Photo screen locators - screen after clicking into Photo button in Main Menu."""
-    PHOTO_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
+    #PHOTO_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
     GALLERY_BUTTON = (MobileBy.CSS_SELECTOR, '')
     TAKE_NEW_BUTTON = (MobileBy.CSS_SELECTOR, '')
     DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, '')
@@ -235,13 +235,13 @@ class PhotoScreen:
 
 class VideoScreen:
     """A class for Video screen locators - screen after clicking into Video button in Main Menu."""
-    VIDEO_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
+    #VIDEO_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
     RECORD_NEW_BUTTON = (MobileBy.CSS_SELECTOR, '')
 
 
 class SoundScreen:
     """A class for Sound screen locators - screen after clicking into Sound button in Main Menu."""
-    SOUND_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
+    #SOUND_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
     RECORD_SOUND_BUTTON = (MobileBy.CSS_SELECTOR, '')
 
 
@@ -364,9 +364,7 @@ class RisksScreen:
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#riskregisterNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
     FIRST_RISK_REGISTER_ON_THE_LIST = (MobileBy.CSS_SELECTOR, '')
-    ADD_NEW_CONTEXT = (MobileBy.CSS_SELECTOR, '')
-    NEW_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    VIEW_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    NAME_FIELD_FOR_CONTEXT = (MobileBy.CSS_SELECTOR, '')
-    FIRST_CONTEXT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, '')
+    NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#riskcontextTreeMoreMenu"]')
+    ADD_NEW_CONTEXT = (MobileBy.CSS_SELECTOR, 'a[href="#riskcontextNew?parent=0"]')
+
 

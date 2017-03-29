@@ -64,7 +64,6 @@ class test_ManagingEvents(SetupTestCase):
         # moving to EVENTS
         logging.info("TC info: filter events, create first Event and delete it")
         main_page.open_EVENTS()
-        common_page.wait_for_app_loading()
         events_page = LoadClass.load_page('EventsPage')
         events_page.setDriver(self.driver)
         events_page.filter_events_by_Type()

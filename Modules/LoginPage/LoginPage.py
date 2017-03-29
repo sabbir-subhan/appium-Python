@@ -17,9 +17,9 @@ class LoginPage(BasePage):
         self.driver.find_element(*self.configuration.LoginScreen.SUBMIT_BUTTON).click()
         sleep(2)
 
-        common_page = LoadClass.load_page('CommonPage')
-        common_page.setDriver(self.driver)
-        common_page.wait_for_app_loading()
+        # common_page = LoadClass.load_page('CommonPage')
+        # common_page.setDriver(self.driver)
+        # common_page.wait_for_app_loading()
 
         self.switch_context_to_native()
 

@@ -35,12 +35,14 @@ class RisksPage(BasePage):
         name.click()
         name.send_keys('Appium - new context')
 
+        self.switch_context_to_native()
+
     def click_save_button(self):
 
         self.switch_context_to_webview()
 
         logging.info("click save button")
-        click_save_button = self.driver.find_element(*self.configuration.RiskScreen.SAVE_BUTTON)
+        click_save_button = self.driver.find_element(*self.configuration.RisksScreen.SAVE_BUTTON)
         self.assertIsNotNone(click_save_button, "Save button not found")
         click_save_button.click()
 
@@ -54,10 +56,14 @@ class RisksPage(BasePage):
 
     def click_new_button(self):
 
+        self.switch_context_to_webview()
+
         logging.info("click new button")
         click_new_button = self.driver.find_element(*self.configuration.RiskScreen.NEW_BUTTON)
         self.assertIsNotNone(click_new_button, "New button not found")
         click_new_button.click()
+
+        self.switch_context_to_native()
 
     def click_add_new_context(self):
 

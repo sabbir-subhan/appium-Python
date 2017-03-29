@@ -42,10 +42,6 @@ class NewLogPage(BasePage):
 
         self.switch_context_to_native()
 
-        common_page = LoadClass.load_page('CommonPage')
-        common_page.setDriver(self.driver)
-        common_page.wait_for_app_loading()
-
         # event_edit_page = LoadClass.load_page('EventEditPage')
         # event_edit_page.setDriver(self.driver)
         # event_edit_page.click_save_button()

@@ -393,11 +393,8 @@ class ComposeScreen:
 class RisksScreen:
     """A class for handling Risks screen"""
     CREATE_RISK_REGISTER = (MobileBy.ACCESSIBILITY_ID, 'Create risk register')
-    NAME_FOR_NEW_RISK_REGISTER = (MobileBy.XPATH, '')
     FIRST_RISK_REGISTER_ON_THE_LIST = (MobileBy.XPATH, '')
-    ADD_NEW_CONTEXT = (MobileBy.XPATH, '')
     NEW_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "New")]]')
     VIEW_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "View")]]')
-    NAME_FIELD_FOR_CONTEXT = (MobileBy.XPATH, '')
-    FIRST_CONTEXT_ON_THE_LIST = (MobileBy.XPATH, '')
+
 

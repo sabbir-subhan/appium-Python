@@ -132,7 +132,7 @@ class EventEditPage(BasePage):
 
         sleep(1)
         logging.info("click Save button")
-        save_button = self.driver.find_element(*self.configuration.CommonScreen.SAVE_BUTTON)
+        save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON)
         self.assertIsNotNone(save_button, "Save button not found")
         save_button.click()
         sleep(10)

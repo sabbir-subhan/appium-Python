@@ -73,6 +73,9 @@ class test_Risk(SetupTestCase):
         risks_page.scroll_down_to_save_button()
         risks_page.click_save_button()
 
+        risks_page.open_existing_risk_register()
+        risks_page.click_new_button()
+        risks_page.click_add_new_context()
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(test_Risk)
