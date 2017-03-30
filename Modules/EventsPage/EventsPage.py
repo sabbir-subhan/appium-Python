@@ -7,6 +7,39 @@ import logging
 
 class EventsPage(BasePage):
 
+    def filter_events_by_Search_field(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("search field - search event named: 'search'")
+        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
+        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).send_keys("search")
+
+        self.switch_context_to_native()
+
+    def clear_Search_field(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("clear search field")
+        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+        search_field.clear()
+
+        self.switch_context_to_native()
+
+    def filter_events_to_find_previous_event(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("search field - search event named: 'app'")
+        sleep(2)
+        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+        search_field.click()
+        search_field.send_keys("app")
+
+        self.switch_context_to_native()
+
     def click_More_button(self):
 
         self.switch_context_to_webview()
@@ -95,10 +128,15 @@ class EventsPage(BasePage):
 
         sleep(2)
         logging.info("open created event")
-        created_event = self.driver.find_element(*self.configuration.EventsScreen.PREVIOUSLY_CREATED_EVENT)
-        self.assertIsNotNone(created_event, "Previously created event not found")
-        created_event.click()
+        created_event = self.driver.find_elements(*self.configuration.EventsScreen.PREVIOUSLY_CREATED_EVENT)
+        created_event[0].click()
         sleep(5)
+        # sleep(2)
+        # logging.info("open created event")
+        # created_event = self.driver.find_element(*self.configuration.EventsScreen.PREVIOUSLY_CREATED_EVENT)
+        # self.assertIsNotNone(created_event, "Previously created event not found")
+        # created_event.click()
+        # sleep(5)
 
     # def open_previously_created_event2(self):
     #

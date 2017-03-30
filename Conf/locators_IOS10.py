@@ -185,6 +185,7 @@ class TypesOfEventsScreen:
 
 class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
+    SAVE_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Save"]')
     NAME_FIELD = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
     NAME_FIELD_by_index = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]'
                                            '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
@@ -393,7 +394,7 @@ class ComposeScreen:
 class RisksScreen:
     """A class for handling Risks screen"""
     CREATE_RISK_REGISTER = (MobileBy.ACCESSIBILITY_ID, 'Create risk register')
-    FIRST_RISK_REGISTER_ON_THE_LIST = (MobileBy.XPATH, '')
+    PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.XPATH, '')
     NEW_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "New")]]')
     VIEW_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "View")]]')
 

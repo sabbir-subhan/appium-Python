@@ -14,9 +14,19 @@ class NewReportPage(BasePage):
 
     def type_title(self, text):
 
-        new_task_page = LoadClass.load_page('NewTaskPage')
-        new_task_page.setDriver(self.driver)
-        new_task_page.type_title(text)
+        self.switch_context_to_webview()
+
+        logging.info("type title")
+        title = self.driver.find_element(*self.configuration.NewReportScreen.TITLE)
+        self.assertIsNotNone(title, "Title input field was not found")
+        title.click()
+        title.send_keys(text)
+
+        self.switch_context_to_native()
+
+        # new_task_page = LoadClass.load_page('NewTaskPage')
+        # new_task_page.setDriver(self.driver)
+        # new_task_page.type_title(text)
 
     def click_on_lodging_agency_picker(self):
 

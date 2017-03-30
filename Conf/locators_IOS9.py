@@ -359,7 +359,7 @@ class ComposeScreen:
 class RisksScreen:
     """A class for handling Risks screen"""
     CREATE_RISK_REGISTER = (MobileBy.ACCESSIBILITY_ID, 'Create risk register')
-    FIRST_RISK_REGISTER_ON_THE_LIST = (MobileBy.XPATH, '')
+    PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.XPATH, '')
     NEW_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "New")]]')
     VIEW_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "View")]]')
 

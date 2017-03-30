@@ -2,6 +2,7 @@
 
 from Modules.BasePage.BasePage import BasePage
 import logging
+from time import sleep
 
 
 class RisksPage(BasePage):
@@ -46,11 +47,23 @@ class RisksPage(BasePage):
         self.assertIsNotNone(click_save_button, "Save button not found")
         click_save_button.click()
 
+    def filter_risks_registers(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("filter Risks Registers to find previously created Risk register")
+        risks_register_search_field = self.driver.find_element(*self.configuration.RisksScreen.SEARCH_FIELD)
+        risks_register_search_field.click()
+        risks_register_search_field.clear()
+        risks_register_search_field.send_keys("Appium")
+
+        self.switch_context_to_native()
+
     def open_existing_risk_register(self):
 
         logging.info("open first risk register on the list")
         open_existing_risk_register = self.driver.find_element(*self.configuration.RisksScreen.
-                                                               FIRST_RISK_REGISTER_ON_THE_LIST)
+                                                               PREVIOUSLY_CREATED_RISK_REGISTER)
         self.assertIsNotNone(open_existing_risk_register, "open existing Risk Register")
         open_existing_risk_register.click()
 
@@ -59,7 +72,7 @@ class RisksPage(BasePage):
         self.switch_context_to_webview()
 
         logging.info("click new button")
-        click_new_button = self.driver.find_element(*self.configuration.RiskScreen.NEW_BUTTON)
+        click_new_button = self.driver.find_element(*self.configuration.RisksScreen.NEW_BUTTON)
         self.assertIsNotNone(click_new_button, "New button not found")
         click_new_button.click()
 

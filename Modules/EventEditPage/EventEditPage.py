@@ -22,16 +22,23 @@ class EventEditPage(BasePage):
 
     def type_text_into_description_field(self):
 
-        self.switch_context_to_webview()
+        #self.switch_context_to_webview()
 
         sleep(4)
         logging.info("type some text into description field")
         self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD).click()
         self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD).send_keys("test appium")
 
-        self.switch_context_to_native()
+        #self.switch_context_to_native()
 
     def click_severity_lvl_picker(self):
+
+        # self.switch_context_to_webview()
+        #
+        # logging.info("click on severity level field")
+        # self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR).click()
+        #
+        # self.switch_context_to_native()
 
         logging.info("click on severity level field")
         # self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR).click()
@@ -126,13 +133,28 @@ class EventEditPage(BasePage):
         event_chooser_in_subform.click()
         sleep(5)
 
-    def click_save_button(self):
+    def click_save_new_event(self):
 
         self.switch_context_to_webview()
 
         sleep(1)
         logging.info("click Save button")
-        save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON)
+        sleep(1)
+        save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON_NEW_EVENT)
+        self.assertIsNotNone(save_button, "Save button not found")
+        save_button.click()
+        sleep(10)
+
+        self.switch_context_to_native()
+
+    def click_save_edited_event(self):
+
+        self.switch_context_to_webview()
+
+        sleep(1)
+        logging.info("click Save button")
+        sleep(1)
+        save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON_EDIT_EVENT)
         self.assertIsNotNone(save_button, "Save button not found")
         save_button.click()
         sleep(10)

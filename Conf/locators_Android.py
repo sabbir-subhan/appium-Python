@@ -196,6 +196,7 @@ class TypesOfEventsScreen:
 
 class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
+    SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
     NAME_FIELD = (MobileBy.ID, 'name')
     NAME_FIELD2 = (MobileBy.XPATH, '//android.widget.EditText[@index="1"]')
     SEVERITY_LEVEL_SELECTOR = (MobileBy.ID, 'field-1801')
@@ -403,7 +404,8 @@ class ComposeScreen:
     EMAIL_SUBJECT_FIELD = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="Subject"]')
     EMAIL_TEXT_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "emailBody")]]'
                                         '/android.view.View/android.view.View/android.view.View'
-                                        '/android.view.View')
+                                        '/android.view.View')  # android 4,5,7
+    EMAIL_TEXT_FIELD2 = (MobileBy.XPATH, '//android.view.View[@content-desc="Rich Text Editor, emailBody"]//android.view.View[@clickable="true"]')  # android 6
     MESSAGE_SMS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "SMS")]]')
     SMS_TEXT_FIELD = (MobileBy.CLASS_NAME, 'android.widget.EditText')
     MESSAGE_VOICE = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Voice")]]')
@@ -439,8 +441,8 @@ class ComposeScreen:
 class RisksScreen:
     """A class for handling Risks screen"""
     CREATE_RISK_REGISTER = (MobileBy.ACCESSIBILITY_ID, 'Create risk register')
-    FIRST_RISK_REGISTER_ON_THE_LIST = (MobileBy.XPATH, '//android.view.View[2]/'
-                                                       'android.widget.ListView[1]/android.view.View[1]')
+    PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.XPATH, '//android.view.View[2]/'
+                                                        'android.widget.ListView[1]/android.view.View[1]')
     ADD_NEW_CONTEXT = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Add new context")]]')
     VIEW_BUTTON = CommonScreen.SPINNER_ON_THE_LEFT
     NAME_FIELD_FOR_CONTEXT = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="Name"]')

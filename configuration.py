@@ -57,6 +57,12 @@ elif platform == "Android 7 emulator":
     ENVIRONMENT_MIDDLE_CLASS = None
     PLATFORM_VERSION = "7.0"
 
+elif platform == "Android 7.1 emulator":
+
+    ENVIRONMENT_TEST = "Android"
+    ENVIRONMENT_MIDDLE_CLASS = None
+    PLATFORM_VERSION = "7.1"
+
 elif platform == "Android 6":
 
     ENVIRONMENT_TEST = "Android"

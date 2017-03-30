@@ -110,7 +110,7 @@ class test_QuickAccessButtons(SetupTestCase):
         event_edit_page.fill_Name_input_field("Name for new incident test")
         common_page.hide_keyboard()
         event_edit_page.scroll_down_to_save_button()
-        event_edit_page.click_save_button()
+        event_edit_page.click_save_new_event()
         main_page.check_presence_of_events_button()
         main_page.open_CREATE_ASSETS()
         new_asset_page = LoadClass.load_page('NewAssetPage')

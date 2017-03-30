@@ -10,14 +10,23 @@ class NewTaskPage(BasePage):
 
     def type_title(self, text):
 
+        self.switch_context_to_webview()
+
         logging.info("type title")
-        try:
-            title = self.driver.find_element(*self.configuration.NewTaskScreen.TITLE)
-        except NoSuchElementException:
-            title = self.driver.find_element(*self.configuration.NewTaskScreen.TITLE2)
+        title = self.driver.find_element(*self.configuration.NewTaskScreen.TITLE)
         self.assertIsNotNone(title, "Title input field was not found")
         title.click()
         title.send_keys(text)
+
+        self.switch_context_to_native()
+
+        # try:
+        #     title = self.driver.find_element(*self.configuration.NewTaskScreen.TITLE)
+        # except NoSuchElementException:
+        #     title = self.driver.find_element(*self.configuration.NewTaskScreen.TITLE2)
+        # self.assertIsNotNone(title, "Title input field was not found")
+        # title.click()
+        # title.send_keys(text)
 
     def click_on_assigned(self):
 

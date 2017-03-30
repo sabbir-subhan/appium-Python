@@ -48,7 +48,7 @@ class ComposePage(BasePage):
         send_button = self.driver.find_element(*self.configuration.ComposeScreen.SEND_BUTTON)
         self.assertIsNotNone(send_button, "Send button not found")
         send_button.click()
-        sleep(1)
+        sleep(2)
 
         self.switch_context_to_native()
 
@@ -184,7 +184,7 @@ class ComposePage(BasePage):
 
     def type_email_subject(self):
 
-        self.switch_context_to_webview()
+        #self.switch_context_to_webview()
 
         logging.info('type email subject')
         email_subject_text_field = self.driver.find_element(*self.configuration.ComposeScreen.EMAIL_SUBJECT_FIELD)
@@ -193,20 +193,26 @@ class ComposePage(BasePage):
         email_subject_text_field.send_keys('Test email subject')
         sleep(2)
 
-        self.switch_context_to_native()
+        #self.switch_context_to_native()
 
     def type_email_message(self):
 
-        self.switch_context_to_webview()
+        #self.switch_context_to_webview()
 
-        sleep(4)
+        sleep(2)
         logging.info('type email msg')
-        email_text_field = self.driver.find_element(*self.configuration.ComposeScreen.EMAIL_TEXT_FIELD)
+        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        platform_name = desired_capabilities.get('platformName')
+        platform_version = desired_capabilities.get('platformVersion')
+        if "Android" in str(platform_name) and "6" in str(platform_version):
+            email_text_field = self.driver.find_element(*self.configuration.ComposeScreen.EMAIL_TEXT_FIELD2)
+        else:
+            email_text_field = self.driver.find_element(*self.configuration.ComposeScreen.EMAIL_TEXT_FIELD)
         self.assertIsNotNone(email_text_field, 'email msg field button not found')
         email_text_field.click()
         email_text_field.send_keys('Test email')
 
-        self.switch_context_to_native()
+        #self.switch_context_to_native()
 
     def choose_voice_message(self):
 

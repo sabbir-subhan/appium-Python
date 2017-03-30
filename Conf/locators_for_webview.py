@@ -131,7 +131,7 @@ class EventsScreen:
     # CHOOSE_ANY_STATUS = (MobileBy.CSS_SELECTOR, '')
 
     # filtering events using search field
-    #SEARCH_FIELD = (MobileBy.CSS_SELECTOR, '')
+    SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input#emeSearch')
 
     # creating and editing Events
     MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div[data-role="footer"]>div[data-role="navbar"]>ul>li.ui-block-b>a.morearrow')
@@ -153,21 +153,21 @@ class TypesOfEventsScreen:
 
 class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
-    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
-                                          'a[href="#save"]')
+    SAVE_BUTTON_NEW_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                                    'a[href="#save"]')
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
+    SAVE_BUTTON_EDIT_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                                     'a[href="#save"]')
     NAME_FIELD = (MobileBy.CSS_SELECTOR, 'div#emeNew>div>ul>li>div>input#name')
-    # SEVERITY_LEVEL_SELECTOR = (MobileBy.CSS_SELECTOR, '')
+    #SEVERITY_LEVEL_SELECTOR = (MobileBy.CSS_SELECTOR, 'div#field-1801-button')
     # CHOOSE_SEVERITY_LVL1_iPad = (MobileBy.CSS_SELECTOR, '')
     # CHOOSE_SEVERITY_LVL2_iPad = (MobileBy.CSS_SELECTOR, '')
     # CHOOSE_SEVERITY_LVL3_iPad = (MobileBy.CSS_SELECTOR, '')
     # CHOOSE_SEVERITY_LVL4_iPad = (MobileBy.CSS_SELECTOR, '')
     # CHOOSE_SEVERITY_LVL5_iPad = (MobileBy.CSS_SELECTOR, '')
-    SEVERITY_PICKER = (MobileBy.XPATH, '//XCUIElementTypeApplication/XCUIElementTypeWindow'
-                                       '/XCUIElementTypePicker/XCUIElementTypePickerWheel')
     FINISHED_FIELD = (MobileBy.CSS_SELECTOR, '')
-    DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'div#cke_description>div>div#cke_1_contents>iframe[title="Rich Text Editor, description"]')
+    #DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'iframe[title="Rich Text Editor, description"]')
     CREATE_MAPPING_DATA = (MobileBy.CSS_SELECTOR, '')
     EDIT_MAPPING_DATA = (MobileBy.CSS_SELECTOR, '')
     ELEMENT_TO_SCROLL = (MobileBy.CSS_SELECTOR, '')
@@ -285,7 +285,7 @@ class NewTaskScreen:
                                           'a[href="#save"]')
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
-    TITLE = (MobileBy.CSS_SELECTOR, '')
+    TITLE = (MobileBy.CSS_SELECTOR, 'input.field-Name')
     ASSIGNED = (MobileBy.CSS_SELECTOR, '')
     ADD_CONTACTS_AND_GROUPS = (MobileBy.CSS_SELECTOR, '')
     ADD_RESOURCE_STRUCTURE_NODES = (MobileBy.CSS_SELECTOR, '')
@@ -298,6 +298,7 @@ class NewTaskScreen:
 
 class NewReportScreen:
     """A class for handling New Report screen"""
+    TITLE = (MobileBy.CSS_SELECTOR, 'input.field-701')
     LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, '')
     LODGING_AGENCY = (MobileBy.CSS_SELECTOR, '')
     PUBLISH_BUTTON = (MobileBy.CSS_SELECTOR, '')
@@ -331,8 +332,8 @@ class ComposeScreen:
     """A class for handling Compose screen"""
     ADD_RECIPIENTS_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#messageAddRecipients"]')
     MESSAGE_EMAIL = (MobileBy.CSS_SELECTOR, 'a[href="#messageEmail"]')
-    EMAIL_SUBJECT_FIELD = (MobileBy.CSS_SELECTOR, 'input#emailSubject')
-    EMAIL_TEXT_FIELD = (MobileBy.CSS_SELECTOR, 'div#cke_1_contents>iframe[title="Rich Text Editor, emailBody"]')
+    #EMAIL_SUBJECT_FIELD = (MobileBy.CSS_SELECTOR, 'input#emailSubject')
+    #EMAIL_TEXT_FIELD = (MobileBy.CSS_SELECTOR, 'iframe[title="Rich Text Editor, emailBody"]')
     EMAIL_OK = (MobileBy.CSS_SELECTOR, '#EmailOK')
     MESSAGE_SMS = (MobileBy.CSS_SELECTOR, 'a[href="#messageSMS"]')
     SMS_TEXT_FIELD = (MobileBy.CSS_SELECTOR, '#SMSBody')
@@ -351,7 +352,7 @@ class ComposeScreen:
     USERS_ARROW = (MobileBy.CSS_SELECTOR, 'a[href="#contactgroupTreeView?selector=true&id=3"]')
     CONTACT_FOR_APPIUM_TESTS = (MobileBy.CSS_SELECTOR, 'input[data-label="A_CONTACT_FOR_APPIUM_TESTS"]')
     SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#confirmSendMessage"]')
-    ALERT_SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'a#messageSend')
+    ALERT_SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'div.ui-controlgroup-controls>a#messageSend')
 
 
 class RisksScreen:
@@ -363,8 +364,8 @@ class RisksScreen:
                                           'a[href="#save"]')
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#riskregisterNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
-    FIRST_RISK_REGISTER_ON_THE_LIST = (MobileBy.CSS_SELECTOR, '')
+    RISK_REGISTERS_LIST = (MobileBy.CSS_SELECTOR, 'ul.registers.listview.ui-listview>li>a')  # whole list
     NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#riskcontextTreeMoreMenu"]')
     ADD_NEW_CONTEXT = (MobileBy.CSS_SELECTOR, 'a[href="#riskcontextNew?parent=0"]')
-
+    SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input#riskregisterSearch')
 

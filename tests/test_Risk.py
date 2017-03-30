@@ -9,16 +9,19 @@
 # dismiss iOS notifications
 # check if button "EVENTS" is present
 # From the main menu click on Risks.
-# Create a new Risk Register
-# Click on Risk >Click on Existing library >Click Add Control
-# Click on Risk Register>Click on new>Click on Add new Context
-# Click on Risk Register>Click on New>Click on Add new Risk
-# Click on Risk Register>Click on New>Click on Add new library Risk
-# Click on Risk>Select a Risk Register>Select a Context>Click on Context>Click on more >Add new control
-# Click on Risk>Select a Risk Register>Select a Context>Click on Context>Click on more >Delete this risk
-# Click on Risk>Select a Risk Register>Select a Context>Click on Context>Click on more >Add Library Control
-# Click on Risk>Select a Risk Register>Select a Context>Click on Context>Click on more >Mark as Reviewed
-# Click on Risk >Risk register>View>View Register
+# Click on Create a new Risk Register > Enter the details >Save
+# Click on existing Risk Register>Click on new button >Click on Add new Context
+# Click on existing Risk Register>Click on New button > Click on existing context >Click on Add new Risk
+# Click on existing Risk Register>Click on New button > Click on existing context >Click on Add new library Risk
+
+# Select existing Risk Register>Select existing Context>Click on Context>Select a Risk under that context>
+# Click on existing Risk>Click On More>Click Add new control>Select a Control you like to add to Risk>
+# Fill in Details and Save
+
+# Select existing Risk Register>Select existing Context>Click on Context>Click on more button > Delete this risk
+# Select existing Risk Register>Select existing Context>Click on Context>Click on more >Add Library Control
+# Select existing Risk Register>Select existing Context>Click on Context>Click on more >Mark as Reviewed
+# Select existing Risk register> Click View button > View Register
 
 
 from Modules.Setup import SetupTestCase
@@ -73,9 +76,11 @@ class test_Risk(SetupTestCase):
         risks_page.scroll_down_to_save_button()
         risks_page.click_save_button()
 
+        risks_page.filter_risks_registers()
         risks_page.open_existing_risk_register()
         risks_page.click_new_button()
         risks_page.click_add_new_context()
+
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(test_Risk)
