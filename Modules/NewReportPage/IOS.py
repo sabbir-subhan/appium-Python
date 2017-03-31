@@ -11,8 +11,8 @@ class IOS(NewReportPage):
     def scroll_down_to_publish_button(self):
 
         logging.info("scroll down to Publish button")
-        scroll = 0
-        while scroll == 0:
+        scroll = 20
+        while scroll > 0:
             logging.info("check if Publish button is visible")
             publish_button = self.driver.find_element(*self.configuration.NewReportScreen.PUBLISH_BUTTON)
             if publish_button.is_displayed():
@@ -20,6 +20,7 @@ class IOS(NewReportPage):
             else:
                 logging.info("scroll down to Publish button")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
+                scroll = -1
 
     def choose_lodging_agency(self):
 

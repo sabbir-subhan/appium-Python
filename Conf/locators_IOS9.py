@@ -178,6 +178,7 @@ class TypesOfEventsScreen:
 
 class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
+    SAVE_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Save"]')
     NAME_FIELD = (MobileBy.XPATH, '//UIAScrollView/UIAWebView/UIATextField[@name="Name"]')
     NAME_FIELD_by_index = (MobileBy.XPATH, '//UIAScrollView/UIAWebView/UIATextField[1]')
     SEVERITY_LEVEL_SELECTOR = (MobileBy.XPATH, '//UIAElement[2]')

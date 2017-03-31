@@ -19,14 +19,17 @@ class Android(GalleryPage):
         if platform_version >= "7":
             gallery_elements_android7 = self.driver.find_elements(*self.configuration.GalleryScreen.
                                                                   GALLERY_ELEMENTS_android7)
-            location = gallery_elements_android7[1].location
+            # gallery_elements_android7[0].click()
+            location = gallery_elements_android7[0].location
             logging.info(location)
             x = location["x"]
             y = location["y"]
             logging.info(x)
             logging.info(y)
             positions = [(x, y)]
-            self.driver.tap(positions)
+            #self.driver.tap(positions)
+            action = TouchAction(self.driver)
+            action.tap(element=gallery_elements_android7[0], x=x, y=y, count=1).perform()
         else:
             choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1)
             choose_element_1.click()

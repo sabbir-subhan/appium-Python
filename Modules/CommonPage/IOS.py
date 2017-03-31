@@ -120,6 +120,7 @@ class IOS(CommonPage):
     def click_Return_button_on_keyboard(self):
 
         logging.info("click 'Return' on keyboard")
+        # self.driver.keyevent(13)
         self.driver.find_element(*self.configuration.iOS.RETURN_BUTTON).click()
         sleep(1)
 

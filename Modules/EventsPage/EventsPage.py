@@ -3,46 +3,62 @@
 from Modules.BasePage.BasePage import BasePage
 from time import sleep
 import logging
+from selenium.common.exceptions import *
 
 
 class EventsPage(BasePage):
 
-    def filter_events_by_Search_field(self):
+    def clear_primary_event(self):
 
-        self.switch_context_to_webview()
+        logging.info("clicking in 'Clear primary event' button")
+        clear_primary_event_button = self.driver.find_element(*self.configuration.EventsScreen.
+                                                              CLEAR_PRIMARY_EVENT_BUTTON)
+        self.assertIsNotNone(clear_primary_event_button, "Clear primary event button not found")
+        clear_primary_event_button.click()
+        try:
+            logging.info("checking notification - 'Primary event cleared'")
+            sleep(1)
+            notification = self.driver.find_element(*self.configuration.EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED)
+            self.assertIsNotNone(notification)
+        except NoSuchElementException:
+            logging.info("notification not found")
 
-        logging.info("search field - search event named: 'search'")
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).send_keys("search")
-
-        self.switch_context_to_native()
-
-    def clear_Search_field(self):
-
-        self.switch_context_to_webview()
-
-        logging.info("clear search field")
-        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
-        search_field.clear()
-
-        self.switch_context_to_native()
-
-    def filter_events_to_find_previous_event(self):
-
-        self.switch_context_to_webview()
-
-        logging.info("search field - search event named: 'app'")
-        sleep(2)
-        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
-        search_field.click()
-        search_field.send_keys("app")
-
-        self.switch_context_to_native()
+    # def filter_events_by_Search_field(self):
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     logging.info("search field - search event named: 'search'")
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).send_keys("search")
+    #
+    #     self.switch_context_to_native()
+    #
+    # def clear_Search_field(self):
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     logging.info("clear search field")
+    #     search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+    #     search_field.clear()
+    #
+    #     self.switch_context_to_native()
+    #
+    # def filter_events_to_find_previous_event(self):
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     logging.info("search field - search event named: 'app'")
+    #     sleep(2)
+    #     search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+    #     search_field.click()
+    #     search_field.send_keys("app")
+    #
+    #     self.switch_context_to_native()
 
     def click_More_button(self):
 
-        self.switch_context_to_webview()
+        #self.switch_context_to_webview()
 
         # sleep(1)
         # logging.info("click 'More' button")
@@ -50,14 +66,14 @@ class EventsPage(BasePage):
         # self.assertIsNotNone(more_button, "More button was not found")
         # more_button.click()
         # sleep(0.5)
-        sleep(1)
+        sleep(2)
         logging.info("click 'More' button")
         more_button = self.driver.find_element(*self.configuration.EventsScreen.MORE_BUTTON)
         self.assertIsNotNone(more_button, "More button was not found")
         more_button.click()
         sleep(0.5)
 
-        self.switch_context_to_native()
+        #self.switch_context_to_native()
 
     def check_if_EVENTS_were_opened(self):
 
@@ -115,22 +131,24 @@ class EventsPage(BasePage):
         new_sub_event.click()
         sleep(3)
 
-    def set_as_primary_event(self):
-
-        logging.info("clicking in 'Set as primary' button")
-        set_as_primary_button = self.driver.find_element(*self.configuration.EventDetailsScreen.
-                                                         SET_AS_PRIMARY_BUTTON)
-        self.assertIsNotNone(set_as_primary_button, "Set as primary button not found")
-        set_as_primary_button.click()
-        sleep(2)
-
     def open_previously_created_event(self):
 
-        sleep(2)
+        self.switch_context_to_webview()
+
+        sleep(4)
         logging.info("open created event")
-        created_event = self.driver.find_elements(*self.configuration.EventsScreen.PREVIOUSLY_CREATED_EVENT)
-        created_event[0].click()
+        # created_event = self.driver.find_elements(*self.configuration.EventsScreen.PREVIOUSLY_CREATED_EVENT)
+        # created_event[0].click()
+        # sleep(5)
+
+        # created_event = self.driver.find_elements(*self.configuration.EventsScreen.PREVIOUSLY_CREATED_EVENT)
+        # created_event[0].click()
+        created_event = self.driver.find_element(*self.configuration.EventsScreen.PREVIOUSLY_CREATED_EVENT)
+        created_event.click()
         sleep(5)
+
+        self.switch_context_to_native()
+
         # sleep(2)
         # logging.info("open created event")
         # created_event = self.driver.find_element(*self.configuration.EventsScreen.PREVIOUSLY_CREATED_EVENT)

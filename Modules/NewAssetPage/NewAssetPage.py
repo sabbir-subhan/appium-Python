@@ -9,9 +9,19 @@ class NewAssetPage(BasePage):
 
     def fill_Name_input_field(self, text):
 
-        event_edit_page = LoadClass.load_page('EventEditPage')
-        event_edit_page.setDriver(self.driver)
-        event_edit_page.fill_Name_input_field(text)
+        self.switch_context_to_webview()
+
+        logging.info("type title")
+        title = self.driver.find_element(*self.configuration.NewAssetScreen.NAME)
+        self.assertIsNotNone(title, "Title input field was not found")
+        title.click()
+        title.send_keys(text)
+
+        self.switch_context_to_native()
+
+        # event_edit_page = LoadClass.load_page('EventEditPage')
+        # event_edit_page.setDriver(self.driver)
+        # event_edit_page.fill_Name_input_field(text)
 
     def scroll_down_to_save_button(self):
 

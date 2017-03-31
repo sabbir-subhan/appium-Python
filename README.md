@@ -30,8 +30,7 @@
 
 
 ### **TO RUN APPIUM WITH iOS 10:** ###
-- You have to launch Appium in CLI and use version starting from 1.6.0 - currently 1.6.3 is the latest 
-https://github.com/appium/appium-xcuitest-driver
+- You have to launch Appium in CLI and use version starting from 1.6.3 - currently 1.6.3 is the latest 
 
 INSTALL APPIUM 1.6.3 TO WORK WITH iOS10: (CLI commands)
 
@@ -42,13 +41,11 @@ INSTALL APPIUM 1.6.3 TO WORK WITH iOS10: (CLI commands)
 - npm install -g deviceconsole
 - n stable
 - npm install -g npm@latest
-- npm install -g appium@1.6.3
-- cd /usr/local/lib/node_modules/appium/node_modules/
-- sudo npm install appium-xcuitest-driver@latest (or @2.5.2)
+- npm install -g appium@beta
 - cd /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent
 - mkdir -p Resources/WebDriverAgent.bundle
 - ./Scripts/bootstrap.sh
-- open appium-xcuitest-driver/WebDriverAgent/WebDriverAgent.xcodeproj (in Xcode change the Signing certificates to development) -- set iOS Developer in Build Settings and add unique 
+- open WebDriverAgent.xcodeproj (in Xcode change the Signing certificates to development) -- set iOS Developer in Build Settings and add unique 
 BundleID and choose dev Team (if there are some warnings after build, for example, no config file, try to resolved them - set "no" dor project settings file
 - xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination 'id=4b15c4284897fa6f9b4c5205325a9cece997ad35' test  --id is a UDID of the device
 
@@ -68,7 +65,7 @@ file /Conf/desired_capabilities.py and appium settings:
 - appium -p 4735  # to change port use "-p" flag
 - appium --log-timestamp --log /file_path  # starting appium with logging to file
 
-- another console: ios_webkit_debug_proxy -c <device uuid>:27753
+- in another console: ios_webkit_debug_proxy -c <device uuid>:27753
 
 iPhone: ios_webkit_debug_proxy -c 4b15c4284897fa6f9b4c5205325a9cece997ad35:27753 <br />
 iPad: ios_webkit_debug_proxy -c db55c238e873230ee454c54a63724397a2981acd:27753

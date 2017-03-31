@@ -4,6 +4,7 @@ from Modules.EventEditPage.EventEditPage import EventEditPage
 from Modules.load_class import LoadClass
 from selenium.common.exceptions import *
 import logging
+from time import sleep
 
 
 class IOS(EventEditPage):
@@ -12,8 +13,8 @@ class IOS(EventEditPage):
         """Method to scroll down to bottom of the screen - to 'Save' button"""
 
         logging.info("scroll down to Save button")
-        scroll = 0
-        while scroll == 0:
+        scroll = 30
+        while scroll > 0:
             logging.info("check if save button is visible")
             save_button = self.driver.find_element(*self.configuration.CommonScreen.SAVE_BUTTON)
             if save_button.is_displayed():
@@ -21,7 +22,7 @@ class IOS(EventEditPage):
             else:
                 logging.info("scroll down to save button")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
-                # scroll -= 1
+                scroll = -1
         # else:
         #     pass
 
@@ -117,8 +118,8 @@ class IOS(EventEditPage):
     def scroll_down_to_description_field(self):
 
         logging.info("scroll down to description field")
-        var = 1
-        while var == 1:
+        var = 20
+        while var > 0:
             logging.info("check if description field is visible")
             description_field = self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD)
             if description_field.is_displayed():
@@ -126,6 +127,7 @@ class IOS(EventEditPage):
             else:
                 logging.info("scroll down to description field")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
+                var = -1
 
     # def type_text_into_description_field(self):
     #
@@ -140,8 +142,8 @@ class IOS(EventEditPage):
     def scroll_down_to_option_list(self):
 
         logging.info("scroll down to option_list")
-        var = 1
-        while var == 1:
+        var = 20
+        while var > 0:
             logging.info("check if option list is visible")
             option_list = self.driver.find_element(*self.configuration.EventEditScreen.NEW_OPTION_LIST_HEADER)
             if option_list.is_displayed():
@@ -149,6 +151,7 @@ class IOS(EventEditPage):
             else:
                 logging.info("scroll down")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
+                var = -1
 
     def click_on_option_list(self):
 
@@ -159,9 +162,10 @@ class IOS(EventEditPage):
 
     def scroll_down_to_add_row_button(self):
 
+        sleep(2)
         logging.info("scroll down with loop")
-        var = 1
-        while var == 1:
+        var = 20
+        while var > 0:
             logging.info("check if add row button is visible")
             save_button = self.driver.find_element(*self.configuration.EventEditScreen.SUBFORM_FIELD_ADD_ROW)
             if save_button.is_displayed():
@@ -169,6 +173,7 @@ class IOS(EventEditPage):
             else:
                 logging.info("scroll down to add row button")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
+                var = -1
 
     # only for event type: "event_for_on_load/save_test"
     def click_button_add_row(self):
@@ -181,8 +186,8 @@ class IOS(EventEditPage):
     def scroll_down_to_event_chooser_field(self):
 
         logging.info("scroll down with loop")
-        var = 1
-        while var == 1:
+        var = 20
+        while var > 0:
             logging.info("check if event_chooser_field is visible")
             save_button = self.driver.find_element(*self.configuration.EventEditScreen.CHOOSER_FIELD)
             if save_button.is_displayed():
@@ -190,6 +195,7 @@ class IOS(EventEditPage):
             else:
                 logging.info("scroll down")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
+                var = -1
 
     def delete_chosen_event_inside_subform(self):
 

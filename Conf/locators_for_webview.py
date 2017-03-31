@@ -134,14 +134,15 @@ class EventsScreen:
     SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input#emeSearch')
 
     # creating and editing Events
-    MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div[data-role="footer"]>div[data-role="navbar"]>ul>li.ui-block-b>a.morearrow')
+    #MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-b>a[href="#"]')
     NEW_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#emeNew?parent=0"]')
 
     # previously created event
-    #PREVIOUSLY_CREATED_EVENT = (MobileBy.CSS_SELECTOR, '')
+    # PREVIOUSLY_CREATED_EVENT = (MobileBy.CSS_SELECTOR, 'ul.emes.listview.ui-listview>li>a')
+    PREVIOUSLY_CREATED_EVENT = (MobileBy.CSS_SELECTOR, 'ul.emes.listview.ui-listview>li:first-child')
 
-    # CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    # NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.CSS_SELECTOR, '')
+    #CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, 'li.primary.eme.clear.ui-first-child>a')
+    #NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.CSS_SELECTOR, '')
 
 
 class TypesOfEventsScreen:
@@ -168,7 +169,7 @@ class EventEditScreen:
     # CHOOSE_SEVERITY_LVL5_iPad = (MobileBy.CSS_SELECTOR, '')
     FINISHED_FIELD = (MobileBy.CSS_SELECTOR, '')
     #DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'iframe[title="Rich Text Editor, description"]')
-    CREATE_MAPPING_DATA = (MobileBy.CSS_SELECTOR, '')
+    CREATE_MAPPING_DATA = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div>ul.edit-view.ui-listview>li.geometryinput>a')
     EDIT_MAPPING_DATA = (MobileBy.CSS_SELECTOR, '')
     ELEMENT_TO_SCROLL = (MobileBy.CSS_SELECTOR, '')
     SEQUENCE_ONLOAD_HEADER = (MobileBy.CSS_SELECTOR, '')
@@ -191,11 +192,12 @@ class EventEditScreen:
 
 class EventDetailsScreen:
     """A class for Event Details screen locators - screen with event details - after opening event."""
-    EDIT_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    DELETE_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    EDIT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.edit.ui-block-a>a')
+    DELETE_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#confirmDeleteEME"]')
     DELETE_CONFIRM_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    NEW_SUB_EVENT = (MobileBy.CSS_SELECTOR, '')
-    SET_AS_PRIMARY_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#emeViewMoreMenu"]')
+    NEW_SUB_EVENT = (MobileBy.CSS_SELECTOR, 'li.eme.new.subeme>a')
+    SET_AS_PRIMARY_BUTTON = (MobileBy.CSS_SELECTOR, 'li.primary.eme.set.ineme.ui-first-child>a')
 
 
 class Map:
@@ -286,26 +288,27 @@ class NewTaskScreen:
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
     TITLE = (MobileBy.CSS_SELECTOR, 'input.field-Name')
-    ASSIGNED = (MobileBy.CSS_SELECTOR, '')
-    ADD_CONTACTS_AND_GROUPS = (MobileBy.CSS_SELECTOR, '')
-    ADD_RESOURCE_STRUCTURE_NODES = (MobileBy.CSS_SELECTOR, '')
-    ADD_RESOURCE_ASSIGNMENTS = (MobileBy.CSS_SELECTOR, '')
-    CHOOSE_USERS = (MobileBy.CSS_SELECTOR, '')
-    CHOOSE_CONTACTS = (MobileBy.CSS_SELECTOR, '')
-    START_DATE = (MobileBy.CSS_SELECTOR, '')
-    HIDE_DATE_PICKER = (MobileBy.CSS_SELECTOR, '')
+    # ASSIGNED = (MobileBy.CSS_SELECTOR, '')
+    # ADD_CONTACTS_AND_GROUPS = (MobileBy.CSS_SELECTOR, '')
+    # ADD_RESOURCE_STRUCTURE_NODES = (MobileBy.CSS_SELECTOR, '')
+    # ADD_RESOURCE_ASSIGNMENTS = (MobileBy.CSS_SELECTOR, '')
+    # CHOOSE_USERS = (MobileBy.CSS_SELECTOR, '')
+    # CHOOSE_CONTACTS = (MobileBy.CSS_SELECTOR, '')
+    # START_DATE = (MobileBy.CSS_SELECTOR, '')
+    # HIDE_DATE_PICKER = (MobileBy.CSS_SELECTOR, '')
 
 
 class NewReportScreen:
     """A class for handling New Report screen"""
     TITLE = (MobileBy.CSS_SELECTOR, 'input.field-701')
-    LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, '')
-    LODGING_AGENCY = (MobileBy.CSS_SELECTOR, '')
-    PUBLISH_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    # LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, '')
+    # LODGING_AGENCY = (MobileBy.CSS_SELECTOR, '')
+    # PUBLISH_BUTTON = (MobileBy.CSS_SELECTOR, '')
 
 
 class NewAssetScreen:
     """A class for handling New Asset screen"""
+    NAME = (MobileBy.CSS_SELECTOR, 'div#assetNew>div>ul>li>div>input#name')
     SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                           'a[href="#save"]')
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
@@ -318,8 +321,8 @@ class NewLogScreen:
                                           'a[href="#save"]')
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
-    LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, '')
-    ENTRY_FIELD = (MobileBy.CSS_SELECTOR, '')
+    #LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, '')
+    # ENTRY_FIELD = (MobileBy.CSS_SELECTOR, 'iframe[title="Rich Text Editor, entry"]')
 
 
 class SentScreen:
@@ -364,8 +367,12 @@ class RisksScreen:
                                           'a[href="#save"]')
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#riskregisterNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
+    PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.CSS_SELECTOR, 'ul.registers.listview.ui-listview>li>a')
     RISK_REGISTERS_LIST = (MobileBy.CSS_SELECTOR, 'ul.registers.listview.ui-listview>li>a')  # whole list
     NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#riskcontextTreeMoreMenu"]')
     ADD_NEW_CONTEXT = (MobileBy.CSS_SELECTOR, 'a[href="#riskcontextNew?parent=0"]')
     SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input#riskregisterSearch')
+    NAME_FOR_NEW_CONTEXT = (MobileBy.CSS_SELECTOR, 'div#riskcontextNew>div>ul>li.ui-field-contain.ui-li-static.ui-body-inherit>div>input#name')
+    SAVE_NEW_CONTEXT = (MobileBy.CSS_SELECTOR, 'div#riskcontextNew>div[data-role="footer"]>div>ul>li>a[href="#save"]')
+
 

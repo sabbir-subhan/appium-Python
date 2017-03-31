@@ -171,8 +171,14 @@ class EventsScreen:
     SEARCH_FIELD = (MobileBy.CLASS_NAME, 'android.widget.EditText')
     EVENTS_HEADER_AFTER_SEARCH = (MobileBy.XPATH, '//android.view.View[@index="5"]')
 
+    # MORE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'More▼')
+
+    MORE_BUTTON = (MobileBy.XPATH, '//android.widget.ListView[1]/android.view.View[2]'
+                                   '/android.widget.Spinner[@clickable="true"]')
+
     # creating and editing Events
-    NEW_EVENT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "New event")]]')
+    NEW_EVENT_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'New event ')
+    #NEW_EVENT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "New event")]]')
 
     # previously created event
     PREVIOUSLY_CREATED_EVENT = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Appium")]]')
@@ -196,7 +202,8 @@ class TypesOfEventsScreen:
 
 class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
-    SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
+    # SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
+    SAVE_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains(., "Save")]]')
     NAME_FIELD = (MobileBy.ID, 'name')
     NAME_FIELD2 = (MobileBy.XPATH, '//android.widget.EditText[@index="1"]')
     SEVERITY_LEVEL_SELECTOR = (MobileBy.ID, 'field-1801')
@@ -306,7 +313,7 @@ class GalleryScreen:
     GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//android.widget.GridView[1]/android.widget.FrameLayout[1]')
     GALLERY_ELEMENT_1_android7 = (MobileBy.XPATH, 'android.support.v7.widget.RecyclerView[1]'
                                                   '/android.widget.RelativeLayout[2]/android.view.View[1]')
-    GALLERY_ELEMENTS_android7 = (MobileBy.ID, 'android:id/title')
+    GALLERY_ELEMENTS_android7 = (MobileBy.ID, 'com.android.documentsui:id/icon_mime_lg')  # list of elements
 
 
 class SoundScreen:
@@ -441,8 +448,9 @@ class ComposeScreen:
 class RisksScreen:
     """A class for handling Risks screen"""
     CREATE_RISK_REGISTER = (MobileBy.ACCESSIBILITY_ID, 'Create risk register')
-    PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.XPATH, '//android.view.View[2]/'
-                                                        'android.widget.ListView[1]/android.view.View[1]')
+    # PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.XPATH, '//android.view.View[2]/'
+    #                                                     'android.widget.ListView[1]/android.view.View[1]')
+    PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.ACCESSIBILITY_ID, 'Appium - new risk register')
     ADD_NEW_CONTEXT = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Add new context")]]')
     VIEW_BUTTON = CommonScreen.SPINNER_ON_THE_LEFT
     NAME_FIELD_FOR_CONTEXT = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="Name"]')

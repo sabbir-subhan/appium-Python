@@ -76,10 +76,12 @@ class test_Risk(SetupTestCase):
         risks_page.scroll_down_to_save_button()
         risks_page.click_save_button()
 
-        risks_page.filter_risks_registers()
         risks_page.open_existing_risk_register()
         risks_page.click_new_button()
         risks_page.click_add_new_context()
+        risks_page.type_name_for_new_context()
+        risks_page.scroll_down_to_save_button()
+        risks_page.save_new_context()
 
 
 if __name__ == '__main__':

@@ -16,6 +16,8 @@ class RisksPage(BasePage):
         self.assertIsNotNone(create_risk_register_button, "Create Risk Register button not found")
         create_risk_register_button.click()
 
+        self.switch_context_to_native()
+
     def type_name_for_new_risk_register(self):
 
         self.switch_context_to_webview()
@@ -25,6 +27,8 @@ class RisksPage(BasePage):
         self.assertIsNotNone(name, "name input field was not found")
         name.click()
         name.send_keys('Appium - new risk register')
+
+        self.switch_context_to_native()
 
     def create_new_context(self):
 
@@ -47,6 +51,8 @@ class RisksPage(BasePage):
         self.assertIsNotNone(click_save_button, "Save button not found")
         click_save_button.click()
 
+        self.switch_context_to_native()
+
     def filter_risks_registers(self):
 
         self.switch_context_to_webview()
@@ -61,11 +67,17 @@ class RisksPage(BasePage):
 
     def open_existing_risk_register(self):
 
+        self.switch_context_to_webview()
+
         logging.info("open first risk register on the list")
-        open_existing_risk_register = self.driver.find_element(*self.configuration.RisksScreen.
-                                                               PREVIOUSLY_CREATED_RISK_REGISTER)
-        self.assertIsNotNone(open_existing_risk_register, "open existing Risk Register")
-        open_existing_risk_register.click()
+        # open_existing_risk_register = self.driver.find_element(*self.configuration.RisksScreen.
+        #                                                        PREVIOUSLY_CREATED_RISK_REGISTER)
+        # self.assertIsNotNone(open_existing_risk_register, "open existing Risk Register")
+        # open_existing_risk_register.click()
+        open_existing_risk_register = self.driver.find_elements(*self.configuration.RisksScreen.PREVIOUSLY_CREATED_RISK_REGISTER)
+        open_existing_risk_register[0].click()
+
+        self.switch_context_to_native()
 
     def click_new_button(self):
 
@@ -80,8 +92,36 @@ class RisksPage(BasePage):
 
     def click_add_new_context(self):
 
+        self.switch_context_to_webview()
+
         logging.info("click add new context")
         click_add_new_context = self.driver.find_element(*self.configuration.RisksScreen.ADD_NEW_CONTEXT)
         self.assertIsNotNone(click_add_new_context, "Add new context button not found")
         click_add_new_context.click()
+
+        self.switch_context_to_native()
+
+    def type_name_for_new_context(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("type Name for new context")
+        name_field = self.driver.find_element(*self.configuration.RisksScreen.NAME_FOR_NEW_CONTEXT)
+        self.assertIsNotNone(name_field, "name field not found")
+        name_field.clear()
+        name_field.click()
+        name_field.send_keys("Appium new context")
+
+        self.switch_context_to_native()
+
+    def save_new_context(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Save button")
+        save = self.driver.find_element(*self.configuration.RisksScreen.SAVE_NEW_CONTEXT)
+        self.assertIsNotNone(save, "name field not found")
+        save.click()
+
+        self.switch_context_to_native()
 

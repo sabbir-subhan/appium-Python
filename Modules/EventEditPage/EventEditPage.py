@@ -39,7 +39,7 @@ class EventEditPage(BasePage):
         # self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR).click()
         #
         # self.switch_context_to_native()
-
+        sleep(1)
         logging.info("click on severity level field")
         # self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR).click()
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()
@@ -65,11 +65,15 @@ class EventEditPage(BasePage):
 
     def click_create_mapping_data(self):
 
+        self.switch_context_to_webview()
+
         sleep(2)
         logging.info("create mapping data")
         create_mapping_data_button = self.driver.find_element(*self.configuration.EventEditScreen.CREATE_MAPPING_DATA)
         self.assertIsNotNone(create_mapping_data_button, "Button for creating map data is not present")
         create_mapping_data_button.click()
+
+        self.switch_context_to_native()
 
     def check_restored_field_1(self):
 
@@ -132,6 +136,16 @@ class EventEditPage(BasePage):
         self.assertIsNotNone(event_chooser_in_subform, "event chooser in subform not found")
         event_chooser_in_subform.click()
         sleep(5)
+
+    def click_save_button(self):
+
+        sleep(1)
+        logging.info("click Save button")
+        sleep(1)
+        save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON)
+        self.assertIsNotNone(save_button, "Save button not found")
+        save_button.click()
+        sleep(10)
 
     def click_save_new_event(self):
 
