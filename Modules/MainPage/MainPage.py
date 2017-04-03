@@ -62,14 +62,13 @@ class MainPage(BasePage):
 
     def check_presence_of_events_button(self):
 
-        self.switch_context_to_webview()
+        #self.switch_context_to_webview()  # it looks like in webview all elements are present everywhere
 
-        sleep(2)
         WebDriverWait(self.driver, 25).until(
             expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
             "Events button in Main Menu is not present")
 
-        self.switch_context_to_native()
+        #self.switch_context_to_native()
 
     def click_ACTIVATE_BUTTON_on_alert(self):
 

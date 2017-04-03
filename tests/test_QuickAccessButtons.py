@@ -27,7 +27,7 @@ import unittest
 from time import sleep
 
 
-class test_QuickAccessButtons(SetupTestCase):
+class TestQuickAccessButtons(SetupTestCase):
     """ Setup test """
 
     def setUp(self):
@@ -134,5 +134,5 @@ class test_QuickAccessButtons(SetupTestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(test_QuickAccessButtons)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestQuickAccessButtons)
     unittest.TextTestRunner(verbosity=2).run(suite)

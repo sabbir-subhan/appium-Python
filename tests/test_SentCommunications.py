@@ -22,7 +22,7 @@ import logging
 import unittest
 
 
-class test_SentCommunications(SetupTestCase):
+class TestSentCommunications(SetupTestCase):
     """ Setup test """
 
     def setUp(self):
@@ -74,18 +74,18 @@ class test_SentCommunications(SetupTestCase):
         compose_page.click_ok_button()
         compose_page.choose_sms_message()
         compose_page.type_sms_message()
-        common_page.hide_keyboard()
+        #common_page.hide_keyboard()
         compose_page.click_ok_button()
         compose_page.choose_email_message()
         compose_page.type_email_subject()
-        common_page.hide_keyboard()
+        #common_page.hide_keyboard()
         compose_page.type_email_message()
         common_page.hide_keyboard()
         compose_page.click_ok_button()
         compose_page.choose_voice_message()
         compose_page.click_text_to_speech()
         compose_page.type_voice_message()
-        common_page.hide_keyboard()
+        #common_page.hide_keyboard()
         compose_page.click_ok_button()
         compose_page.choose_fax_message()
         compose_page.choose_fax_document()
@@ -105,5 +105,5 @@ class test_SentCommunications(SetupTestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(test_SentCommunications)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestSentCommunications)
     unittest.TextTestRunner(verbosity=2).run(suite)

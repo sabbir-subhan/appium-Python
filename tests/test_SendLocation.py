@@ -19,7 +19,7 @@ import logging
 import unittest
 
 
-class test_SendLocation(SetupTestCase):
+class TestSendLocation(SetupTestCase):
     """ Setup test """
 
     def setUp(self):
@@ -73,5 +73,5 @@ class test_SendLocation(SetupTestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(test_SendLocation)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestSendLocation)
     unittest.TextTestRunner(verbosity=2).run(suite)

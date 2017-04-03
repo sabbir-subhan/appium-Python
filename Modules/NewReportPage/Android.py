@@ -7,6 +7,13 @@ from time import sleep
 
 class Android(NewReportPage):
 
+    def choose_lodging_agency(self):
+
+        logging.info("choose Lodging Agency")
+        lodging_agency = self.driver.find_element(*self.configuration.NewReportScreen.LODGING_AGENCY)
+        self.assertIsNotNone(lodging_agency, "Lodging Agency inside picker was not found")
+        lodging_agency.click()
+
     def scroll_down_to_publish_button(self):
 
         logging.info("scroll down to Publish button")

@@ -29,7 +29,7 @@ import logging
 import unittest
 
 
-class test_SendPhoto(SetupTestCase):
+class TestSendPhoto(SetupTestCase):
     """ Setup test """
 
     def setUp(self):
@@ -107,5 +107,5 @@ class test_SendPhoto(SetupTestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(test_SendPhoto)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestSendPhoto)
     unittest.TextTestRunner(verbosity=2).run(suite)

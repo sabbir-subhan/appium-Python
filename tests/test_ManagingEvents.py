@@ -21,9 +21,10 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
+import HTMLTestRunner
 
 
-class test_ManagingEvents(SetupTestCase):
+class TestManagingEvents(SetupTestCase):
     """ Setup test """
 
     def setUp(self):
@@ -66,16 +67,16 @@ class test_ManagingEvents(SetupTestCase):
         main_page.open_EVENTS()
         events_page = LoadClass.load_page('EventsPage')
         events_page.setDriver(self.driver)
-        # events_page.filter_events_by_Type()
-        # events_page.filter_events_by_Status()
-        # events_page.filter_events_by_Search_field()
-        # common_page.click_Return_button_on_keyboard()
-        # common_page.hide_keyboard()
-        # events_page.clear_Search_field()
-        # common_page.click_Return_button_on_keyboard()
-        # common_page.hide_keyboard()
-        # common_page.hamburger_button()
-        # main_page.open_EVENTS()
+        events_page.filter_events_by_Type()
+        events_page.filter_events_by_Status()
+        events_page.filter_events_by_Search_field()
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
+        events_page.clear_Search_field()
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
+        common_page.hamburger_button()
+        main_page.open_EVENTS()
         events_page.click_More_button()
         events_page.click_New_event_button()
         events_types_page = LoadClass.load_page('EventsTypesPage')
@@ -241,5 +242,7 @@ class test_ManagingEvents(SetupTestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(test_ManagingEvents)
+    HTMLTestRunner.main()
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestManagingEvents)
     unittest.TextTestRunner(verbosity=2).run(suite)
+

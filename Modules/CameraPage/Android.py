@@ -17,7 +17,7 @@ class Android(CameraPage):
         # logging.info(platform_version)
         logging.info("capture")
         sleep(4)
-        if platform_version > "5":
+        if platform_version >= "6":
             photo_capture1 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_6)
             self.assertIsNotNone(photo_capture1)
             photo_capture1.click()

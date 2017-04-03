@@ -13,7 +13,7 @@ class WelcomePage(BasePage):
     def click_login_button(self):
 
         logging.info("click in LOGIN button")
-        sleep(2)
+        sleep(4)
 
         self.switch_context_to_webview()
 

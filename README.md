@@ -59,13 +59,13 @@ file /Conf/desired_capabilities.py and appium settings:
 - path to app - to get app file You need to build it in xcode
 
 
-#Starting Appium server in CLI:#
+#Starting Appium server in CLI:
 
 - appium  # this will launch Appium server on default port = 4723
 - appium -p 4735  # to change port use "-p" flag
 - appium --log-timestamp --log /file_path  # starting appium with logging to file
 
-- in another console: ios_webkit_debug_proxy -c <device uuid>:27753
+- and in another console run: ios_webkit_debug_proxy -c <device uuid>:27753
 
 iPhone: ios_webkit_debug_proxy -c 4b15c4284897fa6f9b4c5205325a9cece997ad35:27753 <br />
 iPad: ios_webkit_debug_proxy -c db55c238e873230ee454c54a63724397a2981acd:27753

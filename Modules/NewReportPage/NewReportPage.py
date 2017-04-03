@@ -30,6 +30,17 @@ class NewReportPage(BasePage):
 
     def click_on_lodging_agency_picker(self):
 
+        # self.switch_context_to_webview()
+        #
+        # logging.info("click on 'Lodging Agency' picker")
+        # lodging_agency_picker = self.driver.find_element(*self.configuration.NewReportScreen.LODGING_AGENCY_PICKER)
+        # self.assertIsNotNone(lodging_agency_picker, "Lodging Agency picker was not found")
+        # sleep(1)
+        # lodging_agency_picker.click()
+        # sleep(2)
+        #
+        # self.switch_context_to_native()
+
         sleep(5)
         logging.info("click on 'Lodging Agency' picker")
         try:
@@ -41,22 +52,20 @@ class NewReportPage(BasePage):
         action.tap(element=lodging_agency_picker, count=1).perform()
         sleep(1)
 
-    def choose_lodging_agency(self):
-
-        logging.info("choose Lodging Agency")
-        lodging_agency = self.driver.find_element(*self.configuration.NewReportScreen.LODGING_AGENCY)
-        self.assertIsNotNone(lodging_agency, "Lodging Agency inside picker was not found")
-        lodging_agency.click()
-
     def click_publish_button(self):
+
+        self.switch_context_to_webview()
 
         logging.info("click Publish button")
         publish_button = self.driver.find_element(*self.configuration.NewReportScreen.PUBLISH_BUTTON)
         self.assertIsNotNone(publish_button, "Publish button was not found")
-        sleep(1)
-        action = TouchAction(self.driver)
-        action.tap(element=publish_button, count=1).perform()
+        publish_button.click()
+        # sleep(1)
+        # action = TouchAction(self.driver)
+        # action.tap(element=publish_button, count=1).perform()
         sleep(2)
         WebDriverWait(self.driver, 30).until(
             expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
             "Failed to locate description field")
+
+        self.switch_context_to_native()

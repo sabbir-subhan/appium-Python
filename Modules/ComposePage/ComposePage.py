@@ -61,13 +61,13 @@ class ComposePage(BasePage):
         send_button_on_alert.click()
         sleep(2)
 
+        self.switch_context_to_native()
+
         logging.info("sending message")
         WebDriverWait(self.driver, 10).until(
             expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
             "Failed to send message")
         logging.info("Message was sent")
-
-        self.switch_context_to_native()
 
         # logging.info("click 'Send' button on alert")
         # desired_capabilities = DesiredCapabilities.get_desired_capabilities()
@@ -164,11 +164,15 @@ class ComposePage(BasePage):
 
     def type_sms_message(self):
 
+        self.switch_context_to_webview()
+
         logging.info('type sms msg')
         sms_text_field = self.driver.find_element(*self.configuration.ComposeScreen.SMS_TEXT_FIELD)
         self.assertIsNotNone(sms_text_field, 'sms text field button not found')
         sms_text_field.click()
         sms_text_field.send_keys('Test SMS')
+
+        self.switch_context_to_native()
 
     def choose_email_message(self):
 
@@ -184,7 +188,7 @@ class ComposePage(BasePage):
 
     def type_email_subject(self):
 
-        #self.switch_context_to_webview()
+        self.switch_context_to_webview()
 
         logging.info('type email subject')
         email_subject_text_field = self.driver.find_element(*self.configuration.ComposeScreen.EMAIL_SUBJECT_FIELD)
@@ -193,26 +197,33 @@ class ComposePage(BasePage):
         email_subject_text_field.send_keys('Test email subject')
         sleep(2)
 
-        #self.switch_context_to_native()
+        self.switch_context_to_native()
 
     def type_email_message(self):
 
-        #self.switch_context_to_webview()
+        #self.switch_context_to_webview() # webview is not working on iOS10
 
         sleep(2)
         logging.info('type email msg')
-        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
-        platform_name = desired_capabilities.get('platformName')
-        platform_version = desired_capabilities.get('platformVersion')
-        if "Android" in str(platform_name) and "6" in str(platform_version):
-            email_text_field = self.driver.find_element(*self.configuration.ComposeScreen.EMAIL_TEXT_FIELD2)
-        else:
-            email_text_field = self.driver.find_element(*self.configuration.ComposeScreen.EMAIL_TEXT_FIELD)
-        self.assertIsNotNone(email_text_field, 'email msg field button not found')
+        email_text_field = self.driver.find_element(*self.configuration.ComposeScreen.EMAIL_TEXT_FIELD)
+        self.assertIsNotNone(email_text_field, 'email msg field not found')
         email_text_field.click()
         email_text_field.send_keys('Test email')
 
         #self.switch_context_to_native()
+
+        # sleep(2)
+        # logging.info('type email msg')
+        # desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        # platform_name = desired_capabilities.get('platformName')
+        # platform_version = desired_capabilities.get('platformVersion')
+        # if "Android" in str(platform_name) and "6" in str(platform_version):
+        #     email_text_field = self.driver.find_element(*self.configuration.ComposeScreen.EMAIL_TEXT_FIELD2)
+        # else:
+        #     email_text_field = self.driver.find_element(*self.configuration.ComposeScreen.EMAIL_TEXT_FIELD)
+        # self.assertIsNotNone(email_text_field, 'email msg field button not found')
+        # email_text_field.click()
+        # email_text_field.send_keys('Test email')
 
     def choose_voice_message(self):
 
@@ -238,11 +249,15 @@ class ComposePage(BasePage):
 
     def type_voice_message(self):
 
+        self.switch_context_to_webview()
+
         logging.info('type voice msg')
         voice_msg_text_field = self.driver.find_element(*self.configuration.ComposeScreen.VOICE_TEXT_FIELD)
         self.assertIsNotNone(voice_msg_text_field, 'voice msg field button not found')
         voice_msg_text_field.click()
         voice_msg_text_field.send_keys('Test voice msg')
+
+        self.switch_context_to_native()
 
     def choose_fax_message(self):
 

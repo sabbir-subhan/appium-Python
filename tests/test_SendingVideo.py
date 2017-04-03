@@ -29,7 +29,7 @@ import unittest
 from time import sleep
 
 
-class test_SendingVideo(SetupTestCase):
+class TestSendingVideo(SetupTestCase):
     """ Setup test """
 
     def setUp(self):
@@ -108,7 +108,7 @@ class test_SendingVideo(SetupTestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(test_SendingVideo)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestSendingVideo)
     unittest.TextTestRunner(verbosity=2).run(suite)
 
 

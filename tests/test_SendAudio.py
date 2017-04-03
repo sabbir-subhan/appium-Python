@@ -21,7 +21,7 @@ import unittest
 from time import sleep
 
 
-class test_SendAudio(SetupTestCase):
+class TestSendAudio(SetupTestCase):
     """ Setup test """
 
     def setUp(self):
@@ -78,5 +78,5 @@ class test_SendAudio(SetupTestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(test_SendAudio)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestSendAudio)
     unittest.TextTestRunner(verbosity=2).run(suite)

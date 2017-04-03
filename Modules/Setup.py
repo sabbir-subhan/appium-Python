@@ -48,7 +48,7 @@ class SetupTestCase(unittest.TestCase):
 
         self.driver = webdriver.Remote("http://localhost:" + PORT + "/wd/hub", desired_capabilities)
 
-        self.driver.implicitly_wait(30)  # seconds - depends on device and connection speed
+        self.driver.implicitly_wait(20)  # seconds - depends on device and connection speed
 
 
 

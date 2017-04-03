@@ -139,7 +139,7 @@ class EventsScreen:
 
     # previously created event
     # PREVIOUSLY_CREATED_EVENT = (MobileBy.CSS_SELECTOR, 'ul.emes.listview.ui-listview>li>a')
-    PREVIOUSLY_CREATED_EVENT = (MobileBy.CSS_SELECTOR, 'ul.emes.listview.ui-listview>li:first-child')
+    PREVIOUSLY_CREATED_EVENT = (MobileBy.CSS_SELECTOR, 'ul.emes.listview.ui-listview>li:first-child>a')
 
     #CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, 'li.primary.eme.clear.ui-first-child>a')
     #NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.CSS_SELECTOR, '')
@@ -168,7 +168,7 @@ class EventEditScreen:
     # CHOOSE_SEVERITY_LVL4_iPad = (MobileBy.CSS_SELECTOR, '')
     # CHOOSE_SEVERITY_LVL5_iPad = (MobileBy.CSS_SELECTOR, '')
     FINISHED_FIELD = (MobileBy.CSS_SELECTOR, '')
-    #DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'iframe[title="Rich Text Editor, description"]')
+    DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'iframe[title="Rich Text Editor, description"]')
     CREATE_MAPPING_DATA = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div>ul.edit-view.ui-listview>li.geometryinput>a')
     EDIT_MAPPING_DATA = (MobileBy.CSS_SELECTOR, '')
     ELEMENT_TO_SCROLL = (MobileBy.CSS_SELECTOR, '')
@@ -301,9 +301,9 @@ class NewTaskScreen:
 class NewReportScreen:
     """A class for handling New Report screen"""
     TITLE = (MobileBy.CSS_SELECTOR, 'input.field-701')
-    # LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, '')
+    LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, 'div#field-1201-button>select[name="lodging agency"]')
     # LODGING_AGENCY = (MobileBy.CSS_SELECTOR, '')
-    # PUBLISH_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    PUBLISH_BUTTON = (MobileBy.CSS_SELECTOR, 'ul.ui-grid-b>li.ui-block-a>a[href="#save"]')
 
 
 class NewAssetScreen:
@@ -322,7 +322,7 @@ class NewLogScreen:
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
     #LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, '')
-    # ENTRY_FIELD = (MobileBy.CSS_SELECTOR, 'iframe[title="Rich Text Editor, entry"]')
+    ENTRY_FIELD = (MobileBy.CSS_SELECTOR, 'iframe[title="Rich Text Editor, entry"]')  # not working on iOS10
 
 
 class SentScreen:
@@ -335,8 +335,8 @@ class ComposeScreen:
     """A class for handling Compose screen"""
     ADD_RECIPIENTS_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#messageAddRecipients"]')
     MESSAGE_EMAIL = (MobileBy.CSS_SELECTOR, 'a[href="#messageEmail"]')
-    #EMAIL_SUBJECT_FIELD = (MobileBy.CSS_SELECTOR, 'input#emailSubject')
-    #EMAIL_TEXT_FIELD = (MobileBy.CSS_SELECTOR, 'iframe[title="Rich Text Editor, emailBody"]')
+    EMAIL_SUBJECT_FIELD = (MobileBy.CSS_SELECTOR, 'input#emailSubject')
+    EMAIL_TEXT_FIELD = (MobileBy.CSS_SELECTOR, 'iframe[title="Rich Text Editor, emailBody"]')
     EMAIL_OK = (MobileBy.CSS_SELECTOR, '#EmailOK')
     MESSAGE_SMS = (MobileBy.CSS_SELECTOR, 'a[href="#messageSMS"]')
     SMS_TEXT_FIELD = (MobileBy.CSS_SELECTOR, '#SMSBody')
@@ -368,7 +368,7 @@ class RisksScreen:
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#riskregisterNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
     PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.CSS_SELECTOR, 'ul.registers.listview.ui-listview>li>a')
-    RISK_REGISTERS_LIST = (MobileBy.CSS_SELECTOR, 'ul.registers.listview.ui-listview>li>a')  # whole list
+    RISK_REGISTERS_LIST = (MobileBy.CSS_SELECTOR, 'ul.registers.listview.ui-listview>li:first-child>a')  # changed from whole list
     NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#riskcontextTreeMoreMenu"]')
     ADD_NEW_CONTEXT = (MobileBy.CSS_SELECTOR, 'a[href="#riskcontextNew?parent=0"]')
     SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input#riskregisterSearch')

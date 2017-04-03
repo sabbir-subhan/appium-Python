@@ -202,8 +202,8 @@ class TypesOfEventsScreen:
 
 class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
-    # SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
-    SAVE_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains(., "Save")]]')
+    SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')  # not working for:
+    # SAVE_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains(., "Save")]]')  # problem on Android 7
     NAME_FIELD = (MobileBy.ID, 'name')
     NAME_FIELD2 = (MobileBy.XPATH, '//android.widget.EditText[@index="1"]')
     SEVERITY_LEVEL_SELECTOR = (MobileBy.ID, 'field-1801')

@@ -74,8 +74,9 @@ class RisksPage(BasePage):
         #                                                        PREVIOUSLY_CREATED_RISK_REGISTER)
         # self.assertIsNotNone(open_existing_risk_register, "open existing Risk Register")
         # open_existing_risk_register.click()
-        open_existing_risk_register = self.driver.find_elements(*self.configuration.RisksScreen.PREVIOUSLY_CREATED_RISK_REGISTER)
-        open_existing_risk_register[0].click()
+        open_existing_risk_register = self.driver.find_element(*self.configuration.RisksScreen.PREVIOUSLY_CREATED_RISK_REGISTER)
+        open_existing_risk_register.click()
+        # open_existing_risk_register[0].click()
 
         self.switch_context_to_native()
 

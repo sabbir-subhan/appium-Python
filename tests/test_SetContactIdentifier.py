@@ -14,7 +14,7 @@ import unittest
 from time import sleep
 
 
-class test_SetContactIdentifier(SetupTestCase):
+class TestSetContactIdentifier(SetupTestCase):
     """ Setup test """
 
     def setUp(self):
@@ -45,5 +45,5 @@ class test_SetContactIdentifier(SetupTestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(test_SetContactIdentifier)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestSetContactIdentifier)
     unittest.TextTestRunner(verbosity=2).run(suite)

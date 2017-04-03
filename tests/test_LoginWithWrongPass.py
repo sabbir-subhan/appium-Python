@@ -17,7 +17,7 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 
 
-class test_LoginWithWrongPass(SetupTestCase):
+class TestLoginWithWrongPass(SetupTestCase):
     """ Setup test """
 
     def setUp(self):
@@ -176,5 +176,5 @@ class test_LoginWithWrongPass(SetupTestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(test_LoginWithWrongPass)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestLoginWithWrongPass)
     unittest.TextTestRunner(verbosity=2).run(suite)

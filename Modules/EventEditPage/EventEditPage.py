@@ -22,14 +22,20 @@ class EventEditPage(BasePage):
 
     def type_text_into_description_field(self):
 
-        #self.switch_context_to_webview()
+        # self.switch_context_to_webview()  # webview is not working on iOS10
 
-        sleep(4)
+        sleep(2)
         logging.info("type some text into description field")
-        self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD).click()
-        self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD).send_keys("test appium")
+        description_field = self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD)
+        description_field.click()
+        description_field.send_keys("test appium")
 
-        #self.switch_context_to_native()
+        # self.switch_context_to_native()
+
+        # sleep(4)
+        # logging.info("type some text into description field")
+        # self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD).click()
+        # self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD).send_keys("test appium")
 
     def click_severity_lvl_picker(self):
 

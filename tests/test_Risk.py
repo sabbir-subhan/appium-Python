@@ -30,7 +30,7 @@ import logging
 import unittest
 
 
-class test_Risk(SetupTestCase):
+class TestRisk(SetupTestCase):
     """ Setup test """
 
     def setUp(self):
@@ -76,7 +76,7 @@ class test_Risk(SetupTestCase):
         risks_page.scroll_down_to_save_button()
         risks_page.click_save_button()
 
-        risks_page.open_existing_risk_register()
+        risks_page.open_existing_risk_register()  # test it - locator change from whole list to :first-child
         risks_page.click_new_button()
         risks_page.click_add_new_context()
         risks_page.type_name_for_new_context()
@@ -85,5 +85,5 @@ class test_Risk(SetupTestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(test_Risk)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestRisk)
     unittest.TextTestRunner(verbosity=2).run(suite)
