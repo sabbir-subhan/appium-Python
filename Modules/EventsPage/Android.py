@@ -21,10 +21,14 @@ class Android(EventsPage):
         search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
         search_field.click()
         logging.info("sending keys")
-        self.driver.keyevent(47)  # send letter 'S'
-        self.driver.keyevent(33)  # send letter 'E'
-        self.driver.keyevent(29)  # send letter 'A'
-        self.driver.keyevent(46)  # send letter 'R'
+        self.driver.press_keycode(47)  # send letter 'S'
+        self.driver.press_keycode(33)  # send letter 'E'
+        self.driver.press_keycode(29)  # send letter 'A'
+        self.driver.press_keycode(46)  # send letter 'R'
+        # self.driver.keyevent(47)  # send letter 'S'
+        # self.driver.keyevent(33)  # send letter 'E'
+        # self.driver.keyevent(29)  # send letter 'A'
+        # self.driver.keyevent(46)  # send letter 'R'
 
     def filter_events_to_find_previous_event(self):
 
@@ -33,9 +37,9 @@ class Android(EventsPage):
         search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
         search_field.click()
         logging.info("sending keys")
-        self.driver.keyevent(29)  # send letter 'A'
-        self.driver.keyevent(44)  # send letter 'P'
-        self.driver.keyevent(44)  # send letter 'P'
+        self.driver.press_keycode(29)  # send letter 'A'
+        self.driver.press_keycode(44)  # send letter 'P'
+        self.driver.press_keycode(44)  # send letter 'P'
 
     def clear_Search_field(self):
 
@@ -43,22 +47,22 @@ class Android(EventsPage):
         search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
         action = TouchAction(self.driver)
         action.long_press(el=search_field, duration=1000).perform()
-        self.driver.keyevent(67)
+        self.driver.press_keycode(67)
 
         # after clearing search filed on Android device - "More" button is dropped to the bottom of the events list,
         # so to avoid unnecessary scrolling Appium will tap on hamburger button to go to main menu and reopen Events
 
-        common_page = LoadClass.load_page('CommonPage')
-        common_page.setDriver(self.driver)
-        common_page.click_Return_button_on_keyboard()
-
-        common_page.hide_keyboard()
-
-        common_page.hamburger_button()
-        sleep(2)
-        main_page = LoadClass.load_page('MainPage')
-        main_page.setDriver(self.driver)
-        main_page.open_EVENTS()
+        # common_page = LoadClass.load_page('CommonPage')
+        # common_page.setDriver(self.driver)
+        # common_page.click_Return_button_on_keyboard()
+        #
+        # common_page.hide_keyboard()
+        #
+        # common_page.hamburger_button()
+        # sleep(2)
+        # main_page = LoadClass.load_page('MainPage')
+        # main_page.setDriver(self.driver)
+        # main_page.open_EVENTS()
 
     # def click_More_button(self):
     #

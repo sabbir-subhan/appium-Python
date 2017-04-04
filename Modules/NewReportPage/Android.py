@@ -27,5 +27,5 @@ class Android(NewReportPage):
         scrolls = 10
         while scrolls > 0:
             self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen
-            scrolls -= 1
+            scrolls = scrolls - 1
         sleep(1)

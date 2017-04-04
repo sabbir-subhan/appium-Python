@@ -239,6 +239,7 @@ class EventDetailsScreen:
     DELETE_CONFIRM_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="Delete"]')
     NEW_SUB_EVENT = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "New sub event")]]')
     SET_AS_PRIMARY_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "Set as primary")]]')
+    EVENT_INFO_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Event info"]')
 
 
 class Map:

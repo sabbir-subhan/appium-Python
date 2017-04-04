@@ -131,6 +131,18 @@ class EventsPage(BasePage):
         new_sub_event.click()
         sleep(3)
 
+    def open_previously_created_event_checkbox(self):
+
+        self.switch_context_to_webview()
+
+        sleep(4)
+        logging.info("open created event")
+        created_event = self.driver.find_element(*self.configuration.EventsScreen.PREVIOUSLY_CREATED_EVENT_CHECKBOX)
+        created_event.click()
+        sleep(5)
+
+        self.switch_context_to_native()
+
     def open_previously_created_event(self):
 
         self.switch_context_to_webview()

@@ -21,15 +21,17 @@ class DesiredCapabilities(object):
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
             "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
-            #"appWaitDuration": 20000,
+            "automationName": "uiautomator2",
+            # "appWaitDuration": 20000,
             "deviceReadyTimeout": 15,
-            #"newCommandTimeout": "60",  # How long (in seconds) Appium will wait for a new command from the client before assuming the client quit and ending the session
+            # "newCommandTimeout": "60",  # How long (in seconds) Appium will wait for a new command from the client before assuming the client quit and ending the session
             "clearSystemFiles": True,
             "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
             "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
             "chromeOptions": {
                 "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
             },
+            "recreateChromeDriverSessions": True,
             "udid": "0123456789ABCDEF"
         },
 
@@ -41,36 +43,40 @@ class DesiredCapabilities(object):
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
             "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
-            #"appWaitDuration": 20000,
+            "automationName": "uiautomator2",
+            # "appWaitDuration": 20000,
             "deviceReadyTimeout": 5,
-            #"newCommandTimeout": "60",
+            # "newCommandTimeout": "60",
             "clearSystemFiles": True,
             "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
             "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
             "chromeOptions": {
                 "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
             },
+            "recreateChromeDriverSessions": True,
             "udid": "7d7d9a62"
         },
 
         "Android 5 emulator": {
-            # Google Nexus 4 - 5.0.0 - API 21 - 768x1280
+            # Google Nexus 4 - 5.1 - API 21 - 768x1280
             "platformName": "ANDROID",
-            "platformVersion": "5.0.0",
+            "platformVersion": "5.1",
             "deviceName": "192.168.56.101:5555",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8-x86.apk"),
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
             "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
-            #"appWaitDuration": 20000,
+            "automationName": "uiautomator2",
+            # "appWaitDuration": 20000,
             "deviceReadyTimeout": 5,
-            #"newCommandTimeout": "60",
+            # "newCommandTimeout": "60",
             "clearSystemFiles": True,
             "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
             "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
             "chromeOptions": {
                 "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
             },
+            "recreateChromeDriverSessions": True,
             "androidDeviceReadyTimeout": 60  # Android only
         },
 
@@ -83,10 +89,10 @@ class DesiredCapabilities(object):
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
             "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
-            #"appWaitDuration": 20000,
+            # "appWaitDuration": 20000,
             "deviceReadyTimeout": 5,
             # "fullReset": True,
-            #"newCommandTimeout": "60",
+            # "newCommandTimeout": "60",
             "clearSystemFiles": True,
             "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
             "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
@@ -105,9 +111,9 @@ class DesiredCapabilities(object):
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
             "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
-            #"appWaitDuration": 20000,
+            # "appWaitDuration": 20000,
             "deviceReadyTimeout": 5,
-            #"newCommandTimeout": "60",
+            # "newCommandTimeout": "60",
             "clearSystemFiles": True,
             "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
             "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
@@ -154,10 +160,10 @@ class DesiredCapabilities(object):
             "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
-            #"appWaitActivity": "com.noggin.ocalukasl.MainActivity",
-            #"appWaitDuration": 20000,
+            # "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
+            # "appWaitDuration": 20000,
             "deviceReadyTimeout": 5,
-            #"newCommandTimeout": "60",
+            # "newCommandTimeout": "60",
             "clearSystemFiles": True,
             "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
             "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
@@ -177,10 +183,10 @@ class DesiredCapabilities(object):
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
             "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
-            #"appWaitDuration": 20000,
+            # "appWaitDuration": 20000,
             "deviceReadyTimeout": 5,
             # "fullReset": True,
-            #"newCommandTimeout": "60",
+            # "newCommandTimeout": "60",
             "clearSystemFiles": True,
             "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
             "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
@@ -197,7 +203,7 @@ class DesiredCapabilities(object):
             "deviceName": "iPad mini",
             "app": PATH("/Users/lukasl/Build_xcode/Products/iPad9.3.5/OCA.app"),
             "bundleId": "com.noggin.ocalukasl",
-            #"newCommandTimeout": "60",
+            # "newCommandTimeout": "60",
             "autoAcceptAlerts": True,
             "automationName": "Appium",
             "clearSystemFiles": True,
@@ -214,7 +220,7 @@ class DesiredCapabilities(object):
             "deviceName": "iPhone 5",
             "app": PATH("/Users/lukasl/Build_xcode/Products/iPhone9.3/OCA.app"),
             "bundleId": "com.noggin.ocalukasl",
-            #"newCommandTimeout": "60",
+            # "newCommandTimeout": "60",
             "launchTimeout": 200000,  # iOS only
             "clearSystemFiles": True,
             "startIWDP": True,
@@ -232,14 +238,14 @@ class DesiredCapabilities(object):
             # "autoAcceptAlerts": True,  # not working on iOS10
             "xcodeOrgId": "5MJR4HSABR",  # 10 characters string generated by Apple - search for it in Xcode
             "xcodeSigningId": "iPhone Developer",
-            #"useNewWDA": True,  # If True, forces uninstall of any existing WebDriverAgent app on device
-            "usePrebuiltWDA": True,  # Skips the build phase of running the WDA app
+            "useNewWDA": True,  # If True, forces uninstall of any existing WebDriverAgent app on device
+            # "usePrebuiltWDA": True,  # Skips the build phase of running the WDA app
             "preventWDAAttachments": True,  # capability to help with XCUITest speed and disk usage
             "showXcodeLog": True,
             # "showIOSLog": True,
             "automationName": "XCUITest",
             # "autoWebview": True,
-            #"newCommandTimeout": "60",
+            # "newCommandTimeout": "60",
             "clearSystemFiles": True,
             "startIWDP": True,  # start ios-webkit-debug-proxy
             "noReset": False,
@@ -251,10 +257,11 @@ class DesiredCapabilities(object):
             # iPhone 7 simulator with iOS 10.3
             "platformName": "iOS",
             "platformVersion": "10.3",
-            "deviceName": "iPhone 7",
-            "app": PATH("/Users/lukasl/Build_xcode/Products/iPhone7/OCA.app"),
+            "deviceName": "iPhone 6",
+            # "app": PATH("/Users/lukasl/Build_xcode/Products/iPhone7/OCA.app"),
+            "app": PATH("/Users/lukasl/Build_xcode/Products/iPhone6_emulator/OCA.app"),
             "bundleId": "com.noggin.ocalukasl",
-            #"newCommandTimeout": "60",
+            # "newCommandTimeout": "60",
             "launchTimeout": 200000,  # iOS only
             "automationName": "XCUITest",
             "xcodeOrgId": "5MJR4HSABR",
@@ -264,7 +271,7 @@ class DesiredCapabilities(object):
             "startIWDP": True,
             "preventWDAAttachments": True,  # capability to help with XCUITest speed and disk usage
             "useNewWDA": True,
-            #"usePrebuiltWDA": True
+            # "usePrebuiltWDA": True
         },
 
     }

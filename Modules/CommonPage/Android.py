@@ -64,7 +64,7 @@ class Android(CommonPage):
 
         try:
             logging.info("click Go on keyboard")
-            self.driver.keyevent(66)
+            self.driver.press_keycode(66)
             sleep(3)
         except NoSuchElementException:
             logging.info("keyboard not found")
@@ -134,8 +134,8 @@ class Android(CommonPage):
         # print(self.driver.contexts)
         # self.driver.refresh()  # Method has not yet been implemented
         print(self.driver.page_source)
-        self.driver.keyevent(3)  # Press Home Key
-        self.driver.keyevent(187)  # KEYCODE_APP_SWITCH
+        self.driver.press_keycode(3)  # Press Home Key
+        self.driver.press_keycode(187)  # KEYCODE_APP_SWITCH
         self.driver.find_element_by_accessibility_id('OCA')  # maximize app
 
     # @staticmethod

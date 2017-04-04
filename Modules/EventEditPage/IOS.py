@@ -9,6 +9,16 @@ from time import sleep
 
 class IOS(EventEditPage):
 
+    def type_text_into_description_field(self):
+
+        # self.switch_context_to_webview()  # webview is not working on iOS10
+
+        sleep(2)
+        logging.info("type some text into description field")
+        description_field = self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD)
+        description_field.click()
+        description_field.send_keys("test appium")
+
     def scroll_down_to_save_button(self):
         """Method to scroll down to bottom of the screen - to 'Save' button"""
 
@@ -22,7 +32,7 @@ class IOS(EventEditPage):
             else:
                 logging.info("scroll down to save button")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
-                scroll = -1
+                scroll = scroll - 1
         # else:
         #     pass
 
@@ -39,6 +49,15 @@ class IOS(EventEditPage):
     #         if name_field_by_index.is_displayed():
     #             name_field_by_index.click()
     #             name_field_by_index.send_keys(text)
+
+    def click_severity_lvl_picker(self):  # not working for iOS 10
+
+        sleep(1)
+
+        logging.info("click on severity level field")
+        self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR).click()
+
+    click_severity_lvl_picker_for_edit_event = click_severity_lvl_picker
 
     def choose_severity_level_1(self):
 
@@ -127,7 +146,7 @@ class IOS(EventEditPage):
             else:
                 logging.info("scroll down to description field")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
-                var = -1
+                var = var - 1
 
     # def type_text_into_description_field(self):
     #
@@ -151,7 +170,7 @@ class IOS(EventEditPage):
             else:
                 logging.info("scroll down")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
-                var = -1
+                var = var - 1
 
     def click_on_option_list(self):
 
@@ -167,21 +186,21 @@ class IOS(EventEditPage):
         var = 20
         while var > 0:
             logging.info("check if add row button is visible")
-            save_button = self.driver.find_element(*self.configuration.EventEditScreen.SUBFORM_FIELD_ADD_ROW)
-            if save_button.is_displayed():
+            subform_field = self.driver.find_element(*self.configuration.EventEditScreen.SUBFORM_FIELD_ADD_ROW)
+            if subform_field.is_displayed():
                 break
             else:
                 logging.info("scroll down to add row button")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
-                var = -1
+                var = var - 1
 
-    # only for event type: "event_for_on_load/save_test"
-    def click_button_add_row(self):
-
-        logging.info("click button Add row")
-        add_row = self.driver.find_element(*self.configuration.EventEditScreen.SUBFORM_FIELD_ADD_ROW)
-        self.assertIsNotNone(add_row, "add_row button not found")
-        add_row.click()
+    # # only for event type: "event_for_on_load/save_test"
+    # def click_button_add_row(self):
+    #
+    #     logging.info("click button Add row")
+    #     add_row = self.driver.find_element(*self.configuration.EventEditScreen.SUBFORM_FIELD_ADD_ROW)
+    #     self.assertIsNotNone(add_row, "add_row button not found")
+    #     add_row.click()
 
     def scroll_down_to_event_chooser_field(self):
 
@@ -195,26 +214,26 @@ class IOS(EventEditPage):
             else:
                 logging.info("scroll down")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
-                var = -1
+                var = var - 1
 
-    def delete_chosen_event_inside_subform(self):
-
-        logging.info("delete chosen event inside sub form")
-        try:
-            delete_x = self.driver.find_element(*self.configuration.EventEditScreen.DELETE_SUB_EVENT_FROM_CHOOSER)
-            if delete_x.is_displayed():
-                delete_x.click()
-            else:
-                location = delete_x.location
-                print(location)
-                x = location["x"]
-                y = location["y"]
-                print(x)
-                print(y)
-                positions = [(x, y)]
-                self.driver.tap(positions)
-        except NoSuchElementException:
-            pass
+    # def delete_chosen_event_inside_subform(self):
+    #
+    #     logging.info("delete chosen event inside sub form")
+    #     try:
+    #         delete_x = self.driver.find_element(*self.configuration.EventEditScreen.DELETE_SUB_EVENT_FROM_CHOOSER)
+    #         if delete_x.is_displayed():
+    #             delete_x.click()
+    #         else:
+    #             location = delete_x.location
+    #             print(location)
+    #             x = location["x"]
+    #             y = location["y"]
+    #             print(x)
+    #             print(y)
+    #             positions = [(x, y)]
+    #             self.driver.tap(positions)
+    #     except NoSuchElementException:
+    #         pass
 
     def click_on_option_1(self):
 

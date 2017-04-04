@@ -19,4 +19,4 @@ class IOS(NewAssetPage):
             else:
                 logging.info("scroll down to save button")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
-                scroll = -1
+                scroll = scroll - 1

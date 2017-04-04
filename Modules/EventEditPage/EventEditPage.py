@@ -9,6 +9,32 @@ from Conf.desired_capabilities import DesiredCapabilities
 
 class EventEditPage(BasePage):
 
+    def click_button_add_row(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click button Add row")
+        add_row = self.driver.find_element(*self.configuration.EventEditScreen.SUBFORM_FIELD_ADD_ROW)
+        self.assertIsNotNone(add_row, "add_row button not found")
+        add_row.click()
+
+        self.switch_context_to_native()
+
+    def delete_chosen_event_inside_subform(self):
+
+        self.switch_context_to_webview()
+
+        sleep(1)
+        logging.info("delete chosen event inside sub form")
+        delete_button_inside_sub_form = self.driver.find_element(*self.configuration.EventEditScreen.
+                                                                 DELETE_SUB_EVENT_FROM_CHOOSER)
+        self.assertIsNotNone(delete_button_inside_sub_form, "delete button inside sub form not found")
+        delete_button_inside_sub_form.click()
+
+        self.switch_context_to_native()
+
+        sleep(2)
+
     def fill_Name_input_field(self, text):
 
         self.switch_context_to_webview()
@@ -22,7 +48,7 @@ class EventEditPage(BasePage):
 
     def type_text_into_description_field(self):
 
-        # self.switch_context_to_webview()  # webview is not working on iOS10
+        self.switch_context_to_webview()  # webview is not working on iOS10
 
         sleep(2)
         logging.info("type some text into description field")
@@ -30,33 +56,46 @@ class EventEditPage(BasePage):
         description_field.click()
         description_field.send_keys("test appium")
 
-        # self.switch_context_to_native()
+        self.switch_context_to_native()
 
         # sleep(4)
         # logging.info("type some text into description field")
         # self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD).click()
         # self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD).send_keys("test appium")
 
-    def click_severity_lvl_picker(self):
+    def click_severity_lvl_picker(self):  # not working for iOS 10
 
-        # self.switch_context_to_webview()
-        #
-        # logging.info("click on severity level field")
-        # self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR).click()
-        #
-        # self.switch_context_to_native()
         sleep(1)
+
+        self.switch_context_to_webview()
+
         logging.info("click on severity level field")
+        self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR).click()
+
+        self.switch_context_to_native()
+
         # self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR).click()
-        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
-        platform_name = desired_capabilities.get('platformName')
-        platform_version = desired_capabilities.get('platformVersion')
-        if platform_name == "ANDROID" and platform_version < "5":
-            self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR2).click()
-        else:
-            self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR).click()
+        # desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        # platform_name = desired_capabilities.get('platformName')
+        # platform_version = desired_capabilities.get('platformVersion')
+        # if platform_name == "ANDROID" and platform_version < "5":
+        #     self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR2).click()
+        # else:
+        #     self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR).click()
 
     # only for event type: "event_for_on_load/save_test"
+
+    def click_severity_lvl_picker_for_edit_event(self):
+
+        sleep(1)
+
+        self.switch_context_to_webview()
+
+        logging.info("click on severity level field")
+        self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR_EDIT_EVENT).click()
+
+        self.switch_context_to_native()
+
     def check_on_load_and_on_save_sequences(self):
 
         logging.info("assert on load and on save sequence")
@@ -135,13 +174,24 @@ class EventEditPage(BasePage):
 
     def click_on_choose_field_inside_subform(self):
 
-        sleep(5)
+        self.switch_context_to_webview()
+
+        sleep(2)
         logging.info("click_on_choose_field_inside_subform")
         event_chooser_in_subform = self.driver.find_element(*self.configuration.EventEditScreen.
                                                             NEW_EVENTS_CHOOSER_IN_SUB_FORM)
         self.assertIsNotNone(event_chooser_in_subform, "event chooser in subform not found")
         event_chooser_in_subform.click()
-        sleep(5)
+        sleep(2)
+
+        self.switch_context_to_native()
+        # sleep(5)
+        # logging.info("click_on_choose_field_inside_subform")
+        # event_chooser_in_subform = self.driver.find_element(*self.configuration.EventEditScreen.
+        #                                                     NEW_EVENTS_CHOOSER_IN_SUB_FORM)
+        # self.assertIsNotNone(event_chooser_in_subform, "event chooser in subform not found")
+        # event_chooser_in_subform.click()
+        # sleep(5)
 
     def click_save_button(self):
 
@@ -181,13 +231,37 @@ class EventEditPage(BasePage):
 
         self.switch_context_to_native()
 
+    # def click_cancel_button(self):
+    #
+    #     logging.info("click on Cancel button")
+    #     cancel_button = self.driver.find_element(*self.configuration.CommonScreen.CANCEL_BUTTON)
+    #     self.assertIsNotNone(cancel_button, "Cancel button not found")
+    #     cancel_button.click()
+    #     sleep(4)
+
     def click_cancel_button(self):
 
+        self.switch_context_to_webview()
+
         logging.info("click on Cancel button")
-        cancel_button = self.driver.find_element(*self.configuration.CommonScreen.CANCEL_BUTTON)
+        cancel_button = self.driver.find_element(*self.configuration.EventEditScreen.CANCEL_BUTTON)
         self.assertIsNotNone(cancel_button, "Cancel button not found")
         cancel_button.click()
         sleep(4)
+
+        self.switch_context_to_native()
+
+    def click_cancel_button_for_edited_event(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click on Cancel button")
+        cancel_button = self.driver.find_element(*self.configuration.EventEditScreen.CANCEL_BUTTON_EDIT_EVENT)
+        self.assertIsNotNone(cancel_button, "Cancel button not found")
+        cancel_button.click()
+        sleep(4)
+
+        self.switch_context_to_native()
 
     def click_on_event_chooser_field(self):
 

@@ -7,9 +7,9 @@
 
 - Java
 - Android studio and APIs for android - android avd
-- Python + pip
-- Selenium  (pip install -U selenium)
-- Appium client for python  (pip install Appium-Python-Client)
+- brew install python3
+- pip install -U selenium
+- pip install Appium-Python-Client
 - PyCharm - for opening and running tests
 
 **for OSX all above, plus:**
@@ -41,7 +41,13 @@ INSTALL APPIUM 1.6.3 TO WORK WITH iOS10: (CLI commands)
 - npm install -g deviceconsole
 - n stable
 - npm install -g npm@latest
-- npm install -g appium@beta
+- npm install -g appium@latest
+
+- cd /usr/local/lib/node_modules/appium/node_modules/ 
+- npm install babel-runtime
+- npm install appium-xcuitest-driver@latest
+- npm install appium-uiautomator2-driver@latest
+
 - cd /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent
 - mkdir -p Resources/WebDriverAgent.bundle
 - ./Scripts/bootstrap.sh
@@ -209,3 +215,4 @@ OCA APP VERSIONS:
 - "Instruments exited with code 255" = "Instruments exited with code 251" = We exceeded the number of retries allowed for instruments to successfully start; failing launch"  -- kill Appium server, 
     switch to proper Xcode version, restart host and device, ? 
 - Instruments exited with error 253 - rebuild OCA app through Xcode
+

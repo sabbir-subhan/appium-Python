@@ -19,7 +19,7 @@ class IOS(NewLogPage):
             else:
                 logging.info("scroll down")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
-                var = -1
+                var = var - 1
 
     # def type_text_into_entry_field(self, text):
     #
@@ -42,6 +42,6 @@ class IOS(NewLogPage):
             else:
                 logging.info("scroll down to save button")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
-                scroll = -1
+                scroll = scroll - 1
 
 

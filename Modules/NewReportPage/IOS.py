@@ -20,7 +20,7 @@ class IOS(NewReportPage):
             else:
                 logging.info("scroll down to Publish button")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
-                scroll = -1
+                scroll = scroll - 1
 
     def choose_lodging_agency(self):
 

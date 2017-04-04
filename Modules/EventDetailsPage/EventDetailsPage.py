@@ -3,6 +3,7 @@
 from Modules.BasePage.BasePage import BasePage
 from time import sleep
 import logging
+from selenium.common.exceptions import *
 
 
 class EventDetailsPage(BasePage):
@@ -21,9 +22,15 @@ class EventDetailsPage(BasePage):
 
     def click_edit_button(self):
 
+        logging.info("edit previously created event")
+
+        try:
+            self.driver.find_element(*self.configuration.EventDetailsScreen.EVENT_INFO_BUTTON).click()
+        except NoSuchElementException:
+            pass
+
         self.switch_context_to_webview()
 
-        logging.info("edit previously created event")
         edit_button = self.driver.find_element(*self.configuration.EventDetailsScreen.EDIT_BUTTON)
         self.assertIsNotNone(edit_button, "edit button not found")
         edit_button.click()

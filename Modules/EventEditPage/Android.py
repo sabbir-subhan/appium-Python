@@ -23,7 +23,7 @@ class Android(EventEditPage):
         scrolls = 13
         while scrolls > 0:
             self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen
-            scrolls -= 1
+            scrolls = scrolls - 1
         sleep(2)
 
     # def scroll_down_to_save_button(self):
@@ -60,7 +60,7 @@ class Android(EventEditPage):
         scrolls = 13
         while scrolls > 0:
             self.driver.swipe(start_x, start_y, start_x, end_y, 3000)  # each swipe is scrolling one screen
-            scrolls -= 1
+            scrolls = scrolls - 1
         sleep(1)
 
     def scroll_down_to_description_field(self):
@@ -176,34 +176,34 @@ class Android(EventEditPage):
                                                                     HEADER_ON_OPTION_LIST_PAGE)
         self.assertIsNotNone(header_after_opening_option_list, 'header_after_opening_option_list was not found')
 
-    # only for event type: "event_for_on_load/save_test"
-    def click_button_add_row(self):
+    # # only for event type: "event_for_on_load/save_test"
+    # def click_button_add_row(self):
+    #
+    #     sleep(1)
+    #     logging.info("click button Add row")
+    #     add_row = self.driver.find_element(*self.configuration.EventEditScreen.SUBFORM_FIELD_ADD_ROW)
+    #     self.assertIsNotNone(add_row, "add_row button not found")
+    #     action = TouchAction(self.driver)
+    #     action.tap(element=add_row, count=1).perform()
+    #     # add_row.click()
 
-        sleep(1)
-        logging.info("click button Add row")
-        add_row = self.driver.find_element(*self.configuration.EventEditScreen.SUBFORM_FIELD_ADD_ROW)
-        self.assertIsNotNone(add_row, "add_row button not found")
-        action = TouchAction(self.driver)
-        action.tap(element=add_row, count=1).perform()
-        # add_row.click()
-
-    def delete_chosen_event_inside_subform(self):
-
-        sleep(5)
-        logging.info("delete chosen event inside sub form")
-        delete_button_inside_sub_form = self.driver.find_element(*self.configuration.EventEditScreen.
-                                                                 DELETE_SUB_EVENT_FROM_CHOOSER)
-        self.assertIsNotNone(delete_button_inside_sub_form, "delete button inside sub form not found")
-        # location = delete_button_inside_sub_form.location
-        # print(location)
-        # x = location["x"]
-        # y = location["y"]
-        # print(x)
-        # print(y)
-        # positions = [(x, y)]
-        # self.driver.tap(positions)
-        delete_button_inside_sub_form.click()
-        sleep(5)
+    # def delete_chosen_event_inside_subform(self):
+    #
+    #     sleep(5)
+    #     logging.info("delete chosen event inside sub form")
+    #     delete_button_inside_sub_form = self.driver.find_element(*self.configuration.EventEditScreen.
+    #                                                              DELETE_SUB_EVENT_FROM_CHOOSER)
+    #     self.assertIsNotNone(delete_button_inside_sub_form, "delete button inside sub form not found")
+    #     # location = delete_button_inside_sub_form.location
+    #     # print(location)
+    #     # x = location["x"]
+    #     # y = location["y"]
+    #     # print(x)
+    #     # print(y)
+    #     # positions = [(x, y)]
+    #     # self.driver.tap(positions)
+    #     delete_button_inside_sub_form.click()
+    #     sleep(5)
         # try:
         #     previously_created_event_for_subform_chooser = self.driver.find_element(
         #         *self.configuration.EventEditScreen.PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER)

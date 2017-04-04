@@ -202,8 +202,8 @@ class TypesOfEventsScreen:
 
 class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
-    SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')  # not working for:
-    # SAVE_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains(., "Save")]]')  # problem on Android 7
+    SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
+    # SAVE_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains(., "Save")]]')
     NAME_FIELD = (MobileBy.ID, 'name')
     NAME_FIELD2 = (MobileBy.XPATH, '//android.widget.EditText[@index="1"]')
     SEVERITY_LEVEL_SELECTOR = (MobileBy.ID, 'field-1801')
@@ -276,6 +276,7 @@ class EventDetailsScreen:
     DELETE_CONFIRM_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Delete')
     NEW_SUB_EVENT = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "New sub event")]]')
     SET_AS_PRIMARY_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Set as primary")]]')
+    EVENT_INFO_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Event info')
 
 
 class Map:

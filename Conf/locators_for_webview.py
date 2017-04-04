@@ -138,8 +138,8 @@ class EventsScreen:
     NEW_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#emeNew?parent=0"]')
 
     # previously created event
-    # PREVIOUSLY_CREATED_EVENT = (MobileBy.CSS_SELECTOR, 'ul.emes.listview.ui-listview>li>a')
     PREVIOUSLY_CREATED_EVENT = (MobileBy.CSS_SELECTOR, 'ul.emes.listview.ui-listview>li:first-child>a')
+    PREVIOUSLY_CREATED_EVENT_CHECKBOX = (MobileBy.CSS_SELECTOR, 'ul.emes.listview.ui-listview>li:first-child>div.ui-checkbox')
 
     #CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, 'li.primary.eme.clear.ui-first-child>a')
     #NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.CSS_SELECTOR, '')
@@ -160,8 +160,11 @@ class EventEditScreen:
                                             'a[href="#cancel"]')
     SAVE_BUTTON_EDIT_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                                      'a[href="#save"]')
+    CANCEL_BUTTON_EDIT_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                                       'a[href="#cancel"]')
     NAME_FIELD = (MobileBy.CSS_SELECTOR, 'div#emeNew>div>ul>li>div>input#name')
-    #SEVERITY_LEVEL_SELECTOR = (MobileBy.CSS_SELECTOR, 'div#field-1801-button')
+    SEVERITY_LEVEL_SELECTOR = (MobileBy.CSS_SELECTOR, 'div#emeNew>div>ul>li>div>div>select[name="severity"]')  # for new event
+    SEVERITY_LEVEL_SELECTOR_EDIT_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div>ul>li>div>div>select[name="severity"]')
     # CHOOSE_SEVERITY_LVL1_iPad = (MobileBy.CSS_SELECTOR, '')
     # CHOOSE_SEVERITY_LVL2_iPad = (MobileBy.CSS_SELECTOR, '')
     # CHOOSE_SEVERITY_LVL3_iPad = (MobileBy.CSS_SELECTOR, '')
@@ -185,9 +188,9 @@ class EventEditScreen:
     FIELD_TO_RESTORE_2_HEADER = (MobileBy.CSS_SELECTOR, '')
     FIELD_TO_RESTORE_2_VALUE = (MobileBy.CSS_SELECTOR, '')
     CHOOSER_FIELD = (MobileBy.CSS_SELECTOR, '')
-    SUBFORM_FIELD_ADD_ROW = (MobileBy.CSS_SELECTOR, '')
-    NEW_EVENTS_CHOOSER_IN_SUB_FORM = (MobileBy.CSS_SELECTOR, '')
-    DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.CSS_SELECTOR, '')
+    SUBFORM_FIELD_ADD_ROW = (MobileBy.CSS_SELECTOR, 'div.subform>a')
+    NEW_EVENTS_CHOOSER_IN_SUB_FORM = (MobileBy.CSS_SELECTOR, 'div.subform>div.subform-row>ul.subform-row>li>div.ui-select')
+    DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.CSS_SELECTOR, 'div.subform>div.subform-row>a.delete')
 
 
 class EventDetailsScreen:
@@ -198,6 +201,7 @@ class EventDetailsScreen:
     MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#emeViewMoreMenu"]')
     NEW_SUB_EVENT = (MobileBy.CSS_SELECTOR, 'li.eme.new.subeme>a')
     SET_AS_PRIMARY_BUTTON = (MobileBy.CSS_SELECTOR, 'li.primary.eme.set.ineme.ui-first-child>a')
+    EVENT_INFO_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a.emeView')
 
 
 class Map:
