@@ -11,6 +11,20 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 class IOS(WelcomePage):
 
+    def click_login_button(self):
+
+        logging.info("click in LOGIN button")
+        sleep(5)
+
+        self.switch_context_to_webview()
+
+        self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON).click()
+        sleep(2)
+
+        self.switch_context_to_native()
+
+        sleep(2)
+
     def logout(self):
 
         sleep(5)

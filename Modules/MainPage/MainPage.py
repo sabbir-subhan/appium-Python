@@ -81,16 +81,21 @@ class MainPage(BasePage):
     def check_if_alert_WORKFLOW_ACTIVATED_is_present(self):
 
         logging.info("check if alert 'Workflow activated' is present and click 'Ok'")
-        alert_workflow_activated = self.driver.find_element(*self.configuration.MainMenuScreen.ALERT_WORKFLOW_ACTIVATED)
-        self.assertIsNotNone(alert_workflow_activated, "alert WORKFLOW ACTIVATED is not present")
+        WebDriverWait(self.driver, 25).until(
+            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.ALERT_WORKFLOW_ACTIVATED),
+            "Events button in Main Menu is not present")
         self.driver.find_element(*self.configuration.LoginScreen.OK_BUTTON).click()
 
     def click_ACTIVATE_WORKFLOW(self):
+
+        self.switch_context_to_webview()
 
         logging.info("clicking in ACTIVATE WORKFLOW button")
         activate_workflow_button = self.driver.find_element(*self.configuration.MainMenuScreen.ACTIVATE_WORKFLOW_BUTTON)
         self.assertIsNotNone(activate_workflow_button, "ACTIVATE WORKFLOW button not found")
         activate_workflow_button.click()
+
+        self.switch_context_to_native()
 
     def open_CREATE_CONTACT(self):
 

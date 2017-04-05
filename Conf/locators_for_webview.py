@@ -69,7 +69,7 @@ class MainMenuScreen(WelcomeScreen):
     CREATE_TASK_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#taskNew"]')
     CREATE_REPORT_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#reportNew?type=1"]')
     #WEBSITE_LINK_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    INCIDENT_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#emeNew?type=1"]')
+    INCIDENT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#menu>div[data-role="main"]>div>div>a[href="#emeNew?type=1"]')
     CREATE_ASSETS_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#assetNew?type=1"]')
     CREATE_LOG_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#logNew?type=1"]')
     RISKS_BUTTON = (MobileBy.CSS_SELECTOR, 'div#riskMenu>a')
@@ -243,6 +243,7 @@ class VideoScreen:
     """A class for Video screen locators - screen after clicking into Video button in Main Menu."""
     #VIDEO_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
     RECORD_NEW_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'a#videoBtnSend')
 
 
 class SoundScreen:

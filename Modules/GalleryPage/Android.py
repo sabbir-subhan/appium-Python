@@ -17,19 +17,31 @@ class Android(GalleryPage):
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()
         platform_version = desired_capabilities.get('platformVersion')
         if platform_version >= "7":
-            gallery_elements_android7 = self.driver.find_elements(*self.configuration.GalleryScreen.
-                                                                  GALLERY_ELEMENTS_android7)
-            # gallery_elements_android7[0].click()
-            location = gallery_elements_android7[0].location
-            logging.info(location)
-            x = location["x"]
-            y = location["y"]
-            logging.info(x)
-            logging.info(y)
-            positions = [(x, y)]
-            #self.driver.tap(positions)
-            action = TouchAction(self.driver)
-            action.tap(element=gallery_elements_android7[0], x=x, y=y, count=1).perform()
+            # gallery_elements_android7 = self.driver.find_elements(*self.configuration.GalleryScreen.
+            #                                                       GALLERY_ELEMENTS_android7)
+            gallery_elements_android7 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1_android7)
+            gallery_elements_android7.click()
+            # location = gallery_elements_android7[0].location
+            # logging.info(location)
+            # x = location["x"]
+            # y = location["y"]
+            # logging.info(x)
+            # logging.info(y)
+            # positions = [(x, y)]
+            # sleep(2)
+            # self.driver.tap(positions)
+
+            # common_page = LoadClass.load_page('CommonPage')
+            # common_page.setDriver(self.driver)
+            # common_page.alert_popup_allow()
+            #
+            # photo_page = LoadClass.load_page('PhotoPage')
+            # photo_page.setDriver(self.driver)
+            # photo_page.click_gallery_button()
+            #
+            # self.driver.tap(positions)
+            # # action = TouchAction(self.driver)
+            # # action.tap(element=gallery_elements_android7[0], x=x, y=y, count=1).perform()
         else:
             choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1)
             choose_element_1.click()

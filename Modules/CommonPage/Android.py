@@ -37,18 +37,19 @@ class Android(CommonPage):
 
     def alert_popup_allow(self):
 
+        logging.info('search for alert and click "Allow" if found')
         try:
             button_allow_location = self.driver.find_element(*self.configuration.Android.ANDROID_ALLOW)
             if button_allow_location.is_displayed():
                 # logging.info("Accept for example using location - device will store that info for later use")
                 button_allow_location.click()
-        except NoSuchElementException:
+        except:
             pass
         try:
             button_allow_location = self.driver.find_element(*self.configuration.Android.ANDROID_ALLOW)
             if button_allow_location.is_displayed():
                 button_allow_location.click()
-        except NoSuchElementException:
+        except:
             pass
 
     def hide_keyboard(self):
@@ -56,7 +57,7 @@ class Android(CommonPage):
         try:
             logging.info("hide screen keyboard")
             self.driver.hide_keyboard()
-            sleep(3)
+            sleep(1)
         except:
             logging.info("screen keyboard not found")
 

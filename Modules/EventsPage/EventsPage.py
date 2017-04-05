@@ -4,6 +4,8 @@ from Modules.BasePage.BasePage import BasePage
 from time import sleep
 import logging
 from selenium.common.exceptions import *
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
 
 
 class EventsPage(BasePage):
@@ -11,15 +13,19 @@ class EventsPage(BasePage):
     def clear_primary_event(self):
 
         logging.info("clicking in 'Clear primary event' button")
+        sleep(1)
         clear_primary_event_button = self.driver.find_element(*self.configuration.EventsScreen.
                                                               CLEAR_PRIMARY_EVENT_BUTTON)
         self.assertIsNotNone(clear_primary_event_button, "Clear primary event button not found")
         clear_primary_event_button.click()
         try:
             logging.info("checking notification - 'Primary event cleared'")
-            sleep(1)
-            notification = self.driver.find_element(*self.configuration.EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED)
-            self.assertIsNotNone(notification)
+            WebDriverWait(self.driver, 25).until(
+                expected_conditions.presence_of_element_located(self.configuration.EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED),
+                "Events button in Main Menu is not present")
+            # sleep(1)
+            # notification = self.driver.find_element(*self.configuration.EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED)
+            # self.assertIsNotNone(notification)
         except NoSuchElementException:
             logging.info("notification not found")
 

@@ -3,6 +3,9 @@
 from Modules.BasePage.BasePage import BasePage
 import logging
 from Modules.load_class import LoadClass
+from time import sleep
+from selenium.webdriver.support import expected_conditions
+import selenium.webdriver.support.ui
 
 
 class VideoPage(BasePage):
@@ -21,9 +24,26 @@ class VideoPage(BasePage):
 
     def click_send_button(self):
 
-        photo_page = LoadClass.load_page('PhotoPage')
-        photo_page.setDriver(self.driver)
-        photo_page.click_send_button()
+        # photo_page = LoadClass.load_page('PhotoPage')
+        # photo_page.setDriver(self.driver)
+        # photo_page.click_send_button()
+
+        self.switch_context_to_webview()
+
+        sleep(1)
+        logging.info("click 'Send' button")
+        send_button = self.driver.find_element(*self.configuration.VideoScreen.SEND_BUTTON)
+        self.assertIsNotNone(send_button, "Send button not found")
+        send_button.click()
+
+        self.switch_context_to_native()
+
+        sleep(2)
+        logging.info("sending file")
+        selenium.webdriver.support.ui.WebDriverWait(self.driver, 600).until(
+            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
+            "Failed to send file")
+        logging.info("File was sent")
 
     def click_record_new_button(self):
 
@@ -37,6 +57,7 @@ class VideoPage(BasePage):
         photo_page = LoadClass.load_page('PhotoPage')
         photo_page.setDriver(self.driver)
         photo_page.type_description(description)
+
 
 
 

@@ -17,7 +17,7 @@ class WelcomePage(BasePage):
 
         self.switch_context_to_webview()
 
-        WebDriverWait(self.driver, 20).until(
+        WebDriverWait(self.driver, 25).until(
             expected_conditions.presence_of_element_located(self.configuration.WelcomeScreen.LOGIN_BUTTON),
             "Login button not found")
         self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON).click()

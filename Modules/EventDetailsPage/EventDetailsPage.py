@@ -38,6 +38,8 @@ class EventDetailsPage(BasePage):
 
         self.switch_context_to_native()
 
+        sleep(2)
+
     def set_as_primary_event(self):
 
         self.switch_context_to_webview()

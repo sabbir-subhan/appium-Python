@@ -92,7 +92,10 @@ class EventEditPage(BasePage):
         self.switch_context_to_webview()
 
         logging.info("click on severity level field")
-        self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR_EDIT_EVENT).click()
+        severity_picker = self.driver.find_element(*self.configuration.EventEditScreen.
+                                                   SEVERITY_LEVEL_SELECTOR_EDIT_EVENT)
+        self.assertIsNotNone(severity_picker, "severity picker for edited event not found")
+        severity_picker.click()
 
         self.switch_context_to_native()
 
