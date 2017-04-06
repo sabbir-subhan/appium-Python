@@ -17,23 +17,34 @@ class PhotoPage(BasePage):
 
     def type_description(self, description):
 
-        WebDriverWait(self.driver, 35).until(
+        self.switch_context_to_webview()
+
+        WebDriverWait(self.driver, 20).until(
             expected_conditions.presence_of_element_located(self.configuration.PhotoScreen.DESCRIPTION_FIELD),
             "Failed to locate description field")
         logging.info("type text into description field")
         description_field = self.driver.find_element(*self.configuration.PhotoScreen.DESCRIPTION_FIELD)
         self.assertIsNotNone(description_field, "Description field not found")
+
         description_field.click()
         description_field.send_keys(description)
+
+        self.switch_context_to_native()
 
     def click_send_button(self):
 
         sleep(1)
+
+        self.switch_context_to_webview()
+
         logging.info("click 'Send' button")
         send_button = self.driver.find_element(*self.configuration.PhotoScreen.SEND_BUTTON)
         self.assertIsNotNone(send_button, "Send button not found")
         send_button.click()
         sleep(2)
+
+        self.switch_context_to_native()
+
         logging.info("sending file")
         WebDriverWait(self.driver, 600).until(
             expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
@@ -42,10 +53,14 @@ class PhotoPage(BasePage):
 
     def click_gallery_button(self):
 
+        self.switch_context_to_webview()
+
         logging.info("click in Gallery button")
         gallery_button = self.driver.find_element(*self.configuration.PhotoScreen.GALLERY_BUTTON)
         self.assertIsNotNone(gallery_button, "Gallery button not found")
         gallery_button.click()
+
+        self.switch_context_to_native()
 
     def click_reset_button(self):
 
@@ -56,7 +71,11 @@ class PhotoPage(BasePage):
 
     def click_take_new_button(self):
 
+        self.switch_context_to_webview()
+
         logging.info("clicking in Take new button")
         take_new_button = self.driver.find_element(*self.configuration.PhotoScreen.TAKE_NEW_BUTTON)
         self.assertIsNotNone(take_new_button, "Take new button not found")
         take_new_button.click()
+
+        self.switch_context_to_native()

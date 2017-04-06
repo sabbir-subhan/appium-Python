@@ -78,7 +78,7 @@ class TestSendPhoto(SetupTestCase):
         common_page.alert_popup_allow()
         photo_page.type_description("test - photo 1 from gallery")
         common_page.hide_keyboard()
-        photo_page.click_send_button()
+        photo_page.click_send_button()  # click and wait for 600s
         main_page.open_PHOTO()
         photo_page.click_take_new_button()
         common_page.alert_popup_allow()

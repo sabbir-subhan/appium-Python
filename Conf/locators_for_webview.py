@@ -29,6 +29,8 @@ class SettingsScreen:
     # SETTINGS_CONTACT_IDENTIFIER_FIELD = (MobileBy.CSS_SELECTOR, '')
     # SETTINGS_ALERT_APP_HAS_BEEN_ACTIVATED = (MobileBy.CSS_SELECTOR, '')
     # SETTINGS_OK_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    SETTINGS_ALERT_ABOUT_PIN = (MobileBy.CSS_SELECTOR, 'div#settings>div.ui-popup-container.ui-popup-active')
+    SETTINGS_SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'a#settingsBtnSave')
 
 
 class LoginScreen:
@@ -64,6 +66,7 @@ class LoginScreen:
 
 class MainMenuScreen(WelcomeScreen):
     """A class for main menu screen locators - first screen after correct login into the app."""
+    MAIN_MENU = (MobileBy.CSS_SELECTOR, 'div#menu>div[data-role="main"]>div.ui-grid-b.home-icon-grid')
     ACTIVATE_WORKFLOW_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#workflowView?id=1201"]')
     CREATE_CONTACT_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#contactNew?parent=4&type=1"]')
     CREATE_TASK_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#taskNew"]')
@@ -231,25 +234,28 @@ class Map:
 class PhotoScreen:
     """A class for Photo screen locators - screen after clicking into Photo button in Main Menu."""
     #PHOTO_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
-    GALLERY_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    TAKE_NEW_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, '')
-    SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'div#Photo>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
-                                              'a[data-translate="Send"]')
-    RESET_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    GALLERY_BUTTON = (MobileBy.CSS_SELECTOR, 'div#photo>div>div#photo-placeholder>div>div>span[data-open="album"]>span[data-open="album"]')
+    TAKE_NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'div#photo>div>div#photo-placeholder>div>div>span[data-open="camera"]>span[data-open="camera"]')
+    DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'textarea#photo-input-description')
+    SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'a#photoBtnSend')
+    RESET_BUTTON = (MobileBy.CSS_SELECTOR, 'a#photoBtnReset')
 
 
 class VideoScreen:
     """A class for Video screen locators - screen after clicking into Video button in Main Menu."""
     #VIDEO_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
-    RECORD_NEW_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    GALLERY_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div>div#video-placeholder>div>div>span[data-open="album"]>span[data-open="album"]')
+    RECORD_NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div>div#video-placeholder>div>div>span[data-open="camera"]>span[data-open="camera"]')
     SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'a#videoBtnSend')
+    DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'textarea#video-input-description')
 
 
 class SoundScreen:
     """A class for Sound screen locators - screen after clicking into Sound button in Main Menu."""
     #SOUND_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
-    RECORD_SOUND_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    RECORD_SOUND_BUTTON = (MobileBy.CSS_SELECTOR, 'div#audio>div>div.ui-grid-a>div#audio-placeholder>span')
+    DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'textarea#audio-input-description')
+    SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'a#audioBtnSend')
 
 
 # class SoundRecorderScreen:
@@ -373,11 +379,19 @@ class RisksScreen:
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#riskregisterNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
     PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.CSS_SELECTOR, 'ul.registers.listview.ui-listview>li>a')
+    PREVIOUSLY_CREATED_CONTEXT = (MobileBy.CSS_SELECTOR, 'ul.contexts.listview.ui-listview>li>a')
     RISK_REGISTERS_LIST = (MobileBy.CSS_SELECTOR, 'ul.registers.listview.ui-listview>li:first-child>a')  # changed from whole list
     NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#riskcontextTreeMoreMenu"]')
     ADD_NEW_CONTEXT = (MobileBy.CSS_SELECTOR, 'a[href="#riskcontextNew?parent=0"]')
+    ADD_NEW_RISK = (MobileBy.CSS_SELECTOR, 'ul.context.footer.menu.ui-listview>li.new.risk>a')
+    ADD_NEW_CONTEXT_IN_EXISTING_CONTEXT = (MobileBy.CSS_SELECTOR, 'ul.context.footer.menu.ui-listview>li.new.riskcontext>a')
+    ADD_NEW_LIBRARY_RISK = (MobileBy.CSS_SELECTOR, 'ul.context.footer.menu.ui-listview>li.library>a')
     SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input#riskregisterSearch')
     NAME_FOR_NEW_CONTEXT = (MobileBy.CSS_SELECTOR, 'div#riskcontextNew>div>ul>li.ui-field-contain.ui-li-static.ui-body-inherit>div>input#name')
+    NAME_FOR_NEW_RISK = (MobileBy.CSS_SELECTOR, 'div#riskNew>div>ul>li>div>input#name')
     SAVE_NEW_CONTEXT = (MobileBy.CSS_SELECTOR, 'div#riskcontextNew>div[data-role="footer"]>div>ul>li>a[href="#save"]')
+    SAVE_NEW_RISK = (MobileBy.CSS_SELECTOR, 'div#riskNew>div[data-role="footer"]>div>ul>li>a[href="#save"]')
+    OK_BUTTON = (MobileBy.CSS_SELECTOR, 'div#risklibraryTreeView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a')
+    PREVIOUSLY_CREATED_RISK = (MobileBy.CSS_SELECTOR, 'ul.risks.listview.ui-listview>li>a')
 
 

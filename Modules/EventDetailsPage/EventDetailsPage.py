@@ -31,6 +31,7 @@ class EventDetailsPage(BasePage):
 
         self.switch_context_to_webview()
 
+        sleep(1)
         edit_button = self.driver.find_element(*self.configuration.EventDetailsScreen.EDIT_BUTTON)
         self.assertIsNotNone(edit_button, "edit button not found")
         edit_button.click()

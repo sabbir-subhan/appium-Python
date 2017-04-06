@@ -94,7 +94,7 @@ class TestManagingEvents(SetupTestCase):
         event_details_page = LoadClass.load_page('EventDetailsPage')
         event_details_page.setDriver(self.driver)
         event_details_page.click_edit_button()
-        event_edit_page.click_severity_lvl_picker_for_edit_event()
+        event_edit_page.click_severity_lvl_picker_for_edit_event()  # bug on iOS10 58 not found
         event_edit_page.choose_severity_level_5()
         event_edit_page.scroll_down_to_description_field()
         event_edit_page.type_text_into_description_field()

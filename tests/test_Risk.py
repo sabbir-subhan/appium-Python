@@ -10,18 +10,17 @@
 # check if button "EVENTS" is present
 # From the main menu click on Risks.
 # Click on Create a new Risk Register > Enter the details >Save
-# Click on existing Risk Register>Click on new button >Click on Add new Context
-# Click on existing Risk Register>Click on New button > Click on existing context >Click on Add new Risk
-# Click on existing Risk Register>Click on New button > Click on existing context >Click on Add new library Risk
+# Click on existing Risk Register > Click on new button > Click on Add new Context
+# Click on existing Risk Register > Click on existing context > Click on New button > Click on Add new Risk
+# Click on existing Risk Register > Click on existing context > Click on New button > Click on Add new library Risk > ?
 
-# Select existing Risk Register>Select existing Context>Click on Context>Select a Risk under that context>
-# Click on existing Risk>Click On More>Click Add new control>Select a Control you like to add to Risk>
-# Fill in Details and Save
+# Select existing Risk Register > Select existing Context > Click on existing Risk > Click On More >
+# Click Add new control > Fill in Details and Save
 
-# Select existing Risk Register>Select existing Context>Click on Context>Click on more button > Delete this risk
-# Select existing Risk Register>Select existing Context>Click on Context>Click on more >Add Library Control
-# Select existing Risk Register>Select existing Context>Click on Context>Click on more >Mark as Reviewed
-# Select existing Risk register> Click View button > View Register
+# Select existing Risk Register > Select existing Context > Click on existing Risk > Click on more button > Delete this risk
+# Select existing Risk Register > Select existing Context > Click on existing Risk > Click on more > Add Library Control
+# Select existing Risk Register > Select existing Context > Click on existing Risk > Click on more > Mark as Reviewed
+# Select existing Risk register > Click View button > View Register
 
 
 from Modules.Setup import SetupTestCase
@@ -72,16 +71,95 @@ class TestRisk(SetupTestCase):
         risks_page.setDriver(self.driver)
         risks_page.create_risk_register()
         risks_page.type_name_for_new_risk_register()
+        common_page.hide_keyboard()
         risks_page.create_new_context()
         risks_page.scroll_down_to_save_button()
         risks_page.click_save_button()
 
-        risks_page.open_existing_risk_register()  # test it - locator change from whole list to :first-child
+        risks_page.open_existing_risk_register()
         risks_page.click_new_button()
         risks_page.click_add_new_context()
         risks_page.type_name_for_new_context()
+        common_page.hide_keyboard()
         risks_page.scroll_down_to_save_button()
         risks_page.save_new_context()
+
+        # Click on existing Risk Register > Click on existing context > Click on Add new Risk
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+        main_page.open_RISKS()
+        risks_page.open_existing_risk_register()
+        risks_page.open_existing_context()
+        risks_page.click_new_button()
+        risks_page.click_add_new_risk()
+        risks_page.type_name_for_new_risk()
+        common_page.hide_keyboard()
+        risks_page.scroll_down_to_save_button()
+        risks_page.save_new_risk()
+
+        # Click on existing Risk Register > Click on existing context > Click on New button > Click on Add new library Risk > ?
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+        main_page.open_RISKS()
+        risks_page.open_existing_risk_register()
+        risks_page.open_existing_context()
+        risks_page.click_new_button()
+        risks_page.click_add_library_risk()
+        risks_page.click_ok_button()  # ?? or some other step ?
+
+        # Select existing Risk Register > Select existing Context > Click on existing Risk > Click On More >
+        # Click Add new control > Fill in Details and Save
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+        main_page.open_RISKS()
+        risks_page.open_existing_risk_register()
+        risks_page.open_existing_context()
+        risks_page.open_existing_risk()
+        risks_page.click_more_button()  # add method
+        risks_page.click_add_new_control()  # add method
+        risks_page.type_name_for_new_control()  # add method
+        common_page.hide_keyboard()
+        risks_page.clic_status_selector()  # add method
+        risks_page.choose_status()  # add method
+        risks_page.click_save_new_control()  # add method
+
+        # Select existing Risk Register > Select existing Context > Click on existing Risk > Click on more button > Delete this risk
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+        main_page.open_RISKS()
+        risks_page.open_existing_risk_register()
+        risks_page.open_existing_context()
+        risks_page.open_existing_risk()
+        risks_page.click_more_button()
+        risks_page.click_delete_button()  # add method
+
+        # Select existing Risk Register > Select existing Context > Click on existing Risk > Click on more > Add Library Control
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+        main_page.open_RISKS()
+        risks_page.open_existing_risk_register()
+        risks_page.open_existing_context()
+        risks_page.open_existing_risk()
+        risks_page.click_more_button()
+        risks_page.click_add_library_control()  # add method
+
+        # Select existing Risk Register > Select existing Context > Click on existing Risk > Click on more > Mark as Reviewed
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+        main_page.open_RISKS()
+        risks_page.open_existing_risk_register()
+        risks_page.open_existing_context()
+        risks_page.open_existing_risk()
+        risks_page.click_more_button()
+        risks_page.click_mark_as_reviewed()  # add method
+
+        # Select existing Risk register > Click View button > View Register
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+        main_page.open_RISKS()
+        risks_page.open_existing_risk_register()
+        risks_page.click_view_button()  # add method
+        risks_page.click_view_register()  # add method
 
 
 if __name__ == '__main__':

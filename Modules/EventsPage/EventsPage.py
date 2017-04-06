@@ -18,16 +18,16 @@ class EventsPage(BasePage):
                                                               CLEAR_PRIMARY_EVENT_BUTTON)
         self.assertIsNotNone(clear_primary_event_button, "Clear primary event button not found")
         clear_primary_event_button.click()
-        try:
-            logging.info("checking notification - 'Primary event cleared'")
-            WebDriverWait(self.driver, 25).until(
-                expected_conditions.presence_of_element_located(self.configuration.EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED),
-                "Events button in Main Menu is not present")
-            # sleep(1)
-            # notification = self.driver.find_element(*self.configuration.EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED)
-            # self.assertIsNotNone(notification)
-        except NoSuchElementException:
-            logging.info("notification not found")
+        # try:
+        #     logging.info("checking notification - 'Primary event cleared'")
+        #     WebDriverWait(self.driver, 25).until(
+        #         expected_conditions.presence_of_element_located(self.configuration.EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED),
+        #         "Notification is not present")
+        #     # sleep(1)
+        #     # notification = self.driver.find_element(*self.configuration.EventsScreen.NOTIFICATION_PRIMARY_EVENT_CLEARED)
+        #     # self.assertIsNotNone(notification)
+        # except NoSuchElementException:
+        #     logging.info("notification not found")
 
     # def filter_events_by_Search_field(self):
     #

@@ -32,22 +32,6 @@ class MainPage(BasePage):
 
         self.switch_context_to_native()
 
-    def logout_if_already_logged_in(self):
-
-        sleep(5)
-        logging.info("logout if already logged in")
-        try:
-            logout_button = self.driver.find_element(*self.configuration.MainMenuScreen.LOGOUT_BUTTON)
-            self.assertIsNotNone(logout_button, "Logout button not found")
-            logging.info("Your are already logged in - logging out")
-            logout_button.click()
-            submit_button = self.driver.find_element(*self.configuration.LoginScreen.SUBMIT_BUTTON)
-            self.assertIsNotNone(submit_button, "Submit button not found")
-            submit_button.click()
-            sleep(7)
-        except NoSuchElementException:
-            logging.info("Your are already logged out")
-
     def alert_expiring_password(self):
 
         logging.info("check if Notice alert, about expiring password, is present")
@@ -62,17 +46,18 @@ class MainPage(BasePage):
 
     def check_presence_of_events_button(self):
 
-        #self.switch_context_to_webview()  # it looks like in webview all elements are present everywhere
+        # self.switch_context_to_webview()  # it looks like in webview all elements are present everywhere
+        # and wait for condition is not working correctly in webview
 
         WebDriverWait(self.driver, 25).until(
             expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
             "Events button in Main Menu is not present")
 
-        #self.switch_context_to_native()
+        # self.switch_context_to_native()
 
     def click_ACTIVATE_BUTTON_on_alert(self):
 
-        logging.info("clicking in ACTIVATE button on alert")
+        logging.info("click ACTIVATE button on alert")
         alert_activate_button = self.driver.find_element(*self.configuration.MainMenuScreen.ALERT_ACTIVATE_BUTTON)
         self.assertIsNotNone(alert_activate_button, "ACTIVATE button on alert not found")
         alert_activate_button.click()
@@ -90,7 +75,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in ACTIVATE WORKFLOW button")
+        logging.info("click ACTIVATE WORKFLOW button")
         activate_workflow_button = self.driver.find_element(*self.configuration.MainMenuScreen.ACTIVATE_WORKFLOW_BUTTON)
         self.assertIsNotNone(activate_workflow_button, "ACTIVATE WORKFLOW button not found")
         activate_workflow_button.click()
@@ -101,7 +86,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in CREATE CONTACT button")
+        logging.info("click CREATE CONTACT button")
         create_contact_button = self.driver.find_element(*self.configuration.MainMenuScreen.CREATE_CONTACT_BUTTON)
         self.assertIsNotNone(create_contact_button, "CREATE CONTACT button not found")
         create_contact_button.click()
@@ -112,7 +97,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in CREATE TASK button")
+        logging.info("click CREATE TASK button")
         create_task_button = self.driver.find_element(*self.configuration.MainMenuScreen.CREATE_TASK_BUTTON)
         self.assertIsNotNone(create_task_button, "CREATE TASK button not found")
         create_task_button.click()
@@ -123,7 +108,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in CREATE REPORT button")
+        logging.info("click CREATE REPORT button")
         create_report_button = self.driver.find_element(*self.configuration.MainMenuScreen.CREATE_REPORT_BUTTON)
         self.assertIsNotNone(create_report_button, "CREATE REPORT button not found")
         create_report_button.click()
@@ -132,7 +117,7 @@ class MainPage(BasePage):
 
     def open_WEBSITE_LINK(self):
 
-        logging.info("clicking in WEBSITE LINK button")
+        logging.info("click WEBSITE LINK button")
         website_link_button = self.driver.find_element(*self.configuration.MainMenuScreen.WEBSITE_LINK_BUTTON)
         self.assertIsNotNone(website_link_button, "WEBSITE LINK button not found")
         website_link_button.click()
@@ -141,7 +126,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in INCIDENT button")
+        logging.info("click INCIDENT button")
         incident_button = self.driver.find_element(*self.configuration.MainMenuScreen.INCIDENT_BUTTON)
         self.assertIsNotNone(incident_button, "INCIDENT button not found")
         incident_button.click()
@@ -152,7 +137,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in CREATE ASSETS button")
+        logging.info("click CREATE ASSETS button")
         create_assets_button = self.driver.find_element(*self.configuration.MainMenuScreen.CREATE_ASSETS_BUTTON)
         self.assertIsNotNone(create_assets_button, "CREATE ASSETS button not found")
         create_assets_button.click()
@@ -163,7 +148,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in CREATE LOG button")
+        logging.info("click CREATE LOG button")
         create_log_button = self.driver.find_element(*self.configuration.MainMenuScreen.CREATE_LOG_BUTTON)
         self.assertIsNotNone(create_log_button, "CREATE LOG button not found")
         create_log_button.click()
@@ -174,7 +159,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in RISKS button")
+        logging.info("click RISKS button")
         risks_button = self.driver.find_element(*self.configuration.MainMenuScreen.RISKS_BUTTON)
         self.assertIsNotNone(risks_button, "RISKS button not found")
         risks_button.click()
@@ -185,7 +170,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in Events button")
+        logging.info("click Events button")
         events_button = self.driver.find_element(*self.configuration.MainMenuScreen.EVENTS_BUTTON)
         self.assertIsNotNone(events_button, "EVENTS button not found")
         events_button.click()
@@ -199,7 +184,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in LOGS button")
+        logging.info("click LOGS button")
         logs_button = self.driver.find_element(*self.configuration.MainMenuScreen.LOGS_BUTTON)
         self.assertIsNotNone(logs_button, "LOGS button not found")
         logs_button.click()
@@ -210,7 +195,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in REPORTS button")
+        logging.info("click REPORTS button")
         reports_button = self.driver.find_element(*self.configuration.MainMenuScreen.REPORTS_BUTTON)
         self.assertIsNotNone(reports_button, "REPORTS button not found")
         reports_button.click()
@@ -221,7 +206,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in Map button")
+        logging.info("click Map button")
         map_button = self.driver.find_element(*self.configuration.MainMenuScreen.MAP_BUTTON)
         self.assertIsNotNone(map_button, "MAP button not found")
         map_button.click()
@@ -238,7 +223,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in ASSETS button")
+        logging.info("click ASSETS button")
         assets_button = self.driver.find_element(*self.configuration.MainMenuScreen.ASSETS_BUTTON)
         self.assertIsNotNone(assets_button, "ASSETS button not found")
         assets_button.click()
@@ -255,7 +240,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
         
-        logging.info("clicking in INBOX button")
+        logging.info("click INBOX button")
         inbox_button = self.driver.find_element(*self.configuration.MainMenuScreen.INBOX_BUTTON)
         self.assertIsNotNone(inbox_button, "INBOX button not found")
         inbox_button.click()
@@ -267,7 +252,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
         
-        logging.info("clicking in COMPOSE button")
+        logging.info("click COMPOSE button")
         compose_button = self.driver.find_element(*self.configuration.MainMenuScreen.COMPOSE_BUTTON)
         self.assertIsNotNone(compose_button, "COMPOSE button not found")
         compose_button.click()
@@ -278,7 +263,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in SENT button")
+        logging.info("click SENT button")
         sent_button = self.driver.find_element(*self.configuration.MainMenuScreen.SENT_BUTTON)
         self.assertIsNotNone(sent_button, "SENT button not found")
         sent_button.click()
@@ -308,7 +293,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in TASKS button")
+        logging.info("click TASKS button")
         tasks_button = self.driver.find_element(*self.configuration.MainMenuScreen.TASKS_BUTTON)
         self.assertIsNotNone(tasks_button, "TASKS button not found")
         tasks_button.click()
@@ -319,7 +304,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in DOCUMENTS button")
+        logging.info("click DOCUMENTS button")
         documents_button = self.driver.find_element(*self.configuration.MainMenuScreen.DOCUMENTS_BUTTON)
         self.assertIsNotNone(documents_button, "DOCUMENTS button not found")
         documents_button.click()
@@ -330,7 +315,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in CONTACTS button")
+        logging.info("click CONTACTS button")
         contacts_button = self.driver.find_element(*self.configuration.MainMenuScreen.CONTACTS_BUTTON)
         self.assertIsNotNone(contacts_button, "CONTACTS button not found")
         contacts_button.click()
@@ -341,7 +326,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in ALLOCATE button")
+        logging.info("click ALLOCATE button")
         allocate_button = self.driver.find_element(*self.configuration.MainMenuScreen.ALLOCATE_BUTTON)
         self.assertIsNotNone(allocate_button, "ALLOCATE button not found")
         allocate_button.click()
@@ -358,7 +343,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in ACTIVATE button")
+        logging.info("click ACTIVATE button")
         activate_button = self.driver.find_element(*self.configuration.MainMenuScreen.ACTIVATE_BUTTON)
         self.assertIsNotNone(activate_button, "ACTIVATE button not found")
         activate_button.click()
@@ -369,7 +354,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("clicking in OFFLINE SYNC button")
+        logging.info("click OFFLINE SYNC button")
         offline_sync_button = self.driver.find_element(*self.configuration.MainMenuScreen.OFFLINE_SYNC_BUTTON)
         self.assertIsNotNone(offline_sync_button, "OFFLINE SYNC button not found")
         offline_sync_button.click()
@@ -384,7 +369,7 @@ class MainPage(BasePage):
     
     def click_logout_button(self):
 
+        logging.info("click LOGOUT button")
         logout_button = self.driver.find_element(*self.configuration.MainMenuScreen.LOGOUT_BUTTON)
         self.assertIsNotNone(logout_button, "Logout button not found")
-        logging.info("Your are already logged in - logging out")
         logout_button.click()

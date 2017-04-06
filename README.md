@@ -72,7 +72,7 @@ file /Conf/desired_capabilities.py and appium settings:
 - appium --log-timestamp --log /file_path  # starting appium with logging to file
 
 - and in another console run: ios_webkit_debug_proxy -c <device uuid>:27753
-
+        
 iPhone: ios_webkit_debug_proxy -c 4b15c4284897fa6f9b4c5205325a9cece997ad35:27753 <br />
 iPad: ios_webkit_debug_proxy -c db55c238e873230ee454c54a63724397a2981acd:27753
 

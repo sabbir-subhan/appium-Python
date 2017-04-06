@@ -126,3 +126,95 @@ class RisksPage(BasePage):
 
         self.switch_context_to_native()
 
+    def open_existing_context(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("open first context on the list")
+        open_existing_context = self.driver.find_element(*self.configuration.RisksScreen.PREVIOUSLY_CREATED_CONTEXT)
+        open_existing_context.click()
+
+        self.switch_context_to_native()
+
+    def click_add_new_risk(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click add new context")
+        click_add_new_context = self.driver.find_element(*self.configuration.RisksScreen.ADD_NEW_RISK)
+        self.assertIsNotNone(click_add_new_context, "Add new context button not found")
+        click_add_new_context.click()
+
+        self.switch_context_to_native()
+
+    def click_add_library_risk(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click add new context")
+        click_add_new_context = self.driver.find_element(*self.configuration.RisksScreen.ADD_NEW_LIBRARY_RISK)
+        self.assertIsNotNone(click_add_new_context, "Add new context button not found")
+        click_add_new_context.click()
+
+        self.switch_context_to_native()
+
+    def click_add_new_context_in_existing_context(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click add new context")
+        click_add_new_context = self.driver.find_element(*self.configuration.RisksScreen.ADD_NEW_CONTEXT_IN_EXISTING_CONTEXT)
+        self.assertIsNotNone(click_add_new_context, "Add new context button not found")
+        click_add_new_context.click()
+
+        self.switch_context_to_native()
+
+    def type_name_for_new_risk(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("type Name for new Risk")
+        name_field = self.driver.find_element(*self.configuration.RisksScreen.NAME_FOR_NEW_RISK)
+        self.assertIsNotNone(name_field, "name field not found")
+        name_field.clear()
+        name_field.click()
+        name_field.send_keys("Appium new risk")
+
+        self.switch_context_to_native()
+
+    def save_new_risk(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Save button")
+        save = self.driver.find_element(*self.configuration.RisksScreen.SAVE_NEW_RISK)
+        self.assertIsNotNone(save, "save new risk button not found")
+        save.click()
+
+        self.switch_context_to_native()
+
+    def click_ok_button(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Save button")
+        save = self.driver.find_element(*self.configuration.RisksScreen.OK_BUTTON)
+        self.assertIsNotNone(save, "ok button not found")
+        save.click()
+
+        self.switch_context_to_native()
+
+    def open_existing_risk(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("open first risk on the list")
+
+        open_existing_risk = self.driver.find_element(*self.configuration.RisksScreen.PREVIOUSLY_CREATED_RISK)
+        open_existing_risk.click()
+
+        self.switch_context_to_native()
+
+
+
+

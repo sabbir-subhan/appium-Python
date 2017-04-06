@@ -6,9 +6,32 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 import logging
 from Conf.desired_capabilities import DesiredCapabilities
+from time import sleep
+from Modules.load_class import LoadClass
 
 
 class Android(WelcomePage):
+
+    def logout(self):
+
+        sleep(5)
+        logging.info("logout if already logged in")
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.scroll_down_one_view()
+
+        try:
+            logout_button = self.driver.find_element(*self.configuration.MainMenuScreen.LOGOUT_BUTTON)
+            self.assertIsNotNone(logout_button, "Logout button not found")
+            logging.info("Your are already logged in - logging out")
+            logout_button.click()
+            submit_button = self.driver.find_element(*self.configuration.LoginScreen.SUBMIT_BUTTON)
+            self.assertIsNotNone(submit_button, "Submit button not found")
+            submit_button.click()
+            sleep(7)
+        except NoSuchElementException:
+            logging.info("Your are already logged out")
 
     # def click_login_button(self):
     #
