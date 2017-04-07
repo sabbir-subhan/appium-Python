@@ -360,6 +360,7 @@ class ComposeScreen:
 
 class RisksScreen:
     """A class for handling Risks screen"""
+    CHOOSE_STATUS_IMPLEMENTED_iPad = (MobileBy.XPATH, '//UIATableCell[@name="Implemented"]')
     CREATE_RISK_REGISTER = (MobileBy.ACCESSIBILITY_ID, 'Create risk register')
     PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.XPATH, '')
     NEW_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "New")]]')

@@ -215,4 +215,6 @@ OCA APP VERSIONS:
 - "Instruments exited with code 255" = "Instruments exited with code 251" = We exceeded the number of retries allowed for instruments to successfully start; failing launch"  -- kill Appium server, 
     switch to proper Xcode version, restart host and device, ? 
 - Instruments exited with error 253 - rebuild OCA app through Xcode
+- "Error while executing atom: operation timed out" -- reconnect device and restart appium server
+
 

@@ -105,7 +105,8 @@ class TestRisk(SetupTestCase):
         risks_page.open_existing_context()
         risks_page.click_new_button()
         risks_page.click_add_library_risk()
-        risks_page.click_ok_button()  # ?? or some other step ?
+        risks_page.click_ok_button()
+        # ?? or some additional step ?
 
         # Select existing Risk Register > Select existing Context > Click on existing Risk > Click On More >
         # Click Add new control > Fill in Details and Save
@@ -115,13 +116,13 @@ class TestRisk(SetupTestCase):
         risks_page.open_existing_risk_register()
         risks_page.open_existing_context()
         risks_page.open_existing_risk()
-        risks_page.click_more_button()  # add method
-        risks_page.click_add_new_control()  # add method
-        risks_page.type_name_for_new_control()  # add method
+        risks_page.click_more_button()
+        risks_page.click_add_new_control()
+        risks_page.type_name_for_new_control()
         common_page.hide_keyboard()
-        risks_page.clic_status_selector()  # add method
-        risks_page.choose_status()  # add method
-        risks_page.click_save_new_control()  # add method
+        risks_page.click_status_selector()  # problem on iOS10
+        risks_page.choose_status_implemented()
+        risks_page.click_save_new_control()
 
         # Select existing Risk Register > Select existing Context > Click on existing Risk > Click on more button > Delete this risk
         common_page.hamburger_button()
@@ -131,7 +132,8 @@ class TestRisk(SetupTestCase):
         risks_page.open_existing_context()
         risks_page.open_existing_risk()
         risks_page.click_more_button()
-        risks_page.click_delete_button()  # add method
+        risks_page.click_delete_risk()
+        risks_page.alert_accept_delete()
 
         # Select existing Risk Register > Select existing Context > Click on existing Risk > Click on more > Add Library Control
         common_page.hamburger_button()
@@ -141,7 +143,7 @@ class TestRisk(SetupTestCase):
         risks_page.open_existing_context()
         risks_page.open_existing_risk()
         risks_page.click_more_button()
-        risks_page.click_add_library_control()  # add method
+        risks_page.click_add_library_control()
 
         # Select existing Risk Register > Select existing Context > Click on existing Risk > Click on more > Mark as Reviewed
         common_page.hamburger_button()
@@ -151,15 +153,17 @@ class TestRisk(SetupTestCase):
         risks_page.open_existing_context()
         risks_page.open_existing_risk()
         risks_page.click_more_button()
-        risks_page.click_mark_as_reviewed()  # add method
+        risks_page.click_mark_as_reviewed()
+        risks_page.alert_accept_review()
 
         # Select existing Risk register > Click View button > View Register
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
         main_page.open_RISKS()
         risks_page.open_existing_risk_register()
-        risks_page.click_view_button()  # add method
-        risks_page.click_view_register()  # add method
+        risks_page.click_view_button()
+        risks_page.click_view_register()
+        risks_page.check_if_register_view_was_opened()
 
 
 if __name__ == '__main__':

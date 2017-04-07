@@ -345,6 +345,7 @@ class CameraScreen:
     CAMERA_CHOOSER_ANDROID4 = (MobileBy.ID, 'com.android.camera2:id/btn_switch_camera')
     CAMERA_CHOOSER_ANDROID5 = (MobileBy.ID, 'com.tct.camera:id/onscreen_camera_picker')
     CAMERA_CHOOSER_ANDROID6 = (MobileBy.ACCESSIBILITY_ID, 'Switch camera')
+    CAMERA_CHOOSER_ANDROID_6 = (MobileBy.ACCESSIBILITY_ID, 'Front and back camera switch')
     CAMERA_CHOOSER_ANDROID7 = (MobileBy.XPATH, '//SideQuickSetting[1]/SideQuickSettingItem[3]'
                                                '/ItemDataButton[1]/GLButton[1]')
     RETAKE_ANDROID_4 = (MobileBy.ACCESSIBILITY_ID, 'Review retake')
@@ -447,6 +448,7 @@ class ComposeScreen:
 
 class RisksScreen:
     """A class for handling Risks screen"""
+    CHOOSE_STATUS_IMPLEMENTED = (MobileBy.XPATH, '//android.widget.CheckedTextView[@text="Implemented"]')
     CREATE_RISK_REGISTER = (MobileBy.ACCESSIBILITY_ID, 'Create risk register')
     # PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.XPATH, '//android.view.View[2]/'
     #                                                     'android.widget.ListView[1]/android.view.View[1]')

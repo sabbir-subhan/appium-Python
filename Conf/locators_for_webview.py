@@ -393,5 +393,20 @@ class RisksScreen:
     SAVE_NEW_RISK = (MobileBy.CSS_SELECTOR, 'div#riskNew>div[data-role="footer"]>div>ul>li>a[href="#save"]')
     OK_BUTTON = (MobileBy.CSS_SELECTOR, 'div#risklibraryTreeView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a')
     PREVIOUSLY_CREATED_RISK = (MobileBy.CSS_SELECTOR, 'ul.risks.listview.ui-listview>li>a')
+    MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#riskViewMoreMenu"]')
+    ADD_NEW_CONTROL = (MobileBy.CSS_SELECTOR, 'li.new.control>a')
+    ADD_LIBRARY_CONTROL = (MobileBy.CSS_SELECTOR, 'li.library.control>a')
+    MARK_AS_REVIEWED = (MobileBy.CSS_SELECTOR, 'a[href="#confirmReviewRisk"]')
+    DELETE_RISK = (MobileBy.CSS_SELECTOR, 'a[href="#confirmDeleteRisk"]')
+    NAME_FOR_NEW_CONTROL = (MobileBy.CSS_SELECTOR, 'div#riskcontrolNew>div>ul.edit-view.ui-listview>li>div>input#name')
+    STATUS_SELECTOR = (MobileBy.CSS_SELECTOR, 'select#field-101')
+    SAVE_NEW_CONTROL = (MobileBy.CSS_SELECTOR, 'div#riskcontrolNew>div[data-role="footer"]>div>ul>li>a[href="#save"]')
+    VIEW_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#riskcontextTreeViewMenu"]')
+    VIEW_REGISTER_BUTTON = (MobileBy.CSS_SELECTOR, 'li.root.ui-last-child>a')
+    REGISTER_VIEW = (MobileBy.CSS_SELECTOR, 'div#riskregisterView>div[data-role="main"]')
+    DELETE_ALERT = (MobileBy.CSS_SELECTOR, 'div#confirmDeleteRisk>div.ng-dialog-container>div[data-role="controlgroup"]>div.ui-controlgroup-controls>a:first-child')
+    REVIEW_ALERT = (MobileBy.CSS_SELECTOR, 'div#confirmReviewRisk>div.ng-dialog-container>div[data-role="controlgroup"]>div.ui-controlgroup-controls>a:first-child')
+
+
 
 

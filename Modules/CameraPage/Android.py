@@ -5,6 +5,7 @@ from appium.webdriver.common.touch_action import TouchAction
 import logging
 from Conf.desired_capabilities import DesiredCapabilities
 from time import sleep
+from selenium.common.exceptions import *
 
 
 class Android(CameraPage):
@@ -92,9 +93,12 @@ class Android(CameraPage):
             chooser_camera_android7 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID7)
             self.assertIsNotNone(chooser_camera_android7)
             chooser_camera_android7.click()
-        elif "6" <= platform_version < "7":
-            chooser_camera_android6 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID6)
-            self.assertIsNotNone(chooser_camera_android6)
+        elif platform_version > "5" and "6" in str(platform_version):
+            try:
+                chooser_camera_android6 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID6)
+                self.assertIsNotNone(chooser_camera_android6)
+            except NoSuchElementException:
+                chooser_camera_android6 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID_6)
             chooser_camera_android6.click()
         elif platform_version < "5":
             chooser_camera_android4 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID4)

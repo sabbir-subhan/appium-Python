@@ -50,6 +50,7 @@ class TestManagingEvents(SetupTestCase):
         login_page.type_domain_address('QA')
         common_page.hide_keyboard()
         login_page.click_submit_button()
+        common_page.wait_for_app_loading()
         login_page.type_username('QA')
         login_page.type_password('QA')
         common_page.hide_keyboard()

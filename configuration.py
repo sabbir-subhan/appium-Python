@@ -1,6 +1,6 @@
 """ Choose platform to run tests """
 
-platform = "Android 7"
+platform = "Android 6 emulator"
 
 # You can use:
 
@@ -19,7 +19,7 @@ platform = "Android 7"
 
 # devices are defined in /Conf/desired_capabilities.py
 
-PORT = "4723"  # port on which Appium server is running
+PORT = "4735"  # port on which Appium server is running
 
 if platform == "IOS 9":
 
