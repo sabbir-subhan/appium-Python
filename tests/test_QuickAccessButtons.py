@@ -1,4 +1,4 @@
-# Test Case 9 - Quick Access buttons on OCA app -- OCAMOB-48
+# Test Case - Quick Access buttons on OCA app -- OCAMOB-48
 
 # before run this test prepare Lodging Agency on OCA webpage and configure Quick Access buttons for mobile app
 # Login to OCA server>Click on Settings>Mobile Quick access Buttons>Add Quick Access buttons (see task in Jira)
@@ -17,7 +17,7 @@
 # Click on Create Task Quick access link
 # Click on Create Report Quick access link
 # Click on Quick access to link
-# Click on Create event ,Asset,Log quick access links
+# Click on Create event,Asset,Log quick access links
 
 
 from Modules.Setup import SetupTestCase
@@ -113,7 +113,7 @@ class TestQuickAccessButtons(SetupTestCase):
         event_edit_page.click_save_new_event()
         main_page.check_presence_of_events_button()
         main_page.open_CREATE_ASSETS()
-        new_asset_page = LoadClass.load_page('NewAssetPage')
+        new_asset_page = LoadClass.load_page('AssetsPage')
         new_asset_page.setDriver(self.driver)
         new_asset_page.fill_Name_input_field("Name for new asset test")
         # common_page.hide_keyboard()

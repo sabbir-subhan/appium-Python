@@ -1,4 +1,4 @@
-# Test Case 2 - Logging in as a suspended account and with a wrong password  -- OCAMOB-76
+# Test Case - Logging in as a suspended account and with a wrong password  -- OCAMOB-76
 
 # before running this Test Case prepare needed accounts on OCA website
 

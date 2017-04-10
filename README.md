@@ -30,9 +30,9 @@
 
 
 ### **TO RUN APPIUM WITH iOS 10:** ###
-- You have to launch Appium in CLI and use version starting from 1.6.3 - currently 1.6.3 is the latest 
+- You have to launch Appium in CLI and use version starting from 1.6.3 - currently 1.6.4 is the latest 
 
-INSTALL APPIUM 1.6.3 TO WORK WITH iOS10: (CLI commands)
+INSTALL APPIUM 1.6.4 TO WORK WITH iOS10: (CLI commands)
 
 - npm install -g webpack
 - brew install ideviceinstaller
@@ -43,10 +43,18 @@ INSTALL APPIUM 1.6.3 TO WORK WITH iOS10: (CLI commands)
 - npm install -g npm@latest
 - npm install -g appium@latest
 
-- cd /usr/local/lib/node_modules/appium/node_modules/ 
-- npm install babel-runtime
-- npm install appium-xcuitest-driver@latest
-- npm install appium-uiautomator2-driver@latest
+- cd /usr/local/lib/node_modules/appium/node_modules/
+<br> <br> <br> <br> <br> optionally:
+- npm install eslint-config-appium 
+- npm i eslint-plugin-import@latest --save-dev
+- npm i eslint-plugin-mocha@latest --save-dev
+- npm i eslint-plugin-promise@latest --save-dev
+
+~~- npm install babel-runtime~~
+
+~~- npm install appium-xcuitest-driver@latest~~
+
+~~- npm install appium-uiautomator2-driver@latest~~
 
 - cd /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent
 - mkdir -p Resources/WebDriverAgent.bundle
@@ -63,6 +71,8 @@ file /Conf/desired_capabilities.py and appium settings:
 - UDID from real device - open iTunes with connected device and click on serial number or use terminal command: "idevice_id -l"
 - iOS version and device name
 - path to app - to get app file You need to build it in xcode
+
+(so if You need to run other version of iOS 10, for example iOS 10.3, You have to change build settings for WebDriverRunner in Xcode))
 
 
 #Starting Appium server in CLI:

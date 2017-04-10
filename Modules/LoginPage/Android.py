@@ -48,15 +48,14 @@ class Android(LoginPage):
         action = TouchAction(self.driver)
         action.long_press(el=domain_field, duration=1500).perform()
         self.driver.press_keycode(67)
-        # self.driver.keyevent(67)
 
         self.switch_context_to_webview()
 
         domain_field = self.driver.find_element(*self.configuration.LoginScreen.TEXTFIELD_DOMAIN)
-        sleep(1)
         logging.info("type domain address")
         domain_field.send_keys(Credentials.get_domain(domain))
 
         self.switch_context_to_native()
+
 
 

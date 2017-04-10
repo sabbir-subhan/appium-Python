@@ -1,4 +1,4 @@
-# Test Case 6 - Risks -- OCAMOB-44
+# Test Case - Risks -- OCAMOB-44
 
 # open OCA app
 # dismiss iOS notifications
@@ -71,7 +71,7 @@ class TestRisk(SetupTestCase):
         risks_page.setDriver(self.driver)
         risks_page.create_risk_register()
         risks_page.type_name_for_new_risk_register()
-        common_page.hide_keyboard()
+        # common_page.hide_keyboard()
         risks_page.create_new_context()
         risks_page.scroll_down_to_save_button()
         risks_page.click_save_button()
@@ -80,7 +80,7 @@ class TestRisk(SetupTestCase):
         risks_page.click_new_button()
         risks_page.click_add_new_context()
         risks_page.type_name_for_new_context()
-        common_page.hide_keyboard()
+        # common_page.hide_keyboard()
         risks_page.scroll_down_to_save_button()
         risks_page.save_new_context()
 
@@ -93,7 +93,7 @@ class TestRisk(SetupTestCase):
         risks_page.click_new_button()
         risks_page.click_add_new_risk()
         risks_page.type_name_for_new_risk()
-        common_page.hide_keyboard()
+        # common_page.hide_keyboard()
         risks_page.scroll_down_to_save_button()
         risks_page.save_new_risk()
 
@@ -119,7 +119,7 @@ class TestRisk(SetupTestCase):
         risks_page.click_more_button()
         risks_page.click_add_new_control()
         risks_page.type_name_for_new_control()
-        common_page.hide_keyboard()
+        # common_page.hide_keyboard()
         risks_page.click_status_selector()  # problem on iOS10
         risks_page.choose_status_implemented()
         risks_page.click_save_new_control()

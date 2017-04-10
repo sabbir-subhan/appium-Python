@@ -13,6 +13,7 @@ class iOS:
 class CommonScreen:
     """A class for handling Common buttons on different screen"""
     LOADING = (MobileBy.XPATH, '//UIAStaticText[@name="loading"]')
+    UPLOADING = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Uploading")]]')
     SAVE_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Save"]')
     CANCEL_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Cancel"]')
     OK_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Ok"]')
@@ -316,10 +317,6 @@ class NewReportScreen:
     PUBLISH_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Publish"]')
 
 
-class NewAssetScreen:
-    """A class for handling New Asset screen"""
-
-
 class NewLogScreen:
     """A class for handling New Log screen"""
     LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//UIAWebView/UIAElement[1]')
@@ -365,4 +362,9 @@ class RisksScreen:
     PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.XPATH, '')
     NEW_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "New")]]')
     VIEW_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "View")]]')
+
+
+class AssetsScreen:
+    """A class for handling Assets screen"""
+    pass
 

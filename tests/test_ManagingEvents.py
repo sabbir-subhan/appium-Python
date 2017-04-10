@@ -1,4 +1,4 @@
-# Test Case 3 - Managing events  -- OCAMOB-64
+# Test Case - Managing events  -- OCAMOB-64
 
 # before test run - prepare events types on OCA web page
 

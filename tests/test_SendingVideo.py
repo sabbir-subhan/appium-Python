@@ -1,4 +1,4 @@
-# Test Case 7 - Sending Video -- OCAMOB-45
+# Test Case - Sending Video -- OCAMOB-45
 
 # before run test - prepare sample video file on device
 
@@ -78,7 +78,7 @@ class TestSendingVideo(SetupTestCase):
         gallery_video_page.choose_video_from_gallery()
         gallery_video_page.click_use_button()
         video_page.type_description("test - video 1 from gallery")
-        common_page.hide_keyboard()
+        # common_page.hide_keyboard()
         video_page.click_send_button()  # click and wait for 600s
         main_page.open_VIDEO()
         video_page.click_record_new_button()
@@ -90,7 +90,7 @@ class TestSendingVideo(SetupTestCase):
         camera_page.capture_video()
         camera_page.click_use_video()
         video_page.type_description("test - video 1")
-        common_page.hide_keyboard()
+        # common_page.hide_keyboard()
         video_page.click_send_button()  # click and wait for 600s
         main_page.open_VIDEO()
         video_page.click_record_new_button()
@@ -103,7 +103,7 @@ class TestSendingVideo(SetupTestCase):
         camera_page.capture_video()
         camera_page.click_use_video()
         video_page.type_description("test- video 2")
-        common_page.hide_keyboard()
+        # common_page.hide_keyboard()
         video_page.click_send_button()  # click and wait for 600s
         main_page.check_presence_of_events_button()
 

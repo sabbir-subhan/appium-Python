@@ -4,9 +4,18 @@ from Modules.RisksPage.RisksPage import RisksPage
 from Modules.load_class import LoadClass
 import logging
 from selenium.common.exceptions import *
+from time import sleep
 
 
 class IOS(RisksPage):
+
+    def click_status_selector(self):
+
+        logging.info("click status selector")
+        click_status_selector = self.driver.find_element(*self.configuration.RisksScreen.STATUS_SELECTOR)
+        self.assertIsNotNone(click_status_selector, "status selector not found")
+        click_status_selector.click()
+        sleep(1)
 
     def scroll_down_to_save_button(self):
 

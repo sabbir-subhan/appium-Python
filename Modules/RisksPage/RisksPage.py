@@ -3,6 +3,7 @@
 from Modules.BasePage.BasePage import BasePage
 import logging
 from time import sleep
+from appium.webdriver.common.touch_action import TouchAction
 
 
 class RisksPage(BasePage):
@@ -45,6 +46,7 @@ class RisksPage(BasePage):
 
     def click_save_button(self):
 
+        sleep(1)
         self.switch_context_to_webview()
 
         logging.info("click save button")
@@ -53,6 +55,7 @@ class RisksPage(BasePage):
         click_save_button.click()
 
         self.switch_context_to_native()
+        sleep(4)
 
     def filter_risks_registers(self):
 
@@ -128,6 +131,8 @@ class RisksPage(BasePage):
 
         self.switch_context_to_native()
 
+        sleep(4)
+
     def open_existing_context(self):
 
         self.switch_context_to_webview()
@@ -195,14 +200,16 @@ class RisksPage(BasePage):
 
         self.switch_context_to_native()
 
+        sleep(4)
+
     def click_ok_button(self):
 
         self.switch_context_to_webview()
 
-        logging.info("click Save button")
-        save = self.driver.find_element(*self.configuration.RisksScreen.OK_BUTTON)
-        self.assertIsNotNone(save, "ok button not found")
-        save.click()
+        logging.info("click ok button")
+        ok = self.driver.find_element(*self.configuration.RisksScreen.OK_BUTTON)
+        self.assertIsNotNone(ok, "ok button not found")
+        ok.click()
 
         self.switch_context_to_native()
 
@@ -319,6 +326,8 @@ class RisksPage(BasePage):
         save.click()
 
         self.switch_context_to_native()
+
+        sleep(4)
 
     def click_view_button(self):
 

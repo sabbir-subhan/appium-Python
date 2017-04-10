@@ -17,6 +17,7 @@ class Android:
 class CommonScreen:
     """A class for handling Common buttons on different screen"""
     LOADING = (MobileBy.XPATH, '//android.view.View[@content-desc="loading"]')
+    UPLOADING = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Uploading")]]')  # not working
     SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
     CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Cancel')
     CANCEL_BUTTON_by_index = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Button')
@@ -95,6 +96,7 @@ class LoginScreen:
 
 class MainMenuScreen(WelcomeScreen):
     """A class for main menu screen locators - first screen after correct login into the app."""
+    MENU = (MobileBy.ID, 'menu')
     BUTTONS = (MobileBy.CLASS_NAME, 'android.view.View')
     ACTIVATE_WORKFLOW_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "ACTIVATE WORKFLOW")]]')
     CREATE_CONTACT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "CREATE CONTACT")]]')
@@ -332,6 +334,7 @@ class SoundRecorderScreen:
     # STOP_RECORDING_android_5 = (MobileBy.ACCESSIBILITY_ID, 'Pause record')  # android 5  # not working
     DONE_BUTTON_android_5 = (MobileBy.ACCESSIBILITY_ID, 'Save record')  # android 5
     RECORD_SOUND_android_6 = (MobileBy.ACCESSIBILITY_ID, 'Record')  # android 6
+    RECORD_SOUND_android_6_version2 = (MobileBy.ID, 'com.android.soundrecorder:id/recordButton')  # android 6
     STOP_RECORDING_android_6 = (MobileBy.ACCESSIBILITY_ID, 'Stop')  # android 6
     DONE_BUTTON_android_6 = (MobileBy.ACCESSIBILITY_ID, 'Done')  # android 6
 
@@ -340,6 +343,7 @@ class CameraScreen:
     """A class for handling Camera"""
     CAPTURE_BUTTON_ANDROID_4_and_5 = (MobileBy.ACCESSIBILITY_ID, 'Shutter')
     CAPTURE_BUTTON_ANDROID_6 = (MobileBy.XPATH, '//GLButton[@text="Shutter"]')  # Android 7 too
+    CAPTURE_BUTTON_ANDROID_6_version2 = (MobileBy.ACCESSIBILITY_ID, 'Shutter button')
     # CAPTURE_BUTTON_ANDROID_7 = (MobileBy.XPATH, '//GLViewGroup[3]/GLViewGroup[1]/GLButton[2]')
     CANCEL_PHOTO_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Review cancel')
     CAMERA_CHOOSER_ANDROID4 = (MobileBy.ID, 'com.android.camera2:id/btn_switch_camera')
@@ -351,9 +355,11 @@ class CameraScreen:
     RETAKE_ANDROID_4 = (MobileBy.ACCESSIBILITY_ID, 'Review retake')
     RETAKE_ANDROID_5 = (MobileBy.ID, 'com.tct.camera:id/btn_retake')
     RETAKE_ANDROID_6 = (MobileBy.ID, 'com.sec.android.app.camera:id/retry')
+    RETAKE_ANDROID_6_version2 = (MobileBy.ID, 'com.android.camera:id/btn_retake')
     USE_PHOTO_ANDROID4 = (MobileBy.ACCESSIBILITY_ID, 'Review done')
     USE_PHOTO_ANDROID5 = (MobileBy.ACCESSIBILITY_ID, 'OK')  # com.tct.camera:id/btn_done
     USE_PHOTO_ANDROID6 = (MobileBy.ID, 'com.sec.android.app.camera:id/okay')
+    USE_PHOTO_ANDROID6_version2 = (MobileBy.ID, 'com.android.camera:id/btn_done')
 
 
 class NewContactScreen:
@@ -385,10 +391,6 @@ class NewReportScreen:
     LODGING_AGENCY_PICKER2 = (MobileBy.XPATH, '//android.view.View[4]/android.widget.Spinner[1]')
     LODGING_AGENCY = (MobileBy.XPATH, '//android.widget.CheckedTextView[2]')
     PUBLISH_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Publish')
-
-
-class NewAssetScreen:
-    """A class for handling New Asset screen"""
 
 
 class NewLogScreen:
@@ -458,6 +460,11 @@ class RisksScreen:
     NAME_FIELD_FOR_CONTEXT = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="Name"]')
     FIRST_CONTEXT_ON_THE_LIST = (MobileBy.XPATH, '//android.widget.ListView[1]/android.view.View[1]'
                                                  '/android.view.View[2]')
+
+
+class AssetsScreen:
+    """A class for handling Assets screen"""
+    pass
 
 
 

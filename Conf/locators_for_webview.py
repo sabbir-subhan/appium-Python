@@ -71,7 +71,7 @@ class MainMenuScreen(WelcomeScreen):
     CREATE_CONTACT_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#contactNew?parent=4&type=1"]')
     CREATE_TASK_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#taskNew"]')
     CREATE_REPORT_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#reportNew?type=1"]')
-    #WEBSITE_LINK_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    # WEBSITE_LINK_BUTTON = (MobileBy.CSS_SELECTOR, '')
     INCIDENT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#menu>div[data-role="main"]>div>div>a[href="#emeNew?type=1"]')
     CREATE_ASSETS_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#assetNew?type=1"]')
     CREATE_LOG_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#logNew?type=1"]')
@@ -237,7 +237,7 @@ class PhotoScreen:
     GALLERY_BUTTON = (MobileBy.CSS_SELECTOR, 'div#photo>div>div#photo-placeholder>div>div>span[data-open="album"]>span[data-open="album"]')
     TAKE_NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'div#photo>div>div#photo-placeholder>div>div>span[data-open="camera"]>span[data-open="camera"]')
     DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'textarea#photo-input-description')
-    SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'a#photoBtnSend')
+    SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'div#photo>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a#photoBtnSend')
     RESET_BUTTON = (MobileBy.CSS_SELECTOR, 'a#photoBtnReset')
 
 
@@ -317,15 +317,6 @@ class NewReportScreen:
     PUBLISH_BUTTON = (MobileBy.CSS_SELECTOR, 'ul.ui-grid-b>li.ui-block-a>a[href="#save"]')
 
 
-class NewAssetScreen:
-    """A class for handling New Asset screen"""
-    NAME = (MobileBy.CSS_SELECTOR, 'div#assetNew>div>ul>li>div>input#name')
-    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
-                                          'a[href="#save"]')
-    CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
-                                            'a[href="#cancel"]')
-
-
 class NewLogScreen:
     """A class for handling New Log screen"""
     SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
@@ -399,7 +390,7 @@ class RisksScreen:
     MARK_AS_REVIEWED = (MobileBy.CSS_SELECTOR, 'a[href="#confirmReviewRisk"]')
     DELETE_RISK = (MobileBy.CSS_SELECTOR, 'a[href="#confirmDeleteRisk"]')
     NAME_FOR_NEW_CONTROL = (MobileBy.CSS_SELECTOR, 'div#riskcontrolNew>div>ul.edit-view.ui-listview>li>div>input#name')
-    STATUS_SELECTOR = (MobileBy.CSS_SELECTOR, 'select#field-101')
+    STATUS_SELECTOR = (MobileBy.CSS_SELECTOR, 'div#field-101-button>select#field-101')
     SAVE_NEW_CONTROL = (MobileBy.CSS_SELECTOR, 'div#riskcontrolNew>div[data-role="footer"]>div>ul>li>a[href="#save"]')
     VIEW_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#riskcontextTreeViewMenu"]')
     VIEW_REGISTER_BUTTON = (MobileBy.CSS_SELECTOR, 'li.root.ui-last-child>a')
@@ -407,6 +398,17 @@ class RisksScreen:
     DELETE_ALERT = (MobileBy.CSS_SELECTOR, 'div#confirmDeleteRisk>div.ng-dialog-container>div[data-role="controlgroup"]>div.ui-controlgroup-controls>a:first-child')
     REVIEW_ALERT = (MobileBy.CSS_SELECTOR, 'div#confirmReviewRisk>div.ng-dialog-container>div[data-role="controlgroup"]>div.ui-controlgroup-controls>a:first-child')
 
+
+class AssetsScreen:
+    """A class for handling Assets screen"""
+    NAME = (MobileBy.CSS_SELECTOR, 'div#assetNew>div>ul>li>div>input#name')
+    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                          'a[href="#save"]')
+    CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                            'a[href="#cancel"]')
+    NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'li#openAssetTreeMore>a[href="#assetTreeMore"]')
+    NEW_ASSET_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#assetNew?parent=0"]')
+    ASSET_TYPE = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul>li:first-child>a')  # first asset type on the list
 
 
 

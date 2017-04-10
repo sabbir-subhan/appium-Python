@@ -1,10 +1,10 @@
-""" Methods for IOS to handle New Asset Page """
+""" Methods for IOS to handle Assets Page """
 
-from Modules.NewAssetPage.NewAssetPage import NewAssetPage
+from Modules.AssetsPage.AssetsPage import AssetsPage
 import logging
 
 
-class IOS(NewAssetPage):
+class IOS(AssetsPage):
 
     def scroll_down_to_save_button(self):
         """Method to scroll down to bottom of the screen - to 'Save' button"""

@@ -35,6 +35,29 @@ class DesiredCapabilities(object):
             "udid": "0123456789ABCDEF"
         },
 
+        "Android 4 emulator": {
+            # Google Nexus 4 - 4.4.2 - API 19 - 768x1280
+            "platformName": "ANDROID",
+            "platformVersion": "4.4.2",
+            "deviceName": "192.168.56.101:5556",
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8-x86.apk"),
+            "appPackage": "com.noggin.ocalukasl",
+            "appActivity": "com.noggin.ocalukasl.MainActivity",
+            "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
+            "automationName": "uiautomator2",
+            # "appWaitDuration": 20000,
+            "deviceReadyTimeout": 5,
+            # "newCommandTimeout": "60",
+            "clearSystemFiles": True,
+            "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
+            "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
+            "chromeOptions": {
+                "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
+            },
+            "recreateChromeDriverSessions": True,
+            "androidDeviceReadyTimeout": 60  # Android only
+        },
+
         "Android 5": {
             "platformName": "ANDROID",
             "platformVersion": "5.1.1",

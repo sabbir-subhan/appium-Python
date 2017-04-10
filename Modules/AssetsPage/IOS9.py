@@ -1,6 +1,6 @@
-""" Methods for IOS9 on New Asset Page """
+""" Methods for IOS9 on Assets Page """
 
-from Modules.NewAssetPage.IOS import IOS
+from Modules.AssetsPage.IOS import IOS
 
 
 class IOS9(IOS):

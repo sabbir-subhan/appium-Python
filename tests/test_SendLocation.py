@@ -1,4 +1,4 @@
-# Test Case 4 - Send location to OCA -- OCAMOB-41
+# Test Case - Send location to OCA -- OCAMOB-41
 
 # before running this test, enable location on device
 

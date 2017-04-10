@@ -3,6 +3,7 @@
 from Modules.SoundRecorderPage.SoundRecorderPage import SoundRecorderPage
 import logging
 from Conf.desired_capabilities import DesiredCapabilities
+from selenium.common.exceptions import *
 
 
 class Android(SoundRecorderPage):
@@ -14,8 +15,12 @@ class Android(SoundRecorderPage):
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()
         platform_version = desired_capabilities.get('platformVersion')
         if platform_version >= "6":
-            sound_capture_android_6 = self.driver.find_element(*self.configuration.SoundRecorderScreen.
-                                                               RECORD_SOUND_android_6)
+            try:
+                sound_capture_android_6 = self.driver.find_element(*self.configuration.SoundRecorderScreen.
+                                                                   RECORD_SOUND_android_6)
+            except NoSuchElementException:
+                sound_capture_android_6 = self.driver.find_element(*self.configuration.SoundRecorderScreen.
+                                                                   RECORD_SOUND_android_6_version2)
             self.assertIsNotNone(sound_capture_android_6, "sound capture button not found")
             sound_capture_android_6.click()
         elif platform_version < "5":

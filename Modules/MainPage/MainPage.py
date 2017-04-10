@@ -126,6 +126,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
+        sleep(1)
         logging.info("click INCIDENT button")
         incident_button = self.driver.find_element(*self.configuration.MainMenuScreen.INCIDENT_BUTTON)
         self.assertIsNotNone(incident_button, "INCIDENT button not found")

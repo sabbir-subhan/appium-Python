@@ -12,6 +12,7 @@ class iOS:
 class CommonScreen:
     """A class for handling Common buttons on different screen"""
     LOADING = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="loading"]')
+    UPLOADING = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "Uploading")]]')
     SAVE_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Save"]')
     CANCEL_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Cancel"]')
     OK_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Ok"]')
@@ -339,11 +340,6 @@ class NewReportScreen:
     PUBLISH_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Publish"]')
 
 
-class NewAssetScreen:
-    """A class for handling New Asset screen"""
-    pass
-
-
 class NewLogScreen:
     """A class for handling New Log screen"""
     LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/'  # # different locator than in New Report Page
@@ -399,5 +395,10 @@ class RisksScreen:
     PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.XPATH, '')
     NEW_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "New")]]')
     VIEW_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "View")]]')
+    STATUS_SELECTOR = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeWebView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]')
 
+
+class AssetsScreen:
+    """A class for handling Assets screen"""
+    pass
 

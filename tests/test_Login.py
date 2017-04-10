@@ -1,4 +1,4 @@
-# Test Case 1 - Log Into OCA mobile via direct Login -- OCAMOB-38
+# Test Case - Log Into OCA mobile via direct Login -- OCAMOB-38
 
 # open OCA app
 # input login, password and domain

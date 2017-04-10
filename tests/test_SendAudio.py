@@ -1,4 +1,4 @@
-# Test Case 8 - Send Audio to OCA -- OCAMOB-51
+# Test Case - Send Audio to OCA -- OCAMOB-51
 
 # open OCA app
 # dismiss iOS notifications
@@ -69,12 +69,12 @@ class TestSendAudio(SetupTestCase):
         sound_recorder.setDriver(self.driver)
         common_page.alert_popup_allow()
         sound_recorder.record_sound()
-        sleep(1)  # time for recording sound
+        sleep(2)  # time for recording sound
         sound_recorder.stop_recording()
         sound_recorder.click_done_button()
         common_page.alert_popup_allow()
         sound_page.type_description("test - sound")
-        common_page.hide_keyboard()
+        # common_page.hide_keyboard()
         sound_page.click_send_button()  # click and wait for 600s
         main_page.check_presence_of_events_button()
 

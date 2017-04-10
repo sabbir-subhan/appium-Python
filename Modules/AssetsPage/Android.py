@@ -1,11 +1,11 @@
-"""A class for methods to handle New Asset Page on Android"""
+"""A class for methods to handle Assets Page on Android"""
 
-from Modules.NewAssetPage.NewAssetPage import NewAssetPage
+from Modules.AssetsPage.AssetsPage import AssetsPage
 import logging
 from time import sleep
 
 
-class Android(NewAssetPage):
+class Android(AssetsPage):
 
     def scroll_down_to_save_button(self):
         """Method to scroll down to bottom of the screen """
