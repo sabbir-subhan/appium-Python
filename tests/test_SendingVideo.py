@@ -66,20 +66,20 @@ class TestSendingVideo(SetupTestCase):
         main_page.check_presence_of_events_button()
 
         main_page.scroll_down_to_video_button()
-        main_page.open_VIDEO()
+        # main_page.open_VIDEO()
         video_page = LoadClass.load_page('VideoPage')
         video_page.setDriver(self.driver)
-        video_page.check_if_video_page_was_opened()
-        video_page.click_gallery_button()
-        gallery_video_page = LoadClass.load_page('GalleryPage')
-        gallery_video_page.setDriver(self.driver)
-        common_page.alert_popup_allow()
-        gallery_video_page.choose_videos_gallery()
-        gallery_video_page.choose_video_from_gallery()
-        gallery_video_page.click_use_button()
-        video_page.type_description("test - video 1 from gallery")
-        # common_page.hide_keyboard()
-        video_page.click_send_button()  # click and wait for 600s
+        # video_page.check_if_video_page_was_opened()
+        # video_page.click_gallery_button()
+        # gallery_video_page = LoadClass.load_page('GalleryPage')
+        # gallery_video_page.setDriver(self.driver)
+        # common_page.alert_popup_allow()
+        # gallery_video_page.choose_videos_gallery()
+        # gallery_video_page.choose_video_from_gallery()
+        # gallery_video_page.click_use_button()
+        # video_page.type_description("test - video 1 from gallery")
+        # # common_page.hide_keyboard()
+        # video_page.click_send_button()  # click and wait for 600s
         main_page.open_VIDEO()
         video_page.click_record_new_button()
         common_page.alert_popup_allow()
@@ -87,7 +87,7 @@ class TestSendingVideo(SetupTestCase):
         camera_page.setDriver(self.driver)
         camera_page.capture_video()
         sleep(1)  # time for recording video
-        camera_page.capture_video()
+        camera_page.stop_recording_video()
         camera_page.click_use_video()
         video_page.type_description("test - video 1")
         # common_page.hide_keyboard()
@@ -96,16 +96,16 @@ class TestSendingVideo(SetupTestCase):
         video_page.click_record_new_button()
         camera_page.capture_video()
         sleep(1)  # time for recording video
-        camera_page.capture_video()
+        camera_page.stop_recording_video()
         camera_page.click_retake()
         camera_page.capture_video()
         sleep(1)  # time for recording video
-        camera_page.capture_video()
+        camera_page.stop_recording_video()
         camera_page.click_use_video()
         video_page.type_description("test- video 2")
         # common_page.hide_keyboard()
         video_page.click_send_button()  # click and wait for 600s
-        main_page.check_presence_of_events_button()
+        main_page.check_presence_of_inbox_button()
 
 
 if __name__ == '__main__':

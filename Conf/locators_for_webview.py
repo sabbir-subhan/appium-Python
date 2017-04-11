@@ -10,6 +10,7 @@ class CommonScreen:
 class TopBar:
     """A class for top bar locators."""
     HAMBURGER_FOR_MAIN_MENU = (MobileBy.CSS_SELECTOR, 'div#iconbar>a')
+    BACK_ARROW = (MobileBy.CSS_SELECTOR, 'div#header>div>a:first-child')
 
 
 class WelcomeScreen:
@@ -246,7 +247,7 @@ class VideoScreen:
     #VIDEO_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
     GALLERY_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div>div#video-placeholder>div>div>span[data-open="album"]>span[data-open="album"]')
     RECORD_NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div>div#video-placeholder>div>div>span[data-open="camera"]>span[data-open="camera"]')
-    SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'a#videoBtnSend')
+    SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a#videoBtnSend')
     DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'textarea#video-input-description')
 
 
@@ -255,7 +256,7 @@ class SoundScreen:
     #SOUND_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
     RECORD_SOUND_BUTTON = (MobileBy.CSS_SELECTOR, 'div#audio>div>div.ui-grid-a>div#audio-placeholder>span')
     DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'textarea#audio-input-description')
-    SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'a#audioBtnSend')
+    SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'div#audio>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a#audioBtnSend')
 
 
 # class SoundRecorderScreen:
@@ -409,6 +410,15 @@ class AssetsScreen:
     NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'li#openAssetTreeMore>a[href="#assetTreeMore"]')
     NEW_ASSET_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#assetNew?parent=0"]')
     ASSET_TYPE = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul>li:first-child>a')  # first asset type on the list
-
+    PREVIOUSLY_CREATED_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.main>ul[data-role="listview"]>li:first-child>a')
+    EDIT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.edit>a')
+    COST_PER_UNIT_FIELD = (MobileBy.CSS_SELECTOR, 'div#assetEdit>div.ui-content>ul.edit-view>li>div>input[id="cost per unit"]')
+    SAVE_EDITED_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#save"]')
+    MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-b>a[href="#assetViewMoreMenu"]')
+    DELETE_THIS_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetView>div#assetViewMoreMenu-popup>div#assetViewMoreMenu>ul>li.delete>a[href="#confirmDeleteAsset"]')
+    NEW_CHILD_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetView>div#assetViewMoreMenu-popup>div#assetViewMoreMenu>ul>li.new>a')
+    DELETE_ALERT = (MobileBy.CSS_SELECTOR, 'div#assetView>div#confirmDeleteAsset-popup>div#confirmDeleteAsset>div.ng-dialog-container>div>div.ui-controlgroup-controls>a:first-child')
+    CANCEL_ALERT = (MobileBy.CSS_SELECTOR, 'div#assetView>div#confirmDeleteAsset-popup>div#confirmDeleteAsset>div.ng-dialog-container>div>div.ui-controlgroup-controls>a:last-child')
+    PREVIOUSLY_CREATED_CHILD_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.main>ul.assets>li:first-child>a')
 
 

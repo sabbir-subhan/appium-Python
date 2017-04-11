@@ -345,6 +345,8 @@ class CameraScreen:
     CAPTURE_BUTTON_ANDROID_6 = (MobileBy.XPATH, '//GLButton[@text="Shutter"]')  # Android 7 too
     CAPTURE_BUTTON_ANDROID_6_version2 = (MobileBy.ACCESSIBILITY_ID, 'Shutter button')
     # CAPTURE_BUTTON_ANDROID_7 = (MobileBy.XPATH, '//GLViewGroup[3]/GLViewGroup[1]/GLButton[2]')
+    RECORD_BUTTON_ANDROID_7 = (MobileBy.XPATH, '//GLButton[@text="Record"]')
+    STOP_BUTTON_ANDROID_7 = (MobileBy.XPATH, '//GLButton[@text="Stop"]')
     CANCEL_PHOTO_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Review cancel')
     CAMERA_CHOOSER_ANDROID4 = (MobileBy.ID, 'com.android.camera2:id/btn_switch_camera')
     CAMERA_CHOOSER_ANDROID5 = (MobileBy.ID, 'com.tct.camera:id/onscreen_camera_picker')
@@ -358,7 +360,7 @@ class CameraScreen:
     RETAKE_ANDROID_6_version2 = (MobileBy.ID, 'com.android.camera:id/btn_retake')
     USE_PHOTO_ANDROID4 = (MobileBy.ACCESSIBILITY_ID, 'Review done')
     USE_PHOTO_ANDROID5 = (MobileBy.ACCESSIBILITY_ID, 'OK')  # com.tct.camera:id/btn_done
-    USE_PHOTO_ANDROID6 = (MobileBy.ID, 'com.sec.android.app.camera:id/okay')
+    USE_PHOTO_ANDROID6 = (MobileBy.ID, 'com.sec.android.app.camera:id/okay')  # android 7 also
     USE_PHOTO_ANDROID6_version2 = (MobileBy.ID, 'com.android.camera:id/btn_done')
 
 

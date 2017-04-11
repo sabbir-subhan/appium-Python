@@ -34,23 +34,21 @@ class SoundPage(BasePage):
 
     def click_send_button(self):
 
-        # welcome_page = LoadClass.load_page('PhotoPage')
-        # welcome_page.setDriver(self.driver)
-        # welcome_page.click_send_button()
+        sleep(1)
+
         self.switch_context_to_webview()
 
-        sleep(1)
         logging.info("click 'Send' button")
         send_button = self.driver.find_element(*self.configuration.SoundScreen.SEND_BUTTON)
         self.assertIsNotNone(send_button, "Send button not found")
         send_button.click()
+        sleep(2)
 
         self.switch_context_to_native()
 
-        sleep(2)
         logging.info("sending file")
         WebDriverWait(self.driver, 600).until(
-            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
+            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.INBOX_BUTTON),
             "Failed to send file")
         logging.info("File was sent")
 

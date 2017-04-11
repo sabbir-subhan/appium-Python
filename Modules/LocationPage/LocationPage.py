@@ -28,7 +28,7 @@ class LocationPage(BasePage):
         sleep(2)
         logging.info("check if location was sent")
         try:
-            WebDriverWait(self.driver, 45).until(
+            WebDriverWait(self.driver, 50).until(
                 expected_conditions.presence_of_element_located(self.configuration.LocationScreen.LOCATION_STATUS),
                 "Failed to send location")
             logging.info("Location was sent")

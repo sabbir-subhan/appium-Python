@@ -45,6 +45,7 @@ class PhotoPage(BasePage):
 
         self.switch_context_to_native()
 
+        logging.info("sending file")
         WebDriverWait(self.driver, 600).until(
             expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.INBOX_BUTTON),
             "Failed to send file")

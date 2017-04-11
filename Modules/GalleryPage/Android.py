@@ -21,6 +21,21 @@ class Android(GalleryPage):
             #                                                       GALLERY_ELEMENTS_android7)
             gallery_elements_android7 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1_android7)
             gallery_elements_android7.click()
+            sleep(1)
+
+            # photo_page = LoadClass.load_page('PhotoPage')
+            # photo_page.setDriver(self.driver)
+            # photo_page.click_gallery_button()
+
+            # try:
+            #     photo_page = LoadClass.load_page('PhotoPage')
+            #     photo_page.setDriver(self.driver)
+            #     photo_page.click_gallery_button()
+            # except No:
+            #     video_page = LoadClass.load_page('VideoPage')
+            #     video_page.setDriver(self.driver)
+            #     video_page.click_gallery_button()
+
             # location = gallery_elements_android7[0].location
             # logging.info(location)
             # x = location["x"]
@@ -62,7 +77,20 @@ class Android(GalleryPage):
 
     def choose_video_from_gallery(self):
 
-        common_page = LoadClass.load_page('GalleryPage')
+        # gallery_page = LoadClass.load_page('GalleryPage')
+        # gallery_page.setDriver(self.driver)
+        # gallery_page.choose_element_1()
+        logging.info("choosing element 1 - Android")
+        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        platform_version = desired_capabilities.get('platformVersion')
+        if platform_version >= "7":
+            gallery_elements_android7 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1_android7)
+            gallery_elements_android7.click()
+            sleep(1)
+        else:
+            choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1)
+            choose_element_1.click()
+        common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
-        common_page.choose_element_1()
-
+        common_page.alert_popup_allow()
+        sleep(1)

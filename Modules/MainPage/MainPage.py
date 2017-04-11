@@ -55,6 +55,12 @@ class MainPage(BasePage):
 
         # self.switch_context_to_native()
 
+    def check_presence_of_inbox_button(self):
+
+        WebDriverWait(self.driver, 25).until(
+            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.INBOX_BUTTON),
+            "Events button in Main Menu is not present")
+
     def click_ACTIVATE_BUTTON_on_alert(self):
 
         logging.info("click ACTIVATE button on alert")

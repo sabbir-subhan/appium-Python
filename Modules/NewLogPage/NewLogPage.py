@@ -51,6 +51,7 @@ class NewLogPage(BasePage):
         #self.switch_context_to_webview() # webview is not working on iOS10
 
         logging.info("type text into 'Entry' field")
+        sleep(1)
         entry_field = self.driver.find_element(*self.configuration.NewLogScreen.ENTRY_FIELD)
         entry_field.click()
         sleep(1)

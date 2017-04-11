@@ -76,7 +76,7 @@ class TestSendAudio(SetupTestCase):
         sound_page.type_description("test - sound")
         # common_page.hide_keyboard()
         sound_page.click_send_button()  # click and wait for 600s
-        main_page.check_presence_of_events_button()
+        main_page.check_presence_of_inbox_button()
 
 
 if __name__ == '__main__':

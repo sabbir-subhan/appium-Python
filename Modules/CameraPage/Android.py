@@ -18,7 +18,7 @@ class Android(CameraPage):
         # logging.info(platform_version)
         logging.info("capture")
         sleep(4)
-        if platform_version >= "6":
+        if platform_version > "5" and "6" in str(platform_version):
             try:
                 photo_capture1 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_6)
             except NoSuchElementException:
@@ -40,7 +40,55 @@ class Android(CameraPage):
 
     def capture_video(self):
 
-        Android.capture_photo(self)
+        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        platform_version = desired_capabilities.get('platformVersion')
+        logging.info("start recording")
+        sleep(4)
+        if platform_version > "5" and "6" in str(platform_version):
+            try:
+                video_capture1 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_6)
+            except NoSuchElementException:
+                video_capture1 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_6_version2)
+            self.assertIsNotNone(video_capture1, "video capture for Android 6 not found")
+            video_capture1.click()
+        elif platform_version >= "7":
+            # sleep(2)
+            video_capture2 = self.driver.find_element(*self.configuration.CameraScreen.RECORD_BUTTON_ANDROID_7)
+            self.assertIsNotNone(video_capture2, "video capture for Android 7 not found")
+            # sleep(4)
+            video_capture2.click()
+            # sleep(4)
+        else:
+            video_capture3 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_4_and_5)
+            self.assertIsNotNone(video_capture3, "video capture for Android 4, 5 not found")
+            video_capture3.click()
+        # sleep(2)
+
+    def stop_recording_video(self):
+
+        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        platform_version = desired_capabilities.get('platformVersion')
+        logging.info("stop recording")
+        sleep(4)
+        if platform_version > "5" and "6" in str(platform_version):
+            try:
+                stop_recording1 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_6)
+            except NoSuchElementException:
+                stop_recording1 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_6_version2)
+            self.assertIsNotNone(stop_recording1, "video stop recording for Android 6 not found")
+            stop_recording1.click()
+        elif platform_version >= "7":
+            # sleep(2)
+            stop_recording2 = self.driver.find_element(*self.configuration.CameraScreen.STOP_BUTTON_ANDROID_7)
+            self.assertIsNotNone(stop_recording2, "video stop recording for Android 7 not found")
+            # sleep(4)
+            stop_recording2.click()
+            # sleep(4)
+        else:
+            stop_recording3 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_4_and_5)
+            self.assertIsNotNone(stop_recording3, "video stop recording for Android 4, 5 not found")
+            stop_recording3.click()
+        # sleep(2)
 
     def click_cancel(self):
 
@@ -55,6 +103,7 @@ class Android(CameraPage):
 
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()
         platform_version = desired_capabilities.get('platformVersion')
+        sleep(1)
         if platform_version >= "6":
             try:
                 use_photo3 = self.driver.find_element(*self.configuration.CameraScreen.USE_PHOTO_ANDROID6)
