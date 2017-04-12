@@ -45,6 +45,7 @@ class AssetsPage(BasePage):
 
         self.switch_context_to_webview()
 
+        sleep(1)
         logging.info("type title")
         title = self.driver.find_element(*self.configuration.AssetsScreen.NAME)
         self.assertIsNotNone(title, "Title input field was not found")
@@ -129,6 +130,28 @@ class AssetsPage(BasePage):
     #     self.switch_context_to_webview()
     #
     #     logging.info("click more button")
+    #
+    #     try:
+    #         logging.info("try 1")
+    #         click_more_button = self.driver.find_element(*self.configuration.AssetsScreen.MORE_BUTTON)
+    #     except NoSuchElementException:
+    #         logging.info("except 1")
+    #         click_child_asset_inside_other_asset = self.driver.find_element(*self.configuration.AssetsScreen.CHILD_ASSET_INSIDE_OTHER_ASSET)
+    #         self.assertIsNotNone(click_child_asset_inside_other_asset, "child asset inside other asset not found")
+    #         click_child_asset_inside_other_asset.click()
+    #         sleep(1)
+    #     try:
+    #         logging.info("try 2")
+    #         click_more_button = self.driver.find_element(*self.configuration.AssetsScreen.MORE_BUTTON)
+    #     except NoSuchElementException:
+    #         logging.info("except 2")
+    #         click_child_asset_inside_other_asset = self.driver.find_element(*self.configuration.AssetsScreen.CHILD_ASSET_INSIDE_OTHER_ASSET)
+    #         self.assertIsNotNone(click_child_asset_inside_other_asset, "child asset inside other asset not found")
+    #         click_child_asset_inside_other_asset.click()
+    #         sleep(1)
+    #
+    #     logging.info("after all")
+    #     sleep(20)
     #     click_more_button = self.driver.find_element(*self.configuration.AssetsScreen.MORE_BUTTON)
     #     self.assertIsNotNone(click_more_button, "More button not found")
     #     click_more_button.click()
@@ -137,49 +160,59 @@ class AssetsPage(BasePage):
 
     def click_more_button(self):
 
-        logging.info("click more button")
-        # when existing asset already have a child asset, instead "More" button there is "New" button
         self.switch_context_to_webview()
 
-        var = 10
-        while var > 0:
-            logging.info("loop")
-            try:
-                logging.info("check if More button is present and click it")
-                click_more_button = self.driver.find_element(*self.configuration.AssetsScreen.MORE_BUTTON)
-                if click_more_button.is_displayed():
-                    self.assertIsNotNone(click_more_button, "More button not found")
-                    click_more_button.click()
-                    break
-                else:
-                    pass
-            except NoSuchElementException:
-                logging.info("More button not found - clicking back arrow and choosing different existing asset")
-                back_arrow = self.driver.find_element(*self.configuration.TopBar.BACK_ARROW)
-                self.assertIsNotNone(back_arrow, "back arrow not found")
-                back_arrow.click()  # return to assets list
-
-                # now open nth + 1 asset
-                css_selector = list('div#assetTreeView>div.ui-content>div.main>ul[data-role="listview"]>li:nth-child(1)>a')
-                logging.info(css_selector)
-
-                n = int(1)
-                logging.info(n)
-
-                n = n + 1
-                logging.info(n)
-
-                css_selector[-4] = str(n)
-                logging.info(n)
-                logging.info(css_selector)
-
-                open_existing_asset = self.driver.find_element_by_css_selector(''.join(css_selector))
-                # self.assertIsNotNone(open_existing_asset, "existing asset not found")
-                open_existing_asset.click()
-
-            var = var - 1
+        logging.info("click more button")
+        click_more_button = self.driver.find_element(*self.configuration.AssetsScreen.MORE_BUTTON)
+        self.assertIsNotNone(click_more_button, "More button not found")
+        click_more_button.click()
 
         self.switch_context_to_native()
+
+    # def click_more_button(self):
+
+        # logging.info("click more button")
+        # # when existing asset already have a child asset, instead "More" button there is "New" button
+        # self.switch_context_to_webview()
+
+        # n = int(1)
+        # logging.info(n)
+        # var = 10
+        # while var > 0:
+        #     logging.info("loop")
+        #     try:
+        #         logging.info("check if More button is present and click it")
+        #         click_more_button = self.driver.find_element(*self.configuration.AssetsScreen.MORE_BUTTON)
+        #         if click_more_button.is_displayed():
+        #             self.assertIsNotNone(click_more_button, "More button not found")
+        #             click_more_button.click()
+        #             break
+        #         else:
+        #             pass
+        #     except NoSuchElementException:
+        #         logging.info("More button not found - clicking back arrow and choosing different existing asset")
+        #         back_arrow = self.driver.find_element(*self.configuration.TopBar.BACK_ARROW)
+        #         self.assertIsNotNone(back_arrow, "back arrow not found")
+        #         back_arrow.click()  # return to assets list
+        #
+        #         # now open nth + 1 asset
+        #         css_selector = list('div#assetTreeView>div.ui-content>div.main>ul[data-role="listview"]>li:nth-child(1)>a')
+        #         logging.info(css_selector)
+        #
+        #         n = n + 1
+        #         logging.info(n)
+        #
+        #         css_selector[-4] = str(n)
+        #         logging.info(n)
+        #         logging.info(css_selector)
+        #
+        #         open_existing_asset = self.driver.find_element_by_css_selector(''.join(css_selector))
+        #         # self.assertIsNotNone(open_existing_asset, "existing asset not found")
+        #         open_existing_asset.click()
+        #
+        #     var = var - 1
+        #
+        # self.switch_context_to_native()
 
     def click_delete_this_asset(self):
 

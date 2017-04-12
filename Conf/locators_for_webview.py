@@ -212,8 +212,7 @@ class Map:
     """A class for Map screen locators."""
     PLOT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                           'a[data-translate="Plot"]')
-    TOOL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
-                                          'a[href="#mapToolMore"]')
+    TOOL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-b>li#openMapToolMore>a[href="#mapToolMore"]')
     POINT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="POINT"]>h2>a')
     POINT_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="POINT"]>div>ul>li>a')
     LINE_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="LINESTRING"]>div>ul>li>a')
@@ -230,6 +229,10 @@ class Map:
                                               'a[data-translate="Save"]')
     CANCEL_MAP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                                 'a[data-translate="Cancel"]')
+    LAYERS = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-b>li.ui-block-a>a[href="#mapLayers"]')
+    FIRST_LAYER_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#mapLayers>div.ui-content>ul>li:first-child')
+    LAYERS_DONE = (MobileBy.CSS_SELECTOR, 'div#mapLayers>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a#layersDone')
+    PLOT_TYPE_ASSET = (MobileBy.CSS_SELECTOR, 'div#mapPlotType>div.ui-content>ul.ui-listview>li>a[data-link="#assetNew?parent=0"]')
 
 
 class PhotoScreen:
@@ -402,7 +405,7 @@ class RisksScreen:
 
 class AssetsScreen:
     """A class for handling Assets screen"""
-    NAME = (MobileBy.CSS_SELECTOR, 'div#assetNew>div>ul>li>div>input#name')
+    NAME = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li:first-child>div.ui-input-text>input#name')
     SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                           'a[href="#save"]')
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
@@ -420,5 +423,6 @@ class AssetsScreen:
     DELETE_ALERT = (MobileBy.CSS_SELECTOR, 'div#assetView>div#confirmDeleteAsset-popup>div#confirmDeleteAsset>div.ng-dialog-container>div>div.ui-controlgroup-controls>a:first-child')
     CANCEL_ALERT = (MobileBy.CSS_SELECTOR, 'div#assetView>div#confirmDeleteAsset-popup>div#confirmDeleteAsset>div.ng-dialog-container>div>div.ui-controlgroup-controls>a:last-child')
     PREVIOUSLY_CREATED_CHILD_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.main>ul.assets>li:first-child>a')
+    CHILD_ASSET_INSIDE_OTHER_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.main>ul>li:first-child>a')
 
 

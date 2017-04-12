@@ -10,23 +10,20 @@ class IOS(GalleryPage):
     def choose_element_1(self):
 
         sleep(2)
-        # self.driver.execute_script("mobile: scroll", {"direction": "up"})
-
-        logging.info("scroll down to Save button")
         scroll = 10
         while scroll > 0:
             logging.info("scroll to element")
-            save_button = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_VIDEO_ELEMENT_1)
-            if save_button.is_displayed():
+            element_in_photo_gallery = self.driver.find_element(*self.configuration.GalleryScreen.FIRST_PHOTO_GALLERY_ELEMENT)
+            if element_in_photo_gallery.is_displayed():
+                logging.info("end scrolling")
                 break
             else:
                 logging.info("scroll up to first element")
                 self.driver.execute_script("mobile: scroll", {"direction": "up"})
                 scroll = scroll - 1
-
         sleep(1)
-        logging.info("choosing element 1")
-        choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1)
+        logging.info("choosing element")
+        choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.FIRST_PHOTO_GALLERY_ELEMENT)
         choose_element_1.click()
 
     def choose_video_from_gallery(self):

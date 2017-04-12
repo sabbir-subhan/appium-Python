@@ -7,6 +7,39 @@ from time import sleep
 
 class MapPage(BasePage):
 
+    def click_layers_button(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click layers button")
+        click_layers_button = self.driver.find_element(*self.configuration.Map.LAYERS)
+        self.assertIsNotNone(click_layers_button)
+        click_layers_button.click()
+
+        self.switch_context_to_native()
+
+    def choose_first_layer_from_the_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("choose first layer from the list")
+        choose_first_layer_from_the_list = self.driver.find_element(*self.configuration.Map.FIRST_LAYER_ON_THE_LIST)
+        self.assertIsNotNone(choose_first_layer_from_the_list)
+        choose_first_layer_from_the_list.click()
+
+        self.switch_context_to_native()
+
+    def click_done_button(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click done button")
+        click_done_button = self.driver.find_element(*self.configuration.Map.LAYERS_DONE)
+        self.assertIsNotNone(click_done_button)
+        click_done_button.click()
+
+        self.switch_context_to_native()
+
     def click_plot_button(self):
 
         logging.info("click Plot button")
@@ -16,12 +49,15 @@ class MapPage(BasePage):
 
     def click_tool_button(self):
 
-        sleep(2)
+        self.switch_context_to_webview()
+
+        sleep(1)
         logging.info("click tool button")
         tool_button = self.driver.find_element(*self.configuration.Map.TOOL_BUTTON)
         self.assertIsNotNone(tool_button, "Tool button is not present")
-        sleep(1)
         tool_button.click()
+
+        self.switch_context_to_native()
 
     def click_point_button(self):
 
@@ -59,7 +95,17 @@ class MapPage(BasePage):
         default_button.click()
         sleep(1)
 
+    # def save_map(self):
+    #
+    #     logging.info("Save map")
+    #     save_map_button = self.driver.find_element(*self.configuration.Map.SAVE_MAP_BUTTON)
+    #     self.assertIsNotNone(save_map_button, "save map button not found")
+    #     save_map_button.click()
+    #     sleep(3)
+
     def save_map(self):
+
+        self.switch_context_to_webview()
 
         logging.info("Save map")
         save_map_button = self.driver.find_element(*self.configuration.Map.SAVE_MAP_BUTTON)
@@ -67,6 +113,18 @@ class MapPage(BasePage):
         save_map_button.click()
         sleep(3)
 
+        self.switch_context_to_native()
+
+    def choose_plot_type_asset(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("choose plot type")
+        choose_plot_type = self.driver.find_element(*self.configuration.Map.PLOT_TYPE_ASSET)
+        self.assertIsNotNone(choose_plot_type, "plot type not found")
+        choose_plot_type.click()
+
+        self.switch_context_to_native()
 
 
 

@@ -298,6 +298,7 @@ class GalleryScreen:
     GALLERY_VIDEOS_POPOVER = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Videos"]')
     GALLERY_VIDEO_ELEMENT_1 = (MobileBy.XPATH, '//XCUIElementTypeCell[1]')
     USE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Choose')
+    FIRST_PHOTO_GALLERY_ELEMENT = (MobileBy.XPATH, '//XCUIElementTypeCollectionView[1]/XCUIElementTypeCell[1]')
 
 
 class CameraScreen:

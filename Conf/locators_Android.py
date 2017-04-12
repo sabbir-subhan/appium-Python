@@ -416,8 +416,9 @@ class ComposeScreen:
     EMAIL_SUBJECT_FIELD = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="Subject"]')
     EMAIL_TEXT_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "emailBody")]]'
                                         '/android.view.View/android.view.View/android.view.View'
-                                        '/android.view.View')  # android 4,5,7
+                                        '/android.view.View')  # android 4,5
     EMAIL_TEXT_FIELD2 = (MobileBy.XPATH, '//android.view.View[@content-desc="Rich Text Editor, emailBody"]//android.view.View[@clickable="true"]')  # android 6
+    EMAIL_TEXT_FIELD3 = (MobileBy.XPATH, '//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.webkit.WebView[1]/android.view.View[2]/android.view.View[4]/android.view.View[2]/android.view.View[1]/android.view.View[1]')  # android 7
     MESSAGE_SMS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "SMS")]]')
     SMS_TEXT_FIELD = (MobileBy.CLASS_NAME, 'android.widget.EditText')
     MESSAGE_VOICE = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Voice")]]')

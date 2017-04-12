@@ -28,7 +28,7 @@ class LocationPage(BasePage):
         sleep(2)
         logging.info("check if location was sent")
         try:
-            WebDriverWait(self.driver, 50).until(
+            WebDriverWait(self.driver, 60).until(
                 expected_conditions.presence_of_element_located(self.configuration.LocationScreen.LOCATION_STATUS),
                 "Failed to send location")
             logging.info("Location was sent")
@@ -36,6 +36,17 @@ class LocationPage(BasePage):
         except NoSuchElementException:
             logging.info("Failed to send location")
             self.fail("Failed to send location")
+
+    def alert_allow_location(self):
+
+        logging.info("Check alert allow location")
+        try:
+            WebDriverWait(self.driver, 40).until(expected_conditions.visibility_of_element_located(self.configuration.iOS.IOS_ALLOW), "alert allow not found")
+            # WebDriverWait(self.driver, 50).until(expected_conditions.presence_of_element_located(self.configuration.iOS.IOS_ALLOW), "alert allow not found")
+            button_allow_location = self.driver.find_element(*self.configuration.iOS.IOS_ALLOW)
+            button_allow_location.click()
+        except:
+            pass
 
     def click_send_every(self):
 

@@ -46,3 +46,19 @@ class Android(NewLogPage):
             self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen
             scrolls = scrolls - 1
         sleep(2)
+
+    def type_text_into_entry_field(self, text):
+
+        logging.info("type text into 'Entry' field")
+        sleep(1)
+        entry_field = self.driver.find_element(*self.configuration.NewLogScreen.ENTRY_FIELD)
+        entry_field.click()
+        sleep(1)
+        logging.info("sending keys")
+        self.driver.press_keycode(33)  # send letter 'E'
+        self.driver.press_keycode(42)  # send letter 'N'
+        self.driver.press_keycode(48)  # send letter 'T'
+        self.driver.press_keycode(46)  # send letter 'R'
+        self.driver.press_keycode(53)  # send letter 'Y'
+
+

@@ -143,6 +143,7 @@ BUILDING .APP FILE ON OSX:
 - open project in xcode and change Bundle Identifier accordingly to "id" above
 - build app through Xcode
 - on real device, first You need to run app from xcode - it will install it on the device (You have to TRUST app in General - Device management)
+- path to built file is located in Conf/desired_capabilities 
 
 
 ### **CONFIGURE APPIUM GUI:** ###
@@ -161,12 +162,8 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 - paths to .apk and .app files
 
 
-# Additional info: #
-
-Locators for elements are based mostly on visible texts, so if in OCA webpage, for example event type name, will be changed it will stop working.
-
 # Some required configuration on OCA webpage: #
-
+- Locators for elements are partially based on visible texts, so if in OCA webpage, for example event type name, will be changed it will stop working.
 - users accounts with correct settings (see credentials.py)
 - 3 types of events (Incident, event_for_chooser_fields, event_for_on_load/save_test)
 - option list inside "Central list templates" with values; "1", "2", "3" - that list is added as a option list to event type: event_for_on_load/save_test
@@ -226,5 +223,6 @@ OCA APP VERSIONS:
     switch to proper Xcode version, restart host and device, ? 
 - Instruments exited with error 253 - rebuild OCA app through Xcode
 - "Error while executing atom: operation timed out" -- reconnect device and restart appium server
-
+- sometimes there are problems with real iOS 10 device - tests are failing because of appium server errors --try to reconnect device and restart appium server
+  
 

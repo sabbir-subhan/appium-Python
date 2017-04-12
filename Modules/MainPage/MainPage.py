@@ -81,6 +81,7 @@ class MainPage(BasePage):
 
         self.switch_context_to_webview()
 
+        sleep(1)
         logging.info("click ACTIVATE WORKFLOW button")
         activate_workflow_button = self.driver.find_element(*self.configuration.MainMenuScreen.ACTIVATE_WORKFLOW_BUTTON)
         self.assertIsNotNone(activate_workflow_button, "ACTIVATE WORKFLOW button not found")

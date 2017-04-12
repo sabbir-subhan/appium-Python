@@ -65,7 +65,7 @@ class ComposePage(BasePage):
 
         logging.info("sending message")
         WebDriverWait(self.driver, 10).until(
-            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
+            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.INBOX_BUTTON),
             "Failed to send message")
         logging.info("Message was sent")
 
@@ -201,7 +201,7 @@ class ComposePage(BasePage):
 
     def type_email_message(self):
 
-        #self.switch_context_to_webview() # webview is not working on iOS10
+        # self.switch_context_to_webview() # webview is not working on iOS10
 
         sleep(2)
         logging.info('type email msg')
@@ -210,7 +210,7 @@ class ComposePage(BasePage):
         email_text_field.click()
         email_text_field.send_keys('Test email')
 
-        #self.switch_context_to_native()
+        # self.switch_context_to_native()
 
         # sleep(2)
         # logging.info('type email msg')

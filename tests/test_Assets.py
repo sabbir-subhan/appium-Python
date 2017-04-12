@@ -104,19 +104,33 @@ class TestAssets(SetupTestCase):
         main_page.check_presence_of_events_button()
 
         # Create a Child Asset Asset > Select asset > More > New Child asset > select type > Create asset
+
+        # create parent asset
+        main_page.open_ASSETS()
+        assets_page = LoadClass.load_page('AssetsPage')
+        assets_page.setDriver(self.driver)
+        assets_page.click_new_button()
+        assets_page.click_new_asset()
+        assets_page.choose_asset_type()
+        assets_page.fill_Name_input_field("Asset test 2")
+        assets_page.scroll_down_to_save_button()
+        assets_page.click_save_button()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
         main_page.open_ASSETS()
         assets_page.open_existing_asset()
         assets_page.click_more_button()  # problem because if asset already have a child there is no MORE button
         assets_page.click_new_child_asset()
         assets_page.choose_asset_type()
-        assets_page.fill_Name_input_field("Asset test 2")
+        assets_page.fill_Name_input_field("Child Asset test")
         # common_page.hide_keyboard()
         assets_page.scroll_down_to_save_button()
         assets_page.click_save_button()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
-        # Edit child asset Asset > Select parent > Child is displayed >Select Child > Edit
+        # Edit child asset Asset > Select parent > Child is displayed > Select Child > Edit
         main_page.open_ASSETS()
         assets_page.open_existing_asset()
         assets_page.open_existing_child_asset()
@@ -127,10 +141,55 @@ class TestAssets(SetupTestCase):
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
-
         # Delete child asset Asset > Select parent > Child is displayed >Select Child > More > Delete this asset
+        main_page.open_ASSETS()
+        assets_page.open_existing_asset()
+        assets_page.open_existing_child_asset()
+        assets_page.click_more_button()
+        assets_page.click_delete_this_asset()
+        assets_page.alert_accept_delete()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
         # Create an Asset from Map Maps > Layers > Select layers > Tools > Plot a point, line, circle or polygon > Create > Asset > Type > Save
+        main_page.open_MAP()
+        map_page = LoadClass.load_page('MapPage')
+        map_page.setDriver(self.driver)
+        common_page.alert_popup_allow()
+        map_page.click_layers_button()
+        map_page.choose_first_layer_from_the_list()
+        map_page.click_done_button()
+        map_page.click_plot_button()
+        map_page.click_tool_button()
+        map_page.click_point_button()
+        map_page.click_default_button()
+        map_page.click_in_map_area_1()
+        map_page.click_tool_button()
+        map_page.click_line_button()
+        map_page.click_default_button()
+        map_page.click_in_map_area_2()
+        map_page.double_click_in_map_area_3()
+        map_page.click_tool_button()
+        map_page.click_circle_button()
+        map_page.click_default_button()
+        map_page.click_in_map_area_2()
+        map_page.click_tool_button()
+        map_page.click_polygon_button()
+        map_page.click_default_button()
+        map_page.click_in_map_area_1()
+        map_page.click_in_map_area_2()
+        map_page.double_click_in_map_area_3()
+        map_page.save_map()
+        map_page.choose_plot_type_asset()
+        assets_page.choose_asset_type()
+        assets_page.fill_Name_input_field()
+        assets_page.scroll_down_to_save_button()
+        assets_page.click_save_button()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
         # Click on Assets>Search Assets
+        main_page.open_ASSETS()
 
         # Login to OCA server >Create a new Asset type >Login to OCA mobile app >Click on Assets>New>Select the new asset type created above  -- can't be done using Appium
 

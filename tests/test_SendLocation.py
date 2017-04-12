@@ -60,6 +60,7 @@ class TestSendLocation(SetupTestCase):
         location_page.setDriver(self.driver)
         location_page.check_if_location_page_was_opened()
         location_page.click_send_once_now()
+        location_page.alert_allow_location()
         location_page.check_if_location_was_sent()
         location_page.click_send_every()
         location_page.choose_send_every_5_minutes_option()
