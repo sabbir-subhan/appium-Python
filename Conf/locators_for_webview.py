@@ -239,7 +239,7 @@ class PhotoScreen:
     """A class for Photo screen locators - screen after clicking into Photo button in Main Menu."""
     #PHOTO_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
     GALLERY_BUTTON = (MobileBy.CSS_SELECTOR, 'div#photo>div>div#photo-placeholder>div>div>span[data-open="album"]>span[data-open="album"]')
-    TAKE_NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'div#photo>div>div#photo-placeholder>div>div>span[data-open="camera"]>span[data-open="camera"]')
+    TAKE_NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'div#photo>div.ui-content>div.ui-grid-a>div.ui-block-b>div.center-text>span[data-open="camera"]>span.icon')
     DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'textarea#photo-input-description')
     SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'div#photo>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a#photoBtnSend')
     RESET_BUTTON = (MobileBy.CSS_SELECTOR, 'a#photoBtnReset')
@@ -249,7 +249,7 @@ class VideoScreen:
     """A class for Video screen locators - screen after clicking into Video button in Main Menu."""
     #VIDEO_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
     GALLERY_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div>div#video-placeholder>div>div>span[data-open="album"]>span[data-open="album"]')
-    RECORD_NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div>div#video-placeholder>div>div>span[data-open="camera"]>span[data-open="camera"]')
+    RECORD_NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div.ui-content>div.ui-grid-a>div.ui-block-b>div.center-text>span[data-open="camera"]>span.icon')
     SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a#videoBtnSend')
     DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'textarea#video-input-description')
 
@@ -424,5 +424,16 @@ class AssetsScreen:
     CANCEL_ALERT = (MobileBy.CSS_SELECTOR, 'div#assetView>div#confirmDeleteAsset-popup>div#confirmDeleteAsset>div.ng-dialog-container>div>div.ui-controlgroup-controls>a:last-child')
     PREVIOUSLY_CREATED_CHILD_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.main>ul.assets>li:first-child>a')
     CHILD_ASSET_INSIDE_OTHER_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.main>ul>li:first-child>a')
+    SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.filters>div>input[id="assetSearch"]')
+    CREATE_MAPPING_DATA = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li.geometryinput>a')
+    ADD_MEDIA_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li.ui-li-static.ui-body-inherit>div.addmedia.edit-mode>a')
 
+
+class SelectMediaScreen:
+    """A class for handling Select Media Screen"""
+    TAKE_PHOTO = (MobileBy.CSS_SELECTOR, 'div#filesystemMediaSelect>div.ui-content>div.ui-grid-a>div#filePhotoCapture>div.center-text>span.icon')
+    RECORD_VIDEO = (MobileBy.CSS_SELECTOR, 'div#filesystemMediaSelect>div.ui-content>div.ui-grid-a>div#fileVideoCapture>div.center-text>span.icon')
+    RECORD_AUDIO = (MobileBy.CSS_SELECTOR, 'div#filesystemMediaSelect>div.ui-content>div.ui-grid-a>div#fileAudioCapture>div.center-text>span.icon')
+    VIDEO_GALLERY = (MobileBy.CSS_SELECTOR, 'div#filesystemMediaSelect>div.ui-content>div.ui-grid-a>div#fileVideoGallery>div.center-text>span.icon')
+    PHOTO_GALLERY = (MobileBy.CSS_SELECTOR, 'div#filesystemMediaSelect>div.ui-content>div.ui-grid-a>div#filePhotoGallery>div.center-text>span.icon')
 

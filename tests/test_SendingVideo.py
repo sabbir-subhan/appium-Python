@@ -82,11 +82,10 @@ class TestSendingVideo(SetupTestCase):
         # video_page.click_send_button()  # click and wait for 600s
         main_page.open_VIDEO()
         video_page.click_record_new_button()
-
+        common_page.alert_popup_allow()
         camera_page = LoadClass.load_page('CameraPage')
         camera_page.setDriver(self.driver)
-        common_page.alert_popup_allow()
-        camera_page.capture_video()  # another alert?
+        camera_page.capture_video()
         sleep(1)  # time for recording video
         camera_page.stop_recording_video()
         camera_page.click_use_video()

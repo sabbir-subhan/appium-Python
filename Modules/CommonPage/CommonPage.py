@@ -11,6 +11,16 @@ from configuration import ENVIRONMENT_TEST
 
 class CommonPage(BasePage):
 
+    def back_arrow(self):
+
+        self.switch_context_to_webview()
+
+        back_arrow = self.driver.find_element(*self.configuration.TopBar.BACK_ARROW)
+        self.assertIsNotNone(back_arrow, "back arrow not found")
+        back_arrow.click()
+
+        self.switch_context_to_native()
+
     def hamburger_button(self):
 
         self.switch_context_to_webview()

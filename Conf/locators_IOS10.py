@@ -222,6 +222,7 @@ class EventEditScreen:
     FIELD_TO_RESTORE_1_VALUE = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="value for field 1"]')
     FIELD_TO_RESTORE_2_HEADER = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="New email address"]')
     FIELD_TO_RESTORE_2_VALUE = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="test@noggin.com"]')
+    FIELD_TO_RESTORE_3_HEADER = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="New website address"]')
     CHOOSER_FIELD = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "New events chooser")]]')
     # PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER = (MobileBy.XPATH, '//XCUIElementTypeOther[2]/XCUIElementTypeOther[6]'
     #                                                         '/XCUIElementTypeOther[2]')
@@ -401,5 +402,6 @@ class RisksScreen:
 
 class AssetsScreen:
     """A class for handling Assets screen"""
-    pass
-
+    CREATED_MAP_ASSET = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Map")]]')
+    ASSET_TYPE_WITH_MAX_NUMBER_OF_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "asset_with_max_number_of_fields")]]')
+    ASSET_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "asset_with_visibility_rules")]]')

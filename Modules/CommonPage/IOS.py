@@ -104,6 +104,12 @@ class IOS(CommonPage):
                 button_allow_location.click()
         except NoSuchElementException:
             pass
+        try:
+            button_allow_location = self.driver.find_element(*self.configuration.iOS.IOS_OK)  # sometimes iOS is asking two times
+            if button_allow_location.is_displayed():
+                button_allow_location.click()
+        except NoSuchElementException:
+            pass
 
     def hide_keyboard(self):
 

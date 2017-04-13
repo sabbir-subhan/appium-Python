@@ -74,5 +74,6 @@ class IOS(MapPage):
         el = self.driver.find_element(*self.configuration.Map.MAP_AREA_18)
         action.tap(element=el, x=position_x, y=position_y, count=2).perform()
         # Appium 1.6 = "WDA double tap needs an element"
+        sleep(2)
 
 

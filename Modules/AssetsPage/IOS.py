@@ -20,3 +20,18 @@ class IOS(AssetsPage):
                 logging.info("scroll down to save button")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
                 scroll = scroll - 1
+
+    def scroll_down(self):
+
+        logging.info("scroll down")
+        self.driver.execute_script("mobile: scroll", {"direction": "down"})
+        self.driver.execute_script("mobile: scroll", {"direction": "down"})
+        self.driver.execute_script("mobile: scroll", {"direction": "down"})
+        
+    def scroll_up(self):
+
+        logging.info("scroll up")
+        self.driver.execute_script("mobile: scroll", {"direction": "up"})
+        self.driver.execute_script("mobile: scroll", {"direction": "up"})
+        self.driver.execute_script("mobile: scroll", {"direction": "up"})
+

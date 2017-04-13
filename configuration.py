@@ -1,6 +1,6 @@
 """ Choose platform to run tests """
 
-platform = "IOS 10"
+platform = "IOS 10 emulator"
 
 # You can use:
 
@@ -102,3 +102,6 @@ elif platform == "Android 4 emulator":
 else:
     print("fail to load ENVIRONMENT FOR TESTS")
 
+    def get_platform():
+
+        return platform

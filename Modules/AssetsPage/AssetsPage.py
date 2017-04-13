@@ -4,6 +4,8 @@ from Modules.BasePage.BasePage import BasePage
 import logging
 from time import sleep
 from selenium.common.exceptions import *
+from Modules.load_class import LoadClass
+from configuration import platform
 
 
 class AssetsPage(BasePage):
@@ -259,3 +261,147 @@ class AssetsPage(BasePage):
         sleep(1)
 
         self.switch_context_to_native()
+
+    def type_text_into_search_field(self):
+
+        sleep(1)
+        logging.info("type text into search field")
+        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+        self.assertIsNotNone(search_field, "Search field was not found")
+        search_field.click()
+        search_field.send_keys("Map")
+
+    def check_result(self):
+
+        logging.info("check result")
+        created_map_asset = self.driver.find_elements(*self.configuration.AssetsScreen.CREATED_MAP_ASSET)
+        self.assertIsNotNone(created_map_asset, "created map asset not found")
+
+    def clear_Search_field(self):
+
+        logging.info("clear search field")
+        sleep(1)
+        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
+        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+        sleep(1)
+
+    def choose_asset_type_with_max_number_of_fields(self):
+
+        logging.info('choose asset type with max number of fields')
+        asset_type = self.driver.find_element(*self.configuration.AssetsScreen.ASSET_TYPE_WITH_MAX_NUMBER_OF_FIELDS)
+        self.assertIsNotNone(asset_type, "asset type with max number of fields not found")
+        asset_type.click()
+
+    def choose_asset_type_with_visibility_rules(self):
+
+        logging.info('choose asset type with visibility rules')
+        asset_type = self.driver.find_element(*self.configuration.AssetsScreen.ASSET_TYPE_WITH_VISIBILITY_RULES)
+        self.assertIsNotNone(asset_type, "asset type with visibility rules not found")
+        asset_type.click()
+
+    def click_create_mapping_data(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("create mapping data")
+
+        click_create_mapping_data = self.driver.find_element(*self.configuration.AssetsScreen.CREATE_MAPPING_DATA)
+        self.assertIsNotNone(click_create_mapping_data, "create mapping data not found")
+        click_create_mapping_data.click()
+        sleep(1)
+
+        self.switch_context_to_native()
+
+    def click_add_media(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click add media")
+
+        click_add_media = self.driver.find_element(*self.configuration.AssetsScreen.ADD_MEDIA_BUTTON)
+        self.assertIsNotNone(click_add_media, "add media button not found")
+        click_add_media.click()
+        sleep(1)
+
+        self.switch_context_to_native()
+
+    def click_on_option_list(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.click_on_option_list()
+
+    def click_on_option_1(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.click_on_option_1()
+
+    def click_on_option_2(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.click_on_option_2()
+
+    def click_on_option_3(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.click_on_option_3()
+
+    def check_restored_field_1(self):
+
+        logging.info("assert restored field 1")
+        field_to_restore_1_header = self.driver.find_element(*self.configuration.EventEditScreen.
+                                                             FIELD_TO_RESTORE_1_HEADER)
+        self.assertIsNotNone(field_to_restore_1_header)
+        # field_to_restore_1_value = self.driver.find_element(*self.configuration.EventEditScreen.
+        #                                                     FIELD_TO_RESTORE_1_VALUE)
+        # self.assertIsNotNone(field_to_restore_1_value)
+
+    def check_restored_field_2(self):
+
+        logging.info("assert restored field 2")
+        field_to_restore_2_header = self.driver.find_element(*self.configuration.EventEditScreen.
+                                                             FIELD_TO_RESTORE_2_HEADER)
+        self.assertIsNotNone(field_to_restore_2_header)
+        # field_to_restore_2_value = self.driver.find_element(*self.configuration.EventEditScreen.
+        #                                                     FIELD_TO_RESTORE_2_VALUE)
+        # self.assertIsNotNone(field_to_restore_2_value)
+
+    def check_restored_field_3(self):
+
+        logging.info("assert restored field 3")
+        field_to_restore_3_header = self.driver.find_element(*self.configuration.EventEditScreen.
+                                                             FIELD_TO_RESTORE_3_HEADER)
+        self.assertIsNotNone(field_to_restore_3_header)
+        # field_to_restore_3_value = self.driver.find_element(*self.configuration.EventEditScreen.
+        #                                                     FIELD_TO_RESTORE_3_VALUE)
+        # self.assertIsNotNone(field_to_restore_3_value)
+
+    def check_hidden_fields_1_and_2(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.check_hidden_fields_1_and_2()
+
+    def click_back_arrow_if_running_on_emulator(self):
+
+        logging.info("click back arrow if running on emulator")
+
+        logging.info("Appium is running on: " + str(platform))
+
+        if "emulator" in str(platform):
+            logging.info("Appium is running on emulator = click back arrow")
+            common_page = LoadClass.load_page('CommonPage')
+            common_page.setDriver(self.driver)
+            common_page.back_arrow()
+        else:
+            pass
+
+
+
+
+

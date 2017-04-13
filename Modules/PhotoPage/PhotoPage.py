@@ -77,5 +77,6 @@ class PhotoPage(BasePage):
         take_new_button = self.driver.find_element(*self.configuration.PhotoScreen.TAKE_NEW_BUTTON)
         self.assertIsNotNone(take_new_button, "Take new button not found")
         take_new_button.click()
+        sleep(2)
 
         self.switch_context_to_native()

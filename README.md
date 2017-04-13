@@ -224,5 +224,6 @@ OCA APP VERSIONS:
 - Instruments exited with error 253 - rebuild OCA app through Xcode
 - "Error while executing atom: operation timed out" -- reconnect device and restart appium server
 - sometimes there are problems with real iOS 10 device - tests are failing because of appium server errors --try to reconnect device and restart appium server
-  
+- double clicking action is not working properly with appium above 1.5.3
+
 

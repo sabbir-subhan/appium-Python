@@ -39,6 +39,7 @@ class IOS(GalleryPage):
         use_button = self.driver.find_element(*self.configuration.GalleryScreen.USE_BUTTON)
         self.assertIsNotNone(use_button, "use video button not found")
         use_button.click()
+        sleep(2)
 
     def choose_videos_gallery(self):
 

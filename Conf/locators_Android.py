@@ -242,6 +242,7 @@ class EventEditScreen:
     FIELD_TO_RESTORE_1_VALUE = (MobileBy.ACCESSIBILITY_ID, 'value for field 1')
     FIELD_TO_RESTORE_2_HEADER = (MobileBy.ACCESSIBILITY_ID, 'New email address')
     FIELD_TO_RESTORE_2_VALUE = (MobileBy.ACCESSIBILITY_ID, 'test@noggin.com')
+    FIELD_TO_RESTORE_3_HEADER = (MobileBy.ACCESSIBILITY_ID, 'New website address')
     CHOOSER_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "New events chooser")]]')
     # PREVIOUSLY_CREATED_EVENT = (MobileBy.XPATH, '//android.view.View[@content-desc['
     #                                             'contains(., "Appium")]]')
@@ -467,8 +468,9 @@ class RisksScreen:
 
 class AssetsScreen:
     """A class for handling Assets screen"""
-    pass
-
+    CREATED_MAP_ASSET = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Map")]]')
+    ASSET_TYPE_WITH_MAX_NUMBER_OF_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "asset_with_max_number_of_fields")]]')
+    ASSET_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "asset_with_visibility_rules")]]')
 
 
 
