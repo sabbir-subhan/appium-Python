@@ -377,9 +377,16 @@ class AssetsPage(BasePage):
         field_to_restore_3_header = self.driver.find_element(*self.configuration.EventEditScreen.
                                                              FIELD_TO_RESTORE_3_HEADER)
         self.assertIsNotNone(field_to_restore_3_header)
+
         # field_to_restore_3_value = self.driver.find_element(*self.configuration.EventEditScreen.
         #                                                     FIELD_TO_RESTORE_3_VALUE)
         # self.assertIsNotNone(field_to_restore_3_value)
+
+    def check_hidden_field_1(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.check_hidden_field_1()
 
     def check_hidden_fields_1_and_2(self):
 
@@ -387,7 +394,21 @@ class AssetsPage(BasePage):
         event_edit_page.setDriver(self.driver)
         event_edit_page.check_hidden_fields_1_and_2()
 
-    def click_back_arrow_if_running_on_emulator(self):
+    def click_back_arrow_if_running_on_ios_emulator(self):
+
+        logging.info("click back arrow if running on emulator")
+
+        logging.info("Appium is running on: " + str(platform))
+
+        if "emulator" in str(platform):
+            logging.info("Appium is running on emulator = click back arrow")
+            common_page = LoadClass.load_page('CommonPage')
+            common_page.setDriver(self.driver)
+            common_page.back_arrow()
+        else:
+            pass
+
+    def click_back_arrow_if_running_on_emulators(self):
 
         logging.info("click back arrow if running on emulator")
 

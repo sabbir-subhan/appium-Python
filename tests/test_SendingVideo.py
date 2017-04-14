@@ -10,16 +10,21 @@
 # dismiss alert about expiring password
 # dismiss iOS notifications
 # check if button "EVENTS" is present
-# From the main menu, click Video.
-# Click Gallery, and select a video that has already been recorded.
-# Enter a description and press the Send button.
-# Click Video and now select Record New. (step 4)
+
+# Click Video and now select Record New.
 # Press the button under video to start recording a video. Press the button again to stop recording.
 # Press Use Video to select the video.
 # Enter a description and press the Send button.
-# Repeat steps 4 & 5.
+
+# From the main menu, click Video.
+# Click Gallery, and select a video that has already been recorded.
+# Enter a description and press the Send button.
+
+# Click Video and now select Record New.
+# Press the button under video to start recording a video. Press the button again to stop recording.
 # Press retake, and record a new video.
-# Repeat steps 6 & 7.
+# Press Use Video to select the video.
+# Enter a description and press the Send button.
 
 
 from Modules.Setup import SetupTestCase
@@ -64,23 +69,11 @@ class TestSendingVideo(SetupTestCase):
         main_page.alert_expiring_password()
         main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
-
         main_page.scroll_down_to_video_button()
-        # main_page.open_VIDEO()
+
+        main_page.open_VIDEO()
         video_page = LoadClass.load_page('VideoPage')
         video_page.setDriver(self.driver)
-        # video_page.check_if_video_page_was_opened()
-        # video_page.click_gallery_button()
-        # gallery_video_page = LoadClass.load_page('GalleryPage')
-        # gallery_video_page.setDriver(self.driver)
-        # common_page.alert_popup_allow()
-        # gallery_video_page.choose_videos_gallery()
-        # gallery_video_page.choose_video_from_gallery()
-        # gallery_video_page.click_use_button()
-        # video_page.type_description("test - video 1 from gallery")
-        # # common_page.hide_keyboard()
-        # video_page.click_send_button()  # click and wait for 600s
-        main_page.open_VIDEO()
         video_page.click_record_new_button()
         common_page.alert_popup_allow()
         camera_page = LoadClass.load_page('CameraPage')
@@ -91,20 +84,40 @@ class TestSendingVideo(SetupTestCase):
         camera_page.click_use_video()
         video_page.type_description("test - video 1")
         # common_page.hide_keyboard()
-        video_page.click_send_button()  # click and wait for 600s
+        video_page.click_send_button_camera()  # click and wait for 720s
+        video_page.click_back_arrow_if_running_on_emulator()
+        main_page.check_presence_of_inbox_button()
+        main_page.scroll_down_to_video_button()
+
+        main_page.open_VIDEO()
+        video_page.check_if_video_page_was_opened()
+        video_page.click_gallery_button()
+        gallery_video_page = LoadClass.load_page('GalleryPage')
+        gallery_video_page.setDriver(self.driver)
+        common_page.alert_popup_allow()
+        gallery_video_page.choose_videos_gallery()
+        gallery_video_page.choose_video_from_gallery()
+        gallery_video_page.click_use_button()
+        video_page.type_description("test - video 1 from gallery")
+        # common_page.hide_keyboard()
+        video_page.click_send_button_gallery()  # click and wait for 720s
+        main_page.check_presence_of_inbox_button()
+        main_page.scroll_down_to_video_button()
+
         main_page.open_VIDEO()
         video_page.click_record_new_button()
         camera_page.capture_video()
         sleep(1)  # time for recording video
         camera_page.stop_recording_video()
-        camera_page.click_retake()
+        camera_page.click_retake_video()
         camera_page.capture_video()
         sleep(1)  # time for recording video
         camera_page.stop_recording_video()
         camera_page.click_use_video()
         video_page.type_description("test- video 2")
         # common_page.hide_keyboard()
-        video_page.click_send_button()  # click and wait for 600s
+        video_page.click_send_button_camera()  # click and wait for 720s
+        video_page.click_back_arrow_if_running_on_emulator()
         main_page.check_presence_of_inbox_button()
 
 

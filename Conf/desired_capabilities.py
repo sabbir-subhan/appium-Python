@@ -183,7 +183,7 @@ class DesiredCapabilities(object):
             "platformVersion": "7.0",
             # "deviceName": "192.168.56.101:5555",
             "deviceName": "emulator-5556",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),
+            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8-x86.apk"),
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
             "automationName": "uiautomator2",
@@ -202,7 +202,7 @@ class DesiredCapabilities(object):
         },
 
         "Android 7.1 emulator": {
-            # Google Nexus 5X
+            # Google Nexus 5X - API 25
             "platformName": "ANDROID",
             "platformVersion": "7.1",
             "deviceName": "emulator-5554",

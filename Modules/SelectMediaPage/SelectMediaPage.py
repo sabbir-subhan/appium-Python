@@ -51,15 +51,23 @@ class SelectMediaPage(BasePage):
 
     def click_record_audio(self):
 
-        self.switch_context_to_webview()
+        logging.info("Appium is running on: " + str(platform))
 
-        logging.info("clicking in Record Audio")
-        click_record_audio = self.driver.find_element(*self.configuration.SelectMediaScreen.RECORD_AUDIO)
-        self.assertIsNotNone(click_record_audio, "Record Audio button not found")
-        click_record_audio.click()
-        sleep(2)
+        if "emulator" in str(platform):
+            logging.info("Appium is running on emulator = skip recording video because emulators don't "
+                         "support that functionality")
+            pass
+        else:
 
-        self.switch_context_to_native()
+            self.switch_context_to_webview()
+
+            logging.info("clicking in Record Audio")
+            click_record_audio = self.driver.find_element(*self.configuration.SelectMediaScreen.RECORD_AUDIO)
+            self.assertIsNotNone(click_record_audio, "Record Audio button not found")
+            click_record_audio.click()
+            sleep(2)
+
+            self.switch_context_to_native()
 
     def click_video_gallery(self):
 

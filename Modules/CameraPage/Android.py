@@ -48,7 +48,6 @@ class Android(CameraPage):
                          "support that functionality")
             pass
         else:
-
             desired_capabilities = DesiredCapabilities.get_desired_capabilities()
             platform_version = desired_capabilities.get('platformVersion')
             logging.info("start recording")
@@ -68,6 +67,7 @@ class Android(CameraPage):
                 video_capture2.click()
                 # sleep(4)
             else:
+                sleep(1)
                 video_capture3 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_4_and_5)
                 self.assertIsNotNone(video_capture3, "video capture for Android 4, 5 not found")
                 video_capture3.click()
@@ -151,7 +151,7 @@ class Android(CameraPage):
         else:
             Android.click_use_photo(self)
 
-    def click_retake(self):
+    def click_retake_photo(self):
 
         logging.info("Retake")
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()
@@ -172,7 +172,35 @@ class Android(CameraPage):
             self.assertIsNotNone(retake_photo_android_5)
             retake_photo_android_5.click()
 
-    def choose_camera(self):
+    def click_retake_video(self):
+
+        logging.info("Appium is running on: " + str(platform))
+
+        if "emulator" in str(platform):
+            logging.info("Appium is running on emulator = skip recording video because emulators don't "
+                         "support that functionality")
+            pass
+        else:
+            logging.info("Retake")
+            desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+            platform_version = desired_capabilities.get('platformVersion')
+            if platform_version >= "6":
+                try:
+                    retake_photo_android_6 = self.driver.find_element(*self.configuration.CameraScreen.RETAKE_ANDROID_6)
+                except NoSuchElementException:
+                    retake_photo_android_6 = self.driver.find_element(*self.configuration.CameraScreen.RETAKE_ANDROID_6_version2)
+                self.assertIsNotNone(retake_photo_android_6)
+                retake_photo_android_6.click()
+            elif platform_version < "5":
+                retake_photo_android_4 = self.driver.find_element(*self.configuration.CameraScreen.RETAKE_ANDROID_4)
+                self.assertIsNotNone(retake_photo_android_4)
+                retake_photo_android_4.click()
+            else:
+                retake_photo_android_5 = self.driver.find_element(*self.configuration.CameraScreen.RETAKE_ANDROID_5)
+                self.assertIsNotNone(retake_photo_android_5)
+                retake_photo_android_5.click()
+
+    def choose_photo_camera(self):
 
         logging.info("click choose camera")
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()
@@ -196,5 +224,37 @@ class Android(CameraPage):
             chooser_camera_android5 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID5)
             self.assertIsNotNone(chooser_camera_android5)
             chooser_camera_android5.click()
+
+    def choose_video_camera(self):
+
+        logging.info("Appium is running on: " + str(platform))
+
+        if "emulator" in str(platform):
+            logging.info("Appium is running on emulator = skip choosing camera because emulators don't "
+                         "support that functionality")
+            pass
+        else:
+            logging.info("click choose camera")
+            desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+            platform_version = desired_capabilities.get('platformVersion')
+            if platform_version >= "7":
+                chooser_camera_android7 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID7)
+                self.assertIsNotNone(chooser_camera_android7)
+                chooser_camera_android7.click()
+            elif platform_version > "5" and "6" in str(platform_version):
+                try:
+                    chooser_camera_android6 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID6)
+                except NoSuchElementException:
+                    chooser_camera_android6 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID_6)
+                self.assertIsNotNone(chooser_camera_android6)
+                chooser_camera_android6.click()
+            elif platform_version < "5":
+                chooser_camera_android4 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID4)
+                self.assertIsNotNone(chooser_camera_android4)
+                chooser_camera_android4.click()
+            else:
+                chooser_camera_android5 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID5)
+                self.assertIsNotNone(chooser_camera_android5)
+                chooser_camera_android5.click()
 
 

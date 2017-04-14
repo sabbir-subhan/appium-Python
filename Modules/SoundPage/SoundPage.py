@@ -6,6 +6,7 @@ import logging
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 from time import sleep
+from configuration import platform
 
 
 class SoundPage(BasePage):
@@ -34,31 +35,53 @@ class SoundPage(BasePage):
 
     def click_send_button(self):
 
-        sleep(1)
+        logging.info("Appium is running on: " + str(platform))
 
-        self.switch_context_to_webview()
+        if "emulator" in str(platform):
+            logging.info("Appium is running on emulator = skip recording sound because emulators don't "
+                         "support that functionality")
+            pass
+        else:
+            sleep(1)
 
-        logging.info("click 'Send' button")
-        send_button = self.driver.find_element(*self.configuration.SoundScreen.SEND_BUTTON)
-        self.assertIsNotNone(send_button, "Send button not found")
-        send_button.click()
-        sleep(2)
+            self.switch_context_to_webview()
 
-        self.switch_context_to_native()
+            logging.info("click 'Send' button")
+            send_button = self.driver.find_element(*self.configuration.SoundScreen.SEND_BUTTON)
+            self.assertIsNotNone(send_button, "Send button not found")
+            send_button.click()
+            sleep(2)
 
-        logging.info("sending file")
-        WebDriverWait(self.driver, 600).until(
-            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.INBOX_BUTTON),
-            "Failed to send file")
-        logging.info("File was sent")
+            self.switch_context_to_native()
+
+            logging.info("sending file")
+            WebDriverWait(self.driver, 600).until(
+                expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.INBOX_BUTTON),
+                "Failed to send file")
+            logging.info("File was sent")
 
     def click_record_sound_icon(self):
 
-        self.switch_context_to_webview()
+        logging.info("Appium is running on: " + str(platform))
 
-        logging.info("clicking in 'Record Sound' icon")
-        record_sound_button = self.driver.find_element(*self.configuration.SoundScreen.RECORD_SOUND_BUTTON)
-        self.assertIsNotNone(record_sound_button, "record sound button not found")
-        record_sound_button.click()
+        if "emulator" in str(platform):
+            logging.info("Appium is running on emulator = skip recording sound because emulators don't "
+                         "support that functionality")
+            pass
+        else:
+            self.switch_context_to_webview()
 
-        self.switch_context_to_native()
+            logging.info("clicking in 'Record Sound' icon")
+            record_sound_button = self.driver.find_element(*self.configuration.SoundScreen.RECORD_SOUND_BUTTON)
+            self.assertIsNotNone(record_sound_button, "record sound button not found")
+            record_sound_button.click()
+
+            self.switch_context_to_native()
+
+    def click_back_arrow_if_running_on_emulator(self):
+
+        logging.info("Appium is running on emulator = click back arrow")
+        video_page = LoadClass.load_page('VideoPage')
+        video_page.setDriver(self.driver)
+        video_page.click_back_arrow_if_running_on_emulator()
+

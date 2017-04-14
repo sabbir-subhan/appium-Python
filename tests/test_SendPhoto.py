@@ -10,17 +10,23 @@
 # dismiss alert about expiring password
 # dismiss iOS notifications
 # check if button "EVENTS" is present
-# From the main menu click on Photo.
-# Click Gallery and select an existing photo.
-# Enter a description and click Send.
-# Click on Photo and now click Take New. (step 4)
-# Click the change camera button on the bottom right  twice.
+
+# Click on Photo and now click Take New.
+# Click the change camera button twice.
 # Click on the button below Photo to take a picture.
 # Click on Use Photo.
 # Enter a description and press Send.
-# Repeat steps 4 & 6.
+
+# From the main menu click on Photo.
+# Click Gallery and select an existing photo.
+# Enter a description and click Send.
+
+# Click on Photo and now click Take New.
+# Click the change camera button twice.
+# Click on the button below Photo to take a picture.
 # Press Retake and take another photo.
-# Repeat steps 7 & 8.
+# Click on Use Photo.
+# Enter a description and press Send.
 
 
 from Modules.Setup import SetupTestCase
@@ -64,11 +70,27 @@ class TestSendPhoto(SetupTestCase):
         main_page.alert_expiring_password()
         main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
-
         main_page.scroll_down_to_photo_button()
+
         main_page.open_PHOTO()
         photo_page = LoadClass.load_page('PhotoPage')
         photo_page.setDriver(self.driver)
+        photo_page.click_take_new_button()
+        common_page.alert_popup_allow()
+        camera_page = LoadClass.load_page('CameraPage')
+        camera_page.setDriver(self.driver)
+        camera_page.choose_photo_camera()
+        camera_page.choose_photo_camera()
+        camera_page.capture_photo()
+        camera_page.click_use_photo()
+        photo_page.type_description("test - take a photo 1")
+        # common_page.hide_keyboard()
+        photo_page.click_send_button_camera()  # click and wait for 720s
+        photo_page.click_back_arrow_if_running_on_emulator()
+        main_page.check_presence_of_inbox_button()
+        main_page.scroll_down_to_photo_button()
+
+        main_page.open_PHOTO()
         photo_page.check_if_photo_page_was_opened()
         photo_page.click_gallery_button()
         common_page.alert_popup_allow()
@@ -78,31 +100,22 @@ class TestSendPhoto(SetupTestCase):
         common_page.alert_popup_allow()
         photo_page.type_description("test - photo 1 from gallery")
         # common_page.hide_keyboard()
-        photo_page.click_send_button()  # click and wait for 720s
-        main_page.open_PHOTO()
-        photo_page.click_take_new_button()
-        common_page.alert_popup_allow()
-        camera_page = LoadClass.load_page('CameraPage')
-        camera_page.setDriver(self.driver)
-        camera_page.choose_camera()
-        camera_page.choose_camera()
-        camera_page.capture_photo()
-        camera_page.click_use_photo()
-        photo_page.type_description("test - take a photo 1")
-        # common_page.hide_keyboard()
-        photo_page.click_send_button()  # click and wait for 720s
+        photo_page.click_send_button_gallery()  # click and wait for 720s
+        main_page.check_presence_of_inbox_button()
         main_page.scroll_down_to_photo_button()
+
         main_page.open_PHOTO()
         photo_page.click_take_new_button()
-        camera_page.choose_camera()
-        camera_page.choose_camera()
+        camera_page.choose_photo_camera()
+        camera_page.choose_photo_camera()
         camera_page.capture_photo()
-        camera_page.click_retake()
+        camera_page.click_retake_photo()
         camera_page.capture_photo()
         camera_page.click_use_photo()
         photo_page.type_description("test - take a photo 2")
         # common_page.hide_keyboard()
-        photo_page.click_send_button()  # click and wait for 720s
+        photo_page.click_send_button_camera()  # click and wait for 720s
+        photo_page.click_back_arrow_if_running_on_emulator()
         main_page.check_presence_of_inbox_button()
 
 

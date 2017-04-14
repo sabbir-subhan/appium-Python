@@ -11,6 +11,7 @@ platform = "IOS 10 emulator"
 # Android 6 emulator
 # Android 7
 # Android 7 emulator
+# Android 7.1 emulator
 # IOS 9
 # IOS 9 emulator
 # IOS 10
@@ -101,7 +102,3 @@ elif platform == "Android 4 emulator":
 
 else:
     print("fail to load ENVIRONMENT FOR TESTS")
-
-    def get_platform():
-
-        return platform

@@ -173,10 +173,15 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
  with value "1",and second field; "New email address" with value: "test@noggin.com" and visibility rule pointing to "new option list" with value "2")
 - EVENT TYPE: event_for_chooser_fields, should have "event chooser" field (name: "New events chooser") with property "Minimum selected options" set to "1", and second event chooser field inside sub form
 with name: "New events chooser inside sub form"
-- for Test Cases: Send Photo and Send Video - it is necessary to prepare some photo and video on device before running tests
+- for Test Cases: Send Photo and Send Video - test steps have different order than those in Jira task, because in this way, before running test it is no longer necessary 
+to prepare sample photo and video files on real device, but unfortunately for emulators before running test "test_SendingVideo" tester must copy some video file into the emulator 
 - go to OCA webpage - Settings - Settings - Security tab and in section Mobile, uncheck "Encrypt saved data in the app" and "Block jailbroken/rooted devices from using the app"
-- for TC: SentCommunication - create contact with name: "CONTACT_FOR_APPIUM_TESTS" and some email address
- 
+- for TC: SentCommunication - create contact with name: "CONTACT_FOR_APPIUM_TESTS" with email address
+- for Test Case: Assets - assets types named: "asset_with_visibility_rules", "asset_with_max_number_of_fields". Asset type with visibility rules must have 5 fields: 
+"Name", "New option list" - with options; "1", "2", "3" that options should restore 3 other fields. "field to restore", "New website address" with value: "http://bitnoi.se/" and "New email address" 
+-- visibility rules like in TC: Events
+
+
 
 ### **BEFORE EACH NEW RUN OF TESTS:** ###
 

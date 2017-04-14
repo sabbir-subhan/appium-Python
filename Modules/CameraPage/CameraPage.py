@@ -12,12 +12,11 @@ class CameraPage(BasePage):
 
         logging.info("Appium is running on: " + str(platform))
 
-        if "emulator" in str(platform):
+        if "emulator" in str(platform):  # iOS emulator can't capture photos but Android emulator can
             logging.info("Appium is running on emulator = skip taking photo because emulators don't "
                          "support that functionality")
             pass
         else:
-
             logging.info("taking photo")
             photo_capture = self.driver.find_element(*self.configuration.CameraScreen.PHOTO_CAPTURE)
             self.assertIsNotNone(photo_capture, "photo capture button not found")
@@ -77,7 +76,7 @@ class CameraPage(BasePage):
             logging.info("Use video button not found")
             pass
 
-    def click_retake(self):
+    def click_retake_photo(self):
 
         try:
             logging.info("click Retake")
@@ -88,7 +87,11 @@ class CameraPage(BasePage):
             logging.info("Retake button not found")
             pass
 
-    def choose_camera(self):
+    def click_retake_video(self):
+
+        CameraPage.click_retake_photo(self)
+
+    def choose_photo_camera(self):
 
         logging.info("Appium is running on: " + str(platform))
 
@@ -97,10 +100,11 @@ class CameraPage(BasePage):
                          "support that functionality")
             pass
         else:
-
             logging.info("click choose camera")
             chooser_camera = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER)
             self.assertIsNotNone(chooser_camera, "Choose camera button not found")
             chooser_camera.click()
 
+    def choose_video_camera(self):
 
+        CameraPage.choose_photo_camera(self)

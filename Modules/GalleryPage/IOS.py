@@ -28,6 +28,7 @@ class IOS(GalleryPage):
 
     def choose_video_from_gallery(self):
 
+        sleep(2)
         logging.info("choose video from gallery")
         choose_video_from_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_VIDEO_ELEMENT_1)
         self.assertIsNotNone(choose_video_from_gallery, "video in gallery not found")
@@ -35,6 +36,7 @@ class IOS(GalleryPage):
 
     def click_use_button(self):
 
+        sleep(2)
         logging.info("click 'Use' button")
         use_button = self.driver.find_element(*self.configuration.GalleryScreen.USE_BUTTON)
         self.assertIsNotNone(use_button, "use video button not found")
@@ -43,6 +45,7 @@ class IOS(GalleryPage):
 
     def choose_videos_gallery(self):
 
+        sleep(2)
         logging.info("choose videos gallery")
         choose_videos_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_VIDEOS_POPOVER)
         self.assertIsNotNone(choose_videos_gallery, "videos gallery not found")

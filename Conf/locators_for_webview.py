@@ -238,7 +238,7 @@ class Map:
 class PhotoScreen:
     """A class for Photo screen locators - screen after clicking into Photo button in Main Menu."""
     #PHOTO_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
-    GALLERY_BUTTON = (MobileBy.CSS_SELECTOR, 'div#photo>div>div#photo-placeholder>div>div>span[data-open="album"]>span[data-open="album"]')
+    GALLERY_BUTTON = (MobileBy.CSS_SELECTOR, 'div#photo>div.ui-content>div#photo-placeholder>div.ui-block-a>div.center-text>span[data-open="album"]>span.icon')
     TAKE_NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'div#photo>div.ui-content>div.ui-grid-a>div.ui-block-b>div.center-text>span[data-open="camera"]>span.icon')
     DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'textarea#photo-input-description')
     SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'div#photo>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a#photoBtnSend')
@@ -248,7 +248,7 @@ class PhotoScreen:
 class VideoScreen:
     """A class for Video screen locators - screen after clicking into Video button in Main Menu."""
     #VIDEO_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
-    GALLERY_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div>div#video-placeholder>div>div>span[data-open="album"]>span[data-open="album"]')
+    GALLERY_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div.ui-content>div#video-placeholder>div.ui-block-a>div.center-text>span[data-open="album"]>span.icon')
     RECORD_NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div.ui-content>div.ui-grid-a>div.ui-block-b>div.center-text>span[data-open="camera"]>span.icon')
     SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a#videoBtnSend')
     DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'textarea#video-input-description')

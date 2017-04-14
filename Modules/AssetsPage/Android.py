@@ -52,3 +52,7 @@ class Android(AssetsPage):
             self.driver.swipe(start_x, start_y, start_x, end_y, 3000)  # each swipe is scrolling one screen
             scrolls = scrolls - 1
         sleep(2)
+
+    def click_back_arrow_if_running_on_ios_emulator(self):
+
+        pass

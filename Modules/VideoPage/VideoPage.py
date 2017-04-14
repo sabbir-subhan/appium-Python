@@ -7,6 +7,7 @@ from time import sleep
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 import selenium.webdriver.support.ui
+from configuration import platform
 
 
 class VideoPage(BasePage):
@@ -28,7 +29,7 @@ class VideoPage(BasePage):
 
         self.switch_context_to_native()
 
-    def click_send_button(self):
+    def click_send_button_gallery(self):
 
         sleep(1)
 
@@ -48,16 +49,50 @@ class VideoPage(BasePage):
             "Failed to send file")
         logging.info("File was sent")
 
+    def click_send_button_camera(self):
+
+        sleep(1)
+
+        logging.info("Appium is running on: " + str(platform))
+
+        if "emulator" in str(platform):
+            logging.info("Appium is running on emulator = skip taking photo because emulators don't "
+                         "support that functionality")
+            pass
+        else:
+            self.switch_context_to_webview()
+
+            logging.info("click 'Send' button")
+            send_button = self.driver.find_element(*self.configuration.VideoScreen.SEND_BUTTON)
+            self.assertIsNotNone(send_button, "Send button not found")
+            send_button.click()
+            sleep(2)
+
+            self.switch_context_to_native()
+
+            logging.info("sending file")
+            WebDriverWait(self.driver, 720).until(
+                expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.INBOX_BUTTON),
+                "Failed to send file")
+            logging.info("File was sent")
+
     def click_record_new_button(self):
 
-        self.switch_context_to_webview()
+        logging.info("Appium is running on: " + str(platform))
 
-        logging.info("clicking in 'Record new' button")
-        record_new_button = self.driver.find_element(*self.configuration.VideoScreen.RECORD_NEW_BUTTON)
-        self.assertIsNotNone(record_new_button, "record new button not found")
-        record_new_button.click()
+        if "emulator" in str(platform):
+            logging.info("Appium is running on emulator = skip taking photo because emulators don't "
+                         "support that functionality")
+            pass
+        else:
+            self.switch_context_to_webview()
 
-        self.switch_context_to_native()
+            logging.info("clicking in 'Record new' button")
+            record_new_button = self.driver.find_element(*self.configuration.VideoScreen.RECORD_NEW_BUTTON)
+            self.assertIsNotNone(record_new_button, "record new button not found")
+            record_new_button.click()
+
+            self.switch_context_to_native()
 
     def type_description(self, description):
 
@@ -77,6 +112,21 @@ class VideoPage(BasePage):
         self.switch_context_to_native()
 
         sleep(1)
+
+    def click_back_arrow_if_running_on_emulator(self):
+
+        logging.info("click back arrow if running on emulator")
+
+        logging.info("Appium is running on: " + str(platform))
+
+        if "emulator" in str(platform):
+            logging.info("Appium is running on emulator = click back arrow")
+            common_page = LoadClass.load_page('CommonPage')
+            common_page.setDriver(self.driver)
+            common_page.back_arrow()
+        else:
+            pass
+
 
 
 
