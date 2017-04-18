@@ -63,6 +63,7 @@ class CameraPage(BasePage):
         except:
             logging.info("Use photo button not found")
             pass
+        sleep(1)
 
     def click_use_video(self):
 

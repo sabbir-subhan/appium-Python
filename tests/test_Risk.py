@@ -120,7 +120,7 @@ class TestRisk(SetupTestCase):
         risks_page.click_add_new_control()
         risks_page.type_name_for_new_control()
         # common_page.hide_keyboard()
-        risks_page.click_status_selector()  # problem on iOS10
+        risks_page.click_status_selector()
         risks_page.choose_status_implemented()
         risks_page.click_save_new_control()
 

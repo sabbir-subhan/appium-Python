@@ -83,6 +83,7 @@ class TestSendPhoto(SetupTestCase):
         camera_page.choose_photo_camera()
         camera_page.capture_photo()
         camera_page.click_use_photo()
+        common_page.alert_popup_allow()
         photo_page.type_description("test - take a photo 1")
         # common_page.hide_keyboard()
         photo_page.click_send_button_camera()  # click and wait for 720s

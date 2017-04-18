@@ -107,7 +107,7 @@ class LocationScreen:
     FOR_THE_NEXT_SPINNER = (MobileBy.CSS_SELECTOR, '')
     CHOOSE_1_HOUR_OPTION_iPad = (MobileBy.CSS_SELECTOR, '')
     ASSERT_1_HOUR_OPTION = (MobileBy.CSS_SELECTOR, '')
-    START_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    START_BUTTON = (MobileBy.CSS_SELECTOR, 'button#locationStart')
     STOP_BUTTON = (MobileBy.CSS_SELECTOR, '')
     TRACKING_HISTORY_BUTTON = (MobileBy.CSS_SELECTOR, '')
     LOCATION_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
@@ -210,8 +210,7 @@ class EventDetailsScreen:
 
 class Map:
     """A class for Map screen locators."""
-    PLOT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
-                                          'a[data-translate="Plot"]')
+    PLOT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-b>li#mapPlot>a')
     TOOL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-b>li#openMapToolMore>a[href="#mapToolMore"]')
     POINT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="POINT"]>h2>a')
     POINT_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="POINT"]>div>ul>li>a')

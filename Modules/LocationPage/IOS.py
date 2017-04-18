@@ -8,7 +8,7 @@ import logging
 
 class IOS(LocationPage):
 
-    def check_if_start_button_was_clicked(self):
+    def check_if_start_button_was_clicked(self):  # some problem on iOS10 - app is crashing
 
         logging.info("check if 'Start' button was clicked")
         try:

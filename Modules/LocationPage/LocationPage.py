@@ -78,7 +78,12 @@ class LocationPage(BasePage):
 
     def click_start_button(self):
 
+        self.switch_context_to_webview()
+
         logging.info("click 'Start' button")
         start_button = self.driver.find_element(*self.configuration.LocationScreen.START_BUTTON)
         self.assertIsNotNone(start_button, "start button not found")
         start_button.click()
+        sleep(1)
+
+        self.switch_context_to_native()

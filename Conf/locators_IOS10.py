@@ -300,6 +300,8 @@ class GalleryScreen:
     GALLERY_VIDEO_ELEMENT_1 = (MobileBy.XPATH, '//XCUIElementTypeCell[1]')
     USE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Choose')
     FIRST_PHOTO_GALLERY_ELEMENT = (MobileBy.XPATH, '//XCUIElementTypeCollectionView[1]/XCUIElementTypeCell[1]')
+    GALLERY_ELEMENTS = (MobileBy.XPATH, '//XCUIElementTypeCollectionView[1]/XCUIElementTypeCell')
+    LAST_ELEMENT = (MobileBy.XPATH, '//XCUIElementTypeCollectionView[1]/XCUIElementTypeCell[last()]')
 
 
 class CameraScreen:
@@ -397,7 +399,8 @@ class RisksScreen:
     PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.XPATH, '')
     NEW_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "New")]]')
     VIEW_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "View")]]')
-    STATUS_SELECTOR = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeWebView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]')
+    #STATUS_SELECTOR = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeWebView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]')
+    STATUS_SELECTOR = (MobileBy.XPATH, '//XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]')
 
 
 class AssetsScreen:

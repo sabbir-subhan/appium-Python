@@ -7,24 +7,35 @@ from time import sleep
 
 class IOS(GalleryPage):
 
-    def choose_element_1(self):
+    def choose_element_1(self):  # iOS10 is opening gallery focused on latest element
 
         sleep(2)
-        scroll = 10
-        while scroll > 0:
-            logging.info("scroll to element")
-            element_in_photo_gallery = self.driver.find_element(*self.configuration.GalleryScreen.FIRST_PHOTO_GALLERY_ELEMENT)
-            if element_in_photo_gallery.is_displayed():
-                logging.info("end scrolling")
-                break
-            else:
-                logging.info("scroll up to first element")
-                self.driver.execute_script("mobile: scroll", {"direction": "up"})
-                scroll = scroll - 1
-        sleep(1)
-        logging.info("choosing element")
-        choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.FIRST_PHOTO_GALLERY_ELEMENT)
+        logging.info("choosing element from gallery")
+        choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.LAST_ELEMENT)
         choose_element_1.click()
+        sleep(1)
+
+        # scroll = 15
+        # while scroll > 0:
+        #     logging.info("scroll to element")
+        #     element_in_photo_gallery = self.driver.find_element(*self.configuration.GalleryScreen.FIRST_PHOTO_GALLERY_ELEMENT)
+        #     if element_in_photo_gallery.is_displayed():
+        #         logging.info("end scrolling")
+        #         break
+        #     else:
+        #         logging.info("scroll up to first element")
+        #         self.driver.execute_script("mobile: scroll", {"direction": "up"})
+        #         scroll = scroll - 1
+        # sleep(1)
+        # logging.info("choosing element from gallery")
+        # try:
+        #     choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.FIRST_PHOTO_GALLERY_ELEMENT)
+        #     choose_element_1.click()
+        #     sleep(1)
+        # except:
+        #     choose_element = self.driver.find_elements(*self.configuration.GalleryScreen.GALLERY_ELEMENTS)
+        #     choose_element[1].click()
+        #     sleep(1)
 
     def choose_video_from_gallery(self):
 

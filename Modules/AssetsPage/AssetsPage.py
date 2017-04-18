@@ -318,6 +318,7 @@ class AssetsPage(BasePage):
 
         self.switch_context_to_webview()
 
+        sleep(1)
         logging.info("click add media")
 
         click_add_media = self.driver.find_element(*self.configuration.AssetsScreen.ADD_MEDIA_BUTTON)

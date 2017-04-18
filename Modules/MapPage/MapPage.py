@@ -42,10 +42,14 @@ class MapPage(BasePage):
 
     def click_plot_button(self):
 
+        self.switch_context_to_webview()
+
         logging.info("click Plot button")
         plot_button = self.driver.find_element(*self.configuration.Map.PLOT_BUTTON)
         self.assertIsNotNone(plot_button)
         plot_button.click()
+
+        self.switch_context_to_native()
 
     def click_tool_button(self):
 
