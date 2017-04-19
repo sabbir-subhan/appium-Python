@@ -22,7 +22,7 @@ class NewLogPage(BasePage):
 
     def choose_lodging_agency(self):
 
-        new_report_page = LoadClass.load_page('NewReportPage')
+        new_report_page = LoadClass.load_page('ReportsPage')
         new_report_page.setDriver(self.driver)
         new_report_page.choose_lodging_agency()
 

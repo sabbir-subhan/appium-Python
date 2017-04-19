@@ -311,8 +311,8 @@ class NewTaskScreen:
     HIDE_DATE_PICKER = (MobileBy.XPATH, '//UIAStaticText[@name="Completed Date"]')
 
 
-class NewReportScreen:
-    """A class for handling New Report screen"""
+class ReportsScreen:
+    """A class for handling Report screen"""
     LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//UIAWebView/UIAElement[2]')
     LODGING_AGENCY = (MobileBy.XPATH, '//UIAPopover/UIATableView/UIATableCell[2]')
     PUBLISH_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Publish"]')

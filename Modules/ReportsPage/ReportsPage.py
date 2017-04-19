@@ -1,4 +1,4 @@
-"""A class for methods to handle New Report Page """
+"""A class for methods to handle Reports Page """
 
 from Modules.BasePage.BasePage import BasePage
 from Modules.load_class import LoadClass
@@ -10,14 +10,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import *
 
 
-class NewReportPage(BasePage):
+class ReportsPage(BasePage):
 
     def type_title(self, text):
 
         self.switch_context_to_webview()
 
         logging.info("type title")
-        title = self.driver.find_element(*self.configuration.NewReportScreen.TITLE)
+        title = self.driver.find_element(*self.configuration.ReportsScreen.TITLE)
         self.assertIsNotNone(title, "Title input field was not found")
         title.click()
         title.send_keys(text)
@@ -33,7 +33,7 @@ class NewReportPage(BasePage):
         # self.switch_context_to_webview()
         #
         # logging.info("click on 'Lodging Agency' picker")
-        # lodging_agency_picker = self.driver.find_element(*self.configuration.NewReportScreen.LODGING_AGENCY_PICKER)
+        # lodging_agency_picker = self.driver.find_element(*self.configuration.ReportsScreen.LODGING_AGENCY_PICKER)
         # self.assertIsNotNone(lodging_agency_picker, "Lodging Agency picker was not found")
         # sleep(1)
         # lodging_agency_picker.click()
@@ -44,9 +44,9 @@ class NewReportPage(BasePage):
         sleep(5)
         logging.info("click on 'Lodging Agency' picker")
         try:
-            lodging_agency_picker = self.driver.find_element(*self.configuration.NewReportScreen.LODGING_AGENCY_PICKER)
+            lodging_agency_picker = self.driver.find_element(*self.configuration.ReportsScreen.LODGING_AGENCY_PICKER)
         except NoSuchElementException:
-            lodging_agency_picker = self.driver.find_element(*self.configuration.NewReportScreen.LODGING_AGENCY_PICKER2)
+            lodging_agency_picker = self.driver.find_element(*self.configuration.ReportsScreen.LODGING_AGENCY_PICKER2)
         self.assertIsNotNone(lodging_agency_picker, "Lodging Agency picker was not found")
         action = TouchAction(self.driver)
         action.tap(element=lodging_agency_picker, count=1).perform()
@@ -57,7 +57,7 @@ class NewReportPage(BasePage):
         self.switch_context_to_webview()
 
         logging.info("click Publish button")
-        publish_button = self.driver.find_element(*self.configuration.NewReportScreen.PUBLISH_BUTTON)
+        publish_button = self.driver.find_element(*self.configuration.ReportsScreen.PUBLISH_BUTTON)
         self.assertIsNotNone(publish_button, "Publish button was not found")
         publish_button.click()
         # sleep(1)
@@ -67,5 +67,14 @@ class NewReportPage(BasePage):
         WebDriverWait(self.driver, 30).until(
             expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
             "Failed to locate description field")
+
+        self.switch_context_to_native()
+
+    def filter_reports_by_type(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("filter reports by type")
+        
 
         self.switch_context_to_native()

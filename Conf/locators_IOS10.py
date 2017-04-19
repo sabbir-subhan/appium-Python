@@ -336,8 +336,8 @@ class NewTaskScreen:
     HIDE_DATE_PICKER = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Completed Date"]')
 
 
-class NewReportScreen:
-    """A class for handling New Report screen"""
+class ReportsScreen:
+    """A class for handling Reports screen"""
     LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//XCUIElementTypeOther[4]/XCUIElementTypeOther[3]')
     LODGING_AGENCY = (MobileBy.XPATH, '//XCUIElementTypePopover/XCUIElementTypeTableView/'
                                       'XCUIElementTypeTableCell[2]')

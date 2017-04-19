@@ -1,6 +1,6 @@
-""" Methods for IOS9 on New Report Page """
+""" Methods for IOS9 on Reports Page """
 
-from Modules.NewReportPage.IOS import IOS
+from Modules.ReportsPage.IOS import IOS
 from Modules.load_class import LoadClass
 import logging
 from selenium.common.exceptions import *
@@ -16,7 +16,7 @@ class IOS9(IOS):
 
         logging.info("choose Lodging Agency")
         try:
-            choose_lodging_agency = self.driver.find_element(*self.configuration.NewReportScreen.LODGING_AGENCY)
+            choose_lodging_agency = self.driver.find_element(*self.configuration.ReportsScreen.LODGING_AGENCY)
             self.assertIsNotNone(choose_lodging_agency, "Lodging Agency inside picker was not found")
             choose_lodging_agency.click()
         except NoSuchElementException:

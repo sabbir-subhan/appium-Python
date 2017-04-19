@@ -115,9 +115,11 @@ class MapPage(BasePage):
         save_map_button = self.driver.find_element(*self.configuration.Map.SAVE_MAP_BUTTON)
         self.assertIsNotNone(save_map_button, "save map button not found")
         save_map_button.click()
-        sleep(3)
+        sleep(4)
 
         self.switch_context_to_native()
+
+        sleep(2)
 
     def choose_plot_type_asset(self):
 

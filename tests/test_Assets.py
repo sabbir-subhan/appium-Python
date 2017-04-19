@@ -1,5 +1,11 @@
 # Test Case - Assets -- OCAMOB-50
 
+# before running this test prepare sample video file on device/emulator and create necessary asset types:
+
+# - assets types named: "asset_with_visibility_rules", "asset_with_max_number_of_fields". Asset type with visibility rules must have 5 fields:
+# "Name", "New option list" - with options; "1", "2", "3" that options should restore 3 other fields. "field to restore", "New website address" with value: "http://bitnoi.se/" and "New email address"
+# -- visibility rules like in TC: ManagingEvents
+
 # open OCA app
 # dismiss iOS notifications
 # input login, password and domain

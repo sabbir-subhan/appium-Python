@@ -48,7 +48,7 @@ class SetupTestCase(unittest.TestCase):
 
         self.driver = webdriver.Remote("http://localhost:" + PORT + "/wd/hub", desired_capabilities)
 
-        self.driver.implicitly_wait(10)  # seconds - how long appium will wait for conditions
+        self.driver.implicitly_wait(12)  # seconds - how long Appium will wait for conditions, for example try/except
 
 
 

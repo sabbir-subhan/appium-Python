@@ -312,12 +312,14 @@ class NewTaskScreen:
     # HIDE_DATE_PICKER = (MobileBy.CSS_SELECTOR, '')
 
 
-class NewReportScreen:
-    """A class for handling New Report screen"""
+class ReportsScreen:
+    """A class for handling Reports screen"""
     TITLE = (MobileBy.CSS_SELECTOR, 'input.field-701')
     LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, 'div#field-1201-button>select[name="lodging agency"]')
     # LODGING_AGENCY = (MobileBy.CSS_SELECTOR, '')
     PUBLISH_BUTTON = (MobileBy.CSS_SELECTOR, 'ul.ui-grid-b>li.ui-block-a>a[href="#save"]')
+    TYPE_FILTER = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:first-child>h2>a')
+    STATUS_FILTER = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:nth-child(2)>h2>a')
 
 
 class NewLogScreen:
@@ -435,4 +437,3 @@ class SelectMediaScreen:
     RECORD_AUDIO = (MobileBy.CSS_SELECTOR, 'div#filesystemMediaSelect>div.ui-content>div.ui-grid-a>div#fileAudioCapture>div.center-text>span.icon')
     VIDEO_GALLERY = (MobileBy.CSS_SELECTOR, 'div#filesystemMediaSelect>div.ui-content>div.ui-grid-a>div#fileVideoGallery>div.center-text>span.icon')
     PHOTO_GALLERY = (MobileBy.CSS_SELECTOR, 'div#filesystemMediaSelect>div.ui-content>div.ui-grid-a>div#filePhotoGallery>div.center-text>span.icon')
-

@@ -2,7 +2,7 @@
 
 # before run this test prepare Lodging Agency on OCA webpage and configure Quick Access buttons for mobile app
 # Login to OCA server>Click on Settings>Mobile Quick access Buttons>Add Quick Access buttons (see task in Jira)
-
+# remember to firstly open some link on device/emulator - Android will ask witch browser You want to use
 
 # open OCA app
 # dismiss iOS notifications
@@ -91,7 +91,7 @@ class TestQuickAccessButtons(SetupTestCase):
         new_task_page.click_save_button()
         main_page.check_presence_of_events_button()
         main_page.open_CREATE_REPORT()
-        new_report_page = LoadClass.load_page('NewReportPage')
+        new_report_page = LoadClass.load_page('ReportsPage')
         new_report_page.setDriver(self.driver)
         new_report_page.type_title("Title for new report test")
         # common_page.hide_keyboard()

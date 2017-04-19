@@ -388,8 +388,8 @@ class NewTaskScreen:
     START_DATE2 = (MobileBy.XPATH, '//android.view.View[2][@content-desc="Start Date"]')
 
 
-class NewReportScreen:
-    """A class for handling New Report screen"""
+class ReportsScreen:
+    """A class for handling Reports screen"""
     LODGING_AGENCY_PICKER = (MobileBy.ID, 'field-1201')
     LODGING_AGENCY_PICKER2 = (MobileBy.XPATH, '//android.view.View[4]/android.widget.Spinner[1]')
     LODGING_AGENCY = (MobileBy.XPATH, '//android.widget.CheckedTextView[2]')

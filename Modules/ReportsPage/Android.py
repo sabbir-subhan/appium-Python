@@ -1,16 +1,16 @@
-""" Methods for Android on New Report Page """
+""" Methods for Android on Reports Page """
 
-from Modules.NewReportPage.NewReportPage import NewReportPage
+from Modules.ReportsPage.ReportsPage import ReportsPage
 import logging
 from time import sleep
 
 
-class Android(NewReportPage):
+class Android(ReportsPage):
 
     def choose_lodging_agency(self):
 
         logging.info("choose Lodging Agency")
-        lodging_agency = self.driver.find_element(*self.configuration.NewReportScreen.LODGING_AGENCY)
+        lodging_agency = self.driver.find_element(*self.configuration.ReportsScreen.LODGING_AGENCY)
         self.assertIsNotNone(lodging_agency, "Lodging Agency inside picker was not found")
         lodging_agency.click()
         sleep(1)

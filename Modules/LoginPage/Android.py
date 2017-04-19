@@ -5,6 +5,7 @@ from appium.webdriver.common.touch_action import TouchAction
 from credentials import Credentials
 import logging
 from time import sleep
+from Conf.desired_capabilities import DesiredCapabilities
 
 
 class Android(LoginPage):
@@ -48,6 +49,13 @@ class Android(LoginPage):
         action = TouchAction(self.driver)
         action.long_press(el=domain_field, duration=1500).perform()
         self.driver.press_keycode(67)
+
+        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        platform_version = desired_capabilities.get('platformVersion')
+        if platform_version < "5":
+            self.driver.hide_keyboard()
+        else:
+            pass
 
         self.switch_context_to_webview()
 
