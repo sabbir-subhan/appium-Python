@@ -342,6 +342,10 @@ class ReportsScreen:
     LODGING_AGENCY = (MobileBy.XPATH, '//XCUIElementTypePopover/XCUIElementTypeTableView/'
                                       'XCUIElementTypeTableCell[2]')
     PUBLISH_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Publish"]')
+    CREATED_REPORT_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Large")]]')
+    CREATED_REPORT_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "chooser fields")]]')
+    REPORT_TYPE_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_for_tests")]]')
+    REPORT_TYPE_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_with_chooser_fields")]]')
 
 
 class NewLogScreen:

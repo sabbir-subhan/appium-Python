@@ -180,7 +180,8 @@ to prepare sample photo and video files on real device, but unfortunately for em
 - for Test Case: Assets - assets types named: "asset_with_visibility_rules", "asset_with_max_number_of_fields". Asset type with visibility rules must have 5 fields: 
 "Name", "New option list" - with options; "1", "2", "3" that options should restore 3 other fields. "field to restore", "New website address" with value: "http://bitnoi.se/" and "New email address" 
 -- visibility rules like in TC: Events
-
+- Lodging agency named: "contact_group_for_tests" is needed
+- for TC: Managing Reports, You have to create a report type with all fields, named: "report_for_tests", report type with chooser fields, named: "report_with_chooser_fields", 
 
 
 ### **BEFORE EACH NEW RUN OF TESTS:** ###

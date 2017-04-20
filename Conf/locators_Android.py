@@ -394,6 +394,10 @@ class ReportsScreen:
     LODGING_AGENCY_PICKER2 = (MobileBy.XPATH, '//android.view.View[4]/android.widget.Spinner[1]')
     LODGING_AGENCY = (MobileBy.XPATH, '//android.widget.CheckedTextView[2]')
     PUBLISH_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Publish')
+    CREATED_REPORT_WITH_ALL_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Large")]]')
+    CREATED_REPORT_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "chooser fields")]]')
+    REPORT_TYPE_WITH_ALL_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_for_tests")]]')
+    REPORT_TYPE_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_with_chooser_fields")]]')
 
 
 class NewLogScreen:

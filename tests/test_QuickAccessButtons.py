@@ -1,8 +1,10 @@
 # Test Case - Quick Access buttons on OCA app -- OCAMOB-48
 
-# before run this test prepare Lodging Agency on OCA webpage and configure Quick Access buttons for mobile app
+# before running this test:
+# prepare Lodging Agency named: "contact_group_for_tests" and configure Quick Access buttons for mobile app
 # Login to OCA server>Click on Settings>Mobile Quick access Buttons>Add Quick Access buttons (see task in Jira)
 # remember to firstly open some link on device/emulator - Android will ask witch browser You want to use
+
 
 # open OCA app
 # dismiss iOS notifications

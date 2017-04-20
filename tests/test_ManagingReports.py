@@ -1,5 +1,11 @@
 # Test Case - Managing Reports -- OCAMOB-60
 
+# before running this test create:
+# - Lodging agency named: "contact_group_for_tests"
+# - report type with all fields, named: "report_for_tests"
+# - report type with chooser fields, named: "report_with_chooser_fields"
+
+
 # open OCA app
 # dismiss iOS notifications
 # input login, password and domain
@@ -8,19 +14,21 @@
 # dismiss alert about expiring password
 # dismiss iOS notifications
 # check if button "EVENTS" is present
-# From the main menu click on Assets
 
-# From the main menu press Reports
-# Filter reports by type, status and keywords using the search form
-# Press Create report. From the list that appears select a report type which has all field types, including a rich text field
+# From the main menu press Reports >Press Create report. From the list that appears select a report type which has all field types, including a rich text field >
 # Fill in the form and press publish
-# Select the report you created and press Edit
-# Change some values and press Save
+# Filter reports by type, status and keywords using the search form
+# Select the report you created and press Edit > Change some values and press Save
 # Select a report, and press More > Delete report. Press Delete at the prompt
+
+
+# BELLOW STEPS CAN NOT BE DONE USING APPIUM:
 # As a high user, edit a report and leave the report form open
 # Login on another device as a low user and attempt to edit the same report from step 8
 # As the lower user on another device edit a different report. Leave the report form open
 # As a high user, edit the same report as step 10
+
+
 # Create and update a report with chooser fields
 # Create a report and fill in some fields, but don't publish it. Instead press cancel
 # Create a report with an on create approval workflow and press publish
@@ -35,7 +43,6 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
-from time import sleep
 
 
 class TestManagingReports(SetupTestCase):
@@ -75,27 +82,86 @@ class TestManagingReports(SetupTestCase):
         main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
 
-        # Assets > New > New Asset > Select Type > Create and save
-        main_page.open_ASSETS()
-        assets_page = LoadClass.load_page('AssetsPage')
-        assets_page.setDriver(self.driver)
-        assets_page.click_new_button()
-        assets_page.click_new_asset()
-        assets_page.choose_asset_type()
-        assets_page.fill_Name_input_field("Asset test")
-        # common_page.hide_keyboard()
-        assets_page.scroll_down_to_save_button()
-        assets_page.click_save_button()
+        # Press Create report. From the list that appears select a report type which has all field types, including a rich text field
+        main_page.open_REPORTS()
+        reports_page = LoadClass.load_page('ReportsPage')
+        reports_page.setDriver(self.driver)
+        reports_page.click_create_report_button()
+        reports_page.choose_report_type_with_all_fields()
+        reports_page.type_title("Large Report")
+        reports_page.click_on_lodging_agency_picker()
+        reports_page.choose_lodging_agency()
+        reports_page.scroll_down_to_publish_button()
+        reports_page.click_publish_button()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
         # From the main menu press Reports - Filter reports by type, status and keywords using the search form
         main_page.open_REPORTS()
-        reports_page = LoadClass.load_page('ReportsPage')
-        reports_page.setDriver(self.driver)
         reports_page.filter_reports_by_type()
         reports_page.filter_reports_by_status()
-        reports_page.filter_reports_by_search_field()
+        reports_page.type_text_into_search_field()  # search for Report containing word "Large"
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
+        reports_page.check_result()
+        reports_page.clear_Search_field()
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        # Select the report you created and press Edit, Change some values and press Save
+        main_page.open_REPORTS()
+        reports_page.type_text_into_search_field()  # search for Report containing word "Large"
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
+        reports_page.check_result()
+        reports_page.edit_created_report_with_all_fields()
+        reports_page.click_edit_button()
+        reports_page.edit_report_title(" - Edited")
+        reports_page.scroll_down_to_publish_button()
+        reports_page.click_publish_button()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        # Select a report, and press More > Delete report. Press Delete at the prompt
+        main_page.open_REPORTS()
+        reports_page.clear_Search_field()
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
+        reports_page.open_existing_report()
+        reports_page.click_more_button()
+        reports_page.click_delete_report()
+        reports_page.alert_accept_delete()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        # Create and update a report with chooser fields
+        main_page.open_REPORTS()
+        reports_page.click_create_report_button()
+        reports_page.choose_report_type_with_chooser_fields()
+        reports_page.type_title("Report with chooser fields")
+        reports_page.click_on_lodging_agency_picker()
+        reports_page.choose_lodging_agency()
+        reports_page.scroll_down_to_publish_button()
+        reports_page.click_publish_button()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        reports_page.search_for_report_with_chooser_fields()  # search for Report containing word "chooser fields"
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
+
+        reports_page.edit_created_report_with_chooser_fields()
+        reports_page.click_edit_button()
+        reports_page.edit_report_title(" - edited")
+        common_page.scroll_down_one_view()  # check this
+        reports_page.click_assets_chooser_field()
+        reports_page.choose_asset_from_the_list()
+        reports_page.scroll_down_to_publish_button()
+        reports_page.click_publish_button()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
 
 
 if __name__ == '__main__':

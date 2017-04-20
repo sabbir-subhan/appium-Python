@@ -316,6 +316,10 @@ class ReportsScreen:
     LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//UIAWebView/UIAElement[2]')
     LODGING_AGENCY = (MobileBy.XPATH, '//UIAPopover/UIATableView/UIATableCell[2]')
     PUBLISH_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Publish"]')
+    CREATED_REPORT_WITH_ALL_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "Large")]]')
+    CREATED_REPORT_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "chooser fields")]]')
+    REPORT_TYPE_WITH_ALL_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_for_tests")]]')
+    REPORT_TYPE_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_chooser_fields")]]')
 
 
 class NewLogScreen:

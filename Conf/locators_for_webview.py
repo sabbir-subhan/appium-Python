@@ -314,12 +314,31 @@ class NewTaskScreen:
 
 class ReportsScreen:
     """A class for handling Reports screen"""
-    TITLE = (MobileBy.CSS_SELECTOR, 'input.field-701')
+    TITLE = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li:first-child>div>input#title')
     LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, 'div#field-1201-button>select[name="lodging agency"]')
-    # LODGING_AGENCY = (MobileBy.CSS_SELECTOR, '')
+    # LODGING_AGENCY = (MobileBy.CSS_SELECTOR, '')  # picker wheel on iOS and popup on Android are native elements
     PUBLISH_BUTTON = (MobileBy.CSS_SELECTOR, 'ul.ui-grid-b>li.ui-block-a>a[href="#save"]')
     TYPE_FILTER = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:first-child>h2>a')
+    FIRST_TYPE = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:first-child>div>ul[data-role="listview"]>li:first-child>a')  # ALL REPORTS
+    SECOND_TYPE = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:first-child>div>ul[data-role="listview"]>li:nth-child(2)>a')  # MEDIA RELEASE
+    THIRD_TYPE = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:first-child>div>ul[data-role="listview"]>li:nth-child(3)>a')  # REPORT_FOR_TESTS
+    FOURTH_TYPE = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:first-child>div>ul[data-role="listview"]>li:nth-child(4)>a')  # SITUATION REPORT
     STATUS_FILTER = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:nth-child(2)>h2>a')
+    FIRST_STATUS = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:nth-child(2)>div>ul[data-role="listview"]>li:first-child>a')  # ANY STATUS
+    SECOND_STATUS = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:nth-child(2)>div>ul[data-role="listview"]>li:nth-child(2)>a')  # ACTIVE
+    THIRD_STATUS = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:nth-child(2)>div>ul[data-role="listview"]>li:nth-child(3)>a')  # INACTIVE
+    FOURTH_STATUS = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:nth-child(2)>div>ul[data-role="listview"]>li:nth-child(4)>a')  # DRAFT
+    SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div.ui-input-search>input#reportSearch')
+    # CREATED_REPORT = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div.main>ul.reports>li:first-child')
+    CREATE_REPORT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-solo>li>a[href="#reportNew"]')
+    EDIT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#reportView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.edit>a')
+    FIRST_REPORT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div.main>ul>li:first-child>a')
+    MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#reportView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li:last-child>a[href="#reportViewMoreMenu"]')
+    DELETE_REPORT = (MobileBy.CSS_SELECTOR, 'div#reportView>div.ui-popup-container>div#reportViewMoreMenu>ul>li.report.delete>a')
+    EDIT_REPORT_TITLE = (MobileBy.CSS_SELECTOR, 'div#reportEdit>div.ui-content>ul.edit-view>li:first-child>div>input#title')
+    DELETE_ALERT = (MobileBy.CSS_SELECTOR, 'div#reportView>div#confirmDeleteReport-popup>div#confirmDeleteReport>div.ng-dialog-container>div>div.ui-controlgroup-controls>a:first-child')
+    ASSETS_CHOOSER_FIELD = (MobileBy.CSS_SELECTOR, 'div#reportEdit>div.ui-content>ul.edit-view>li[name="new assets chooser"]>div.ui-select>div')  # inside already created report
+    #FIRST_ASSETS_FROM_THE_LIST = (MobileBy.CSS_SELECTOR, '')
 
 
 class NewLogScreen:
