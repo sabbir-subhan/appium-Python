@@ -8,6 +8,20 @@ from selenium.common.exceptions import *
 
 class IOS(ReportsPage):
 
+    def scroll_down_to_assets_chooser_field(self):
+
+        logging.info("scroll down to assets chooser field")
+        var = 10
+        while var > 0:
+            logging.info("check if assets chooser field is visible")
+            assets_chooser_field = self.driver.find_element(*self.configuration.ReportsScreen.ASSETS_CHOOSER_FIELD)
+            if assets_chooser_field.is_displayed():
+                break
+            else:
+                logging.info("scroll down")
+                self.driver.execute_script("mobile: scroll", {"direction": "down"})
+                var = var - 1
+
     def scroll_down_to_publish_button(self):
 
         logging.info("scroll down to Publish button")

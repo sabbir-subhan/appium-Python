@@ -100,7 +100,7 @@ class TestQuickAccessButtons(SetupTestCase):
         new_report_page.click_on_lodging_agency_picker()
         new_report_page.choose_lodging_agency()
         new_report_page.scroll_down_to_publish_button()
-        new_report_page.click_publish_button()
+        new_report_page.click_publish_new_report()
         main_page.check_presence_of_events_button()
         main_page.open_WEBSITE_LINK()
         sleep(10)  # wait for page to load

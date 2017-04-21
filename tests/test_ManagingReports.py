@@ -92,7 +92,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.click_on_lodging_agency_picker()
         reports_page.choose_lodging_agency()
         reports_page.scroll_down_to_publish_button()
-        reports_page.click_publish_button()
+        reports_page.click_publish_new_report()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -120,7 +120,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.click_edit_button()
         reports_page.edit_report_title(" - Edited")
         reports_page.scroll_down_to_publish_button()
-        reports_page.click_publish_button()
+        reports_page.click_publish_edited_report()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -144,22 +144,22 @@ class TestManagingReports(SetupTestCase):
         reports_page.click_on_lodging_agency_picker()
         reports_page.choose_lodging_agency()
         reports_page.scroll_down_to_publish_button()
-        reports_page.click_publish_button()
+        reports_page.click_publish_new_report()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
-        reports_page.search_for_report_with_chooser_fields()  # search for Report containing word "chooser fields"
+        reports_page.search_for_report_with_chooser_fields()  # search for Report containing word "chooser fields" # HERE
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
 
         reports_page.edit_created_report_with_chooser_fields()
         reports_page.click_edit_button()
         reports_page.edit_report_title(" - edited")
-        common_page.scroll_down_one_view()  # check this
+        reports_page.scroll_down_to_assets_chooser_field()
         reports_page.click_assets_chooser_field()
         reports_page.choose_asset_from_the_list()
         reports_page.scroll_down_to_publish_button()
-        reports_page.click_publish_button()
+        reports_page.click_publish_edited_report()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 

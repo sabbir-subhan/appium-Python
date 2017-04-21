@@ -3,9 +3,17 @@
 from Modules.ReportsPage.ReportsPage import ReportsPage
 import logging
 from time import sleep
+from Modules.load_class import LoadClass
 
 
 class Android(ReportsPage):
+
+    def scroll_down_to_assets_chooser_field(self):
+
+        logging.info("scroll down to assets chooser field")
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.scroll_down_one_view()
 
     def choose_lodging_agency(self):
 
@@ -29,4 +37,4 @@ class Android(ReportsPage):
         while scrolls > 0:
             self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen
             scrolls = scrolls - 1
-        sleep(1)
+        sleep(2)

@@ -8,6 +8,10 @@ from selenium.common.exceptions import *
 
 class IOS9(IOS):
 
+    def scroll_down_to_assets_chooser_field(self):
+
+        pass
+
     def scroll_down_to_publish_button(self):
 
         pass

@@ -52,12 +52,30 @@ class ReportsPage(BasePage):
         action.tap(element=lodging_agency_picker, count=1).perform()
         sleep(1)
 
-    def click_publish_button(self):
+    def click_publish_new_report(self):
 
         self.switch_context_to_webview()
 
         logging.info("click Publish button")
-        publish_button = self.driver.find_element(*self.configuration.ReportsScreen.PUBLISH_BUTTON)
+        publish_button = self.driver.find_element(*self.configuration.ReportsScreen.PUBLISH_NEW_REPORT)
+        self.assertIsNotNone(publish_button, "Publish button was not found")
+        publish_button.click()
+        # sleep(1)
+        # action = TouchAction(self.driver)
+        # action.tap(element=publish_button, count=1).perform()
+        sleep(2)
+        WebDriverWait(self.driver, 30).until(
+            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
+            "Failed to locate description field")
+
+        self.switch_context_to_native()
+
+    def click_publish_edited_report(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Publish button")
+        publish_button = self.driver.find_element(*self.configuration.ReportsScreen.PUBLISH_EDITED_REPORT)
         self.assertIsNotNone(publish_button, "Publish button was not found")
         publish_button.click()
         # sleep(1)
@@ -301,6 +319,7 @@ class ReportsPage(BasePage):
         logging.info("click assets chooser field")
         assets_chooser_field = self.driver.find_element(*self.configuration.ReportsScreen.ASSETS_CHOOSER_FIELD)
         assets_chooser_field.click()
+        sleep(2)
 
         self.switch_context_to_native()
 
@@ -313,6 +332,6 @@ class ReportsPage(BasePage):
         choose_first_asset = self.driver.find_element(*self.configuration.AssetsScreen.PREVIOUSLY_CREATED_ASSET)
         self.assertIsNotNone(choose_first_asset, "first asset on the list not found")
         choose_first_asset.click()
-        sleep(1)
+        sleep(2)
 
         self.switch_context_to_native()
