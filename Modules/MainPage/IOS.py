@@ -64,7 +64,7 @@ class IOS(MainPage):
         var = 1
         while var == 1:
             logging.info("check if tasks button is visible")
-            tasks_button = self.driver.find_element(*self.configuration.WelcomeScreen.TASKS_BUTTON)
+            tasks_button = self.driver.find_element(*self.configuration.MainMenuScreen.TASKS_BUTTON)
             if tasks_button.is_displayed():
                 break
             else:
@@ -77,7 +77,7 @@ class IOS(MainPage):
         var = 1
         while var == 1:
             logging.info("check if documents button is visible")
-            documents_button = self.driver.find_element(*self.configuration.WelcomeScreen.DOCUMENTS_BUTTON)
+            documents_button = self.driver.find_element(*self.configuration.MainMenuScreen.DOCUMENTS_BUTTON)
             if documents_button.is_displayed():
                 break
             else:
@@ -90,7 +90,7 @@ class IOS(MainPage):
         var = 1
         while var == 1:
             logging.info("check if contacts button is visible")
-            contacts_button = self.driver.find_element(*self.configuration.WelcomeScreen.CONTACTS_BUTTON)
+            contacts_button = self.driver.find_element(*self.configuration.MainMenuScreen.CONTACTS_BUTTON)
             if contacts_button.is_displayed():
                 break
             else:
@@ -103,7 +103,7 @@ class IOS(MainPage):
         var = 1
         while var == 1:
             logging.info("check if allocate button is visible")
-            allocate_button = self.driver.find_element(*self.configuration.WelcomeScreen.ALLOCATE_BUTTON)
+            allocate_button = self.driver.find_element(*self.configuration.MainMenuScreen.ALLOCATE_BUTTON)
             if allocate_button.is_displayed():
                 break
             else:
@@ -129,7 +129,7 @@ class IOS(MainPage):
         var = 1
         while var == 1:
             logging.info("check if active button is visible")
-            active_button = self.driver.find_element(*self.configuration.WelcomeScreen.ACTIVE_BUTTON)
+            active_button = self.driver.find_element(*self.configuration.MainMenuScreen.ACTIVE_BUTTON)
             if active_button.is_displayed():
                 break
             else:
@@ -142,7 +142,7 @@ class IOS(MainPage):
         var = 1
         while var == 1:
             logging.info("check if offline sync button is visible")
-            offline_sync_button = self.driver.find_element(*self.configuration.WelcomeScreen.OFFLINE_SYNC_BUTTON)
+            offline_sync_button = self.driver.find_element(*self.configuration.MainMenuScreen.OFFLINE_SYNC_BUTTON)
             if offline_sync_button.is_displayed():
                 break
             else:

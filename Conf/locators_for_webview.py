@@ -318,7 +318,9 @@ class ReportsScreen:
     LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, 'div#field-1201-button>select[name="lodging agency"]')
     # LODGING_AGENCY = (MobileBy.CSS_SELECTOR, '')  # picker wheel on iOS and popup on Android are native elements
     PUBLISH_NEW_REPORT = (MobileBy.CSS_SELECTOR, 'div#reportNew>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-b>li.ui-block-a>a[href="#save"]')
+    CANCEL_NEW_REPORT = (MobileBy.CSS_SELECTOR, 'div#reportNew>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-b>li.ui-block-c>a[href="#cancel"]')
     PUBLISH_EDITED_REPORT = (MobileBy.CSS_SELECTOR, 'div#reportEdit>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-b>li.ui-block-a>a[href="#save"]')
+    CANCEL_EDITED_REPORT = (MobileBy.CSS_SELECTOR, 'div#reportEdit>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-b>li.ui-block-c>a[href="#cancel"]')
     TYPE_FILTER = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:first-child>h2>a')
     FIRST_TYPE = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:first-child>div>ul[data-role="listview"]>li:first-child>a')  # ALL REPORTS
     SECOND_TYPE = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:first-child>div>ul[data-role="listview"]>li:nth-child(2)>a')  # MEDIA RELEASE
@@ -435,6 +437,7 @@ class AssetsScreen:
     NEW_ASSET_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#assetNew?parent=0"]')
     ASSET_TYPE = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul>li:first-child>a')  # first asset type on the list
     PREVIOUSLY_CREATED_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.main>ul[data-role="listview"]>li:first-child>a')
+    PREVIOUSLY_CREATED_ASSET_CHECKBOX = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.main>ul[data-role="listview"]>li:first-child>div.ui-checkbox')  # whole list element - not just link
     EDIT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.edit>a')
     COST_PER_UNIT_FIELD = (MobileBy.CSS_SELECTOR, 'div#assetEdit>div.ui-content>ul.edit-view>li>div>input[id="cost per unit"]')
     SAVE_EDITED_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#save"]')

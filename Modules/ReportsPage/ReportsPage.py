@@ -70,6 +70,18 @@ class ReportsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def click_cancel_new_report(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Cancel button")
+        cancel_button = self.driver.find_element(*self.configuration.ReportsScreen.CANCEL_NEW_REPORT)
+        self.assertIsNotNone(cancel_button, "Cancel button was not found")
+        cancel_button.click()
+        sleep(2)
+
+        self.switch_context_to_native()
+
     def click_publish_edited_report(self):
 
         self.switch_context_to_webview()
@@ -85,6 +97,18 @@ class ReportsPage(BasePage):
         WebDriverWait(self.driver, 30).until(
             expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
             "Failed to locate description field")
+
+        self.switch_context_to_native()
+
+    def click_cancel_edited_report(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Cancel button")
+        cancel_button = self.driver.find_element(*self.configuration.ReportsScreen.CANCEL_EDITED_REPORT)
+        self.assertIsNotNone(cancel_button, "Cancel button was not found")
+        cancel_button.click()
+        sleep(2)
 
         self.switch_context_to_native()
 
@@ -225,12 +249,20 @@ class ReportsPage(BasePage):
         choose_report_type.click()
         sleep(1)
 
+    def choose_report_type_with_on_create_approval_workflow(self):
+
+        logging.info('choose report type = "choose_report_type_with_on_create_approval_workflow"')
+        choose_report_type = self.driver.find_element(*self.configuration.ReportsScreen.REPORT_TYPE_WITH_ON_CREATE_APPROVAL_WORKFLOW)
+        self.assertIsNotNone(choose_report_type, 'report type = "choose_report_type_with_on_create_approval_workflow" not found')
+        choose_report_type.click()
+        sleep(1)
+
     def edit_created_report_with_all_fields(self):
 
         logging.info('edit created report, containing word "Large"')
         edit_created_report = self.driver.find_elements(*self.configuration.ReportsScreen.CREATED_REPORT_WITH_ALL_FIELDS)
         self.assertIsNotNone(edit_created_report, 'previously created report containing word "Large", not found')
-        edit_created_report[1].click()
+        edit_created_report[0].click()
         sleep(2)
 
     def edit_created_report_with_chooser_fields(self):
@@ -238,7 +270,7 @@ class ReportsPage(BasePage):
         logging.info('edit created report, containing words "chooser fields"')
         edit_created_report = self.driver.find_elements(*self.configuration.ReportsScreen.CREATED_REPORT_WITH_CHOOSER_FIELDS)
         self.assertIsNotNone(edit_created_report, 'previously created report, containing words "chooser fields", not found')
-        edit_created_report[1].click()
+        edit_created_report[0].click()
         sleep(2)
 
     def click_edit_button(self):
@@ -329,7 +361,7 @@ class ReportsPage(BasePage):
 
         logging.info("choose first asset on the list")
 
-        choose_first_asset = self.driver.find_element(*self.configuration.AssetsScreen.PREVIOUSLY_CREATED_ASSET)
+        choose_first_asset = self.driver.find_element(*self.configuration.AssetsScreen.PREVIOUSLY_CREATED_ASSET_CHECKBOX)
         self.assertIsNotNone(choose_first_asset, "first asset on the list not found")
         choose_first_asset.click()
         sleep(2)
