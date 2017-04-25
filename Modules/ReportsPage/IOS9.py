@@ -30,6 +30,15 @@ class IOS9(IOS):
             common_page.setDriver(self.driver)
             common_page.done_button()
 
+    def scroll_down_to_on_load_field(self):
+
+        pass
+
+    def scroll_down_to_option_list(self):
+
+        pass
+
+
 
         
 

@@ -38,3 +38,17 @@ class Android(ReportsPage):
             self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen
             scrolls = scrolls - 1
         sleep(2)
+
+    def scroll_down_to_on_load_field(self):
+
+        logging.info("scroll down to on load field")
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.scroll_down_one_view()
+
+    def scroll_down_to_option_list(self):
+
+        logging.info("scroll down to option list")
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.scroll_down_one_view()

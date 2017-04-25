@@ -123,7 +123,7 @@ class TestQuickAccessButtons(SetupTestCase):
         new_asset_page.click_save_button()
         main_page.check_presence_of_events_button()
         main_page.open_CREATE_LOG()
-        new_log_page = LoadClass.load_page('NewLogPage')
+        new_log_page = LoadClass.load_page('LogsPage')
         new_log_page.setDriver(self.driver)
         new_log_page.click_on_lodging_agency_picker()
         new_log_page.choose_lodging_agency()

@@ -1,6 +1,6 @@
-""" Methods for IOS9 on New Log Page """
+""" Methods for IOS9 on Logs Page """
 
-from Modules.NewLogPage.IOS import IOS
+from Modules.LogsPage.IOS import IOS
 
 
 class IOS9(IOS):

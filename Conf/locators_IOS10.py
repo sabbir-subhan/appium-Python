@@ -223,6 +223,7 @@ class EventEditScreen:
     FIELD_TO_RESTORE_2_HEADER = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="New email address"]')
     FIELD_TO_RESTORE_2_VALUE = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="test@noggin.com"]')
     FIELD_TO_RESTORE_3_HEADER = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="New website address"]')
+    FIELD_TO_RESTORE_3_VALUE = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="http://bitnoi.se/"]')
     CHOOSER_FIELD = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "New events chooser")]]')
     # PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER = (MobileBy.XPATH, '//XCUIElementTypeOther[2]/XCUIElementTypeOther[6]'
     #                                                         '/XCUIElementTypeOther[2]')
@@ -348,7 +349,11 @@ class ReportsScreen:
     REPORT_TYPE_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_for_tests")]]')
     REPORT_TYPE_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_with_chooser_fields")]]')
     REPORT_TYPE_WITH_ON_CREATE_APPROVAL_WORKFLOW = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_with_on_create_approval")]]')
+    REPORT_TYPE_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_with_on_load_sequence")]]')
+    REPORT_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_with_visibility_rules")]]')
     ASSETS_CHOOSER_FIELD = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeWebView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[10]/XCUIElementTypeOther[2]')  # inside already created report
+    ON_LOAD_FIELD = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="on_load"]')
+    NEW_OPTION_LIST = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="New option list"]')
 
 
 class NewLogScreen:

@@ -358,9 +358,8 @@ class AssetsPage(BasePage):
         field_to_restore_1_header = self.driver.find_element(*self.configuration.EventEditScreen.
                                                              FIELD_TO_RESTORE_1_HEADER)
         self.assertIsNotNone(field_to_restore_1_header)
-        # field_to_restore_1_value = self.driver.find_element(*self.configuration.EventEditScreen.
-        #                                                     FIELD_TO_RESTORE_1_VALUE)
-        # self.assertIsNotNone(field_to_restore_1_value)
+        field_to_restore_1_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_1_VALUE)
+        self.assertIsNotNone(field_to_restore_1_value)
 
     def check_restored_field_2(self):
 
@@ -368,9 +367,9 @@ class AssetsPage(BasePage):
         field_to_restore_2_header = self.driver.find_element(*self.configuration.EventEditScreen.
                                                              FIELD_TO_RESTORE_2_HEADER)
         self.assertIsNotNone(field_to_restore_2_header)
-        # field_to_restore_2_value = self.driver.find_element(*self.configuration.EventEditScreen.
-        #                                                     FIELD_TO_RESTORE_2_VALUE)
-        # self.assertIsNotNone(field_to_restore_2_value)
+        field_to_restore_2_value = self.driver.find_element(*self.configuration.EventEditScreen.
+                                                            FIELD_TO_RESTORE_2_VALUE)
+        self.assertIsNotNone(field_to_restore_2_value)
 
     def check_restored_field_3(self):
 
@@ -379,9 +378,9 @@ class AssetsPage(BasePage):
                                                              FIELD_TO_RESTORE_3_HEADER)
         self.assertIsNotNone(field_to_restore_3_header)
 
-        # field_to_restore_3_value = self.driver.find_element(*self.configuration.EventEditScreen.
-        #                                                     FIELD_TO_RESTORE_3_VALUE)
-        # self.assertIsNotNone(field_to_restore_3_value)
+        field_to_restore_3_value = self.driver.find_element(*self.configuration.EventEditScreen.
+                                                            FIELD_TO_RESTORE_3_VALUE)
+        self.assertIsNotNone(field_to_restore_3_value)
 
     def check_hidden_field_1(self):
 

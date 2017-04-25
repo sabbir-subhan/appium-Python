@@ -65,31 +65,47 @@ class MapPage(BasePage):
 
     def click_point_button(self):
 
+        self.switch_context_to_webview()
+
         logging.info("click point button")
         point_button = self.driver.find_element(*self.configuration.Map.POINT_BUTTON)
         self.assertIsNotNone(point_button, "point button not found")
         point_button.click()
 
+        self.switch_context_to_native()
+
     def click_line_button(self):
+
+        self.switch_context_to_webview()
 
         logging.info("click line button")
         line_button = self.driver.find_element(*self.configuration.Map.LINE_BUTTON)
         self.assertIsNotNone(line_button, "line button not found")
         line_button.click()
 
+        self.switch_context_to_native()
+
     def click_circle_button(self):
+
+        self.switch_context_to_webview()
 
         logging.info("click circle button")
         circle_button = self.driver.find_element(*self.configuration.Map.CIRCLE_BUTTON)
         self.assertIsNotNone(circle_button, "circle button not found")
         circle_button.click()
 
+        self.switch_context_to_native()
+
     def click_polygon_button(self):
+
+        self.switch_context_to_webview()
 
         logging.info("click polygon button")
         polygon_button = self.driver.find_element(*self.configuration.Map.POLYGON_BUTTON)
         self.assertIsNotNone(polygon_button, "polygon button not found")
         polygon_button.click()
+
+        self.switch_context_to_native()
 
     def click_default_button(self):
 
@@ -111,6 +127,7 @@ class MapPage(BasePage):
 
         self.switch_context_to_webview()
 
+        sleep(1)
         logging.info("Save map")
         save_map_button = self.driver.find_element(*self.configuration.Map.SAVE_MAP_BUTTON)
         self.assertIsNotNone(save_map_button, "save map button not found")
@@ -119,7 +136,7 @@ class MapPage(BasePage):
 
         self.switch_context_to_native()
 
-        sleep(2)
+        sleep(1)
 
     def choose_plot_type_asset(self):
 

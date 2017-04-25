@@ -2,9 +2,10 @@
 
 # before running this test prepare sample video file on device/emulator and create necessary asset types:
 
-# - assets types named: "asset_with_visibility_rules", "asset_with_max_number_of_fields". Asset type with visibility rules must have 5 fields:
-# "Name", "New option list" - with options; "1", "2", "3" that options should restore 3 other fields. "field to restore", "New website address" with value: "http://bitnoi.se/" and "New email address"
-# -- visibility rules like in TC: ManagingEvents
+# - assets types named: "asset_with_visibility_rules", "asset_with_max_number_of_fields". Asset type with visibility rules with fields:
+# "New option list" - with options; "1", "2", "3" that options should restore 3 other fields. "field to restore",
+# "New website address" with value: "http://bitnoi.se/" and "New email address" with value: "test@noggin.com" - visibility rules like in TC: Managing Events
+# (option 1 restores field to restore, option 2 restores New email address field, option 3 restores New website address)
 
 # open OCA app
 # dismiss iOS notifications

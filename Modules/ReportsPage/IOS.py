@@ -50,3 +50,30 @@ class IOS(ReportsPage):
             common_page.setDriver(self.driver)
             common_page.done_button()
 
+    def scroll_down_to_on_load_field(self):
+
+        logging.info("scroll down to on load field")
+        var = 10
+        while var > 0:
+            logging.info("check if on load field is visible")
+            on_load_field = self.driver.find_element(*self.configuration.ReportsScreen.ON_LOAD_FIELD)
+            if on_load_field.is_displayed():
+                break
+            else:
+                logging.info("scroll down")
+                self.driver.execute_script("mobile: scroll", {"direction": "down"})
+                var = var - 1
+
+    def scroll_down_to_option_list(self):
+
+        logging.info("scroll down to option list")
+        var = 10
+        while var > 0:
+            logging.info("check if option list is visible")
+            option_list = self.driver.find_element(*self.configuration.ReportsScreen.NEW_OPTION_LIST)
+            if option_list.is_displayed():
+                break
+            else:
+                logging.info("scroll down")
+                self.driver.execute_script("mobile: scroll", {"direction": "down"})
+                var = var - 1

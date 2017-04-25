@@ -184,6 +184,21 @@ class ReportsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def filter_reports_by_active_status(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("filter reports by active status")
+
+        expand_status_filters = self.driver.find_element(*self.configuration.ReportsScreen.STATUS_FILTER)
+        expand_status_filters.click()
+
+        choose_second_status = self.driver.find_element(*self.configuration.ReportsScreen.SECOND_STATUS)
+        choose_second_status.click()
+        sleep(1)
+
+        self.switch_context_to_native()
+
     def type_text_into_search_field(self):
 
         logging.info("filter reports by search field")
@@ -251,9 +266,25 @@ class ReportsPage(BasePage):
 
     def choose_report_type_with_on_create_approval_workflow(self):
 
-        logging.info('choose report type = "choose_report_type_with_on_create_approval_workflow"')
+        logging.info('choose report type = "with_on_create_approval_workflow"')
         choose_report_type = self.driver.find_element(*self.configuration.ReportsScreen.REPORT_TYPE_WITH_ON_CREATE_APPROVAL_WORKFLOW)
-        self.assertIsNotNone(choose_report_type, 'report type = "choose_report_type_with_on_create_approval_workflow" not found')
+        self.assertIsNotNone(choose_report_type, 'report type = "with_on_create_approval_workflow" not found')
+        choose_report_type.click()
+        sleep(1)
+
+    def choose_report_type_with_on_load_sequence(self):
+
+        logging.info('choose report type = "with_on_load_sequence"')
+        choose_report_type = self.driver.find_element(*self.configuration.ReportsScreen.REPORT_TYPE_WITH_ON_LOAD_SEQUENCE)
+        self.assertIsNotNone(choose_report_type, 'report type = "with_on_create_approval_workflow" not found')
+        choose_report_type.click()
+        sleep(1)
+
+    def choose_report_type_with_visibility_rules(self):
+
+        logging.info('choose report type = "with visibility rules"')
+        choose_report_type = self.driver.find_element(*self.configuration.ReportsScreen.REPORT_TYPE_WITH_VISIBILITY_RULES)
+        self.assertIsNotNone(choose_report_type, 'report type = "with visibility rules" not found')
         choose_report_type.click()
         sleep(1)
 
@@ -272,6 +303,18 @@ class ReportsPage(BasePage):
         self.assertIsNotNone(edit_created_report, 'previously created report, containing words "chooser fields", not found')
         edit_created_report[0].click()
         sleep(2)
+
+    def edit_first_report_on_the_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info('edit first report on the list')
+        edit_created_report = self.driver.find_elements(*self.configuration.ReportsScreen.FIRST_REPORT_ON_THE_LIST)
+        self.assertIsNotNone(edit_created_report, 'previously created report, not found')
+        edit_created_report[0].click()
+        sleep(2)
+
+        self.switch_context_to_native()
 
     def click_edit_button(self):
 
@@ -367,3 +410,101 @@ class ReportsPage(BasePage):
         sleep(2)
 
         self.switch_context_to_native()
+
+    def create_mapping_data(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click create mapping data")
+        create_mapping_data = self.driver.find_element(*self.configuration.ReportsScreen.CREATE_MAPPING_DATA)
+        self.assertIsNotNone(create_mapping_data, "create mapping data button not found")
+        create_mapping_data.click()
+
+        self.switch_context_to_native()
+
+    def check_on_load_and_on_save_sequences(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("assert on load and on save sequence")
+        sequence_on_load = self.driver.find_element(*self.configuration.ReportsScreen.SEQUENCE_ON_LOAD)
+        self.assertIsNotNone(sequence_on_load)
+
+        sequence_on_save = self.driver.find_element(*self.configuration.ReportsScreen.SEQUENCE_ON_SAVE)
+        self.assertIsNotNone(sequence_on_save)
+
+        self.switch_context_to_native()
+
+        sequence_on_load_value = self.driver.find_element(*self.configuration.EventEditScreen.SEQUENCE_ONLOAD_VALUE)
+        self.assertIsNotNone(sequence_on_load_value)
+
+        sequence_on_save_value = self.driver.find_element(*self.configuration.EventEditScreen.SEQUENCE_ONSAVE_VALUE)
+        self.assertIsNotNone(sequence_on_save_value)
+
+    def click_on_option_list(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.click_on_option_list()
+
+    def click_on_option_1(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.click_on_option_1()
+
+    def click_on_option_2(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.click_on_option_2()
+
+    def click_on_option_3(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.click_on_option_3()
+
+    def check_restored_field_1(self):
+
+        logging.info("assert restored field 1")
+        field_to_restore_1_header = self.driver.find_element(*self.configuration.EventEditScreen.
+                                                             FIELD_TO_RESTORE_1_HEADER)
+        self.assertIsNotNone(field_to_restore_1_header)
+        field_to_restore_1_value = self.driver.find_element(*self.configuration.EventEditScreen.
+                                                            FIELD_TO_RESTORE_1_VALUE)
+        self.assertIsNotNone(field_to_restore_1_value)
+
+    def check_restored_field_2(self):
+
+        logging.info("assert restored field 2")
+        field_to_restore_2_header = self.driver.find_element(*self.configuration.EventEditScreen.
+                                                             FIELD_TO_RESTORE_2_HEADER)
+        self.assertIsNotNone(field_to_restore_2_header)
+        field_to_restore_2_value = self.driver.find_element(*self.configuration.EventEditScreen.
+                                                            FIELD_TO_RESTORE_2_VALUE)
+        self.assertIsNotNone(field_to_restore_2_value)
+
+    def check_restored_field_3(self):
+
+        logging.info("assert restored field 3")
+        field_to_restore_3_header = self.driver.find_element(*self.configuration.EventEditScreen.
+                                                             FIELD_TO_RESTORE_3_HEADER)
+        self.assertIsNotNone(field_to_restore_3_header)
+
+        field_to_restore_3_value = self.driver.find_element(*self.configuration.EventEditScreen.
+                                                            FIELD_TO_RESTORE_3_VALUE)
+        self.assertIsNotNone(field_to_restore_3_value)
+
+    def check_hidden_field_1(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.check_hidden_field_1()
+
+    def check_hidden_fields_1_and_2(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.check_hidden_fields_1_and_2()
+

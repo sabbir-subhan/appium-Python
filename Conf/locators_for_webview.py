@@ -220,7 +220,7 @@ class Map:
     # MAP_AREA_12 = (MobileBy.CSS_SELECTOR, '')
     # MAP_AREA_13 = (MobileBy.CSS_SELECTOR, '')
     # MAP_AREA_17 = (MobileBy.CSS_SELECTOR, '')
-    # MAP_AREA_18 = (MobileBy.CSS_SELECTOR, '')
+    MAP_AREA_18 = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>div#mapCanvas_layer0>div>img#mapCanvas_layer0_tile_12_2_2')
     LINE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="LINESTRING"]>h2>a')
     CIRCLE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="CIRCLE"]>h2>a')
     POLYGON_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="POLYGON"]>h2>a')
@@ -332,7 +332,6 @@ class ReportsScreen:
     THIRD_STATUS = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:nth-child(2)>div>ul[data-role="listview"]>li:nth-child(3)>a')  # INACTIVE
     FOURTH_STATUS = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:nth-child(2)>div>ul[data-role="listview"]>li:nth-child(4)>a')  # DRAFT
     SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div.ui-input-search>input#reportSearch')
-    # CREATED_REPORT = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div.main>ul.reports>li:first-child')
     CREATE_REPORT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-solo>li>a[href="#reportNew"]')
     EDIT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#reportView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.edit>a')
     FIRST_REPORT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div.main>ul>li:first-child>a')
@@ -341,22 +340,28 @@ class ReportsScreen:
     EDIT_REPORT_TITLE = (MobileBy.CSS_SELECTOR, 'div#reportEdit>div.ui-content>ul.edit-view>li:first-child>div>input#title')
     DELETE_ALERT = (MobileBy.CSS_SELECTOR, 'div#reportView>div#confirmDeleteReport-popup>div#confirmDeleteReport>div.ng-dialog-container>div>div.ui-controlgroup-controls>a:first-child')
     ASSETS_CHOOSER_FIELD = (MobileBy.CSS_SELECTOR, 'div#reportEdit>div.ui-content>ul.edit-view>li[name="new assets chooser"]>div.ui-select>div')  # inside already created report
-    #FIRST_ASSETS_FROM_THE_LIST = (MobileBy.CSS_SELECTOR, '')
+    CREATE_MAPPING_DATA = (MobileBy.CSS_SELECTOR, 'div#reportEdit>div.ui-content>ul.edit-view>li.geometryinput>a')
+    SEQUENCE_ON_LOAD = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_load"]')
+    SEQUENCE_ON_SAVE = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_save"]')
 
 
-class NewLogScreen:
+class LogsScreen:
     """A class for handling New Log screen"""
     SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                           'a[href="#save"]')
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
-    #LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, '')
+    # LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, '')
     ENTRY_FIELD = (MobileBy.CSS_SELECTOR, 'iframe[title="Rich Text Editor, entry"]')  # not working on iOS10
+    TYPES_FILTER = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div[data-role="collapsible"]>h2>a')
+    FIRST_FILTER = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div[data-role="collapsible"]>div>ul>li:first-child>a')
+    SECOND_FILTER = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div[data-role="collapsible"]>div>ul>li:nth-child(2)>a')
+    THIRD_FILTER = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div[data-role="collapsible"]>div>ul>li:nth-child(3)>a')
 
 
 class SentScreen:
     """A class for handling Sent screen"""
-    #SEARCH = EventsScreen.SEARCH_FIELD
+    # SEARCH = EventsScreen.SEARCH_FIELD
     SENT_COMMUNICATIONS_EMAIL = (MobileBy.CSS_SELECTOR, '')
 
 

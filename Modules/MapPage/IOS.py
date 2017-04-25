@@ -62,6 +62,8 @@ class IOS(MapPage):
 
     def double_click_in_map_area_3(self):
 
+        self.switch_context_to_webview()
+
         logging.info("double click on map")
         window_size = self.driver.get_window_size()  # this returns dictionary
         logging.info(window_size)
@@ -69,11 +71,21 @@ class IOS(MapPage):
         position_y = window_size["height"] * 0.75
         logging.info(position_x)
         logging.info(position_y)
-        sleep(2)
-        action = TouchAction(self.driver)
+        # sleep(4)
+        # action = TouchAction(self.driver)
+        # el = self.driver.find_element(*self.configuration.Map.MAP_AREA_18)
+        # action.tap(element=el, x=position_x, y=position_y, count=2).perform()
+        # action.tap(element=el, count=2).perform()
+        # # Appium 1.6 = "WDA double tap needs an element"
+        # sleep(4)
+
         el = self.driver.find_element(*self.configuration.Map.MAP_AREA_18)
+        action = TouchAction(self.driver)
         action.tap(element=el, x=position_x, y=position_y, count=2).perform()
-        # Appium 1.6 = "WDA double tap needs an element"
-        sleep(2)
+        #action.tap(element=el, count=2).perform()
 
-
+        self.switch_context_to_native()
+        # sleep(4)
+        # logging.info("test")
+        # el2 = self.driver.find_element(*self.configuration.Map.MAP_AREA_18)
+        # self.driver.execute_script("mobile: doubleTap", {"element": el2})

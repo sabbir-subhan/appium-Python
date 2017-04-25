@@ -1,11 +1,11 @@
-""" Methods for IOS to handle New Log Page """
+""" Methods for IOS to handle Logs Page """
 
-from Modules.NewLogPage.NewLogPage import NewLogPage
+from Modules.LogsPage.LogsPage import LogsPage
 import logging
 from time import sleep
 
 
-class IOS(NewLogPage):
+class IOS(LogsPage):
 
     def scroll_down_to_entry_field(self):
 

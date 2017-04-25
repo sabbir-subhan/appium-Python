@@ -1,4 +1,4 @@
-"""A class for methods to handle New Log Page """
+"""A class for methods to handle Logs Page """
 
 from Modules.BasePage.BasePage import BasePage
 from Modules.load_class import LoadClass
@@ -7,7 +7,7 @@ import logging
 from time import sleep
 
 
-class NewLogPage(BasePage):
+class LogsPage(BasePage):
 
     def click_on_lodging_agency_picker(self):
 
@@ -48,7 +48,7 @@ class NewLogPage(BasePage):
 
     def type_text_into_entry_field(self, text):
 
-        #self.switch_context_to_webview() # webview is not working on iOS10
+        # webview is not working on iOS10
 
         logging.info("type text into 'Entry' field")
         sleep(1)
@@ -57,4 +57,60 @@ class NewLogPage(BasePage):
         sleep(1)
         entry_field.send_keys(text)
 
-        #self.switch_context_to_native()
+    def expand_types_filter(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click to expand types filter")
+
+        types_filter = self.driver.find_element(*self.configuration.TYPES_FILTER)
+        self.assertIsNotNone(types_filter, "types filter not found")
+        types_filter.click()
+
+        self.switch_context_to_native()
+
+    def choose_first_filter(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("choose first filter")
+
+        first_filter = self.driver.find_element(*self.configuration.FIRST_FILTER)
+        self.assertIsNotNone(first_filter, "first filter not found")
+        first_filter.click()
+
+        self.switch_context_to_native()
+
+    def choose_second_filter(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("choose second filter")
+
+        second_filter = self.driver.find_element(*self.configuration.SECOND_FILTER)
+        self.assertIsNotNone(second_filter, "second filter not found")
+        second_filter.click()
+
+        self.switch_context_to_native()
+
+    def choose_third_filter(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("choose third filter")
+
+        third_filter = self.driver.find_element(*self.configuration.THIRD_FILTER)
+        self.assertIsNotNone(third_filter, "third filter not found")
+        third_filter.click()
+
+        self.switch_context_to_native()
+
+    def type_text_into_search_field(self):
+
+        logging.info("filter logs by search field")
+
+        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+        self.assertIsNotNone(search_field, "Search field not found")
+        search_field.click()
+        search_field.send_keys("Appium log with all fields")
+        sleep(1)
