@@ -50,13 +50,6 @@ class Android(LoginPage):
         action.long_press(el=domain_field, duration=1500).perform()
         self.driver.press_keycode(67)
 
-        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
-        platform_version = desired_capabilities.get('platformVersion')
-        if platform_version < "5":
-            self.driver.hide_keyboard()
-        else:
-            pass
-
         self.switch_context_to_webview()
 
         domain_field = self.driver.find_element(*self.configuration.LoginScreen.TEXTFIELD_DOMAIN)

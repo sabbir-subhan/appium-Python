@@ -53,9 +53,9 @@ class MapPage(BasePage):
 
     def click_tool_button(self):
 
+        sleep(2)
         self.switch_context_to_webview()
 
-        sleep(1)
         logging.info("click tool button")
         tool_button = self.driver.find_element(*self.configuration.Map.TOOL_BUTTON)
         self.assertIsNotNone(tool_button, "Tool button is not present")

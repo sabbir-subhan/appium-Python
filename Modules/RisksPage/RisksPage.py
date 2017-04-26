@@ -74,13 +74,9 @@ class RisksPage(BasePage):
         self.switch_context_to_webview()
 
         logging.info("open first risk register on the list")
-        # open_existing_risk_register = self.driver.find_element(*self.configuration.RisksScreen.
-        #                                                        PREVIOUSLY_CREATED_RISK_REGISTER)
-        # self.assertIsNotNone(open_existing_risk_register, "open existing Risk Register")
-        # open_existing_risk_register.click()
         open_existing_risk_register = self.driver.find_element(*self.configuration.RisksScreen.PREVIOUSLY_CREATED_RISK_REGISTER)
+        self.assertIsNotNone(open_existing_risk_register, "previously created risk register not found")
         open_existing_risk_register.click()
-        # open_existing_risk_register[0].click()
 
         self.switch_context_to_native()
 
@@ -139,6 +135,7 @@ class RisksPage(BasePage):
 
         logging.info("open first context on the list")
         open_existing_context = self.driver.find_element(*self.configuration.RisksScreen.PREVIOUSLY_CREATED_CONTEXT)
+        self.assertIsNotNone(open_existing_context, "previously created context not found")
         open_existing_context.click()
 
         self.switch_context_to_native()
@@ -213,6 +210,17 @@ class RisksPage(BasePage):
 
         self.switch_context_to_native()
 
+    def click_ok_button_in_risk_control_library(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click ok button")
+        ok = self.driver.find_element(*self.configuration.RisksScreen.OK_BUTTON_IN_RISK_CONTROL_LIBRARY)
+        self.assertIsNotNone(ok, "ok button not found")
+        ok.click()
+
+        self.switch_context_to_native()
+
     def open_existing_risk(self):
 
         self.switch_context_to_webview()
@@ -220,6 +228,7 @@ class RisksPage(BasePage):
         logging.info("open first risk on the list")
 
         open_existing_risk = self.driver.find_element(*self.configuration.RisksScreen.PREVIOUSLY_CREATED_RISK)
+        self.assertIsNotNone(open_existing_risk, "risk not found")
         open_existing_risk.click()
 
         self.switch_context_to_native()
@@ -372,4 +381,36 @@ class RisksPage(BasePage):
 
         self.switch_context_to_native()
 
+    def select_risk_library(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("open first risk library on the list")
+        risk_library = self.driver.find_element(*self.configuration.RisksScreen.RISK_LIBRARY)
+        self.assertIsNotNone(risk_library, "risk library not found")
+        risk_library.click()
+
+        self.switch_context_to_native()
+
+    def select_risk_inside_library(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("select risk inside library")
+        select_risk_inside_library = self.driver.find_element(*self.configuration.RisksScreen.RISK_INSIDE_LIBRARY)
+        self.assertIsNotNone(select_risk_inside_library, "risk inside library not found")
+        select_risk_inside_library.click()
+
+        self.switch_context_to_native()
+
+    def select_library_control_from_the_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("select library control from the list")
+        select_library_control_from_the_list = self.driver.find_element(*self.configuration.RisksScreen.LIBRARY_CONTROL)
+        self.assertIsNotNone(select_library_control_from_the_list, "library control not found")
+        select_library_control_from_the_list.click()
+
+        self.switch_context_to_native()
 

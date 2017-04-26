@@ -175,6 +175,19 @@ class IOS(MainPage):
                 logging.info("scroll down")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
 
+    def scroll_up_to_reports_button(self):
+
+        logging.info("scroll up with loop")
+        var = 1
+        while var == 1:
+            logging.info("check if reports button is visible")
+            reports_button = self.driver.find_element(*self.configuration.MainMenuScreen.REPORTS_BUTTON)
+            if reports_button.is_displayed():
+                break
+            else:
+                logging.info("scroll up")
+                self.driver.execute_script("mobile: scroll", {"direction": "up"})
+
 
 
 

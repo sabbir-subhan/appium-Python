@@ -85,6 +85,7 @@ class IOS(CommonPage):
 
     def alert_popup_allow(self):
 
+        logging.info('search for alert and click "Allow" if found')
         try:
             button_allow_location = self.driver.find_element(*self.configuration.iOS.IOS_ALLOW)
             if button_allow_location.is_displayed():

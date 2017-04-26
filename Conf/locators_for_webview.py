@@ -401,9 +401,14 @@ class RisksScreen:
                                           'a[href="#save"]')
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#riskregisterNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
+    # PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.CSS_SELECTOR, 'div#riskRegisterIndex>div.ui-content>ul.registers>li:first-child')  # not working on iOS 10
+    # PREVIOUSLY_CREATED_CONTEXT = (MobileBy.CSS_SELECTOR, 'div#riskcontextTreeView>div.ui-content>ul.contexts>li:first-child')
+    # PREVIOUSLY_CREATED_RISK = (MobileBy.CSS_SELECTOR, 'div#riskcontextTreeView>div.ui-content>ul.risks>li:first-child')
+    LIBRARY_CONTROL = (MobileBy.CSS_SELECTOR, 'div#riskcontrollibraryTreeView>div.ui-content>ul.category>li:first-child')
     PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.CSS_SELECTOR, 'ul.registers.listview.ui-listview>li>a')
     PREVIOUSLY_CREATED_CONTEXT = (MobileBy.CSS_SELECTOR, 'ul.contexts.listview.ui-listview>li>a')
-    RISK_REGISTERS_LIST = (MobileBy.CSS_SELECTOR, 'ul.registers.listview.ui-listview>li:first-child>a')  # changed from whole list
+    PREVIOUSLY_CREATED_RISK = (MobileBy.CSS_SELECTOR, 'ul.risks.listview.ui-listview>li>a')
+    RISK_REGISTERS_LIST = (MobileBy.CSS_SELECTOR, 'ul.registers.listview.ui-listview>li:first-child>a')
     NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#riskcontextTreeMoreMenu"]')
     ADD_NEW_CONTEXT = (MobileBy.CSS_SELECTOR, 'a[href="#riskcontextNew?parent=0"]')
     ADD_NEW_RISK = (MobileBy.CSS_SELECTOR, 'ul.context.footer.menu.ui-listview>li.new.risk>a')
@@ -415,7 +420,7 @@ class RisksScreen:
     SAVE_NEW_CONTEXT = (MobileBy.CSS_SELECTOR, 'div#riskcontextNew>div[data-role="footer"]>div>ul>li>a[href="#save"]')
     SAVE_NEW_RISK = (MobileBy.CSS_SELECTOR, 'div#riskNew>div[data-role="footer"]>div>ul>li>a[href="#save"]')
     OK_BUTTON = (MobileBy.CSS_SELECTOR, 'div#risklibraryTreeView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a')
-    PREVIOUSLY_CREATED_RISK = (MobileBy.CSS_SELECTOR, 'ul.risks.listview.ui-listview>li>a')
+    OK_BUTTON_IN_RISK_CONTROL_LIBRARY = (MobileBy.CSS_SELECTOR, 'div#riskcontrollibraryTreeView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a')
     MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#riskViewMoreMenu"]')
     ADD_NEW_CONTROL = (MobileBy.CSS_SELECTOR, 'li.new.control>a')
     ADD_LIBRARY_CONTROL = (MobileBy.CSS_SELECTOR, 'li.library.control>a')
@@ -429,6 +434,8 @@ class RisksScreen:
     REGISTER_VIEW = (MobileBy.CSS_SELECTOR, 'div#riskregisterView>div[data-role="main"]')
     DELETE_ALERT = (MobileBy.CSS_SELECTOR, 'div#confirmDeleteRisk>div.ng-dialog-container>div[data-role="controlgroup"]>div.ui-controlgroup-controls>a:first-child')
     REVIEW_ALERT = (MobileBy.CSS_SELECTOR, 'div#confirmReviewRisk>div.ng-dialog-container>div[data-role="controlgroup"]>div.ui-controlgroup-controls>a:first-child')
+    RISK_LIBRARY = (MobileBy.CSS_SELECTOR, 'div#risklibraryTreeView>div.ui-content>ul.category>li:first-child>a')
+    RISK_INSIDE_LIBRARY = (MobileBy.CSS_SELECTOR, 'div#risklibraryTreeView>div.ui-content>ul.item>li:first-child')
 
 
 class AssetsScreen:

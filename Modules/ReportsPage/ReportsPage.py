@@ -206,6 +206,7 @@ class ReportsPage(BasePage):
         search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
         self.assertIsNotNone(search_field, "Search field not found")
         search_field.click()
+        sleep(2)
         search_field.send_keys("Large")
         sleep(1)
 
@@ -216,6 +217,7 @@ class ReportsPage(BasePage):
         search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
         self.assertIsNotNone(search_field, "Search field not found")
         search_field.click()
+        sleep(2)
         search_field.send_keys("chooser fields")
         sleep(1)
 
@@ -421,6 +423,7 @@ class ReportsPage(BasePage):
         create_mapping_data.click()
 
         self.switch_context_to_native()
+        sleep(2)
 
     def check_on_load_and_on_save_sequences(self):
 

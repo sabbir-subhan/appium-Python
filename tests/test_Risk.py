@@ -1,5 +1,9 @@
 # Test Case - Risks -- OCAMOB-44
 
+# before running this test create:
+# - On OCA web page create Risk library with Risk inside it
+# - On OCA web page create Control library for risks
+
 # open OCA app
 # dismiss iOS notifications
 # input login, password and domain
@@ -8,15 +12,14 @@
 # dismiss alert about expiring password
 # dismiss iOS notifications
 # check if button "EVENTS" is present
+
 # From the main menu click on Risks.
 # Click on Create a new Risk Register > Enter the details >Save
 # Click on existing Risk Register > Click on new button > Click on Add new Context
 # Click on existing Risk Register > Click on existing context > Click on New button > Click on Add new Risk
-# Click on existing Risk Register > Click on existing context > Click on New button > Click on Add new library Risk > ?
-
+# Select a Risk Register > Select a context > New > Select risk library > Select risk from the list
 # Select existing Risk Register > Select existing Context > Click on existing Risk > Click On More >
 # Click Add new control > Fill in Details and Save
-
 # Select existing Risk Register > Select existing Context > Click on existing Risk > Click on more button > Delete this risk
 # Select existing Risk Register > Select existing Context > Click on existing Risk > Click on more > Add Library Control
 # Select existing Risk Register > Select existing Context > Click on existing Risk > Click on more > Mark as Reviewed
@@ -80,7 +83,7 @@ class TestRisk(SetupTestCase):
         risks_page.click_new_button()
         risks_page.click_add_new_context()
         risks_page.type_name_for_new_context()
-        # common_page.hide_keyboard()
+        common_page.hide_keyboard()
         risks_page.scroll_down_to_save_button()
         risks_page.save_new_context()
 
@@ -93,11 +96,11 @@ class TestRisk(SetupTestCase):
         risks_page.click_new_button()
         risks_page.click_add_new_risk()
         risks_page.type_name_for_new_risk()
-        # common_page.hide_keyboard()
+        common_page.hide_keyboard()
         risks_page.scroll_down_to_save_button()
         risks_page.save_new_risk()
 
-        # Click on existing Risk Register > Click on existing context > Click on New button > Click on Add new library Risk > ?
+        # Select a Risk Register > Select a context > New > Select risk library > Select risk from the list
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
         main_page.open_RISKS()
@@ -105,8 +108,9 @@ class TestRisk(SetupTestCase):
         risks_page.open_existing_context()
         risks_page.click_new_button()
         risks_page.click_add_library_risk()
+        risks_page.select_risk_library()
+        risks_page.select_risk_inside_library()
         risks_page.click_ok_button()
-        # ?? or some additional step ?
 
         # Select existing Risk Register > Select existing Context > Click on existing Risk > Click On More >
         # Click Add new control > Fill in Details and Save
@@ -144,6 +148,8 @@ class TestRisk(SetupTestCase):
         risks_page.open_existing_risk()
         risks_page.click_more_button()
         risks_page.click_add_library_control()
+        risks_page.select_library_control_from_the_list()
+        risks_page.click_ok_button_in_risk_control_library()
 
         # Select existing Risk Register > Select existing Context > Click on existing Risk > Click on more > Mark as Reviewed
         common_page.hamburger_button()

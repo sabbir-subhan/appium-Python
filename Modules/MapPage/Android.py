@@ -61,12 +61,16 @@ class Android(MapPage):
         action = TouchAction(self.driver)
         screen_size = self.driver.get_window_size(windowHandle='current')
         try:
-            if screen_size['width'] > 1400:
+            if screen_size['width'] > 1280:
+                logging.info("executing tap on map - device width > 1280")
                 action.tap(element=None, x=1200, y=1900, count=2).perform()
+            elif screen_size['height'] <= 1980 and screen_size['width'] >= 768:
+                logging.info("executing tap on map - device width => 768 and <= 1280")
+                action.tap(element=None, x=150, y=800, count=2).perform()
             else:
-                logging.info("executing tap on map - width < 1400")
+                logging.info("executing tap on map - device width < 768")
                 action.tap(element=None, x=100, y=600, count=2).perform()
-        except NoSuchElementException:
+        except:
             map6 = self.driver.find_element(*self.configuration.Map.MAP_AREA_6)
             action.tap(element=map6, count=2).perform()
         sleep(1)

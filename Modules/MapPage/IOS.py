@@ -6,6 +6,8 @@ from selenium.common.exceptions import *
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from appium.webdriver.common.touch_action import TouchAction
+from appium.webdriver.common.multi_action import MultiAction
+from appium.webdriver.common import *
 from time import sleep
 
 
@@ -55,6 +57,8 @@ class IOS(MapPage):
         window_size = self.driver.get_window_size()  # this returns dictionary
         position_x = window_size["width"] * 0.70
         position_y = window_size["height"] * 0.70
+        logging.info(position_x)
+        logging.info(position_y)
         positions = [(position_x, position_y)]
         # position = [(0, 0)]
         self.driver.tap(positions)
@@ -62,15 +66,13 @@ class IOS(MapPage):
 
     def double_click_in_map_area_3(self):
 
-        self.switch_context_to_webview()
-
-        logging.info("double click on map")
-        window_size = self.driver.get_window_size()  # this returns dictionary
-        logging.info(window_size)
-        position_x = window_size["width"] * 0.75
-        position_y = window_size["height"] * 0.75
-        logging.info(position_x)
-        logging.info(position_y)
+        # logging.info("double click on map")
+        # window_size = self.driver.get_window_size()  # this returns dictionary
+        # logging.info(window_size)
+        # position_x = window_size["width"] * 0.75
+        # position_y = window_size["height"] * 0.75
+        # logging.info(position_x)
+        # logging.info(position_y)
         # sleep(4)
         # action = TouchAction(self.driver)
         # el = self.driver.find_element(*self.configuration.Map.MAP_AREA_18)
@@ -79,13 +81,69 @@ class IOS(MapPage):
         # # Appium 1.6 = "WDA double tap needs an element"
         # sleep(4)
 
-        el = self.driver.find_element(*self.configuration.Map.MAP_AREA_18)
-        action = TouchAction(self.driver)
-        action.tap(element=el, x=position_x, y=position_y, count=2).perform()
-        #action.tap(element=el, count=2).perform()
-
-        self.switch_context_to_native()
+        # el = self.driver.find_element(*self.configuration.Map.MAP_AREA_18)
+        # action = TouchAction(self.driver)
+        # #action.tap(element=el, x=position_x, y=position_y, count=2).perform()
+        # action.tap(el, count=2).perform()
+        #
+        # self.switch_context_to_native()
         # sleep(4)
         # logging.info("test")
         # el2 = self.driver.find_element(*self.configuration.Map.MAP_AREA_18)
         # self.driver.execute_script("mobile: doubleTap", {"element": el2})
+
+        # logging.info("double click on map")
+        # window_size = self.driver.get_window_size()  # this returns dictionary
+        # position_x = window_size["width"] * 0.70
+        # position_y = window_size["height"] * 0.70
+        # logging.info(position_x)
+        # logging.info(position_y)
+        # positions = [(position_x, position_y)]
+        # el = self.driver.find_element(*self.configuration.Map.MAP_AREA_18)
+        #
+        # touch_action = TouchAction(self.driver)
+        # multi_action = MultiAction(self.driver)
+        # action0 = touch_action.tap(el)
+        # action1 = touch_action.tap(el)
+        # multi_action.add(action0).add(action1).perform()
+        # sleep(2)
+
+        # window_size = self.driver.get_window_size()  # this returns dictionary
+        # logging.info(window_size)
+        # position_x = window_size["width"] * 0.75
+        # position_y = window_size["height"] * 0.75
+        # logging.info(position_x)
+        # logging.info(position_y)
+        # action = TouchAction(self.driver)
+        # screen_size = self.driver.get_window_size(windowHandle='current')
+        # el = self.driver.find_element(*self.configuration.Map.MAP_AREA_18)
+        # try:
+        #     if screen_size['width'] > 760:
+        #         logging.info("executing tap on map - device width > 760")
+        #         action.tap(element=el, x=200, y=500, count=2).perform()
+        #     else:
+        #         logging.info("executing tap on map - device width < 760")
+        #         action.tap(element=el, x=100, y=300, count=2).perform()
+        # except:
+        #     action.tap(element=el, count=2).perform()
+        # sleep(1)
+
+        logging.info("double click on map")
+        window_size = self.driver.get_window_size()  # this returns dictionary
+        logging.info(window_size)
+        position_x = window_size["width"] * 0.50
+        position_y = window_size["height"] * 0.50
+        logging.info("position_x = " + str(position_x))
+        logging.info("position_y = " + str(position_y))
+        element = self.driver.find_element(*self.configuration.Map.MAP_AREA_18)
+        action = TouchAction(self.driver)
+
+        # sleep(1)
+        # positions = [(position_x, position_y)]
+        # self.driver.tap(positions)
+        # self.driver.tap(positions)
+
+        sleep(1)
+        action.tap(element=element, count=2).perform()
+        action.tap(element=element, x=position_x, y=position_y, count=2).perform()
+        sleep(2)
