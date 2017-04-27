@@ -19,7 +19,7 @@ class Android(LogsPage):
     # def type_text_into_entry_field(self, text):
     #
     #     logging.info("type text into 'Entry' field")
-    #     entry_field = self.driver.find_element(*self.configuration.NewLogScreen.ENTRY_FIELD)
+    #     entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
     #     location = entry_field.location
     #     print(location)
     #     x = location["x"] * 1.02
@@ -51,7 +51,7 @@ class Android(LogsPage):
 
         logging.info("type text into 'Entry' field")
         sleep(1)
-        entry_field = self.driver.find_element(*self.configuration.NewLogScreen.ENTRY_FIELD)
+        entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
         entry_field.click()
         sleep(1)
         logging.info("sending keys")

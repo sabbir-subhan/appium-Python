@@ -3,9 +3,21 @@
 from Modules.LogsPage.LogsPage import LogsPage
 import logging
 from time import sleep
+from selenium.common.exceptions import *
+from appium.webdriver.common.touch_action import TouchAction
 
 
 class IOS(LogsPage):
+
+    def click_on_lodging_agency_picker(self):
+
+        sleep(1)
+        logging.info("click on 'Lodging Agency' picker")
+        lodging_agency_picker = self.driver.find_element(*self.configuration.LogsScreen.LODGING_AGENCY_PICKER)
+        self.assertIsNotNone(lodging_agency_picker, "Lodging Agency picker was not found")
+        action = TouchAction(self.driver)
+        action.tap(element=lodging_agency_picker, count=1).perform()
+        sleep(1)
 
     def scroll_down_to_entry_field(self):
 
@@ -13,7 +25,7 @@ class IOS(LogsPage):
         var = 20
         while var > 0:
             logging.info("check if entry field is visible")
-            entry_field = self.driver.find_element(*self.configuration.NewLogScreen.ENTRY_FIELD)
+            entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
             if entry_field.is_displayed():
                 break
             else:
@@ -24,7 +36,7 @@ class IOS(LogsPage):
     # def type_text_into_entry_field(self, text):
     #
     #     logging.info("type text into 'Entry' field")
-    #     entry_field = self.driver.find_element(*self.configuration.NewLogScreen.ENTRY_FIELD)
+    #     entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
     #     entry_field.click()
     #     sleep(1)
     #     entry_field.send_keys(text)

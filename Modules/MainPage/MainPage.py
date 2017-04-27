@@ -49,7 +49,7 @@ class MainPage(BasePage):
         # self.switch_context_to_webview()  # it looks like in webview all elements are present everywhere
         # and wait for condition is not working correctly in webview
 
-        WebDriverWait(self.driver, 25).until(
+        WebDriverWait(self.driver, 30).until(
             expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
             "Events button in Main Menu is not present")
 
@@ -198,6 +198,7 @@ class MainPage(BasePage):
         logs_button.click()
 
         self.switch_context_to_native()
+        sleep(1)
 
     def open_REPORTS(self):
 
@@ -209,6 +210,7 @@ class MainPage(BasePage):
         reports_button.click()
 
         self.switch_context_to_native()
+        sleep(1)
 
     def open_MAP(self):
 
@@ -237,6 +239,7 @@ class MainPage(BasePage):
         assets_button.click()
 
         self.switch_context_to_native()
+        sleep(1)
 
     def open_MY_MESSAGES(self):
 

@@ -404,11 +404,13 @@ class ReportsScreen:
     REPORT_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_with_visibility_rules")]]')
 
 
-class NewLogScreen:
-    """A class for handling New Log screen"""
+class LogsScreen:
+    """A class for handling Logs screen"""
     LODGING_AGENCY_PICKER = (MobileBy.ID, 'field-201')
     LODGING_AGENCY_PICKER2 = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Spinner[1]')
     ENTRY_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc="Rich Text Editor, entry"]/android.view.View[2]')
+    CREATED_LOG_WITH_ALL_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "all fields")]]')
+    LOG_TYPE_WITH_ALL_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "log_with_all_fields")]]')
 
 
 class SentScreen:

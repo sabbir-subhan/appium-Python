@@ -326,10 +326,12 @@ class ReportsScreen:
     REPORT_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_visibility_rules")]]')
 
 
-class NewLogScreen:
-    """A class for handling New Log screen"""
+class LogsScreen:
+    """A class for handling Logs screen"""
     LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//UIAWebView/UIAElement[1]')
     ENTRY_FIELD = (MobileBy.CLASS_NAME, 'UIATextField')
+    CREATED_LOG_WITH_ALL_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "all fields")]]')
+    LOG_TYPE_WITH_ALL_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "log_with_all_fields")]]')
 
 
 class SentScreen:

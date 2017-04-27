@@ -269,13 +269,16 @@ class AssetsPage(BasePage):
         search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
         self.assertIsNotNone(search_field, "Search field not found")
         search_field.click()
+        sleep(2)
         search_field.send_keys("Map")
+        sleep(1)
 
     def check_result(self):
 
         logging.info("check result")
         created_map_asset = self.driver.find_elements(*self.configuration.AssetsScreen.CREATED_MAP_ASSET)
-        self.assertIsNotNone(created_map_asset[1], "created map asset not found")
+        # self.assertIsNotNone(created_map_asset[1], "created map asset not found")
+        self.assertIsNotNone(created_map_asset[0], "created map asset not found")
 
     def clear_Search_field(self):
 

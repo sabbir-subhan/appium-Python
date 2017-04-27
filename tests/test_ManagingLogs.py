@@ -77,13 +77,16 @@ class TestManagingLogs(SetupTestCase):
         main_page.open_LOGS()
         logs_page = LoadClass.load_page('LogsPage')
         logs_page.setDriver(self.driver)
+        logs_page.create_new_log()
+        logs_page.choose_log_type_with_all_fields()
         logs_page.click_on_lodging_agency_picker()
         logs_page.choose_lodging_agency()
         logs_page.scroll_down_to_entry_field()
         logs_page.type_text_into_entry_field("Appium log with all fields")
         common_page.hide_keyboard()
         logs_page.scroll_down_to_save_button()
-        logs_page.click_save_button()
+        logs_page.click_save_new_log()
+        common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
         # From the main menu press the Logs button. On the search form, filter logs by type and enter search terms.
@@ -94,7 +97,59 @@ class TestManagingLogs(SetupTestCase):
         logs_page.choose_third_filter()
         logs_page.expand_types_filter()
         logs_page.choose_first_filter()
-        logs_page.type_text_into_search_field()  # search for Report containing words "Appium log with all fields"
+        logs_page.type_text_into_search_field()  # search for Report containing words "all fields"
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
+        logs_page.check_result()
+        logs_page.clear_Search_field()
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        # Select an existing log. Press Edit to update the log and press Save.
+        main_page.open_LOGS()
+        logs_page.open_first_log_on_the_list()
+        logs_page.click_edit_button()
+        logs_page.scroll_down_to_entry_field()
+        logs_page.type_text_into_entry_field("  - edited")
+        common_page.hide_keyboard()
+        logs_page.scroll_down_to_save_button()
+        logs_page.click_save_edited_log()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        # Select an existing log. Press More > Delete log.
+        main_page.open_LOGS()
+        logs_page.open_first_log_on_the_list()
+        logs_page.click_more_button()
+        logs_page.click_delete_log()
+        logs_page.alert_accept_delete()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        # Create a new log and select an event and asset.
+        main_page.open_LOGS()
+        logs_page.create_new_log()
+        logs_page.choose_log_type_with_all_fields()
+        logs_page.click_on_lodging_agency_picker()
+        logs_page.choose_lodging_agency()
+
+        logs_page.click_event_chooser_field()
+        logs_page.choose_first_event_on_the_list()
+        logs_page.click_asset_chooser_field()
+        logs_page.choose_first_asset_on_the_list()
+
+        logs_page.scroll_down_to_entry_field()
+        logs_page.type_text_into_entry_field("Appium log with all fields")
+        common_page.hide_keyboard()
+        logs_page.scroll_down_to_save_button()
+        logs_page.click_save_new_log()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        # Create and update a log with chooser fields.
+        main_page.open_LOGS()
 
 
 if __name__ == '__main__':

@@ -30,27 +30,29 @@ class ReportsPage(BasePage):
 
     def click_on_lodging_agency_picker(self):
 
-        # self.switch_context_to_webview()
-        #
-        # logging.info("click on 'Lodging Agency' picker")
-        # lodging_agency_picker = self.driver.find_element(*self.configuration.ReportsScreen.LODGING_AGENCY_PICKER)
-        # self.assertIsNotNone(lodging_agency_picker, "Lodging Agency picker was not found")
-        # sleep(1)
-        # lodging_agency_picker.click()
-        # sleep(2)
-        #
-        # self.switch_context_to_native()
-
-        sleep(5)
-        logging.info("click on 'Lodging Agency' picker")
-        try:
-            lodging_agency_picker = self.driver.find_element(*self.configuration.ReportsScreen.LODGING_AGENCY_PICKER)
-        except NoSuchElementException:
-            lodging_agency_picker = self.driver.find_element(*self.configuration.ReportsScreen.LODGING_AGENCY_PICKER2)
-        self.assertIsNotNone(lodging_agency_picker, "Lodging Agency picker was not found")
-        action = TouchAction(self.driver)
-        action.tap(element=lodging_agency_picker, count=1).perform()
         sleep(1)
+        self.switch_context_to_webview()
+
+        sleep(1)
+        logging.info("click on 'Lodging Agency' picker")
+        lodging_agency_picker = self.driver.find_element(*self.configuration.ReportsScreen.NEW_REPORT_LODGING_AGENCY_PICKER)
+        self.assertIsNotNone(lodging_agency_picker, "lodging agency picker not found")
+        lodging_agency_picker.click()
+
+        self.switch_context_to_native()
+
+    def click_on_lodging_agency_picker_inside_created_report(self):
+
+        sleep(1)
+        self.switch_context_to_webview()
+
+        sleep(1)
+        logging.info("click on 'Lodging Agency' picker")
+        lodging_agency_picker = self.driver.find_element(*self.configuration.ReportsScreen.EDIT_REPORT_LODGING_AGENCY_PICKER)
+        self.assertIsNotNone(lodging_agency_picker, "lodging agency picker not found")
+        lodging_agency_picker.click()
+
+        self.switch_context_to_native()
 
     def click_publish_new_report(self):
 
@@ -226,7 +228,8 @@ class ReportsPage(BasePage):
         logging.info("check result")
         sleep(1)
         created_report = self.driver.find_elements(*self.configuration.ReportsScreen.CREATED_REPORT_WITH_ALL_FIELDS)
-        self.assertIsNotNone(created_report[1], "Report not found")
+        # self.assertIsNotNone(created_report[1], "Report not found")
+        self.assertIsNotNone(created_report[0], "Report not found")
 
     def clear_Search_field(self):
 

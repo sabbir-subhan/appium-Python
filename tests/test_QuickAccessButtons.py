@@ -70,6 +70,7 @@ class TestQuickAccessButtons(SetupTestCase):
         main_page.click_ACTIVATE_BUTTON_on_alert()
         main_page.check_if_alert_WORKFLOW_ACTIVATED_is_present()
         main_page.check_presence_of_events_button()
+
         main_page.open_CREATE_CONTACT()
         new_contact_page = LoadClass.load_page('NewContactPage')
         new_contact_page.setDriver(self.driver)
@@ -78,6 +79,7 @@ class TestQuickAccessButtons(SetupTestCase):
         new_contact_page.scroll_down_to_save_button()
         new_contact_page.click_save_button()
         main_page.check_presence_of_events_button()
+
         main_page.open_CREATE_TASK()
         new_task_page = LoadClass.load_page('NewTaskPage')
         new_task_page.setDriver(self.driver)
@@ -92,6 +94,7 @@ class TestQuickAccessButtons(SetupTestCase):
         new_task_page.scroll_down_to_save_button()
         new_task_page.click_save_button()
         main_page.check_presence_of_events_button()
+
         main_page.open_CREATE_REPORT()
         new_report_page = LoadClass.load_page('ReportsPage')
         new_report_page.setDriver(self.driver)
@@ -102,10 +105,12 @@ class TestQuickAccessButtons(SetupTestCase):
         new_report_page.scroll_down_to_publish_button()
         new_report_page.click_publish_new_report()
         main_page.check_presence_of_events_button()
+
         main_page.open_WEBSITE_LINK()
         sleep(10)  # wait for page to load
         common_page.click_back_button()
         main_page.check_presence_of_events_button()
+
         main_page.open_INCIDENT()
         event_edit_page = LoadClass.load_page('EventEditPage')
         event_edit_page.setDriver(self.driver)
@@ -114,6 +119,7 @@ class TestQuickAccessButtons(SetupTestCase):
         event_edit_page.scroll_down_to_save_button()
         event_edit_page.click_save_new_event()
         main_page.check_presence_of_events_button()
+
         main_page.open_CREATE_ASSETS()
         new_asset_page = LoadClass.load_page('AssetsPage')
         new_asset_page.setDriver(self.driver)
@@ -122,6 +128,7 @@ class TestQuickAccessButtons(SetupTestCase):
         new_asset_page.scroll_down_to_save_button()
         new_asset_page.click_save_button()
         main_page.check_presence_of_events_button()
+
         main_page.open_CREATE_LOG()
         new_log_page = LoadClass.load_page('LogsPage')
         new_log_page.setDriver(self.driver)

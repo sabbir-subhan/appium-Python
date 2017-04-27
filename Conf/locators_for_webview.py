@@ -116,7 +116,6 @@ class LocationScreen:
 
 class EventsScreen:
     """A class for Events screen locators - screen after clicking into Events button in Main Menu."""
-    #EVENTS_HEADER = (MobileBy.CSS_SELECTOR, '')
 
     # # filtering events by Type
     # ANY_TYPE_EXPAND = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div[data-role="main"]>div.filters>div[data-role="collapsible"]>h2>a>span[data-translate="Any Type"]')
@@ -143,6 +142,7 @@ class EventsScreen:
 
     # previously created event
     PREVIOUSLY_CREATED_EVENT = (MobileBy.CSS_SELECTOR, 'ul.emes.listview.ui-listview>li:first-child>a')
+    # PREVIOUSLY_CREATED_EVENT_CHECKBOX = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div.ui-content>div.main>ul[data-role="listview"]>li:first-child>div.ui-checkbox')
     PREVIOUSLY_CREATED_EVENT_CHECKBOX = (MobileBy.CSS_SELECTOR, 'ul.emes.listview.ui-listview>li:first-child>div.ui-checkbox')
 
     #CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, 'li.primary.eme.clear.ui-first-child>a')
@@ -315,7 +315,9 @@ class NewTaskScreen:
 class ReportsScreen:
     """A class for handling Reports screen"""
     TITLE = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li:first-child>div>input#title')
-    LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, 'div#field-1201-button>select[name="lodging agency"]')
+    # LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, 'div#field-1201-button>select[name="lodging agency"]')
+    NEW_REPORT_LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li>div.ui-select>div.ui-btn>select[name="lodging agency"]')  # not working on iOS 10
+    EDIT_REPORT_LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, 'div#reportEdit>div.ui-content>ul.edit-view>li>div.ui-select>div.ui-btn>select[name="lodging agency"]')
     # LODGING_AGENCY = (MobileBy.CSS_SELECTOR, '')  # picker wheel on iOS and popup on Android are native elements
     PUBLISH_NEW_REPORT = (MobileBy.CSS_SELECTOR, 'div#reportNew>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-b>li.ui-block-a>a[href="#save"]')
     CANCEL_NEW_REPORT = (MobileBy.CSS_SELECTOR, 'div#reportNew>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-b>li.ui-block-c>a[href="#cancel"]')
@@ -343,20 +345,6 @@ class ReportsScreen:
     CREATE_MAPPING_DATA = (MobileBy.CSS_SELECTOR, 'div#reportEdit>div.ui-content>ul.edit-view>li.geometryinput>a')
     SEQUENCE_ON_LOAD = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_load"]')
     SEQUENCE_ON_SAVE = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_save"]')
-
-
-class LogsScreen:
-    """A class for handling New Log screen"""
-    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
-                                          'a[href="#save"]')
-    CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
-                                            'a[href="#cancel"]')
-    # LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, '')
-    ENTRY_FIELD = (MobileBy.CSS_SELECTOR, 'iframe[title="Rich Text Editor, entry"]')  # not working on iOS10
-    TYPES_FILTER = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div[data-role="collapsible"]>h2>a')
-    FIRST_FILTER = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div[data-role="collapsible"]>div>ul>li:first-child>a')
-    SECOND_FILTER = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div[data-role="collapsible"]>div>ul>li:nth-child(2)>a')
-    THIRD_FILTER = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div[data-role="collapsible"]>div>ul>li:nth-child(3)>a')
 
 
 class SentScreen:
@@ -463,6 +451,30 @@ class AssetsScreen:
     SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.filters>div>input[id="assetSearch"]')
     CREATE_MAPPING_DATA = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li.geometryinput>a')
     ADD_MEDIA_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li.ui-li-static.ui-body-inherit>div.addmedia.edit-mode>a')
+
+
+class LogsScreen(EventsScreen, AssetsScreen):
+    """A class for handling New Log screen"""
+    CREATE_NEW_LOG = (MobileBy.CSS_SELECTOR, 'div#logIndex>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-solo>li.ui-block-a>a[href="#logNew"]')
+    SAVE_NEW_LOG = (MobileBy.CSS_SELECTOR, 'div#logNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#save"]')
+    SAVE_EDITED_LOG = (MobileBy.CSS_SELECTOR, 'div#logEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#save"]')
+    CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#cancel"]')
+    NEW_LOG_LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-content>ul.edit-view>li:nth-child(2)>div.ui-select>div.ui-btn>select[name="lodging agency"]')  # not working on iOS 10
+    EDIT_LOG_LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, 'div#logEdit>div.ui-content>ul.edit-view>li:nth-child(2)>div.ui-select>div.ui-btn>select[name="lodging agency"]')
+    ENTRY_FIELD = (MobileBy.CSS_SELECTOR, 'iframe[title="Rich Text Editor, entry"]')  # not working on iOS10
+    TYPES_FILTER = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div[data-role="collapsible"]>h2>a')
+    FIRST_FILTER = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div[data-role="collapsible"]>div>ul>li:first-child>a')
+    SECOND_FILTER = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div[data-role="collapsible"]>div>ul>li:nth-child(2)>a')
+    THIRD_FILTER = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div[data-role="collapsible"]>div>ul>li:nth-child(3)>a')
+    FIRST_LOG_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div.main>ul.logs>li:first-child')
+    EDIT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.edit>a')
+    MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-b>a[href="#logViewMoreMenu"]')
+    DELETE_LOG = (MobileBy.CSS_SELECTOR, 'div#logView>div.ui-popup-container>div#logViewMoreMenu>ul>li.log.delete>a')
+    DELETE_ALERT = (MobileBy.CSS_SELECTOR, 'div#logView>div#confirmDeleteLog-popup>div#confirmDeleteLog>div.ng-dialog-container>div>div.ui-controlgroup-controls>a:first-child')
+    EDIT_CHOOSER_FIELD = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-content>ul.edit-view>li[name="event(s)"]>div.ui-select')  # events chooser field inside new log
+    ASSET_CHOOSER_FIELD = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-content>ul.edit-view>li[name="asset(s)"]>div.ui-select')
+    FIRST_EVENT_ON_THE_LIST = EventsScreen.PREVIOUSLY_CREATED_EVENT_CHECKBOX
+    FIRST_ASSET_ON_THE_LIST = AssetsScreen.PREVIOUSLY_CREATED_ASSET_CHECKBOX
 
 
 class SelectMediaScreen:
