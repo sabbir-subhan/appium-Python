@@ -82,10 +82,9 @@ class DesiredCapabilities(object):
         },
 
         "Android 5 emulator": {
-            # Google Nexus 4 - 5.1 - API 21 - 768x1280
             "platformName": "ANDROID",
-            "platformVersion": "5.1",
-            "deviceName": "192.168.56.101:5555",
+            "platformVersion": "5.1.1",
+            "deviceName": "emulator-5554",
             "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8-x86.apk"),
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",

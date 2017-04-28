@@ -1,12 +1,12 @@
-""" Methods for IOS to handle New Task Page """
+""" Methods for IOS to handle Tasks Page """
 
-from Modules.NewTaskPage.NewTaskPage import NewTaskPage
+from Modules.TasksPage.TasksPage import TasksPage
 from appium.webdriver.common.touch_action import TouchAction
 import logging
 from Modules.load_class import LoadClass
 
 
-class IOS(NewTaskPage):
+class IOS(TasksPage):
 
     def choose_current_date(self):
 
@@ -16,7 +16,7 @@ class IOS(NewTaskPage):
             common_page.setDriver(self.driver)
             common_page.done_button()
         except:
-            start_date = self.driver.find_element(*self.configuration.NewTaskScreen.START_DATE)  # can't click because of invisible element
+            start_date = self.driver.find_element(*self.configuration.TasksScreen.START_DATE)  # can't click because of invisible element
             location = start_date.location
             x = location["x"]
             y = location["y"]

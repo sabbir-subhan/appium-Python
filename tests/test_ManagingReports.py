@@ -3,12 +3,14 @@
 # before running this test create:
 # - Lodging agency named: "contact_group_for_tests"
 # - report type with all fields, named: "report_for_tests"
-# - report type with chooser fields, named: "report_with_chooser_fields"
+# - report type with chooser fields, named: "report_with_chooser_fields", must contain asset chooser field as a last field in form,
 # - report type with on load and on save sequence (with default value = "test on load") and on save sequence, named: "report_with_on_load_sequence" (like in TC: Managing Events)
 # - report type with visibility rules, named: "report_with_visibility_rules", with fields "New option list" - with options; "1", "2", "3" that options should restore 3 other fields. "field to restore",
 # "New website address" with value: "http://bitnoi.se/" and "New email address" with value: "test@noggin.com" - visibility rules like in TC: Managing Events
 # (option 1 restores field to restore, option 2 restores New email address field, option 3 restores New website address)
 # report type with on create approval workflow, named: "report_with_on_create_approval"
+# - report type, named: "report_with_assigned_question" and workflow assigned to that - triggered on edit that report, that workflow must contain "Assign a question node" with title: "Report approval task"
+#  and two possible answers: "Yes/No", (field Assign to: Contact that activated workflow: Workflow info)
 
 # open OCA app
 # dismiss iOS notifications
@@ -104,7 +106,7 @@ class TestManagingReports(SetupTestCase):
         main_page.open_REPORTS()
         reports_page.filter_reports_by_type()
         reports_page.filter_reports_by_status()
-        reports_page.type_text_into_search_field()  # search for Report containing word "Large"
+        reports_page.type_text_into_search_field("Large")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         reports_page.check_result()
@@ -116,7 +118,7 @@ class TestManagingReports(SetupTestCase):
 
         # Select the report you created and press Edit, Change some values and press Save
         main_page.open_REPORTS()
-        reports_page.type_text_into_search_field()  # search for Report containing word "Large"
+        reports_page.type_text_into_search_field("Large")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         reports_page.check_result()
@@ -153,7 +155,7 @@ class TestManagingReports(SetupTestCase):
         main_page.check_presence_of_events_button()
 
         main_page.open_REPORTS()
-        reports_page.search_for_report_with_chooser_fields()  # search for Report containing word "chooser fields"
+        reports_page.type_text_into_search_field("chooser fields")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         reports_page.edit_created_report_with_chooser_fields()
@@ -191,9 +193,43 @@ class TestManagingReports(SetupTestCase):
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
-        # Go back to the main menu > Tasks > Report Approval Task > Approve           ??????????????????????????
+        # Go back to the main menu > Tasks > Report Approval Task > Approve
+        main_page.open_REPORTS()
+        reports_page.click_create_report_button()
+        reports_page.choose_report_type_with_assigned_question()
+        reports_page.type_title("Report assigned question")
+        reports_page.click_on_lodging_agency_picker()
+        reports_page.choose_lodging_agency()
+        reports_page.scroll_down_to_publish_button()
+        reports_page.click_publish_new_report()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        main_page.open_REPORTS()
+        reports_page.filter_reports_by_any_status()
+        reports_page.clear_Search_field()
+        reports_page.type_text_into_search_field("assigned")
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
+        reports_page.edit_created_report_with_assigned_question()
+        reports_page.click_edit_button()
+        reports_page.scroll_down_to_publish_button()
+        reports_page.click_publish_edited_report()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
         main_page.scroll_down_to_tasks_button()
         main_page.open_TASKS()
+        tasks_page = LoadClass.load_page('TasksPage')
+        tasks_page.setDriver(self.driver)
+        tasks_page.filter_tasks_to_required_action()
+        tasks_page.clear_Search_field()
+        tasks_page.type_text_into_search_field("approval")
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
+        tasks_page.edit_created_task_with_approval()
+        tasks_page.click_button_yes_for_action_required()
+        tasks_page.alert_confirm_action_required()
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()
 
@@ -202,7 +238,12 @@ class TestManagingReports(SetupTestCase):
         # Edit a report > Edit mapping data. Add points, circles, lines, polygons and other layers to the map
         main_page.scroll_up_to_reports_button()
         main_page.open_REPORTS()
-        reports_page.filter_reports_by_active_status()
+        reports_page.filter_reports_by_any_status()
+        reports_page.clear_Search_field()
+        #reports_page.filter_reports_by_active_status()
+        reports_page.type_text_into_search_field("Large")
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
         reports_page.edit_first_report_on_the_list()
         reports_page.click_edit_button()
         reports_page.edit_report_title(" - map")

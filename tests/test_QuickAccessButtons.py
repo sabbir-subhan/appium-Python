@@ -81,7 +81,7 @@ class TestQuickAccessButtons(SetupTestCase):
         main_page.check_presence_of_events_button()
 
         main_page.open_CREATE_TASK()
-        new_task_page = LoadClass.load_page('NewTaskPage')
+        new_task_page = LoadClass.load_page('TasksPage')
         new_task_page.setDriver(self.driver)
         new_task_page.type_title("Title for new task test")
         # common_page.hide_keyboard()

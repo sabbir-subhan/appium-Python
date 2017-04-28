@@ -1,11 +1,11 @@
-""" Methods for Android on New Task Page """
+""" Methods for Android on Tasks Page """
 
-from Modules.NewTaskPage.NewTaskPage import NewTaskPage
+from Modules.TasksPage.TasksPage import TasksPage
 from Modules.load_class import LoadClass
 import logging
 
 
-class Android(NewTaskPage):
+class Android(TasksPage):
 
     def choose_current_date(self):
 

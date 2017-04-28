@@ -5,6 +5,7 @@ import logging
 from time import sleep
 from selenium.common.exceptions import *
 from appium.webdriver.common.touch_action import TouchAction
+from Modules.load_class import LoadClass
 
 
 class IOS(LogsPage):
@@ -55,5 +56,11 @@ class IOS(LogsPage):
                 logging.info("scroll down to save button")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
                 scroll = scroll - 1
+
+    def scroll_down_to_option_list(self):
+
+        reports_page = LoadClass.load_page('ReportsPage')
+        reports_page.setDriver(self.driver)
+        reports_page.scroll_down_to_option_list()
 
 

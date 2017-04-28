@@ -295,8 +295,8 @@ class NewContactScreen:
     FIRST_NAME = (MobileBy.CSS_SELECTOR, 'input[id="first name"]')
 
 
-class NewTaskScreen:
-    """A class for handling New Task screen"""
+class TasksScreen:
+    """A class for handling Tasks screen"""
     SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                           'a[href="#save"]')
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
@@ -310,6 +310,13 @@ class NewTaskScreen:
     # CHOOSE_CONTACTS = (MobileBy.CSS_SELECTOR, '')
     # START_DATE = (MobileBy.CSS_SELECTOR, '')
     # HIDE_DATE_PICKER = (MobileBy.CSS_SELECTOR, '')
+    YES_BUTTON_FOR_ACTION_REQUIRED = (MobileBy.CSS_SELECTOR, 'div#taskView>div.ui-content>ul.ui-listview>li.ui-li-static>ul.ui-grid-a.outcomeOptions>li.ui-block-a>a[href="#confirmOutcomeTask"]')
+    ALERT_CONFIRM_ACTION_REQUIRED = (MobileBy.CSS_SELECTOR, 'div#taskView>div.ui-popup-container>div#confirmOutcomeTask>div.ng-dialog-container>div>div>a:first-child')
+    FILTERS = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-content>div[data-role="collapsible"]:first-child>h2>a')
+    MY_TASKS = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-content>div[data-role="collapsible"]:first-child>div>ul[data-role="listview"]>li:first-child>a')
+    ALL_TASKS = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-content>div[data-role="collapsible"]:first-child>div>ul[data-role="listview"]>li:nth-child(2)>a')
+    INCOMPLETE_TASKS = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-content>div[data-role="collapsible"]:first-child>div>ul[data-role="listview"]>li:nth-child(3)>a')
+    ACTION_REQUIRED_TASKS = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-content>div[data-role="collapsible"]:first-child>div>ul[data-role="listview"]>li:nth-child(4)>a')
 
 
 class ReportsScreen:
@@ -458,7 +465,7 @@ class LogsScreen(EventsScreen, AssetsScreen):
     CREATE_NEW_LOG = (MobileBy.CSS_SELECTOR, 'div#logIndex>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-solo>li.ui-block-a>a[href="#logNew"]')
     SAVE_NEW_LOG = (MobileBy.CSS_SELECTOR, 'div#logNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#save"]')
     SAVE_EDITED_LOG = (MobileBy.CSS_SELECTOR, 'div#logEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#save"]')
-    CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#cancel"]')
+    CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#cancel"]')  # cancel button for new log
     NEW_LOG_LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-content>ul.edit-view>li:nth-child(2)>div.ui-select>div.ui-btn>select[name="lodging agency"]')  # not working on iOS 10
     EDIT_LOG_LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, 'div#logEdit>div.ui-content>ul.edit-view>li:nth-child(2)>div.ui-select>div.ui-btn>select[name="lodging agency"]')
     ENTRY_FIELD = (MobileBy.CSS_SELECTOR, 'iframe[title="Rich Text Editor, entry"]')  # not working on iOS10
@@ -471,10 +478,17 @@ class LogsScreen(EventsScreen, AssetsScreen):
     MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-b>a[href="#logViewMoreMenu"]')
     DELETE_LOG = (MobileBy.CSS_SELECTOR, 'div#logView>div.ui-popup-container>div#logViewMoreMenu>ul>li.log.delete>a')
     DELETE_ALERT = (MobileBy.CSS_SELECTOR, 'div#logView>div#confirmDeleteLog-popup>div#confirmDeleteLog>div.ng-dialog-container>div>div.ui-controlgroup-controls>a:first-child')
-    EDIT_CHOOSER_FIELD = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-content>ul.edit-view>li[name="event(s)"]>div.ui-select')  # events chooser field inside new log
+    EVENT_CHOOSER_FIELD = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-content>ul.edit-view>li[name="event(s)"]>div.ui-select')  # events chooser field inside new log
     ASSET_CHOOSER_FIELD = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-content>ul.edit-view>li[name="asset(s)"]>div.ui-select')
     FIRST_EVENT_ON_THE_LIST = EventsScreen.PREVIOUSLY_CREATED_EVENT_CHECKBOX
     FIRST_ASSET_ON_THE_LIST = AssetsScreen.PREVIOUSLY_CREATED_ASSET_CHECKBOX
+    # LOG_TYPE_WITH_ALL_FIELDS = (MobileBy.CSS_SELECTOR, '')  # native element
+    # LOG_TYPE_WITH_CHOOSER_FIELDS = (MobileBy.CSS_SELECTOR, '')  # native element
+    LOG_CHOOSER_FIELD_INSIDE_NEW_LOG = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-content>ul.edit-view>li[name="new log entries chooser"]>div.ui-select>div')  # inside new log
+    LOG_CHOOSER_FIELD = (MobileBy.CSS_SELECTOR, 'div#logEdit>div.ui-content>ul.edit-view>li[name="new log entries chooser"]>div.ui-select>div')  # inside existing log
+    PREVIOUSLY_CREATED_LOG_CHECKBOX = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div.main>ul[data-role="listview"]>li:first-child>div.ui-checkbox')  # whole list element - not just link
+    SEQUENCE_ON_LOAD = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_load"]')
+    SEQUENCE_ON_SAVE = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_save"]')
 
 
 class SelectMediaScreen:

@@ -14,6 +14,7 @@ class Android(ReportsPage):
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         common_page.scroll_down_one_view()
+        common_page.scroll_down_one_view()
 
     def choose_lodging_agency(self):
 

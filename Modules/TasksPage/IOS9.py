@@ -1,6 +1,6 @@
-""" Methods for IOS9 on New Task Page """
+""" Methods for IOS9 on Tasks Page """
 
-from Modules.NewTaskPage.IOS import IOS
+from Modules.TasksPage.IOS import IOS
 
 
 class IOS9(IOS):

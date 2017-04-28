@@ -298,7 +298,7 @@ class NewContactScreen:
     FIRST_NAME = (MobileBy.XPATH, '//UIATextField [@name="First name"]')
 
 
-class NewTaskScreen:
+class TasksScreen:
     """A class for handling New Task screen"""
     TITLE = (MobileBy.XPATH, '//UIATextField[1]')  # locating input field by xpath with name won't work
     ASSIGNED = (MobileBy.XPATH, '//UIAStaticText[@name="Assigned"]')
@@ -310,6 +310,7 @@ class NewTaskScreen:
     CHOOSE_CONTACTS = (MobileBy.XPATH, '//UIAStaticText[@name="Contacts"]')
     START_DATE = (MobileBy.XPATH, '//UIAStaticText[@name="Start Date"]')
     HIDE_DATE_PICKER = (MobileBy.XPATH, '//UIAStaticText[@name="Completed Date"]')
+    CREATED_TASK_WITH_APPROVAL = (MobileBy.XPATH, '//UIALink[@name[contains(., "Report approval")]]')
 
 
 class ReportsScreen:
@@ -319,11 +320,13 @@ class ReportsScreen:
     PUBLISH_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Publish"]')
     CREATED_REPORT_WITH_ALL_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "Large")]]')
     CREATED_REPORT_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "chooser fields")]]')
+    CREATED_REPORT_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//UIALink[@name[contains(., "assigned question")]]')
     REPORT_TYPE_WITH_ALL_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_for_tests")]]')
     REPORT_TYPE_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_chooser_fields")]]')
     REPORT_TYPE_WITH_ON_CREATE_APPROVAL_WORKFLOW = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_on_create_approval")]]')
     REPORT_TYPE_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_on_load_sequence")]]')
     REPORT_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_visibility_rules")]]')
+    REPORT_TYPE_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_assigned_question")]]')
 
 
 class LogsScreen:
@@ -332,6 +335,9 @@ class LogsScreen:
     ENTRY_FIELD = (MobileBy.CLASS_NAME, 'UIATextField')
     CREATED_LOG_WITH_ALL_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "all fields")]]')
     LOG_TYPE_WITH_ALL_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "log_with_all_fields")]]')
+    LOG_TYPE_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "log_with_chooser_fields")]]')
+    LOG_TYPE_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//UIALink[@name[contains(., "log_with_on_load_sequence")]]')
+    LOG_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//UIALink[@name[contains(., "log_with_visibility_rules")]]')
 
 
 class SentScreen:

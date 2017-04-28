@@ -2,7 +2,7 @@
 
 # before running this test create:
 # - log type with all fields, named: "log_with_all_fields"
-# - log type with chooser fields, named: "log_with_chooser_fields"
+# - log type with chooser fields, named: "log_with_chooser_fields", with log chooser filed as a last field in form
 # - log type with on load and on save sequence (with default value = "test on load") and on save sequence, named: "log_with_on_load_sequence" (like in TC: Managing Events)
 # - log type with visibility rules, named: "log_with_visibility_rules", with fields "New option list" - with options; "1", "2", "3" that options should restore 3 other fields. "field to restore",
 # "New website address" with value: "http://bitnoi.se/" and "New email address" with value: "test@noggin.com" - visibility rules like in TC: Managing Events
@@ -97,7 +97,7 @@ class TestManagingLogs(SetupTestCase):
         logs_page.choose_third_filter()
         logs_page.expand_types_filter()
         logs_page.choose_first_filter()
-        logs_page.type_text_into_search_field()  # search for Report containing words "all fields"
+        logs_page.type_text_into_search_field("all fields")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         logs_page.check_result()
@@ -134,12 +134,10 @@ class TestManagingLogs(SetupTestCase):
         logs_page.choose_log_type_with_all_fields()
         logs_page.click_on_lodging_agency_picker()
         logs_page.choose_lodging_agency()
-
         logs_page.click_event_chooser_field()
         logs_page.choose_first_event_on_the_list()
         logs_page.click_asset_chooser_field()
         logs_page.choose_first_asset_on_the_list()
-
         logs_page.scroll_down_to_entry_field()
         logs_page.type_text_into_entry_field("Appium log with all fields")
         common_page.hide_keyboard()
@@ -150,6 +148,87 @@ class TestManagingLogs(SetupTestCase):
 
         # Create and update a log with chooser fields.
         main_page.open_LOGS()
+        logs_page.create_new_log()
+        logs_page.choose_log_type_with_chooser_fields()
+        logs_page.click_on_lodging_agency_picker()
+        logs_page.choose_lodging_agency()
+        logs_page.scroll_down_to_entry_field()
+        logs_page.type_text_into_entry_field("Log with chooser fields")
+        common_page.hide_keyboard()
+        logs_page.scroll_down_to_save_button()
+        logs_page.click_save_new_log()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        main_page.open_LOGS()
+        logs_page.clear_Search_field()
+        logs_page.type_text_into_search_field("chooser fields")
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
+        logs_page.open_first_log_on_the_list()
+        logs_page.click_edit_button()
+        logs_page.scroll_down_to_save_button()
+        logs_page.click_log_chooser_field()
+        logs_page.choose_log_from_the_list()
+        logs_page.scroll_down_to_save_button()
+        logs_page.click_save_new_log()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        # Create log with on load sequence and on save sequence in two of its fields.
+        main_page.open_LOGS()
+        logs_page.create_new_log()
+        logs_page.choose_log_type_with_on_load_sequence()
+        logs_page.click_on_lodging_agency_picker()
+        logs_page.choose_lodging_agency()
+        logs_page.scroll_down_to_entry_field()
+        logs_page.type_text_into_entry_field("Log with on load sequence")
+        #reports_page.scroll_down_to_on_load_field()
+        logs_page.check_on_load_and_on_save_sequences()
+        logs_page.scroll_down_to_save_button()
+        logs_page.click_save_new_log()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        # Open new logs but don't save them.
+        main_page.open_LOGS()
+        logs_page.create_new_log()
+        logs_page.choose_log_type_with_all_fields()
+        logs_page.click_on_lodging_agency_picker()
+        logs_page.choose_lodging_agency()
+        logs_page.scroll_down_to_entry_field()
+        logs_page.type_text_into_entry_field("Appium test")
+        logs_page.scroll_down_to_save_button()
+        logs_page.click_cancel_new_log()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        # Create a log that has option lists and fields with visibility rules that clears hidden fields and restores default values.
+        main_page.open_LOGS()
+        logs_page.create_new_log()
+        logs_page.choose_log_type_with_visibility_rules()
+        logs_page.click_on_lodging_agency_picker()
+        logs_page.choose_lodging_agency()
+        logs_page.scroll_down_to_entry_field()
+        logs_page.type_text_into_entry_field("Log with visibility rules")
+
+        logs_page.scroll_down_to_option_list()
+        logs_page.click_on_option_list()
+        logs_page.click_on_option_1()
+        logs_page.check_restored_field_1()
+        logs_page.click_on_option_list()
+        logs_page.click_on_option_2()
+        logs_page.check_restored_field_2()
+        logs_page.check_hidden_field_1()
+        logs_page.click_on_option_list()
+        logs_page.click_on_option_3()
+        logs_page.check_hidden_fields_1_and_2()
+        logs_page.check_restored_field_3()
+
+        logs_page.scroll_down_to_save_button()
+        logs_page.click_save_new_log()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
 
 
 if __name__ == '__main__':

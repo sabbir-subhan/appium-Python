@@ -321,7 +321,7 @@ class NewContactScreen:
     FIRST_NAME = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="First name"]')
 
 
-class NewTaskScreen:
+class TasksScreen:
     """A class for handling New Task screen"""
     TITLE = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')  # locating input field by xpath with name won't work
     ASSIGNED = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Assigned"]')
@@ -335,6 +335,7 @@ class NewTaskScreen:
     CHOOSE_CONTACTS = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Contacts"]')
     START_DATE = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Start Date"]')
     HIDE_DATE_PICKER = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Completed Date"]')
+    CREATED_TASK_WITH_APPROVAL = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Report approval")]]')
 
 
 class ReportsScreen:
@@ -345,11 +346,13 @@ class ReportsScreen:
     # CREATED_REPORT_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Large")]]')
     CREATED_REPORT_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="Large Report"]')
     CREATED_REPORT_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "chooser fields")]]')
+    CREATED_REPORT_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "assigned question")]]')
     REPORT_TYPE_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_for_tests")]]')
     REPORT_TYPE_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_with_chooser_fields")]]')
     REPORT_TYPE_WITH_ON_CREATE_APPROVAL_WORKFLOW = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_with_on_create_approval")]]')
     REPORT_TYPE_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_with_on_load_sequence")]]')
     REPORT_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_with_visibility_rules")]]')
+    REPORT_TYPE_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_with_assigned_question")]]')
     ASSETS_CHOOSER_FIELD = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeWebView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[10]/XCUIElementTypeOther[2]')  # inside already created report
     ON_LOAD_FIELD = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="on_load"]')
     NEW_OPTION_LIST = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="New option list"]')
@@ -361,6 +364,9 @@ class LogsScreen:
     ENTRY_FIELD = (MobileBy.CLASS_NAME, 'XCUIElementTypeTextView')
     CREATED_LOG_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="all fields"]')
     LOG_TYPE_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "log_with_all_fields")]]')
+    LOG_TYPE_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "log_with_chooser_fields")]]')
+    LOG_TYPE_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "log_with_on_load_sequence")]]')
+    LOG_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "log_with_visibility_rules")]]')
 
 
 class SentScreen:

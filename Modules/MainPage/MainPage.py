@@ -174,6 +174,10 @@ class MainPage(BasePage):
 
         self.switch_context_to_native()
 
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
     def open_EVENTS(self):
 
         self.switch_context_to_webview()
@@ -188,6 +192,10 @@ class MainPage(BasePage):
 
         self.switch_context_to_native()
 
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
     def open_LOGS(self):
 
         self.switch_context_to_webview()
@@ -198,7 +206,11 @@ class MainPage(BasePage):
         logs_button.click()
 
         self.switch_context_to_native()
-        sleep(1)
+
+        # sleep(1)
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
     def open_REPORTS(self):
 
@@ -210,7 +222,11 @@ class MainPage(BasePage):
         reports_button.click()
 
         self.switch_context_to_native()
-        sleep(1)
+
+        # sleep(1)
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
     def open_MAP(self):
 
@@ -239,7 +255,11 @@ class MainPage(BasePage):
         assets_button.click()
 
         self.switch_context_to_native()
-        sleep(1)
+
+        # sleep(1)
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
     def open_MY_MESSAGES(self):
 
@@ -255,9 +275,13 @@ class MainPage(BasePage):
         inbox_button = self.driver.find_element(*self.configuration.MainMenuScreen.INBOX_BUTTON)
         self.assertIsNotNone(inbox_button, "INBOX button not found")
         inbox_button.click()
-        sleep(2)
+        # sleep(2)
 
         self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
     def open_COMPOSE(self):
 
@@ -278,9 +302,13 @@ class MainPage(BasePage):
         sent_button = self.driver.find_element(*self.configuration.MainMenuScreen.SENT_BUTTON)
         self.assertIsNotNone(sent_button, "SENT button not found")
         sent_button.click()
-        sleep(2)
+        #sleep(2)
 
         self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
     def open_PHOTO(self):
 
@@ -311,6 +339,10 @@ class MainPage(BasePage):
 
         self.switch_context_to_native()
 
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
     def open_DOCUMENTS(self):
 
         self.switch_context_to_webview()
@@ -332,6 +364,10 @@ class MainPage(BasePage):
         contacts_button.click()
 
         self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
     def open_ALLOCATE(self):
 

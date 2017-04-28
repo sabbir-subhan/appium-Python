@@ -3,6 +3,7 @@
 from Modules.LogsPage.LogsPage import LogsPage
 import logging
 from time import sleep
+from Modules.load_class import LoadClass
 
 
 class Android(LogsPage):
@@ -60,5 +61,12 @@ class Android(LogsPage):
         self.driver.press_keycode(48)  # send letter 'T'
         self.driver.press_keycode(46)  # send letter 'R'
         self.driver.press_keycode(53)  # send letter 'Y'
+
+    def scroll_down_to_option_list(self):
+
+        logging.info("scroll down to option list")
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.scroll_down_one_view()
 
 

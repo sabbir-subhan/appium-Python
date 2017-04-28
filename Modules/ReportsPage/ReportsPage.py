@@ -24,7 +24,7 @@ class ReportsPage(BasePage):
 
         self.switch_context_to_native()
 
-        # new_task_page = LoadClass.load_page('NewTaskPage')
+        # new_task_page = LoadClass.load_page('TasksPage')
         # new_task_page.setDriver(self.driver)
         # new_task_page.type_title(text)
 
@@ -121,34 +121,70 @@ class ReportsPage(BasePage):
         logging.info("filter reports by type")
 
         expand_type_filters = self.driver.find_element(*self.configuration.ReportsScreen.TYPE_FILTER)
+        self.assertIsNotNone(expand_type_filters, "type filter not found")
         expand_type_filters.click()
 
         choose_second_type = self.driver.find_element(*self.configuration.ReportsScreen.SECOND_TYPE)
+        self.assertIsNotNone(choose_second_type, "second status not found")
         choose_second_type.click()
-        sleep(1)
+        # sleep
+
+        self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
+        self.switch_context_to_webview()
 
         expand_type_filters = self.driver.find_element(*self.configuration.ReportsScreen.TYPE_FILTER)
+        self.assertIsNotNone(expand_type_filters, "type filter not found")
         expand_type_filters.click()
 
         choose_third_type = self.driver.find_element(*self.configuration.ReportsScreen.THIRD_TYPE)
+        self.assertIsNotNone(choose_third_type, "third status not found")
         choose_third_type.click()
-        sleep(1)
+        # sleep(1)
+
+        self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
+        self.switch_context_to_webview()
 
         expand_type_filters = self.driver.find_element(*self.configuration.ReportsScreen.TYPE_FILTER)
+        self.assertIsNotNone(expand_type_filters, "type filter not found")
         expand_type_filters.click()
 
         choose_fourth_type = self.driver.find_element(*self.configuration.ReportsScreen.FOURTH_TYPE)
+        self.assertIsNotNone(choose_fourth_type, "fourth status not found")
         choose_fourth_type.click()
-        sleep(1)
+        # sleep(1)
+
+        self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
+        self.switch_context_to_webview()
 
         expand_type_filters = self.driver.find_element(*self.configuration.ReportsScreen.TYPE_FILTER)
+        self.assertIsNotNone(expand_type_filters, "type filter not found")
         expand_type_filters.click()
 
         choose_first_type = self.driver.find_element(*self.configuration.ReportsScreen.FIRST_TYPE)
+        self.assertIsNotNone(choose_first_type, "first status not found")
         choose_first_type.click()
-        sleep(1)
+        # sleep(1)
 
         self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
     
     def filter_reports_by_status(self):
 
@@ -157,32 +193,52 @@ class ReportsPage(BasePage):
         logging.info("filter reports by status")
 
         expand_status_filters = self.driver.find_element(*self.configuration.ReportsScreen.STATUS_FILTER)
+        self.assertIsNotNone(expand_status_filters, "status filter not found")
         expand_status_filters.click()
 
         choose_second_status = self.driver.find_element(*self.configuration.ReportsScreen.SECOND_STATUS)
+        self.assertIsNotNone(choose_second_status, "second status not found")
         choose_second_status.click()
-        sleep(1)
+        # sleep(1)
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
         expand_status_filters = self.driver.find_element(*self.configuration.ReportsScreen.STATUS_FILTER)
+        self.assertIsNotNone(expand_status_filters, "status filter not found")
         expand_status_filters.click()
 
         choose_third_status = self.driver.find_element(*self.configuration.ReportsScreen.THIRD_STATUS)
+        self.assertIsNotNone(choose_third_status, "third status not found")
         choose_third_status.click()
-        sleep(1)
+        # sleep(1)
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
         expand_status_filters = self.driver.find_element(*self.configuration.ReportsScreen.STATUS_FILTER)
+        self.assertIsNotNone(expand_status_filters, "status filter not found")
         expand_status_filters.click()
 
         choose_fourth_status = self.driver.find_element(*self.configuration.ReportsScreen.FOURTH_STATUS)
+        self.assertIsNotNone(choose_fourth_status, "fourth status not found")
         choose_fourth_status.click()
-        sleep(1)
+        # sleep(1)
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
         expand_status_filters = self.driver.find_element(*self.configuration.ReportsScreen.STATUS_FILTER)
+        self.assertIsNotNone(expand_status_filters, "status filter not found")
         expand_status_filters.click()
 
         choose_first_status = self.driver.find_element(*self.configuration.ReportsScreen.FIRST_STATUS)
+        self.assertIsNotNone(choose_first_status, "first status not found")
         choose_first_status.click()
-        sleep(1)
+        # sleep(1)
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
         self.switch_context_to_native()
 
@@ -193,15 +249,34 @@ class ReportsPage(BasePage):
         logging.info("filter reports by active status")
 
         expand_status_filters = self.driver.find_element(*self.configuration.ReportsScreen.STATUS_FILTER)
+        self.assertIsNotNone(expand_status_filters, "status filter not found")
         expand_status_filters.click()
 
         choose_second_status = self.driver.find_element(*self.configuration.ReportsScreen.SECOND_STATUS)
+        self.assertIsNotNone(choose_second_status, "second status not found")
         choose_second_status.click()
         sleep(1)
 
         self.switch_context_to_native()
 
-    def type_text_into_search_field(self):
+    def filter_reports_by_any_status(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("filter reports by any status")
+
+        expand_status_filters = self.driver.find_element(*self.configuration.ReportsScreen.STATUS_FILTER)
+        self.assertIsNotNone(expand_status_filters, "status filter not found")
+        expand_status_filters.click()
+
+        choose_second_status = self.driver.find_element(*self.configuration.ReportsScreen.FIRST_STATUS)
+        self.assertIsNotNone(choose_second_status, "second status not found")
+        choose_second_status.click()
+        sleep(1)
+
+        self.switch_context_to_native()
+
+    def type_text_into_search_field(self, text):
 
         logging.info("filter reports by search field")
 
@@ -209,19 +284,30 @@ class ReportsPage(BasePage):
         self.assertIsNotNone(search_field, "Search field not found")
         search_field.click()
         sleep(2)
-        search_field.send_keys("Large")
+        search_field.send_keys(text)
         sleep(1)
-
-    def search_for_report_with_chooser_fields(self):
-
-        logging.info("filter reports using search field to find report with chooser fields")
-
-        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
-        self.assertIsNotNone(search_field, "Search field not found")
-        search_field.click()
-        sleep(2)
-        search_field.send_keys("chooser fields")
-        sleep(1)
+    #
+    # def search_for_report_with_chooser_fields(self):
+    #
+    #     logging.info("filter reports using search field to find report with chooser fields")
+    #
+    #     search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+    #     self.assertIsNotNone(search_field, "Search field not found")
+    #     search_field.click()
+    #     sleep(2)
+    #     search_field.send_keys("chooser fields")
+    #     sleep(1)
+    #
+    # def search_for_report_with_assigned_question(self):
+    #
+    #     logging.info("filter reports using search field to find report with assigned question")
+    #
+    #     search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+    #     self.assertIsNotNone(search_field, "Search field not found")
+    #     search_field.click()
+    #     sleep(2)
+    #     search_field.send_keys("Report with approval")
+    #     sleep(1)
 
     def check_result(self):  # this method will search for report containing "Large" word in title
 
@@ -293,6 +379,14 @@ class ReportsPage(BasePage):
         choose_report_type.click()
         sleep(1)
 
+    def choose_report_type_with_assigned_question(self):
+
+        logging.info('choose report type = "with_assigned_question"')
+        choose_report_type = self.driver.find_element(*self.configuration.ReportsScreen.REPORT_TYPE_WITH_ASSIGNED_QUESTION)
+        self.assertIsNotNone(choose_report_type, 'report type = "with_assigned_question" not found')
+        choose_report_type.click()
+        sleep(1)
+
     def edit_created_report_with_all_fields(self):
 
         logging.info('edit created report, containing word "Large"')
@@ -306,6 +400,14 @@ class ReportsPage(BasePage):
         logging.info('edit created report, containing words "chooser fields"')
         edit_created_report = self.driver.find_elements(*self.configuration.ReportsScreen.CREATED_REPORT_WITH_CHOOSER_FIELDS)
         self.assertIsNotNone(edit_created_report, 'previously created report, containing words "chooser fields", not found')
+        edit_created_report[0].click()
+        sleep(2)
+
+    def edit_created_report_with_assigned_question(self):
+
+        logging.info('edit created report, containing words "assigned question"')
+        edit_created_report = self.driver.find_elements(*self.configuration.ReportsScreen.CREATED_REPORT_WITH_ASSIGNED_QUESTION)
+        self.assertIsNotNone(edit_created_report, 'previously created report, containing words "chooser fieldsassigned question", not found')
         edit_created_report[0].click()
         sleep(2)
 
@@ -394,14 +496,20 @@ class ReportsPage(BasePage):
 
     def click_assets_chooser_field(self):
 
+        sleep(1)
         self.switch_context_to_webview()
 
         logging.info("click assets chooser field")
         assets_chooser_field = self.driver.find_element(*self.configuration.ReportsScreen.ASSETS_CHOOSER_FIELD)
+        self.assertIsNotNone(assets_chooser_field, "log chooser field not found")
         assets_chooser_field.click()
-        sleep(2)
+        sleep(1)
 
         self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
     def choose_asset_from_the_list(self):
 
@@ -473,34 +581,21 @@ class ReportsPage(BasePage):
 
     def check_restored_field_1(self):
 
-        logging.info("assert restored field 1")
-        field_to_restore_1_header = self.driver.find_element(*self.configuration.EventEditScreen.
-                                                             FIELD_TO_RESTORE_1_HEADER)
-        self.assertIsNotNone(field_to_restore_1_header)
-        field_to_restore_1_value = self.driver.find_element(*self.configuration.EventEditScreen.
-                                                            FIELD_TO_RESTORE_1_VALUE)
-        self.assertIsNotNone(field_to_restore_1_value)
+        assets_page = LoadClass.load_page('AssetsPage')
+        assets_page.setDriver(self.driver)
+        assets_page.check_restored_field_1()
 
     def check_restored_field_2(self):
 
-        logging.info("assert restored field 2")
-        field_to_restore_2_header = self.driver.find_element(*self.configuration.EventEditScreen.
-                                                             FIELD_TO_RESTORE_2_HEADER)
-        self.assertIsNotNone(field_to_restore_2_header)
-        field_to_restore_2_value = self.driver.find_element(*self.configuration.EventEditScreen.
-                                                            FIELD_TO_RESTORE_2_VALUE)
-        self.assertIsNotNone(field_to_restore_2_value)
+        assets_page = LoadClass.load_page('AssetsPage')
+        assets_page.setDriver(self.driver)
+        assets_page.check_restored_field_2()
 
     def check_restored_field_3(self):
 
-        logging.info("assert restored field 3")
-        field_to_restore_3_header = self.driver.find_element(*self.configuration.EventEditScreen.
-                                                             FIELD_TO_RESTORE_3_HEADER)
-        self.assertIsNotNone(field_to_restore_3_header)
-
-        field_to_restore_3_value = self.driver.find_element(*self.configuration.EventEditScreen.
-                                                            FIELD_TO_RESTORE_3_VALUE)
-        self.assertIsNotNone(field_to_restore_3_value)
+        assets_page = LoadClass.load_page('AssetsPage')
+        assets_page.setDriver(self.driver)
+        assets_page.check_restored_field_3()
 
     def check_hidden_field_1(self):
 

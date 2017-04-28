@@ -372,7 +372,7 @@ class NewContactScreen:
     FIRST_NAME2 = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="First name"]')
 
 
-class NewTaskScreen:
+class TasksScreen:
     """A class for handling New Task screen"""
     TITLE = (MobileBy.ID, 'title')
     TITLE2 = (MobileBy.XPATH, '//android.view.View[1]/android.widget.EditText[1]')
@@ -387,6 +387,7 @@ class NewTaskScreen:
     CHOOSE_CONTACTS = (MobileBy.ACCESSIBILITY_ID, 'Contacts')
     START_DATE = (MobileBy.ID, 'start date')
     START_DATE2 = (MobileBy.XPATH, '//android.view.View[2][@content-desc="Start Date"]')
+    CREATED_TASK_WITH_APPROVAL = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Report approval")]]')
 
 
 class ReportsScreen:
@@ -397,11 +398,13 @@ class ReportsScreen:
     PUBLISH_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Publish')
     CREATED_REPORT_WITH_ALL_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Large")]]')
     CREATED_REPORT_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "chooser fields")]]')
+    CREATED_REPORT_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "assigned question")]]')
     REPORT_TYPE_WITH_ALL_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_for_tests")]]')
     REPORT_TYPE_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_with_chooser_fields")]]')
     REPORT_TYPE_WITH_ON_CREATE_APPROVAL_WORKFLOW = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_with_on_create_approval")]]')
     REPORT_TYPE_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_with_on_load_sequence")]]')
     REPORT_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_with_visibility_rules")]]')
+    REPORT_TYPE_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_with_assigned_question")]]')
 
 
 class LogsScreen:
@@ -411,6 +414,9 @@ class LogsScreen:
     ENTRY_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc="Rich Text Editor, entry"]/android.view.View[2]')
     CREATED_LOG_WITH_ALL_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "all fields")]]')
     LOG_TYPE_WITH_ALL_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "log_with_all_fields")]]')
+    LOG_TYPE_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "log_with_chooser_fields")]]')
+    LOG_TYPE_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "log_with_on_load_sequence")]]')
+    LOG_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "log_with_visibility_rules")]]')
 
 
 class SentScreen:

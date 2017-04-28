@@ -164,6 +164,8 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 
 # Some required configuration on OCA webpage: #
 
+- disable mobile encryption (PIN) in OCA Settings - Settings - Security tap
+
 - Locators for elements are partially based on visible texts, so if in OCA webpage, for example event type name, will be changed it will stop working.
 
 - users accounts with correct settings (see credentials.py)
@@ -197,14 +199,19 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 
 - Lodging agency named: "contact_group_for_tests" is needed
 
-- for TC: Managing Reports, Lodging agency named: "contact_group_for_tests", report type with all fields, named: "report_for_tests", report type with chooser fields, named: "report_with_chooser_fields", 
+- for TC: Managing Reports, Lodging agency named: "contact_group_for_tests", report type with all fields, named: "report_for_tests", report type with chooser fields, named: "report_with_chooser_fields",
+ report type with chooser fields, must contain asset chooser field as a last field in form, 
  report type with on load and on save sequence (with default value = "test on load") and on save sequence, named: "report_with_on_load_sequence" (like in TC: Managing Events),
  report type with visibility rules, named: "report_with_visibility_rules", with fields "New option list" - with options; "1", "2", "3" that options should restore 3 other fields. "field to restore",
  "New website address" with value: "http://bitnoi.se/" and "New email address" with value: "test@noggin.com" - visibility rules like in TC: Managing Events
  (option 1 restores field to restore, option 2 restores New email address field, option 3 restores New website address),
  report type with on create approval workflow, named: "report_with_on_create_approval"
+- report type, named: "report_with_assigned_question" and workflow assigned to that - triggered on edit report , that workflow must contain "Assign a question node" with title: "Report approval task" and
+  two possible answers: "Yes/No", (field Assign to: Contact that activated workflow: Workflow info)
 
-- for TC: Managing Logs: # - log type with all fields, named: "log_with_all_fields", - log type with chooser fields, named: "log_with_chooser_fields",
+- for TC: Managing Logs:
+ log type with all fields, named: "log_with_all_fields",
+ log type with chooser fields, named: "log_with_chooser_fields", with log chooser filed as a last field in form
  log type with on load (with default value = "test on load") and on save sequence, named: "log_with_on_load_sequence" (like in TC: Managing Events), 
  log type with visibility rules, named: "log_with_visibility_rules", with fields "New option list" - with options; "1", "2", "3" that options should restore 3 other fields. "field to restore",
  "New website address" with value: "http://bitnoi.se/" and "New email address" with value: "test@noggin.com" - visibility rules like in TC: Managing Events

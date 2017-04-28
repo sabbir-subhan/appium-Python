@@ -28,6 +28,30 @@ class LogsPage(BasePage):
         choose_log_type.click()
         sleep(1)
 
+    def choose_log_type_with_chooser_fields(self):
+
+        logging.info('choose log type = "log_with_chooser_fields" - containing chooser fields')
+        choose_log_type = self.driver.find_element(*self.configuration.LogsScreen.LOG_TYPE_WITH_CHOOSER_FIELDS)
+        self.assertIsNotNone(choose_log_type, 'log type = "log_with_chooser_fields" - containing chooser fields not found')
+        choose_log_type.click()
+        sleep(1)
+        
+    def choose_log_type_with_on_load_sequence(self):
+
+        logging.info('choose log type = "with_on_load_sequence"')
+        choose_log_type = self.driver.find_element(*self.configuration.LOGScreen.LOG_TYPE_WITH_ON_LOAD_SEQUENCE)
+        self.assertIsNotNone(choose_log_type, 'log type = "with_on_create_approval_workflow" not found')
+        choose_log_type.click()
+        sleep(1)
+
+    def choose_log_type_with_visibility_rules(self):
+
+        logging.info('choose log type = "with_visibility_rules"')
+        choose_log_type = self.driver.find_element(*self.configuration.LOGScreen.LOG_TYPE_WITH_VISIBILITY_RULES)
+        self.assertIsNotNone(choose_log_type, 'log type = "with_visibility_rules" not found')
+        choose_log_type.click()
+        sleep(1)
+
     def click_on_lodging_agency_picker(self):
 
         sleep(1)
@@ -147,7 +171,7 @@ class LogsPage(BasePage):
 
         self.switch_context_to_native()
 
-    def type_text_into_search_field(self):
+    def type_text_into_search_field(self, text):
 
         logging.info("filter logs by search field")
 
@@ -155,7 +179,7 @@ class LogsPage(BasePage):
         self.assertIsNotNone(search_field, "Search field not found")
         search_field.click()
         sleep(2)
-        search_field.send_keys("all fields")
+        search_field.send_keys(text)
         sleep(1)
 
     def clear_Search_field(self):
@@ -246,7 +270,7 @@ class LogsPage(BasePage):
 
         logging.info("click event chooser field")
 
-        click_event_chooser_field = self.driver.find_element(*self.configuration.LogsScreen.EDIT_CHOOSER_FIELD)
+        click_event_chooser_field = self.driver.find_element(*self.configuration.LogsScreen.EVENT_CHOOSER_FIELD)
         self.assertIsNotNone(click_event_chooser_field, "event chooser field not found")
         click_event_chooser_field.click()
         sleep(2)
@@ -291,3 +315,119 @@ class LogsPage(BasePage):
         sleep(2)
 
         self.switch_context_to_native()
+
+    def click_log_chooser_field(self):
+
+        sleep(2)
+        self.switch_context_to_webview()
+
+        logging.info("click log chooser field")
+        log_chooser_field = self.driver.find_element(*self.configuration.LogsScreen.LOG_CHOOSER_FIELD)  # inside existing log
+        self.assertIsNotNone(log_chooser_field, "log chooser field not found")
+        log_chooser_field.click()
+        sleep(1)
+
+        self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
+    def choose_log_from_the_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("choose first log on the list")
+
+        choose_first_log = self.driver.find_element(*self.configuration.LogsScreen.PREVIOUSLY_CREATED_LOG_CHECKBOX)
+        self.assertIsNotNone(choose_first_log, "first log on the list not found")
+        choose_first_log.click()
+        sleep(2)
+
+        self.switch_context_to_native()
+
+    def check_on_load_and_on_save_sequences(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("assert on load and on save sequence")
+        sequence_on_load = self.driver.find_element(*self.configuration.LogsScreen.SEQUENCE_ON_LOAD)
+        self.assertIsNotNone(sequence_on_load)
+
+        sequence_on_save = self.driver.find_element(*self.configuration.LogsScreen.SEQUENCE_ON_SAVE)
+        self.assertIsNotNone(sequence_on_save)
+
+        self.switch_context_to_native()
+
+        sequence_on_load_value = self.driver.find_element(*self.configuration.EventEditScreen.SEQUENCE_ONLOAD_VALUE)
+        self.assertIsNotNone(sequence_on_load_value)
+
+        # sequence_on_save_value = self.driver.find_element(*self.configuration.EventEditScreen.SEQUENCE_ONSAVE_VALUE)
+        # self.assertIsNotNone(sequence_on_save_value)
+
+    def click_cancel_new_log(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Cancel button")
+        cancel_button = self.driver.find_element(*self.configuration.LogsScreen.CANCEL_BUTTON)  # cancel button for new log
+        self.assertIsNotNone(cancel_button, "Cancel button was not found")
+        cancel_button.click()
+        sleep(2)
+
+        self.switch_context_to_native()
+
+    def click_on_option_list(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.click_on_option_list()
+
+    def click_on_option_1(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.click_on_option_1()
+
+    def click_on_option_2(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.click_on_option_2()
+
+    def click_on_option_3(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.click_on_option_3()
+
+    def check_restored_field_1(self):
+
+        assets_page = LoadClass.load_page('AssetsPage')
+        assets_page.setDriver(self.driver)
+        assets_page.check_restored_field_1()
+
+    def check_restored_field_2(self):
+
+        assets_page = LoadClass.load_page('AssetsPage')
+        assets_page.setDriver(self.driver)
+        assets_page.check_restored_field_2()
+
+    def check_restored_field_3(self):
+
+        assets_page = LoadClass.load_page('AssetsPage')
+        assets_page.setDriver(self.driver)
+        assets_page.check_restored_field_3()
+
+    def check_hidden_field_1(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.check_hidden_field_1()
+
+    def check_hidden_fields_1_and_2(self):
+
+        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page.setDriver(self.driver)
+        event_edit_page.check_hidden_fields_1_and_2()
+
