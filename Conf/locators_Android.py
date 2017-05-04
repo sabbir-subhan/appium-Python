@@ -405,6 +405,7 @@ class ReportsScreen:
     REPORT_TYPE_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_with_on_load_sequence")]]')
     REPORT_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_with_visibility_rules")]]')
     REPORT_TYPE_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_with_assigned_question")]]')
+    MEDIA_RELEASE_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc="Rich Text Editor, Media release"]/android.view.View[2]')
 
 
 class LogsScreen:

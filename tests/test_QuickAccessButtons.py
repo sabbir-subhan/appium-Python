@@ -72,7 +72,7 @@ class TestQuickAccessButtons(SetupTestCase):
         main_page.check_presence_of_events_button()
 
         main_page.open_CREATE_CONTACT()
-        new_contact_page = LoadClass.load_page('NewContactPage')
+        new_contact_page = LoadClass.load_page('ContactPage')
         new_contact_page.setDriver(self.driver)
         new_contact_page.type_first_name("Name for new contact test")
         # common_page.hide_keyboard()

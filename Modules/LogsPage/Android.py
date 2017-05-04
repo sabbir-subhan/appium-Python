@@ -13,7 +13,8 @@ class Android(LogsPage):
         window_size = self.driver.get_window_size()  # this will give You a dictionary
         start_x = window_size["width"] * 0.25
         start_y = window_size["height"] * 0.15
-        end_y = window_size["height"] * 0.6
+        # end_y = window_size["height"] * 0.6
+        end_y = window_size["height"] * 0.7
         logging.info("scroll down only one screen")
         self.driver.swipe(start_x, end_y, start_x, start_y, 3000)
 

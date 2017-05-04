@@ -5,6 +5,7 @@ from Modules.load_class import LoadClass
 from selenium.common.exceptions import *
 import logging
 from time import sleep
+from appium.webdriver.common.touch_action import TouchAction
 
 
 class LogsPage(BasePage):
@@ -39,7 +40,7 @@ class LogsPage(BasePage):
     def choose_log_type_with_on_load_sequence(self):
 
         logging.info('choose log type = "with_on_load_sequence"')
-        choose_log_type = self.driver.find_element(*self.configuration.LOGScreen.LOG_TYPE_WITH_ON_LOAD_SEQUENCE)
+        choose_log_type = self.driver.find_element(*self.configuration.LogsScreen.LOG_TYPE_WITH_ON_LOAD_SEQUENCE)
         self.assertIsNotNone(choose_log_type, 'log type = "with_on_create_approval_workflow" not found')
         choose_log_type.click()
         sleep(1)
@@ -47,7 +48,7 @@ class LogsPage(BasePage):
     def choose_log_type_with_visibility_rules(self):
 
         logging.info('choose log type = "with_visibility_rules"')
-        choose_log_type = self.driver.find_element(*self.configuration.LOGScreen.LOG_TYPE_WITH_VISIBILITY_RULES)
+        choose_log_type = self.driver.find_element(*self.configuration.LogsScreen.LOG_TYPE_WITH_VISIBILITY_RULES)
         self.assertIsNotNone(choose_log_type, 'log type = "with_visibility_rules" not found')
         choose_log_type.click()
         sleep(1)
@@ -210,13 +211,19 @@ class LogsPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info('edit first log on the list')
+        logging.info('open first log on the list')
         edit_created_log = self.driver.find_element(*self.configuration.LogsScreen.FIRST_LOG_ON_THE_LIST)
         self.assertIsNotNone(edit_created_log, 'previously created log, not found')
         edit_created_log.click()
         sleep(2)
 
         self.switch_context_to_native()
+
+        # logging.info('open first log on the list')
+        # edit_created_log = self.driver.find_elements(*self.configuration.LogsScreen.CREATED_REPORT_WITH_ALL_FIELDS)
+        # self.assertIsNotNone(edit_created_log, 'previously created log, not found')
+        # edit_created_log[0].click()
+        # sleep(2)
 
     def click_more_button(self):
 
@@ -359,6 +366,7 @@ class LogsPage(BasePage):
 
         self.switch_context_to_native()
 
+        sleep(1)
         sequence_on_load_value = self.driver.find_element(*self.configuration.EventEditScreen.SEQUENCE_ONLOAD_VALUE)
         self.assertIsNotNone(sequence_on_load_value)
 
@@ -379,9 +387,18 @@ class LogsPage(BasePage):
 
     def click_on_option_list(self):
 
-        event_edit_page = LoadClass.load_page('EventEditPage')
-        event_edit_page.setDriver(self.driver)
-        event_edit_page.click_on_option_list()
+        self.switch_context_to_webview()
+
+        logging.info("click on Option list")
+        option_list = self.driver.find_element(*self.configuration.LogsScreen.OPTION_LIST)
+        self.assertIsNotNone(option_list, "option list not found")
+        option_list.click()
+
+        self.switch_context_to_native()
+
+        # event_edit_page = LoadClass.load_page('EventEditPage')
+        # event_edit_page.setDriver(self.driver)
+        # event_edit_page.click_on_option_list()
 
     def click_on_option_1(self):
 

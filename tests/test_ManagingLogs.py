@@ -171,7 +171,7 @@ class TestManagingLogs(SetupTestCase):
         logs_page.click_log_chooser_field()
         logs_page.choose_log_from_the_list()
         logs_page.scroll_down_to_save_button()
-        logs_page.click_save_new_log()
+        logs_page.click_save_edited_log()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -183,7 +183,7 @@ class TestManagingLogs(SetupTestCase):
         logs_page.choose_lodging_agency()
         logs_page.scroll_down_to_entry_field()
         logs_page.type_text_into_entry_field("Log with on load sequence")
-        #reports_page.scroll_down_to_on_load_field()
+        common_page.hide_keyboard()
         logs_page.check_on_load_and_on_save_sequences()
         logs_page.scroll_down_to_save_button()
         logs_page.click_save_new_log()
@@ -198,6 +198,7 @@ class TestManagingLogs(SetupTestCase):
         logs_page.choose_lodging_agency()
         logs_page.scroll_down_to_entry_field()
         logs_page.type_text_into_entry_field("Appium test")
+        common_page.hide_keyboard()
         logs_page.scroll_down_to_save_button()
         logs_page.click_cancel_new_log()
         common_page.hamburger_button()
@@ -211,7 +212,7 @@ class TestManagingLogs(SetupTestCase):
         logs_page.choose_lodging_agency()
         logs_page.scroll_down_to_entry_field()
         logs_page.type_text_into_entry_field("Log with visibility rules")
-
+        common_page.hide_keyboard()
         logs_page.scroll_down_to_option_list()
         logs_page.click_on_option_list()
         logs_page.click_on_option_1()
@@ -224,7 +225,6 @@ class TestManagingLogs(SetupTestCase):
         logs_page.click_on_option_3()
         logs_page.check_hidden_fields_1_and_2()
         logs_page.check_restored_field_3()
-
         logs_page.scroll_down_to_save_button()
         logs_page.click_save_new_log()
         common_page.hamburger_button()

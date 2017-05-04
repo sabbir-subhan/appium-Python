@@ -76,6 +76,20 @@ class IOS(ReportsPage):
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
                 var = var - 1
 
+    def scroll_down_media_release_field(self):
+
+        logging.info("scroll down to media release field")
+        var = 10
+        while var > 0:
+            logging.info("check if media release field is visible")
+            media_release_field = self.driver.find_element(*self.configuration.ReportsScreen.MEDIA_RELEASE_FIELD)
+            if media_release_field.is_displayed():
+                break
+            else:
+                logging.info("scroll down")
+                self.driver.execute_script("mobile: scroll", {"direction": "down"})
+                var = var - 1
+
     def scroll_down_to_option_list(self):
 
         logging.info("scroll down to option list")

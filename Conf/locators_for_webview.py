@@ -317,6 +317,7 @@ class TasksScreen:
     ALL_TASKS = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-content>div[data-role="collapsible"]:first-child>div>ul[data-role="listview"]>li:nth-child(2)>a')
     INCOMPLETE_TASKS = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-content>div[data-role="collapsible"]:first-child>div>ul[data-role="listview"]>li:nth-child(3)>a')
     ACTION_REQUIRED_TASKS = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-content>div[data-role="collapsible"]:first-child>div>ul[data-role="listview"]>li:nth-child(4)>a')
+    FIRST_TASK_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-content>div.main>ul.tasks>li:first-child>a')
 
 
 class ReportsScreen:
@@ -352,6 +353,7 @@ class ReportsScreen:
     CREATE_MAPPING_DATA = (MobileBy.CSS_SELECTOR, 'div#reportEdit>div.ui-content>ul.edit-view>li.geometryinput>a')
     SEQUENCE_ON_LOAD = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_load"]')
     SEQUENCE_ON_SAVE = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_save"]')
+    MEDIA_RELEASE_FIELD = (MobileBy.CSS_SELECTOR, '')
 
 
 class SentScreen:
@@ -473,7 +475,7 @@ class LogsScreen(EventsScreen, AssetsScreen):
     FIRST_FILTER = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div[data-role="collapsible"]>div>ul>li:first-child>a')
     SECOND_FILTER = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div[data-role="collapsible"]>div>ul>li:nth-child(2)>a')
     THIRD_FILTER = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div[data-role="collapsible"]>div>ul>li:nth-child(3)>a')
-    FIRST_LOG_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div.main>ul.logs>li:first-child')
+    FIRST_LOG_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div.main>ul.logs.listview.ui-listview>li.summary-listing:first-child>a')
     EDIT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.edit>a')
     MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-b>a[href="#logViewMoreMenu"]')
     DELETE_LOG = (MobileBy.CSS_SELECTOR, 'div#logView>div.ui-popup-container>div#logViewMoreMenu>ul>li.log.delete>a')
@@ -489,6 +491,7 @@ class LogsScreen(EventsScreen, AssetsScreen):
     PREVIOUSLY_CREATED_LOG_CHECKBOX = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div.main>ul[data-role="listview"]>li:first-child>div.ui-checkbox')  # whole list element - not just link
     SEQUENCE_ON_LOAD = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_load"]')
     SEQUENCE_ON_SAVE = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_save"]')
+    OPTION_LIST = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-content>ul.edit-view>li[name="new option list"]>div.ui-select>div')
 
 
 class SelectMediaScreen:

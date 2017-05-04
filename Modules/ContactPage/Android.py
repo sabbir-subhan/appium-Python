@@ -1,11 +1,11 @@
-""" Methods for Android on New Contact Page """
+""" Methods for Android on Contact Page """
 
-from Modules.NewContactPage.NewContactPage import NewContactPage
+from Modules.ContactPage.ContactPage import ContactPage
 import logging
 from time import sleep
 
 
-class Android(NewContactPage):
+class Android(ContactPage):
 
     def scroll_down_to_save_button(self):
         """Method to scroll down to bottom of the screen """

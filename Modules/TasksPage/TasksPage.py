@@ -114,11 +114,22 @@ class TasksPage(BasePage):
 
     def edit_created_task_with_approval(self):
 
+        self.switch_context_to_webview()
+
         logging.info('edit created report approval task')
-        edit_created_task = self.driver.find_elements(*self.configuration.TasksScreen.CREATED_TASK_WITH_APPROVAL)
-        self.assertIsNotNone(edit_created_task, 'created task with approval, not found')
-        edit_created_task[0].click()
+        edit_created_task = self.driver.find_element(*self.configuration.TasksScreen.FIRST_TASK_ON_THE_LIST)
+        self.assertIsNotNone(edit_created_task, 'previously created task, not found')
+        edit_created_task.click()
         sleep(2)
+
+        self.switch_context_to_native()
+
+        # logging.info('edit created report approval task')
+        # sleep(2)
+        # edit_created_task = self.driver.find_elements(*self.configuration.TasksScreen.CREATED_TASK_WITH_APPROVAL)
+        # self.assertIsNotNone(edit_created_task, 'created task with approval, not found')
+        # edit_created_task[0].click()
+        # sleep(2)
 
     def click_button_yes_for_action_required(self):
 

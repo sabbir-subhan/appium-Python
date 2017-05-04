@@ -1,4 +1,4 @@
-"""A class for methods to handle New Contact Page """
+"""A class for methods to handle Contact Page """
 
 from Modules.BasePage.BasePage import BasePage
 from Modules.load_class import LoadClass
@@ -6,7 +6,7 @@ from selenium.common.exceptions import *
 import logging
 
 
-class NewContactPage(BasePage):
+class ContactPage(BasePage):
 
     def type_first_name(self, text):
 

@@ -28,6 +28,18 @@ class ReportsPage(BasePage):
         # new_task_page.setDriver(self.driver)
         # new_task_page.type_title(text)
 
+    def type_text_into_media_release_field(self):
+
+        # self.switch_context_to_webview()
+
+        logging.info("type text")
+        media_release_field = self.driver.find_element(*self.configuration.ReportsScreen.MEDIA_RELEASE_FIELD)
+        self.assertIsNotNone(media_release_field, "Media release input field was not found")
+        media_release_field.click()
+        media_release_field.send_keys("text")
+
+        # self.switch_context_to_native()
+
     def click_on_lodging_agency_picker(self):
 
         sleep(1)

@@ -10,7 +10,7 @@ class IOS(AssetsPage):
         """Method to scroll down to bottom of the screen - to 'Save' button"""
 
         logging.info("scroll down to Save button")
-        scroll = 30
+        scroll = 20
         while scroll > 0:
             logging.info("check if save button is visible")
             save_button = self.driver.find_element(*self.configuration.CommonScreen.SAVE_BUTTON)

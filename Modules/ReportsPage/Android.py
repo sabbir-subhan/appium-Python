@@ -53,3 +53,24 @@ class Android(ReportsPage):
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         common_page.scroll_down_one_view()
+
+    def scroll_down_media_release_field(self):
+
+        logging.info("scroll down to media release field")
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.scroll_down_one_view()
+
+    def type_text_into_media_release_field(self):
+
+        sleep(1)
+        media_release_field = self.driver.find_element(*self.configuration.ReportsScreen.MEDIA_RELEASE_FIELD)
+        media_release_field.click()
+        sleep(1)
+        logging.info("sending keys")
+        self.driver.press_keycode(48)  # send letter 'T'
+        self.driver.press_keycode(33)  # send letter 'E'
+        self.driver.press_keycode(52)  # send letter 'X'
+        self.driver.press_keycode(48)  # send letter 'T'
+
+
