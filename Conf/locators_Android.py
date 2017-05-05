@@ -233,7 +233,6 @@ class EventEditScreen:
     # NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="New option list"]')
     # NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View'
     #                                           '[@content-desc[contains(., "New option list")]]/android.widget.Spinner')
-
     HEADER_ON_OPTION_LIST_PAGE = (MobileBy.ACCESSIBILITY_ID, 'New option list')
     OPTION_LIST_VALUE_1 = (MobileBy.ACCESSIBILITY_ID, '1')
     OPTION_LIST_VALUE_2 = (MobileBy.ACCESSIBILITY_ID, '2')
@@ -405,7 +404,7 @@ class ReportsScreen:
     REPORT_TYPE_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_with_on_load_sequence")]]')
     REPORT_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_with_visibility_rules")]]')
     REPORT_TYPE_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_with_assigned_question")]]')
-    MEDIA_RELEASE_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc="Rich Text Editor, Media release"]/android.view.View[2]')
+    MEDIA_RELEASE_FIELD = (MobileBy.XPATH, '//android.widget.ListView[1]/android.view.View[6]/android.view.View[2]/android.view.View[2]/android.view.View[1]/android.view.View[1]/android.view.View[1]')
 
 
 class LogsScreen:

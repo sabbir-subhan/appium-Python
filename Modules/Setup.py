@@ -8,6 +8,7 @@ from configuration import ENVIRONMENT_TEST
 from configuration import PORT
 from appium import webdriver
 import unittest
+import pytest
 from importlib import import_module
 import logging
 logging.basicConfig(filename='TCs.log', level=logging.INFO,

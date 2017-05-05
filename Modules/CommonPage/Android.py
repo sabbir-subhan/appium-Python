@@ -94,8 +94,8 @@ class Android(CommonPage):
         # self.driver.back()
         sleep(4)
         WebDriverWait(self.driver, 30).until(
-            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
-            "Failed to locate Events button")
+            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.INBOX_BUTTON),
+            "Failed to locate Inbox button")
 
     def click_set_button(self):
 

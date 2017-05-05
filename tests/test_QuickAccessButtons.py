@@ -107,7 +107,7 @@ class TestQuickAccessButtons(SetupTestCase):
         main_page.check_presence_of_events_button()
 
         main_page.open_WEBSITE_LINK()
-        sleep(10)  # wait for page to load
+        sleep(15)  # wait for page to load
         common_page.click_back_button()
         main_page.check_presence_of_events_button()
 
@@ -138,7 +138,7 @@ class TestQuickAccessButtons(SetupTestCase):
         new_log_page.type_text_into_entry_field("Entry for new log test")
         common_page.hide_keyboard()
         new_log_page.scroll_down_to_save_button()
-        new_log_page.click_save_button()
+        new_log_page.click_save_new_log()
         main_page.check_presence_of_events_button()
 
 

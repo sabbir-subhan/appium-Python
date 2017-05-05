@@ -43,7 +43,7 @@ class Android(LogsPage):
         end_y = window_size["height"] * 0.80
         logging.info("scroll down to save button")
         sleep(2)
-        scrolls = 5
+        scrolls = 8
         while scrolls > 0:
             self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen
             scrolls = scrolls - 1
@@ -69,5 +69,6 @@ class Android(LogsPage):
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         common_page.scroll_down_one_view()
+
 
 

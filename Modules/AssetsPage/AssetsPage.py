@@ -358,31 +358,43 @@ class AssetsPage(BasePage):
     def check_restored_field_1(self):
 
         logging.info("assert restored field 1")
-        field_to_restore_1_header = self.driver.find_element(*self.configuration.EventEditScreen.
-                                                             FIELD_TO_RESTORE_1_HEADER)
+
+        self.switch_context_to_webview()
+
+        field_to_restore_1_header = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_1_HEADER)
         self.assertIsNotNone(field_to_restore_1_header)
+
+        self.switch_context_to_native()
+
         field_to_restore_1_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_1_VALUE)
         self.assertIsNotNone(field_to_restore_1_value)
 
     def check_restored_field_2(self):
 
         logging.info("assert restored field 2")
-        field_to_restore_2_header = self.driver.find_element(*self.configuration.EventEditScreen.
-                                                             FIELD_TO_RESTORE_2_HEADER)
+
+        self.switch_context_to_webview()
+
+        field_to_restore_2_header = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_2_HEADER)
         self.assertIsNotNone(field_to_restore_2_header)
-        field_to_restore_2_value = self.driver.find_element(*self.configuration.EventEditScreen.
-                                                            FIELD_TO_RESTORE_2_VALUE)
+
+        self.switch_context_to_native()
+
+        field_to_restore_2_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_2_VALUE)
         self.assertIsNotNone(field_to_restore_2_value)
 
     def check_restored_field_3(self):
 
         logging.info("assert restored field 3")
-        field_to_restore_3_header = self.driver.find_element(*self.configuration.EventEditScreen.
-                                                             FIELD_TO_RESTORE_3_HEADER)
+
+        self.switch_context_to_webview()
+
+        field_to_restore_3_header = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_3_HEADER)
         self.assertIsNotNone(field_to_restore_3_header)
 
-        field_to_restore_3_value = self.driver.find_element(*self.configuration.EventEditScreen.
-                                                            FIELD_TO_RESTORE_3_VALUE)
+        self.switch_context_to_native()
+
+        field_to_restore_3_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_3_VALUE)
         self.assertIsNotNone(field_to_restore_3_value)
 
     def check_hidden_field_1(self):

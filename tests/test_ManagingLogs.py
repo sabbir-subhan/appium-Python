@@ -28,12 +28,13 @@
 # On the mobile app, create logs of this type.
 # Open new logs but don't save them.
 # Create a log that has option lists and fields with visibility rules that clears hidden fields and restores default values.
-
+import argparse
 
 from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
+import sys
 
 
 class TestManagingLogs(SetupTestCase):
@@ -73,136 +74,136 @@ class TestManagingLogs(SetupTestCase):
         main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
 
-        # Press Create log entry. Select a log entry type and fill in the log form with all field types (including a rich text field). Press Save.
-        main_page.open_LOGS()
+        # # Press Create log entry. Select a log entry type and fill in the log form with all field types (including a rich text field). Press Save.
+        # main_page.open_LOGS()
         logs_page = LoadClass.load_page('LogsPage')
         logs_page.setDriver(self.driver)
-        logs_page.create_new_log()
-        logs_page.choose_log_type_with_all_fields()
-        logs_page.click_on_lodging_agency_picker()
-        logs_page.choose_lodging_agency()
-        logs_page.scroll_down_to_entry_field()
-        logs_page.type_text_into_entry_field("Appium log with all fields")
-        common_page.hide_keyboard()
-        logs_page.scroll_down_to_save_button()
-        logs_page.click_save_new_log()
-        common_page.hamburger_button()
-        main_page.check_presence_of_events_button()
-
-        # From the main menu press the Logs button. On the search form, filter logs by type and enter search terms.
-        main_page.open_LOGS()
-        logs_page.expand_types_filter()
-        logs_page.choose_second_filter()
-        logs_page.expand_types_filter()
-        logs_page.choose_third_filter()
-        logs_page.expand_types_filter()
-        logs_page.choose_first_filter()
-        logs_page.type_text_into_search_field("all fields")
-        common_page.click_Return_button_on_keyboard()
-        common_page.hide_keyboard()
-        logs_page.check_result()
-        logs_page.clear_Search_field()
-        common_page.click_Return_button_on_keyboard()
-        common_page.hide_keyboard()
-        common_page.hamburger_button()
-        main_page.check_presence_of_events_button()
-
-        # Select an existing log. Press Edit to update the log and press Save.
-        main_page.open_LOGS()
-        logs_page.open_first_log_on_the_list()
-        logs_page.click_edit_button()
-        logs_page.scroll_down_to_entry_field()
-        logs_page.type_text_into_entry_field("  - edited")
-        common_page.hide_keyboard()
-        logs_page.scroll_down_to_save_button()
-        logs_page.click_save_edited_log()
-        common_page.hamburger_button()
-        main_page.check_presence_of_events_button()
-
-        # Select an existing log. Press More > Delete log.
-        main_page.open_LOGS()
-        logs_page.open_first_log_on_the_list()
-        logs_page.click_more_button()
-        logs_page.click_delete_log()
-        logs_page.alert_accept_delete()
-        common_page.hamburger_button()
-        main_page.check_presence_of_events_button()
-
-        # Create a new log and select an event and asset.
-        main_page.open_LOGS()
-        logs_page.create_new_log()
-        logs_page.choose_log_type_with_all_fields()
-        logs_page.click_on_lodging_agency_picker()
-        logs_page.choose_lodging_agency()
-        logs_page.click_event_chooser_field()
-        logs_page.choose_first_event_on_the_list()
-        logs_page.click_asset_chooser_field()
-        logs_page.choose_first_asset_on_the_list()
-        logs_page.scroll_down_to_entry_field()
-        logs_page.type_text_into_entry_field("Appium log with all fields")
-        common_page.hide_keyboard()
-        logs_page.scroll_down_to_save_button()
-        logs_page.click_save_new_log()
-        common_page.hamburger_button()
-        main_page.check_presence_of_events_button()
-
-        # Create and update a log with chooser fields.
-        main_page.open_LOGS()
-        logs_page.create_new_log()
-        logs_page.choose_log_type_with_chooser_fields()
-        logs_page.click_on_lodging_agency_picker()
-        logs_page.choose_lodging_agency()
-        logs_page.scroll_down_to_entry_field()
-        logs_page.type_text_into_entry_field("Log with chooser fields")
-        common_page.hide_keyboard()
-        logs_page.scroll_down_to_save_button()
-        logs_page.click_save_new_log()
-        common_page.hamburger_button()
-        main_page.check_presence_of_events_button()
-
-        main_page.open_LOGS()
-        logs_page.clear_Search_field()
-        logs_page.type_text_into_search_field("chooser fields")
-        common_page.click_Return_button_on_keyboard()
-        common_page.hide_keyboard()
-        logs_page.open_first_log_on_the_list()
-        logs_page.click_edit_button()
-        logs_page.scroll_down_to_save_button()
-        logs_page.click_log_chooser_field()
-        logs_page.choose_log_from_the_list()
-        logs_page.scroll_down_to_save_button()
-        logs_page.click_save_edited_log()
-        common_page.hamburger_button()
-        main_page.check_presence_of_events_button()
-
-        # Create log with on load sequence and on save sequence in two of its fields.
-        main_page.open_LOGS()
-        logs_page.create_new_log()
-        logs_page.choose_log_type_with_on_load_sequence()
-        logs_page.click_on_lodging_agency_picker()
-        logs_page.choose_lodging_agency()
-        logs_page.scroll_down_to_entry_field()
-        logs_page.type_text_into_entry_field("Log with on load sequence")
-        common_page.hide_keyboard()
-        logs_page.check_on_load_and_on_save_sequences()
-        logs_page.scroll_down_to_save_button()
-        logs_page.click_save_new_log()
-        common_page.hamburger_button()
-        main_page.check_presence_of_events_button()
-
-        # Open new logs but don't save them.
-        main_page.open_LOGS()
-        logs_page.create_new_log()
-        logs_page.choose_log_type_with_all_fields()
-        logs_page.click_on_lodging_agency_picker()
-        logs_page.choose_lodging_agency()
-        logs_page.scroll_down_to_entry_field()
-        logs_page.type_text_into_entry_field("Appium test")
-        common_page.hide_keyboard()
-        logs_page.scroll_down_to_save_button()
-        logs_page.click_cancel_new_log()
-        common_page.hamburger_button()
-        main_page.check_presence_of_events_button()
+        # logs_page.create_new_log()
+        # logs_page.choose_log_type_with_all_fields()
+        # logs_page.click_on_lodging_agency_picker()
+        # logs_page.choose_lodging_agency()
+        # logs_page.scroll_down_to_entry_field()
+        # logs_page.type_text_into_entry_field("Appium log with all fields")
+        # common_page.hide_keyboard()
+        # logs_page.scroll_down_to_save_button()
+        # logs_page.click_save_new_log()
+        # common_page.hamburger_button()
+        # main_page.check_presence_of_events_button()
+        #
+        # # From the main menu press the Logs button. On the search form, filter logs by type and enter search terms.
+        # main_page.open_LOGS()
+        # logs_page.expand_types_filter()
+        # logs_page.choose_second_filter()
+        # logs_page.expand_types_filter()
+        # logs_page.choose_third_filter()
+        # logs_page.expand_types_filter()
+        # logs_page.choose_first_filter()
+        # logs_page.type_text_into_search_field("all fields")
+        # common_page.click_Return_button_on_keyboard()
+        # common_page.hide_keyboard()
+        # logs_page.check_result()
+        # logs_page.clear_Search_field()
+        # common_page.click_Return_button_on_keyboard()
+        # common_page.hide_keyboard()
+        # common_page.hamburger_button()
+        # main_page.check_presence_of_events_button()
+        #
+        # # Select an existing log. Press Edit to update the log and press Save.
+        # main_page.open_LOGS()
+        # logs_page.open_first_log_on_the_list()
+        # logs_page.click_edit_button()
+        # logs_page.scroll_down_to_entry_field()
+        # logs_page.type_text_into_entry_field("  - edited")
+        # common_page.hide_keyboard()
+        # logs_page.scroll_down_to_save_button()
+        # logs_page.click_save_edited_log()
+        # common_page.hamburger_button()
+        # main_page.check_presence_of_events_button()
+        #
+        # # Select an existing log. Press More > Delete log.
+        # main_page.open_LOGS()
+        # logs_page.open_first_log_on_the_list()
+        # logs_page.click_more_button()
+        # logs_page.click_delete_log()
+        # logs_page.alert_accept_delete()
+        # common_page.hamburger_button()
+        # main_page.check_presence_of_events_button()
+        #
+        # # Create a new log and select an event and asset.
+        # main_page.open_LOGS()
+        # logs_page.create_new_log()
+        # logs_page.choose_log_type_with_all_fields()
+        # logs_page.click_on_lodging_agency_picker()
+        # logs_page.choose_lodging_agency()
+        # logs_page.click_event_chooser_field()
+        # logs_page.choose_first_event_on_the_list()
+        # logs_page.click_asset_chooser_field()
+        # logs_page.choose_first_asset_on_the_list()
+        # logs_page.scroll_down_to_entry_field()
+        # logs_page.type_text_into_entry_field("Appium log with all fields")
+        # common_page.hide_keyboard()
+        # logs_page.scroll_down_to_save_button()
+        # logs_page.click_save_new_log()
+        # common_page.hamburger_button()
+        # main_page.check_presence_of_events_button()
+        #
+        # # Create and update a log with chooser fields.
+        # main_page.open_LOGS()
+        # logs_page.create_new_log()
+        # logs_page.choose_log_type_with_chooser_fields()
+        # logs_page.click_on_lodging_agency_picker()
+        # logs_page.choose_lodging_agency()
+        # logs_page.scroll_down_to_entry_field()
+        # logs_page.type_text_into_entry_field("Log with chooser fields")
+        # common_page.hide_keyboard()
+        # logs_page.scroll_down_to_save_button()
+        # logs_page.click_save_new_log()
+        # common_page.hamburger_button()
+        # main_page.check_presence_of_events_button()
+        #
+        # main_page.open_LOGS()
+        # logs_page.clear_Search_field()
+        # logs_page.type_text_into_search_field("chooser fields")
+        # common_page.click_Return_button_on_keyboard()
+        # common_page.hide_keyboard()
+        # logs_page.open_first_log_on_the_list()
+        # logs_page.click_edit_button()
+        # logs_page.scroll_down_to_save_button()
+        # logs_page.click_log_chooser_field()
+        # logs_page.choose_log_from_the_list()
+        # logs_page.scroll_down_to_save_button()
+        # logs_page.click_save_edited_log()
+        # common_page.hamburger_button()
+        # main_page.check_presence_of_events_button()
+        #
+        # # Create log with on load sequence and on save sequence in two of its fields.
+        # main_page.open_LOGS()
+        # logs_page.create_new_log()
+        # logs_page.choose_log_type_with_on_load_sequence()
+        # logs_page.click_on_lodging_agency_picker()
+        # logs_page.choose_lodging_agency()
+        # logs_page.scroll_down_to_entry_field()
+        # logs_page.type_text_into_entry_field("Log with on load sequence")
+        # common_page.hide_keyboard()
+        # logs_page.check_on_load_and_on_save_sequences()
+        # logs_page.scroll_down_to_save_button()
+        # logs_page.click_save_new_log()
+        # common_page.hamburger_button()
+        # main_page.check_presence_of_events_button()
+        #
+        # # Open new logs but don't save them.
+        # main_page.open_LOGS()
+        # logs_page.create_new_log()
+        # logs_page.choose_log_type_with_all_fields()
+        # logs_page.click_on_lodging_agency_picker()
+        # logs_page.choose_lodging_agency()
+        # logs_page.scroll_down_to_entry_field()
+        # logs_page.type_text_into_entry_field("Appium test")
+        # common_page.hide_keyboard()
+        # logs_page.scroll_down_to_save_button()
+        # logs_page.click_cancel_new_log()
+        # common_page.hamburger_button()
+        # main_page.check_presence_of_events_button()
 
         # Create a log that has option lists and fields with visibility rules that clears hidden fields and restores default values.
         main_page.open_LOGS()
@@ -231,6 +232,18 @@ class TestManagingLogs(SetupTestCase):
         main_page.check_presence_of_events_button()
 
 
+# if __name__ == '__main__':
+#     suite = unittest.TestLoader().loadTestsFromTestCase(TestManagingLogs)
+#     unittest.TextTestRunner(verbosity=2).run(suite)
+
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestManagingLogs)
-    unittest.TextTestRunner(verbosity=2).run(suite)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--input', default='Android 5')
+    parser.add_argument('unittest_args', nargs='*')
+
+    args = parser.parse_args()
+    # TODO: Go do something with args.input and args.filename
+
+    # Now set the sys.argv to the unittest_args (leaving sys.argv[0] alone)
+    sys.argv[1:] = args.unittest_args
+    unittest.main()

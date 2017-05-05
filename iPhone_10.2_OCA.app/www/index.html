@@ -1,0 +1,2583 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+	<meta http-equiv="Content-Security-Policy"
+		  content="default-src * gap://ready file:; font-src 'self' data: ; style-src 'self' 'unsafe-inline';  script-src 'self' 'unsafe-inline' 'unsafe-eval'; media-src *; img-src * data: filesystem:;"/>
+	<link rel="stylesheet" type="text/css" href="css/ocapp-font.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.css">
+	<link rel="stylesheet" type="text/css" href="css/ocatheme2.css">
+	<link rel="stylesheet" type="text/css" href="css/ocapp.css">
+	<script type="text/javascript" src="js/emulator.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/lib/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="js/lib/jed.js"></script>
+	<script type='text/javascript' src='js/lib/fastclick.js'></script>
+	<script type="text/javascript" src="js/lib/jquery.mobile.router.js"></script>
+	<script type="text/javascript" src="js/lib/jquery.mobile-1.4.5.js"></script>
+	<script type="text/javascript" src="js/lib/sketch.js"></script>
+	<script type="text/javascript" src="js/lib/jquery.p2r.js"></script>
+	<script type="text/javascript" src="js/locale/en_au.js"></script>
+	<script type="text/javascript" src="js/locale/en_us.js"></script>
+	<script type="text/javascript" src="js/locale/en_ca.js"></script>
+	<script type="text/javascript" src="js/locale/en_gb.js"></script>
+	<script type="text/javascript" src="js/locale/fr_ca.js"></script>
+	<script type="text/javascript" src="js/plugin/noggin-jquery.js"></script>
+	<script type='text/javascript' src='js/lib/handlebars.js'></script>
+	<script type="text/javascript" src="js/controller.js"></script>
+	<script type="text/javascript" src="js/core.js"></script>
+	<script type="text/javascript" src="js/util.js"></script>
+	<script type="text/javascript" src="js/gopher.js"></script>
+	<script type="text/javascript" src="js/queue.js"></script>
+	<script type="text/javascript" src="js/filestore.js"></script>
+	<script type="text/javascript" src="js/dbstore.js"></script>
+	<script type="text/javascript" src="js/submitters.js"></script>
+	<script type="text/javascript" src="js/view.js"></script>
+	<script type="text/javascript" src="js/typeview.js"></script>
+	<script type="text/javascript" src="js/typeedit.js"></script>
+	<script type="text/javascript" src="js/typenew.js"></script>
+	<script type="text/javascript" src="js/inputs.js"></script>
+	<script type="text/javascript" src="js/app/home.js"></script>
+	<script type="text/javascript" src="js/app/about.js"></script>
+	<script type="text/javascript" src="js/app/settings.js"></script>
+	<script type="text/javascript" src="js/app/media.js"></script>
+	<script type="text/javascript" src="js/app/photo.js"></script>
+	<script type="text/javascript" src="js/app/video.js"></script>
+	<script type="text/javascript" src="js/app/audio.js"></script>
+	<script type="text/javascript" src="js/app/location.js"></script>
+	<script type="text/javascript" src="js/app/contact.js"></script>
+	<script type="text/javascript" src="js/app/eme.js"></script>
+	<script type="text/javascript" src="js/app/comms.js"></script>
+	<script type="text/javascript" src="js/app/message.js"></script>
+	<script type="text/javascript" src="js/app/session.js"></script>
+	<script type="text/javascript" src="js/app/storage.js"></script>
+	<script type="text/javascript" src="js/app/inbox.js"></script>
+	<script type="text/javascript" src="js/app/document.js"></script>
+	<script type="text/javascript" src="js/app/filesystem.js"></script>
+	<script type="text/javascript" src="js/app/log.js"></script>
+	<script type="text/javascript" src="js/app/asset.js"></script>
+	<script type="text/javascript" src="js/app/report.js"></script>
+	<script type="text/javascript" src="js/app/teamrole.js"></script>
+	<script type="text/javascript" src="js/app/task.js"></script>
+	<script type="text/javascript" src="js/app/workflow.js"></script>
+	<script type="text/javascript" src="js/app/risk.js"></script>
+	<script type="text/javascript" src="js/app/appmessages.js"></script>
+	<link rel="stylesheet" type="text/css" href="arcgis/esri/css/esri.css"/>
+	<script src="arcgis/init.js"></script>
+	<script type="text/javascript" src="js/app/map.js"></script>
+	<script type="text/javascript" src="js/lib/terraformer.min.js"></script>
+	<script type="text/javascript" src="js/lib/terraformer-arcgis-parser.min.js"></script>
+	<script type="text/javascript" src="js/lib/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="js/plugin/noggin-ckeditor.js"></script>
+	<script type="text/javascript" src="js/lib/highcharts/js/highcharts.js"></script>
+	<title>OCA</title>
+</head>
+<body>
+<div id="header" class="ui-header ui-bar-oca ui-header-fixed slidedown">
+	<div class="iOS7">
+		<a href="#" class="ui-btn-left ui-link navigation top" data-rel="back" style="height: 40px; width: 40px;">
+			<span class="icon chevron-left white"></span>
+		</a>
+		<a href="#home" class="oca">
+			<span class="icon oca_header white"></span>
+		</a>
+		<div class="ui-btn-right top" id="iconbar">
+			<a href="#menu" class="ui-link" style="height: 40px; width: 40px;">
+				<span class="icon menu white" id="menuIcon"></span>
+			</a>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="home">
+	<div data-role="main" class="ui-content">
+		<div class="dashboard">
+			<!-- empty loading page -->
+		</div>
+	</div>
+</div>
+<div data-role="page" id="menu">
+	<div data-role="main" class="ui-content">
+		<div class="ui-grid-b home-icon-grid hidden">
+			<div class="ui-block-b home-block userVisible" id="homeMenu" data-min-ver="1.9.1" data-ng-feature="MAPPING">
+				<a href="#home">
+					<span class="icon combo_ac"></span><br/>
+					<span data-translate="Dashboard"></span>
+				</a>
+			</div>
+			<div class="ui-block-b home-block userVisible" id="riskMenu" data-ng-feature="RISKS">
+				<a href="#riskRegisterIndex">
+					<span class="icon risk"></span><br/>
+					<span class="term risks">Risks</span>
+				</a>
+			</div>
+			<div class="ui-block-b home-block userVisible" id="emeMenu" data-ng-feature="EMES">
+				<a href="#emeTreeView?id=0">
+					<span class="icon error"></span><br/>
+					<span data-translate="Events"></span>
+				</a>
+			</div>
+			<div class="ui-block-b home-block userVisible" id="logMenu" data-ng-feature="LOGS">
+				<a href="#logIndex">
+					<span class="icon logs"></span><br/>
+					<span data-translate="Logs"></span>
+				</a>
+			</div>
+			<div class="ui-block-c home-block userVisible" id="reportMenu" data-ng-feature="REPORTS">
+				<a href="#reportIndex">
+					<span class="icon reports"></span><br/>
+					<span data-translate="Reports"></span>
+				</a>
+			</div>
+			<div class="ui-block-b home-block userVisible" id="map" data-ng-feature="MAPPING">
+				<a href="#mapPage">
+					<span class="icon world_map"></span><br/>
+					<span data-translate="Map"></span>
+				</a>
+			</div>
+			<div class="ui-block-b home-block" id="locationMenu">
+				<a href="#location">
+					<span class="icon marker"></span><br/>
+					<span data-translate="Location"></span>
+				</a>
+			</div>
+			<div class="ui-block-c home-block userVisible" id="assetMenu" data-ng-feature="ASSETS">
+				<a href="#assetTreeView?id=0">
+					<span class="icon apartment"></span><br/>
+					<span data-translate="Assets"></span>
+				</a>
+			</div>
+			<div class="ui-block-b home-block contactVisible" id="appMessagesMenu" data-min-ver="1.9.1">
+				<a href="#appMessages">
+					<span class="icon chat_bubble"></span><br/>
+					<span data-translate="My Messages"></span>
+					<span class="badge unread" style="display:none;"></span>
+				</a>
+			</div>
+			<div class="ui-block-b home-block userVisible" id="inboxMenu" data-ng-feature="INBOUNDCOMMS">
+				<a href="#inbox">
+					<span class="icon inbox"></span><br/>
+					<span data-translate="Inbox"></span>
+				</a>
+			</div>
+			<div class="ui-block-b home-block userVisible" id="messageMenu" data-ng-feature="OUTBOUNDCOMMS_SEND">
+				<a href="#messagePage">
+					<span class="icon compose"></span><br/>
+					<span data-translate="Compose"></span>
+				</a>
+			</div>
+			<div class="ui-block-c home-block userVisible" id="sentMenu" data-ng-feature="OUTBOUNDCOMMS">
+				<a href="#sentComms">
+					<span class="icon sent"></span><br/>
+					<span data-translate="Sent"></span>
+				</a>
+			</div>
+			<div class="ui-block-b home-block userAuthVisible" id="photoMenu" data-ng-feature="INBOUNDCOMMS_SUBMIT">
+				<a href="#photo">
+					<span class="icon camera"></span><br/>
+					<span data-translate="Photo"></span>
+				</a>
+			</div>
+			<div class="ui-block-b home-block userAuthVisible" id="videoMenu" data-ng-feature="INBOUNDCOMMS_SUBMIT">
+				<a href="#video">
+					<span class="icon camcorder"></span><br/>
+					<span data-translate="Video"></span>
+				</a>
+			</div>
+			<div class="ui-block-c home-block userAuthVisible" id="audioMenu" data-ng-feature="INBOUNDCOMMS_SUBMIT">
+				<a href="#audio">
+					<span class="icon microphone"></span><br/>
+					<span data-translate="Sound"></span>
+				</a>
+			</div>
+			<div class="ui-block-b home-block userVisible" id="taskMenu" data-ng-feature="TASKS">
+				<a href="#taskIndex">
+					<span class="icon tasks"></span><br/>
+					<span data-translate="Tasks"></span>
+				</a>
+			</div>
+			<div class="ui-block-b home-block userVisible" id="documentMenu" data-ng-feature="DOCUMENTSFOLDERS">
+				<a href="#documentfolderTreeView?id=0">
+					<span class="icon folder"></span><br/>
+					<span data-translate="Documents"></span>
+				</a>
+			</div>
+			<div class="ui-block-c home-block userVisible" id="contactMenu" data-ng-feature='CONTACTSGROUPS'>
+				<a href="#contactgroupTreeView?id=0">
+					<span class="icon contacts"></span><br/>
+					<span data-translate="Contacts"></span>
+				</a>
+			</div>
+			<!-- v1 API systems have teamroles -->
+			<div class="ui-block-b home-block userVisible" id="teamroleMenu" data-ng-feature="TEAMSROLES">
+				<a href="#teamroleAllocation">
+					<span class="icon administrator_role"></span><br/>
+					<span data-translate="Allocate"></span>
+				</a>
+			</div>
+			<!-- v2 API systems have resource assignments -->
+			<div class="ui-block-b home-block userVisible" id="resourceAllocationMenu"
+				 data-ng-feature="RESOURCESTRUCTURENODES">
+				<a href="#teamroleAllocation">
+					<span class="icon administrator_role"></span><br/>
+					<span data-translate="Allocate"></span>
+				</a>
+			</div>
+			<div class="ui-block-b home-block" id="settingsMenu">
+				<a href="#settings" class="">
+					<span class="icon gear"></span><br/>
+					<span data-translate="Settings"></span>
+				</a>
+			</div>
+			<div class="ui-block-b home-block userVisible" id="workflowMenu" data-ng-feature="WORKFLOWS_ACTIVATE">
+				<a href="#workflowActivation">
+					<span class="icon switch"></span><br/>
+					<span data-translate="Activate"></span>
+				</a>
+			</div>
+			<div class="ui-block-c home-block userVisible" id="outboxMenu">
+				<a href="#storage">
+					<span class="icon refresh"></span><br/>
+					<span data-translate="Offline Sync"></span>
+					<span class="badge pending" style="display:none;"></span>
+				</a>
+			</div>
+			<div class="ui-block-b home-block" id="aboutMenu">
+				<a href="#about">
+					<span class="icon oca"></span><br/>
+					<span data-translate="About"></span>
+				</a>
+			</div>
+			<div class="ui-block-c home-block" id="sessionMenu">
+				<a href="#session" class='sessionMenu'>
+					<span class="icon shutdown"></span><br/>
+					<span class="label" data-translate="Login"></span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div data-role="page" id="not-available">
+	<div data-role="main" class="ui-content">
+		<h3 data-translate="Feature not supported"></h3>
+        <p data-translate="Your OCA server doesn't support this feature. Please contact Noggin to discuss upgrading."></p>
+	</div>
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a id="notAvailableAck" href="#home" data-role="button" data-theme="b" data-translate="Ok"></a></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+<div data-role="page" id="about">
+	<div data-role="main" class="ui-content">
+		<h3 data-translate="About OCA"></h3>
+		<p data-translate="OCA is online software for incident, emergency, risk and crisis management. It can:"></p>
+		<ul>
+			<li data-translate="Record, organise, analyse and distribute information about incidents, actions, people and assets"></li>
+			<li data-translate="Log events, decisions or actions, track tasks, manage requests and related actions, resources and escalations"></li>
+			<li data-translate="Communicate to and from via email SMS, fax, voice and digital and social media"></li>
+			<li data-translate="Provide strategic, tactical or operational views of incident information"></li>
+			<li data-translate="Analyse and visualise data in tables, charts or maps"></li>
+			<li data-translate="Enforce and automate processes, workflows, actions, escalations, notifications or plans."></li>		
+		</ul>
+		<p class="oca-link transspecial" data-translate="For more information on OCA visit our website at %s."><a href="http://www.noggin.com.au" rel="external" target="_blank" data-ajax="false">http://www.noggin.com.au</a></p>
+        <p class="about version">v 4.0.20</p>
+        <p class="about system"></p>
+	</div>
+</div>
+<script type="text/x-handlebars-template" id="alertDialog">
+	<div data-role="header" class="ui-corner-top ui-header ui-bar-a" role="banner">
+		<h1 class="ui-title" data-role="heading" aria-level="1">{{data.title}}</h1>
+	</div>
+	<div class="ng-dialog-container">
+		<p>{{{data.message}}}</p>
+	</div>
+	<div data-role="controlgroup" data-type="horizontal" class="center-text ui-corner-all ui-controlgroup ui-controlgroup-horizontal" aria-disabled="false" data-disabled="false" data-shadow="false" data-corners="true" data-exclude-invisible="true" data-mini="false" data-init-selector=":jqmData(role='controlgroup')">
+		<div class="ui-controlgroup-controls">
+			<a href="#" data-role="button" data-theme="b" class="ui-btn ui-btn-b ui-btn-inline ui-first-child ok-button">{{data.buttonLabel}}</a>
+		</div>
+	</div>
+</script>
+
+<div data-role="page" id="analyticsChart">
+	<div data-role="main">
+		<h3 class="title"></h3>
+		<div class="content">
+			<div class="chart" id="analyticsChartContent"></div>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="analyticsTable">
+	<div data-role="main">
+		<h3 class="title"></h3>
+		<div class="content">
+			<div id="analyticsTableContent"></div>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="appMessageView">
+	<div data-role="main" class="ui-content">
+		<ul data-role="listview"></ul>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-role="button" data-theme="b" id="appMessageOk" data-translate="Ok" data-rel="back" ></a></li>
+				<li><a href="#" data-role="button" id="appMessageDismiss" data-translate="Dismiss"></a></li>
+			</ul>
+		</div>
+	</div>	
+</div>
+<div data-role="page" id="appMessages">
+	<div data-role="main" class="ui-content">
+		<div data-role="collapsible" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" >
+			<h2 class="msgdismissed"><span class="label" data-translate="Active"></span></h2>
+			<ul data-role="listview" class="msgdismissed" data-icon="false">
+				<li><a href="#" data-dismissed="" data-translate="Any Status"></a></li>
+				<li><a href="#" data-dismissed="0" data-translate="Active"></a></li>
+				<li><a href="#" data-dismissed="1" data-translate="Dismissed"></a></li>
+			</ul>
+		</div>
+		<label for="appMsgSearch" class="ui-hidden-accessible appMsgSearch" data-translate="Search"></label>
+		<input type="search" name="search" value="" id="appMsgSearch" class="myMsgSearch" />
+		<div class="heading-row">
+			<h2 data-translate="My App Messages"></h2>
+		</div>
+		<div class="main">
+			<ul data-role="listview" class="main messages listview"></ul>
+		</div>
+	</div>
+</div>
+<script type="text/x-handlebars-template" id="appMessagesLV">
+	{{#each data}}
+	<li>
+        <a href="#appMessageView?id={{getID URL}}" class="ui-btn ui-btn-icon-right ui-btn-icon-left">
+			<span class="icon {{appMsgIcon this}} inline-left"></span>
+            <h4 class="two-lines">{{#if Notification}}{{Notification}}{{else}}{{Message}}{{/if}}</h4>
+            <p class="description">{{relativeDateTime TimeCreated}}</p>
+			<span class="icon chevron-right inline-right"></span>
+        </a>
+	</li>
+	{{/each}}
+</script>
+<div data-role="page" id="assetEdit">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="assetNew">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="assetTreeView">
+	<div data-role="main" class="ui-content">
+		<div class="filters">
+			<label for="assetSearch" class="ui-hidden-accessible assetSearch" data-translate="Search:"></label>
+			<input type="search" name="search" value="" id="assetSearch" class="assetSearch" />
+		</div>
+		<div class="pending" style="display:none;">
+			<h2 data-translate="Pending Assets"></h2>
+			<ul data-role="listview" class="listview"></ul>
+		</div>
+		<div class="main">
+			<div class="heading-row">
+				<h2 data-translate="Assets"></h2>
+				<a href="#" data-rel="back" class="level-up">
+					<span class="icon chevron-up"></span>
+				</a>
+			</div>
+			<ul data-role="listview" class="assets listview"></ul>
+		</div>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+                <li><a href="#assetView?id=1" data-role="button" data-theme="b" class="assetView" data-translate="Asset info"></a></li>
+                <li id="openAssetTreeMore"><a href="#assetTreeMore" class="morearrow" data-rel="popup" data-role="button" data-translate="New"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed" class="selector-mode">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#" data-role="button" class="selector-save" data-theme="b" data-translate="Ok"></a></li>
+                <li><a href="#" data-role="button" class="selector-cancel" data-translate="Cancel"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="popup" id="assetTreeMore">
+        <ul data-role="listview">
+            <li class="asset new"><a href="#assetNew" data-translate="New asset"></a></li>
+        </ul>
+    </div>
+</div>
+<div data-role="page" id="assetView">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li class="edit"><a href="#assetEdit" data-role="button" data-theme="b" class="edit" data-translate="Edit"></a></li>
+				<li><a href="#assetViewMoreMenu" class="morearrow" data-rel="popup" data-role="button" data-translate="More"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div data-role="popup" data-history="false" id="assetViewMoreMenu" data-theme="a">
+		<ul data-role="listview" data-theme="a">
+			<li class="new asset"><a href="#assetNew" data-translate="New child asset"></a></li>
+			<li class="delete asset"><a href="#confirmDeleteAsset" data-rel="popup" data-position-to="window" data-translate="Delete this asset"></a></li>
+		</ul>
+	</div>
+    <div data-role="popup" id="confirmDeleteAsset" data-overlay-theme="a" data-dismissible="false" class="ui-corner-all">
+        <!-- Replaced with confirmDelete template -->
+    </div>
+</div>
+<div data-role="page" id="audio">
+	<div data-role="main" class="ui-content">
+		<h3 data-translate="Send a sound recording to OCA"></h3>
+		<div class="ui-grid-a">
+			<div class="ui-block-a" id="audio-placeholder"><span class="icon microphone medium"></span></div>
+			<div class="ui-block-b" id="audio-info"><span data-translate="No audio recorded. Touch the icon to record."></span><br></div>
+		</div>
+		<div>
+			<form>
+				<label for="audio-input-description" data-translate="Description (optional)">Description (optional)</label>
+				<textarea name="video-input-description" id="audio-input-description"></textarea>
+			</form>
+		</div>
+		<div id="audio-progress" class="hidden">
+			<div class="progress-bar-status"></div><!-- how many bytes/kb/megs transferred -->
+			<div class="progress-bar">
+				<div class="progress-bar-indicator"></div>
+			</div>
+		</div>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a id="audioBtnSend" href="#" data-role="button" data-theme="b" data-translate="Send"></a></li>
+				<li><a id="audioBtnReset" href="#" data-role="button" data-translate="Reset"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div data-role="page" id="sentComms">
+	<div data-role="main" class="ui-content">
+		<h2 data-translate="Sent communications"></h2>
+		<label for="sentSearch" class="ui-hidden-accessible sentSearch" data-translate="Search"></label>
+		<input type="search" name="search" value="" id="sentSearch" class="sentSearch" />
+		<ul data-role="listview"></ul>
+	</div>
+</div>
+<script type="text/x-handlebars-template" id="confirmDelete">
+	<div data-role="header" class="ui-corner-top ui-header ui-bar-a" role="banner">
+		<h1 class="ui-title transspecial" data-role="heading" aria-level="1" data-translate="Delete %s">
+			<span class="term">{{#if data.label}}{{data.label}}{{else}}{{data.item}}{{/if}}</span>
+		</h1>
+	</div>
+	<div class="ng-dialog-container">
+		<h3 class="ui-title center-text transspecial" data-translate="Are you sure you want to delete this %s?"><span class="term">{{#if data.label}}{{data.label}}{{else}}{{data.item}}{{/if}}</span></h3>
+		<div data-role="controlgroup" data-type="horizontal" class="center-text ui-corner-all ui-controlgroup ui-controlgroup-horizontal" aria-disabled="false" data-disabled="false" data-shadow="false" data-corners="true" data-exclude-invisible="true" data-mini="false" data-init-selector=":jqmData(role='controlgroup')">
+			<div class="ui-controlgroup-controls">
+				<a href="#" data-role="button" data-theme="b" class="delete {{data.item}} ui-link ui-btn ui-btn-b ui-btn-inline ui-shadow ui-corner-all ui-first-child" data-translate="Delete"></a>
+				<a href="#" data-role="button" data-rel="back" class="ui-link ui-btn ui-btn-inline ui-shadow ui-corner-all ui-last-child" data-translate="Cancel"></a>
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/x-handlebars-template" id="confirmDialog">
+	<div data-role="header" class="ui-corner-top ui-header ui-bar-a" role="banner">
+		<h1 class="ui-title" data-role="heading" aria-level="1">{{data.title}}</h1>
+	</div>
+	<div class="ng-dialog-container">
+		<p>{{{data.message}}}</p>
+	</div>
+	<div data-role="controlgroup" data-type="horizontal" class="center-text ui-corner-all ui-controlgroup ui-controlgroup-horizontal" aria-disabled="false" data-disabled="false" data-shadow="false" data-corners="true" data-exclude-invisible="true" data-mini="false" data-init-selector=":jqmData(role='controlgroup')">
+		<div class="ui-controlgroup-controls">
+			{{#each data.buttonLabels}}
+			<a href="#" data-role="button" class="ui-btn {{#if @first}}ui-btn-b ui-first-child{{/if}} ui-btn-inline button" data-button-index="{{oneIndexed @index}}">
+				{{this}}
+			</a>
+			{{/each}}
+		</div>
+	</div>
+</script>
+
+<script type="text/x-handlebars-template" id="confirmOutcome">
+	<div data-role="header" class="ui-corner-top ui-header ui-bar-a" role="banner">
+		<h1 class="ui-title" data-role="heading" aria-level="1" data-translate="Complete Task"></h1>
+	</div>
+	<div class="ng-dialog-container">
+		<h3 class="ui-title center-text">{{#if data.confirm_text}}{{data.confirm_text}}{{else}}<span data-translate="Are you sure you want to complete this task?"></span>{{/if}}</h3>
+		<div data-role="controlgroup" data-type="horizontal" class="center-text ui-corner-all ui-controlgroup ui-controlgroup-horizontal" aria-disabled="false" data-disabled="false" data-shadow="false" data-corners="true" data-exclude-invisible="true" data-mini="false" data-init-selector=":jqmData(role='controlgroup')">
+			{{#if data.comment}}
+			<label for="comment-{{data.id}}">{{data.comment.prompt}}</label>
+			<div class="ui-input-text"><input type="text" id="comment-{{data.id}}" /></div>
+			{{/if}}
+			<div class="ui-controlgroup-controls">
+				<a href="#" data-role="button" data-theme="b" data-outcomeid="{{data.id}}" class="complete ui-btn ui-btn-b ui-btn-inline ui-first-child commentRequired{{data.comment.required}}" data-translate="Confirm"></a>
+				<a href="#" data-role="button" data-rel="back" class="ui-btn ui-btn-inline ui-btn ui-last-child" data-translate="Cancel"></a>
+			</div>
+		</div>
+	</div>
+</script>
+
+<div data-role="page" id="contactEdit">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="contactImport">
+	<div data-role="main" class="ui-content">
+		<label for="contactImportSearch" class="ui-hidden-accessible" data-translate="Search:"></label>
+		<input type="search" name="search" value="" id="contactImportSearch" />
+		<h1 data-translate="Device Contacts"></h1>
+		<ul data-role="listview" class="contacts listview"></ul>
+	</div>
+</div>
+<script type="text/x-handlebars-template" id="contactImportLV">
+	{{#each data}}
+	<li>
+        <a href="#" class="ui-btn ui-btn-icon-right" data-contact-index="{{@index}}">
+            {{contactName this}}
+        </a>
+	</li>
+	{{/each}}
+</script>
+<div data-role="page" id="contactNew">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#save"   data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="contactView">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li class="edit"><a href="#contactEdit" data-role="button" data-theme="b" class="edit" data-translate="Edit"></a></li>
+				<li><a href="#contactViewMoreMenu" class="morearrow" data-rel="popup" data-role="button" data-translate="More"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div data-role="popup" data-history="false" id="contactViewMoreMenu">
+		<ul data-role="listview">
+			<li class="delete contact"><a href="#confirmDeleteContact" data-rel="popup" data-position-to="window" data-translate="Delete contact"></a></li>
+			<li class="send"><a href="#messagePage" class="send contact" data-translate="Send communication"></a></li>
+			<li class="save contact"><a href="#" class="save contact" data-translate="Save to device"></a></li>
+		</ul>
+	</div>
+	<div data-role="popup" id="confirmDeleteContact" data-overlay-theme="a" data-dismissible="false" class="ui-corner-all">
+		<!-- Replaced with confirmDelete template -->
+	</div>
+</div>
+
+<div data-role="page" id="contactgroupEdit">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="contactgroupNew">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#save" data-role="button" data-theme="b" data-translate="Save" class="save"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="contactgroupTreeView">
+	<div data-role="main" class="ui-content">
+		<label for="contactSearch" class="ui-hidden-accessible contactSearch" data-translate="Search:"></label>
+		<input type="search" name="search" value="" id="contactSearch" class="contactSearch" />
+		<div class="pending" style="display:none;">
+			<h2 data-translate="Pending Contact Groups" class="pending"></h2>
+			<ul data-role="listview" class="listview"></ul>
+		</div>
+		<div class="pending-secondary" style="display:none;">
+			<h2 data-translate="Pending Contacts"></h2>
+			<ul data-role="listview" class="listview"></ul>
+		</div>
+		<div class="main">
+			<div class="heading-row">
+				<h2 data-translate="Contact Directory"></h2>
+				<a href="#" data-rel="back" class="level-up">
+					<span class="icon chevron-up"></span>
+				</a>
+			</div>
+			<ul data-role="listview" class="groups listview"></ul>
+		</div>
+		<div class="secondary">
+			<ul data-role="listview" class="contacts listview"></ul>
+		</div>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed" class="normal-mode">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#groupView?id=1" data-role="button" data-theme="b" class="groupView" data-translate="Group info"></a></li>
+				<li id="openContactGroupTreeMore"><a href="#contactgroupTreeMore" class="morearrow" data-rel="popup" data-role="button" data-translate="New"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed" class="selector-mode">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-role="button" class="selector-save" data-theme="b" data-translate="Ok"></a></li>
+				<li><a href="#" data-role="button" class="selector-cancel" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div data-role="popup" id="contactgroupTreeMore">
+		<ul data-role="listview">
+			<li class="new contactgroup"><a href="#contactgroupNew" class="new contactgroup" data-translate="Add new contact group in this group"></a></li>
+			<li class="ingroup new contact"><a href="#contactNew" class="new contact" data-translate="Add new contact in this group"></a></li>
+			<li class="ingroup new import contact"><a href="#contactImport" class="import contact" data-translate="Import contact from device to this group"></a></li>
+		</ul>
+	</div>
+</div>
+
+<div data-role="page" id="contactgroupView">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li class="edit"><a href="#contactgroupEdit" data-role="button" data-theme="b" class="edit" data-translate="Edit"></a></li>
+				<li id="openContactGroupViewMore"><a href="#contactgroupViewMoreMenu" class="morearrow" data-rel="popup" data-role="button" data-translate="More"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div data-role="popup" data-history="false" id="contactgroupViewMoreMenu">
+		<ul data-role="listview">
+			<li class="delete contactgroup"><a href="#confirmDeleteContactGroup" data-rel="popup" data-position-to="window" data-translate="Delete group"></a></li>
+			<li class="send contactgroup"><a href="#messagePage" data-translate="Send communication"></a></li>
+			<li class="new contactgroup"><a href="#contactgroupNew" data-translate="Add new contact group in this group"></a></li>
+			<li class="new contact"><a href="#contactNew" data-translate="Add new contact in this group"></a></li>
+			<li class="new contact import"><a href="#contactImport" data-translate="Import contact from device to this group"></a></li>
+		</ul>
+	</div>
+	<div data-role="popup" id="confirmDeleteContactGroup" data-overlay-theme="a" data-dismissible="false" class="ui-corner-all">
+		<!-- Replaced with confirmDelete template -->
+	</div>
+</div>
+
+<script type="text/x-handlebars-template" id="dashboardcard">
+	<div class="card-{{toLowerCase data.Type}}">
+		<h3 class="title"><span class="text">{{data.Title}}</span></h3>
+		<div class="content">{{{data.Content}}}</div>
+	</div>
+</script>
+
+<div data-role="page" id="documentView">
+	<div data-role="main" class="ui-content"></div>
+</div>
+<div data-role="page" id="documentfolderTreeView">
+	<div data-role="main" class="ui-content">
+		<label for="docSearch" class="ui-hidden-accessible docSearch" data-translate="Search:"></label>
+		<input type="search" name="search" value="" id="docSearch" class="docSearch" />
+		<div class="main">
+			<div class="heading-row">
+				<h2 data-translate="Document Directory"></h2>
+				<a href="#" data-rel="back" class="level-up">
+					<span class="icon chevron-up"></span>
+				</a>
+			</div>
+			<ul data-role="listview" class="folders listview"></ul>
+		</div>
+		<div class="secondary">
+			<ul data-role="listview" class="documents listview"></ul>
+		</div>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed" class="selector-mode">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-role="button" class="selector-save" data-theme="b" data-translate="Ok"></a></li>
+				<li><a href="#" data-role="button" class="selector-cancel" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="emeEdit">
+    <div data-role="main" class="ui-content"></div>
+    <div data-role="footer" data-tap-toggle="false">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+                <li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        
+<div data-role="page" id="emeNew">
+    <div data-role="main" class="ui-content"></div>
+    <div data-role="footer" data-tap-toggle="false">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+                <li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="emeTreeView">
+    <div data-role="main" class="ui-content">
+		<div class="filters">
+			<div class="emetype collapsible" data-role="collapsible" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u">
+				<h2 class="emetype"><span class="label" data-translate="Any Type"></span></h2>
+				<ul data-role="listview" class="emetypes" data-icon="false"></ul>
+			</div>
+			<div data-role="collapsible" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" >
+				<h2 class="emestatus"><span class="label" data-translate="Any Status"></span></h2>
+				<ul data-role="listview" class="emestatus" data-icon="false">
+					<li><a href="#" data-status="" data-translate="Any Status"></a></li>
+					<li><a href="#" data-status="active" data-translate="Active"></a></li>
+					<li><a href="#" data-status="inactive" data-translate="Inactive"></a></li>
+					<li><a href="#" data-status="draft" data-translate="Draft"></a></li>
+				</ul>
+			</div>
+			<label for="emeSearch" class="ui-hidden-accessible emeSearch" data-translate="Search:"></label>
+			<input type="search" name="search" value="" id="emeSearch" class="emeSearch" />
+		</div>
+		<div class="pending" style="display:none;">
+			<h2 data-translate="Pending Events"></h2>
+			<ul data-role="listview" class="listview"></ul>
+		</div>
+        <div class="main">
+			<div class="heading-row">
+				<h2 data-translate="Events"></h2>
+				<a href="#" data-rel="back" class="level-up">
+					<span class="icon chevron-up"></span>
+				</a>
+			</div>
+			<ul data-role="listview" class="emes listview"></ul>
+		</div>
+    </div>
+    <div data-role="footer" data-tap-toggle="false" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#emeView?id=1" data-role="button" data-theme="b" class="emeView" data-translate="Event info"></a></li>
+                <li id="openEmeTreeMore"><a href="#emeTreeMore" class="morearrow" data-rel="popup" data-role="button" data-translate="More"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="footer" data-tap-toggle="false" data-position="fixed" class="selector-mode">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#" data-role="button" class="selector-save" data-theme="b" data-translate="Ok"></a></li>
+                <li><a href="#" data-role="button" class="selector-cancel" data-translate="Cancel"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="popup" id="emeTreeMore">
+        <ul data-role="listview">
+			<li class="primary eme clear"><a data-translate="Clear primary event"></a></li>
+            <li class="primary eme set ineme"><a data-translate="Set as primary"></a></li>
+            <li class="eme new"><a href="#emeNew" data-translate="New event"></a></li>
+        </ul>
+    </div>
+</div>
+
+<div data-role="page" id="emeView">
+    <div data-role="main" class="ui-content"></div>
+    <div data-role="footer" data-tap-toggle="false" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li class="edit"><a href="#emeEdit" data-role="button" data-theme="b" class="edit" data-translate="Edit"></a></li>
+                <li class="more"><a href="#emeViewMoreMenu" class="morearrow" data-rel="popup" data-translate="More" data-role="button"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="popup" data-history="false" id="emeViewMoreMenu">
+        <ul data-role="listview">
+            <li class="primary eme set ineme"><a data-translate="Set as primary"></a></li>
+            <li class="eme new subeme"><a data-translate="New sub event" href="#emeNew"></a></li>
+			<li class="eme delete"><a data-translate="Delete event" href="#confirmDeleteEME" data-rel="popup" data-position-to="window"></a></li>
+		</ul>
+	</div>
+	<div data-role="popup" id="confirmDeleteEME" data-overlay-theme="a" data-dismissible="false" class="ui-corner-all">
+		<!-- Replaced with confirmDelete template -->
+	</div>
+</div>
+
+<div data-role="page" id="filesystemMediaSelect">
+	<div data-role="main" class="ui-content">
+		<h3 data-translate="Select media"></h3>
+		<div class="ui-grid-a">
+			<div class="ui-block-a icon-grid" id="filePhotoCapture">
+				<div class="center-text">
+					<span class="icon camera medium"></span>
+					<br /><span data-translate="Take photo"></span>
+				</div>
+			</div>
+			<div class="ui-block-b icon-grid" id="filePhotoGallery">
+				<div class="center-text">
+					<span class="icon stack_of_photos medium"></span>
+					<br /><span data-translate="Photo gallery"></span>
+				</div>
+			</div>
+			<div class="ui-block-a icon-grid" id="fileVideoCapture">
+				<div class="center-text">
+					<span class="icon camcorder medium"></span>
+					<br /><span data-translate="Record video"></span>
+				</div>
+			</div>
+			<div class="ui-block-b icon-grid" id="fileVideoGallery">
+				<div class="center-text">
+					<span class="icon film medium"></span>
+					<br /><span data-translate="Video gallery"></span>
+				</div>
+			</div>
+			<div class="ui-block-a icon-grid" id="fileAudioCapture">
+				<div class="center-text">
+					<span class="icon microphone medium"></span>
+					<br /><span data-translate="Record audio"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="filesystemTreeView">
+	<div data-role="main" class="ui-content">
+		<div class="heading-row">
+			<h2 data-translate="Device File System"></h2>
+			<a href="#" data-role="button" data-icon="arrow-u" data-iconpos="notext" data-mini="true" data-inline="true" class="level-up" data-rel="back"></a>
+		</div>
+		<ul data-role="listview" class="folders listview"></ul>
+		<ul data-role="listview" class="documents listview"></ul>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed" class="selector-mode">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-role="button" data-translate="Ok" class="selector-save" data-theme="b"></a></li>
+				<li><a href="#" data-role="button" data-translate="Cancel" class="selector-cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="inbox">
+	<div data-role="main" class="ui-content">
+		<div data-role="collapsible" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" >
+			<h2><span class="label" data-translate="Inbox folder"></span></h2>
+			<ul data-role="listview" class="folders" data-icon="false"></ul>
+		</div>
+		<label for="inboxSearch" class="ui-hidden-accessible inboxSearch" data-translate="Search:"></label>
+		<input type="search" name="search" value="" id="inboxSearch" class="inboxSearch" />
+		<ul data-role="listview" class="messages"></ul>
+	</div>
+</div>
+<script type="text/x-handlebars-template" id="inboxLV">
+	{{#each data}}
+	<li>
+		<a href="#inboxitemView?id={{getID URL}}" class="ui-btn ui-btn-icon-left ui-btn-icon-right">
+            <span class="icon {{inboxIcon Type}} inline-left"></span>
+            <h4>{{Subject}}</h4>
+            <p class="description">{{FromName}}, {{relativeDate ReceivedDate}}</p>
+            <span class="icon chevron-right inline-right"></span>
+        </a>
+	</li>
+	{{/each}}
+</script>
+<div data-role="page" id="inboxitemView">
+	<div data-role="main" class="ui-content">
+		<ul data-role="listview"></ul>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#messagePage" data-role="button" data-theme="b" id="inboxitemReply" data-translate="Reply"></a></li>
+				<li><a href="#messagePage" data-role="button" id="inboxitemForward" data-translate="Forward"></a></li>
+			</ul>
+		</div>
+	</div>	
+	<div data-role="popup" id="inboxitemMore">
+		<ul data-role="listview">
+		</ul>
+	</div>
+</div>
+<script type="text/x-handlebars-template" id="listviewHB">
+	{{#each data}}
+	<li class="summary-listing">
+		{{#if ../icon}}<span class="icon {{../icon}} inline-left"></span>{{/if}}
+		<a href="#{{getRoute ../type URL ../unselectable OtherFields ../mode ../extraParams}}"
+           class="ui-btn {{#if ../icon}}ui-btn-icon-left{{/if}} ui-btn-icon-right" {{{getDataAttr OtherFields}}}>
+        {{Name}}
+		</a>
+        <span class="icon chevron-right inline-right"></span>
+	</li>
+	{{/each}}
+</script>
+
+<script type="text/x-handlebars-template" id="listviewSelectHB">
+    {{#each data}}
+    <li class="summary-listing">
+        <div class="ui-checkbox">
+            <span class="icon {{selectorClass URL ../selectorData}} inline-left"></span>
+            <label for="{{selectorName URL}}" class="ui-btn ui-btn-icon-left">
+                {{Name}}
+            </label>
+            <input type="checkbox" name="{{selectorName URL}}" id="{{selectorName URL}}" data-role="none" data-label="{{Name}}" data-id="{{getID URL}}" {{{selectorChecked URL ../selectorData}}} />
+        </div>
+        {{#if ../mode/parent}}
+        <a class="ui-btn parent-mode" href="#{{getRoute ../type URL true false ../mode/mode false}}">
+            <span class="icon chevron-right inline-right"></span>
+        </a>
+        {{/if}}
+    </li>
+    {{/each}}
+</script>
+<div data-role="page" id="location">
+	<div data-role="main" class="ui-content">
+		<h3 data-translate="Your location was last sent"></h3>
+		<p id="locationLastSent"></p>
+		<h3 data-translate="Send location once"></h3>
+		<div class="center-content">
+			<button id="locationSendNow" data-role="button" data-enhanced="true" data-theme="b" data-inline="true">
+				<span class="icon geo_fence inline white"></span>
+				<span class="label" data-translate="Send once now"></span>
+			</button>
+		</div>
+		<h3 data-translate="Send location continuously"></h3>
+		<div class="ui-grid-a">
+			<div class="ui-block-a"><label for="locationInterval" data-translate="Send every"></label></div>
+			<div class="ui-block-b"><select name="locationInterval" id="locationInterval" data-mini="true">
+					<option value="1" data-translate="1 minute"></option>
+					<option value="5" data-translate="5 minutes"></option>
+					<option value="10" data-translate="10 minutes"></option>
+					<option value="15" data-translate="15 minutes"></option>
+					<option value="30" data-translate="30 minutes"></option>
+					<option value="60" data-translate="1 hour"></option>
+					<option value="120" data-translate="2 hours"></option>
+					<option value="180" data-translate="3 hours"></option>
+				</select>
+                <div class="trackingLabel currentInterval"></div>
+            </div>
+			<div class="ui-block-a"><label for="locationDuration" data-translate="For the next"></label></div>
+			<div class="ui-block-b"><select name="locationDuration" id="locationDuration" data-mini="true">
+					<option value=".25" data-translate="15 minutes"></option>
+					<option value=".50" data-translate="30 minutes"></option>
+					<option value="1" data-translate="1 hour"></option>
+					<option value="2" data-translate="2 hours"></option>
+					<option value="3" data-translate="3 hours"></option>
+					<option value="6" data-translate="6 hours"></option>
+					<option value="12" data-translate="12 hours"></option>
+					<option value="24" data-translate="24 hours"></option>
+					<option value="48" data-translate="48 hours"></option>
+					<option value="168" data-translate="7 days"></option>
+					<option value="99999" data-translate="Indefinitely"></option>
+				</select>
+                <div class="trackingLabel currentDuration"></div>
+            </div>
+			<div class="ui-block-a"><button id="locationStart" data-role="button" data-enhanced="true">
+				<span class="icon play inline"></span><span data-translate="Start"></span>
+			</button></div>
+			<div class="ui-block-b"><button id="locationStop" data-role="button" data-enhanced="true">
+				<span class="icon stop inline"></span><span data-translate="Stop"></span>
+			</button></div>
+		</div>
+		<hr class="ios lowpower">
+		<p  class="ios lowpower">
+			<span class="icon info inline"></span>
+			<span data-translate="You have chosen the 'low power' setting for location tracking."></span>
+            <span data-translate="Background tracking will only trigger on significant location changes - at least 500m"></span>
+		</p>
+	</div>
+    <div data-role="footer" data-tap-toggle="false" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#locationHistory" data-role="button" data-theme="b" data-translate="Tracking history"></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="locationHistory">
+    <div data-role="main" class="ui-content">
+        <h3 data-translate="Tracking Sessions"></h3>
+        <ul data-role="listview" class="trackingSessions"></ul>
+    </div>
+    <!--<div data-role="footer" data-tap-toggle="false" data-position="fixed">-->
+        <!--<div data-role="navbar">-->
+            <!--<ul>-->
+                <!--<li><a id="refreshHistory" href="#" data-role="button" data-theme="b" data-translate="Refresh"></a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+<div data-role="page" id="logEdit">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="logIndex">
+	<div data-role="main" class="ui-content">
+		<div data-role="collapsible" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" >
+			<h2><span class="label" data-translate="All Logs"></span></h2>
+			<ul data-role="listview" class="logtypes" data-icon="false"></ul>
+		</div>
+		<label for="logSearch" class="ui-hidden-accessible logSearch" data-translate="Search:"></label>
+		<input type="search" name="search" value="" id="logSearch" class="logSearch" />
+		<div class="pending" style="display:none;">
+			<h2 data-translate="Pending Logs"></h2>
+			<ul data-role="listview" class="listview"></ul>
+		</div>
+		<div class="main">
+			<div class="heading-row">
+				<h2 data-translate="Logs"></h2>
+			</div>
+			<ul data-role="listview" class="logs listview"></ul>
+		</div>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#logNew" data-role="button" data-theme="b" class="logNew" data-translate="Create log entry"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed" class="selector-mode">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-role="button" class="selector-save" data-theme="b" data-translate="Ok"></a></li>
+				<li><a href="#" data-role="button" class="selector-cancel" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div data-role="page" id="logNew">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="logView">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li class="edit"><a href="#logEdit" data-role="button" data-theme="b" class="edit" data-translate="Edit"></a></li>
+				<li><a href="#logViewMoreMenu" data-rel="popup" class="morearrow" data-role="button" data-translate="More"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div data-role="popup" data-history="false" id="logViewMoreMenu">
+		<ul data-role="listview">
+			<li class="log new"><a href="#logNew" class="new log" data-translate="Create log"></a></li>
+			<li class="log delete"><a href="#confirmDeleteLog" data-rel="popup" data-position-to="window" data-translate="Delete log"></a></li>
+		</ul>
+	</div>
+	<div data-role="popup" id="confirmDeleteLog" data-overlay-theme="a" data-dismissible="false" class="ui-corner-all">
+		<!-- Replaced with confirmDelete template -->
+	</div>
+</div>
+
+<div data-role="page" id="mapPage" class="fastclickdisabled">
+	<div data-role="main" class="ui-content">
+        <div id="mapCanvas">
+            <div id="locateButton"></div>
+            <div id="searchButton"><a href="#mapSearch"><span class="icon search"></span></a></div>
+            <div id="tools" style="display:none;"></div>
+        </div>
+    </div>
+    <div data-role="footer" data-tap-toggle="false" data-position="fixed" class="normal-mode">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#mapLayers" data-role="button" data-translate="Layers"></a></li>
+                <li id="mapPlot"><a href="#" data-role="button" data-theme="b" data-translate="Plot"></a></li>
+                <li id="mapClear"><a href="#" data-role="button" data-translate="Clear"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="footer" data-tap-toggle="false" data-position="fixed" class="selector-mode">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#" data-role="button" class="selector-save" data-theme="b" data-translate="Save"></a></li>
+                <li><a href="#" data-role="button" class="selector-cancel" data-translate="Cancel"></a></li>
+                <li id="openMapToolMore"><a href="#mapToolMore" data-rel="popup" class="morearrow" data-role="button" data-translate="Tool"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="popup" data-history="false" id="mapToolMore" data-theme="a">
+        <div data-role="collapsible-set" data-theme="b" data-content-theme="a" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" style="margin:0; width:250px;">
+            <div data-role="collapsible" data-inset="false" class="Point Tool" data-wkt="POINT">
+                <h2><span data-translate="Point"></span></h2>
+                <ul data-role="listview" data-icon="false"></ul>
+            </div>
+            <div data-role="collapsible" data-inset="false" class="Line Tool" data-wkt="LINESTRING">
+                <h2><span data-translate="Line"></span></h2>
+                <ul data-role="listview" data-icon="false"></ul>
+            </div>
+            <div data-role="collapsible" data-inset="false" class="Circle Tool" data-wkt="CIRCLE">
+                <h2><span data-translate="Circle"></span></h2>
+                <ul data-role="listview" data-icon="false"></ul>
+            </div>
+            <div data-role="collapsible" data-inset="false" class="Polygon Tool" data-wkt="POLYGON">
+                <h2><span data-translate="Polygon"></span></h2>
+                <ul data-role="listview" data-icon="false"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="mapAttributesEdit">
+    <div data-role="main" class="ui-content"></div>
+    <div data-role="footer" data-tap-toggle="false" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+                <li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="mapAttributesView">
+    <div data-role="main" class="ui-content"></div>
+    <div data-role="footer" data-tap-toggle="false" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#" data-role="button" data-rel="back" data-translate="Go back"></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="mapLayers">
+    <div data-role="main" class="ui-content">
+        <h3 data-translate="Layers"></h3>
+        <ul class="static" data-role="listview"></ul>
+        <ul class="links" data-role="listview"></ul>
+    </div>
+    <div data-role="footer" data-tap-toggle="false" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a id="layersDone" href="#mapPage" data-role="button" data-theme="b" data-translate="Done"></a></li>
+                <li><a href="#savedMaps" data-role="button" data-translate="Saved maps"></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="mapPlotShortcut">
+    <div data-role="main" class="ui-content">
+        <h3 data-translate="Plot object of type:"></h3>
+        <ul data-role="listview" class="links">
+        </ul>
+    </div>
+</div>
+<div data-role="page" id="mapPlotType">
+    <div data-role="main" class="ui-content">
+        <h3 data-translate="Plot object of type:"></h3>
+        <ul data-role="listview">
+            <li><a href="#" data-link="#assetNew?parent=0" data-translate="Asset"></a></li>
+            <li><a href="#" data-link="#emeNew?parent=0" data-translate="Event"></a></li>
+            <li><a href="#" data-link="#reportNew" data-translate="Report"></a></li>
+            <li><a href="#" data-link="#taskNew" data-translate="Task"></a></li>
+        </ul>
+    </div>
+</div>
+<div data-role="page" id="mapSearch">
+    <div data-role="main" class="ui-content">
+        <h3 data-translate="Location search:"></h3>
+        <label for="mapSearchInput" class="ui-hidden-accessible mapSearch" data-translate="Search:"></label>
+        <input type="search" name="search" value="" id="mapSearchInput" class="mapSearch" />
+        <ul data-role="listview"></ul>
+    </div>
+    <div data-role="footer" data-tap-toggle="false" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a id="searchButton" href="#" data-role="button" data-theme="b" data-translate="Search"></a></li>
+                <li><a href="#mapPage" data-role="button" data-translate="Cancel"></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="messagePage">
+	<div data-role="main" class="ui-content">
+		<div class="heading-row">
+			<h3>
+				<span data-translate="Recipients"></span>
+                <a href="#messageAddRecipients">
+                    <span class="icon plus"></span>
+                </a>
+            </h3>
+
+		</div>
+		<ul data-role="listview" class="recipients" style="margin-bottom: 1em;">
+			<li data-theme="b" class="none">
+                <a href="#messageAddRecipients" data-translate="Add recipients"></a>
+            </li>
+			<li class="more" style="display:inherit;">
+                <a href="#messageRecipients">... <span data-translate="more"></span> <span class="ui-li-count">0 <span data-translate="total"></span></span></a>
+            </li>
+		</ul>
+		<div class="heading-row">
+			<h3 data-translate="Message"></h3>
+		</div>
+		<ul data-role="listview" class="methods" style="margin-bottom: 1em;">
+			<li data-key="SMS">
+				<a href="#messageSMS"><span data-translate="SMS"></span><span class="ui-li-count" data-translate="not set"></span></a>
+			</li>
+			<li data-key="Email">
+				<a href="#messageEmail"><span data-translate="Email"></span><span class="ui-li-count" data-translate="not set"></span></a>
+			</li>
+			<li data-key="Voice">
+				<a href="#messageVoice"><span data-translate="Voice"></span><span class="ui-li-count" data-translate="not set"></span></a>
+			</li>
+			<li data-key="Fax">
+				<a href="#messageFax"><span data-translate="Fax"></span><span class="ui-li-count" data-translate="not set"></span></a>
+			</li>
+		</ul>
+		<div class="heading-row">
+			<h3 data-translate="Options"></h3>
+		</div>
+		<ul data-role="listview" class="options">
+			<li><a href="#messageAcknowledgement" class="acknowledgement"><span data-translate="Require acknowledgement"></span> <span class="ui-li-count" data-translate="No"></span></a></li>
+			<li><a href="#messageTracking" class="tracking"><span data-translate="Reply tracking"></span> <span class="ui-li-count" data-translate="No"></span></a></li>
+		</ul>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#confirmSendMessage" data-role="button" data-theme="b" data-rel="popup" data-position-to="window" data-translate="Send"></a></li>
+				<li><a id="saveDraft" href="#" data-role="button" data-translate="Save"></a></li>
+				<li><a href="#messageMore" data-rel="popup" data-role="button" class="morearrow" data-translate="More"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div data-role="popup" id="messageMore" data-history="false" data-theme="a">
+		<ul data-role="listview" data-theme="a">
+			<li><a class="discard" href="#confirmDiscard"			data-rel="popup" data-translate="Discard" data-position-to="window" ></a></li>
+			<li><a class="clear recipients" href="#confirmClearRecipients"	data-rel="popup" data-translate="Clear recipients"></a></li>
+			<li><a class="clear message" href="#confirmClearMessage"		data-rel="popup" data-translate="Clear message"></a></li>
+			<li><a href="#messageDrafts" data-translate="Load draft"></a></li>
+			<li><a href="#messageTemplates" data-translate="Load template"></a></li>
+		</ul>
+	</div>
+	<div data-role="popup" id="confirmSendMessage" data-overlay-theme="a" data-dismissible="false" class="ui-corner-all">
+		<div data-role="header" data-theme="a" >
+			<h1 data-role="heading" data-translate="Send"></h1>
+		</div>
+		<div class="ng-dialog-container">
+			<h3 class="ui-title center-text" data-translate="Are you sure you want to send this communication?"></h3>
+			<div data-role="controlgroup" data-type="horizontal" class="center-text">
+				<a href="#" data-role="button" data-inline="true" id="messageSend" data-theme="b" data-translate="Send"></a>
+				<a href="#" data-role="button" data-rel="back" data-inline="true" data-translate="Cancel"></a>
+			</div>
+		</div>
+	</div>
+	<div data-role="popup" id="confirmDiscard" data-overlay-theme="a" data-dismissible="false" class="ui-corner-all">
+		<div data-role="header" data-theme="a" >
+			<h1 data-role="heading" data-translate="Discard"></h1>
+		</div>
+		<div class="ng-dialog-container">
+			<h3 class="ui-title center-text" data-translate="Are you sure you want to discard the communication?"></h3>
+			<div data-role="controlgroup" data-type="horizontal" class="center-text">
+				<a href="#" data-role="button" data-inline="true" id="messageDiscard" data-theme="b" data-translate="Discard"></a>
+				<a href="#" data-role="button" data-rel="back" data-inline="true" data-translate="Cancel"></a>
+			</div>
+		</div>
+	</div>
+	<div data-role="popup" id="confirmClearRecipients" data-overlay-theme="a" data-dismissible="false" class="ui-corner-all">
+		<div data-role="header" data-theme="a" >
+			<h1 data-role="heading" data-translate="Clear"></h1>
+		</div>
+		<div class="ng-dialog-container">
+			<h3 class="ui-title center-text" data-translate="Are you sure you want to clear the recipients?"></h3>
+			<div data-role="controlgroup" data-type="horizontal" class="center-text">
+				<a href="#" data-role="button" data-inline="true" id="messageClearRecipients" data-theme="b" data-translate="Clear"></a>
+				<a href="#" data-role="button" data-rel="back" data-inline="true" data-translate="Cancel"></a>
+			</div>
+		</div>
+	</div>
+	<div data-role="popup" id="confirmClearMessage" data-overlay-theme="a" data-dismissible="false" class="ui-corner-all">
+		<div data-role="header" data-theme="a" >
+			<h1 data-role="heading" data-translate="Clear"></h1>
+		</div>
+		<div class="ng-dialog-container">
+			<h3 class="ui-title center-text" data-translate="Are you sure you want to clear the message?"></h3>
+			<div data-role="controlgroup" data-type="horizontal" class="center-text">
+				<a href="#" data-role="button" data-inline="true" id="messageClearMethods" data-theme="b" data-translate="Clear"></a>
+				<a href="#" data-role="button" data-rel="back" data-inline="true" data-translate="Cancel"></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div data-role="page" id="messageAcknowledgement">
+	<div data-role="main" class="ui-content">
+		<h4 data-translate="Require acknowledgement"></h4>
+		<ul data-role="listview" data-icon="false">
+			<li><a href="#" data-value="none" data-translate="No"></a></li>
+			<li><a href="#" data-value="ack" data-translate="Yes"></a></li>
+			<li><a href="#" data-value="ackesc" data-translate="Yes, and escalate"></a></li>
+		</ul>
+	</div>
+</div>
+<div data-role="page" id="messageAddRecipients">
+	<div data-role="main" class="ui-content">
+		<h3 data-translate="Add Recipients"></h3>
+		<div class="center-content">
+			<br />
+			<br />
+			<a href="#contactgroupTreeView?selector=true&amp;id=0" data-role="button" class="maywrap">
+				<span class="icon contacts inline"><i></i></span>
+				<span data-translate="Add contacts and groups"></span>
+			</a>
+			<br />
+			<br />
+			<a href="#teamroleIndex?selector=true&amp;id=0" data-role="button" class="maywrap">
+				<span class="icon administrator_role inline"><i></i></span>
+				<span data-translate="Add team roles" class="migrateTranslation"></span>
+			</a>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="messageDrafts">
+	<div data-role="main" class="ui-content">
+		<h3 data-translate="Drafts"></h3>
+		<ul data-role="listview">
+		</ul>
+	</div>
+</div>
+<div data-role="page" id="messageEmail">
+	<div data-role="main" class="ui-content">
+        <select name="emailFrom" id="emailFrom" data-icon="arrow-d"></select>
+		<label for="emailSubject" data-translate="Subject"></label>
+		<input type="text" name="subject" value="" id="emailSubject" />
+		<textarea name="textarea" id="emailBody"></textarea>
+		<p>&nbsp;</p>
+		<ul data-role="listview" class="attachments">
+			<li class="more"><a href="#messageEmailAttachments">
+				<span class="icon attach"></span>
+				<span data-translate="Attachments"></span>
+				<span class="ui-li-count" data-translate="none"></span>
+			</a></li>
+		</ul>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-role="button" data-theme="b" id="EmailOK" data-translate="Ok"></a></li>
+				<li><a href="#" data-role="button" id="EmailDiscard" data-translate="Discard"></a></li>
+				<li><a href="#" data-role="button" id="EmailCancel" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="messageEmailAttachments">
+	<div data-role="main" class="ui-content">
+		<h3 data-translate="Attachments"></h3>
+		<ul data-role="listview" data-split-icon="delete">
+			<li data-theme="e" class="none" data-translate="There are no items to display"></li>
+		</ul>
+		<p>&nbsp;</p>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li>
+					<a id="emailAttachDoc" href="#documentfolderTreeView?selector=true&id=0" data-role="button" data-theme="b">
+						<span class="icon plus inline white"></span><span data-translate="Doc"></span>
+					</a>
+				</li>
+				<li class="attach">
+					<a id="emailAttachMedia" href="#filesystemMediaSelect" data-role="button">
+						<span class="icon plus inline"></span><span data-translate="Media"></span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="messageFax">
+	<div data-role="main" class="ui-content">
+		<ul data-role="listview">
+			<li data-key="document" >
+				<a href="#documentfolderTreeView?selector=true&id=0" id="faxDocumentMethod" data-translate="Fax document"></a>
+ 			</li>
+		</ul>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-role="button" data-theme="b" id="faxOK" data-translate="Ok"></a></li>
+				<li><a href="#" data-role="button" id="faxDiscard" data-translate="Discard"></a></li>
+				<li><a href="#" data-role="button" id="faxCancel" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="messageRecipients">
+	<div data-role="main" class="ui-content">
+		<div class="heading-row">
+			<h3 data-translate="Recipients"></h3>
+		</div>
+		<ul data-role="listview" data-split-icon="delete">
+		</ul>
+	</div>
+</div>
+<div data-role="page" id="messageSMS">
+	<div data-role="main" class="ui-content">
+        <select name="SMSFrom" id="SMSFrom" data-icon="arrow-d"></select>
+		<textarea name="textarea" id="SMSBody"></textarea>
+		<div class="ui-field-contain wide-labels sliderRight">
+			<label for="SMSFlash" data-translate="Send as Flash SMS"></label>
+			<select name="SMSFlash" id="SMSFlash" data-role="slider">
+				<option value="0" data-translate="Off"></option>
+				<option value="1" data-translate="On"></option>
+			</select>
+		</div>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a id="SMSOK"		href="#" data-role="button" data-theme="b" data-translate="Ok"></a></li>
+				<li><a id="SMSDiscard"	href="#" data-role="button" data-translate="Discard"></a></li>
+				<li><a id="SMSCancel"	href="#" data-role="button" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="messageTemplates">
+	<div data-role="main" class="ui-content">
+		<h3 data-translate="Templates"></h3>
+		<ul data-role="listview">
+		</ul>
+	</div>
+</div>
+<div data-role="page" id="messageTracking">
+	<div data-role="main" class="ui-content">
+		<h4 data-translate="Reply tracking"></h4>
+		<ul data-role="listview" data-icon="false">
+			<li><a href="#" data-value="disabled" data-translate="No"></a></li>
+			<li><a href="#" data-value="enabled" data-translate="Yes"></a></li>
+			<li><a href="#" data-value="pollingonly" data-translate="Yes, polling only"></a></li>
+			<li>
+				<label for="trackingTimeframe" data-translate="Response timeframe (hrs)"></label>
+				<select name="trackingTimeframe" id="trackingTimeframe">
+					<option value="60">1</option>
+					<option value="120">2</option>
+					<option value="240">4</option>
+					<option value="360">6</option>
+					<option value="480">8</option>
+					<option value="720">12</option>
+					<option value="1440">24</option>
+					<option value="2880">48</option>
+				</select>
+			</li>
+		</ul>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a id="trackingOK"		href="#" data-role="button" data-theme="b" data-rel="back" data-translate="Ok"></a></li>
+				<li><a id="trackingCancel"	href="#" data-role="button" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="messageVoice">
+	<div data-role="main" class="ui-content">
+		<ul data-role="listview">
+			<li data-key="recording" class="recording">
+				<a href="#messageVoiceRecording" data-translate="Voice recording"></a>
+			</li>
+			<li data-key="document" >
+				<a href="#documentfolderTreeView?selector=true&id=0" id="voiceDocumentMethod" data-translate="Voice document"></a>
+			</li>
+			<li data-key="text" data-icon="false" id="voiceTextMethod">
+				<a href="#" data-translate="Text-to-speech"></a>
+				<div style="margin: 0.5em;">
+					<textarea name="textarea" id="voiceText"></textarea>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-role="button" data-theme="b" id="voiceOK" data-translate="Ok"></a></li>
+				<li><a href="#" data-role="button" id="voiceDiscard" data-translate="Discard"></a></li>
+				<li><a href="#" data-role="button" id="voiceCancel" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="messageVoiceRecording">
+	<div data-role="main" class="ui-content">
+        <div><button id="voiceRecordStart" data-role="button" data-enhanced="true">
+			<span class="icon microphone inline"><i></i></span><span data-translate="Start recording"></span>
+		</button></div>
+		<div><button id="voiceRecordReplay"  data-role="button" data-enhanced="true">
+			<span class="icon play inline"><i></i></span><span data-translate="Replay message"></span>
+		</button></div>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-role="button" data-theme="b" id="voiceRecordOK" data-translate="Ok"></a></li>
+				<li><a href="#" data-role="button" id="voiceRecordCancel" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="offline">
+	<div data-role="main" class="ui-content">
+		<h3 data-translate="Offline mode"></h3>
+		<p data-translate="Could not retrieve requested data from the server or device cache."></p>
+	</div>
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-role="button" data-theme="b" onclick="util.goBack(-2);" data-translate="Go back"></a></li>
+				<li><a href="#" data-rel="back" data-role="button" data-translate="Retry"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+<div data-role="page" id="optionList">
+	<div data-role="main" class="ui-content">
+		<h2></h2>
+		<label for="optionSearch" class="ui-hidden-accessible optionSearch" data-translate="Search:"></label>
+		<input type="search" name="optionSearch" value="" id="optionSearch" class="optionSearch" />
+		<ul class="optionLV filterLV" data-role="listview" data-enhanced="true"></ul>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-theme="b"   data-role="button" class="selector-save"   data-translate="Save"></a></li>
+				<li><a href="#" data-rel="popup" data-role="button" class="selector-cancel" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="photo">
+	<div data-role="main" class="ui-content">
+		<h3 data-translate="Send a photo to OCA"></h3>
+		<div class="ui-grid-a" id="photo-placeholder">
+			<div class="ui-block-a icon-grid" >
+				<div class="center-text">
+					<span data-open="album">
+						<span class="icon stack_of_photos medium" data-open="album"></span>
+						<br /><span data-translate="Gallery"></span>
+					</span>
+				</div>
+			</div>
+			<div class="ui-block-b icon-grid">
+				<div class="center-text">
+					<span data-open="camera">
+						<span class="icon camera medium" data-open="camera"></span>
+						<br /><span data-translate="Take New"></span>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div id="photo-info">
+            <span class="icon info inline" data-open="album"></span>
+            <span data-translate="No photo attached. Touch the icon to take a picture, or select one from the gallery."></span><br>
+        </div>
+
+		<div>
+			<form>
+				<label for="photo-input-description" data-translate="Description (optional)"></label>
+				<textarea name="photo-input-description" id="photo-input-description"></textarea>
+			</form>
+		</div>
+		<div id="photo-progress" class="hidden">
+			<div class="progress-bar-status"></div><!-- how many bytes/kb/megs transferred -->
+			<div class="progress-bar">
+				<div class="progress-bar-indicator"></div>
+			</div>
+		</div>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a id="photoBtnSend" href="#" data-role="button" data-theme="b" data-translate="Send"></a></li>
+				<li><a id="photoBtnReset" href="#" data-role="button" data-translate="Reset"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<script type="text/x-handlebars-template" id="promptDialog">
+	<div data-role="header" class="ui-corner-top ui-header ui-bar-a" role="banner">
+		<h1 class="ui-title" data-role="heading" aria-level="1">{{data.title}}</h1>
+	</div>
+	<div class="ng-dialog-container">
+		<p>{{{data.message}}}</p>
+		<input type="text" class="prompt-input" data-theme="a" value="{{data.initialValue}}" />
+	</div>
+	<div data-role="controlgroup" data-type="horizontal" class="center-text ui-corner-all ui-controlgroup ui-controlgroup-horizontal" aria-disabled="false" data-disabled="false" data-shadow="false" data-corners="true" data-exclude-invisible="true" data-mini="false" data-init-selector=":jqmData(role='controlgroup')">
+		<div class="ui-controlgroup-controls">
+			{{#each data.buttonLabels}}
+			<a href="#" data-role="button" class="ui-btn {{#if @first}}ui-btn-b ui-first-child{{/if}} ui-btn-inline button" data-button-index="{{oneIndexed @index}}">
+				{{this}}
+			</a>
+			{{/each}}
+		</div>
+	</div>
+</script>
+
+<div data-role="page" id="reportEdit">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li class="mainsave"><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Publish"></a></li>
+				<li class='draft'><a href="#draft" data-role="button" data-translate="Save Draft"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="reportIndex">
+	<div data-role="main" class="ui-content">
+		<div data-role="collapsible" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u">
+			<h2 class="reporttype"><span class="label" data-translate="Any Type"></span></h2>
+			<ul data-role="listview" class="reporttypes" data-icon="false"></ul>
+		</div>
+		<div data-role="collapsible" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u">
+			<h2 class="reportstatus"><span class="label" data-translate="Active"></span></h2>
+			<ul data-role="listview" class="reportstatus" data-icon="false">
+				<li><a href="#" data-status="any" data-translate="Any Status"></a></li>
+				<li><a href="#" data-status="active" data-translate="Active"></a></li>
+				<li><a href="#" data-status="inactive" data-translate="Inactive"></a></li>
+				<li><a href="#" data-status="draft" data-translate="Draft"></a></li>
+			</ul>
+		</div>
+		<label for="reportSearch" class="ui-hidden-accessible reportSearch" data-translate="Search:"></label>
+		<input type="search" name="reportSearch" value="" id="reportSearch" class="reportSearch" />
+		<div class="pending" style="display:none;">
+			<h2 data-translate="Pending Reports"></h2>
+			<ul data-role="listview" class="listview"></ul>
+		</div>
+		<div class="main">
+			<div class="heading-row">
+				<h2 data-translate="Reports"></h2>
+			</div>
+			<ul data-role="listview" class="reports listview"></ul>
+		</div>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#reportNew" data-role="button" data-theme="b" class="new report" data-translate="Create report"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div data-role="page" id="reportNew">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Publish"></a></li>
+				<li class='draft'><a href="#draft" data-role="button" data-translate="Save Draft"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="reportView">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li class="edit"><a href="#reportEdit" data-role="button" data-theme="b" class="edit" data-translate="Edit"></a></li>
+				<li><a href="#reportViewMoreMenu" data-rel="popup" class="morearrow" data-role="button" data-translate="More"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div data-role="popup" data-history="false" id="reportViewMoreMenu" data-theme="a">
+		<ul data-role="listview" data-theme="a">
+			<li class="report view draft"><a href="#" data-translate="View draft"></a></li>
+			<li class="report discard draft"><a href="#confirmDeleteReportDraft" data-rel="popup" data-position-to="window" data-translate="Discard draft"></a></li>
+			<li class="report delete"><a href="#confirmDeleteReport" data-rel="popup" data-position-to="window" data-translate="Delete report"></a></li>
+		</ul>
+	</div>
+	<div data-role="popup" id="confirmDeleteReport" data-overlay-theme="a" data-dismissible="false" class="ui-corner-all">
+		<!-- Replaced with confirmDelete template -->
+	</div>
+	<div data-role="popup" id="confirmDeleteReportDraft" data-overlay-theme="a" data-dismissible="false" class="ui-corner-all">
+		<div data-role="header" data-theme="a" >
+			<h1 data-role="heading" data-translate="Discard"></h1>
+		</div>
+		<div class="ng-dialog-container">
+			<p class="center-text">
+				<span data-translate="This will revert to the most recent published version of this report. If the report has never been published the report will be deleted."></span>
+				<br />
+				<span data-translate="Are you sure you wish to discard this draft version?"></span>
+			</p>
+			<div data-role="controlgroup" data-type="horizontal" class="center-text">
+				<a href="#" data-role="button" data-rel="back" data-inline="true" data-theme="b" class="delete" data-translate="Discard"></a>
+				<a href="#" data-role="button" data-rel="back" data-inline="true" data-translate="Cancel"></a>
+			</div>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="riskEdit">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="riskMatrixView">
+	<div data-role="main" class="ui-content">
+        <h2 data-translate="Matrix" class="heading"></h2>
+        <div class="ratingTypes" data-role="collapsible" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" >
+            <h2><span class="label" data-translate="Inherent Risk"></span></h2>
+            <ul data-role="listview" class="types" data-icon="false">
+                <li><a data-type="Inherent"><span class="term InherentRisk">Inherent Risk</span></a></li>
+                <li><a data-type="Residual"><span class="term ResidualRisk">Residual Risk</span></a></li>
+                <li><a data-type="Target"  ><span class="term TargetRisk">  Target   Risk</span></a></li>
+            </ul>
+        </div>
+        <div class="xlabel heading"></div>
+        <div class="ylabel heading"></div>
+        <div class="wrapper">
+            <div class="grid container">
+                <div id="matrixGrid"></div>
+            </div>
+        </div>
+	</div>
+</div>
+<div data-role="page" id="riskNew">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="riskRegisterIndex">
+	<div data-role="main" class="ui-content">
+        <label for="riskregisterSearch" class="ui-hidden-accessible riskregisterSearch" data-translate="Search:"></label>
+        <input type="search" name="search" value="" id="riskregisterSearch" class="riskregisterSearch" />
+		<div class="heading-row">
+			<h2 class="transspecial" data-translate="%s Registers"><span class="term Risk">Risk</span></h2>
+		</div>
+		<ul data-role="listview" class="registers listview"></ul>
+	</div>
+    <div data-role="footer" data-tap-toggle="false" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#riskregisterNew" data-role="button" data-theme="b" class="new riskregister transspecial" data-translate="Create %s register">
+                    <span class="term risk">risk</span>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="riskView">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li class="edit"><a href="#riskEdit" data-role="button" data-theme="b" class="edit" data-translate="Edit"></a></li>
+				<li><a href="#riskViewMoreMenu" data-rel="popup" class="morearrow" data-role="button" data-translate="More"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div data-role="popup" data-history="false" id="riskViewMoreMenu" data-theme="a">
+		<ul data-role="listview" data-theme="a">
+            <li class="review risk"><a href="#confirmReviewRisk" data-rel="popup" data-position-to="window" data-translate="Mark as reviewed"></a></li>
+            <li class="library control"><a href="#" class="transspecial" data-translate="Add library %s"><span class="term control">control</span></a></li>
+            <li class="new control"><a href="#riskcontrolNew" class="transspecial" data-translate="Add new %s"><span class="term control">control</span></a></li>
+			<li class="delete risk"><a href="#confirmDeleteRisk" class="transspecial" data-rel="popup" data-position-to="window" data-translate="Delete this %s"><span class="term risk">risk</span></a></li>
+		</ul>
+	</div>
+    <div data-role="popup" id="confirmDeleteRisk" data-overlay-theme="a" data-dismissible="false" class="ui-corner-all">
+        <!-- Replaced with confirmDelete template -->
+    </div>
+    <div data-role="popup" id="confirmReviewRisk" data-overlay-theme="a" data-dismissible="false" class="ui-corner-all">
+        <div data-role="header" data-theme="a" >
+            <h1 data-role="heading" data-translate="Review"></h1>
+        </div>
+        <div class="ng-dialog-container">
+            <h3 class="ui-title center-text transspecial" data-translate="Are you sure you want to make this %s as reviewed?"><span class="term risk">risk</span></h3>
+            <div data-role="controlgroup" data-type="horizontal" class="center-text">
+                <a href="#" data-role="button" data-rel="back" data-inline="true" class="review" data-theme="b" data-translate="OK"></a>
+                <a href="#" data-role="button" data-rel="back" data-inline="true" data-translate="Cancel"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="riskcontextEdit">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="riskcontextNew">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="riskcontextTreeView">
+    <div data-role="main" class="ui-content">
+        <div class="heading-row">
+            <h2 data-translate="Contexts"></h2>
+            <a href="#" data-rel="back" class="level-up">
+                <span class="icon chevron-up"></span>
+            </a>
+        </div>
+        <ul data-role="listview" class="contexts listview"></ul>
+        <ul data-role="listview" class="risks listview"></ul>
+    </div>
+    <div data-role="footer" data-tap-toggle="false" data-position="fixed" class="normal-mode">
+        <div data-role="navbar">
+            <ul>
+                <li id="openRiskContextTreeView"><a href="#riskcontextTreeViewMenu" class="morearrow" data-rel="popup" data-role="button" data-translate="View"></a></li>
+                <li id="openRiskContextTreeMore"><a href="#riskcontextTreeMoreMenu" class="morearrow" data-rel="popup" data-role="button" data-translate="New"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="footer" data-tap-toggle="false" data-position="fixed" class="selector-mode">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#" data-role="button" class="selector-save" data-theme="b" data-translate="Ok"></a></li>
+                <li><a href="#" data-role="button" class="selector-cancel" data-translate="Cancel"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="popup" id="riskcontextTreeViewMenu">
+        <ul data-role="listview" class="context footer menu">
+            <!--<li class="view list notroot"><a href="#" data-translate="View as list"></a></li>-->
+            <li class="notroot"><a href="#riskcontextView?id=1" class="riskcontextView" data-translate="View context"></a></li>
+            <li class="root"><a href="#riskregisterView?id=1" class="riskregisterView" data-translate="View register"></a></li>
+        </ul>
+    </div>
+    <div data-role="popup" data-history="false" id="riskcontextTreeMoreMenu">
+        <ul data-role="listview" class="context footer menu">
+            <li class="new riskcontext"><a href="#riskcontextNew" class="new riskcontext" data-translate="Add new context"></a></li>
+            <li class="new risk notroot"><a href="#riskNew" class="new risk transspecial" data-translate="Add new %s"><span class="term risk">risk</span></a></li>
+            <li class="library risk notroot"><a href="#" class="library risk transspecial" data-translate="Add library %s"><span class="term risk">risk</span></a></li>
+        </ul>
+    </div>
+</div>
+
+<div data-role="page" id="riskcontextView">
+	<div data-role="main" class="ui-content"></div>
+    <div data-role="footer" data-tap-toggle="false" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li class="edit"><a href="#riskcontextEdit" data-role="button" data-theme="b" class="edit" data-translate="Edit"></a></li>
+                <li><a href="#riskcontextViewMoreMenu" data-rel="popup" class="morearrow" data-role="button" data-translate="More"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="popup" data-history="false" id="riskcontextViewMoreMenu" data-theme="a">
+        <ul data-role="listview" data-theme="a">
+            <li class="delete riskcontext"><a href="#confirmDeleteRiskContext" data-rel="popup" data-position-to="window" data-translate="Delete this context"></a></li>
+        </ul>
+    </div>
+    <div data-role="popup" id="confirmDeleteRiskContext" data-overlay-theme="a" data-dismissible="false" class="ui-corner-all">
+        <!-- Replaced with confirmDelete template -->
+    </div>
+</div>
+<div data-role="page" id="riskcontrolEdit">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="riskcontrolIndex">
+	<div data-role="main" class="ui-content">
+		<div class="heading-row">
+			<h2><span class="term Controls">Controls</span></h2>
+		</div>
+		<ul data-role="listview" class="riskcontrols listview"></ul>
+	</div>
+    <div data-role="footer" data-tap-toggle="false" data-position="fixed" class="selector-mode">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#" data-role="button" class="selector-save" data-theme="b" data-translate="Ok"></a></li>
+                <li><a href="#" data-role="button" class="selector-cancel" data-translate="Cancel"></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="riskcontrolNew">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="riskcontrolView">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li class="edit"><a href="#riskcontrolEdit" data-role="button" data-theme="b" class="edit" data-translate="Edit"></a></li>
+				<li><a href="#riskcontrolViewMoreMenu" data-rel="popup" class="morearrow" data-role="button" data-translate="More"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div data-role="popup" data-history="false" id="riskcontrolViewMoreMenu" data-theme="a">
+		<ul data-role="listview" data-theme="a">
+			<li class="delete riskcontrol">
+                <a href="#confirmDeleteRiskControl" class="transspecial" data-rel="popup" data-position-to="window" data-translate="Delete this %s">
+                    <span class="term control">control</span>
+                </a>
+            </li>
+		</ul>
+	</div>
+    <div data-role="popup" id="confirmDeleteRiskControl" data-overlay-theme="a" data-dismissible="false" class="ui-corner-all">
+        <!-- Replaced with confirmDelete template -->
+    </div>
+</div>
+<div data-role="page" id="riskcontrollibraryTreeView">
+	<div data-role="main" class="ui-content">
+		<div class="heading-row">
+			<h2 class="transspecial" data-translate="%s Library"><span class="term Control">Control</span></h2>
+            <a href="#" data-rel="back" class="level-up">
+                <span class="icon chevron-up"></span>
+            </a>
+		</div>
+		<ul data-role="listview" class="category listview"></ul>
+		<ul data-role="listview" class="item listview"></ul>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed" class="selector-mode">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-role="button" class="selector-save" data-theme="b" data-translate="Ok"></a></li>
+				<li><a href="#" data-role="button" class="selector-cancel" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="risklibraryTreeView">
+	<div data-role="main" class="ui-content">
+		<div class="heading-row">
+			<h2 class="transspecial" data-translate="%s Library"><span class="term Risk">Risk</span></h2>
+            <a href="#" data-rel="back" class="level-up">
+                <span class="icon chevron-up"></span>
+            </a>
+		</div>
+		<ul data-role="listview" class="category listview"></ul>
+		<ul data-role="listview" class="item listview"></ul>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed" class="selector-mode">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-role="button" class="selector-save" data-theme="b" data-translate="Ok"></a></li>
+				<li><a href="#" data-role="button" class="selector-cancel" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="riskregisterEdit">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="riskregisterNew">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="riskregisterView">
+	<div data-role="main" class="ui-content"></div>
+    <div data-role="footer" data-tap-toggle="false" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li class="edit"><a href="#riskregisterEdit" data-role="button" data-theme="b" class="edit" data-translate="Edit"></a></li>
+                <li><a href="#riskregisterViewMoreMenu" data-rel="popup" class="morearrow" data-role="button" data-translate="More"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="popup" data-history="false" id="riskregisterViewMoreMenu" data-theme="a">
+        <ul data-role="listview" data-theme="a">
+            <li class="delete riskregister"><a href="#confirmDeleteRiskRegister" data-rel="popup" data-position-to="window" data-translate="Delete this register"></a></li>
+        </ul>
+    </div>
+    <div data-role="popup" id="confirmDeleteRiskRegister" data-overlay-theme="a" data-dismissible="false" class="ui-corner-all">
+        <!-- Replaced with confirmDelete template -->
+    </div>
+</div>
+<div data-role="page" id="risktypeIndex">
+	<div data-role="main" class="ui-content">
+		<div class="heading-row">
+			<h2 class="transspecial" data-translate="%s Types"><span class="term Risk">Risk</span></h2>
+		</div>
+		<ul data-role="listview" class="risktype listview"></ul>
+	</div>
+    <div data-role="footer" data-tap-toggle="false" data-position="fixed" class="selector-mode">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#" data-role="button" class="selector-save" data-theme="b" data-translate="Ok"></a></li>
+                <li><a href="#" data-role="button" class="selector-cancel" data-translate="Cancel"></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="savedMaps">
+    <div data-role="main" class="ui-content">
+        <h3 data-translate="Saved maps"></h3>
+        <ul data-role="listview"></ul>
+    </div>
+</div>
+<script type="text/x-handlebars-template" id="sentLV">
+	{{#each data}}
+	<li>
+        <a href="#sentcommView?id={{getID URL}}" class="ui-btn ui-btn-icon-right">
+            <h4>{{Subject}}</h4>
+            <p class="description transspecial" data-translate="By %s"><span>{{sentLVName SentByContactName}}, {{relativeDateTime SentDate}}</span></p>
+            <p class="description">{{Methods}}</p>
+        </a>
+	</li>
+	{{/each}}
+</script>
+<div data-role="page" id="sentStatus">
+	<div data-role="main" class="ui-content">
+		<h3></h3>
+		<p></p>
+		<ul data-role="listview" class="recipients">
+		</ul>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-role="button" data-theme="b" id="Resend" data-translate="Resend"></a></li>
+				<li>&nbsp;</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="sentcommView">
+	<div data-role="main" class="ui-content">
+		<h3 data-translate="Delivery statistics"></h3>
+		<ul data-role="listview" class="statuses">
+			
+		</ul>
+		<h3 data-translate="Message"></h3>
+		<ul data-role="listview" class="methods">
+			<li data-key="SMS">  <a href="#sentitemView?method=SMS" data-translate="SMS"></a></li>
+			<li data-key="Email"><a href="#sentitemView?method=Email" data-translate="Email"></a></li>
+			<li data-key="Voice"><a href="#sentitemView?method=Voice" data-translate="Voice"></a></li>
+			<li data-key="Fax">  <a href="#sentitemView?method=Fax" data-translate="Fax"></a></li>
+		</ul>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#messagePage" data-role="button" data-theme="b" id="sendFollowup" data-translate="Send follow up"></a></li>
+				<li><a href="#messagePage" data-role="button" id="sendAgain" data-translate="Send again"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="sentitemView">
+	<div data-role="main" class="ui-content">
+		<ul data-role="listview"></ul>
+	</div>
+</div>
+<div data-role="page" id="session">
+	<div data-role="main" class="ui-content">
+		<div class="login domain">
+			<form>
+				<label for="sessionDomain" class="sessionDomain" data-translate="OCA Domain"></label>
+				<div class="sessionDomain">
+					<input type="url" id="sessionDomain" value="" class="sessionDomain" placeholder="https://example.nogginoca.com">
+				</div>
+			</form>
+		</div>
+		<div class="login user">
+			<form>
+				<label for="sessionUsername" data-translate="Username"></label>
+				<input type="text" id="sessionUsername" value="" autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off">
+				<label for="sessionPassword" data-translate="Password"></label>
+				<input type="password" id="sessionPassword" value="">
+			</form>
+		</div>
+		<div class="logout">
+			<p data-translate="Are you sure you want to log out?"></p>
+		</div>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a id="sessionSubmit" href="#" data-role="button" data-theme="b" data-translate="Submit"></a></li>
+				<li class="login sso"><a href="#sessionSSO" data-role="button" data-translate="SSO"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="sessionCustomTerms">
+	<div data-role="main" class="ui-content">
+		<h2 class="title"></h2>
+		<div class="content"></div>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a id="sessionCustomTermsAccept" href="#" data-role="button" data-theme="b" data-translate="Accept"></a></li>
+				<li><a id="sessionCustomTermsReject" data-role="button" data-translate="Reject"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="sessionPIN">
+	<div data-role="main" class="ui-content">
+		<h2></h2>
+		<input type="password" id="sessionPINput" value="" disabled="disabled" />
+		<div class="ui-grid-b PIN-grid home-icon-grid ">
+			<div class="ui-block-b home-block num"><a id="pin1" href="#">1</a></div>
+			<div class="ui-block-b home-block num"><a id="pin2" href="#">2</a></div>
+			<div class="ui-block-b home-block num"><a id="pin3" href="#">3</a></div>
+			<div class="ui-block-b home-block num"><a id="pin4" href="#">4</a></div>
+			<div class="ui-block-b home-block num"><a id="pin5" href="#">5</a></div>
+			<div class="ui-block-b home-block num"><a id="pin6" href="#">6</a></div>
+			<div class="ui-block-b home-block num"><a id="pin7" href="#">7</a></div>
+			<div class="ui-block-b home-block num"><a id="pin8" href="#">8</a></div>
+			<div class="ui-block-b home-block num"><a id="pin9" href="#">9</a></div>
+			<div class="ui-block-b home-block clr small"><a href="#">Clear</a></div>
+			<div class="ui-block-b home-block num"><a id="pin0" href="#">0</a></div>
+			<div class="ui-block-b home-block del"><a href="#">&lt;</a></div>
+		</div>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a id="sessionPINSubmit" href="#" data-role="button" data-theme="b" data-translate="Submit"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="sessionSSO">
+	<div data-role="main" class="ui-content">
+		<form>
+            <h2 data-translate="Single Sign-On"></h2>
+			<label for="sessionSSODomain" class="sessionDomain" data-translate="OCA Domain"></label>
+			<div class="sessionDomain">
+				<input type="url" id="sessionSSODomain" value="" class="sessionDomain" placeholder="https://example.nogginoca.com">
+			</div>
+		</form>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a id="sessionSSOSubmit" href="#sessionSSO" data-role="button" data-theme="b" data-translate="Submit"></a></li>
+				<li><a id="sessionSSOback" href="#session" data-role="button" data-translate="Normal Login"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="sessionTerms">
+	<div data-role="main" class="ui-content">
+		<h2 class="title"></h2>
+		<div class="content"></div>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a id="sessionTermsAccept" href="#" data-role="button" data-theme="b" data-translate="Accept"></a></li>
+				<li><a id="sessionTermsReject" data-role="button" data-translate="Reject"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="sessionTwoFactor">
+	<div data-role="main" class="ui-content">
+		<p data-translate='An SMS containing a PIN has been sent to your mobile phone. When you receive it, enter the PIN in the box below and press the "Submit" button. If you have not received the SMS after a few minutes, press the "Resend" button or contact your system administrator.'></p>
+		<form>
+			<label for="session2FA" data-translate="Mobile PIN"></label>
+			<input type="number" pattern="\d*" id="session2FA" value="">
+		</form>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a id="sessionTwoFactorSubmit" href="#" data-role="button" data-theme="b" data-translate="Submit"></a></li>
+				<li><a id="sessionTwoFactorResend" href="#" data-role="button" data-translate="Resend"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="settings">
+	<div data-role="main" class="ui-content">
+		<div class="settings edit-view">
+			<ul data-role="listview" style="margin-bottom: 1em;"></ul>
+		</div>
+        <div class="contact settings">
+            <form>
+                <label for="settingContactPin" class="show-if-pin-inactive" data-translate="Enter your contact identifier"></label>
+                <label for="settingContactPin" class="show-if-pin-active" data-translate="Current contact identifier"></label>
+                <input type="text" id="settingContactPin" value="" autocapitalize="off" autocomplete="off" spellcheck="false" autocorrect="off">
+            </form>
+            <ul class="info">
+                <li>
+                    <span class="icon info inline"></span>
+                    <span data-translate="Your contact identifier is required to know which OCA to send your location to, and so it knows who you are."></span>
+                </li>
+                <li class="show-if-pin-inactive">
+                    <span class="icon info inline"></span>
+                    <span data-translate="Contact your OCA administrator to send you a contact identifier if you don't have one."></span>
+                </li>
+            </ul>
+        </div>
+        <div class="ios location" style="margin-top: 1em;">
+            <label for="iOSLocation" data-translate="Background location mode:"></label>
+            <select name="iOSLocation" id="iOSLocation">
+                <option value="low"  data-translate="Low power">Low power</option>
+                <option value="high" data-translate="Accurate">Accurate</option>
+            </select>
+            <p class="explanation"></p>
+        </div>
+    </div>
+	<div data-role="footer" data-tap-toggle="false" class="contact settings">
+		<div data-role="navbar">
+			<ul>
+				<li><a id="settingsBtnSave" href="#" data-role="button" data-theme="b" data-translate="Save"></a></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="storage">
+	<div data-role="main" class="ui-content">
+		<h1 data-translate="Incoming Queue" class="incoming"></h1>
+		<p class="status-incoming incoming"></p>
+		<ul data-role="listview" class="incoming"></ul>
+		<h1 data-translate="Outgoing Queue"></h1>
+        <p class="status"></p>
+		<ul data-role="listview" data-split-icon="delete" class="outgoing"></ul>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a id="storageFlush" href="#" data-role="button" data-theme="b" data-translate="Retry now"></a></li>
+				<li><a id="storageWipe" href="#" data-role="button" data-translate="Discard all"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="taskAssignType">
+	<div data-role="main" class="ui-content">
+		<h3 data-translate="Add Assignees"></h3>
+		<div class="center-content">
+			<br />
+			<br />
+			<a href="#contactgroupTreeView?selector=true&amp;id=0" data-role="button">
+				<span class="icon contacts inline"><i></i></span>
+				<span data-translate="Add contacts and groups"></span>
+			</a>
+            <br />
+            <br />
+            <a href="#teamroleIndex?selector=true" data-role="button">
+                <span class="icon administrator_role inline"><i></i></span>
+                <span data-translate="Add roles" class="migrateTranslation"></span>
+            </a>
+            <div class="team">
+                <br />
+                <br />
+                <a href="#teamIndex?selector=true" data-role="button">
+                    <span class="icon administrator_role inline"><i></i></span>
+                    <span data-translate="Add teams" class="migrateTranslation"></span>
+                </a>
+            </div>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="taskEdit">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="taskIndex">
+	<div data-role="main" class="ui-content">
+		<div data-role="collapsible" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" >
+			<h2><span class="label" data-translate="My Tasks"></span></h2>
+			<ul data-role="listview" class="statuses" data-icon="false">
+				<li><a href="#" data-status="MY" data-translate="My Tasks"></a></li>
+				<li><a href="#" data-status="ANY" data-translate="All Tasks"></a></li>
+				<li><a href="#" data-status="INCOMPLETE" data-translate="Incomplete Tasks"></a></li>
+				<li><a href="#" data-status="ACTION_REQUIRED" data-translate="Action Required Tasks"></a></li>
+				<li><a href="#" data-status="CANCELLED" data-translate="Cancelled Tasks"></a></li>
+				<li><a href="#" data-status="COMPLETED" data-translate="Completed Tasks"></a></li>
+				<li><a href="#" data-status="IN_PROGRESS" data-translate="In Progress Tasks"></a></li>
+				<li><a href="#" data-status="OVERDUE" data-translate="Overdue Tasks"></a></li>
+			</ul>
+		</div>
+		<label for="taskSearch" class="ui-hidden-accessible taskSearch" data-translate="Search:"></label>
+		<input type="search" name="search" value="" id="taskSearch" class="taskSearch" />
+		<div class="pending" style="display:none;">
+			<h2 data-translate="Pending Tasks"></h2>
+			<ul data-role="listview" class="listview"></ul>
+		</div>
+		<div class="main">
+			<div class="heading-row">
+				<h2 data-translate="Tasks"></h2>
+			</div>
+			<ul data-role="listview" class="tasks listview"></ul>
+		</div>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#taskNew" data-role="button" data-theme="b" class="taskNew" data-translate="Create new task"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="taskNew">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#save" data-role="button" data-theme="b" class="save" data-translate="Save"></a></li>
+				<li><a href="#cancel" data-role="button" data-rel="back" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="taskView">
+	<div data-role="main" class="ui-content"></div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li class="edit"><a href="#taskEdit" data-role="button" data-theme="b" class="edit" data-translate="Edit"></a></li>
+				<li class="more"><a href="#taskViewMoreMenu" class="morearrow" data-rel="popup" data-role="button" data-translate="More"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div data-role="popup" data-history="false" id="taskViewMoreMenu" data-theme="a">
+		<ul data-role="listview" data-theme="a">
+			<li class="delete"><a href="#confirmDeleteTask" data-rel="popup" data-position-to="window" data-translate="Delete task"></a></li>
+		</ul>
+	</div>
+	<div data-role="popup" id="confirmDeleteTask" data-overlay-theme="a" data-dismissible="false" class="ui-corner-all">
+		<!-- Replaced with confirmDelete template -->
+	</div>
+	<div data-role="popup" id="confirmOutcomeTask" data-overlay-theme="a" data-dismissible="false" class="ui-corner-all">
+		<!-- Replaced with confirmOutcome template -->
+	</div>
+</div>
+
+<div data-role="page" id="teamIndex">
+	<div data-role="main" class="ui-content">
+		<div class="heading-row">
+			<h2 data-translate="Teams" class="migrateTranslation"></h2>
+		</div>
+		<ul data-role="listview" class="teams listview"></ul>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed" class="selector-mode">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-role="button" class="selector-save" data-theme="b" data-translate="Ok"></a></li>
+				<li><a href="#" data-role="button" class="selector-cancel" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="teamroleAllocation">
+	<div data-role="main" class="ui-content">
+		<div class="heading-row">
+			<h2 data-translate="Current allocation"></h2>
+		</div>
+		<ul data-role="listview" class="teamroles listview"></ul>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed" class="selector-mode">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-role="button" class="selector-save" data-theme="b" data-translate="Ok"></a></li>
+				<li><a href="#" data-role="button" class="selector-cancel" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="teamroleIndex">
+	<div data-role="main" class="ui-content">
+		<label for="teamroleSearch" class="ui-hidden-accessible teamroleSearch" data-translate="Search:"></label>
+		<input type="search" name="search" value="" id="teamroleSearch" class="teamroleSearch" />
+		<div class="heading-row">
+			<h2 data-translate="Team roles" class="migrateTranslation"></h2>
+		</div>
+		<ul data-role="listview" class="teamroles listview"></ul>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed" class="selector-mode">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-role="button" class="selector-save" data-theme="b" data-translate="Ok"></a></li>
+				<li><a href="#" data-role="button" class="selector-cancel" data-translate="Cancel"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="teamrolePrimary">
+	<div data-role="main" class="ui-content">
+		<div class="heading-row">
+			<h2 data-translate="Select primary role"></h2>
+		</div>
+		<ul data-role="listview" class="teamroles listview"></ul>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed" class="selector-mode">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-role="button" class="selector-save" data-theme="b" data-translate="Ok">Ok</a></li>
+				<li><a href="#" data-role="button" class="selector-cancel" data-translate="Cancel">Cancel</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="video">
+	<div data-role="main" class="ui-content">
+		<h3 data-translate="Send a video to OCA">Send a video to OCA</h3>
+		<div class="ui-grid-a" id="video-placeholder">
+			<div class="ui-block-a icon-grid" >
+				<div class="center-text">
+					<span data-open="album">
+						<span class="icon film medium" data-open="album"></span>
+						<br /><span data-translate="Gallery">Gallery</span>
+					</span>
+				</div>
+			</div>
+			<div class="ui-block-b icon-grid">
+				<div class="center-text">
+					<span data-open="camera">
+						<span class="icon camcorder medium" data-open="camera"></span>
+						<br /><span data-translate="Record New">Record New</span>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div id="video-info">
+            <span class="icon info inline" data-open="album"></span>
+            <span data-translate="No video attached. Touch the icon to record, or select one from the gallery.">No video attached. Touch the icon to record, or select one from the gallery.</span><br>
+        </div>
+
+		<div>
+			<form>
+				<label for="video-input-description" data-translate="Description (optional)">Description (optional)</label>
+				<textarea name="video-input-description" id="video-input-description"></textarea>
+			</form>
+		</div>
+		<div id="video-progress" class="hidden">
+			<div class="progress-bar-status"></div><!-- how many bytes/kb/megs transferred -->
+			<div class="progress-bar">
+				<div class="progress-bar-indicator"></div>
+			</div>
+		</div>
+	</div>
+	<div data-role="footer" data-tap-toggle="false" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a id="videoBtnSend" href="#" data-role="button" data-theme="b" data-translate="Send">Send</a></li>
+				<li><a id="videoBtnReset" href="#" data-role="button" data-translate="Reset">Reset</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div data-role="page" id="workflowActivation">
+	<div data-role="main" class="ui-content">
+		<h1 data-translate="Activate workflow"></h1>
+		<ul data-role="listview"></ul>
+	</div>
+</div>
+    </body>
+</html>

@@ -418,6 +418,7 @@ class ReportsPage(BasePage):
     def edit_created_report_with_assigned_question(self):
 
         logging.info('edit created report, containing words "assigned question"')
+        sleep(1)
         edit_created_report = self.driver.find_elements(*self.configuration.ReportsScreen.CREATED_REPORT_WITH_ASSIGNED_QUESTION)
         self.assertIsNotNone(edit_created_report, 'previously created report, containing words "chooser fieldsassigned question", not found')
         edit_created_report[0].click()

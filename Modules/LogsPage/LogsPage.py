@@ -203,7 +203,7 @@ class LogsPage(BasePage):
     def check_result(self):  # this method will search for report containing "all fields" word in title
 
         logging.info("check result")
-        sleep(2)
+        sleep(4)
         created_log = self.driver.find_elements(*self.configuration.LogsScreen.CREATED_LOG_WITH_ALL_FIELDS)
         self.assertIsNotNone(created_log[0], "Log not found")
 
@@ -420,21 +420,57 @@ class LogsPage(BasePage):
 
     def check_restored_field_1(self):
 
-        assets_page = LoadClass.load_page('AssetsPage')
-        assets_page.setDriver(self.driver)
-        assets_page.check_restored_field_1()
+        logging.info("assert restored field 1")
+
+        self.switch_context_to_webview()
+
+        field_to_restore_1_header = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_1_HEADER)
+        self.assertIsNotNone(field_to_restore_1_header)
+
+        self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.scroll_down_one_view()
+
+        field_to_restore_1_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_1_VALUE)
+        self.assertIsNotNone(field_to_restore_1_value)
 
     def check_restored_field_2(self):
 
-        assets_page = LoadClass.load_page('AssetsPage')
-        assets_page.setDriver(self.driver)
-        assets_page.check_restored_field_2()
+        logging.info("assert restored field 2")
+
+        self.switch_context_to_webview()
+
+        field_to_restore_2_header = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_2_HEADER)
+        self.assertIsNotNone(field_to_restore_2_header)
+
+        self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.scroll_down_one_view()
+
+        field_to_restore_2_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_2_VALUE)
+        self.assertIsNotNone(field_to_restore_2_value)
 
     def check_restored_field_3(self):
 
-        assets_page = LoadClass.load_page('AssetsPage')
-        assets_page.setDriver(self.driver)
-        assets_page.check_restored_field_3()
+        logging.info("assert restored field 3")
+
+        self.switch_context_to_webview()
+
+        field_to_restore_3_header = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_3_HEADER)
+        self.assertIsNotNone(field_to_restore_3_header)
+
+        self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.scroll_down_one_view()
+
+        field_to_restore_3_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_3_VALUE)
+        self.assertIsNotNone(field_to_restore_3_value)
 
     def check_hidden_field_1(self):
 

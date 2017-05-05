@@ -1,6 +1,8 @@
 import os
-from configuration import platform
+from configuration import platform, PROJECT_ROOT
 
+# from run import platform
+# from configuration import PROJECT_ROOT
 
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
@@ -15,7 +17,8 @@ class DesiredCapabilities(object):
             "platformName": "ANDROID",
             "platformVersion": "4.4.2",
             "deviceName": "QUANTUM_2_400",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),  # path to .apk file
+            "app": os.path.join(PROJECT_ROOT, "oca-v10.0.8.apk"),  # path to .apk file
+            # "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),  # path to .apk file
             # "appPackage": "com.noggin.oca",
             # "appActivity": "com.noggin.oca.MainActivity",
             "appPackage": "com.noggin.ocalukasl",
@@ -26,7 +29,8 @@ class DesiredCapabilities(object):
             "deviceReadyTimeout": 15,
             # "newCommandTimeout": "60",  # How long (in seconds) Appium will wait for a new command from the client before assuming the client quit and ending the session
             "clearSystemFiles": True,
-            "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
+            "chromedriverExecutable": os.path.join(PROJECT_ROOT, "chromedriver"),
+            # "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
             "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
             "chromeOptions": {
                 "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
@@ -40,7 +44,8 @@ class DesiredCapabilities(object):
             "platformName": "ANDROID",
             "platformVersion": "4.4.2",
             "deviceName": "192.168.56.101:5556",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8-x86.apk"),
+            "app": os.path.join(PROJECT_ROOT, "oca-v10.0.8-x86.apk"),  # path to .apk file
+            # "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8-x86.apk"),
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
             "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
@@ -49,7 +54,7 @@ class DesiredCapabilities(object):
             "deviceReadyTimeout": 5,
             # "newCommandTimeout": "60",
             "clearSystemFiles": True,
-            "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
+            "chromedriverExecutable": os.path.join(PROJECT_ROOT, "chromedriver"),
             "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
             "chromeOptions": {
                 "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
@@ -62,7 +67,7 @@ class DesiredCapabilities(object):
             "platformName": "ANDROID",
             "platformVersion": "5.1.1",
             "deviceName": "POP 3",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),
+            "app": os.path.join(PROJECT_ROOT, "oca-v10.0.8.apk"),  # path to .apk file
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
             "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
@@ -72,7 +77,7 @@ class DesiredCapabilities(object):
             "deviceReadyTimeout": 5,
             # "newCommandTimeout": "60",
             "clearSystemFiles": True,
-            "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
+            "chromedriverExecutable": os.path.join(PROJECT_ROOT, "chromedriver"),
             "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
             "chromeOptions": {
                 "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
@@ -85,7 +90,7 @@ class DesiredCapabilities(object):
             "platformName": "ANDROID",
             "platformVersion": "5.1.1",
             "deviceName": "emulator-5554",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8-x86.apk"),
+            "app": os.path.join(PROJECT_ROOT, "oca-v10.0.8-x86.apk"),  # path to .apk file
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
             "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
@@ -94,7 +99,7 @@ class DesiredCapabilities(object):
             "deviceReadyTimeout": 5,
             # "newCommandTimeout": "60",
             "clearSystemFiles": True,
-            "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
+            "chromedriverExecutable": os.path.join(PROJECT_ROOT, "chromedriver"),
             "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
             "chromeOptions": {
                 "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
@@ -108,7 +113,7 @@ class DesiredCapabilities(object):
             "platformName": "ANDROID",
             "platformVersion": "6.0",
             "deviceName": "emulator-5554",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8-x86.apk"),
+            "app": os.path.join(PROJECT_ROOT, "oca-v10.0.8-x86.apk"),  # path to .apk file
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
             "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
@@ -118,7 +123,7 @@ class DesiredCapabilities(object):
             # "fullReset": True,
             # "newCommandTimeout": "60",
             "clearSystemFiles": True,
-            "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
+            "chromedriverExecutable": os.path.join(PROJECT_ROOT, "chromedriver"),
             "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
             "chromeOptions": {
                 "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
@@ -126,12 +131,12 @@ class DesiredCapabilities(object):
             "androidDeviceReadyTimeout": 60  # Android only
         },
 
-        "Android 6": {  # UPDATED TO ANDROID 7.0
+        "Android 6": {
             "platformName": "ANDROID",
             "platformVersion": "6.0.1",
             # "automationName": "Appium",  # probably necessary to enable this and disable platformVersion when switching to webview context, but currently there is only NATIVE_APP context
             "deviceName": "SM-G930F",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),
+            "app": os.path.join(PROJECT_ROOT, "oca-v10.0.8.apk"),  # path to .apk file
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
             "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
@@ -140,7 +145,7 @@ class DesiredCapabilities(object):
             "deviceReadyTimeout": 5,
             # "newCommandTimeout": "60",
             "clearSystemFiles": True,
-            "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
+            "chromedriverExecutable": os.path.join(PROJECT_ROOT, "chromedriver"),
             "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
             "chromeOptions": {
                 "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
@@ -152,7 +157,7 @@ class DesiredCapabilities(object):
             "platformName": "ANDROID",
             "platformVersion": "7.0",
             "deviceName": "SM-G930F",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8.apk"),
+            "app": os.path.join(PROJECT_ROOT, "oca-v10.0.8.apk"),  # path to .apk file
             # "appPackage": "com.noggin.oca",
             # "appActivity": "com.noggin.oca.MainActivity",
             "appPackage": "com.noggin.ocalukasl",
@@ -167,7 +172,7 @@ class DesiredCapabilities(object):
             # "browserName": "Chromium",
             "clearSystemFiles": True,
             # "fullReset": True,
-            "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
+            "chromedriverExecutable": os.path.join(PROJECT_ROOT, "chromedriver"),
             "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
             "chromeOptions": {
                 "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
@@ -182,7 +187,7 @@ class DesiredCapabilities(object):
             "platformVersion": "7.0",
             # "deviceName": "192.168.56.101:5555",
             "deviceName": "emulator-5556",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8-x86.apk"),
+            "app": os.path.join(PROJECT_ROOT, "oca-v10.0.8-x86.apk"),  # path to .apk file
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
             "automationName": "uiautomator2",
@@ -191,7 +196,7 @@ class DesiredCapabilities(object):
             "deviceReadyTimeout": 5,
             # "newCommandTimeout": "60",
             "clearSystemFiles": True,
-            "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
+            "chromedriverExecutable": os.path.join(PROJECT_ROOT, "chromedriver"),
             "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
             "recreateChromeDriverSessions": True,
             "chromeOptions": {
@@ -205,7 +210,7 @@ class DesiredCapabilities(object):
             "platformName": "ANDROID",
             "platformVersion": "7.1",
             "deviceName": "emulator-5554",
-            "app": PATH("/Users/lukasl/repos/appium-poc/oca-v10.0.8-x86.apk"),
+            "app": os.path.join(PROJECT_ROOT, "oca-v10.0.8-x86.apk"),  # path to .apk file
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
             "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
@@ -215,7 +220,7 @@ class DesiredCapabilities(object):
             # "fullReset": True,
             # "newCommandTimeout": "60",
             "clearSystemFiles": True,
-            "chromedriverExecutable": "/Users/lukasl/repos/appium-poc/chromedriver",
+            "chromedriverExecutable": os.path.join(PROJECT_ROOT, "chromedriver"),
             "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
             "chromeOptions": {
                 "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
@@ -228,7 +233,8 @@ class DesiredCapabilities(object):
             "platformName": "iOS",
             "platformVersion": "9.3",
             "deviceName": "iPad mini",
-            "app": PATH("/Users/lukasl/Build_xcode/Products/iPad9.3.5/OCA.app"),
+            "app": os.path.join(PROJECT_ROOT, "iPad_9.3.5_OCA.app"),  # path to .apk file
+            # "app": PATH("/Users/lukasl/Build_xcode/Products/iPad9.3.5/OCA.app"),
             "bundleId": "com.noggin.ocalukasl",
             # "newCommandTimeout": "60",
             "autoAcceptAlerts": True,
@@ -245,7 +251,8 @@ class DesiredCapabilities(object):
             "platformName": "iOS",
             "platformVersion": "9.3",
             "deviceName": "iPhone 5",
-            "app": PATH("/Users/lukasl/Build_xcode/Products/iPhone9.3/OCA.app"),
+            "app": os.path.join(PROJECT_ROOT, "iPhone_9.3_OCA.app"),  # path to .apk file
+            # "app": PATH("/Users/lukasl/Build_xcode/Products/iPhone9.3/OCA.app"),
             "bundleId": "com.noggin.ocalukasl",
             # "newCommandTimeout": "60",
             "launchTimeout": 200000,  # iOS only
@@ -260,7 +267,8 @@ class DesiredCapabilities(object):
             "platformName": "iOS",
             "platformVersion": "10.2",
             "deviceName": "iPhone 6",
-            "app": PATH("/Users/lukasl/Build_xcode/Products/iPhone10.2/OCA.app"),
+            "app": os.path.join(PROJECT_ROOT, "iPhone_10.2_OCA.app"),  # path to .apk file
+            # "app": PATH("/Users/lukasl/Build_xcode/Products/iPhone10.2/OCA.app"),
             "bundleId": "com.noggin.ocalukasl",
             # "autoAcceptAlerts": True,  # not working on iOS10
             "xcodeOrgId": "5MJR4HSABR",  # 10 characters string generated by Apple - search for it in Xcode
@@ -285,7 +293,8 @@ class DesiredCapabilities(object):
             "platformName": "iOS",
             "platformVersion": "10.3",
             "deviceName": "iPhone 7",
-            "app": PATH("/Users/lukasl/Build_xcode/Products/iPhone7/OCA.app"),
+            "app": os.path.join(PROJECT_ROOT, "iPhone_10.3_OCA.app"),  # path to .apk file
+            # "app": PATH("/Users/lukasl/Build_xcode/Products/iPhone7/OCA.app"),
             "bundleId": "com.noggin.ocalukasl",
             # "newCommandTimeout": "60",
             "launchTimeout": 200000,  # iOS only
