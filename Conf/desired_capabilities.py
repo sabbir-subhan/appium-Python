@@ -63,7 +63,7 @@ class DesiredCapabilities(object):
             "androidDeviceReadyTimeout": 60  # Android only
         },
 
-        "Android 5": {
+        "Android_5": {
             "platformName": "ANDROID",
             "platformVersion": "5.1.1",
             "deviceName": "POP 3",
@@ -153,7 +153,7 @@ class DesiredCapabilities(object):
             "udid": "ad0816033848eb0443"
         },
 
-        "Android 7": {
+        "Android_7": {
             "platformName": "ANDROID",
             "platformVersion": "7.0",
             "deviceName": "SM-G930F",

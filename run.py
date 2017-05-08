@@ -1,52 +1,112 @@
+# from tests.test_Login import TestLogin
 import argparse
 import sys
 import unittest
+import os
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 
 def main():
 
-    # arg = sys.argv
-    pass
+    parser = argparse.ArgumentParser(description='Pass platform name')
+    parser.add_argument('--platform', default='Android_5')
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--input', default='Android 5')
+    parser.add_argument('--test', default='test_ManagingLogs')
+
     parser.add_argument('unittest_args', nargs='*')
 
     args = parser.parse_args()
-    # TODO: Go do something with args.input and args.filename
+    # do something with args.input
+    #global platform
+    platform = args.platform
+    print("platform passed into run.py = " + platform)
+    main.platform = platform
+    # platform = main.platform
+
+    test = args.test
+    # main.test = test
 
     # Now set the sys.argv to the unittest_args (leaving sys.argv[0] alone)
     sys.argv[1:] = args.unittest_args
-    unittest.main()
+
+    # suite = loader.loadTestsFromTestCase()
+    # unittest.TextTestRunner(verbosity=2).run(suite)
+
+    # all_tests = loader.discover(start_dir="./tests", pattern="test*.py")
+    # unittest.TextTestRunner(verbosity=2).run(all_tests)
+
+    #unittest.main()
+
+    #return platform
+
+if __name__ == '__main__':
+    loader = unittest.TestLoader()
+    test_name = loader.discover(start_dir="./tests", pattern="test_Login.py")
+    unittest.TextTestRunner(verbosity=2).run(test_name)
+
+# main()
 
 # if __name__ == '__main__':
+#     #test = main.test
+#     loader = unittest.TestLoader()
+#     # test_name = loader.discover(start_dir="./tests", pattern=test)
+#     test_name = loader.discover(start_dir="./tests", pattern="test_ManagingLogs.py")
+#     unittest.TextTestRunner(verbosity=2).run(test_name)
+
+main()
+
+
+class GetPlatform:
+
+    @staticmethod
+    def get_platform():
+
+        print("test will start on: " + main.platform)
+        return main.platform
+
+# device = main().platform
+    # # device = main().platform
+    # print("checking platform on end of the run.py: " + device)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# if __name__ == '__main__':
+#     suite = unittest.TestLoader().loadTestsFromTestCase(TestManagingLogs)
+#     unittest.TextTestRunner(verbosity=2).run(suite)
+
+
+
+
+
+# def main():
 #
-#    unittest.main(argv=[sys.argv[1]])
-
-# if __name__ == "__main__":
-#     main()
-
-platform = "Android 7"
-
-
-# class ParametrizedTestCase(unittest.TestCase):
+#     parser = argparse.ArgumentParser(description='Pass platform name')
+#     parser.add_argument('--platform', default='Android_5')
+#     parser.add_argument('unittest_args', nargs='*')
 #
-#     """ TestCase classes that want to be parametrized should
-#         inherit from this class.
-#     """
-#     def __init__(self, methodName='runTest', param=None):
-#         super(ParametrizedTestCase, self).__init__(methodName)
-#         self.param = param
+#     args = parser.parse_args()
+#     # do something with args.input
+#     platform = args.platform
+#     print(platform)
+#     # Now set the sys.argv to the unittest_args (leaving sys.argv[0] alone)
+#     sys.argv[1:] = args.unittest_args
+#     unittest.main()
 #
-#     @staticmethod
-#     def parametrize(testcase_klass, param=None):
-#         """ Create a suite containing all tests taken from the given
-#             subclass, passing them the parameter 'param'.
-#         """
-#         testloader = unittest.TestLoader()
-#         testnames = testloader.getTestCaseNames(testcase_klass)
-#         suite = unittest.TestSuite()
-#         for name in testnames:
-#             suite.addTest(testcase_klass(name, param=param))
-#         return suite
+# main()
+#
+# device = main().platform
+# print(device)

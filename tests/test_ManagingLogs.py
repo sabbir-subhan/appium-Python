@@ -28,13 +28,12 @@
 # On the mobile app, create logs of this type.
 # Open new logs but don't save them.
 # Create a log that has option lists and fields with visibility rules that clears hidden fields and restores default values.
-import argparse
+
 
 from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
-import sys
 
 
 class TestManagingLogs(SetupTestCase):
@@ -232,18 +231,19 @@ class TestManagingLogs(SetupTestCase):
         main_page.check_presence_of_events_button()
 
 
-# if __name__ == '__main__':
-#     suite = unittest.TestLoader().loadTestsFromTestCase(TestManagingLogs)
-#     unittest.TextTestRunner(verbosity=2).run(suite)
-
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--input', default='Android 5')
-    parser.add_argument('unittest_args', nargs='*')
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestManagingLogs)
+    unittest.TextTestRunner(verbosity=2).run(suite)
 
-    args = parser.parse_args()
-    # TODO: Go do something with args.input and args.filename
-
-    # Now set the sys.argv to the unittest_args (leaving sys.argv[0] alone)
-    sys.argv[1:] = args.unittest_args
-    unittest.main()
+# if __name__ == '__main__':
+#     parser = argparse.ArgumentParser(description='Pass platform name')
+#     parser.add_argument('--platform', default='')
+#     parser.add_argument('unittest_args', nargs='*')
+#
+#     args = parser.parse_args()
+#     # TODO: Go do something with args.input
+#     platform = args.unittest_args
+#
+#     # Now set the sys.argv to the unittest_args (leaving sys.argv[0] alone)
+#     sys.argv[1:] = args.unittest_args
+#     unittest.main()
