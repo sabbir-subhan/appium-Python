@@ -7,7 +7,9 @@
 
 - Java
 - Android studio and APIs for android - android avd
-- brew install python3
+- brew install python3 (or on Windows just install from .exe file)
+- node (tested on 6.10)
+- npm
 - pip install -U selenium
 - pip install Appium-Python-Client
 - PyCharm - for opening and running tests
@@ -17,9 +19,6 @@
 - Xcode 7.3  # needed for testing iOS9
 (rename Xcode.app to Xcode7.app)
 - xcode 8.1  # needed for testing iOS10
-- node
-- npm
-- brew
 - brew install --HEAD libimobiledevice
 - brew link --overwrite libimobiledevice
 - brew install ideviceinstaller

@@ -1,30 +1,45 @@
-from run import GetPlatform
+# from run2 import GetPlatform
+#from run2 import main
+# from run3 import GetPlatform
+# from run3 import Runner
 # from run import main.platform
 # from run import *
+#from run2 import main
+# from run3 import Runner
 import os
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 DEFINITIONS_ROOT = os.path.join(PROJECT_ROOT)
 
+platform = "Android_7"
 
-# platform = "Android_7"
-platform = GetPlatform().get_platform()
+# platform = Runner.get_platform
+
+# platform = main.platform
+
+# platform = main()  # method main return default platform ?
+
+#platform = GetPlatform().get_platform()
+
+# platform = GetPlatform.get_platform(platform="")
+
 #platform = main.platform
-print("platform passed into configuration.py = " + platform)
+
+# print("platform passed into configuration.py = " + main.platform)
 
 # You can use:
 
-# Android 4
-# Android 5
-# Android 5 emulator
-# Android 6
-# Android 6 emulator
-# Android 7
-# Android 7 emulator
-# Android 7.1 emulator
-# IOS 9
-# IOS 9 emulator
-# IOS 10
-# IOS 10 emulator
+# Android_4
+# Android_5
+# Android_5_emulator
+# Android_6
+# Android_6_emulator
+# Android_7
+# Android_7_emulator
+# Android_7.1_emulator
+# IOS_9
+# IOS_9_emulator
+# IOS_10
+# IOS_10_emulator
 
 
 # devices are defined in /Conf/desired_capabilities.py

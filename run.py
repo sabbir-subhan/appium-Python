@@ -1,9 +1,10 @@
-# from tests.test_Login import TestLogin
+#from tests.test_Login import TestLogin
 import argparse
 import sys
 import unittest
 import os
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+import tests
 
 
 def main():
@@ -29,8 +30,11 @@ def main():
     # Now set the sys.argv to the unittest_args (leaving sys.argv[0] alone)
     sys.argv[1:] = args.unittest_args
 
-    # suite = loader.loadTestsFromTestCase()
+
+    # loader = unittest.TestLoader()
+    # suite = loader.loadTestsFromTestCase(tests.test_Login.TestLogin)
     # unittest.TextTestRunner(verbosity=2).run(suite)
+
 
     # all_tests = loader.discover(start_dir="./tests", pattern="test*.py")
     # unittest.TextTestRunner(verbosity=2).run(all_tests)
@@ -39,12 +43,22 @@ def main():
 
     #return platform
 
+    # loader = unittest.TestLoader()
+    # test_name = loader.discover(start_dir="./tests", pattern="test_Login.py")
+    # unittest.TextTestRunner(verbosity=2).run(test_name)
+
 if __name__ == '__main__':
     loader = unittest.TestLoader()
     test_name = loader.discover(start_dir="./tests", pattern="test_Login.py")
     unittest.TextTestRunner(verbosity=2).run(test_name)
 
 # main()
+
+# def suite():
+#     loader = unittest.TestLoader()
+#     suite = unittest.TestSuite()
+#     suite.addTest(loader.loadTestsFromTestCase(TestLogin))
+#     return suite
 
 # if __name__ == '__main__':
 #     #test = main.test

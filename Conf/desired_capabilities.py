@@ -13,7 +13,7 @@ class DesiredCapabilities(object):
 
     capabilities = {
 
-        "Android 4": {
+        "Android_4": {
             "platformName": "ANDROID",
             "platformVersion": "4.4.2",
             "deviceName": "QUANTUM_2_400",
@@ -39,7 +39,7 @@ class DesiredCapabilities(object):
             "udid": "0123456789ABCDEF"
         },
 
-        "Android 4 emulator": {
+        "Android_4_emulator": {
             # Google Nexus 4 - 4.4.2 - API 19 - 768x1280
             "platformName": "ANDROID",
             "platformVersion": "4.4.2",
@@ -86,7 +86,7 @@ class DesiredCapabilities(object):
             "udid": "7d7d9a62"
         },
 
-        "Android 5 emulator": {
+        "Android_5_emulator": {
             "platformName": "ANDROID",
             "platformVersion": "5.1.1",
             "deviceName": "emulator-5554",
@@ -108,7 +108,7 @@ class DesiredCapabilities(object):
             "androidDeviceReadyTimeout": 60  # Android only
         },
 
-        "Android 6 emulator": {
+        "Android_6_emulator": {
             # Google Nexus 5X
             "platformName": "ANDROID",
             "platformVersion": "6.0",
@@ -131,7 +131,7 @@ class DesiredCapabilities(object):
             "androidDeviceReadyTimeout": 60  # Android only
         },
 
-        "Android 6": {
+        "Android_6": {
             "platformName": "ANDROID",
             "platformVersion": "6.0.1",
             # "automationName": "Appium",  # probably necessary to enable this and disable platformVersion when switching to webview context, but currently there is only NATIVE_APP context
@@ -181,7 +181,7 @@ class DesiredCapabilities(object):
             "udid": "ad0816033848eb0443"
         },
 
-        "Android 7 emulator": {
+        "Android_7_emulator": {
             # Google Nexus 5X - 7.0.0 - API 24 - 1080x1920 or emulator-5556
             "platformName": "ANDROID",
             "platformVersion": "7.0",
@@ -205,7 +205,7 @@ class DesiredCapabilities(object):
             "androidDeviceReadyTimeout": 60  # Android only
         },
 
-        "Android 7.1 emulator": {
+        "Android_7.1_emulator": {
             # Google Nexus 5X - API 25
             "platformName": "ANDROID",
             "platformVersion": "7.1",
@@ -228,7 +228,7 @@ class DesiredCapabilities(object):
             "androidDeviceReadyTimeout": 60  # Android only
         },
 
-        "IOS 9": {
+        "IOS_9": {
             # iPad mini with iOS 9.3.5
             "platformName": "iOS",
             "platformVersion": "9.3",
@@ -246,7 +246,7 @@ class DesiredCapabilities(object):
             "udid": "db55c238e873230ee454c54a63724397a2981acd"
         },
 
-        "IOS 9 emulator": {
+        "IOS_9_emulator": {
             # iPhone 5 simulator with iOS 9.3.5
             "platformName": "iOS",
             "platformVersion": "9.3",
@@ -262,7 +262,7 @@ class DesiredCapabilities(object):
             "autoAcceptAlerts": True
         },
 
-        "IOS 10": {
+        "IOS_10": {
             # iPhone 6 with iOS 10.2 - new iOS need Xcuit Test
             "platformName": "iOS",
             "platformVersion": "10.2",
@@ -288,7 +288,7 @@ class DesiredCapabilities(object):
             "udid": "4b15c4284897fa6f9b4c5205325a9cece997ad35"
         },
 
-        "IOS 10 emulator": {
+        "IOS_10_emulator": {
             # iPhone 7 simulator with iOS 10.3
             "platformName": "iOS",
             "platformVersion": "10.3",

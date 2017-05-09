@@ -357,7 +357,7 @@ class ReportsScreen:
     ASSETS_CHOOSER_FIELD = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeWebView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[10]/XCUIElementTypeOther[2]')  # inside already created report
     ON_LOAD_FIELD = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="on_load"]')
     NEW_OPTION_LIST = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="New option list"]')
-    MEDIA_RELEASE_FIELD = (MobileBy.XPATH, '//XCUIElementTypeTextView[1]')
+    MEDIA_RELEASE_FIELD = (MobileBy.XPATH, '//XCUIElementTypeOther[6]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeTextView[1]')
 
 
 class LogsScreen:
