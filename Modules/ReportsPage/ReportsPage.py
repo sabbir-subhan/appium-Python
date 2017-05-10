@@ -212,9 +212,14 @@ class ReportsPage(BasePage):
         self.assertIsNotNone(choose_second_status, "second status not found")
         choose_second_status.click()
         # sleep(1)
+
+        self.switch_context_to_native()
+
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         common_page.wait_for_app_loading()
+
+        self.switch_context_to_webview()
 
         expand_status_filters = self.driver.find_element(*self.configuration.ReportsScreen.STATUS_FILTER)
         self.assertIsNotNone(expand_status_filters, "status filter not found")
@@ -224,9 +229,14 @@ class ReportsPage(BasePage):
         self.assertIsNotNone(choose_third_status, "third status not found")
         choose_third_status.click()
         # sleep(1)
+
+        self.switch_context_to_native()
+
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         common_page.wait_for_app_loading()
+
+        self.switch_context_to_webview()
 
         expand_status_filters = self.driver.find_element(*self.configuration.ReportsScreen.STATUS_FILTER)
         self.assertIsNotNone(expand_status_filters, "status filter not found")
@@ -236,9 +246,14 @@ class ReportsPage(BasePage):
         self.assertIsNotNone(choose_fourth_status, "fourth status not found")
         choose_fourth_status.click()
         # sleep(1)
+
+        self.switch_context_to_native()
+
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         common_page.wait_for_app_loading()
+
+        self.switch_context_to_webview()
 
         expand_status_filters = self.driver.find_element(*self.configuration.ReportsScreen.STATUS_FILTER)
         self.assertIsNotNone(expand_status_filters, "status filter not found")
@@ -248,11 +263,14 @@ class ReportsPage(BasePage):
         self.assertIsNotNone(choose_first_status, "first status not found")
         choose_first_status.click()
         # sleep(1)
+
+        self.switch_context_to_native()
+
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         common_page.wait_for_app_loading()
 
-        self.switch_context_to_native()
+        # self.switch_context_to_native()
 
     def filter_reports_by_active_status(self):
 
@@ -570,9 +588,18 @@ class ReportsPage(BasePage):
 
     def click_on_option_list(self):
 
-        event_edit_page = LoadClass.load_page('EventEditPage')
-        event_edit_page.setDriver(self.driver)
-        event_edit_page.click_on_option_list()
+        self.switch_context_to_webview()
+
+        logging.info("click on Option list")
+        option_list = self.driver.find_element(*self.configuration.ReportsScreen.OPTION_LIST)
+        self.assertIsNotNone(option_list, "option list not found")
+        option_list.click()
+
+        self.switch_context_to_native()
+
+        # event_edit_page = LoadClass.load_page('EventEditPage')
+        # event_edit_page.setDriver(self.driver)
+        # event_edit_page.click_on_option_list()
 
     def click_on_option_1(self):
 
@@ -594,21 +621,72 @@ class ReportsPage(BasePage):
 
     def check_restored_field_1(self):
 
-        assets_page = LoadClass.load_page('AssetsPage')
-        assets_page.setDriver(self.driver)
-        assets_page.check_restored_field_1()
+        logging.info("assert restored field 1")
+
+        self.switch_context_to_webview()
+
+        field_to_restore_1_header = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_1_HEADER)
+        self.assertIsNotNone(field_to_restore_1_header)
+
+        self.switch_context_to_native()
+
+        # common_page = LoadClass.load_page('CommonPage')
+        # common_page.setDriver(self.driver)
+        # common_page.scroll_down_one_view()
+
+        sleep(1)
+        field_to_restore_1_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_1_VALUE)
+        self.assertIsNotNone(field_to_restore_1_value)
+
+        # assets_page = LoadClass.load_page('AssetsPage')
+        # assets_page.setDriver(self.driver)
+        # assets_page.check_restored_field_1()
 
     def check_restored_field_2(self):
 
-        assets_page = LoadClass.load_page('AssetsPage')
-        assets_page.setDriver(self.driver)
-        assets_page.check_restored_field_2()
+        logging.info("assert restored field 2")
+
+        self.switch_context_to_webview()
+
+        field_to_restore_2_header = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_2_HEADER)
+        self.assertIsNotNone(field_to_restore_2_header)
+
+        self.switch_context_to_native()
+
+        # common_page = LoadClass.load_page('CommonPage')
+        # common_page.setDriver(self.driver)
+        # common_page.scroll_down_one_view()
+
+        sleep(1)
+        field_to_restore_2_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_2_VALUE)
+        self.assertIsNotNone(field_to_restore_2_value)
+
+        # assets_page = LoadClass.load_page('AssetsPage')
+        # assets_page.setDriver(self.driver)
+        # assets_page.check_restored_field_2()
 
     def check_restored_field_3(self):
 
-        assets_page = LoadClass.load_page('AssetsPage')
-        assets_page.setDriver(self.driver)
-        assets_page.check_restored_field_3()
+        logging.info("assert restored field 3")
+
+        self.switch_context_to_webview()
+
+        field_to_restore_3_header = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_3_HEADER)
+        self.assertIsNotNone(field_to_restore_3_header)
+
+        self.switch_context_to_native()
+
+        # common_page = LoadClass.load_page('CommonPage')
+        # common_page.setDriver(self.driver)
+        # common_page.scroll_down_one_view()
+
+        sleep(1)
+        field_to_restore_3_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_3_VALUE)
+        self.assertIsNotNone(field_to_restore_3_value)
+
+        # assets_page = LoadClass.load_page('AssetsPage')
+        # assets_page.setDriver(self.driver)
+        # assets_page.check_restored_field_3()
 
     def check_hidden_field_1(self):
 

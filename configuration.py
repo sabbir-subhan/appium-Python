@@ -1,29 +1,29 @@
-# from run2 import GetPlatform
-#from run2 import main
-# from run3 import GetPlatform
-# from run3 import Runner
-# from run import main.platform
-# from run import *
-#from run2 import main
-# from run3 import Runner
+"""Script containing configurations for running tests"""
+
+from run3 import runner
 import os
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 DEFINITIONS_ROOT = os.path.join(PROJECT_ROOT)
 
-platform = "Android_7"
+platform = runner()
+print("platform passed into configuration.py: " + platform)
 
+# platform = main
+# print("print platform: " + str(platform))
+# platform = str(platform).replace("test=", "")
+# print("po zabawie " + platform)
+# platform = "IOS_10_emulator"
+# platform, test = Runner.func(platform, test)
+# platform = Runner.get_platform(getattr())
+# x = Runner.get_platform()
+# # x = Runner.get_platform()
+# y = x.platform
 # platform = Runner.get_platform
-
 # platform = main.platform
-
 # platform = main()  # method main return default platform ?
-
-#platform = GetPlatform().get_platform()
-
+# platform = GetPlatform().get_platform()
 # platform = GetPlatform.get_platform(platform="")
-
-#platform = main.platform
-
+# platform = main.platform
 # print("platform passed into configuration.py = " + main.platform)
 
 # You can use:
@@ -125,7 +125,7 @@ elif platform == "Android_4_emulator":
     PLATFORM_VERSION = "4.4.2"
 
 else:
-    print("fail to load ENVIRONMENT FOR TESTS")
+    print("ENVIRONMENT FOR TESTS not found")
 
 # if platform == "IOS 9":
 #

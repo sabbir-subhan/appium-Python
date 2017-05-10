@@ -22,6 +22,7 @@ def main():
     platform = args.platform
     print("platform passed into run.py = " + platform)
     main.platform = platform
+
     # platform = main.platform
 
     test = args.test
@@ -52,7 +53,7 @@ if __name__ == '__main__':
     test_name = loader.discover(start_dir="./tests", pattern="test_Login.py")
     unittest.TextTestRunner(verbosity=2).run(test_name)
 
-# main()
+main()
 
 # def suite():
 #     loader = unittest.TestLoader()
@@ -67,7 +68,7 @@ if __name__ == '__main__':
 #     test_name = loader.discover(start_dir="./tests", pattern="test_ManagingLogs.py")
 #     unittest.TextTestRunner(verbosity=2).run(test_name)
 
-main()
+# main()
 
 
 class GetPlatform:

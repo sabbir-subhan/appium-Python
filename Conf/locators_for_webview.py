@@ -355,7 +355,8 @@ class ReportsScreen:
     CREATE_MAPPING_DATA = (MobileBy.CSS_SELECTOR, 'div#reportEdit>div.ui-content>ul.edit-view>li.geometryinput>a')
     SEQUENCE_ON_LOAD = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_load"]')
     SEQUENCE_ON_SAVE = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_save"]')
-    MEDIA_RELEASE_FIELD = (MobileBy.CSS_SELECTOR, '')
+    # MEDIA_RELEASE_FIELD = (MobileBy.CSS_SELECTOR, '')  # rich text field must be located in native view
+    OPTION_LIST = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li[name="new option list"]>div.ui-select>div')
 
 
 class SentScreen:
