@@ -17,10 +17,10 @@ def main():
     args = parser.parse_args()
 
     platform = args.platform
-    print("platform passed into run.py = " + platform)
+    print("platform passed into run4.py = " + platform)
 
     test = args.test
-    print("test passed into run.py = " + test)
+    print("test passed into run4.py = " + test)
 
     # loader = unittest.TestLoader()
     # test_name = loader.discover(start_dir="./tests", pattern="test_Login.py")

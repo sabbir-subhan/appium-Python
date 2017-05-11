@@ -1,30 +1,15 @@
 """Script containing configurations for running tests"""
 
-from run3 import runner
+from run import runner
 import os
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 DEFINITIONS_ROOT = os.path.join(PROJECT_ROOT)
 
 platform = runner()
-print("platform passed into configuration.py: " + platform)
+print("platform passed into configuration: " + platform)
 
-# platform = main
-# print("print platform: " + str(platform))
-# platform = str(platform).replace("test=", "")
-# print("po zabawie " + platform)
 # platform = "IOS_10_emulator"
-# platform, test = Runner.func(platform, test)
-# platform = Runner.get_platform(getattr())
-# x = Runner.get_platform()
-# # x = Runner.get_platform()
-# y = x.platform
-# platform = Runner.get_platform
-# platform = main.platform
-# platform = main()  # method main return default platform ?
-# platform = GetPlatform().get_platform()
-# platform = GetPlatform.get_platform(platform="")
-# platform = main.platform
-# print("platform passed into configuration.py = " + main.platform)
+
 
 # You can use:
 

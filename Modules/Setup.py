@@ -1,5 +1,11 @@
 """ Setup class and methods """
 
+# import os
+# import sys
+# PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+# sys.path.insert(0, os.path.dirname(__file__))
+# sys.path.insert(0, PROJECT_ROOT + '/../')
+
 from time import sleep
 import subprocess
 import os
@@ -11,7 +17,7 @@ import unittest
 import pytest
 from importlib import import_module
 import logging
-logging.basicConfig(filename='TCs.log', level=logging.INFO,
+logging.basicConfig(filename='./tests/TCs.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())
 

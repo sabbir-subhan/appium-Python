@@ -365,8 +365,8 @@ class CameraScreen:
     USE_PHOTO_ANDROID6_version2 = (MobileBy.ID, 'com.android.camera:id/btn_done')
 
 
-class NewContactScreen:
-    """A class for handling New Contact screen"""
+class ContactsScreen:
+    """A class for handling Contacts screen"""
     FIRST_NAME = (MobileBy.ID, 'first name')
     FIRST_NAME2 = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="First name"]')
 

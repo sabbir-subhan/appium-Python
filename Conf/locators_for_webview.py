@@ -288,13 +288,16 @@ class SoundScreen:
 #     USE_VIDEO = (MobileBy.CSS_SELECTOR, 'Use Video')
 
 
-class NewContactScreen:
-    """A class for handling New Contact screen"""
+class ContactsScreen:
+    """A class for handling Contacts screen"""
     SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                           'a[href="#save"]')
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
     FIRST_NAME = (MobileBy.CSS_SELECTOR, 'input[id="first name"]')
+    FIRST_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul.groups>li:first-child')
+    SECOND_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul.groups>li:nth-child(2)')
+    THIRD_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul.groups>li:last-child')
 
 
 class TasksScreen:

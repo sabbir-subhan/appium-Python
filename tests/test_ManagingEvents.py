@@ -21,7 +21,6 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
-import HTMLTestRunner
 
 
 class TestManagingEvents(SetupTestCase):
@@ -211,7 +210,6 @@ class TestManagingEvents(SetupTestCase):
 
 
 if __name__ == '__main__':
-    HTMLTestRunner.main()
     suite = unittest.TestLoader().loadTestsFromTestCase(TestManagingEvents)
     unittest.TextTestRunner(verbosity=2).run(suite)
 

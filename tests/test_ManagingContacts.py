@@ -34,6 +34,11 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
+# import os
+# import sys
+# PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+# sys.path.insert(0, os.path.dirname(__file__))
+# sys.path.insert(0, PROJECT_ROOT + '/../')
 
 
 class TestManagingContacts(SetupTestCase):
@@ -48,7 +53,7 @@ class TestManagingContacts(SetupTestCase):
         logging.info("Quitting")
         self.driver.quit()
 
-    def test_manage_logs(self):
+    def test_manage_contacts(self):
 
         logging.info("starting Test Case: Managing Contacts")
         common_page = LoadClass.load_page('CommonPage')
@@ -72,6 +77,12 @@ class TestManagingContacts(SetupTestCase):
         main_page.alert_expiring_password()
         main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
+
+        main_page.scroll_down_to_contacts_button()
+        main_page.open_CONTACTS()
+        contacts_page = LoadClass.load_page('ContactsPage')
+        contacts_page.setDriver(self.driver)
+        contacts_page.open_second_contact_group()
 
 
 if __name__ == '__main__':

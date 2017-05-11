@@ -293,8 +293,8 @@ class CameraScreen:
     USE_VIDEO = (MobileBy.ACCESSIBILITY_ID, 'Use Video')
 
 
-class NewContactScreen:
-    """A class for handling New Contact screen"""
+class ContactsScreen:
+    """A class for handling Contacts screen"""
     FIRST_NAME = (MobileBy.XPATH, '//UIATextField [@name="First name"]')
 
 
