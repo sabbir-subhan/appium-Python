@@ -1,13 +1,13 @@
 """Script containing configurations for running tests"""
 
-from run import runner
 import os
+from settings import Settings
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 DEFINITIONS_ROOT = os.path.join(PROJECT_ROOT)
 
-platform = runner()
-print("platform passed into configuration: " + platform)
+platform = Settings.platform
 
+print("platform passed into configuration: " + str(platform))
 # platform = "IOS_10_emulator"
 
 

@@ -5,18 +5,20 @@
 # PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 # sys.path.insert(0, os.path.dirname(__file__))
 # sys.path.insert(0, PROJECT_ROOT + '/../')
-
-from time import sleep
-import subprocess
-import os
+# from time import sleep
+# import subprocess
+# import os
+# from configuration import ENVIRONMENT_TEST
+# import pytest
+# from importlib import import_module
 from Conf.desired_capabilities import DesiredCapabilities
-from configuration import ENVIRONMENT_TEST
 from configuration import PORT
 from appium import webdriver
 import unittest
-import pytest
-from importlib import import_module
 import logging
+# logging.basicConfig(filename='./tests/TCs.log', level=logging.INFO,
+#                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+# logging.getLogger().addHandler(logging.StreamHandler())
 logging.basicConfig(filename='./tests/TCs.log', level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())
