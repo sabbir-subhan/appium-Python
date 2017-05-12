@@ -34,11 +34,6 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
-# import os
-# import sys
-# PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-# sys.path.insert(0, os.path.dirname(__file__))
-# sys.path.insert(0, PROJECT_ROOT + '/../')
 
 
 class TestManagingContacts(SetupTestCase):
@@ -82,7 +77,9 @@ class TestManagingContacts(SetupTestCase):
         main_page.open_CONTACTS()
         contacts_page = LoadClass.load_page('ContactsPage')
         contacts_page.setDriver(self.driver)
-        contacts_page.open_second_contact_group()
+        contacts_page.open_second_contact_group()  # Contacts
+        contacts_page.click_new_button()
+        contacts_page.add_new_contact_group()
 
 
 if __name__ == '__main__':

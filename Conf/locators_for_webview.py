@@ -298,6 +298,8 @@ class ContactsScreen:
     FIRST_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul.groups>li:first-child')
     SECOND_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul.groups>li:nth-child(2)')
     THIRD_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul.groups>li:last-child')
+    NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-a>li#openContactGroupTreeMore>a[href="#contactgroupTreeMore"]')
+    NEW_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div#contactgroupTreeMore-popup>div#contactgroupTreeMore>ul>li.new.contactgroup>a')
 
 
 class TasksScreen:

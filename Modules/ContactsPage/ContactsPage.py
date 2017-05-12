@@ -73,7 +73,27 @@ class ContactsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def click_new_button(self):
 
+        self.switch_context_to_webview()
+
+        logging.info("click New button")
+        new_button = self.driver.find_element(*self.configuration.ContactsScreen.NEW_BUTTON)
+        self.assertIsNotNone(new_button, "new button not found")
+        new_button.click()
+
+        self.switch_context_to_native()
+
+    def add_new_contact_group(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click add new contact group in this group button")
+        new_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.NEW_CONTACT_GROUP)
+        self.assertIsNotNone(new_contact_group, "add new contact group in this group button not found")
+        new_contact_group.click()
+
+        self.switch_context_to_native()
 
 
 

@@ -2,6 +2,8 @@
 
 import argparse
 # import fire
+import colour_runner
+from colour_runner import *
 import unittest
 # import logging
 import os
@@ -55,6 +57,11 @@ def runner():
     else:
         names = loader.discover(start_dir="./tests", pattern=args.test + ".py")
         unittest.TextTestRunner(verbosity=2).run(names)
+        # colour_runner.runner.ColourTextTestRunner(verbosity=2).run(names)
+
+    # results = unittest.TextTestResult
+    # results.printErrors()
+    # results.wasSuccessful()
 
     print("test passed into runner =", args.test)
     print("platform passed into runner =", args.platform)
