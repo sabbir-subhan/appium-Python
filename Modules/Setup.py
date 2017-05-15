@@ -16,11 +16,9 @@ from configuration import PORT
 from appium import webdriver
 import unittest
 import logging
-# logging.basicConfig(filename='./tests/TCs.log', level=logging.INFO,
-#                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
-# logging.getLogger().addHandler(logging.StreamHandler())
-logging.basicConfig(filename='./tests/TCs.log', level=logging.INFO,
-                    format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+FILE = './tests/TCs.log'
+FORMAT = '%(asctime)s %(message)s'
+logging.basicConfig(filename=FILE, level=logging.INFO, format=FORMAT, datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler())
 
 

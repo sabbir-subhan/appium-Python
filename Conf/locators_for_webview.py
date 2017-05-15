@@ -296,10 +296,17 @@ class ContactsScreen:
                                             'a[href="#cancel"]')
     FIRST_NAME = (MobileBy.CSS_SELECTOR, 'input[id="first name"]')
     FIRST_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul.groups>li:first-child')
-    SECOND_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul.groups>li:nth-child(2)')
+    SECOND_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul.groups>li:nth-child(2)>a')
     THIRD_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul.groups>li:last-child')
     NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-a>li#openContactGroupTreeMore>a[href="#contactgroupTreeMore"]')
-    NEW_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div#contactgroupTreeMore-popup>div#contactgroupTreeMore>ul>li.new.contactgroup>a')
+    ADD_NEW_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div#contactgroupTreeMore-popup>div#contactgroupTreeMore>ul>li.new.contactgroup>a')
+    ADD_NEW_CONTACT_INTO_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div#contactgroupTreeMore-popup>div#contactgroupTreeMore>ul>li:nth-child(2)>a')
+    IMPORT_CONTACT_FROM_DEVICE_INTO_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div#contactgroupTreeMore-popup>div#contactgroupTreeMore>ul>li.ingroup.new.import>a')
+    FIRST_CONTACT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.secondary>ul>li:first-child>a')
+    CONTACT_MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactView>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-a>li.ui-block-b>a[href="#contactViewMoreMenu"]')
+    DELETE_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactView>div.ui-popup-container>div[data-role="popup"]>ul>li.delete.contact>a[href="#confirmDeleteContact"]')
+    CONFIRM_DELETE = (MobileBy.CSS_SELECTOR, 'div#contactView>div.ui-popup-container>div#confirmDeleteContact>div.ng-dialog-container>div>div>a:first-child')
+    CANCEL_DELETE = (MobileBy.CSS_SELECTOR, 'div#contactView>div.ui-popup-container>div#confirmDeleteContact>div.ng-dialog-container>div>div>a:last-child')
 
 
 class TasksScreen:

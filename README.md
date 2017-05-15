@@ -12,7 +12,8 @@
 - npm
 - pip install -U selenium
 - pip install Appium-Python-Client
-- PyCharm - for opening and running tests
+- npm install -g appium@latest
+- PyCharm - for editing tests
 
 **for OSX all above, plus:**
 
@@ -27,8 +28,7 @@
 
 - to switch between xcode versions, use: sudo xcode-select -switch /Applications/Xcode7.app
 
-
-### **TO RUN APPIUM WITH iOS 10:** ###
+**TO RUN APPIUM WITH iOS 10:**
 - You have to launch Appium in CLI and use version starting from 1.6.3 - currently 1.6.4 is the latest 
 
 INSTALL APPIUM 1.6.4 TO WORK WITH iOS10: (CLI commands)
@@ -38,12 +38,9 @@ INSTALL APPIUM 1.6.4 TO WORK WITH iOS10: (CLI commands)
 - brew install carthage
 - npm install -g ios-deploy
 - npm install -g deviceconsole
-- n stable
-- npm install -g npm@latest
-- npm install -g appium@latest
 
 - cd /usr/local/lib/node_modules/appium/node_modules/
-<br> <br> <br> <br> <br> optionally:
+
 - npm install eslint-config-appium 
 - npm i eslint-plugin-import@latest --save-dev
 - npm i eslint-plugin-mocha@latest --save-dev
@@ -65,16 +62,25 @@ BundleID and choose dev Team (if there are some warnings after build, for exampl
 Last line output after using above command should be; "Listening on USB". Then you are all set!
 
 
-file /Conf/desired_capabilities.py and appium settings:
-
-- UDID from real device - open iTunes with connected device and click on serial number or use terminal command: "idevice_id -l"
-- iOS version and device name
-- path to app - to get app file You need to build it in xcode
+- id = UDID from real device - open iTunes with connected device and click on serial number or use terminal command: "idevice_id -l"
 
 (so if You need to run other version of iOS 10, for example iOS 10.3, You have to change build settings for WebDriverRunner in Xcode))
 
 
-#Starting Appium server in CLI:
+# **EXECUTING TESTS:** #
+
+### 1. Update file /appium-poc/Conf/desired_capabilities.py:
+
+###### desired_capabilities.py file contains information about devices
+###### open desired_capabilities.py file and search for device on which You want to run tests, if that device is not present You have to create a new one. 
+To do that, copy/past some existing device and edit it's details:
+- UDID from real device - open iTunes with connected device and click on serial number or use terminal command: "idevice_id -l"
+- iOS version and device name
+- path to app - to get app file You need to build it in Xcode for specific device that You have - after build just copy/past .app file into repository
+and provide name of that file in desired_capabilities.py
+
+
+### 2. Start Appium server in CLI:
 
 - appium  # this will launch Appium server on default port = 4723
 - appium -p 4735  # to change port use "-p" flag
@@ -84,6 +90,16 @@ file /Conf/desired_capabilities.py and appium settings:
         
 iPhone: ios_webkit_debug_proxy -c 4b15c4284897fa6f9b4c5205325a9cece997ad35:27753 <br />
 iPad: ios_webkit_debug_proxy -c db55c238e873230ee454c54a63724397a2981acd:27753
+
+### 3. Execute test:
+
+- open new terminal tab
+- cd to repository
+- type: python run.py -test <name_of_the_test_file> -platform <name_of_the_platform_to_run_test>
+- example: python run.py -t test_Login -p IOS_10_emulator (You can also use: "all" as test parameter)
+  
+- test files are located in /appium-poc/tests
+- available platforms are defined in /appium-poc/configuration.py
 
 
 ### **run iOS9 and iOS10** ###

@@ -296,6 +296,7 @@ class CameraScreen:
 class ContactsScreen:
     """A class for handling Contacts screen"""
     FIRST_NAME = (MobileBy.XPATH, '//UIATextField [@name="First name"]')
+    CONTACT_TYPE_PERSON = (MobileBy.XPATH, '//UIALink[@name[contains(., "Person")]]')
 
 
 class TasksScreen:

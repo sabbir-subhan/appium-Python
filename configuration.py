@@ -7,7 +7,7 @@ DEFINITIONS_ROOT = os.path.join(PROJECT_ROOT)
 
 platform = Settings.platform
 
-print("platform passed into configuration: " + str(platform))
+# print("platform passed into configuration: " + str(platform))
 # platform = "IOS_10_emulator"
 
 

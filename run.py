@@ -2,8 +2,8 @@
 
 import argparse
 # import fire
-import colour_runner
-from colour_runner import *
+# import colour_runner
+# from colour_runner import *
 import unittest
 # import logging
 import os
@@ -63,8 +63,8 @@ def runner():
     # results.printErrors()
     # results.wasSuccessful()
 
-    print("test passed into runner =", args.test)
-    print("platform passed into runner =", args.platform)
+    print("test = ", args.test)
+    print("platform = ", args.platform)
 
     return args.platform
 

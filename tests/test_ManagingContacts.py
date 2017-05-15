@@ -16,9 +16,12 @@
 # Press New > Add new contact in this group.
 # Press a contact type.
 # Fill in the fields in the form and press Save.
+
 # Open your own contact details. Click More > Delete Contact.
+
 # Open an existing contact that is not your contact.
 # Press Edit. Make changes to the fields in the form. Press Save.
+
 # Press More > Delete. Press Delete on the prompt that appears. Search for the contact.
 # Press More > Send communication. Add a message type and send.
 # Open a contact. Press More > Save to device. Press OK on the prompt.
@@ -79,7 +82,36 @@ class TestManagingContacts(SetupTestCase):
         contacts_page.setDriver(self.driver)
         contacts_page.open_second_contact_group()  # Contacts
         contacts_page.click_new_button()
-        contacts_page.add_new_contact_group()
+        contacts_page.add_new_contact_into_group()
+        contacts_page.choose_contact_type_person()
+        contacts_page.type_first_name("Appium contact")
+        contacts_page.scroll_down_to_save_button()
+        contacts_page.click_save_button()
+        common_page.hamburger_button()
+        main_page.check_presence_of_inbox_button()
+
+        main_page.scroll_down_to_contacts_button()
+        main_page.open_CONTACTS()
+        contacts_page.type_username_into_search_field()
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
+        contacts_page.edit_first_contact_on_the_list()
+        contacts_page.click_more_button()
+        contacts_page.delete_contact()
+        contacts_page.confirm_delete()
+
+        contacts_page.cancel_delete()  # app bug - lack of error msg
+
+        common_page.hamburger_button()
+        main_page.check_presence_of_inbox_button()
+
+        main_page.scroll_down_to_contacts_button()
+        main_page.open_CONTACTS()
+        contacts_page.type_text_into_search_field("Appium contact")
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
+        contacts_page.edit_first_contact_on_the_list()
+        contacts_page.click_edit_button()  # add method
 
 
 if __name__ == '__main__':
