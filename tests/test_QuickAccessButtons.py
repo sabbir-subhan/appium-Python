@@ -74,10 +74,10 @@ class TestQuickAccessButtons(SetupTestCase):
         main_page.open_CREATE_CONTACT()
         new_contact_page = LoadClass.load_page('ContactsPage')
         new_contact_page.setDriver(self.driver)
-        new_contact_page.type_first_name("Name for new contact test")
+        new_contact_page.type_first_name_for_new_contact("Name for new contact test")
         # common_page.hide_keyboard()
         new_contact_page.scroll_down_to_save_button()
-        new_contact_page.click_save_button()
+        new_contact_page.save_new_contact()
         main_page.check_presence_of_events_button()
 
         main_page.open_CREATE_TASK()

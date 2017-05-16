@@ -370,6 +370,7 @@ class ContactsScreen:
     FIRST_NAME = (MobileBy.ID, 'first name')
     FIRST_NAME2 = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="First name"]')
     CONTACT_TYPE_PERSON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Person")]]')
+    DELETED_CONTACT = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "delete")]]')
 
 
 class TasksScreen:

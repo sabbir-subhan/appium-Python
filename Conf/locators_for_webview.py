@@ -290,11 +290,14 @@ class SoundScreen:
 
 class ContactsScreen:
     """A class for handling Contacts screen"""
-    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+    SAVE_NEW_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                           'a[href="#save"]')
+    SAVE_EDITED_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#save"]')
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
-    FIRST_NAME = (MobileBy.CSS_SELECTOR, 'input[id="first name"]')
+    # FIRST_NAME = (MobileBy.CSS_SELECTOR, 'input[id="first name"]')
+    FIRST_NAME_FOR_NEW_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li.ui-field-contain>div.ui-input-text>input[id="first name"]')
+    FIRST_NAME_FOR_EDIT_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactEdit>div.ui-content>ul.ui-listview>li.ui-field-contain>div.ui-input-text>input[id="first name"]')
     FIRST_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul.groups>li:first-child')
     SECOND_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul.groups>li:nth-child(2)>a')
     THIRD_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul.groups>li:last-child')
@@ -307,6 +310,11 @@ class ContactsScreen:
     DELETE_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactView>div.ui-popup-container>div[data-role="popup"]>ul>li.delete.contact>a[href="#confirmDeleteContact"]')
     CONFIRM_DELETE = (MobileBy.CSS_SELECTOR, 'div#contactView>div.ui-popup-container>div#confirmDeleteContact>div.ng-dialog-container>div>div>a:first-child')
     CANCEL_DELETE = (MobileBy.CSS_SELECTOR, 'div#contactView>div.ui-popup-container>div#confirmDeleteContact>div.ng-dialog-container>div>div>a:last-child')
+    CONTACT_EDIT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactView>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-a>li.edit.ui-block-a>a')
+    ORGANISATION_FIELD = (MobileBy.CSS_SELECTOR, 'input#organisation')
+    EMAIL_FIELD = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li.ui-field-contain>div.ui-input-text>input#email')
+    SEND_COMMUNICATION = (MobileBy.CSS_SELECTOR, 'div#contactView>div.ui-popup-container>div[data-role="popup"]>ul>li.send>a[href="#messagePage"]')
+    SAVE_TO_DEVICE = (MobileBy.CSS_SELECTOR, 'div#contactView>div.ui-popup-container>div[data-role="popup"]>ul>li.save.contact.ui-last-child>a')
 
 
 class TasksScreen:

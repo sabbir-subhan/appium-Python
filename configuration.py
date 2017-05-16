@@ -2,14 +2,18 @@
 
 import os
 from settings import Settings
+from settings import SettingsPort
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 DEFINITIONS_ROOT = os.path.join(PROJECT_ROOT)
 
 platform = Settings.platform
+PORT = SettingsPort.port
 
-# print("platform passed into configuration: " + str(platform))
+print("platform = ", platform)
+print("port = ", PORT)
+
 # platform = "IOS_10_emulator"
-
+# PORT = "4723"  # port on which Appium server is running
 
 # You can use:
 
@@ -29,7 +33,6 @@ platform = Settings.platform
 
 # devices are defined in /Conf/desired_capabilities.py
 
-PORT = "4723"  # port on which Appium server is running
 
 if platform == "IOS_9":
 

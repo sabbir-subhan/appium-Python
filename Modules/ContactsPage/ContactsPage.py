@@ -10,15 +10,40 @@ from credentials import Credentials
 
 class ContactsPage(BasePage):
 
-    def type_first_name(self, text):
+    def type_first_name_for_new_contact(self, text):
 
+        sleep(1)
         self.switch_context_to_webview()
 
         logging.info("type first name")
-        first_name = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_NAME)
+        first_name = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_NAME_FOR_NEW_CONTACT)
         self.assertIsNotNone(first_name, "First name input field was not found")
         first_name.click()
         first_name.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def type_first_name_for_edit_contact(self, text):
+
+        sleep(1)
+        self.switch_context_to_webview()
+
+        logging.info("type first name")
+        first_name = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_NAME_FOR_EDIT_CONTACT)
+        self.assertIsNotNone(first_name, "First name input field was not found")
+        first_name.click()
+        first_name.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def clear_first_name(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("clear first name")
+        first_name = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_NAME_FOR_EDIT_CONTACT)
+        self.assertIsNotNone(first_name, "First name input field was not found")
+        first_name.clear()
 
         self.switch_context_to_native()
 
@@ -28,19 +53,25 @@ class ContactsPage(BasePage):
         event_edit_page.setDriver(self.driver)
         event_edit_page.scroll_down_to_save_button()
 
-    def click_save_button(self):
+    def save_new_contact(self):
 
         self.switch_context_to_webview()
 
         logging.info('click Save button')
-        save_button = self.driver.find_element(*self.configuration.ContactsScreen.SAVE_BUTTON)
+        save_button = self.driver.find_element(*self.configuration.ContactsScreen.SAVE_NEW_CONTACT)
         save_button.click()
 
         self.switch_context_to_native()
 
-        # event_edit_page = LoadClass.load_page('EventEditPage')
-        # event_edit_page.setDriver(self.driver)
-        # event_edit_page.click_save_button()
+    def save_edited_contact(self):
+
+        self.switch_context_to_webview()
+
+        logging.info('click Save button')
+        save_button = self.driver.find_element(*self.configuration.ContactsScreen.SAVE_EDITED_CONTACT)
+        save_button.click()
+
+        self.switch_context_to_native()
 
     def open_first_contact_group(self):
         
@@ -53,6 +84,10 @@ class ContactsPage(BasePage):
 
         self.switch_context_to_native()
 
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
     def open_second_contact_group(self):
 
         self.switch_context_to_webview()
@@ -64,7 +99,9 @@ class ContactsPage(BasePage):
 
         self.switch_context_to_native()
 
-        sleep(2)
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
     def open_third_contact_group(self):
 
@@ -76,6 +113,10 @@ class ContactsPage(BasePage):
         third_contact_group.click()
 
         self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
     def click_new_button(self):
 
@@ -205,7 +246,99 @@ class ContactsPage(BasePage):
         delete_button.click()
 
         self.switch_context_to_native()
+        
+    def click_edit_button(self):
 
+        self.switch_context_to_webview()
+
+        logging.info("click edit button")
+        edit_button = self.driver.find_element(*self.configuration.ContactsScreen.CONTACT_EDIT_BUTTON)
+        self.assertIsNotNone(edit_button, "edit button not found")
+        edit_button.click()
+
+        self.switch_context_to_native()
+
+    def fill_organisation_field(self, text):
+
+        self.switch_context_to_webview()
+
+        logging.info("fill organisation field")
+        organisation_field = self.driver.find_element(*self.configuration.ContactsScreen.ORGANISATION_FIELD)
+        self.assertIsNotNone(organisation_field, "organisation field not found")
+        organisation_field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def clear_Search_field(self):
+
+        logging.info("clear search field")
+        sleep(1)
+        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
+        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()  # each clear is clearing one character
+        sleep(1)
+
+    def check_results_for_deleted_contact(self):  # this method will search for contact with first name: "delete"
+
+        logging.info("check results for deleted contact")
+        try:
+            deleted_contact = self.driver.find_element(*self.configuration.ContactsScreen.DELETED_CONTACT)
+            if deleted_contact.is_displayed():
+                self.fail("Contact was not deleted correctly")
+            else:
+                pass
+        except NoSuchElementException:
+            logging.info("Contact not found = OK")
+            pass
+
+    def scroll_down_to_email_field(self):
+
+        """Method to scroll down to email field"""
+
+        logging.info("scroll down to email field")
+        scroll = 5
+        while scroll > 0:
+            logging.info("check if email field is visible")
+            save_button = self.driver.find_element(*self.configuration.ContactsScreen.EMAIL_FIELD)
+            if save_button.is_displayed():
+                break
+            else:
+                logging.info("scroll down to email field")
+                self.driver.execute_script("mobile: scroll", {"direction": "down"})
+                scroll = scroll - 1
+
+    def type_email_address(self, text):
+
+        self.switch_context_to_webview()
+
+        logging.info("type email address")
+        email_address = self.driver.find_elements(*self.configuration.ContactsScreen.EMAIL_FIELD)
+        self.assertIsNotNone(email_address, "Email input field was not found")
+        email_address[0].click()
+        email_address[0].send_keys(text)
+
+        self.switch_context_to_native()
+
+    def click_send_communication(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click send communication button")
+        click_send_communication = self.driver.find_element(*self.configuration.ContactsScreen.SEND_COMMUNICATION)
+        self.assertIsNotNone(click_send_communication, "send communication button not found")
+        click_send_communication.click()
+
+        self.switch_context_to_native()
+
+    def save_contact_to_device(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click save to device button")
+        save_contact_to_device = self.driver.find_element(*self.configuration.ContactsScreen.SAVE_TO_DEVICE)
+        self.assertIsNotNone(save_contact_to_device, "save to device button not found")
+        save_contact_to_device.click()
+
+        self.switch_context_to_native()
 
 
 

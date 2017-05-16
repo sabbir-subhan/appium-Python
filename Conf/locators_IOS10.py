@@ -320,6 +320,8 @@ class ContactsScreen:
     """A class for handling Contacts screen"""
     FIRST_NAME = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="First name"]')
     CONTACT_TYPE_PERSON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Person")]]')
+    DELETED_CONTACT = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "delete")]]')
+    EMAIL_FIELD = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="Email"]')
 
 
 class TasksScreen:

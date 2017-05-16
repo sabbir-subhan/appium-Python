@@ -52,12 +52,16 @@ INSTALL APPIUM 1.6.4 TO WORK WITH iOS10: (CLI commands)
 
 ~~- npm install appium-uiautomator2-driver@latest~~
 
+(for latest version of WebDriverAgent from Appium go to:
+https://github.com/appium/WebDriverAgent.git and place it in /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/)
+
 - cd /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent
 - mkdir -p Resources/WebDriverAgent.bundle
 - ./Scripts/bootstrap.sh
 - open WebDriverAgent.xcodeproj (in Xcode change the Signing certificates to development) -- set iOS Developer in Build Settings and add unique 
 BundleID and choose dev Team (if there are some warnings after build, for example, no config file, try to resolved them - set "no" dor project settings file
-- xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination 'id=4b15c4284897fa6f9b4c5205325a9cece997ad35' test  --id is a UDID of the device
+- to test WebDriverAgent on real device use CLI command: 
+xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination 'id=4b15c4284897fa6f9b4c5205325a9cece997ad35' test  --id is a UDID of the device
 
 Last line output after using above command should be; "Listening on USB". Then you are all set!
 
@@ -71,13 +75,14 @@ Last line output after using above command should be; "Listening on USB". Then y
 
 ### 1. Update file /appium-poc/Conf/desired_capabilities.py:
 
-###### desired_capabilities.py file contains information about devices
+###### /appium-poc/Conf/desired_capabilities.py file contains information about devices
 ###### open desired_capabilities.py file and search for device on which You want to run tests, if that device is not present You have to create a new one. 
 To do that, copy/past some existing device and edit it's details:
 - UDID from real device - open iTunes with connected device and click on serial number or use terminal command: "idevice_id -l"
 - iOS version and device name
 - path to app - to get app file You need to build it in Xcode for specific device that You have - after build just copy/past .app file into repository
 and provide name of that file in desired_capabilities.py
+- also You have to edit /appium-poc/configuration.py to add new device to if condition
 
 
 ### 2. Start Appium server in CLI:
@@ -97,9 +102,11 @@ iPad: ios_webkit_debug_proxy -c db55c238e873230ee454c54a63724397a2981acd:27753
 - cd to repository
 - type: python run.py -test <name_of_the_test_file> -platform <name_of_the_platform_to_run_test>
 - example: python run.py -t test_Login -p IOS_10_emulator (You can also use: "all" as test parameter)
+- example 2: python run.py --test test_ManagingLogs --platform Android_7 --port 4735 (default value for port = 4723)
   
 - test files are located in /appium-poc/tests
 - available platforms are defined in /appium-poc/configuration.py
+- devices details are defined in /appium-poc/Conf/desired_capabilities.py
 
 
 ### **run iOS9 and iOS10** ###

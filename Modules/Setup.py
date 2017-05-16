@@ -53,9 +53,9 @@ class SetupTestCase(unittest.TestCase):
 
         # self.configuration = import_module('Conf.locators_' + ENVIRONMENT_TEST)
 
-        self.driver = webdriver.Remote("http://localhost:" + PORT + "/wd/hub", desired_capabilities)
+        self.driver = webdriver.Remote("http://localhost:" + str(PORT) + "/wd/hub", desired_capabilities)
 
-        self.driver.implicitly_wait(12)  # seconds - how long Appium will wait for conditions, for example try/except
+        self.driver.implicitly_wait(14)  # seconds - how long Appium will wait for conditions, for example try/except
 
 
 
