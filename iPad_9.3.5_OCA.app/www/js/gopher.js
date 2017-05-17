@@ -133,11 +133,7 @@ Gopher.prototype.run = function(params){
 	this.method = 'GET';
 	if (params) $.extend(this, params);
 	this.activatedRequest();
-    if (this.dontCheckCache){
-        this.noCache();
-    } else {
-	    this.checkCache();
-    }
+	this.checkCache();
 	app.checkLoaded();
 };
 
@@ -669,7 +665,8 @@ Gopher.prototype.checkJSONCache = function(jsonString, expires){
 	if (this.cachedResponse && this.cachedResponse.errors.length === 0){
 		var now = new Date();
 		expires = new Date(expires); //string to Date
-		if (now < expires && !Gopher.forceUncache){
+		//only use cache if it's current, and Gopher has not been told to ignore the cache
+		if (now < expires && !Gopher.forceUncache && !this.dontCheckCache){
 			this.successfulRequest();
 			var response = this.checkLocalChanges(this.cachedResponse.responsePayloads);
 			this.callbackOK(response, this.cachedResponse);
@@ -862,18 +859,17 @@ Gopher.prototype.requestError = function(xhr, status, error){
 	}
 	
 	if (this.method == 'GET' && !this.dontCache && this.cachedResponse && xhr.status !== 404 && xhr.status !== 401){ //404 probably means object was deleted. dont return cache! //401 means bad login
+		if (this.dontCheckCache && !this.backgroundMode && (xhr.status == 0 || status == "timeout")){
+			//device is offline but was told not to check the cache. Probably pull-to-refresh or some other forced update.
+			util.infobar("Unable to refresh data", null, 5);
+		}
+
 		var response = this.checkLocalChanges(this.cachedResponse.responsePayloads);
 		this.cachedResponse.expired = true;
 		this.callbackOK(response, this.cachedResponse);
 		return;
 	}
 
-	if (this.method == 'GET' && this.dontCheckCache && !this.backgroundMode && (xhr.status == 0 || status == "timeout")){ //device is offline but was told not to check the cache. Probably pull-to-refresh or some other forced update.
-		util.infobar("Unable to refresh data", null, 5);
-		this.callbackFail(xhr, status, error);
-		return;
-	}
-	
 	if (this.method == 'GET' && this.offlineError && this.offlineError == 'inline' && (xhr.status == 0 || status == "timeout")){
 		var data = {"errors": [], "notices": [], "responsePayloads": [], "extraPayloads": [], "nextPageURL": null, "prevPageURL": null};
 		data.responsePayloads.push({

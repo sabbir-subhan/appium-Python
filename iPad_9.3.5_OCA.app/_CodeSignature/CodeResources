@@ -206,7 +206,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		plxDcz8yD9HgnTzqPT1tMc7h5hk=
+		HrU0cb76QRx2S8R0Fm5dBkDzZag=
 		</data>
 		<key>LaunchImage-700-Landscape@2x~ipad.png</key>
 		<data>
@@ -234,19 +234,31 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		uxp6KzmMDclC5qWvPwDsRm/5kCw=
+		IZWtrPFuoJHdxf0e9lGg6Vm5eng=
 		</data>
 		<key>PkgInfo</key>
 		<data>
 		n57qDP4tZfLD1rCS43W0B4LQjzE=
 		</data>
+		<key>build-debug.xcconfig</key>
+		<data>
+		Qn7WuGxZ9Y56S6cPpx3iYb8o9KY=
+		</data>
+		<key>build-release.xcconfig</key>
+		<data>
+		V3Yzqv0vdG9ArMnlVh1kE8YYg98=
+		</data>
+		<key>build.xcconfig</key>
+		<data>
+		dHUL2mMyRTv4i68Su6OT5t3k1lc=
+		</data>
 		<key>config.xml</key>
 		<data>
-		GE8ALhaGsSJRxBCVEJpiE3qDtq8=
+		sgxMtV41PY+xHzT8We1Uml4JqCE=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
-		EI/Ap1dz2krP4M4xdtHub27wazo=
+		B9Z20uf6QqS8C02kvvNor0RKcGk=
 		</data>
 		<key>www/arcgis/builddate.txt</key>
 		<data>
@@ -1854,7 +1866,7 @@
 		</data>
 		<key>www/css/richtext.css</key>
 		<data>
-		EbxHgCM16Hg7EKTbSqLjJU9MNv0=
+		tOksnfuwOA89e+eZXLK//hbFQI8=
 		</data>
 		<key>www/fonts/lato-light-webfont.ttf</key>
 		<data>
@@ -1894,15 +1906,15 @@
 		</data>
 		<key>www/index.html</key>
 		<data>
-		LurjQ8kclUH0L1e3mz5YGn0LWUo=
+		G5o0ZxD4HrnBEd5fVCH8iSHAqQI=
 		</data>
 		<key>www/js/app/about.js</key>
 		<data>
-		8I2yamb4JpMk68XjxkvZtsF/m8U=
+		jK93nv6YN8SDZ6VUB3j8jocLMsM=
 		</data>
 		<key>www/js/app/appmessages.js</key>
 		<data>
-		XzDS+6PNiId6e3kHlo2E2HZ/xh8=
+		sV7aejxOJuQr89d3P+qKF220urY=
 		</data>
 		<key>www/js/app/asset.js</key>
 		<data>
@@ -1950,7 +1962,7 @@
 		</data>
 		<key>www/js/app/map.js</key>
 		<data>
-		c6fjKV8BuhbVQ3HlBhEI13sRuX8=
+		C3fWfFLsSUWjcf8s68Yqnlg4No4=
 		</data>
 		<key>www/js/app/media.js</key>
 		<data>
@@ -1958,7 +1970,7 @@
 		</data>
 		<key>www/js/app/message.js</key>
 		<data>
-		3TN/u88CnVvmUMFhZ2Q9U+gt0UE=
+		GZNxSWgZRByUEycxQKcOpEQYujA=
 		</data>
 		<key>www/js/app/photo.js</key>
 		<data>
@@ -1974,7 +1986,7 @@
 		</data>
 		<key>www/js/app/session.js</key>
 		<data>
-		WYAYEr/2Jkj8AMfSFMMyKcBV/MM=
+		HJbAvDMTgINah/NiXTYZLn42UaM=
 		</data>
 		<key>www/js/app/settings.js</key>
 		<data>
@@ -2002,15 +2014,15 @@
 		</data>
 		<key>www/js/controller.js</key>
 		<data>
-		A94IJNVwij02mC2XY7bEo8/u42M=
+		e+WZGh9/uE50h+99F7+uGFQckzo=
 		</data>
 		<key>www/js/core.js</key>
 		<data>
-		mhmf5dq2qBXWRywNlunb5Nw1VFg=
+		K6giNK3XgOddMVWRpDzumkZmLuk=
 		</data>
 		<key>www/js/dbstore.js</key>
 		<data>
-		UGX213HazO2/ZpRx8Y2NqW3gqT8=
+		q5T+vI2/o9PEXTCHLmAx6+tZJLk=
 		</data>
 		<key>www/js/emulator.js</key>
 		<data>
@@ -2022,7 +2034,7 @@
 		</data>
 		<key>www/js/gopher.js</key>
 		<data>
-		8Gnq9fKCNMbZew4R/bkweus80lY=
+		96jzWv5TgNsTxGwOGv8hi0IPoh4=
 		</data>
 		<key>www/js/inputs.js</key>
 		<data>
@@ -3242,7 +3254,7 @@
 		</data>
 		<key>www/js/typeedit.js</key>
 		<data>
-		4Or2NNHUg+KPTLXDltlgIk9pp6E=
+		gKGqUyXgSSVoRYdH5zwSjP3RBHs=
 		</data>
 		<key>www/js/typenew.js</key>
 		<data>
@@ -3254,11 +3266,11 @@
 		</data>
 		<key>www/js/util.js</key>
 		<data>
-		M0UUdZW2/7L9FhkWp+8AIfN7jOg=
+		oAHpxGhVtYsVPadNdSF8Fu6foBI=
 		</data>
 		<key>www/js/view.js</key>
 		<data>
-		W8tzcAOKAGjrBMsKaH3CFbDGyyE=
+		vQ/atO8o/jxx0rEIUjfmOb7Peq8=
 		</data>
 		<key>www/locations.db</key>
 		<data>
@@ -4100,33 +4112,66 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			uxp6KzmMDclC5qWvPwDsRm/5kCw=
+			IZWtrPFuoJHdxf0e9lGg6Vm5eng=
 			</data>
 			<key>hash2</key>
 			<data>
-			RfFHAKLQ0jYosXfsTorGNClGXbzPPqE5VojCQEV2xb4=
+			y6rIzYqOqcHYDL9hjK6XnF4dLsUfaQWxn6cArc2AXxQ=
+			</data>
+		</dict>
+		<key>build-debug.xcconfig</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Qn7WuGxZ9Y56S6cPpx3iYb8o9KY=
+			</data>
+			<key>hash2</key>
+			<data>
+			dnZKfLmV7ESBodqs793YBMiXA9FoWDz7Ahdc+frjuxo=
+			</data>
+		</dict>
+		<key>build-release.xcconfig</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			V3Yzqv0vdG9ArMnlVh1kE8YYg98=
+			</data>
+			<key>hash2</key>
+			<data>
+			Dcmnwa/ifQyJek+qYeDQZKPQiddTHockax0HrYSAdrM=
+			</data>
+		</dict>
+		<key>build.xcconfig</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			dHUL2mMyRTv4i68Su6OT5t3k1lc=
+			</data>
+			<key>hash2</key>
+			<data>
+			35Iig1l79RgN+ywMstvWSHZpxvmuTIj2rlPUYrcDlRk=
 			</data>
 		</dict>
 		<key>config.xml</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			GE8ALhaGsSJRxBCVEJpiE3qDtq8=
+			sgxMtV41PY+xHzT8We1Uml4JqCE=
 			</data>
 			<key>hash2</key>
 			<data>
-			y5UguWds7WGcCp2m+LSJ2Ub2QfJa3B/AMOlIJD+LEyc=
+			43Wi3i5FT+XurMc14mM47zR48cAkC0u2f7WgzEIIyZw=
 			</data>
 		</dict>
 		<key>embedded.mobileprovision</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			EI/Ap1dz2krP4M4xdtHub27wazo=
+			B9Z20uf6QqS8C02kvvNor0RKcGk=
 			</data>
 			<key>hash2</key>
 			<data>
-			e59VdXM3BTJ18qSPl3jSLkze+XJ7whQD8dMePF1hWew=
+			sJl1bYoA8+tDtYcxJW6dFAnl7Y4RvaQowTaRJjwbLhE=
 			</data>
 		</dict>
 		<key>www/arcgis/builddate.txt</key>
@@ -8544,11 +8589,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			EbxHgCM16Hg7EKTbSqLjJU9MNv0=
+			tOksnfuwOA89e+eZXLK//hbFQI8=
 			</data>
 			<key>hash2</key>
 			<data>
-			dnt8hNcmR3SX2MWHi9WEzg7jWF8XYXFtMUlsoKqLQMk=
+			wBoZXJJOKeOLJ0HJVRbpYnvEznagVJJuzzsfHlUhCAU=
 			</data>
 		</dict>
 		<key>www/fonts/lato-light-webfont.ttf</key>
@@ -8654,33 +8699,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			LurjQ8kclUH0L1e3mz5YGn0LWUo=
+			G5o0ZxD4HrnBEd5fVCH8iSHAqQI=
 			</data>
 			<key>hash2</key>
 			<data>
-			mZsmcxHw/4GX7jVrAypY+p7YIcXzjukyonFBuegtk2E=
+			c5A38IddXbp1rRy+riqeW7s5DQynjMeHvjqlu7ajJjo=
 			</data>
 		</dict>
 		<key>www/js/app/about.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			8I2yamb4JpMk68XjxkvZtsF/m8U=
+			jK93nv6YN8SDZ6VUB3j8jocLMsM=
 			</data>
 			<key>hash2</key>
 			<data>
-			wPIpMAnQcIzGvL05rX+vf/86T05Zptsg/bxCVUtcOSk=
+			WJ2Pbx0s2ad3CI+UahifvQnH+OQO7sGyEa9gEFb88cQ=
 			</data>
 		</dict>
 		<key>www/js/app/appmessages.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			XzDS+6PNiId6e3kHlo2E2HZ/xh8=
+			sV7aejxOJuQr89d3P+qKF220urY=
 			</data>
 			<key>hash2</key>
 			<data>
-			TVUmOW6Vp82RYQ4pyF89j3f8oEI8sp8J/hftWygCjxw=
+			Lgk661Kv+HY8D4SFpspBVBJx4SKGQv4nAK44QtkWtqk=
 			</data>
 		</dict>
 		<key>www/js/app/asset.js</key>
@@ -8808,11 +8853,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			c6fjKV8BuhbVQ3HlBhEI13sRuX8=
+			C3fWfFLsSUWjcf8s68Yqnlg4No4=
 			</data>
 			<key>hash2</key>
 			<data>
-			fN6H6q9O6m3O4ulpasLCmD7oOvOP+P+SLxhhtlzqN1U=
+			Pb+IgSnByMxubxSsR3ZUNa7MPHFeK44GMpXJdJrzjP0=
 			</data>
 		</dict>
 		<key>www/js/app/media.js</key>
@@ -8830,11 +8875,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			3TN/u88CnVvmUMFhZ2Q9U+gt0UE=
+			GZNxSWgZRByUEycxQKcOpEQYujA=
 			</data>
 			<key>hash2</key>
 			<data>
-			ruhWGSalgVvx4BRIF6xtq9uVQ8bbptQPh/MjbODgdCo=
+			k65RTDGBASVdXYruM1M7qXDSrFgZT1d12jHaTMO0zOs=
 			</data>
 		</dict>
 		<key>www/js/app/photo.js</key>
@@ -8874,11 +8919,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			WYAYEr/2Jkj8AMfSFMMyKcBV/MM=
+			HJbAvDMTgINah/NiXTYZLn42UaM=
 			</data>
 			<key>hash2</key>
 			<data>
-			oE0d/IMrIDe3R8CKFO7uMc5sy4MG1BGPVr7GFdToLjY=
+			+mdXDsT9wlAzFTwGIhQ8J1z8ACiWfvv5lLcmJ36krts=
 			</data>
 		</dict>
 		<key>www/js/app/settings.js</key>
@@ -8951,33 +8996,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			A94IJNVwij02mC2XY7bEo8/u42M=
+			e+WZGh9/uE50h+99F7+uGFQckzo=
 			</data>
 			<key>hash2</key>
 			<data>
-			bRSRGtUXdkNiMsI2iXoqc/dSCvQhCmXd0GviPibBUOI=
+			s6qAEFlJr45Kk2M4GW+vmCUvcRC7aJSIQtjO27RDth8=
 			</data>
 		</dict>
 		<key>www/js/core.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			mhmf5dq2qBXWRywNlunb5Nw1VFg=
+			K6giNK3XgOddMVWRpDzumkZmLuk=
 			</data>
 			<key>hash2</key>
 			<data>
-			glqz79DnH6AvYy7mFuQlHm+WSKtcCFyNhB8hX5fiBzw=
+			IQKO0pbdPGiONM5jKrY8B/D6INyN2ZIGO/OcNbtZFzQ=
 			</data>
 		</dict>
 		<key>www/js/dbstore.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			UGX213HazO2/ZpRx8Y2NqW3gqT8=
+			q5T+vI2/o9PEXTCHLmAx6+tZJLk=
 			</data>
 			<key>hash2</key>
 			<data>
-			y83WqTpmsZB76phxQ5oK/qXSg/hWlRDs5Vk9rMy661U=
+			17XtfuZoK/zG0WEsotb3VNZbbBu9JpTotIj1H0rJBAA=
 			</data>
 		</dict>
 		<key>www/js/emulator.js</key>
@@ -9006,11 +9051,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			8Gnq9fKCNMbZew4R/bkweus80lY=
+			96jzWv5TgNsTxGwOGv8hi0IPoh4=
 			</data>
 			<key>hash2</key>
 			<data>
-			MGr0iLXk4ET8SQ0oNv10Pu1DC4RgHy75M1asqWKyGAs=
+			XujHpWZ1BoJFRiPrjBbLqN9DXO/RrJRd13Q4AVMEcPk=
 			</data>
 		</dict>
 		<key>www/js/inputs.js</key>
@@ -12361,11 +12406,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4Or2NNHUg+KPTLXDltlgIk9pp6E=
+			gKGqUyXgSSVoRYdH5zwSjP3RBHs=
 			</data>
 			<key>hash2</key>
 			<data>
-			u4GI9NSv/5rE6W6CKEgPrDnaJQ1wp7dfdgf8wuP+BRo=
+			HHuBRNM3MlRy8DW9BGq4C7V/FzWkv/YAkqkOoCqe0nk=
 			</data>
 		</dict>
 		<key>www/js/typenew.js</key>
@@ -12394,22 +12439,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			M0UUdZW2/7L9FhkWp+8AIfN7jOg=
+			oAHpxGhVtYsVPadNdSF8Fu6foBI=
 			</data>
 			<key>hash2</key>
 			<data>
-			3p5zWsV+pp+D5AELYZZQUf8tyHcVwIOQ6tVzfn8sW2o=
+			Las2qGJqZCJ9RzdJd4reA8p+7y7xYgiU0IbUgHH78sA=
 			</data>
 		</dict>
 		<key>www/js/view.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			W8tzcAOKAGjrBMsKaH3CFbDGyyE=
+			vQ/atO8o/jxx0rEIUjfmOb7Peq8=
 			</data>
 			<key>hash2</key>
 			<data>
-			W36YV5oAIQjELYczpv6vQF0Ul3qHb7Sx1pTaY/zRZCo=
+			QWvJfkUsVraAd22gkg5YjczzFlu0oO7+av/80hJtbt8=
 			</data>
 		</dict>
 		<key>www/locations.db</key>

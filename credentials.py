@@ -2,6 +2,19 @@
 
 from Modules.generators import RandomGenerator
 
+'''
+You can use: 
+
+QA
+general_user
+admin
+expired_1_day_ago
+expire_today
+expire_in_1_day
+suspended
+
+'''
+
 
 class ContactIdentifierPIN:
     """A class containing Contact Identifier PIN from invitation email"""

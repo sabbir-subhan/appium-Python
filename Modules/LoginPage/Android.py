@@ -12,6 +12,7 @@ class Android(LoginPage):
 
     def type_username(self, username):
 
+        logging.info("clear username field")
         username_field = self.driver.find_element(*self.configuration.LoginScreen.TEXTFIELD_USERNAME)
         action = TouchAction(self.driver)
         action.long_press(el=username_field, duration=1500).perform()
@@ -29,6 +30,7 @@ class Android(LoginPage):
 
     def type_password(self, password):
 
+        logging.info("clear password field")
         password_field = self.driver.find_element(*self.configuration.LoginScreen.TEXTFIELD_PASSWORD)
         action = TouchAction(self.driver)
         action.long_press(el=password_field, duration=1500).perform()
@@ -45,6 +47,7 @@ class Android(LoginPage):
 
     def type_domain_address(self, domain):
 
+        logging.info("clear domain field")
         domain_field = self.driver.find_element(*self.configuration.LoginScreen.TEXTFIELD_DOMAIN)
         action = TouchAction(self.driver)
         action.long_press(el=domain_field, duration=1500).perform()

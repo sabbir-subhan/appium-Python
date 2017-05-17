@@ -17,16 +17,16 @@ var OCA = {
 	ACTION_UPDATE  :'PUT',
 	ACTION_DELETE  :'DELETE',
     currentAjaxConfig: null,
-    VERSION: '10.0.9',
+    VERSION: '10.0.10',
     Locale:{},
     Settings: {},
 	nameCache: {},
 	typeQueue: [],
 
-    taskTimer: null,
-    taskPollInterval: 1000 * 60 * 1, //every 1 minute;
-	pushTimer: null,
-	pushPollInterval: 1000 * 60 * 1, //every 1 minute;
+    taskTimer:        null,
+    taskPollInterval: 1000 * 60, //every 60 seconds
+	pushTimer:        null,
+	pushPollInterval: 1000 * 60, //every 60 seconds
 
     config:           function () {
         console.log('OCA app version ' + OCA.VERSION);
@@ -762,13 +762,10 @@ OCALocale.getDateTimeLocale = function(){
 	var locale = OCALocale.selectLanguage().replace("_", "-"); //get current language, convert to BCP which seems to be en-au not en_au
 	try {
 		new Date().toLocaleDateString(locale);
+		return locale;
 	} catch (e) {
-		console.log(e);
-		console.log(e.name)
-		console.log(e.name == 'RangeError');
-		if (true){}
+		console.error(e);
 		if (e.name === 'RangeError') {
-			//test
 			//bad locale name, fall through
 		} else {
 			return locale;

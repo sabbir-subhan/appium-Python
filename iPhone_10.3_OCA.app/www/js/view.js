@@ -1109,7 +1109,7 @@ var ViewUtil = {
 				$.mobile.loading('show');
 				setTimeout(refreshFunction, 100);
 				e.preventDefault();
-				e.stopPropagation;
+				e.stopPropagation();
 				return false;
 			}
 		})

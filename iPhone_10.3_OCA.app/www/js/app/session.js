@@ -126,17 +126,17 @@ var Session = $.extend({}, app, {
 	initPIN: function($page){
 		var $PINput = $page.find('#sessionPINput');
 
-		$page.find('.PIN-grid .num a').on('click', function(e){ //input number
+		$page.find('.PIN-grid .num a').on('tap', function(e){ //input number
 			$PINput.val($PINput.val() + e.target.innerText);
 		});
-		$page.find('.PIN-grid .clr a').on('click', function(){ //clear PIN
+		$page.find('.PIN-grid .clr a').on('tap', function(){ //clear PIN
 			$PINput.val('');
 		});
-		$page.find('.PIN-grid .del a').on('click', function(){  //delete last number
+		$page.find('.PIN-grid .del a').on('tap', function(){  //delete last number
 			$PINput.val($PINput.val().slice(0, -1));
 		});
 
-		$page.find('#sessionPINSubmit').on('click', function(){
+		$page.find('#sessionPINSubmit').on('tap', function(){
 			this.validatePINput($PINput.val());
 			$PINput.val('');
 		}.bind(this));

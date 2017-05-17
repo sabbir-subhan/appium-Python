@@ -19,6 +19,21 @@ class IOS(EventEditPage):
         description_field.click()
         description_field.send_keys("test appium")
 
+    def scroll_down_to_write_access_level(self):
+        """Method to scroll down to write access level"""
+
+        logging.info("scroll down to write access level")
+        scroll = 20
+        while scroll > 0:
+            logging.info("check if write access level is visible")
+            write_access_level = self.driver.find_element(*self.configuration.CommonScreen.WRITE_ACCESS_LEVEL)
+            if write_access_level.is_displayed():
+                break
+            else:
+                logging.info("scroll down to write access level")
+                self.driver.execute_script("mobile: scroll", {"direction": "down"})
+                scroll = scroll - 1
+
     def scroll_down_to_save_button(self):
         """Method to scroll down to bottom of the screen - to 'Save' button"""
 

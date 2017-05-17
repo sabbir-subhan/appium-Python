@@ -573,18 +573,18 @@ class ReportsPage(BasePage):
 
         logging.info("assert on load and on save sequence")
         sequence_on_load = self.driver.find_element(*self.configuration.ReportsScreen.SEQUENCE_ON_LOAD)
-        self.assertIsNotNone(sequence_on_load)
+        self.assertIsNotNone(sequence_on_load, "on load sequence not found")
 
         sequence_on_save = self.driver.find_element(*self.configuration.ReportsScreen.SEQUENCE_ON_SAVE)
-        self.assertIsNotNone(sequence_on_save)
+        self.assertIsNotNone(sequence_on_save, "on save sequence not found")
 
         self.switch_context_to_native()
 
         sequence_on_load_value = self.driver.find_element(*self.configuration.EventEditScreen.SEQUENCE_ONLOAD_VALUE)
-        self.assertIsNotNone(sequence_on_load_value)
+        self.assertIsNotNone(sequence_on_load_value, "on load sequence value not found")
 
         sequence_on_save_value = self.driver.find_element(*self.configuration.EventEditScreen.SEQUENCE_ONSAVE_VALUE)
-        self.assertIsNotNone(sequence_on_save_value)
+        self.assertIsNotNone(sequence_on_save_value, "on save sequence value not found")
 
     def click_on_option_list(self):
 
@@ -636,7 +636,7 @@ class ReportsPage(BasePage):
 
         sleep(1)
         field_to_restore_1_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_1_VALUE)
-        self.assertIsNotNone(field_to_restore_1_value)
+        self.assertIsNotNone(field_to_restore_1_value, "field to restore 1 value not found")
 
         # assets_page = LoadClass.load_page('AssetsPage')
         # assets_page.setDriver(self.driver)
@@ -659,7 +659,7 @@ class ReportsPage(BasePage):
 
         sleep(1)
         field_to_restore_2_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_2_VALUE)
-        self.assertIsNotNone(field_to_restore_2_value)
+        self.assertIsNotNone(field_to_restore_2_value, "field to restore 2 value not found")
 
         # assets_page = LoadClass.load_page('AssetsPage')
         # assets_page.setDriver(self.driver)
@@ -682,7 +682,7 @@ class ReportsPage(BasePage):
 
         sleep(1)
         field_to_restore_3_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_3_VALUE)
-        self.assertIsNotNone(field_to_restore_3_value)
+        self.assertIsNotNone(field_to_restore_3_value, "field to restore 3 value not found")
 
         # assets_page = LoadClass.load_page('AssetsPage')
         # assets_page.setDriver(self.driver)

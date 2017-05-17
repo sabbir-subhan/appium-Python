@@ -291,11 +291,12 @@ class SoundScreen:
 class ContactsScreen:
     """A class for handling Contacts screen"""
     SAVE_NEW_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
-                                          'a[href="#save"]')
+                                               'a[href="#save"]')
     SAVE_EDITED_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#save"]')
-    CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
-                                            'a[href="#cancel"]')
-    # FIRST_NAME = (MobileBy.CSS_SELECTOR, 'input[id="first name"]')
+    CANCEL_NEW_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                                 'a[href="#cancel"]')
+    CANCEL_EDITED_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                                    'a[href="#cancel"]')
     FIRST_NAME_FOR_NEW_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li.ui-field-contain>div.ui-input-text>input[id="first name"]')
     FIRST_NAME_FOR_EDIT_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactEdit>div.ui-content>ul.ui-listview>li.ui-field-contain>div.ui-input-text>input[id="first name"]')
     FIRST_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul.groups>li:first-child')
@@ -315,6 +316,13 @@ class ContactsScreen:
     EMAIL_FIELD = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li.ui-field-contain>div.ui-input-text>input#email')
     SEND_COMMUNICATION = (MobileBy.CSS_SELECTOR, 'div#contactView>div.ui-popup-container>div[data-role="popup"]>ul>li.send>a[href="#messagePage"]')
     SAVE_TO_DEVICE = (MobileBy.CSS_SELECTOR, 'div#contactView>div.ui-popup-container>div[data-role="popup"]>ul>li.save.contact.ui-last-child>a')
+    WRITE_ACCESS_LEVEL = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li[name="write access level"]>div.ui-select>div')
+    # CHOOSE_ADMINISTRATORS_ONLY_AS_WRITE_ACCESS_LEVEL = (MobileBy.CSS_SELECTOR, 'div#optionList>div.ui-content>ul>li:first-child')
+    CHOOSE_ADMINISTRATORS_ONLY_AS_WRITE_ACCESS_LEVEL = (MobileBy.CSS_SELECTOR, 'div#optionList>div.ui-content>ul>li:first-child>div')
+    FIRST_CONTACT_ON_THE_LIST_TO_IMPORT_FROM_DEVICE = (MobileBy.CSS_SELECTOR, 'div#contactImport>div.ui-content>ul.contacts>li:first-child>a')
+    SEQUENCE_ON_LOAD = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_load"]')
+    SEQUENCE_ON_SAVE = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_save"]')
+    OPTION_LIST = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.edit-view>li[name="new option list"]>div.ui-select>div')
 
 
 class TasksScreen:

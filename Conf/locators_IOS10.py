@@ -14,6 +14,7 @@ class CommonScreen:
     LOADING = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="loading"]')
     UPLOADING = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "Uploading")]]')
     SAVE_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Save"]')
+    WRITE_ACCESS_LEVEL = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Write Access Level"]')
     CANCEL_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Cancel"]')
     OK_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Ok"]')
     PICKER_WHEEL = (MobileBy.CLASS_NAME, 'XCUIElementTypePickerWheel')
@@ -320,8 +321,12 @@ class ContactsScreen:
     """A class for handling Contacts screen"""
     FIRST_NAME = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="First name"]')
     CONTACT_TYPE_PERSON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Person")]]')
+    CONTACT_TYPE_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "contact_with_on_load_sequence")]]')
+    CONTACT_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "contact_with_visibility_rules")]]')
     DELETED_CONTACT = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "delete")]]')
     EMAIL_FIELD = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="Email"]')
+    IMPORTED_CONTACT_FIRST_NAME_VALUE = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="Communication"]')
+    SEQUENCE_ONSAVE_VALUE = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="test on save"]')
 
 
 class TasksScreen:

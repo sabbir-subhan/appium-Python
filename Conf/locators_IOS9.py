@@ -297,8 +297,12 @@ class ContactsScreen:
     """A class for handling Contacts screen"""
     FIRST_NAME = (MobileBy.XPATH, '//UIATextField[@name="First name"]')
     CONTACT_TYPE_PERSON = (MobileBy.XPATH, '//UIALink[@name[contains(., "Person")]]')
+    CONTACT_TYPE_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//UIALink[@name[contains(., "contact_with_on_load_sequence")]]')
+    CONTACT_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//UIALink[@name[contains(., "contact_with_visibility_rules")]]')
     DELETED_CONTACT = (MobileBy.XPATH, '//UIALink[@name[contains(., "delete")]]')
     EMAIL_FIELD = (MobileBy.XPATH, '//UIATextField[@name="Email"]')
+    IMPORTED_CONTACT_FIRST_NAME_VALUE = (MobileBy.XPATH, '//UIATextField[@value="Communication"]')
+    SEQUENCE_ONSAVE_VALUE = (MobileBy.XPATH, '//UIATextField[@value="test on save"]')
 
 
 class TasksScreen:

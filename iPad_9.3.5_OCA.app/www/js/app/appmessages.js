@@ -194,6 +194,7 @@ AppMessageView.prototype.dismissMessage = function() {
 	}, function() {
 		util.goBack();
 	}).put(false);
+	new Gopher('/appmessages').uncache();
 }
 
 AppMessageView.prototype.readMessage = function() {
@@ -205,6 +206,7 @@ AppMessageView.prototype.readMessage = function() {
 	}, function() {
 //		util.goBack();
 	}).put(false);
+	new Gopher('/appmessages').uncache();
 }
 
 AppMessageView.prototype.sendAction = function(e){
@@ -214,7 +216,6 @@ AppMessageView.prototype.sendAction = function(e){
 		data: this.selectedAction.Properties
 	}, function(){
 		//success
-		console.log('successfully actioned', this.selectedAction);
 		util.goBack();
 	}).put(false);
 

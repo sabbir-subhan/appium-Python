@@ -216,7 +216,6 @@ AppMessageView.prototype.sendAction = function(e){
 		data: this.selectedAction.Properties
 	}, function(){
 		//success
-		console.log('successfully actioned', this.selectedAction);
 		util.goBack();
 	}).put(false);
 

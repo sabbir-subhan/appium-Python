@@ -24,7 +24,7 @@ var about = {
 	},
     displaySystem: function(){
         var sys = [
-            OCASession.getSessionId() ? Configuration.getClientUrl().replace('https://', '') : '',
+            OCASession.getSessionId() ? Configuration.getClientUrl().replace('https://', '') : ''
         ];
         //show user, as long as its not dummy data
         if (OCASession.getUser() && OCASession.getUser() != 'cookie' && OCASession.getUser() != 'samlUser'){

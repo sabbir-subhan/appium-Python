@@ -317,6 +317,11 @@ var message = $.extend({}, app, {
 
 		if (useCKEditor) {
 			message.emailInput = new CKEditorInput({});
+			if (device.platform == 'iOS') {
+				//iOS has a weird and drastic rendering bug when the page height is less than the window height
+				//increase the email body input size to fill the page
+				message.emailInput.config.height = 200 + $(window).height() - 570; //570 is approx height of all elements normally, including header and footer
+			}
 			message.emailInput.enhance(message.$Email.find('#emailBody')[0]);
 		} else {
 			message.emailInput = message.$Email.find('#emailBody');

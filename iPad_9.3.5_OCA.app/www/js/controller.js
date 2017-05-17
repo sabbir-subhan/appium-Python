@@ -24,8 +24,8 @@ $(document).on("resume", function(){
 	Session.preserveDB = false;
 });
 $(document).on('pause', function(){
-	if (!Session.preserveDB){
-		OCA.stopTaskPolling();
+	OCA.stopTaskPolling();
+	if (!Session.preserveDB && OCASession.mustUseAppEncryption()){ //only clear database instance when encryption is required
 		dbStore.purge();
 		dbStore.DB = null;
 		dbStore.decrypted = false;

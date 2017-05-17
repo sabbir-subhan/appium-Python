@@ -7,6 +7,7 @@ class Android:
     # Android alerts
     ANDROID_ALLOW = (MobileBy.ID, 'com.android.packageinstaller:id/permission_allow_button')
     ANDROID_DENY = (MobileBy.ID, 'com.android.packageinstaller:id/permission_deny_button')
+    # //android.widget.Button[@text="ALLOW"]
 
     # Set date and time
     ANDROID_SET_BUTTON = (MobileBy.ID, 'android:id/button1')
@@ -229,6 +230,7 @@ class EventEditScreen:
     SEQUENCE_ONLOAD_VALUE = (MobileBy.ACCESSIBILITY_ID, 'test on load')
     SEQUENCE_ONSAVE_HEADER = (MobileBy.ACCESSIBILITY_ID, 'sequence_onsave')
     SEQUENCE_ONSAVE_VALUE = (MobileBy.ACCESSIBILITY_ID, '(auto)')
+    # SEQUENCE_ONSAVE_VALUE = (MobileBy.ACCESSIBILITY_ID, 'test on save')
     NEW_OPTION_LIST_HEADER = (MobileBy.ACCESSIBILITY_ID, 'New option list')
     # NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.view.View[@content-desc="New option list"]')
     # NEW_OPTION_LIST_HEADER = (MobileBy.XPATH, '//android.widget.ListView/android.view.View'
@@ -370,7 +372,11 @@ class ContactsScreen:
     FIRST_NAME = (MobileBy.ID, 'first name')
     FIRST_NAME2 = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="First name"]')
     CONTACT_TYPE_PERSON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Person")]]')
+    CONTACT_TYPE_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "contact_with_on_load_sequence")]]')
+    CONTACT_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "contact_with_visibility_rules")]]')
     DELETED_CONTACT = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "delete")]]')
+    IMPORTED_CONTACT_FIRST_NAME_VALUE = (MobileBy.ACCESSIBILITY_ID, 'Communication')
+    SEQUENCE_ONSAVE_VALUE = (MobileBy.ACCESSIBILITY_ID, 'test on save')
 
 
 class TasksScreen:

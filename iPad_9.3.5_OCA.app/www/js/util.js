@@ -239,7 +239,11 @@ var util = {
 		}, 300);
 	},
     reload: function(){
-        $("body").pagecontainer("change",window.location.href, {
+		//iOS9+ has a bug/behaviour where the window.location.href doesn't update as the app navigates.
+		//fetch the current page location from $.mobile.navigate.history instead
+		var currentPage = $.mobile.navigate.history.stack[$.mobile.navigate.history.activeIndex];
+		var url = currentPage.url || currentPage.hash || window.location.href;
+        $("body").pagecontainer("change", url, {
             allowSamePageTransition: true
         });
     },
