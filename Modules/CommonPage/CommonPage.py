@@ -69,5 +69,15 @@ class CommonPage(BasePage):
             expected_conditions.invisibility_of_element_located(self.configuration.CommonScreen.LOADING),
             "app is still loading - check internet connection")
 
+    def clear_Search_field(self):
+
+        logging.info("clear search field")
+        field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+        field.click()
+        while len(field.text) > 0:
+            print(field.text)  # for debugging
+            field.clear()
+        sleep(1)
+
 
 

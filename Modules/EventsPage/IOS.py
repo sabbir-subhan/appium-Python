@@ -22,12 +22,12 @@ class IOS(EventsPage):
         self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
         self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).send_keys("app")
 
-    def clear_Search_field(self):
-
-        logging.info("clear search field")
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        sleep(1)
+    # def clear_Search_field(self):
+    #
+    #     logging.info("clear search field")
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     sleep(1)
 
     # def click_More_button(self):
     #

@@ -89,7 +89,7 @@ router.add({
         },1000);
     },
     "#mapPage[?]type=(\\w+)&id=(\\d+)(&selector=true)?": function(type, match){
-        theSilentCartographer.getObjectMap(match[1], match[2], match[3] ? true: false);
+        theSilentCartographer.getObjectMap(match[1], match[2], !!match[3]);
     },
     "#mapLayers": function(){
         if (theSilentCartographer.$layersPage.find('.ui-content ul').children().length === 0){
@@ -217,7 +217,7 @@ var theSilentCartographer = $.extend({}, app, {
                 theSilentCartographer.mapSearch($(this).val());
             }
         });
-        $page.find('#searchButton').on('click', function(){ //search button in footer
+        $page.find('#runSearchButton').on('click', function(){ //search button in footer
             theSilentCartographer.mapSearch($search.val());
         });
 
@@ -380,7 +380,8 @@ var theSilentCartographer = $.extend({}, app, {
         }
 
         var layer;
-        switch (layerData.LayerType){
+        //noinspection FallThroughInSwitchStatementJS
+		switch (layerData.LayerType){
             case "QUERY":
                 this.drawingLayer = false;
             case "DRAWING":
@@ -1808,7 +1809,8 @@ var theSilentCartographer = $.extend({}, app, {
             e.geometry.drawing = true;
             e.geometry.WKTType = this.currentTool;
             var label = false;
-            switch (this.currentTool){
+            //noinspection FallThroughInSwitchStatementJS
+			switch (this.currentTool){
                 case 'POINT':
                     this.displayPoint(e.geometry, this.currentFeature);
                     break;

@@ -4,9 +4,78 @@ from Modules.ReportsPage.ReportsPage import ReportsPage
 import logging
 from time import sleep
 from Modules.load_class import LoadClass
+from selenium.common.exceptions import *
 
 
 class Android(ReportsPage):
+
+    def check_restored_field_1(self):
+
+        logging.info("assert restored field 1")
+
+        self.switch_context_to_webview()
+
+        field_to_restore_1_header = self.driver.find_element(
+            *self.configuration.EventEditScreen.FIELD_TO_RESTORE_1_HEADER)
+        self.assertIsNotNone(field_to_restore_1_header)
+
+        self.switch_context_to_native()
+
+        sleep(2)
+        try:
+            field_to_restore_1_value = self.driver.find_element(
+                *self.configuration.EventEditScreen.FIELD_TO_RESTORE_1_VALUE)
+        except NoSuchElementException:
+            common_page = LoadClass.load_page('CommonPage')
+            common_page.setDriver(self.driver)
+            common_page.scroll_down_one_view()
+            field_to_restore_1_value = self.driver.find_element(
+                *self.configuration.EventEditScreen.FIELD_TO_RESTORE_1_VALUE)
+        self.assertIsNotNone(field_to_restore_1_value, "field to restore 1 value not found")
+
+    def check_restored_field_2(self):
+
+        logging.info("assert restored field 2")
+
+        self.switch_context_to_webview()
+
+        field_to_restore_2_header = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_2_HEADER)
+        self.assertIsNotNone(field_to_restore_2_header)
+
+        self.switch_context_to_native()
+
+        sleep(1)
+        try:
+            field_to_restore_2_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_2_VALUE)
+        except NoSuchElementException:
+            common_page = LoadClass.load_page('CommonPage')
+            common_page.setDriver(self.driver)
+            common_page.scroll_down_one_view()
+            field_to_restore_2_value = self.driver.find_element(
+                *self.configuration.EventEditScreen.FIELD_TO_RESTORE_2_VALUE)
+        self.assertIsNotNone(field_to_restore_2_value, "field to restore 2 value not found")
+
+    def check_restored_field_3(self):
+
+        logging.info("assert restored field 3")
+
+        self.switch_context_to_webview()
+
+        field_to_restore_3_header = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_3_HEADER)
+        self.assertIsNotNone(field_to_restore_3_header)
+
+        self.switch_context_to_native()
+
+        sleep(1)
+        try:
+            field_to_restore_3_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_3_VALUE)
+        except NoSuchElementException:
+            common_page = LoadClass.load_page('CommonPage')
+            common_page.setDriver(self.driver)
+            common_page.scroll_down_one_view()
+            field_to_restore_3_value = self.driver.find_element(
+                *self.configuration.EventEditScreen.FIELD_TO_RESTORE_3_VALUE)
+        self.assertIsNotNone(field_to_restore_3_value, "field to restore 3 value not found")
 
     def scroll_down_to_assets_chooser_field(self):
 

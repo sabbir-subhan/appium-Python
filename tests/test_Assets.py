@@ -202,7 +202,7 @@ class TestAssets(SetupTestCase):
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         assets_page.check_result()
-        assets_page.clear_Search_field()
+        common_page.clear_Search_field()
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         common_page.hamburger_button()

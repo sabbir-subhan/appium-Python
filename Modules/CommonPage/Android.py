@@ -7,9 +7,20 @@ from Modules.CommonPage.CommonPage import CommonPage
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 from Conf.desired_capabilities import DesiredCapabilities
+from appium.webdriver.common.touch_action import TouchAction
 
 
 class Android(CommonPage):
+
+    def clear_Search_field(self):
+
+        logging.info("clear search field")
+        sleep(1)
+        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+        action = TouchAction(self.driver)
+        action.long_press(el=search_field, duration=1500).perform()
+        self.driver.press_keycode(67)
+        sleep(1)
 
     # OCA top bar
     # def hamburger_button(self):

@@ -41,13 +41,13 @@ class Android(EventsPage):
         self.driver.press_keycode(44)  # send letter 'P'
         self.driver.press_keycode(44)  # send letter 'P'
 
-    def clear_Search_field(self):
-
-        logging.info("clear search field")
-        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
-        action = TouchAction(self.driver)
-        action.long_press(el=search_field, duration=1000).perform()
-        self.driver.press_keycode(67)
+    # def clear_Search_field(self):
+    #
+    #     logging.info("clear search field")
+    #     search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+    #     action = TouchAction(self.driver)
+    #     action.long_press(el=search_field, duration=1000).perform()
+    #     self.driver.press_keycode(67)
 
         # after clearing search filed on Android device - "More" button is dropped to the bottom of the events list,
         # so to avoid unnecessary scrolling Appium will tap on hamburger button to go to main menu and reopen Events

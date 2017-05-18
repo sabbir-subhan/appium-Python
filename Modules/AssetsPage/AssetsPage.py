@@ -280,15 +280,15 @@ class AssetsPage(BasePage):
         # self.assertIsNotNone(created_map_asset[1], "created map asset not found")
         self.assertIsNotNone(created_map_asset[0], "created map asset not found")
 
-    def clear_Search_field(self):
-
-        logging.info("clear search field")
-        sleep(1)
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        sleep(1)
+    # def clear_Search_field(self):
+    #
+    #     logging.info("clear search field")
+    #     sleep(1)
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     sleep(1)
 
     def choose_asset_type_with_max_number_of_fields(self):
 

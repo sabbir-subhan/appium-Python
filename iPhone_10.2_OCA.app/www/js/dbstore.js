@@ -31,7 +31,7 @@ var dbStore = {
 				}
 			}.bind(this), function() {
 				console.error("Unable to open database. Can we fallback to localstorage?");
-				return;
+
 			});
 		} else {
 			if (!window.openDatabase){

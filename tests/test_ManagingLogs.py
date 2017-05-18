@@ -101,7 +101,7 @@ class TestManagingLogs(SetupTestCase):
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         logs_page.check_result()
-        logs_page.clear_Search_field()
+        common_page.clear_Search_field()
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         common_page.hamburger_button()
@@ -161,7 +161,7 @@ class TestManagingLogs(SetupTestCase):
         main_page.check_presence_of_events_button()
 
         main_page.open_LOGS()
-        logs_page.clear_Search_field()
+        common_page.clear_Search_field()
         logs_page.type_text_into_search_field("chooser fields")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()

@@ -5,6 +5,7 @@ import logging
 from selenium.common.exceptions import *
 from Modules.BasePage.BasePage import BasePage
 from Modules.load_class import LoadClass
+from credentials import Credentials
 
 
 class LoginPage(BasePage):

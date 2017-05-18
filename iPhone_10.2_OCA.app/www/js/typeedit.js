@@ -1004,7 +1004,7 @@ TypeEdit.prototype.fileuploadRender = function(field, data){
 			field.Input = new FileInput(this, field, data).render();
 			return field.Input.$row;
 		} else {
-			return; //file upload fields depend on OCA Server 1.7.0 API changes
+			return null; //file upload fields depend on OCA Server 1.7.0 API changes
 		}
 	} else {
 		var input = $("<canvas></canvas>")

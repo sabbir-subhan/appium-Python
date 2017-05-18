@@ -14,10 +14,12 @@ class Android(LoginPage):
 
         logging.info("clear username field")
         username_field = self.driver.find_element(*self.configuration.LoginScreen.TEXTFIELD_USERNAME)
-        action = TouchAction(self.driver)
-        action.long_press(el=username_field, duration=1500).perform()
-        # self.driver.keyevent(67)
-        self.driver.press_keycode(67)
+        while len(username_field.text) > 0:
+            username_field.clear()
+        # username_field = self.driver.find_element(*self.configuration.LoginScreen.TEXTFIELD_USERNAME)
+        # action = TouchAction(self.driver)
+        # action.long_press(el=username_field, duration=1500).perform()
+        # self.driver.press_keycode(67)
 
         self.switch_context_to_webview()
 
@@ -32,10 +34,12 @@ class Android(LoginPage):
 
         logging.info("clear password field")
         password_field = self.driver.find_element(*self.configuration.LoginScreen.TEXTFIELD_PASSWORD)
-        action = TouchAction(self.driver)
-        action.long_press(el=password_field, duration=1500).perform()
-        # self.driver.keyevent(67)
-        self.driver.press_keycode(67)
+        while len(password_field.text) > 0:
+            password_field.clear()
+        # password_field = self.driver.find_element(*self.configuration.LoginScreen.TEXTFIELD_PASSWORD)
+        # action = TouchAction(self.driver)
+        # action.long_press(el=password_field, duration=1500).perform()
+        # self.driver.press_keycode(67)
 
         self.switch_context_to_webview()
 
@@ -49,9 +53,13 @@ class Android(LoginPage):
 
         logging.info("clear domain field")
         domain_field = self.driver.find_element(*self.configuration.LoginScreen.TEXTFIELD_DOMAIN)
-        action = TouchAction(self.driver)
-        action.long_press(el=domain_field, duration=1500).perform()
-        self.driver.press_keycode(67)
+        while len(domain_field.text) > 0:
+            domain_field.clear()
+
+        # domain_field = self.driver.find_element(*self.configuration.LoginScreen.TEXTFIELD_DOMAIN)
+        # action = TouchAction(self.driver)
+        # action.long_press(el=domain_field, duration=1500).perform()
+        # self.driver.press_keycode(67)
 
         self.switch_context_to_webview()
 

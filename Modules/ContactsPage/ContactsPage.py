@@ -119,6 +119,7 @@ class ContactsPage(BasePage):
 
         self.switch_context_to_webview()
 
+        sleep(1)
         logging.info("open contact group")
         second_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.SECOND_CONTACT_GROUP)
         self.assertIsNotNone(second_contact_group, "second contact group not found")
@@ -259,6 +260,7 @@ class ContactsPage(BasePage):
 
     def click_more_button(self):
 
+        sleep(1)
         self.switch_context_to_webview()
 
         logging.info("click More button")
@@ -341,13 +343,25 @@ class ContactsPage(BasePage):
 
         self.switch_context_to_native()
 
-    def clear_Search_field(self):
-
-        logging.info("clear search field")
-        sleep(1)
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()  # each clear is clearing one character
-        sleep(1)
+    # def clear_Search_field(self):
+    #
+    #     logging.info("clear search field")
+    #     # self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
+    #     # sleep(1)
+    #     # self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     # sleep(2)
+    #
+    #     field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+    #     field.click()
+    #     # print(field.text)
+    #     while len(field.text) > 0:
+    #         field.clear()
+    #
+    #     # if len(field.text) > 0:
+    #     #     field.clear()
+    #     # else:
+    #     #     pass
+    #     sleep(1)
 
     def check_results_for_deleted_contact(self):  # this method will search for contact with first name: "delete"
 

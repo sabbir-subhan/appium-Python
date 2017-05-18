@@ -39,17 +39,15 @@ class Android(ContactsPage):
             scrolls -= 1
         sleep(2)
 
-    def clear_Search_field(self):
-
-        logging.info("clear search field")
-        sleep(1)
-        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
-        action = TouchAction(self.driver)
-        action.long_press(el=search_field, duration=1500).perform()
-        self.driver.press_keycode(67)
-        # action.long_press(el=search_field, duration=1500).perform()
-        # self.driver.press_keycode(67)
-        sleep(1)
+    # def clear_Search_field(self):
+    #
+    #     logging.info("clear search field")
+    #     sleep(1)
+    #     search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+    #     action = TouchAction(self.driver)
+    #     action.long_press(el=search_field, duration=1500).perform()
+    #     self.driver.press_keycode(67)
+    #     sleep(1)
 
     def scroll_down_to_email_field(self):
 

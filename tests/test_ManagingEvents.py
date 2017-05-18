@@ -73,7 +73,7 @@ class TestManagingEvents(SetupTestCase):
         events_page.filter_events_by_Search_field()
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
-        events_page.clear_Search_field()
+        common_page.clear_Search_field()
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         common_page.hamburger_button()

@@ -347,17 +347,17 @@ class ReportsPage(BasePage):
         # self.assertIsNotNone(created_report[1], "Report not found")
         self.assertIsNotNone(created_report[0], "Report not found")
 
-    def clear_Search_field(self):
-
-        logging.info("clear search field")
-        sleep(1)
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()  # each clear is clearing one character
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        sleep(1)
+    # def clear_Search_field(self):
+    #
+    #     logging.info("clear search field")
+    #     sleep(1)
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()  # each clear is clearing one character
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     sleep(1)
 
     def click_create_report_button(self):
 
@@ -630,13 +630,13 @@ class ReportsPage(BasePage):
 
         self.switch_context_to_native()
 
-        # common_page = LoadClass.load_page('CommonPage')
-        # common_page.setDriver(self.driver)
-        # common_page.scroll_down_one_view()
-
-        sleep(1)
+        sleep(2)
         field_to_restore_1_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_1_VALUE)
         self.assertIsNotNone(field_to_restore_1_value, "field to restore 1 value not found")
+        # field1 = self.driver.find_element_by_css_selector('div#reportNew>div.ui-content>ul>li.ui-field-contain.ui-li-static.ui-body-inherit>div.ui-input-text>input[id="field to restore"]')
+        # field1.click()
+        # print(field1.text)
+        # self.assertEqual(field1.text, "value for field 1", "value for restored field not found")
 
         # assets_page = LoadClass.load_page('AssetsPage')
         # assets_page.setDriver(self.driver)

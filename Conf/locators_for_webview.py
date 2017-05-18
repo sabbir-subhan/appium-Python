@@ -322,7 +322,7 @@ class ContactsScreen:
     FIRST_CONTACT_ON_THE_LIST_TO_IMPORT_FROM_DEVICE = (MobileBy.CSS_SELECTOR, 'div#contactImport>div.ui-content>ul.contacts>li:first-child>a')
     SEQUENCE_ON_LOAD = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_load"]')
     SEQUENCE_ON_SAVE = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_save"]')
-    OPTION_LIST = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.edit-view>li[name="new option list"]>div.ui-select>div')
+    OPTION_LIST = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.edit-view>li[name="new option list"]')
 
 
 class TasksScreen:
