@@ -99,6 +99,7 @@ class ContactsPage(BasePage):
         cancel_button.click()
 
         self.switch_context_to_native()
+        sleep(1)
 
     def open_first_contact_group(self):
         

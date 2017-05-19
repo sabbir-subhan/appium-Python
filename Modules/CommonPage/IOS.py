@@ -6,6 +6,7 @@ from selenium.common.exceptions import *
 from Modules.CommonPage.CommonPage import CommonPage
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
+import time
 
 
 class IOS(CommonPage):
@@ -142,6 +143,30 @@ class IOS(CommonPage):
         sleep(1)
         self.driver.execute_script("mobile: scroll", {"direction": "down"})  # sometimes one is not enough
 
+    def clear_Search_field(self):
+
+        # logging.info("clear search field")
+        # search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+        # # search_field.click()
+        # # sleep(0.5)
+        # timeout = time.time() + 60 * 2  # 2 minutes from now
+        # while len(search_field.text) > 0:
+        #     search_field.click()
+        #     search_field.clear()
+        #     IOS.hide_keyboard(self)
+        #     if time.time() > timeout:
+        #         break
+        #     sleep(1)
+        logging.info("clear search field")
+        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+        search_field.click()
+        sleep(0.5)
+        search_field.clear()
+        try:
+            search_field.click()
+            search_field.clear()
+        except:
+            pass
 
 
 

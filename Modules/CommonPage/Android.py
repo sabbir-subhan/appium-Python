@@ -15,12 +15,29 @@ class Android(CommonPage):
     def clear_Search_field(self):
 
         logging.info("clear search field")
-        sleep(1)
+
         search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+        search_field.click()
+        sleep(0.5)
         action = TouchAction(self.driver)
         action.long_press(el=search_field, duration=1500).perform()
         self.driver.press_keycode(67)
-        sleep(1)
+        sleep(0.5)
+        try:
+            action.long_press(el=search_field, duration=1500).perform()
+            self.driver.press_keycode(67)
+        except:
+            pass
+
+        # search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+        # search_field.click()
+        # sleep(1)
+        # while len(search_field.text) > 0:
+        #     action = TouchAction(self.driver)
+        #     action.long_press(el=search_field, duration=1500).perform()
+        #     self.driver.press_keycode(67)
+        #     sleep(0.5)
+        # sleep(0.5)
 
     # OCA top bar
     # def hamburger_button(self):

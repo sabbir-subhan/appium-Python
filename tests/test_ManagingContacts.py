@@ -266,7 +266,7 @@ class TestManagingContacts(SetupTestCase):
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
         common_page.clear_Search_field()
-        contacts_page.type_text_into_search_field("on_load_sequence")
+        contacts_page.type_text_into_search_field("on_load")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         contacts_page.edit_first_contact_on_the_list()
