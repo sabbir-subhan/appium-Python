@@ -86,6 +86,7 @@ class TestManagingLogs(SetupTestCase):
         common_page.hide_keyboard()
         logs_page.scroll_down_to_save_button()
         logs_page.click_save_new_log()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -116,6 +117,7 @@ class TestManagingLogs(SetupTestCase):
         common_page.hide_keyboard()
         logs_page.scroll_down_to_save_button()
         logs_page.click_save_edited_log()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -143,6 +145,7 @@ class TestManagingLogs(SetupTestCase):
         common_page.hide_keyboard()
         logs_page.scroll_down_to_save_button()
         logs_page.click_save_new_log()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -157,6 +160,7 @@ class TestManagingLogs(SetupTestCase):
         common_page.hide_keyboard()
         logs_page.scroll_down_to_save_button()
         logs_page.click_save_new_log()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -172,6 +176,7 @@ class TestManagingLogs(SetupTestCase):
         logs_page.choose_log_from_the_list()
         logs_page.scroll_down_to_save_button()
         logs_page.click_save_edited_log()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -187,6 +192,7 @@ class TestManagingLogs(SetupTestCase):
         logs_page.check_on_load_and_on_save_sequences()
         logs_page.scroll_down_to_save_button()
         logs_page.click_save_new_log()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -227,6 +233,7 @@ class TestManagingLogs(SetupTestCase):
         logs_page.check_restored_field_3()
         logs_page.scroll_down_to_save_button()
         logs_page.click_save_new_log()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 

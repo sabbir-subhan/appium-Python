@@ -18,7 +18,7 @@ class Android(CommonPage):
 
         search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
         search_field.click()
-        sleep(0.5)
+        sleep(1)
         action = TouchAction(self.driver)
         action.long_press(el=search_field, duration=1500).perform()
         self.driver.press_keycode(67)

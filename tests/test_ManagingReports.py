@@ -99,6 +99,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.choose_lodging_agency()
         reports_page.scroll_down_to_publish_button()
         reports_page.click_publish_new_report()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -127,6 +128,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.edit_report_title(" - Edited")
         reports_page.scroll_down_to_publish_button()
         reports_page.click_publish_edited_report()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -151,6 +153,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.choose_lodging_agency()
         reports_page.scroll_down_to_publish_button()
         reports_page.click_publish_new_report()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -166,6 +169,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.choose_asset_from_the_list()
         reports_page.scroll_down_to_publish_button()
         reports_page.click_publish_edited_report()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -190,6 +194,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.choose_lodging_agency()
         reports_page.scroll_down_to_publish_button()
         reports_page.click_publish_new_report()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -202,6 +207,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.choose_lodging_agency()
         reports_page.scroll_down_to_publish_button()
         reports_page.click_publish_new_report()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -220,6 +226,7 @@ class TestManagingReports(SetupTestCase):
 
         reports_page.scroll_down_to_publish_button()
         reports_page.click_publish_edited_report()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -278,6 +285,7 @@ class TestManagingReports(SetupTestCase):
         map_page.save_map()
         reports_page.scroll_down_to_publish_button()
         reports_page.click_publish_edited_report()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -292,6 +300,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.check_on_load_and_on_save_sequences()
         reports_page.scroll_down_to_publish_button()
         reports_page.click_publish_new_report()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -316,6 +325,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.check_restored_field_3()
         reports_page.scroll_down_to_publish_button()
         reports_page.click_publish_new_report()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 

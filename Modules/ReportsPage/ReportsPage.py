@@ -77,10 +77,10 @@ class ReportsPage(BasePage):
         # sleep(1)
         # action = TouchAction(self.driver)
         # action.tap(element=publish_button, count=1).perform()
-        sleep(2)
-        WebDriverWait(self.driver, 30).until(
-            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
-            "Failed to locate description field")
+        # sleep(2)
+        # WebDriverWait(self.driver, 30).until(
+        #     expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
+        #     "Failed to locate description field")
 
         self.switch_context_to_native()
 
@@ -107,10 +107,10 @@ class ReportsPage(BasePage):
         # sleep(1)
         # action = TouchAction(self.driver)
         # action.tap(element=publish_button, count=1).perform()
-        sleep(2)
-        WebDriverWait(self.driver, 30).until(
-            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
-            "Failed to locate description field")
+        # sleep(2)
+        # WebDriverWait(self.driver, 30).until(
+        #     expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
+        #     "Failed to locate description field")
 
         self.switch_context_to_native()
 

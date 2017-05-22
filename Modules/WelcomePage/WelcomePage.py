@@ -12,14 +12,15 @@ class WelcomePage(BasePage):
 
     def click_login_button(self):
 
-        logging.info("click LOGIN button")
         sleep(4)
-
-        self.switch_context_to_webview()
+        logging.info("click LOGIN button")
 
         WebDriverWait(self.driver, 25).until(
             expected_conditions.presence_of_element_located(self.configuration.WelcomeScreen.LOGIN_BUTTON),
             "Login button not found")
+
+        self.switch_context_to_webview()
+
         self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON).click()
         sleep(2)
 

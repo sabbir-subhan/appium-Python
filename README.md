@@ -91,10 +91,6 @@ and provide name of that file in desired_capabilities.py
 - appium -p 4735  # to change port use "-p" flag
 - appium --log-timestamp --log /file_path  # starting appium with logging to file
 
-- and in another console run: ios_webkit_debug_proxy -c <device uuid>:27753
-        
-iPhone: ios_webkit_debug_proxy -c 4b15c4284897fa6f9b4c5205325a9cece997ad35:27753 <br />
-iPad: ios_webkit_debug_proxy -c db55c238e873230ee454c54a63724397a2981acd:27753
 
 ### 3. Execute test:
 
@@ -114,11 +110,21 @@ iPad: ios_webkit_debug_proxy -c db55c238e873230ee454c54a63724397a2981acd:27753
 - You need to install Xcode 7 and Xcode 8, Appium >= 1.6 in CLI mode, can run both iOS versions but You need to switch between Xcode versions 
 (Xcode7 must have different name because appium in CLI will search for app "Xcode" so that should be version 8)
 (with Xcode 8 You can run tests for iOS10 and to run tests for iOS9 You have to switch to Xcode 7)
+
 - 'sudo xcode-select -switch /Applications/Xcode.app' and run 'appium' - for iOS10 and 'sudo xcode-select -switch /Applications/Xcode7.app' and run 'appium' - for iOS 9)
+
 - remember to restart Appium server after changing Xcode version
 (Appium 1.5.3 can run only iOS9)
 
 - in CLI (Appium 1.6.3) 
+
+to run tests on IOS9:
+- switch Xcode version using: sudo xcode-select -switch /Applications/Xcode7.app
+- in another console run: ios_webkit_debug_proxy -c <device uuid>:27753
+- iPad: ios_webkit_debug_proxy -c db55c238e873230ee454c54a63724397a2981acd:27753
+- start Appium server using CLI command: "appium"
+- start test using CLI command: "python run.py -t test_Login -p IOS_9"
+
 
 ### **CONFIGURING ANDROID DEVICE:** ###
 

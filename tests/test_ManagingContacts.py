@@ -94,6 +94,7 @@ class TestManagingContacts(SetupTestCase):
         contacts_page.type_first_name_for_new_contact("Appium")
         contacts_page.scroll_down_to_save_button()
         contacts_page.save_new_contact()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()
 
@@ -127,6 +128,7 @@ class TestManagingContacts(SetupTestCase):
         common_page.hide_keyboard()
         contacts_page.scroll_down_to_save_button()
         contacts_page.save_edited_contact()
+        common_page.wait_for_app_loading()
         contacts_page.click_more_button()
         contacts_page.delete_contact()
         contacts_page.confirm_delete()
@@ -162,7 +164,12 @@ class TestManagingContacts(SetupTestCase):
         contacts_page.choose_administrators_only_as_write_access_level()
         contacts_page.scroll_down_to_save_button()
         contacts_page.save_new_contact()
+        common_page.wait_for_app_loading()
+        common_page.hamburger_button()
+        main_page.check_presence_of_inbox_button()
 
+        main_page.scroll_down_to_contacts_button()
+        main_page.open_CONTACTS()
         common_page.clear_Search_field()
         contacts_page.type_text_into_search_field("Communication")
         common_page.click_Return_button_on_keyboard()
@@ -260,6 +267,7 @@ class TestManagingContacts(SetupTestCase):
         contacts_page.check_on_load_and_on_save_sequences()
         contacts_page.scroll_down_to_save_button()
         contacts_page.save_new_contact()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()
 
@@ -302,6 +310,7 @@ class TestManagingContacts(SetupTestCase):
         contacts_page.check_restored_field_3()
         contacts_page.scroll_down_to_save_button()
         contacts_page.save_new_contact()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()
 
