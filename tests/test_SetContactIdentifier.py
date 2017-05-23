@@ -11,7 +11,6 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
-from time import sleep
 
 
 class TestSetContactIdentifier(SetupTestCase):

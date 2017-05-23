@@ -242,15 +242,15 @@ class DesiredCapabilities(object):
             "clearSystemFiles": True,
             "startIWDP": True,
             # "noReset": False,
-            "fullReset": True,
+            "fullReset": True,  # iOS9 is not logging out automatically so fullReset is necessary
             "udid": "db55c238e873230ee454c54a63724397a2981acd"
         },
 
         "IOS_9_emulator": {
-            # iPhone 5 simulator with iOS 9.3.5
+            # iPhone 5s simulator with iOS 9.3.5
             "platformName": "iOS",
             "platformVersion": "9.3",
-            "deviceName": "iPhone 5",
+            "deviceName": "iPhone 5s",
             "app": os.path.join(PROJECT_ROOT, "iPhone_9.3_OCA.app"),  # path to .apk file
             # "app": PATH("/Users/lukasl/Build_xcode/Products/iPhone9.3/OCA.app"),
             "bundleId": "com.noggin.ocalukasl",

@@ -1,3 +1,5 @@
+""" locators for Android """
+
 from appium.webdriver.common.mobileby import MobileBy
 
 

@@ -80,6 +80,10 @@
 		<data>
 		q9Hz84gQsnnTjf3ZfBNwOIceuVo=
 		</data>
+		<key>AppIcon83.5x83.5@2x~ipad.png</key>
+		<data>
+		jDBvyNbhypjOq5+hGFAj4x4XXnU=
+		</data>
 		<key>CDVCapture.bundle/controls_bg.png</key>
 		<data>
 		xIN1nlKT1Cv/7P0RRRjRiqDmgcM=
@@ -200,13 +204,25 @@
 		<data>
 		BwsYSepAdB0lzFaojBFNr2yMphI=
 		</data>
+		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
+		<data>
+		vERkBAqUw0oM2n+exsCIyjj9zNk=
+		</data>
+		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
+		<data>
+		n2t8gsDpfE6XkhG31p7IQJRxTxU=
+		</data>
+		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
+		<data>
+		GhMVhiD8Iji+FrEHvvNYdWhzn00=
+		</data>
 		<key>CDVNotification.bundle/beep.wav</key>
 		<data>
 		/kSUVvLLJcbtfXnxFEolil3/NRk=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		HrU0cb76QRx2S8R0Fm5dBkDzZag=
+		2/lOtySGEZxVi64Q95tzxaCKjtE=
 		</data>
 		<key>LaunchImage-700-Landscape@2x~ipad.png</key>
 		<data>
@@ -234,31 +250,19 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		IZWtrPFuoJHdxf0e9lGg6Vm5eng=
+		tPrr3HPrBd6iAziuDXGrsovd5y8=
 		</data>
 		<key>PkgInfo</key>
 		<data>
 		n57qDP4tZfLD1rCS43W0B4LQjzE=
 		</data>
-		<key>build-debug.xcconfig</key>
-		<data>
-		Qn7WuGxZ9Y56S6cPpx3iYb8o9KY=
-		</data>
-		<key>build-release.xcconfig</key>
-		<data>
-		V3Yzqv0vdG9ArMnlVh1kE8YYg98=
-		</data>
-		<key>build.xcconfig</key>
-		<data>
-		dHUL2mMyRTv4i68Su6OT5t3k1lc=
-		</data>
 		<key>config.xml</key>
 		<data>
-		sgxMtV41PY+xHzT8We1Uml4JqCE=
+		eB7gSXV92KORM2EotJmpZUI7nlM=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
-		B9Z20uf6QqS8C02kvvNor0RKcGk=
+		flJFFCscf9SalhZBa57HoKpzqSE=
 		</data>
 		<key>www/arcgis/builddate.txt</key>
 		<data>
@@ -1826,7 +1830,7 @@
 		</data>
 		<key>www/cordova-js-src/exec.js</key>
 		<data>
-		a2lLJUdS/j9A/b7Btea1O+mYXR4=
+		3QDPaUQrAr8Wq2XcQhqcl8DLabQ=
 		</data>
 		<key>www/cordova-js-src/platform.js</key>
 		<data>
@@ -1834,11 +1838,11 @@
 		</data>
 		<key>www/cordova.js</key>
 		<data>
-		8m4UBxQsN6A/T4tbeoaX0GHguEc=
+		U5qD+h8czHzRSMNDeKZnVmgA3ao=
 		</data>
 		<key>www/cordova_plugins.js</key>
 		<data>
-		2SoOpCQKonr+SZCzDRSNV+vgXB8=
+		IeUBjGKmdmWWNwYBmykIUvQ6zTQ=
 		</data>
 		<key>www/css/images/ajax-loader.gif</key>
 		<data>
@@ -1906,7 +1910,7 @@
 		</data>
 		<key>www/index.html</key>
 		<data>
-		G5o0ZxD4HrnBEd5fVCH8iSHAqQI=
+		0yKnihdTmdBCZdYpF806aDoYlVA=
 		</data>
 		<key>www/js/app/about.js</key>
 		<data>
@@ -1914,7 +1918,7 @@
 		</data>
 		<key>www/js/app/appmessages.js</key>
 		<data>
-		sV7aejxOJuQr89d3P+qKF220urY=
+		I7XXpgdRrxrWxieowhiXJT7N+k8=
 		</data>
 		<key>www/js/app/asset.js</key>
 		<data>
@@ -1946,7 +1950,7 @@
 		</data>
 		<key>www/js/app/home.js</key>
 		<data>
-		unTqkrrG/+SlNHMchobGLK6lKmM=
+		ZhBvYQ0YZzz+0plHwDvyDrkKXHU=
 		</data>
 		<key>www/js/app/inbox.js</key>
 		<data>
@@ -1986,7 +1990,7 @@
 		</data>
 		<key>www/js/app/session.js</key>
 		<data>
-		HJbAvDMTgINah/NiXTYZLn42UaM=
+		QnYuUqx2frSiS9pmGK9LhEFJU+0=
 		</data>
 		<key>www/js/app/settings.js</key>
 		<data>
@@ -2018,7 +2022,7 @@
 		</data>
 		<key>www/js/core.js</key>
 		<data>
-		K6giNK3XgOddMVWRpDzumkZmLuk=
+		si4F7G3n5wGCpeaVfV50hHbaI9c=
 		</data>
 		<key>www/js/dbstore.js</key>
 		<data>
@@ -3270,7 +3274,7 @@
 		</data>
 		<key>www/js/view.js</key>
 		<data>
-		vQ/atO8o/jxx0rEIUjfmOb7Peq8=
+		SuNqeT7gRlYK0r0TJx4yZiVm5eE=
 		</data>
 		<key>www/locations.db</key>
 		<data>
@@ -3748,6 +3752,17 @@
 			CnaR8VtuSdCGLHuKsYS/ljknzjNN9xXKiDNTcXtw9Sg=
 			</data>
 		</dict>
+		<key>AppIcon83.5x83.5@2x~ipad.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			jDBvyNbhypjOq5+hGFAj4x4XXnU=
+			</data>
+			<key>hash2</key>
+			<data>
+			l6YuM5PdnYxTb4tZpyNGxSXffqowL0tQXoLbMf1Z6Ms=
+			</data>
+		</dict>
 		<key>CDVCapture.bundle/controls_bg.png</key>
 		<dict>
 			<key>hash</key>
@@ -4031,6 +4046,39 @@
 			ujMJLFyrE0b4sIn4ZlGGwsltI/9/hQjBy1IUfEq58Y8=
 			</data>
 		</dict>
+		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			vERkBAqUw0oM2n+exsCIyjj9zNk=
+			</data>
+			<key>hash2</key>
+			<data>
+			mft+NbKlTlP5UYVr0jcgwz+BaRt/H7dOYoo1oWUScUQ=
+			</data>
+		</dict>
+		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			n2t8gsDpfE6XkhG31p7IQJRxTxU=
+			</data>
+			<key>hash2</key>
+			<data>
+			HyVdXMU7Ux4/KalAao30mpWOK/lEPT4gvYN09wf31cg=
+			</data>
+		</dict>
+		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			GhMVhiD8Iji+FrEHvvNYdWhzn00=
+			</data>
+			<key>hash2</key>
+			<data>
+			PWpPZQfDx5mef+ijCP1GYUw6kN9LGnNLw8pBz7rp7Bo=
+			</data>
+		</dict>
 		<key>CDVNotification.bundle/beep.wav</key>
 		<dict>
 			<key>hash</key>
@@ -4112,66 +4160,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			IZWtrPFuoJHdxf0e9lGg6Vm5eng=
+			tPrr3HPrBd6iAziuDXGrsovd5y8=
 			</data>
 			<key>hash2</key>
 			<data>
-			y6rIzYqOqcHYDL9hjK6XnF4dLsUfaQWxn6cArc2AXxQ=
-			</data>
-		</dict>
-		<key>build-debug.xcconfig</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			Qn7WuGxZ9Y56S6cPpx3iYb8o9KY=
-			</data>
-			<key>hash2</key>
-			<data>
-			dnZKfLmV7ESBodqs793YBMiXA9FoWDz7Ahdc+frjuxo=
-			</data>
-		</dict>
-		<key>build-release.xcconfig</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			V3Yzqv0vdG9ArMnlVh1kE8YYg98=
-			</data>
-			<key>hash2</key>
-			<data>
-			Dcmnwa/ifQyJek+qYeDQZKPQiddTHockax0HrYSAdrM=
-			</data>
-		</dict>
-		<key>build.xcconfig</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			dHUL2mMyRTv4i68Su6OT5t3k1lc=
-			</data>
-			<key>hash2</key>
-			<data>
-			35Iig1l79RgN+ywMstvWSHZpxvmuTIj2rlPUYrcDlRk=
+			DxwHdYvss9NGB5vgZd9PP8g+nNYYwWmIhB+UU30L7Zc=
 			</data>
 		</dict>
 		<key>config.xml</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			sgxMtV41PY+xHzT8We1Uml4JqCE=
+			eB7gSXV92KORM2EotJmpZUI7nlM=
 			</data>
 			<key>hash2</key>
 			<data>
-			43Wi3i5FT+XurMc14mM47zR48cAkC0u2f7WgzEIIyZw=
+			LwfbvMzkY6CQtaSzhkIWdbh5byN2NTkIz0088B0Cnf0=
 			</data>
 		</dict>
 		<key>embedded.mobileprovision</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			B9Z20uf6QqS8C02kvvNor0RKcGk=
+			flJFFCscf9SalhZBa57HoKpzqSE=
 			</data>
 			<key>hash2</key>
 			<data>
-			sJl1bYoA8+tDtYcxJW6dFAnl7Y4RvaQowTaRJjwbLhE=
+			UOo/hALIVL0jggmobN9dflOLz8kmP8WXdncegJBQGjE=
 			</data>
 		</dict>
 		<key>www/arcgis/builddate.txt</key>
@@ -8479,11 +8494,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			a2lLJUdS/j9A/b7Btea1O+mYXR4=
+			3QDPaUQrAr8Wq2XcQhqcl8DLabQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			KnawqlCZrMeelcL/8fP4EKhCD+RJLPG06OqEqBTiSyQ=
+			3k+JZ8ZeHITt5+/EQNMxMv9o6gJ7PJ7TdGiLTUKTJlU=
 			</data>
 		</dict>
 		<key>www/cordova-js-src/platform.js</key>
@@ -8501,22 +8516,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			8m4UBxQsN6A/T4tbeoaX0GHguEc=
+			U5qD+h8czHzRSMNDeKZnVmgA3ao=
 			</data>
 			<key>hash2</key>
 			<data>
-			Ob99ic+cd/M43M4m8naHBaaV0BYq4Hg8z8xdiZP4jJo=
+			vvROt4nAghiz/nS7ekznMtV1kOKlu40f/Me6P8Npd+4=
 			</data>
 		</dict>
 		<key>www/cordova_plugins.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			2SoOpCQKonr+SZCzDRSNV+vgXB8=
+			IeUBjGKmdmWWNwYBmykIUvQ6zTQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			VYR0Ex0pAs12br7iiK9ja0jpk93DX8SLsjL4nMAkA5s=
+			Glo5Et8UjzN12qglrntWzjjjjqZcYM9MPD1nY75CT1w=
 			</data>
 		</dict>
 		<key>www/css/images/ajax-loader.gif</key>
@@ -8699,11 +8714,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			G5o0ZxD4HrnBEd5fVCH8iSHAqQI=
+			0yKnihdTmdBCZdYpF806aDoYlVA=
 			</data>
 			<key>hash2</key>
 			<data>
-			c5A38IddXbp1rRy+riqeW7s5DQynjMeHvjqlu7ajJjo=
+			okyFqYuW+1ukoc8+I+PeXeT4YLZ3fMcKZPpqSO+3Wvg=
 			</data>
 		</dict>
 		<key>www/js/app/about.js</key>
@@ -8721,11 +8736,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			sV7aejxOJuQr89d3P+qKF220urY=
+			I7XXpgdRrxrWxieowhiXJT7N+k8=
 			</data>
 			<key>hash2</key>
 			<data>
-			Lgk661Kv+HY8D4SFpspBVBJx4SKGQv4nAK44QtkWtqk=
+			UNiPKd6KYZJEtWFjLBgIeIViAf9m4Fy+XplMElA3qUQ=
 			</data>
 		</dict>
 		<key>www/js/app/asset.js</key>
@@ -8809,11 +8824,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			unTqkrrG/+SlNHMchobGLK6lKmM=
+			ZhBvYQ0YZzz+0plHwDvyDrkKXHU=
 			</data>
 			<key>hash2</key>
 			<data>
-			pl/A7n1zalpNWbsFM9mI15crRwgtznSj3PI73hxOhBg=
+			J9Ncjnv+Cu4ngTR5wA/0caOCbeBMRzFJTsUxeJ4LhHg=
 			</data>
 		</dict>
 		<key>www/js/app/inbox.js</key>
@@ -8919,11 +8934,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			HJbAvDMTgINah/NiXTYZLn42UaM=
+			QnYuUqx2frSiS9pmGK9LhEFJU+0=
 			</data>
 			<key>hash2</key>
 			<data>
-			+mdXDsT9wlAzFTwGIhQ8J1z8ACiWfvv5lLcmJ36krts=
+			vADOOT6Bym6dRcaCLwkutur74GZ1ifkq7vBbytvHtyE=
 			</data>
 		</dict>
 		<key>www/js/app/settings.js</key>
@@ -9007,11 +9022,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			K6giNK3XgOddMVWRpDzumkZmLuk=
+			si4F7G3n5wGCpeaVfV50hHbaI9c=
 			</data>
 			<key>hash2</key>
 			<data>
-			IQKO0pbdPGiONM5jKrY8B/D6INyN2ZIGO/OcNbtZFzQ=
+			HePySJNoPMSxXyfvpF5QcB+9axEA23xsQHUda2FtisE=
 			</data>
 		</dict>
 		<key>www/js/dbstore.js</key>
@@ -12450,11 +12465,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			vQ/atO8o/jxx0rEIUjfmOb7Peq8=
+			SuNqeT7gRlYK0r0TJx4yZiVm5eE=
 			</data>
 			<key>hash2</key>
 			<data>
-			QWvJfkUsVraAd22gkg5YjczzFlu0oO7+av/80hJtbt8=
+			ees2jzuNBAku7jMN9ywke6hEpBpizM0TYAHKNWdi/cM=
 			</data>
 		</dict>
 		<key>www/locations.db</key>

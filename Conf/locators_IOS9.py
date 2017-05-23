@@ -1,3 +1,7 @@
+""" locators for iOS 9 """
+
+# indexes in iOS9 is staring from 1
+
 from appium.webdriver.common.mobileby import MobileBy
 
 
@@ -17,7 +21,7 @@ class CommonScreen:
     SAVE_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Save"]')
     CANCEL_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Cancel"]')
     OK_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Ok"]')
-    PICKER_WHEEL = (MobileBy.CLASS_NAME, '//UIPickerWheel')  # need class name from simulator of ios 9 ????????????????????
+    PICKER_WHEEL = (MobileBy.CLASS_NAME, 'UIAPickerWheel')
 
 
 class TopBar:
@@ -322,8 +326,10 @@ class TasksScreen:
 
 class ReportsScreen:
     """A class for handling Report screen"""
-    LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//UIAWebView/UIAElement[2]')
-    LODGING_AGENCY = (MobileBy.XPATH, '//UIAPopover/UIATableView/UIATableCell[2]')
+    # LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAElement[1]')
+    LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//UIAWebView/UIAElement[1]')
+    LODGING_AGENCY = (MobileBy.XPATH, '//UIAPopover/UIATableView/UIATableCell[2]')  # index in iOS9 is staring from 1
+    # LODGING_AGENCY = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAPopover[1]/UIATableView[1]/UIATableCell[2]')
     PUBLISH_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Publish"]')
     CREATED_REPORT_WITH_ALL_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "Large")]]')
     CREATED_REPORT_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "chooser fields")]]')
@@ -338,7 +344,8 @@ class ReportsScreen:
 
 class LogsScreen:
     """A class for handling Logs screen"""
-    LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//UIAWebView/UIAElement[1]')
+    # LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//UIAWebView/UIAElement[1]')
+    LODGING_AGENCY_PICKER = ReportsScreen.LODGING_AGENCY_PICKER
     ENTRY_FIELD = (MobileBy.CLASS_NAME, 'UIATextField')
     CREATED_LOG_WITH_ALL_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "all fields")]]')
     LOG_TYPE_WITH_ALL_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "log_with_all_fields")]]')
@@ -381,11 +388,14 @@ class ComposeScreen:
 
 class RisksScreen:
     """A class for handling Risks screen"""
-    CHOOSE_STATUS_IMPLEMENTED_iPad = (MobileBy.XPATH, '//UIATableCell[@name="Implemented"]')
+    # CHOOSE_STATUS_IMPLEMENTED_iPad = (MobileBy.XPATH, '//UIATableCell[@name="Implemented"]')
+    CHOOSE_STATUS_IMPLEMENTED_iPad = (MobileBy.XPATH, '//UIAPopover/UIATableView/UIATableCell[3]')  # index is starting from 1
+    # CHOOSE_STATUS_IMPLEMENTED_iPad = (MobileBy.XPATH, '//UIAPopover/UIATableCell[@name="Implemented"]')
     CREATE_RISK_REGISTER = (MobileBy.ACCESSIBILITY_ID, 'Create risk register')
     PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.XPATH, '')
     NEW_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "New")]]')
     VIEW_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "View")]]')
+    STATUS_SELECTOR = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAElement[1]')
 
 
 class AssetsScreen:

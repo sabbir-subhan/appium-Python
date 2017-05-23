@@ -12,11 +12,12 @@ class IOS(ReportsPage):
 
     def click_on_lodging_agency_picker(self):
 
-        sleep(5)
+        sleep(4)
         logging.info("click on 'Lodging Agency' picker")
         lodging_agency_picker = self.driver.find_element(*self.configuration.ReportsScreen.LODGING_AGENCY_PICKER)
         self.assertIsNotNone(lodging_agency_picker, "Lodging Agency picker was not found")
         action = TouchAction(self.driver)
+        sleep(1)
         action.tap(element=lodging_agency_picker, count=1).perform()
         sleep(1)
 
@@ -48,16 +49,18 @@ class IOS(ReportsPage):
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
                 scroll = scroll - 1
 
-    def choose_lodging_agency(self):
+    def choose_lodging_agency(self, text):
 
         logging.info("choose Lodging Agency")
         try:
             choose_lodging_agency = self.driver.find_element(*self.configuration.ReportsScreen.LODGING_AGENCY)
             self.assertIsNotNone(choose_lodging_agency, "Lodging Agency inside picker was not found")
+            print(text)
             choose_lodging_agency.click()
         except NoSuchElementException:
             picker_wheel = self.driver.find_element(*self.configuration.CommonScreen.PICKER_WHEEL)
-            picker_wheel.send_keys('contact_group_for_tests')
+            # picker_wheel.send_keys('contact_group_for_tests')
+            picker_wheel.send_keys(text)
             common_page = LoadClass.load_page('CommonPage')
             common_page.setDriver(self.driver)
             common_page.done_button()

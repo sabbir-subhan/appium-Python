@@ -38,6 +38,7 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
+from time import sleep
 
 
 class TestMaps(SetupTestCase):
@@ -82,7 +83,43 @@ class TestMaps(SetupTestCase):
         map_page = LoadClass.load_page("MapPage")
         map_page.setDriver(self.driver)
         map_page.click_layers_button()
+        map_page.choose_first_layer_from_the_list()
+        map_page.click_done_button()
+        map_page.click_locate_button()
+        sleep(2)  # wait for localization
+        map_page.click_locate_button()
+        map_page.click_search_button_on_the_map()
+        map_page.type_address_into_search_field("580 George street Sydney 2121")
+        common_page.hide_keyboard()
+        map_page.click_search_button()
+        map_page.click_first_address_on_the_list()
+        map_page.click_zoom_in_button()
+        map_page.click_zoom_out_button()
 
+        map_page.click_plot_button()
+        map_page.click_tool_button()
+        map_page.click_point_button()
+        map_page.click_default_button()
+        map_page.click_in_map_area_1()
+        map_page.click_tool_button()
+        map_page.click_line_button()
+        map_page.click_default_button()
+        map_page.click_in_map_area_2()
+        map_page.double_click_in_map_area_3()
+        map_page.click_tool_button()
+        map_page.click_circle_button()
+        map_page.click_default_button()
+        map_page.click_in_map_area_2()
+        map_page.click_tool_button()
+        map_page.click_polygon_button()
+        map_page.click_default_button()
+        map_page.click_in_map_area_1()
+        map_page.click_in_map_area_2()
+        map_page.double_click_in_map_area_3()
+        map_page.save_map()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+        
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(TestMaps)

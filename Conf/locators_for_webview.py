@@ -1,10 +1,12 @@
+""" locators in WebView """
+
 from appium.webdriver.common.mobileby import MobileBy
 
 
 class CommonScreen:
     """A class for handling Common buttons on different screen"""
     LOADING = (MobileBy.CSS_SELECTOR, 'span.ui-icon-loading')
-    #OK_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    # OK_BUTTON = (MobileBy.CSS_SELECTOR, '')
 
 
 class TopBar:
@@ -32,6 +34,8 @@ class SettingsScreen:
     # SETTINGS_OK_BUTTON = (MobileBy.CSS_SELECTOR, '')
     SETTINGS_ALERT_ABOUT_PIN = (MobileBy.CSS_SELECTOR, 'div#settings>div.ui-popup-container.ui-popup-active')
     SETTINGS_SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'a#settingsBtnSave')
+    PRIMARY_ROLE_SELECTOR = (MobileBy.CSS_SELECTOR, 'div#settings>div.ui-content>div.settings>ul.ui-listview>li[name="primary role"]>div.ui-select')
+    FIRST_PRIMARY_ROLE_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamrolePrimary>div.ui-content>ul.teamroles>li:first-child')
 
 
 class LoginScreen:
@@ -101,10 +105,10 @@ class MainMenuScreen(WelcomeScreen):
 class LocationScreen:
     """A class for Location screen locators - screen after clicking into Location button in Main Menu."""
     SEND_ONCE_NOW = (MobileBy.CSS_SELECTOR, '')
-    SEND_EVERY_SPINNER = (MobileBy.CSS_SELECTOR, '')
+    SEND_EVERY_SPINNER = (MobileBy.CSS_SELECTOR, 'div#location>div.ui-content>div.ui-grid-a>div.ui-block-b>div.ui-select>div#locationInterval-button>select[name="locationInterval"]')
     CHOOSE_5_MINUTES_OPTION_iPad = (MobileBy.CSS_SELECTOR, '')
     ASSERT_5_MINUTES_OPTION = (MobileBy.CSS_SELECTOR, '')
-    FOR_THE_NEXT_SPINNER = (MobileBy.CSS_SELECTOR, '')
+    FOR_THE_NEXT_SPINNER = (MobileBy.CSS_SELECTOR, 'div#locationDuration-button>select[name="locationDuration"]')
     CHOOSE_1_HOUR_OPTION_iPad = (MobileBy.CSS_SELECTOR, '')
     ASSERT_1_HOUR_OPTION = (MobileBy.CSS_SELECTOR, '')
     START_BUTTON = (MobileBy.CSS_SELECTOR, 'button#locationStart')
@@ -137,7 +141,7 @@ class EventsScreen:
     SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input#emeSearch')
 
     # creating and editing Events
-    #MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-b>a[href="#"]')
+    # MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-b>a[href="#"]')
     NEW_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#emeNew?parent=0"]')
 
     # previously created event
@@ -145,8 +149,8 @@ class EventsScreen:
     # PREVIOUSLY_CREATED_EVENT_CHECKBOX = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div.ui-content>div.main>ul[data-role="listview"]>li:first-child>div.ui-checkbox')
     PREVIOUSLY_CREATED_EVENT_CHECKBOX = (MobileBy.CSS_SELECTOR, 'ul.emes.listview.ui-listview>li:first-child>div.ui-checkbox')
 
-    #CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, 'li.primary.eme.clear.ui-first-child>a')
-    #NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.CSS_SELECTOR, '')
+    # CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, 'li.primary.eme.clear.ui-first-child>a')
+    # NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.CSS_SELECTOR, '')
 
 
 class TypesOfEventsScreen:
@@ -232,13 +236,21 @@ class Map:
                                                 'a[data-translate="Cancel"]')
     LAYERS = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-b>li.ui-block-a>a[href="#mapLayers"]')
     FIRST_LAYER_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#mapLayers>div.ui-content>ul>li:first-child')
+    SECOND_LAYER_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#mapLayers>div.ui-content>ul>li:nth-child(2)')
+    THIRD_LAYER_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#mapLayers>div.ui-content>ul>li:nth-child(3)')
     LAYERS_DONE = (MobileBy.CSS_SELECTOR, 'div#mapLayers>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a#layersDone')
     PLOT_TYPE_ASSET = (MobileBy.CSS_SELECTOR, 'div#mapPlotType>div.ui-content>ul.ui-listview>li>a[data-link="#assetNew?parent=0"]')
+    LOCATE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#locateButton')
+    SEARCH_BUTTON_ON_MAP = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#searchButton')
+    SEARCH_BUTTON = (MobileBy.CSS_SELECTOR, 'a#runSearchButton')
+    FIRST_ADDRESS_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#mapSearch>div.ui-content>ul.ui-listview>li.ui-first-child')
+    ZOOM_IN_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_zoom_slider>div:first-child')
+    ZOOM_OUT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_zoom_slider>div:last-child')
 
 
 class PhotoScreen:
     """A class for Photo screen locators - screen after clicking into Photo button in Main Menu."""
-    #PHOTO_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
+    # PHOTO_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
     GALLERY_BUTTON = (MobileBy.CSS_SELECTOR, 'div#photo>div.ui-content>div#photo-placeholder>div.ui-block-a>div.center-text>span[data-open="album"]>span.icon')
     TAKE_NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'div#photo>div.ui-content>div.ui-grid-a>div.ui-block-b>div.center-text>span[data-open="camera"]>span.icon')
     DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'textarea#photo-input-description')
@@ -248,7 +260,7 @@ class PhotoScreen:
 
 class VideoScreen:
     """A class for Video screen locators - screen after clicking into Video button in Main Menu."""
-    #VIDEO_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
+    # VIDEO_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
     GALLERY_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div.ui-content>div#video-placeholder>div.ui-block-a>div.center-text>span[data-open="album"]>span.icon')
     RECORD_NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div.ui-content>div.ui-grid-a>div.ui-block-b>div.center-text>span[data-open="camera"]>span.icon')
     SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a#videoBtnSend')
@@ -257,7 +269,7 @@ class VideoScreen:
 
 class SoundScreen:
     """A class for Sound screen locators - screen after clicking into Sound button in Main Menu."""
-    #SOUND_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
+    # SOUND_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
     RECORD_SOUND_BUTTON = (MobileBy.CSS_SELECTOR, 'div#audio>div>div.ui-grid-a>div#audio-placeholder>span')
     DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'textarea#audio-input-description')
     SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'div#audio>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a#audioBtnSend')

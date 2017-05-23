@@ -11,6 +11,8 @@
 # report type with on create approval workflow, named: "report_with_on_create_approval"
 # - report type, named: "report_with_assigned_question" and workflow assigned to that - triggered on edit that report, that workflow must contain "Assign a question node" with title: "Report approval task"
 #  and two possible answers: "Yes/No", (field Assign to: Contact that activated workflow: Workflow info)
+# prepare Role for contact - choose contact that will be used to run test (default = Bitnoise QA)
+
 
 # open OCA app
 # dismiss iOS notifications
@@ -96,7 +98,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.choose_report_type_with_all_fields()
         reports_page.type_title("Large Report")
         reports_page.click_on_lodging_agency_picker()
-        reports_page.choose_lodging_agency()
+        reports_page.choose_lodging_agency("contact_group_for_tests")
         reports_page.scroll_down_to_publish_button()
         reports_page.click_publish_new_report()
         common_page.wait_for_app_loading()
@@ -150,7 +152,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.choose_report_type_with_chooser_fields()
         reports_page.type_title("Report with chooser fields")
         reports_page.click_on_lodging_agency_picker()
-        reports_page.choose_lodging_agency()
+        reports_page.choose_lodging_agency("contact_group_for_tests")
         reports_page.scroll_down_to_publish_button()
         reports_page.click_publish_new_report()
         common_page.wait_for_app_loading()
@@ -179,7 +181,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.choose_report_type_with_all_fields()
         reports_page.type_title("Appium test")
         reports_page.click_on_lodging_agency_picker()
-        reports_page.choose_lodging_agency()
+        reports_page.choose_lodging_agency("contact_group_for_tests")
         reports_page.scroll_down_to_publish_button()
         reports_page.click_cancel_new_report()
         common_page.hamburger_button()
@@ -191,7 +193,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.choose_report_type_with_on_create_approval_workflow()
         reports_page.type_title("Report with workflow")
         reports_page.click_on_lodging_agency_picker()
-        reports_page.choose_lodging_agency()
+        reports_page.choose_lodging_agency("contact_group_for_tests")
         reports_page.scroll_down_to_publish_button()
         reports_page.click_publish_new_report()
         common_page.wait_for_app_loading()
@@ -204,7 +206,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.choose_report_type_with_assigned_question()
         reports_page.type_title("Report assigned question")
         reports_page.click_on_lodging_agency_picker()
-        reports_page.choose_lodging_agency()
+        reports_page.choose_lodging_agency("Active")
         reports_page.scroll_down_to_publish_button()
         reports_page.click_publish_new_report()
         common_page.wait_for_app_loading()
@@ -219,11 +221,9 @@ class TestManagingReports(SetupTestCase):
         common_page.hide_keyboard()
         reports_page.edit_created_report_with_assigned_question()
         reports_page.click_edit_button()
-
         reports_page.scroll_down_media_release_field()
         reports_page.type_text_into_media_release_field()
         common_page.hide_keyboard()
-
         reports_page.scroll_down_to_publish_button()
         reports_page.click_publish_edited_report()
         common_page.wait_for_app_loading()
@@ -245,7 +245,27 @@ class TestManagingReports(SetupTestCase):
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()
 
-        # From the main menu, go to Settings and set a primary role. Go back to the main menu, Report > Create Report of any type and save        ?
+        # From the main menu, go to Settings and set a primary role. Go back to the main menu, Report > Create Report of any type and save
+        main_page.scroll_down_to_tasks_button()
+        main_page.open_SETTINGS()
+        settings_page = LoadClass.load_page('SettingsPage')
+        settings_page.setDriver(self.driver)
+        settings_page.click_primary_role()  # add method
+        settings_page.choose_first_role_on_the_list()  # add method
+        common_page.hamburger_button()
+        main_page.check_presence_of_inbox_button()
+        main_page.scroll_up_to_reports_button()
+        main_page.open_REPORTS()
+        reports_page.click_create_report_button()
+        reports_page.choose_report_type_with_all_fields()
+        reports_page.type_title("Primary Role")
+        reports_page.click_on_lodging_agency_picker()
+        reports_page.choose_lodging_agency("contact_group_for_tests")
+        reports_page.scroll_down_to_publish_button()
+        reports_page.click_publish_new_report()
+        common_page.wait_for_app_loading()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
 
         # Edit a report > Edit mapping data. Add points, circles, lines, polygons and other layers to the map
         main_page.scroll_up_to_reports_button()
@@ -295,7 +315,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.choose_report_type_with_on_load_sequence()
         reports_page.type_title("Report with on load sequence")
         reports_page.click_on_lodging_agency_picker()
-        reports_page.choose_lodging_agency()
+        reports_page.choose_lodging_agency("contact_group_for_tests")
         reports_page.scroll_down_to_on_load_field()
         reports_page.check_on_load_and_on_save_sequences()
         reports_page.scroll_down_to_publish_button()
@@ -310,7 +330,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.choose_report_type_with_visibility_rules()
         reports_page.type_title("Report with visibility rules")
         reports_page.click_on_lodging_agency_picker()
-        reports_page.choose_lodging_agency()
+        reports_page.choose_lodging_agency("contact_group_for_tests")
         reports_page.scroll_down_to_option_list()
         reports_page.click_on_option_list()
         reports_page.click_on_option_1()

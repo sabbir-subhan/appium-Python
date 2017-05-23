@@ -79,11 +79,11 @@ class LogsPage(BasePage):
 
         self.switch_context_to_native()
 
-    def choose_lodging_agency(self):
+    def choose_lodging_agency(self, text):
 
-        new_report_page = LoadClass.load_page('ReportsPage')
-        new_report_page.setDriver(self.driver)
-        new_report_page.choose_lodging_agency()
+        reports_page = LoadClass.load_page('ReportsPage')
+        reports_page.setDriver(self.driver)
+        reports_page.choose_lodging_agency(text)
 
     # def scroll_down_to_save_button(self):
     #

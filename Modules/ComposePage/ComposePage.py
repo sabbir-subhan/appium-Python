@@ -143,6 +143,17 @@ class ComposePage(BasePage):
 
         self.switch_context_to_native()
 
+    def filter_contacts_by_search_field(self):
+
+        logging.info("filter contacts by search field")
+
+        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+        self.assertIsNotNone(search_field, "Search field not found")
+        search_field.click()
+        sleep(2)
+        search_field.send_keys('A_CONTACT_FOR_APPIUM_TESTS')
+        sleep(1)
+
     def choose_contact_for_test(self):
 
         logging.info('choose contact for test')

@@ -10,7 +10,7 @@ from time import sleep
 class IOS(RisksPage):
 
     def click_status_selector(self):
-
+        # it is not working in webview
         sleep(1)
         logging.info("click status selector")
         click_status_selector = self.driver.find_element(*self.configuration.RisksScreen.STATUS_SELECTOR)

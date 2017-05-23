@@ -4,6 +4,7 @@ from Modules.ReportsPage.IOS import IOS
 from Modules.load_class import LoadClass
 import logging
 from selenium.common.exceptions import *
+from time import sleep
 
 
 class IOS9(IOS):
@@ -16,16 +17,19 @@ class IOS9(IOS):
 
         pass
 
-    def choose_lodging_agency(self):
+    def choose_lodging_agency(self, text):
 
+        sleep(1)
         logging.info("choose Lodging Agency")
         try:
             choose_lodging_agency = self.driver.find_element(*self.configuration.ReportsScreen.LODGING_AGENCY)
             self.assertIsNotNone(choose_lodging_agency, "Lodging Agency inside picker was not found")
+            print(text)
             choose_lodging_agency.click()
-        except NoSuchElementException:
+        except:
             picker_wheel = self.driver.find_element(*self.configuration.CommonScreen.PICKER_WHEEL)
-            picker_wheel.send_keys('contact_group_for_tests')
+            # picker_wheel.send_keys('contact_group_for_tests')
+            picker_wheel.send_keys(text)
             common_page = LoadClass.load_page('CommonPage')
             common_page.setDriver(self.driver)
             common_page.done_button()

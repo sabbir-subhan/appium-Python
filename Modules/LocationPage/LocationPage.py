@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 from time import sleep
 import logging
+from appium.webdriver.common.touch_action import TouchAction
 
 
 class LocationPage(BasePage):
@@ -50,10 +51,18 @@ class LocationPage(BasePage):
 
     def click_send_every(self):
 
-        logging.info("clicking in 'Send every' selector")
+        # self.switch_context_to_webview()
+
+        logging.info("click 'Send every' selector")
+        sleep(1)
         send_every_button = self.driver.find_element(*self.configuration.LocationScreen.SEND_EVERY_SPINNER)
         self.assertIsNotNone(send_every_button, "Send every button not found")
-        send_every_button.click()
+        # send_every_button.click()
+        action = TouchAction(self.driver)
+        action.tap(send_every_button, count=1).perform()
+        sleep(1)
+
+        # self.switch_context_to_native()
 
     def check_if_5_minutes_option_was_chosen(self):
 
@@ -67,7 +76,10 @@ class LocationPage(BasePage):
         logging.info("clicking in 'For the next' selector")
         for_the_next = self.driver.find_element(*self.configuration.LocationScreen.FOR_THE_NEXT_SPINNER)
         self.assertIsNotNone(for_the_next, "for the next selector not found")
-        for_the_next.click()
+        # for_the_next.click()
+        action = TouchAction(self.driver)
+        action.tap(for_the_next, count=1).perform()
+        sleep(1)
 
     def check_if_1_hour_option_was_chosen(self):
 
@@ -84,6 +96,8 @@ class LocationPage(BasePage):
         start_button = self.driver.find_element(*self.configuration.LocationScreen.START_BUTTON)
         self.assertIsNotNone(start_button, "start button not found")
         start_button.click()
+        # action = TouchAction(self.driver)
+        # action.tap(start_button, count=1).perform()
         sleep(1)
 
         self.switch_context_to_native()

@@ -1,3 +1,5 @@
+""" locators for iOS 10 """
+
 from appium.webdriver.common.mobileby import MobileBy
 
 
