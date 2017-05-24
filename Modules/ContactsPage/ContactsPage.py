@@ -50,15 +50,15 @@ class ContactsPage(BasePage):
 
     def scroll_down_to_write_access_level(self):
 
-        event_edit_page = LoadClass.load_page('EventEditPage')
-        event_edit_page.setDriver(self.driver)
-        event_edit_page.scroll_down_to_write_access_level()
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.scroll_down_to_write_access_level()
 
     def scroll_down_to_save_button(self):
 
-        event_edit_page = LoadClass.load_page('EventEditPage')
-        event_edit_page.setDriver(self.driver)
-        event_edit_page.scroll_down_to_save_button()
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.scroll_down_to_save_button()
 
     def save_new_contact(self):
 
@@ -483,21 +483,21 @@ class ContactsPage(BasePage):
 
     def click_on_option_1(self):
 
-        event_edit_page = LoadClass.load_page('EventEditPage')
-        event_edit_page.setDriver(self.driver)
-        event_edit_page.click_on_option_1()
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.click_on_option_1()
 
     def click_on_option_2(self):
 
-        event_edit_page = LoadClass.load_page('EventEditPage')
-        event_edit_page.setDriver(self.driver)
-        event_edit_page.click_on_option_2()
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.click_on_option_2()
 
     def click_on_option_3(self):
 
-        event_edit_page = LoadClass.load_page('EventEditPage')
-        event_edit_page.setDriver(self.driver)
-        event_edit_page.click_on_option_3()
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.click_on_option_3()
 
     def check_restored_field_1(self):
 
@@ -546,14 +546,14 @@ class ContactsPage(BasePage):
 
     def check_hidden_field_1(self):
 
-        event_edit_page = LoadClass.load_page('EventEditPage')
-        event_edit_page.setDriver(self.driver)
-        event_edit_page.check_hidden_field_1()
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.check_hidden_field_1()
 
     def check_hidden_fields_1_and_2(self):
 
-        event_edit_page = LoadClass.load_page('EventEditPage')
-        event_edit_page.setDriver(self.driver)
-        event_edit_page.check_hidden_fields_1_and_2()
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.check_hidden_fields_1_and_2()
 
 

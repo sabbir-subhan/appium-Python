@@ -1,6 +1,6 @@
-""" Methods for IOS 9 to handle Event Edit Page"""
+""" Methods for IOS 9 to handle Events Page"""
 
-from Modules.EventEditPage.IOS import IOS
+from Modules.EventsPage.IOS import IOS
 
 
 class IOS9(IOS):

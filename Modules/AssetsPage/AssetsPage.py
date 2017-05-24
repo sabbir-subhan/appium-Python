@@ -56,16 +56,6 @@ class AssetsPage(BasePage):
 
         self.switch_context_to_native()
 
-        # event_edit_page = LoadClass.load_page('EventEditPage')
-        # event_edit_page.setDriver(self.driver)
-        # event_edit_page.fill_Name_input_field(text)
-
-    # def scroll_down_to_save_button(self):
-    #
-    #     event_edit_page = LoadClass.load_page('EventEditPage')
-    #     event_edit_page.setDriver(self.driver)
-    #     event_edit_page.scroll_down_to_save_button()
-
     def click_save_button(self):
 
         self.switch_context_to_webview()
@@ -75,10 +65,6 @@ class AssetsPage(BasePage):
         save_button.click()
 
         self.switch_context_to_native()
-
-        # event_edit_page = LoadClass.load_page('EventEditPage')
-        # event_edit_page.setDriver(self.driver)
-        # event_edit_page.click_save_button()
 
     def open_existing_asset(self):
 
@@ -333,25 +319,25 @@ class AssetsPage(BasePage):
 
     def click_on_option_list(self):
 
-        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page = LoadClass.load_page('EventsPage')
         event_edit_page.setDriver(self.driver)
         event_edit_page.click_on_option_list()
 
     def click_on_option_1(self):
 
-        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page = LoadClass.load_page('EventsPage')
         event_edit_page.setDriver(self.driver)
         event_edit_page.click_on_option_1()
 
     def click_on_option_2(self):
 
-        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page = LoadClass.load_page('EventsPage')
         event_edit_page.setDriver(self.driver)
         event_edit_page.click_on_option_2()
 
     def click_on_option_3(self):
 
-        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page = LoadClass.load_page('EventsPage')
         event_edit_page.setDriver(self.driver)
         event_edit_page.click_on_option_3()
 
@@ -399,13 +385,13 @@ class AssetsPage(BasePage):
 
     def check_hidden_field_1(self):
 
-        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page = LoadClass.load_page('EventsPage')
         event_edit_page.setDriver(self.driver)
         event_edit_page.check_hidden_field_1()
 
     def check_hidden_fields_1_and_2(self):
 
-        event_edit_page = LoadClass.load_page('EventEditPage')
+        event_edit_page = LoadClass.load_page('EventsPage')
         event_edit_page.setDriver(self.driver)
         event_edit_page.check_hidden_fields_1_and_2()
 

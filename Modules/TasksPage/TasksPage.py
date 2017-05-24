@@ -21,14 +21,6 @@ class TasksPage(BasePage):
 
         self.switch_context_to_native()
 
-        # try:
-        #     title = self.driver.find_element(*self.configuration.TasksScreen.TITLE)
-        # except NoSuchElementException:
-        #     title = self.driver.find_element(*self.configuration.TasksScreen.TITLE2)
-        # self.assertIsNotNone(title, "Title input field was not found")
-        # title.click()
-        # title.send_keys(text)
-
     def click_on_assigned(self):
 
         logging.info("click on Assigned field")
@@ -68,9 +60,9 @@ class TasksPage(BasePage):
 
     def scroll_down_to_save_button(self):
 
-        event_edit_page = LoadClass.load_page('EventEditPage')
-        event_edit_page.setDriver(self.driver)
-        event_edit_page.scroll_down_to_save_button()
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.scroll_down_to_save_button()
 
     def click_save_button(self):
 
@@ -81,10 +73,6 @@ class TasksPage(BasePage):
         save_button.click()
 
         self.switch_context_to_native()
-
-        # event_edit_page = LoadClass.load_page('EventEditPage')
-        # event_edit_page.setDriver(self.driver)
-        # event_edit_page.click_save_button()
 
     def clear_Search_field(self):
 
@@ -123,13 +111,6 @@ class TasksPage(BasePage):
         sleep(2)
 
         self.switch_context_to_native()
-
-        # logging.info('edit created report approval task')
-        # sleep(2)
-        # edit_created_task = self.driver.find_elements(*self.configuration.TasksScreen.CREATED_TASK_WITH_APPROVAL)
-        # self.assertIsNotNone(edit_created_task, 'created task with approval, not found')
-        # edit_created_task[0].click()
-        # sleep(2)
 
     def click_button_yes_for_action_required(self):
 
