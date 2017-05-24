@@ -219,7 +219,8 @@ class Map:
     PLOT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-b>li#mapPlot>a')
     TOOL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-b>li#openMapToolMore>a[href="#mapToolMore"]')
     POINT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="POINT"]>h2>a')
-    POINT_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="POINT"]>div>ul>li>a')
+    POINT_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="POINT"]>div>ul>li.ui-first-child>a')
+    POINT_2_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="POINT"]>div>ul>li.ui-last-child>a')  # new symbology created in OCA
     LINE_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="LINESTRING"]>div>ul>li>a')
     CIRCLE_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="CIRCLE"]>div>ul>li>a')
     POLYGON_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="POLYGON"]>div>ul>li>a')
@@ -239,6 +240,7 @@ class Map:
     SECOND_LAYER_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#mapLayers>div.ui-content>ul>li:nth-child(2)')
     THIRD_LAYER_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#mapLayers>div.ui-content>ul>li:nth-child(3)')
     LAYERS_DONE = (MobileBy.CSS_SELECTOR, 'div#mapLayers>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a#layersDone')
+    LAYERS_SAVED_MAPS = (MobileBy.CSS_SELECTOR, 'div#mapLayers>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-b>a[href="#savedMaps"]')
     PLOT_TYPE_ASSET = (MobileBy.CSS_SELECTOR, 'div#mapPlotType>div.ui-content>ul.ui-listview>li>a[data-link="#assetNew?parent=0"]')
     LOCATE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#locateButton')
     SEARCH_BUTTON_ON_MAP = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#searchButton')
@@ -246,6 +248,8 @@ class Map:
     FIRST_ADDRESS_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#mapSearch>div.ui-content>ul.ui-listview>li.ui-first-child')
     ZOOM_IN_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_zoom_slider>div:first-child')
     ZOOM_OUT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_zoom_slider>div:last-child')
+    CLEAR_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-b>li#mapClear>a')
+    MAP_ADDED_LAYER = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer')
 
 
 class PhotoScreen:

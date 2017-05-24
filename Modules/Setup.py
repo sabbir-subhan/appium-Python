@@ -15,6 +15,7 @@ from Conf.desired_capabilities import DesiredCapabilities
 from configuration import PORT
 from appium import webdriver
 import unittest
+from time import sleep
 import logging
 FILE = './tests/TCs.log'
 FORMAT = '%(asctime)s %(message)s'
@@ -42,7 +43,7 @@ class SetupTestCase(unittest.TestCase):
     def setUp(self):
 
         # logging.info('starting Appium server')
-        #
+
         # subprocess.call(['/Users/lukasl/repos/appium-poc/cli.sh'])  # call shell script that will start appium server in new terminal
 
         # sleep(45)  # wait for appium server to start
@@ -55,7 +56,11 @@ class SetupTestCase(unittest.TestCase):
 
         self.driver = webdriver.Remote("http://localhost:" + str(PORT) + "/wd/hub", desired_capabilities)
 
-        self.driver.implicitly_wait(15)  # seconds - how long Appium will wait for conditions, for example try/except
+        sleep(15)  # wait for app launching + optional app installation or/and installation/launching WebDriverAgent
+
+        self.driver.implicitly_wait(5)  # seconds - how long Appium will wait for conditions, for example try/except
+
+        # self.driver.implicitly_wait(14)  # seconds - how long Appium will wait for conditions, for example try/except
 
 
 

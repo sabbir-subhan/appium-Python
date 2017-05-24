@@ -262,6 +262,7 @@ class Map:
     CIRCLE_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Circle")]]')
     POLYGON_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Polygon")]]')
     SAVE_MAP_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Save")]]')
+    SAVED_MAP_FOR_MOBILE = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "FOR MOBILE")]]')
 
 
 class PhotoScreen:

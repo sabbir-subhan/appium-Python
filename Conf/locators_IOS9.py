@@ -246,6 +246,7 @@ class Map:
     CIRCLE_BUTTON = (MobileBy.XPATH, '//UIAScrollView[2]/UIAWebView[1]/UIALink[@name[contains(., "Circle")]]')
     POLYGON_BUTTON = (MobileBy.XPATH, '//UIALink[@name[contains(., "Polygon")]]')
     SAVE_MAP_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Save")]]')
+    SAVED_MAP_FOR_MOBILE = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "FOR MOBILE")]]')
 
 
 class PhotoScreen:
@@ -327,7 +328,7 @@ class TasksScreen:
 class ReportsScreen:
     """A class for handling Report screen"""
     # LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAElement[1]')
-    LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//UIAWebView/UIAElement[1]')
+    LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//UIAWebView/UIAElement[@value="(none)"]')
     LODGING_AGENCY = (MobileBy.XPATH, '//UIAPopover/UIATableView/UIATableCell[2]')  # index in iOS9 is staring from 1
     # LODGING_AGENCY = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAPopover[1]/UIATableView[1]/UIATableCell[2]')
     PUBLISH_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Publish"]')
@@ -340,6 +341,7 @@ class ReportsScreen:
     REPORT_TYPE_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_on_load_sequence")]]')
     REPORT_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_visibility_rules")]]')
     REPORT_TYPE_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_assigned_question")]]')
+    MEDIA_RELEASE_FIELD = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIATextField[2]')
 
 
 class LogsScreen:

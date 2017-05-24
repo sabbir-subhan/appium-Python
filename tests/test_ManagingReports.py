@@ -206,7 +206,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.choose_report_type_with_assigned_question()
         reports_page.type_title("Report assigned question")
         reports_page.click_on_lodging_agency_picker()
-        reports_page.choose_lodging_agency("Active")
+        reports_page.choose_lodging_agency("contact_group_for_tests")
         reports_page.scroll_down_to_publish_button()
         reports_page.click_publish_new_report()
         common_page.wait_for_app_loading()

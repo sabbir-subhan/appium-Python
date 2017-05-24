@@ -65,7 +65,7 @@ class CommonPage(BasePage):
     def wait_for_app_loading(self):
 
         # logging.info("wait for app loading")
-        WebDriverWait(self.driver, 30).until(
+        WebDriverWait(self.driver, 20).until(
             expected_conditions.invisibility_of_element_located(self.configuration.CommonScreen.LOADING),
             "app is still loading - check internet connection")
 

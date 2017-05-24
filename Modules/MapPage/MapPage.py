@@ -3,6 +3,7 @@
 from Modules.BasePage.BasePage import BasePage
 import logging
 from time import sleep
+from selenium.common.exceptions import NoSuchElementException
 
 
 class MapPage(BasePage):
@@ -81,6 +82,17 @@ class MapPage(BasePage):
         self.assertIsNotNone(default_button, "default button not found")
         default_button.click()
         sleep(1)
+
+    def click_point_2_button(self):
+
+        self.switch_context_to_webview()
+
+        logging.info('click "point2" button - new symbology added in OCA')
+        point_2_button = self.driver.find_element(*self.configuration.Map.POINT_2_BUTTON)
+        self.assertIsNotNone(point_2_button, '"point2" button not found')
+        point_2_button.click()
+
+        self.switch_context_to_native()
 
     # def save_map(self):
     #
@@ -166,8 +178,19 @@ class MapPage(BasePage):
 
         logging.info("click done button")
         click_done_button = self.driver.find_element(*self.configuration.Map.LAYERS_DONE)
-        self.assertIsNotNone(click_done_button, "click_done_button not found")
+        self.assertIsNotNone(click_done_button, "Done button not found")
         click_done_button.click()
+
+        self.switch_context_to_native()
+
+    def click_saved_maps_button(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Saved maps button")
+        click_saved_maps_button = self.driver.find_element(*self.configuration.Map.LAYERS_SAVED_MAPS)
+        self.assertIsNotNone(click_saved_maps_button, "Saved maps not found")
+        click_saved_maps_button.click()
 
         self.switch_context_to_native()
 
@@ -251,4 +274,51 @@ class MapPage(BasePage):
 
         sleep(1)
 
+    def check_presents_of_added_layer(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("check if added layer is present on the map")
+        check_presents_of_added_layer = self.driver.find_element(*self.configuration.Map.MAP_ADDED_LAYER)
+        self.assertIsNotNone(check_presents_of_added_layer, "added layer not found")
+
+        self.switch_context_to_native()
+
+    def choose_map_for_mobile(self):
+
+        logging.info("choose saved map 'FOR MOBILE' ")
+        choose_map_for_mobile = self.driver.find_element(*self.configuration.Map.SAVED_MAP_FOR_MOBILE)
+        self.assertIsNotNone(choose_map_for_mobile, "Saved map 'FOR MOBILE' not found")
+        choose_map_for_mobile.click()
+        sleep(2)
+
+    def check_absence_of_added_layer(self):
+
+        logging.info("check absence of added layer")
+
+        self.switch_context_to_webview()
+
+        try:
+            check_absence_of_added_layer = self.driver.find_element(*self.configuration.Map.MAP_ADDED_LAYER)
+            if check_absence_of_added_layer.is_displayed():
+                self.fail("layer was not cleared correctly")
+            else:
+                logging.info("added layer is not displayed")
+                pass
+        except NoSuchElementException:
+            logging.info("layer is not visible = OK")
+            pass
+
+        self.switch_context_to_native()
+
+    def click_clear_button(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Clear button")
+        click_clear_button = self.driver.find_element(*self.configuration.Map.CLEAR_BUTTON)
+        self.assertIsNotNone(click_clear_button, "Clear button not found")
+        click_clear_button.click()
+
+        self.switch_context_to_native()
 

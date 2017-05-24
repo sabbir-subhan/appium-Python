@@ -152,6 +152,7 @@ class EventEditPage(BasePage):
             if field_to_restore_1_header.is_displayed():
                 self.fail("field was not hidden correctly")
             else:
+                logging.info("hidden field 1 is not displayed")
                 pass
         except NoSuchElementException:
             logging.info("field is not visible = OK")
@@ -165,11 +166,10 @@ class EventEditPage(BasePage):
                                                                  FIELD_TO_RESTORE_1_HEADER)
             field_to_restore_2_header = self.driver.find_element(*self.configuration.EventEditScreen.
                                                                  FIELD_TO_RESTORE_2_HEADER)
-            if field_to_restore_1_header.is_displayed():
-                self.fail("field 1 was not hidden correctly")
-            if field_to_restore_2_header.is_displayed():
-                self.fail("field 2 was not hidden correctly")
+            if field_to_restore_1_header.is_displayed() or field_to_restore_2_header.is_displayed():
+                self.fail("fields 1 and 2 were not hidden correctly")
             else:
+                logging.info("hidden fields 1 and 2 are not displayed")
                 pass
         except NoSuchElementException:
             logging.info("fields are not visible = OK")

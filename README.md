@@ -205,7 +205,7 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 
 - users accounts with correct settings (see credentials.py)
 
-##for TC: Managing Events
+## for TC: Managing Events
 - 3 types of events (Incident, event_for_chooser_fields, event_for_on_load/save_test)
 - option list inside "Central list templates" with values; "1", "2", "3" - that list is added as a option list to event type: event_for_on_load/save_test
 - two sequences for events (on load and on save) - that sequences are added to event type: event_for_on_load/save_test
@@ -215,25 +215,25 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 - EVENT TYPE: event_for_chooser_fields, should have "event chooser" field (name: "New events chooser") with property "Minimum selected options" set to "1", and second event chooser field inside sub form
  with name: "New events chooser inside sub form"
 
-##for TC: Send Photo and Send Video 
+## for TC: Send Photo and Send Video 
 - test steps have different order than those in Jira task, because in this way, before running test it is no longer necessary 
   to prepare sample photo and video files on real device, but unfortunately for emulators before running test "test_SendingVideo" tester must copy some video file into the emulator
 - go to OCA webpage - Settings - Settings - Security tab and in section Mobile, uncheck "Encrypt saved data in the app" and "Block jailbroken/rooted devices from using the app"
 
-##for TC: QuickAccessButtons
+## for TC: QuickAccessButtons
 - create quick access buttons - see task OCAMOB-48 prepare Lodging Agency named: "contact_group_for_tests" and configure Quick Access buttons for mobile app, 
  Login to OCA server>Click on Settings>Mobile Quick access Buttons>Add Quick Access buttons (see task in Jira), remember to firstly open some link on device/emulator - Android will ask witch browser You want to use
 
-##for TC: SentCommunication
+## for TC: SentCommunication
 - create contact with name: "CONTACT_FOR_APPIUM_TESTS" with email address
 
-##for Test Case: Assets
+## for Test Case: Assets
 - assets types named: "asset_with_visibility_rules", "asset_with_max_number_of_fields". Asset type with visibility rules must have 5 fields: 
  "Name", "New option list" - with options; "1", "2", "3" that options should restore 3 other fields. "field to restore", "New website address" with value: "http://bitnoi.se/" and "New email address" 
 -- visibility rules like in TC: Events
 - Lodging agency named: "contact_group_for_tests" is needed
 
-##for TC: Managing Reports
+## for TC: Managing Reports
 - Lodging agency named: "contact_group_for_tests", 
 - report type with all fields, named: "report_for_tests", 
 - report type with chooser fields, named: "report_with_chooser_fields",
@@ -247,13 +247,18 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
   two possible answers: "Yes/No", (field Assign to: Contact that activated workflow: Workflow info)
 - prepare Role for contact - choose contact that will be used to run test (default = Bitnoise QA)
   
-##for TC: Managing Logs
+## for TC: Managing Logs
 - log type with all fields, named: "log_with_all_fields",
 - log type with chooser fields, named: "log_with_chooser_fields", with log chooser filed as a last field in form
 - log type with on load (with default value = "test on load") and on save sequence, named: "log_with_on_load_sequence" (like in TC: Managing Events), 
 - log type with visibility rules, named: "log_with_visibility_rules", with fields "New option list" - with options; "1", "2", "3" that options should restore 3 other fields. "field to restore",
  "New website address" with value: "http://bitnoi.se/" and "New email address" with value: "test@noggin.com" - visibility rules like in TC: Managing Events
  (option 1 restores field to restore, option 2 restores New email address field, option 3 restores New website address)
+
+## for TC: Maps
+- Login to the OCA server > Click on OCA designer > Symbology and Colour Coding > Add more symbology - new point symbol name: "point2"
+- Login to oca server > Click on mapping > Draw geometry > Save map as "FOR MOBILE"
+
 
 
 ### **BEFORE EACH NEW RUN OF TESTS:** ###

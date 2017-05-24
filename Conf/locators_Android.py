@@ -299,6 +299,7 @@ class Map:
     CIRCLE_BUTTON = (MobileBy.XPATH, "//android.view.View[@content-desc[contains(., 'Circle')]]")
     POLYGON_BUTTON = (MobileBy.XPATH, "//android.view.View[@content-desc[contains(., 'Polygon')]]")
     SAVE_MAP_BUTTON = (MobileBy.ACCESSIBILITY_ID, "Save")
+    SAVED_MAP_FOR_MOBILE = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "FOR MOBILE")]]')
 
 
 class PhotoScreen:

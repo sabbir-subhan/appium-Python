@@ -6,7 +6,6 @@ from selenium.common.exceptions import *
 from Modules.CommonPage.CommonPage import CommonPage
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
-import time
 
 
 class IOS(CommonPage):
