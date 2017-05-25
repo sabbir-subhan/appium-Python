@@ -238,7 +238,7 @@ class Map:
     TOOL_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Tool")]]')
     POINT_BUTTON = (MobileBy.XPATH, '//UIALink[@name[contains(., "Point click to expand")]]')
     DEFAULT_BUTTON = (MobileBy.XPATH, '//UIAStaticText[@name="Default"]')
-    MAP_AREA_12 = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[12]')
+    MAP_AREA_12 = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[12]')  # those locators will not work for iOS9 - iPhones
     MAP_AREA_13 = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[13]')
     MAP_AREA_17 = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[17]')
     MAP_AREA_18 = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[18]')

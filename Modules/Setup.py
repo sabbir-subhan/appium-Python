@@ -58,7 +58,7 @@ class SetupTestCase(unittest.TestCase):
 
         sleep(15)  # wait for app launching + optional app installation or/and installation/launching WebDriverAgent
 
-        self.driver.implicitly_wait(5)  # seconds - how long Appium will wait for conditions, for example try/except
+        self.driver.implicitly_wait(6)  # seconds - how long Appium will wait for conditions, for example try/except
 
         # self.driver.implicitly_wait(14)  # seconds - how long Appium will wait for conditions, for example try/except
 

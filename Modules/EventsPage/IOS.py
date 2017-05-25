@@ -1,27 +1,50 @@
 """ Methods for IOS to handle Events Page """
 
 from Modules.EventsPage.EventsPage import EventsPage
-from selenium.common.exceptions import *
 import logging
 from time import sleep
 from Modules.load_class import LoadClass
+from appium.webdriver.common.touch_action import TouchAction
 
 
 class IOS(EventsPage):
 
-    def filter_events_by_Search_field(self):
+    def click_severity_lvl_picker_for_edit_event(self):
 
-        logging.info("search field - search event named: 'search'")
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).send_keys("search")
+        sleep(1)
+        logging.info("click on severity level picker")
+        severity_picker = self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR)
+        self.assertIsNotNone(severity_picker, "Lodging Agency picker was not found")
+        action = TouchAction(self.driver)
+        sleep(1)
+        action.tap(element=severity_picker, count=1).perform()
+        sleep(1)
 
-    def filter_events_to_find_previous_event(self):
+    def click_severity_lvl_picker(self):
 
-        logging.info("search field - search event named: 'app'")
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).send_keys("app")
+        IOS.click_severity_lvl_picker_for_edit_event(self)
+        # sleep(1)
+        # logging.info("click on severity level picker")
+        # severity_picker = self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR)
+        # self.assertIsNotNone(severity_picker, "Lodging Agency picker was not found")
+        # action = TouchAction(self.driver)
+        # sleep(1)
+        # action.tap(element=severity_picker, count=1).perform()
+        # sleep(1)
+
+    # def filter_events_by_Search_field(self):
+    #
+    #     logging.info("search field - search event named: 'search'")
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).send_keys("search")
+    #
+    # def filter_events_to_find_previous_event(self):
+    #
+    #     logging.info("search field - search event named: 'app'")
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).send_keys("app")
 
     # def clear_Search_field(self):
     #
@@ -118,24 +141,24 @@ class IOS(EventsPage):
     #             name_field_by_index.click()
     #             name_field_by_index.send_keys(text)
 
-    def click_severity_lvl_picker(self):  # not working for iOS 10
-
-        sleep(1)
-
-        logging.info("click on severity level field")
-        self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR).click()
-
-    click_severity_lvl_picker_for_edit_event = click_severity_lvl_picker
+    # def click_severity_lvl_picker(self):  # not working for iOS 10
+    #
+    #     sleep(1)
+    #
+    #     logging.info("click on severity level field")
+    #     self.driver.find_element(*self.configuration.EventEditScreen.SEVERITY_LEVEL_SELECTOR).click()
+    #
+    # click_severity_lvl_picker_for_edit_event = click_severity_lvl_picker
 
     def choose_severity_level_1(self):
 
-        logging.info("choose_severity_lvl1")
+        logging.info("choose severity level 1")
         try:
             choose_severity_lvl1 = self.driver.find_element(*self.configuration.EventEditScreen.
                                                             CHOOSE_SEVERITY_LVL1_iPad)
-            self.assertIsNotNone(choose_severity_lvl1, "choose_severity_lvl1 not found")
+            self.assertIsNotNone(choose_severity_lvl1, "severity level 1 not found")
             choose_severity_lvl1.click()
-        except NoSuchElementException:
+        except:
             picker_wheel = self.driver.find_element(*self.configuration.CommonScreen.PICKER_WHEEL)
             picker_wheel.send_keys('Severity 1')
             common_page = LoadClass.load_page('CommonPage')
@@ -144,13 +167,13 @@ class IOS(EventsPage):
 
     def choose_severity_level_2(self):
 
-        logging.info("choose_severity_lvl2")
+        logging.info("choose severity level 2")
         try:
             choose_severity_lvl2 = self.driver.find_element(*self.configuration.EventEditScreen.
                                                             CHOOSE_SEVERITY_LVL2_iPad)
-            self.assertIsNotNone(choose_severity_lvl2, "choose_severity_lvl2 not found")
+            self.assertIsNotNone(choose_severity_lvl2, "severity level 2 not found")
             choose_severity_lvl2.click()
-        except NoSuchElementException:
+        except:
             picker_wheel = self.driver.find_element(*self.configuration.CommonScreen.PICKER_WHEEL)
             picker_wheel.send_keys('Severity 2')
             common_page = LoadClass.load_page('CommonPage')
@@ -159,13 +182,13 @@ class IOS(EventsPage):
 
     def choose_severity_level_3(self):
 
-        logging.info("choose_severity_lvl3")
+        logging.info("choose severity level 3")
         try:
             choose_severity_lvl3 = self.driver.find_element(*self.configuration.EventEditScreen.
                                                             CHOOSE_SEVERITY_LVL3_iPad)
-            self.assertIsNotNone(choose_severity_lvl3, "choose_severity_lvl3 not found")
+            self.assertIsNotNone(choose_severity_lvl3, "severity level 3 not found")
             choose_severity_lvl3.click()
-        except NoSuchElementException:
+        except:
             picker_wheel = self.driver.find_element(*self.configuration.CommonScreen.PICKER_WHEEL)
             picker_wheel.send_keys('Severity 3')
             common_page = LoadClass.load_page('CommonPage')
@@ -174,13 +197,13 @@ class IOS(EventsPage):
 
     def choose_severity_level_4(self):
 
-        logging.info("choose_severity_lvl4")
+        logging.info("choose severity level 4")
         try:
             choose_severity_lvl4 = self.driver.find_element(*self.configuration.EventEditScreen.
                                                             CHOOSE_SEVERITY_LVL4_iPad)
-            self.assertIsNotNone(choose_severity_lvl4, "choose_severity_lvl4 not found")
+            self.assertIsNotNone(choose_severity_lvl4, "severity level 4 not found")
             choose_severity_lvl4.click()
-        except NoSuchElementException:
+        except:
             picker_wheel = self.driver.find_element(*self.configuration.CommonScreen.PICKER_WHEEL)
             picker_wheel.send_keys('Severity 4')
             common_page = LoadClass.load_page('CommonPage')
@@ -189,15 +212,14 @@ class IOS(EventsPage):
 
     def choose_severity_level_5(self):
 
-        logging.info("choose_severity_lvl5")
+        logging.info("choose severity level 5")
         try:
-            choose_severity_lvl5 = self.driver.find_element(*self.configuration.EventEditScreen.
-                                                            CHOOSE_SEVERITY_LVL5_iPad)
-            self.assertIsNotNone(choose_severity_lvl5, "choose_severity_lvl5 not found")
-            choose_severity_lvl5.click()
-        except NoSuchElementException:
+            choose_severity_lvl = self.driver.find_element(*self.configuration.EventEditScreen.CHOOSE_SEVERITY_LVL5_iPad)
+            self.assertIsNotNone(choose_severity_lvl, "severity level 5 not found")
+            choose_severity_lvl.click()
+        except:
             picker_wheel = self.driver.find_element(*self.configuration.CommonScreen.PICKER_WHEEL)
-            picker_wheel.send_keys('Severity 5')
+            picker_wheel.send_keys("Severity 5")
             common_page = LoadClass.load_page('CommonPage')
             common_page.setDriver(self.driver)
             common_page.done_button()

@@ -139,7 +139,6 @@ class ReportsPage(BasePage):
         choose_second_type = self.driver.find_element(*self.configuration.ReportsScreen.SECOND_TYPE)
         self.assertIsNotNone(choose_second_type, "second status not found")
         choose_second_type.click()
-        # sleep
 
         self.switch_context_to_native()
 
@@ -156,7 +155,6 @@ class ReportsPage(BasePage):
         choose_third_type = self.driver.find_element(*self.configuration.ReportsScreen.THIRD_TYPE)
         self.assertIsNotNone(choose_third_type, "third status not found")
         choose_third_type.click()
-        # sleep(1)
 
         self.switch_context_to_native()
 
@@ -173,7 +171,6 @@ class ReportsPage(BasePage):
         choose_fourth_type = self.driver.find_element(*self.configuration.ReportsScreen.FOURTH_TYPE)
         self.assertIsNotNone(choose_fourth_type, "fourth status not found")
         choose_fourth_type.click()
-        # sleep(1)
 
         self.switch_context_to_native()
 
@@ -190,7 +187,6 @@ class ReportsPage(BasePage):
         choose_first_type = self.driver.find_element(*self.configuration.ReportsScreen.FIRST_TYPE)
         self.assertIsNotNone(choose_first_type, "first status not found")
         choose_first_type.click()
-        # sleep(1)
 
         self.switch_context_to_native()
 
@@ -211,7 +207,6 @@ class ReportsPage(BasePage):
         choose_second_status = self.driver.find_element(*self.configuration.ReportsScreen.SECOND_STATUS)
         self.assertIsNotNone(choose_second_status, "second status not found")
         choose_second_status.click()
-        # sleep(1)
 
         self.switch_context_to_native()
 
@@ -228,7 +223,6 @@ class ReportsPage(BasePage):
         choose_third_status = self.driver.find_element(*self.configuration.ReportsScreen.THIRD_STATUS)
         self.assertIsNotNone(choose_third_status, "third status not found")
         choose_third_status.click()
-        # sleep(1)
 
         self.switch_context_to_native()
 
@@ -245,7 +239,6 @@ class ReportsPage(BasePage):
         choose_fourth_status = self.driver.find_element(*self.configuration.ReportsScreen.FOURTH_STATUS)
         self.assertIsNotNone(choose_fourth_status, "fourth status not found")
         choose_fourth_status.click()
-        # sleep(1)
 
         self.switch_context_to_native()
 
@@ -262,7 +255,6 @@ class ReportsPage(BasePage):
         choose_first_status = self.driver.find_element(*self.configuration.ReportsScreen.FIRST_STATUS)
         self.assertIsNotNone(choose_first_status, "first status not found")
         choose_first_status.click()
-        # sleep(1)
 
         self.switch_context_to_native()
 

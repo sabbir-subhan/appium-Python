@@ -139,7 +139,7 @@ to run tests on IOS10 (real device):
 2. enable USB debugging
 3. disable “Auto capitalize” in keyboard settings - because login starts from small letter “b”
 4. prevent device from disabling - enable option stay awake while plugged in
-5. unlock device and prevent automatic locking
+5. unlock device and prevent automatic screen locking
 
 
 PULLING APK FILE FROM ANDROID DEVICE:
@@ -166,14 +166,14 @@ finding app activity through adb - appActivity:
 
 1. for iOS 9.3.5 and older - enable UI Automation
 2. prevent device from disabling - enable option stay awake while plugged in
-3. unlock device and prevent automatic locking
+3. unlock device and prevent automatic screen locking
 4. for iOS 10 and newer - allow all permissions for the app (because Appium can't auto accept alerts on iOS higher than 9.3.5) 
 
 
 BUILDING .APP FILE ON OSX:
 
 - edit config.xml - change "id" for example to "com.noggin.oca$YOUR_USER_NAME"
-- build app through cordova
+- build app through Cordova
 - enable developer mode on device
 - open project in xcode and change Bundle Identifier accordingly to "id" above
 - build app through Xcode
@@ -181,29 +181,30 @@ BUILDING .APP FILE ON OSX:
 - path to built file is located in Conf/desired_capabilities 
 
 
-### **CONFIGURE APPIUM GUI:** ###
+### **CONFIGURE APPIUM GUI:**  (optional)
 
 - provide paths for android sdk and xcode
 - provide path to app file (android - .apk file, ios - .app file from xcode(xcode build the app file for example in /Users/$USER/Library/Developer/Xcode/DerivedData/) or in other location(ProjectSettings))
 - for iOS provide BundleID from xcode, check "Force device", device name and check "UDID" (search for it in iTunes or use terminal command: "idevice_id -l")
 - uncheck "No reset" checkbox 
-- if inspector in Appium doesn't work, try to uncheck "Bundle Identifier"
-
+- if inspector in Appium does not work, try to uncheck "Bundle Identifier"
 
 file /Conf/desired_capabilities.py need to be updated accordingly to used device:
-- it contains names of devices
+- name of device
 - UDID
 - OS version and name
 - paths to .apk and .app files
 
 
-# Some required configuration on OCA webpage: #
+# Some required configuration on OCA web page: #
+
+- disable Mobile Dashboard - go to OCA -> Settings -> Security -> User account types -> select account type -> choose "None" in Mobile dashboard selector
 
 - disable mobile encryption (PIN) in OCA Settings - Settings - Security tap
 
-- Locators for elements are partially based on visible texts, so if in OCA webpage, for example event type name, will be changed it will stop working.
+- locators for elements are partially based on visible texts, so if in OCA web page, for example event type name, will be changed, tests will stop working
 
-- users accounts with correct settings (see credentials.py)
+- create users accounts with correct settings (see credentials.py)
 
 ## for TC: Managing Events
 - 3 types of events (Incident, event_for_chooser_fields, event_for_on_load/save_test)
@@ -218,7 +219,7 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 ## for TC: Send Photo and Send Video 
 - test steps have different order than those in Jira task, because in this way, before running test it is no longer necessary 
   to prepare sample photo and video files on real device, but unfortunately for emulators before running test "test_SendingVideo" tester must copy some video file into the emulator
-- go to OCA webpage - Settings - Settings - Security tab and in section Mobile, uncheck "Encrypt saved data in the app" and "Block jailbroken/rooted devices from using the app"
+- go to OCA web page - Settings - Settings - Security tab and in section Mobile, uncheck "Encrypt saved data in the app" and "Block jailbroken/rooted devices from using the app"
 
 ## for TC: QuickAccessButtons
 - create quick access buttons - see task OCAMOB-48 prepare Lodging Agency named: "contact_group_for_tests" and configure Quick Access buttons for mobile app, 
@@ -265,8 +266,8 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 
 - make sure to launch appium server
 - make sure that real devices are connected and unlocked 
-- make sure that users accounts in OCA webpage have correct properties (for example expiration dates) and other tests have proper configurations in OCA webpage
-- disable PIN authentication in OCA webpage 
+- make sure that users accounts in OCA web page have correct properties (for example expiration dates) and other tests have proper configurations in OCA web page
+- disable PIN authentication in OCA web page 
 
 ### **RUNNING TESTS ON SIMULATORS:** ###
 
@@ -286,6 +287,7 @@ OCA APP VERSIONS:
 
 - real devices can overheat, which is causing test to fail
 - if You are running tests on real iOS device, sometimes Appium server and ios_webkit_debug_proxy need to be restarted to work properly 
+- "in switch_context_to_webview self.driver.switch_to.context(contexts[1]) IndexError: list index out of range"  --> You have to launch ios_webkit_debug_proxy for real device
 - some elements have attribute "visible: false" and appium is unable to interact with those elements for example map --that is bug in Appium
 - for some reason test sometimes fail to start on the first run, but after running it again it is working correctly (it may depends on that how fast device/simulator is starting)
 - if Appium, after running test, will throws: "An unknown server-side error occurred while processing the command. Original error: Installing", use: sudo chmod -R 777 /var/db/lockdown/
@@ -309,5 +311,5 @@ OCA APP VERSIONS:
 - "Error while executing atom: operation timed out" -- reconnect device and restart appium server
 - sometimes there are problems with real iOS 10 device - tests are failing because of appium server errors --try to reconnect device and restart appium server
 - double clicking action is not working properly with appium above 1.5.3
-
+- double clicking action may not work properly on iOS emulators
 

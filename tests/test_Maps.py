@@ -25,16 +25,14 @@
 # Click on +/- on the map --> Map should Zoom in and out
 # Click on map > Point > Select point/Line/Circle/Polygon --> All shapes are plotted on the map
 
-# login to the OCA server > Click on OCA designer > Symbology and Colour Coding > Add more symbology
+# Login to the OCA server > Click on OCA designer > Symbology and Colour Coding > Add more symbology
 
 # Login to oca server > Click on mapping > Draw geometry > Save map as "FOR MOBILE"
 # Load Saved maps to the mapping layer
 # Login to the app Click on Map > Click on Layers > Saved maps > Select a saved map created above
 # Clear saved maps Click on map > Click on layers > Saved maps>select a map > Clear --> Saved map is cleared.
 
-# Support Proxied layer feeds QLD LGA layer has been configured for testing
-# Login to App -> Click on mapping -> Click on layer -> Select QLD LGA -> Issue # 40773 for details
-# --> Proxied layers are rendered properly on the oca App
+# Load some layer into the map --> Layer added to the map on oca mobile
 
 from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
@@ -89,7 +87,7 @@ class TestMaps(SetupTestCase):
         map_page.click_done_button()
 
         map_page.click_locate_button()
-        sleep(2)  # wait for localization
+        sleep(5)  # wait for localization
         map_page.click_locate_button()
         map_page.click_search_button_on_the_map()
         map_page.type_address_into_search_field("580 George street Sydney 2121")
@@ -139,8 +137,16 @@ class TestMaps(SetupTestCase):
         map_page.check_presents_of_added_layer()
         map_page.click_clear_button()
         map_page.check_absence_of_added_layer()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
 
-        # step nr 10 - adding QLD LGA layer ?
+        main_page.open_MAP()
+        common_page.alert_popup_allow()
+        map_page = LoadClass.load_page("MapPage")
+        map_page.setDriver(self.driver)
+        map_page.click_layers_button()
+        map_page.choose_second_layer_from_the_list()
+        map_page.click_done_button()
 
 
 if __name__ == '__main__':

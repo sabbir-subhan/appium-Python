@@ -85,12 +85,11 @@ class Android(ReportsPage):
         common_page.scroll_down_one_view()
         common_page.scroll_down_one_view()
 
-    def choose_lodging_agency(self, text):
+    def choose_lodging_agency(self):
 
         logging.info("choose Lodging Agency")
         lodging_agency = self.driver.find_element(*self.configuration.ReportsScreen.LODGING_AGENCY)
         self.assertIsNotNone(lodging_agency, "Lodging Agency inside picker was not found")
-        print(text)
         lodging_agency.click()
         sleep(1)
 

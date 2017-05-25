@@ -183,6 +183,8 @@ class MapPage(BasePage):
 
         self.switch_context_to_native()
 
+        sleep(4)  # wait for map to load new layer
+
     def click_saved_maps_button(self):
 
         self.switch_context_to_webview()

@@ -104,44 +104,47 @@ class MainMenuScreen(WelcomeScreen):
 
 class LocationScreen:
     """A class for Location screen locators - screen after clicking into Location button in Main Menu."""
-    SEND_ONCE_NOW = (MobileBy.CSS_SELECTOR, '')
+    # SEND_ONCE_NOW = (MobileBy.CSS_SELECTOR, '')
     SEND_EVERY_SPINNER = (MobileBy.CSS_SELECTOR, 'div#location>div.ui-content>div.ui-grid-a>div.ui-block-b>div.ui-select>div#locationInterval-button>select[name="locationInterval"]')
-    CHOOSE_5_MINUTES_OPTION_iPad = (MobileBy.CSS_SELECTOR, '')
-    ASSERT_5_MINUTES_OPTION = (MobileBy.CSS_SELECTOR, '')
+    # CHOOSE_5_MINUTES_OPTION_iPad = (MobileBy.CSS_SELECTOR, '')
+    # ASSERT_5_MINUTES_OPTION = (MobileBy.CSS_SELECTOR, '')
     FOR_THE_NEXT_SPINNER = (MobileBy.CSS_SELECTOR, 'div#locationDuration-button>select[name="locationDuration"]')
-    CHOOSE_1_HOUR_OPTION_iPad = (MobileBy.CSS_SELECTOR, '')
-    ASSERT_1_HOUR_OPTION = (MobileBy.CSS_SELECTOR, '')
+    # CHOOSE_1_HOUR_OPTION_iPad = (MobileBy.CSS_SELECTOR, '')
+    # ASSERT_1_HOUR_OPTION = (MobileBy.CSS_SELECTOR, '')
     START_BUTTON = (MobileBy.CSS_SELECTOR, 'button#locationStart')
-    STOP_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    TRACKING_HISTORY_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    LOCATION_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
-    LOCATION_STATUS = (MobileBy.CSS_SELECTOR, '')
+    # STOP_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    # TRACKING_HISTORY_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    # LOCATION_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
+    # LOCATION_STATUS = (MobileBy.CSS_SELECTOR, '')
 
 
 class EventsScreen:
     """A class for Events screen locators - screen after clicking into Events button in Main Menu."""
 
-    # # filtering events by Type
+    # filtering events by Type
     # ANY_TYPE_EXPAND = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div[data-role="main"]>div.filters>div[data-role="collapsible"]>h2>a>span[data-translate="Any Type"]')
     # CHOOSE_TYPE_INCIDENT = (MobileBy.CSS_SELECTOR, '')
     # INCIDENT_TYPE_EXPAND = (MobileBy.CSS_SELECTOR, '')
     # CHOOSE_TYPE_ANY = (MobileBy.CSS_SELECTOR, '')
-    #
-    # # filtering events by Status
+
+    # filtering events by Status
     # ANY_STATUS_EXPAND = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div[data-role="main"]>div.filters>div[data-role="collapsible"]>h2>a>span[data-translate="Any Status"]')
-    # CHOOSE_ACTIVE_STATUS = (MobileBy.CSS_SELECTOR, '')
-    # ACTIVE_STATUS_EXPAND = (MobileBy.CSS_SELECTOR, '')
-    # CHOOSE_INACTIVE_STATUS = (MobileBy.CSS_SELECTOR, '')
-    # INACTIVE_STATUS_EXPAND = (MobileBy.CSS_SELECTOR, '')
-    # CHOOSE_DRAFT_STATUS = (MobileBy.CSS_SELECTOR, '')
-    # DRAFT_STATUS_EXPAND = (MobileBy.CSS_SELECTOR, '')
-    # CHOOSE_ANY_STATUS = (MobileBy.CSS_SELECTOR, '')
+    TYPE_FILTER = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div.ui-content>div.filters>div[data-role="collapsible"]:first-child>h2>a')
+    FIRST_TYPE = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div.ui-content>div.filters>div[data-role="collapsible"]:first-child>div>ul[data-role="listview"]>li:first-child>a')  # ALL REPORTS
+    SECOND_TYPE = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div.ui-content>div.filters>div[data-role="collapsible"]:first-child>div>ul[data-role="listview"]>li:nth-child(2)>a')  # MEDIA RELEASE
+    THIRD_TYPE = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div.ui-content>div.filters>div[data-role="collapsible"]:first-child>div>ul[data-role="listview"]>li:nth-child(3)>a')  # REPORT_FOR_TESTS
+    FOURTH_TYPE = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div.ui-content>div.filters>div[data-role="collapsible"]:first-child>div>ul[data-role="listview"]>li:nth-child(4)>a')  # SITUATION REPORT
+    STATUS_FILTER = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div.ui-content>div.filters>div[data-role="collapsible"]:nth-child(2)>h2>a')
+    FIRST_STATUS = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div.ui-content>div.filters>div[data-role="collapsible"]:nth-child(2)>div>ul[data-role="listview"]>li:first-child>a')  # ANY STATUS
+    SECOND_STATUS = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div.ui-content>div.filters>div[data-role="collapsible"]:nth-child(2)>div>ul[data-role="listview"]>li:nth-child(2)>a')  # ACTIVE
+    THIRD_STATUS = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div.ui-content>div.filters>div[data-role="collapsible"]:nth-child(2)>div>ul[data-role="listview"]>li:nth-child(3)>a')  # INACTIVE
+    FOURTH_STATUS = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div.ui-content>div.filters>div[data-role="collapsible"]:nth-child(2)>div>ul[data-role="listview"]>li:nth-child(4)>a')  # DRAFT
 
     # filtering events using search field
     SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input#emeSearch')
 
     # creating and editing Events
-    # MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-b>a[href="#"]')
+    MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li#openEmeTreeMore>a[href="#emeTreeMore"]')
     NEW_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#emeNew?parent=0"]')
 
     # previously created event
@@ -178,26 +181,26 @@ class EventEditScreen:
     # CHOOSE_SEVERITY_LVL3_iPad = (MobileBy.CSS_SELECTOR, '')
     # CHOOSE_SEVERITY_LVL4_iPad = (MobileBy.CSS_SELECTOR, '')
     # CHOOSE_SEVERITY_LVL5_iPad = (MobileBy.CSS_SELECTOR, '')
-    FINISHED_FIELD = (MobileBy.CSS_SELECTOR, '')
+    # FINISHED_FIELD = (MobileBy.CSS_SELECTOR, '')
     DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'iframe[title="Rich Text Editor, description"]')
     CREATE_MAPPING_DATA = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div>ul.edit-view.ui-listview>li.geometryinput>a')
-    EDIT_MAPPING_DATA = (MobileBy.CSS_SELECTOR, '')
-    ELEMENT_TO_SCROLL = (MobileBy.CSS_SELECTOR, '')
-    SEQUENCE_ONLOAD_HEADER = (MobileBy.CSS_SELECTOR, '')
-    SEQUENCE_ONLOAD_VALUE = (MobileBy.CSS_SELECTOR, '')
-    SEQUENCE_ONSAVE_HEADER = (MobileBy.CSS_SELECTOR, '')
-    SEQUENCE_ONSAVE_VALUE = (MobileBy.CSS_SELECTOR, '')
-    NEW_OPTION_LIST_HEADER = (MobileBy.CSS_SELECTOR, '')
-    OPTION_LIST_VALUE_1 = (MobileBy.CSS_SELECTOR, '')
-    OPTION_LIST_VALUE_2 = (MobileBy.CSS_SELECTOR, '')
-    OPTION_LIST_VALUE_3 = (MobileBy.CSS_SELECTOR, '')
+    # EDIT_MAPPING_DATA = (MobileBy.CSS_SELECTOR, '')
+    # ELEMENT_TO_SCROLL = (MobileBy.CSS_SELECTOR, '')
+    # SEQUENCE_ONLOAD_HEADER = (MobileBy.CSS_SELECTOR, '')
+    # SEQUENCE_ONLOAD_VALUE = (MobileBy.CSS_SELECTOR, '')
+    # SEQUENCE_ONSAVE_HEADER = (MobileBy.CSS_SELECTOR, '')
+    # SEQUENCE_ONSAVE_VALUE = (MobileBy.CSS_SELECTOR, '')
+    # NEW_OPTION_LIST_HEADER = (MobileBy.CSS_SELECTOR, '')
+    # OPTION_LIST_VALUE_1 = (MobileBy.CSS_SELECTOR, '')
+    # OPTION_LIST_VALUE_2 = (MobileBy.CSS_SELECTOR, '')
+    # OPTION_LIST_VALUE_3 = (MobileBy.CSS_SELECTOR, '')
     FIELD_TO_RESTORE_1_HEADER = (MobileBy.CSS_SELECTOR, 'div.ui-content>ul.edit-view>li>label[for="field to restore"]')
-    FIELD_TO_RESTORE_1_VALUE = (MobileBy.CSS_SELECTOR, '')
+    # FIELD_TO_RESTORE_1_VALUE = (MobileBy.CSS_SELECTOR, '')
     FIELD_TO_RESTORE_2_HEADER = (MobileBy.CSS_SELECTOR, 'div.ui-content>ul.edit-view>li>label[for="new email address"]')
-    FIELD_TO_RESTORE_2_VALUE = (MobileBy.CSS_SELECTOR, '')
+    # FIELD_TO_RESTORE_2_VALUE = (MobileBy.CSS_SELECTOR, '')
     FIELD_TO_RESTORE_3_HEADER = (MobileBy.CSS_SELECTOR, 'div.ui-content>ul.edit-view>li>label[for="new website address"]')
-    FIELD_TO_RESTORE_3_VALUE = (MobileBy.CSS_SELECTOR, '')
-    CHOOSER_FIELD = (MobileBy.CSS_SELECTOR, '')
+    # FIELD_TO_RESTORE_3_VALUE = (MobileBy.CSS_SELECTOR, '')
+    # CHOOSER_FIELD = (MobileBy.CSS_SELECTOR, '')
     SUBFORM_FIELD_ADD_ROW = (MobileBy.CSS_SELECTOR, 'div.subform>a')
     NEW_EVENTS_CHOOSER_IN_SUB_FORM = (MobileBy.CSS_SELECTOR, 'div.subform>div.subform-row>ul.subform-row>li>div.ui-select')
     DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.CSS_SELECTOR, 'div.subform>div.subform-row>a.delete')
@@ -207,8 +210,9 @@ class EventDetailsScreen:
     """A class for Event Details screen locators - screen with event details - after opening event."""
     EDIT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.edit.ui-block-a>a')
     DELETE_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#confirmDeleteEME"]')
-    DELETE_CONFIRM_BUTTON = (MobileBy.CSS_SELECTOR, '')
-    MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#emeViewMoreMenu"]')
+    # DELETE_CONFIRM_BUTTON = (MobileBy.CSS_SELECTOR, '')
+    MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeView>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-a>li.more.ui-block-b>a[href="#emeViewMoreMenu"]')
+    # MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeView>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-a>li.more.ui-block-b')
     NEW_SUB_EVENT = (MobileBy.CSS_SELECTOR, 'li.eme.new.subeme>a')
     SET_AS_PRIMARY_BUTTON = (MobileBy.CSS_SELECTOR, 'li.primary.eme.set.ineme.ui-first-child>a')
     EVENT_INFO_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a.emeView')
@@ -406,7 +410,7 @@ class ReportsScreen:
 class SentScreen:
     """A class for handling Sent screen"""
     # SEARCH = EventsScreen.SEARCH_FIELD
-    SENT_COMMUNICATIONS_EMAIL = (MobileBy.CSS_SELECTOR, '')
+    # SENT_COMMUNICATIONS_EMAIL = (MobileBy.CSS_SELECTOR, '')
 
 
 class ComposeScreen:

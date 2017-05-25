@@ -4,6 +4,7 @@ from Modules.BasePage.BasePage import BasePage
 from time import sleep
 import logging
 from selenium.common.exceptions import *
+from Modules.load_class import LoadClass
 
 
 class EventsPage(BasePage):
@@ -60,24 +61,37 @@ class EventsPage(BasePage):
     #
     #     self.switch_context_to_native()
 
-    def click_More_button(self):
+    def click_more_button_in_events_list(self):
 
-        #self.switch_context_to_webview()
+        self.switch_context_to_webview()
 
-        # sleep(1)
-        # logging.info("click 'More' button")
-        # more_button = self.driver.find_element(*self.configuration.CommonScreen.SPINNER_ON_THE_RIGHT)
-        # self.assertIsNotNone(more_button, "More button was not found")
-        # more_button.click()
-        # sleep(0.5)
-        sleep(2)
         logging.info("click 'More' button")
         more_button = self.driver.find_element(*self.configuration.EventsScreen.MORE_BUTTON)
         self.assertIsNotNone(more_button, "More button was not found")
         more_button.click()
-        sleep(0.5)
 
-        #self.switch_context_to_native()
+        self.switch_context_to_native()
+
+    def click_more_button_in_event_details(self):
+
+        self.switch_context_to_webview()
+
+        sleep(1)
+        logging.info("click 'More' button")
+        more_button = self.driver.find_element(*self.configuration.EventDetailsScreen.MORE_BUTTON)
+        self.assertIsNotNone(more_button, "More button was not found")
+        more_button.click()
+
+        self.switch_context_to_native()
+
+    # def click_More_button(self):
+    #
+    #     sleep(2)
+    #     logging.info("click 'More' button")
+    #     more_button = self.driver.find_element(*self.configuration.EventsScreen.MORE_BUTTON)
+    #     self.assertIsNotNone(more_button, "More button was not found")
+    #     more_button.click()
+    #     sleep(0.5)
 
     def check_if_EVENTS_were_opened(self):
 
@@ -86,33 +100,205 @@ class EventsPage(BasePage):
         events_header = self.driver.find_element(*self.configuration.EventsScreen.EVENTS_HEADER)
         self.assertIsNotNone(events_header)
 
-    def filter_events_by_Type(self):
+    # def filter_events_by_Type(self):
+    # 
+    #     sleep(1)
+    #     logging.info("filtering events by Type")
+    #     self.driver.find_element(*self.configuration.EventsScreen.ANY_TYPE_EXPAND).click()
+    #     self.driver.find_element(*self.configuration.EventsScreen.CHOOSE_TYPE_INCIDENT).click()
+    #     sleep(1)
+    #     self.driver.find_element(*self.configuration.EventsScreen.INCIDENT_TYPE_EXPAND).click()
+    #     self.driver.find_element(*self.configuration.EventsScreen.CHOOSE_TYPE_ANY).click()
+    #     sleep(1)
+    # 
+    # def filter_events_by_Status(self):
+    # 
+    #     sleep(1)
+    #     logging.info("filtering events by Status")
+    #     self.driver.find_element(*self.configuration.EventsScreen.ANY_STATUS_EXPAND).click()
+    #     self.driver.find_element(*self.configuration.EventsScreen.CHOOSE_ACTIVE_STATUS).click()
+    #     sleep(1)
+    #     self.driver.find_element(*self.configuration.EventsScreen.ACTIVE_STATUS_EXPAND).click()
+    #     self.driver.find_element(*self.configuration.EventsScreen.CHOOSE_INACTIVE_STATUS).click()
+    #     sleep(1)
+    #     self.driver.find_element(*self.configuration.EventsScreen.INACTIVE_STATUS_EXPAND).click()
+    #     self.driver.find_element(*self.configuration.EventsScreen.CHOOSE_DRAFT_STATUS).click()
+    #     sleep(1)
+    #     self.driver.find_element(*self.configuration.EventsScreen.DRAFT_STATUS_EXPAND).click()
+    #     self.driver.find_element(*self.configuration.EventsScreen.CHOOSE_ANY_STATUS).click()
+    #     sleep(1)
 
-        sleep(1)
-        logging.info("filtering events by Type")
-        self.driver.find_element(*self.configuration.EventsScreen.ANY_TYPE_EXPAND).click()
-        self.driver.find_element(*self.configuration.EventsScreen.CHOOSE_TYPE_INCIDENT).click()
-        sleep(1)
-        self.driver.find_element(*self.configuration.EventsScreen.INCIDENT_TYPE_EXPAND).click()
-        self.driver.find_element(*self.configuration.EventsScreen.CHOOSE_TYPE_ANY).click()
+    def filter_events_by_type(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("filter events by type")
+
+        expand_type_filters = self.driver.find_element(*self.configuration.EventsScreen.TYPE_FILTER)
+        self.assertIsNotNone(expand_type_filters, "type filter not found")
+        expand_type_filters.click()
+
+        choose_second_type = self.driver.find_element(*self.configuration.EventsScreen.SECOND_TYPE)
+        self.assertIsNotNone(choose_second_type, "second status not found")
+        choose_second_type.click()
+
+        self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
+        self.switch_context_to_webview()
+
+        expand_type_filters = self.driver.find_element(*self.configuration.EventsScreen.TYPE_FILTER)
+        self.assertIsNotNone(expand_type_filters, "type filter not found")
+        expand_type_filters.click()
+
+        choose_third_type = self.driver.find_element(*self.configuration.EventsScreen.THIRD_TYPE)
+        self.assertIsNotNone(choose_third_type, "third status not found")
+        choose_third_type.click()
+
+        self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
+        self.switch_context_to_webview()
+
+        expand_type_filters = self.driver.find_element(*self.configuration.EventsScreen.TYPE_FILTER)
+        self.assertIsNotNone(expand_type_filters, "type filter not found")
+        expand_type_filters.click()
+
+        choose_fourth_type = self.driver.find_element(*self.configuration.EventsScreen.FOURTH_TYPE)
+        self.assertIsNotNone(choose_fourth_type, "fourth status not found")
+        choose_fourth_type.click()
+
+        self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
+        self.switch_context_to_webview()
+
+        expand_type_filters = self.driver.find_element(*self.configuration.EventsScreen.TYPE_FILTER)
+        self.assertIsNotNone(expand_type_filters, "type filter not found")
+        expand_type_filters.click()
+
+        choose_first_type = self.driver.find_element(*self.configuration.EventsScreen.FIRST_TYPE)
+        self.assertIsNotNone(choose_first_type, "first status not found")
+        choose_first_type.click()
+
+        self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
+    def filter_events_by_status(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("filter events by status")
+
+        expand_status_filters = self.driver.find_element(*self.configuration.EventsScreen.STATUS_FILTER)
+        self.assertIsNotNone(expand_status_filters, "status filter not found")
+        expand_status_filters.click()
+
+        choose_second_status = self.driver.find_element(*self.configuration.EventsScreen.SECOND_STATUS)
+        self.assertIsNotNone(choose_second_status, "second status not found")
+        choose_second_status.click()
+
+        self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
+        self.switch_context_to_webview()
+
+        expand_status_filters = self.driver.find_element(*self.configuration.EventsScreen.STATUS_FILTER)
+        self.assertIsNotNone(expand_status_filters, "status filter not found")
+        expand_status_filters.click()
+
+        choose_third_status = self.driver.find_element(*self.configuration.EventsScreen.THIRD_STATUS)
+        self.assertIsNotNone(choose_third_status, "third status not found")
+        choose_third_status.click()
+
+        self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
+        self.switch_context_to_webview()
+
+        expand_status_filters = self.driver.find_element(*self.configuration.EventsScreen.STATUS_FILTER)
+        self.assertIsNotNone(expand_status_filters, "status filter not found")
+        expand_status_filters.click()
+
+        choose_fourth_status = self.driver.find_element(*self.configuration.EventsScreen.FOURTH_STATUS)
+        self.assertIsNotNone(choose_fourth_status, "fourth status not found")
+        choose_fourth_status.click()
+
+        self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
+        self.switch_context_to_webview()
+
+        expand_status_filters = self.driver.find_element(*self.configuration.EventsScreen.STATUS_FILTER)
+        self.assertIsNotNone(expand_status_filters, "status filter not found")
+        expand_status_filters.click()
+
+        choose_first_status = self.driver.find_element(*self.configuration.EventsScreen.FIRST_STATUS)
+        self.assertIsNotNone(choose_first_status, "first status not found")
+        choose_first_status.click()
+
+        self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
+        # self.switch_context_to_native()
+
+    def filter_events_by_active_status(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("filter events by active status")
+
+        expand_status_filters = self.driver.find_element(*self.configuration.EventsScreen.STATUS_FILTER)
+        self.assertIsNotNone(expand_status_filters, "status filter not found")
+        expand_status_filters.click()
+
+        choose_second_status = self.driver.find_element(*self.configuration.EventsScreen.SECOND_STATUS)
+        self.assertIsNotNone(choose_second_status, "second status not found")
+        choose_second_status.click()
         sleep(1)
 
-    def filter_events_by_Status(self):
+        self.switch_context_to_native()
 
+    def filter_events_by_any_status(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("filter events by any status")
+
+        expand_status_filters = self.driver.find_element(*self.configuration.EventsScreen.STATUS_FILTER)
+        self.assertIsNotNone(expand_status_filters, "status filter not found")
+        expand_status_filters.click()
+
+        choose_second_status = self.driver.find_element(*self.configuration.EventsScreen.FIRST_STATUS)
+        self.assertIsNotNone(choose_second_status, "second status not found")
+        choose_second_status.click()
         sleep(1)
-        logging.info("filtering events by Status")
-        self.driver.find_element(*self.configuration.EventsScreen.ANY_STATUS_EXPAND).click()
-        self.driver.find_element(*self.configuration.EventsScreen.CHOOSE_ACTIVE_STATUS).click()
-        sleep(1)
-        self.driver.find_element(*self.configuration.EventsScreen.ACTIVE_STATUS_EXPAND).click()
-        self.driver.find_element(*self.configuration.EventsScreen.CHOOSE_INACTIVE_STATUS).click()
-        sleep(1)
-        self.driver.find_element(*self.configuration.EventsScreen.INACTIVE_STATUS_EXPAND).click()
-        self.driver.find_element(*self.configuration.EventsScreen.CHOOSE_DRAFT_STATUS).click()
-        sleep(1)
-        self.driver.find_element(*self.configuration.EventsScreen.DRAFT_STATUS_EXPAND).click()
-        self.driver.find_element(*self.configuration.EventsScreen.CHOOSE_ANY_STATUS).click()
-        sleep(1)
+
+        self.switch_context_to_native()
 
     def click_New_event_button(self):
 
@@ -469,7 +655,11 @@ class EventsPage(BasePage):
         save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON)
         self.assertIsNotNone(save_button, "Save button not found")
         save_button.click()
-        sleep(10)
+        sleep(2)
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
     def click_save_new_event(self):
 
@@ -481,9 +671,13 @@ class EventsPage(BasePage):
         save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON_NEW_EVENT)
         self.assertIsNotNone(save_button, "Save button not found")
         save_button.click()
-        sleep(10)
+        sleep(2)
 
         self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
     def click_save_edited_event(self):
 
@@ -495,9 +689,13 @@ class EventsPage(BasePage):
         save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON_EDIT_EVENT)
         self.assertIsNotNone(save_button, "Save button not found")
         save_button.click()
-        sleep(10)
+        sleep(2)
 
         self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
     # def click_cancel_button(self):
     #
@@ -560,3 +758,14 @@ class EventsPage(BasePage):
         logging.info("choose type of event = event for chooser fields")
         event_type_chooser.click()
         sleep(5)
+
+    def type_text_into_search_field(self, text):
+
+        logging.info("filter events by search field")
+
+        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+        self.assertIsNotNone(search_field, "Search field not found")
+        search_field.click()
+        sleep(1)
+        search_field.send_keys(text)
+        sleep(1)
