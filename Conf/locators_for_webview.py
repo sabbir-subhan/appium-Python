@@ -122,6 +122,7 @@ class EventsScreen:
     """A class for Events screen locators - screen after clicking into Events button in Main Menu."""
 
     # filtering events by Type
+    CLEAR_SEARCH_FIELD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div.ui-content>div.filters>div.ui-input-search>a.ui-input-clear')
     # ANY_TYPE_EXPAND = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div[data-role="main"]>div.filters>div[data-role="collapsible"]>h2>a>span[data-translate="Any Type"]')
     # CHOOSE_TYPE_INCIDENT = (MobileBy.CSS_SELECTOR, '')
     # INCIDENT_TYPE_EXPAND = (MobileBy.CSS_SELECTOR, '')
@@ -154,6 +155,7 @@ class EventsScreen:
 
     # CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, 'li.primary.eme.clear.ui-first-child>a')
     # NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.CSS_SELECTOR, '')
+    VIEW_ON_MAP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeView>div.ui-content>ul.ui-listview>li>a[href="#mapPage?geometry=true"]')  # button inside event details
 
 
 class TypesOfEventsScreen:
@@ -254,6 +256,10 @@ class Map:
     ZOOM_OUT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_zoom_slider>div:last-child')
     CLEAR_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-b>li#mapClear>a')
     MAP_ADDED_LAYER = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer')
+    FIRST_PLOT_OBJECT = (MobileBy.CSS_SELECTOR, 'div#mapPlotType>div.ui-content>ul.ui-listview>li:first-child>a')  # asset
+    SECOND_PLOT_OBJECT = (MobileBy.CSS_SELECTOR, 'div#mapPlotType>div.ui-content>ul.ui-listview>li:nth-child(2)>a')  # event
+    THIRD_PLOT_OBJECT = (MobileBy.CSS_SELECTOR, 'div#mapPlotType>div.ui-content>ul.ui-listview>li:nth-child(3)>a')  # report
+    FOURTH_PLOT_OBJECT = (MobileBy.CSS_SELECTOR, 'div#mapPlotType>div.ui-content>ul.ui-listview>li:last-child>a')  # task
 
 
 class PhotoScreen:
@@ -343,6 +349,7 @@ class ContactsScreen:
     SEQUENCE_ON_LOAD = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_load"]')
     SEQUENCE_ON_SAVE = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_save"]')
     OPTION_LIST = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.edit-view>li[name="new option list"]')
+    CLEAR_SEARCH_FIELD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.ui-input-search>a.ui-input-clear')
 
 
 class TasksScreen:
@@ -368,6 +375,8 @@ class TasksScreen:
     INCOMPLETE_TASKS = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-content>div[data-role="collapsible"]:first-child>div>ul[data-role="listview"]>li:nth-child(3)>a')
     ACTION_REQUIRED_TASKS = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-content>div[data-role="collapsible"]:first-child>div>ul[data-role="listview"]>li:nth-child(4)>a')
     FIRST_TASK_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-content>div.main>ul.tasks>li:first-child>a')
+    CLEAR_SEARCH_FIELD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-content>div.ui-input-search>a.ui-input-clear')
+    VIEW_ON_MAP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskView>div.ui-content>ul.ui-listview>li>a[href="#mapPage?geometry=true"]')  # button inside task details
 
 
 class ReportsScreen:
@@ -405,11 +414,13 @@ class ReportsScreen:
     SEQUENCE_ON_SAVE = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_save"]')
     # MEDIA_RELEASE_FIELD = (MobileBy.CSS_SELECTOR, '')  # rich text field must be located in native view
     OPTION_LIST = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li[name="new option list"]>div.ui-select>div')
+    CLEAR_SEARCH_FIELD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div.ui-input-search>a.ui-input-clear')
+    VIEW_ON_MAP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#reportView>div.ui-content>ul.ui-listview>li>a[href="#mapPage?geometry=true"]')  # button inside report details
 
 
 class SentScreen:
     """A class for handling Sent screen"""
-    # SEARCH = EventsScreen.SEARCH_FIELD
+    CLEAR_SEARCH_FIELD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#sentComms>div.ui-content>div.ui-input-search>a.ui-input-clear')
     # SENT_COMMUNICATIONS_EMAIL = (MobileBy.CSS_SELECTOR, '')
 
 
@@ -484,6 +495,7 @@ class RisksScreen:
     REVIEW_ALERT = (MobileBy.CSS_SELECTOR, 'div#confirmReviewRisk>div.ng-dialog-container>div[data-role="controlgroup"]>div.ui-controlgroup-controls>a:first-child')
     RISK_LIBRARY = (MobileBy.CSS_SELECTOR, 'div#risklibraryTreeView>div.ui-content>ul.category>li:first-child>a')
     RISK_INSIDE_LIBRARY = (MobileBy.CSS_SELECTOR, 'div#risklibraryTreeView>div.ui-content>ul.item>li:first-child')
+    CLEAR_SEARCH_FIELD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#riskRegisterIndex>div.ui-content>div.ui-input-search>a.ui-input-clear')
 
 
 class AssetsScreen:
@@ -511,6 +523,8 @@ class AssetsScreen:
     SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.filters>div>input[id="assetSearch"]')
     CREATE_MAPPING_DATA = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li.geometryinput>a')
     ADD_MEDIA_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li.ui-li-static.ui-body-inherit>div.addmedia.edit-mode>a')
+    CLEAR_SEARCH_FIELD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.filters>div.ui-input-search>a.ui-input-clear')
+    VIEW_ON_MAP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetView>div.ui-content>ul.ui-listview>li>a[href="#mapPage?geometry=true"]')  # button inside assets details
 
 
 class LogsScreen(EventsScreen, AssetsScreen):
@@ -543,6 +557,7 @@ class LogsScreen(EventsScreen, AssetsScreen):
     SEQUENCE_ON_LOAD = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_load"]')
     SEQUENCE_ON_SAVE = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_save"]')
     OPTION_LIST = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-content>ul.edit-view>li[name="new option list"]>div.ui-select>div')
+    CLEAR_SEARCH_FIELD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div.ui-input-search>a.ui-input-clear')
 
 
 class SelectMediaScreen:

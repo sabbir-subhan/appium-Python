@@ -414,3 +414,19 @@ class RisksPage(BasePage):
 
         self.switch_context_to_native()
 
+    def clear_Search_field(self):
+
+        self.switch_context_to_webview()
+
+        try:
+            clear_search_field_button = self.driver.find_element(*self.configuration.RisksScreen.CLEAR_SEARCH_FIELD_BUTTON)
+            if clear_search_field_button.is_displayed():
+                logging.info("clear Search field by clicking clear button")
+                self.assertIsNotNone(clear_search_field_button, "clear search field button not found")
+                clear_search_field_button.click()
+                sleep(2)
+        except:
+            pass
+
+        self.switch_context_to_native()
+

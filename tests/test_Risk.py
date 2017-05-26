@@ -74,10 +74,10 @@ class TestRisk(SetupTestCase):
         risks_page.setDriver(self.driver)
         risks_page.create_risk_register()
         risks_page.type_name_for_new_risk_register()
-        # common_page.hide_keyboard()
         risks_page.create_new_context()
         risks_page.scroll_down_to_save_button()
         risks_page.click_save_button()
+        common_page.wait_for_app_loading()
 
         risks_page.open_existing_risk_register()
         risks_page.click_new_button()
@@ -86,10 +86,11 @@ class TestRisk(SetupTestCase):
         common_page.hide_keyboard()
         risks_page.scroll_down_to_save_button()
         risks_page.save_new_context()
-
-        # Click on existing Risk Register > Click on existing context > Click on Add new Risk
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
+
+        # Click on existing Risk Register > Click on existing context > Click on Add new Risk
         main_page.open_RISKS()
         risks_page.open_existing_risk_register()
         risks_page.open_existing_context()
@@ -99,10 +100,11 @@ class TestRisk(SetupTestCase):
         common_page.hide_keyboard()
         risks_page.scroll_down_to_save_button()
         risks_page.save_new_risk()
-
-        # Select a Risk Register > Select a context > New > Select risk library > Select risk from the list
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
+
+        # Select a Risk Register > Select a context > New > Select risk library > Select risk from the list
         main_page.open_RISKS()
         risks_page.open_existing_risk_register()
         risks_page.open_existing_context()
@@ -111,11 +113,11 @@ class TestRisk(SetupTestCase):
         risks_page.select_risk_library()
         risks_page.select_risk_inside_library()
         risks_page.click_ok_button()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
 
         # Select existing Risk Register > Select existing Context > Click on existing Risk > Click On More >
         # Click Add new control > Fill in Details and Save
-        common_page.hamburger_button()
-        main_page.check_presence_of_events_button()
         main_page.open_RISKS()
         risks_page.open_existing_risk_register()
         risks_page.open_existing_context()
@@ -123,14 +125,14 @@ class TestRisk(SetupTestCase):
         risks_page.click_more_button()
         risks_page.click_add_new_control()
         risks_page.type_name_for_new_control()
-        # common_page.hide_keyboard()
         risks_page.click_status_selector()
         risks_page.choose_status_implemented()
         risks_page.click_save_new_control()
-
-        # Select existing Risk Register > Select existing Context > Click on existing Risk > Click on more button > Delete this risk
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
+
+        # Select existing Risk Register > Select existing Context > Click on existing Risk > Click on more button > Delete this risk
         main_page.open_RISKS()
         risks_page.open_existing_risk_register()
         risks_page.open_existing_context()
@@ -138,10 +140,10 @@ class TestRisk(SetupTestCase):
         risks_page.click_more_button()
         risks_page.click_delete_risk()
         risks_page.alert_accept_delete()
-
-        # Select existing Risk Register > Select existing Context > Click on existing Risk > Click on more > Add Library Control
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
+
+        # Select existing Risk Register > Select existing Context > Click on existing Risk > Click on more > Add Library Control
         main_page.open_RISKS()
         risks_page.open_existing_risk_register()
         risks_page.open_existing_context()
@@ -150,10 +152,10 @@ class TestRisk(SetupTestCase):
         risks_page.click_add_library_control()
         risks_page.select_library_control_from_the_list()
         risks_page.click_ok_button_in_risk_control_library()
-
-        # Select existing Risk Register > Select existing Context > Click on existing Risk > Click on more > Mark as Reviewed
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
+
+        # Select existing Risk Register > Select existing Context > Click on existing Risk > Click on more > Mark as Reviewed
         main_page.open_RISKS()
         risks_page.open_existing_risk_register()
         risks_page.open_existing_context()
@@ -161,10 +163,10 @@ class TestRisk(SetupTestCase):
         risks_page.click_more_button()
         risks_page.click_mark_as_reviewed()
         risks_page.alert_accept_review()
-
-        # Select existing Risk register > Click View button > View Register
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
+
+        # Select existing Risk register > Click View button > View Register
         main_page.open_RISKS()
         risks_page.open_existing_risk_register()
         risks_page.click_view_button()

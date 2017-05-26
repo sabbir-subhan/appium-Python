@@ -1,8 +1,8 @@
 """A class for methods to handle Sent Page """
 
 from Modules.BasePage.BasePage import BasePage
-from Modules.load_class import LoadClass
 import logging
+from time import sleep
 
 
 class SentPage(BasePage):
@@ -16,3 +16,29 @@ class SentPage(BasePage):
         except:
             logging.info("Short message, Email communications not found")
 
+    def clear_Search_field(self):
+
+        self.switch_context_to_webview()
+
+        try:
+            clear_search_field_button = self.driver.find_element(*self.configuration.SentScreen.CLEAR_SEARCH_FIELD_BUTTON)
+            if clear_search_field_button.is_displayed():
+                logging.info("clear Search field by clicking clear button")
+                self.assertIsNotNone(clear_search_field_button, "clear search field button not found")
+                clear_search_field_button.click()
+                sleep(2)
+        except:
+            pass
+
+        self.switch_context_to_native()
+
+    def type_text_into_search_field(self, text):
+
+        logging.info("filter contacts by search field")
+
+        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+        self.assertIsNotNone(search_field, "Search field not found")
+        search_field.click()
+        sleep(2)
+        search_field.send_keys(text)
+        sleep(1)

@@ -333,7 +333,7 @@ class EventsPage(BasePage):
 
         self.switch_context_to_native()
 
-    def open_previously_created_event(self):
+    def open_previously_created_event(self):  # first event on the list
 
         self.switch_context_to_webview()
 
@@ -347,7 +347,7 @@ class EventsPage(BasePage):
         # created_event[0].click()
         created_event = self.driver.find_element(*self.configuration.EventsScreen.PREVIOUSLY_CREATED_EVENT)
         created_event.click()
-        sleep(5)
+        # sleep(5)
 
         self.switch_context_to_native()
 
@@ -769,3 +769,29 @@ class EventsPage(BasePage):
         sleep(1)
         search_field.send_keys(text)
         sleep(1)
+
+    def clear_Search_field(self):
+
+        self.switch_context_to_webview()
+
+        try:
+            clear_search_field_button = self.driver.find_element(*self.configuration.EventsScreen.CLEAR_SEARCH_FIELD_BUTTON)
+            if clear_search_field_button.is_displayed():
+                logging.info("clear Search field by clicking clear button")
+                self.assertIsNotNone(clear_search_field_button, "clear search field button not found")
+                clear_search_field_button.click()
+                sleep(2)
+        except:
+            pass
+
+        self.switch_context_to_native()
+
+    def check_if_view_on_map_button_is_present(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("check if view on map button is present")
+        view_on_map_button = self.driver.find_element(*self.configuration.EventsScreen.VIEW_ON_MAP_BUTTON)
+        self.assertIsNotNone(view_on_map_button, "view on map button not found")
+
+        self.switch_context_to_native()

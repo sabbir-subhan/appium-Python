@@ -1,9 +1,9 @@
-# **Appium POC** #
+# **Appium POC**
 
-## Functional tests for OCA mobile app, using Appium and Python. ##
+## Functional tests for OCA mobile app, using Appium and Python.
 
 
-## **NEEDED SOFTWARE:** ##
+### **NEEDED SOFTWARE:**
 
 - Java
 - Android studio and APIs for android - android avd
@@ -71,7 +71,7 @@ Last line output after using above command should be; "Listening on USB". Then y
 (so if You need to run other version of iOS 10, for example iOS 10.3, You have to change build settings for WebDriverRunner in Xcode))
 
 
-# **EXECUTING TESTS:** #
+# **EXECUTING TESTS:**
 
 ### 1. Update file /appium-poc/Conf/desired_capabilities.py:
 
@@ -105,7 +105,7 @@ and provide name of that file in desired_capabilities.py
 - devices details are defined in /appium-poc/Conf/desired_capabilities.py
 
 
-### **run iOS9 and iOS10** ###
+### **run on iOS9 and iOS10**
 
 - You need to install Xcode 7 and Xcode 8, Appium >= 1.6 in CLI mode, can run both iOS versions but You need to switch between Xcode versions 
 (Xcode7 must have different name because appium in CLI will search for app "Xcode" so that should be version 8)
@@ -118,14 +118,14 @@ and provide name of that file in desired_capabilities.py
 
 - in CLI (Appium 1.6.3) 
 
-to run tests on IOS9 (real device):
+**to run tests on IOS9 (real device):**
 - switch Xcode version using: sudo xcode-select -switch /Applications/Xcode7.app
 - in another console run: ios_webkit_debug_proxy -c <device uuid>:27753
 - iPad: ios_webkit_debug_proxy -c db55c238e873230ee454c54a63724397a2981acd:27753
 - in new console start Appium server using CLI command: "appium"
 - start test using CLI command: "python run.py -t test_Login -p IOS_9"
 
-to run tests on IOS10 (real device):
+**to run tests on IOS10 (real device):**
 - switch Xcode version using: sudo xcode-select -switch /Applications/Xcode.app
 - in another console run: ios_webkit_debug_proxy -c <device uuid>:27753
 - iPhone: ios_webkit_debug_proxy -c 4b15c4284897fa6f9b4c5205325a9cece997ad35:27753
@@ -133,7 +133,7 @@ to run tests on IOS10 (real device):
 - start test using CLI command: "python run.py -t test_Login -p IOS_10"
 
 
-### **CONFIGURING ANDROID DEVICE:** ###
+## **CONFIGURING ANDROID DEVICE:**
 
 1. enable developer mode
 2. enable USB debugging
@@ -162,7 +162,7 @@ finding app activity through adb - appActivity:
  (adb -s <device id> shell ...)
 
 
-### **CONFIGURING IOS DEVICE:** ###
+## **CONFIGURING IOS DEVICE:**
 
 1. for iOS 9.3.5 and older - enable UI Automation
 2. prevent device from disabling - enable option stay awake while plugged in
@@ -196,7 +196,7 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 - paths to .apk and .app files
 
 
-# Some required configuration on OCA web page: #
+# Some required configuration on OCA web page:
 
 - disable Mobile Dashboard - go to OCA -> Settings -> Security -> User account types -> select account type -> choose "None" in Mobile dashboard selector
 
@@ -206,7 +206,7 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 
 - create users accounts with correct settings (see credentials.py)
 
-## for TC: Managing Events
+### for TC: Managing Events
 - 3 types of events (Incident, event_for_chooser_fields, event_for_on_load/save_test)
 - option list inside "Central list templates" with values; "1", "2", "3" - that list is added as a option list to event type: event_for_on_load/save_test
 - two sequences for events (on load and on save) - that sequences are added to event type: event_for_on_load/save_test
@@ -216,25 +216,25 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 - EVENT TYPE: event_for_chooser_fields, should have "event chooser" field (name: "New events chooser") with property "Minimum selected options" set to "1", and second event chooser field inside sub form
  with name: "New events chooser inside sub form"
 
-## for TC: Send Photo and Send Video 
+### for TC: Send Photo and Send Video 
 - test steps have different order than those in Jira task, because in this way, before running test it is no longer necessary 
   to prepare sample photo and video files on real device, but unfortunately for emulators before running test "test_SendingVideo" tester must copy some video file into the emulator
 - go to OCA web page - Settings - Settings - Security tab and in section Mobile, uncheck "Encrypt saved data in the app" and "Block jailbroken/rooted devices from using the app"
 
-## for TC: QuickAccessButtons
+### for TC: QuickAccessButtons
 - create quick access buttons - see task OCAMOB-48 prepare Lodging Agency named: "contact_group_for_tests" and configure Quick Access buttons for mobile app, 
  Login to OCA server>Click on Settings>Mobile Quick access Buttons>Add Quick Access buttons (see task in Jira), remember to firstly open some link on device/emulator - Android will ask witch browser You want to use
 
-## for TC: SentCommunication
+### for TC: SentCommunication
 - create contact with name: "CONTACT_FOR_APPIUM_TESTS" with email address
 
-## for Test Case: Assets
+### for Test Case: Assets
 - assets types named: "asset_with_visibility_rules", "asset_with_max_number_of_fields". Asset type with visibility rules must have 5 fields: 
  "Name", "New option list" - with options; "1", "2", "3" that options should restore 3 other fields. "field to restore", "New website address" with value: "http://bitnoi.se/" and "New email address" 
 -- visibility rules like in TC: Events
 - Lodging agency named: "contact_group_for_tests" is needed
 
-## for TC: Managing Reports
+### for TC: Managing Reports
 - Lodging agency named: "contact_group_for_tests", 
 - report type with all fields, named: "report_for_tests", 
 - report type with chooser fields, named: "report_with_chooser_fields",
@@ -248,7 +248,7 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
   two possible answers: "Yes/No", (field Assign to: Contact that activated workflow: Workflow info)
 - prepare Role for contact - choose contact that will be used to run test (default = Bitnoise QA)
   
-## for TC: Managing Logs
+### for TC: Managing Logs
 - log type with all fields, named: "log_with_all_fields",
 - log type with chooser fields, named: "log_with_chooser_fields", with log chooser filed as a last field in form
 - log type with on load (with default value = "test on load") and on save sequence, named: "log_with_on_load_sequence" (like in TC: Managing Events), 
@@ -256,20 +256,20 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
  "New website address" with value: "http://bitnoi.se/" and "New email address" with value: "test@noggin.com" - visibility rules like in TC: Managing Events
  (option 1 restores field to restore, option 2 restores New email address field, option 3 restores New website address)
 
-## for TC: Maps
+### for TC: Maps
 - Login to the OCA server > Click on OCA designer > Symbology and Colour Coding > Add more symbology - new point symbol name: "point2"
 - Login to oca server > Click on mapping > Draw geometry > Save map as "FOR MOBILE"
 
 
 
-### **BEFORE EACH NEW RUN OF TESTS:** ###
+#**BEFORE EACH NEW RUN OF TESTS:**
 
 - make sure to launch appium server
 - make sure that real devices are connected and unlocked 
 - make sure that users accounts in OCA web page have correct properties (for example expiration dates) and other tests have proper configurations in OCA web page
 - disable PIN authentication in OCA web page 
 
-### **RUNNING TESTS ON SIMULATORS:** ###
+##**RUNNING TESTS ON EMULATORS:**
 
 - change desired_capabilities
 - for Android, open Appium settings, check "Launch AVD" and choose created simulator from the list (first You need to create simulator) and add udid of the simulator (from adb devices), start emulator and then run Appium
@@ -283,7 +283,7 @@ OCA APP VERSIONS:
 - iOS: 10.0.8
 
 
-### **Known issues:** ###
+#**Known issues:**
 
 - real devices can overheat, which is causing test to fail
 - if You are running tests on real iOS device, sometimes Appium server and ios_webkit_debug_proxy need to be restarted to work properly 

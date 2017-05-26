@@ -10,10 +10,10 @@ class Android(RisksPage):
 
     def scroll_down_to_save_button(self):
 
-        event_edit_page = LoadClass.load_page('CommonPage')
-        event_edit_page.setDriver(self.driver)
-        event_edit_page.scroll_down_one_view()
-        event_edit_page.scroll_down_one_view()
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.scroll_down_one_view()
+        common_page.scroll_down_one_view()
 
     def choose_status_implemented(self):
 

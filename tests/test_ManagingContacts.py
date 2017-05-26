@@ -100,7 +100,7 @@ class TestManagingContacts(SetupTestCase):
 
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
-        common_page.clear_Search_field()
+        contacts_page.clear_Search_field()
         contacts_page.type_username_into_search_field()
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
@@ -116,7 +116,7 @@ class TestManagingContacts(SetupTestCase):
 
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
-        common_page.clear_Search_field()
+        contacts_page.clear_Search_field()
         contacts_page.type_text_into_search_field("Appium")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
@@ -137,20 +137,19 @@ class TestManagingContacts(SetupTestCase):
 
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
-        common_page.clear_Search_field()
+        contacts_page.clear_Search_field()
         contacts_page.type_text_into_search_field("delete")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         contacts_page.check_results_for_deleted_contact()
-        common_page.clear_Search_field()
+        contacts_page.clear_Search_field()
         common_page.hide_keyboard()
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()
 
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
-        common_page.clear_Search_field()
-        common_page.click_Return_button_on_keyboard()
+        contacts_page.clear_Search_field()
         common_page.hide_keyboard()
         contacts_page.open_second_contact_group()  # Contacts
         contacts_page.click_new_button()
@@ -170,7 +169,7 @@ class TestManagingContacts(SetupTestCase):
 
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
-        common_page.clear_Search_field()
+        contacts_page.clear_Search_field()
         contacts_page.type_text_into_search_field("Communication")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
@@ -191,8 +190,7 @@ class TestManagingContacts(SetupTestCase):
 
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
-        common_page.clear_Search_field()
-        common_page.click_Return_button_on_keyboard()
+        contacts_page.clear_Search_field()
         common_page.hide_keyboard()
         contacts_page.type_text_into_search_field("Communication")
         common_page.click_Return_button_on_keyboard()
@@ -223,7 +221,7 @@ class TestManagingContacts(SetupTestCase):
         main_page.check_presence_of_events_button()
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
-        common_page.clear_Search_field()
+        contacts_page.clear_Search_field()
         contacts_page.type_text_into_search_field("Communication")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
@@ -235,14 +233,13 @@ class TestManagingContacts(SetupTestCase):
         # Open a contact group. Select New > Import contact from device contacts.
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
-        common_page.clear_Search_field()
-        common_page.click_Return_button_on_keyboard()
+        contacts_page.clear_Search_field()
         common_page.hide_keyboard()
         contacts_page.open_second_contact_group()  # Contacts
         contacts_page.click_new_button()
         contacts_page.import_contact_from_device_to_this_group()
         common_page.alert_popup_allow()
-        common_page.clear_Search_field()
+        contacts_page.clear_Search_field()
         contacts_page.type_text_into_search_field("Communication")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
@@ -255,8 +252,7 @@ class TestManagingContacts(SetupTestCase):
         # Create contact with on load and on save sequence in two of its fields, but don't save it.
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
-        common_page.clear_Search_field()
-        common_page.click_Return_button_on_keyboard()
+        contacts_page.clear_Search_field()
         common_page.hide_keyboard()
         contacts_page.open_second_contact_group()  # Contacts
         contacts_page.click_new_button()
@@ -273,7 +269,7 @@ class TestManagingContacts(SetupTestCase):
 
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
-        common_page.clear_Search_field()
+        contacts_page.clear_Search_field()
         contacts_page.type_text_into_search_field("on_load")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
@@ -288,8 +284,7 @@ class TestManagingContacts(SetupTestCase):
         # Create contact with visibility rules, but don't save it.
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
-        common_page.clear_Search_field()
-        common_page.click_Return_button_on_keyboard()
+        contacts_page.clear_Search_field()
         common_page.hide_keyboard()
         contacts_page.open_second_contact_group()  # Contacts
         contacts_page.click_new_button()

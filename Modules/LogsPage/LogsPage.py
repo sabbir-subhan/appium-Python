@@ -77,11 +77,11 @@ class LogsPage(BasePage):
 
         self.switch_context_to_native()
 
-    def choose_lodging_agency(self, text):
+    def choose_lodging_agency(self):
 
         reports_page = LoadClass.load_page('ReportsPage')
         reports_page.setDriver(self.driver)
-        reports_page.choose_lodging_agency(text)
+        reports_page.choose_lodging_agency()
 
     def click_save_new_log(self):
 
@@ -175,22 +175,22 @@ class LogsPage(BasePage):
         search_field.send_keys(text)
         sleep(1)
 
-    def clear_Search_field(self):
-
-        logging.info("clear search field")
-        sleep(1)
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()  # each clear is clearing one character
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-        sleep(1)
+    # def clear_Search_field(self):
+    #
+    #     logging.info("clear search field")
+    #     sleep(1)
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()  # each clear is clearing one character
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
+    #     sleep(1)
 
     def check_result(self):  # this method will search for report containing "all fields" word in title
 
@@ -471,4 +471,20 @@ class LogsPage(BasePage):
         events_page = LoadClass.load_page('EventsPage')
         events_page.setDriver(self.driver)
         events_page.check_hidden_fields_1_and_2()
+
+    def clear_Search_field(self):
+
+        self.switch_context_to_webview()
+
+        try:
+            clear_search_field_button = self.driver.find_element(*self.configuration.LogsScreen.CLEAR_SEARCH_FIELD_BUTTON)
+            if clear_search_field_button.is_displayed():
+                logging.info("clear Search field by clicking clear button")
+                self.assertIsNotNone(clear_search_field_button, "clear search field button not found")
+                clear_search_field_button.click()
+                sleep(2)
+        except:
+            pass
+
+        self.switch_context_to_native()
 

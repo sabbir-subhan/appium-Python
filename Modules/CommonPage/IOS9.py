@@ -6,6 +6,7 @@ import logging
 from selenium.common.exceptions import *
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
+from Modules.load_class import LoadClass
 
 
 class IOS9(IOS):
@@ -46,6 +47,10 @@ class IOS9(IOS):
         logging.info("click 'Return' on keyboard")
         self.driver.find_element(*self.configuration.iOS.RETURN_BUTTON).click()
         sleep(1)
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
     def done_button(self):
 

@@ -20,9 +20,9 @@ class IOS(RisksPage):
 
     def scroll_down_to_save_button(self):
 
-        event_edit_page = LoadClass.load_page('EventEditPage')
-        event_edit_page.setDriver(self.driver)
-        event_edit_page.scroll_down_to_save_button()
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.scroll_down_to_save_button()
 
     def choose_status_implemented(self):
 

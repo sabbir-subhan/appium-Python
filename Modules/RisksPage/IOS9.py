@@ -1,8 +1,6 @@
 """A class for methods to handle Risks Page on IOS9 """
 
 from Modules.RisksPage.IOS import IOS
-import logging
-from time import sleep
 
 
 class IOS9(IOS):

@@ -2,11 +2,12 @@
 
 import logging
 from time import sleep
-from selenium.common.exceptions import *
+# from selenium.common.exceptions import *
 from Modules.CommonPage.CommonPage import CommonPage
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 from appium.webdriver.common.touch_action import TouchAction
+from Modules.load_class import LoadClass
 
 
 class Android(CommonPage):
@@ -90,12 +91,20 @@ class Android(CommonPage):
 
     def click_Return_button_on_keyboard(self):
 
-        try:
-            logging.info("click Go on keyboard")
-            self.driver.press_keycode(66)
-            sleep(3)
-        except NoSuchElementException:
-            logging.info("keyboard not found")
+        logging.info("click Go on keyboard")
+        self.driver.press_keycode(66)
+        sleep(1)
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
+        # try:
+        #     logging.info("click Go on keyboard")
+        #     self.driver.press_keycode(66)
+        #     sleep(3)
+        # except NoSuchElementException:
+        #     logging.info("keyboard not found")
 
     def scroll_down_one_view(self):
         """Method to scroll down only one screen"""

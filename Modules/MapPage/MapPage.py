@@ -324,3 +324,46 @@ class MapPage(BasePage):
 
         self.switch_context_to_native()
 
+    def choose_first_plot_object(self):  # asset
+
+        self.switch_context_to_webview()
+
+        logging.info("choose first plot object")
+        choose_first_plot_object = self.driver.find_element(*self.configuration.Map.FIRST_PLOT_OBJECT)
+        self.assertIsNotNone(choose_first_plot_object, "first plot object not found")
+        choose_first_plot_object.click()
+
+        self.switch_context_to_native()
+
+    def choose_second_plot_object(self):  # event
+
+        self.switch_context_to_webview()
+
+        logging.info("choose second plot object")
+        choose_second_plot_object = self.driver.find_element(*self.configuration.Map.SECOND_PLOT_OBJECT)
+        self.assertIsNotNone(choose_second_plot_object, "second plot object not found")
+        choose_second_plot_object.click()
+
+        self.switch_context_to_native()
+        
+    def choose_third_plot_object(self):  # report
+
+        self.switch_context_to_webview()
+
+        logging.info("choose third plot object")
+        choose_third_plot_object = self.driver.find_element(*self.configuration.Map.THIRD_PLOT_OBJECT)
+        self.assertIsNotNone(choose_third_plot_object, "third plot object not found")
+        choose_third_plot_object.click()
+
+        self.switch_context_to_native()
+        
+    def choose_fourth_plot_object(self):  # task
+
+        self.switch_context_to_webview()
+
+        logging.info("choose fourth plot object")
+        choose_fourth_plot_object = self.driver.find_element(*self.configuration.Map.FOURTH_PLOT_OBJECT)
+        self.assertIsNotNone(choose_fourth_plot_object, "fourth plot object not found")
+        choose_fourth_plot_object.click()
+
+        self.switch_context_to_native()

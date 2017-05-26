@@ -32,7 +32,7 @@ class AssetsPage(BasePage):
 
         self.switch_context_to_native()
 
-    def choose_asset_type(self):
+    def choose_asset_type(self):  # first asset type on the list
 
         self.switch_context_to_webview()
 
@@ -248,7 +248,7 @@ class AssetsPage(BasePage):
 
         self.switch_context_to_native()
 
-    def type_text_into_search_field(self):
+    def type_text_into_search_field(self, text):
 
         sleep(1)
         logging.info("type text into search field")
@@ -256,7 +256,7 @@ class AssetsPage(BasePage):
         self.assertIsNotNone(search_field, "Search field not found")
         search_field.click()
         sleep(2)
-        search_field.send_keys("Map")
+        search_field.send_keys(text)
         sleep(1)
 
     def check_result(self):
@@ -422,6 +422,32 @@ class AssetsPage(BasePage):
             common_page.back_arrow()
         else:
             pass
+
+    def clear_Search_field(self):
+
+        self.switch_context_to_webview()
+
+        try:
+            clear_search_field_button = self.driver.find_element(*self.configuration.AssetssScreen.CLEAR_SEARCH_FIELD_BUTTON)
+            if clear_search_field_button.is_displayed():
+                logging.info("clear Search field by clicking clear button")
+                self.assertIsNotNone(clear_search_field_button, "clear search field button not found")
+                clear_search_field_button.click()
+                sleep(2)
+        except:
+            pass
+
+        self.switch_context_to_native()
+
+    def check_if_view_on_map_button_is_present(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("check if view on map button is present")
+        view_on_map_button = self.driver.find_element(*self.configuration.AssetsScreen.VIEW_ON_MAP_BUTTON)
+        self.assertIsNotNone(view_on_map_button, "view on map button not found")
+
+        self.switch_context_to_native()
 
 
 
