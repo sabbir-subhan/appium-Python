@@ -4,6 +4,7 @@ from Modules.BasePage.BasePage import BasePage
 import logging
 from time import sleep
 from selenium.common.exceptions import NoSuchElementException
+from appium.webdriver.common.touch_action import TouchAction
 
 
 class MapPage(BasePage):
@@ -276,7 +277,7 @@ class MapPage(BasePage):
 
         sleep(1)
 
-    def check_presents_of_added_layer(self):
+    def check_presents_of_added_layer(self):  # it searches for added graphic layer on the map
 
         self.switch_context_to_webview()
 
@@ -285,6 +286,82 @@ class MapPage(BasePage):
         self.assertIsNotNone(check_presents_of_added_layer, "added layer not found")
 
         self.switch_context_to_native()
+
+    def click_on_added_layer(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click on added layer")
+        click_on_added_layer = self.driver.find_element(*self.configuration.Map.MAP_ADDED_LAYER)
+        self.assertIsNotNone(click_on_added_layer, "added layer not found")
+        click_on_added_layer.click()
+        sleep(1)
+
+        self.switch_context_to_native()
+
+    # def click_on_added_geometry(self):
+    #
+    #     logging.info("click on added geometry")
+    #
+    #     try:
+    #         logging.info("1")
+    #         self.switch_context_to_webview()
+    #         click_on_added_geometry = self.driver.find_elements(*self.configuration.Map.MAP_ADDED_GEOMETRY_ALL)
+    #         self.assertIsNotNone(click_on_added_geometry[0], "added geometry not found")
+    #         click_on_added_geometry[0].click()
+    #         self.switch_context_to_native()
+    #     except NoSuchElementException:
+    #         logging.info("2")
+    #         self.switch_context_to_webview()
+    #         click_on_added_geometry = self.driver.find_elements(*self.configuration.Map.MAP_ADDED_GEOMETRY_ALL)
+    #         action = TouchAction(self.driver)
+    #         action.tap(element=click_on_added_geometry[0], count=1)
+    #         self.switch_context_to_native()
+
+    def click_on_added_geometry(self):
+
+        self.switch_context_to_webview()
+        sleep(2)
+        logging.info("click on added geometry")
+
+        click_on_added_geometry = self.driver.find_elements(*self.configuration.Map.MAP_ADDED_GEOMETRY_ALL)
+        action = TouchAction(self.driver)
+        action.tap(element=click_on_added_geometry[0], count=1)
+        sleep(1)
+
+        self.switch_context_to_native()
+
+    def choose_map_all_tasks(self):
+
+        logging.info("choose saved map 'All tasks' ")
+        choose_map_all_tasks = self.driver.find_element(*self.configuration.Map.SAVED_MAP_ALL_TASKS)
+        self.assertIsNotNone(choose_map_all_tasks, "Saved map 'All tasks' not found")
+        choose_map_all_tasks.click()
+        sleep(2)
+
+    def choose_map_all_contacts(self):
+
+        logging.info("choose saved map 'All contacts' ")
+        choose_map_all_contacts = self.driver.find_element(*self.configuration.Map.SAVED_MAP_ALL_CONTACTS)
+        self.assertIsNotNone(choose_map_all_contacts, "Saved map 'All contacts' not found")
+        choose_map_all_contacts.click()
+        sleep(2)
+
+    def choose_map_all_assets(self):
+
+        logging.info("choose saved map 'All assets' ")
+        choose_map_all_assets = self.driver.find_element(*self.configuration.Map.SAVED_MAP_ALL_ASSETS)
+        self.assertIsNotNone(choose_map_all_assets, "Saved map 'All assets' not found")
+        choose_map_all_assets.click()
+        sleep(2)
+
+    def choose_map_all_active_events(self):
+
+        logging.info("choose saved map 'All active events' ")
+        choose_map_all_active_events = self.driver.find_element(*self.configuration.Map.SAVED_MAP_ALL_ACTIVE_EVENTS)
+        self.assertIsNotNone(choose_map_all_active_events, "Saved map 'All active events' not found")
+        choose_map_all_active_events.click()
+        sleep(2)
 
     def choose_map_for_mobile(self):
 
@@ -367,3 +444,65 @@ class MapPage(BasePage):
         choose_fourth_plot_object.click()
 
         self.switch_context_to_native()
+
+    def click_view_layer_attributes(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click view layer attributes, for example view asset button")
+        click_view_layer_attributes = self.driver.find_element(*self.configuration.Map.VIEW_ATTRIBUTES_FROM_LAYER)
+        self.assertIsNotNone(click_view_layer_attributes, "Tool button not present")
+        click_view_layer_attributes.click()
+
+        self.switch_context_to_native()
+
+    def click_duplicate_button(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click duplicate button")
+        click_duplicate_button = self.driver.find_element(*self.configuration.Map.DUPLICATE_BUTTON)
+        self.assertIsNotNone(click_duplicate_button, "Duplicate button not present")
+        click_duplicate_button.click()
+
+        self.switch_context_to_native()
+
+    def click_on_duplicated_geometry(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click on duplicated geometry")
+        click_on_duplicated_geometry = self.driver.find_element(*self.configuration.Map.DUPLICATED_GEOMETRY_ON_MAP)
+        self.assertIsNotNone(click_on_duplicated_geometry, "Duplicated geometry not present")
+        click_on_duplicated_geometry.click()
+        sleep(1)
+
+        self.switch_context_to_native()
+
+    def press_and_drag_duplicated_geometry(self):
+
+        logging.info("press and drag duplicated geometry")
+
+        self.switch_context_to_webview()
+
+        duplicated_geometry = self.driver.find_element(*self.configuration.Map.DUPLICATED_GEOMETRY_ON_MAP)
+        location = duplicated_geometry.location
+        print(location)
+        x = location["x"]
+        y = location["y"]
+        print(x)
+        print(y)
+        x = x + x * 0.5
+        y = y + y * 0.5
+        print(x)
+        print(y)
+        action = TouchAction(self.driver)
+        # action.long_press(el=duplicated_geometry, duration=1000).move_to(x=x, y=y).release().perform()
+        sleep(1)
+        action.press(el=duplicated_geometry).wait(ms=500).move_to(x=x, y=y).release()
+        #action.press(el=duplicated_geometry).move_to(x=x, y=y).release()
+        logging.info("wait a second after dragging")
+        sleep(2)
+
+        self.switch_context_to_native()
+

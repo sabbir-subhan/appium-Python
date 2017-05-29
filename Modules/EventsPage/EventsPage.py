@@ -795,3 +795,14 @@ class EventsPage(BasePage):
         self.assertIsNotNone(view_on_map_button, "view on map button not found")
 
         self.switch_context_to_native()
+
+    def click_view_on_map_button(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click view on map button is present")
+        view_on_map_button = self.driver.find_element(*self.configuration.EventsScreen.VIEW_ON_MAP_BUTTON)
+        self.assertIsNotNone(view_on_map_button, "view on map button not found")
+        view_on_map_button.click()
+
+        self.switch_context_to_native()

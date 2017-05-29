@@ -60,3 +60,7 @@ class IOS9(IOS):
     def scroll_up_to_reports_button(self):
 
         pass
+
+    def scroll_up_to_events_button(self):
+
+        pass

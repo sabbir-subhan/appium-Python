@@ -202,6 +202,19 @@ class IOS(MainPage):
                 self.driver.execute_script("mobile: scroll", {"direction": "up"})
                 var = var - 1
 
+    def scroll_up_to_events_button(self):
+
+        logging.info("scroll up with loop")
+        var = 4
+        while var > 0:
+            logging.info("check if events button is visible")
+            reports_button = self.driver.find_element(*self.configuration.MainMenuScreen.EVENTS_BUTTON)
+            if reports_button.is_displayed():
+                break
+            else:
+                logging.info("scroll up")
+                self.driver.execute_script("mobile: scroll", {"direction": "up"})
+                var = var - 1
 
 
 

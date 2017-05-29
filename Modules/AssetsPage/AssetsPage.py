@@ -66,7 +66,7 @@ class AssetsPage(BasePage):
 
         self.switch_context_to_native()
 
-    def open_existing_asset(self):
+    def open_existing_asset(self):  # first child
 
         self.switch_context_to_webview()
 

@@ -11,6 +11,28 @@ from appium.webdriver.common.touch_action import TouchAction
 
 class Android(MapPage):
 
+    # def press_and_drag_duplicated_geometry(self):
+    #
+    #     logging.info("press and drag duplicated geometry")
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     duplicated_geometry = self.driver.find_element(*self.configuration.Map.DUPLICATED_GEOMETRY_ON_MAP)
+    #     location = duplicated_geometry.location
+    #     print(location)
+    #     x = location["x"]
+    #     y = location["y"]
+    #     print(x)
+    #     print(y)
+    #     x = x + 2
+    #     y = y + 2
+    #     print(x)
+    #     print(y)
+    #     action = TouchAction(self.driver)
+    #     action.long_press(el=duplicated_geometry, duration=1000).move_to(x=x, y=y).release().perform()
+    #
+    #     self.switch_context_to_native()
+
     def wait_for_map_to_load(self):
 
         logging.info("Waiting for map to load")
@@ -19,9 +41,11 @@ class Android(MapPage):
                 expected_conditions.presence_of_element_located(self.configuration.Map.MAP_AREA_6),
                 "Failed to load map")
             logging.info("Map was successfully loaded")
-        except NoSuchElementException:
-            logging.info("Failed to load map")
-            self.fail("Map was not found")
+        except:
+            sleep(5)
+            logging.info("trying to wait for map")
+            # logging.info("Failed to load map")
+            # self.fail("Map was not found")
 
     def click_in_map_area_1(self):
 
@@ -34,7 +58,7 @@ class Android(MapPage):
             else:
                 logging.info("executing tap on map - width < 1400")
                 action.tap(element=None, x=300, y=450, count=1).perform()
-        except NoSuchElementException:
+        except:
             map9 = self.driver.find_element(*self.configuration.Map.MAP_AREA_9)
             action.tap(element=map9, count=1).perform()
         sleep(1)
@@ -50,7 +74,7 @@ class Android(MapPage):
             else:
                 logging.info("executing tap on map - width < 1400")
                 action.tap(element=None, x=150, y=400, count=1).perform()
-        except NoSuchElementException:
+        except:
             map3 = self.driver.find_element(*self.configuration.Map.MAP_AREA_3)
             action.tap(element=map3, count=1).perform()
         sleep(1)

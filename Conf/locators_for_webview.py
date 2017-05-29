@@ -260,6 +260,12 @@ class Map:
     SECOND_PLOT_OBJECT = (MobileBy.CSS_SELECTOR, 'div#mapPlotType>div.ui-content>ul.ui-listview>li:nth-child(2)>a')  # event
     THIRD_PLOT_OBJECT = (MobileBy.CSS_SELECTOR, 'div#mapPlotType>div.ui-content>ul.ui-listview>li:nth-child(3)>a')  # report
     FOURTH_PLOT_OBJECT = (MobileBy.CSS_SELECTOR, 'div#mapPlotType>div.ui-content>ul.ui-listview>li:last-child>a')  # task
+    VIEW_ATTRIBUTES_FROM_LAYER = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#tools>a')  # view asset, event, task, contact
+    DUPLICATED_GEOMETRY_ON_MAP = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:last-child')
+    DUPLICATE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#tools>a:nth-child(2)')
+    # MAP_ADDED_GEOMETRY = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image')
+    MAP_ADDED_GEOMETRY = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:nth-child(2)')
+    MAP_ADDED_GEOMETRY_ALL = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer')
 
 
 class PhotoScreen:

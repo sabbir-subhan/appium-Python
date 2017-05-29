@@ -20,9 +20,11 @@ class IOS(MapPage):
                 expected_conditions.presence_of_element_located(self.configuration.Map.MAP_AREA_12),
                 "Failed to load map")
             logging.info("Map was successfully loaded")
-        except NoSuchElementException:
-            logging.info("Failed to load map")
-            self.fail("Map was not found")
+        except:
+            sleep(5)
+            logging.info("trying to wait for map")
+            # logging.info("Failed to load map")
+            # self.fail("Map was not found")
         sleep(1)
 
     def click_in_map_area_1(self):
@@ -142,6 +144,10 @@ class IOS(MapPage):
         # self.driver.tap(positions)
 
         sleep(1)
-        action.tap(element=element, count=2).perform()
-        action.tap(element=element, x=position_x, y=position_y, count=2).perform()
+        #action.tap(element=element, count=2).perform()
+        # action.tap(element=element, count=2).release()
+        #action.tap(element=element, x=position_x, y=position_y, count=2).perform()
+        # action.tap(element=element, x=position_x, y=position_y, count=2).release()
+        action.tap(element=None, x=position_x, y=position_y, count=2)
+        logging.info("wait a second after double tapping")
         sleep(2)

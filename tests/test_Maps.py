@@ -82,10 +82,11 @@ class TestMaps(SetupTestCase):
         common_page.alert_popup_allow()
         map_page = LoadClass.load_page("MapPage")
         map_page.setDriver(self.driver)
+        map_page.wait_for_map_to_load()
         map_page.click_layers_button()
         map_page.choose_first_layer_from_the_list()
         map_page.click_done_button()
-
+        common_page.wait_for_app_loading()
         map_page.click_locate_button()
         sleep(5)  # wait for localization
         map_page.click_locate_button()
@@ -96,7 +97,6 @@ class TestMaps(SetupTestCase):
         map_page.click_first_address_on_the_list()
         map_page.click_zoom_in_button()
         map_page.click_zoom_out_button()
-
         map_page.click_plot_button()
         map_page.click_tool_button()
         map_page.click_point_button()
@@ -122,6 +122,7 @@ class TestMaps(SetupTestCase):
         main_page.check_presence_of_events_button()
 
         main_page.open_MAP()
+        map_page.wait_for_map_to_load()
         map_page.click_plot_button()
         map_page.click_tool_button()
         map_page.click_point_button()
@@ -131,6 +132,7 @@ class TestMaps(SetupTestCase):
         main_page.check_presence_of_events_button()
 
         main_page.open_MAP()
+        map_page.wait_for_map_to_load()
         map_page.click_layers_button()
         map_page.click_saved_maps_button()
         map_page.choose_map_for_mobile()
@@ -141,12 +143,13 @@ class TestMaps(SetupTestCase):
         main_page.check_presence_of_events_button()
 
         main_page.open_MAP()
-        common_page.alert_popup_allow()
-        map_page = LoadClass.load_page("MapPage")
-        map_page.setDriver(self.driver)
+        map_page.wait_for_map_to_load()
         map_page.click_layers_button()
         map_page.choose_second_layer_from_the_list()
         map_page.click_done_button()
+        common_page.wait_for_app_loading()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
 
 
 if __name__ == '__main__':

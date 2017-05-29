@@ -300,6 +300,10 @@ class Map:
     POLYGON_BUTTON = (MobileBy.XPATH, "//android.view.View[@content-desc[contains(., 'Polygon')]]")
     SAVE_MAP_BUTTON = (MobileBy.ACCESSIBILITY_ID, "Save")
     SAVED_MAP_FOR_MOBILE = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "FOR MOBILE")]]')
+    SAVED_MAP_ALL_ACTIVE_EVENTS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "All active events")]]')
+    SAVED_MAP_ALL_ASSETS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "All assets")]]')
+    SAVED_MAP_ALL_CONTACTS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "All contacts")]]')
+    SAVED_MAP_ALL_TASKS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "All tasks")]]')
 
 
 class PhotoScreen:

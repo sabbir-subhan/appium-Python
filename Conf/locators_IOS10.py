@@ -263,6 +263,10 @@ class Map:
     POLYGON_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Polygon")]]')
     SAVE_MAP_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Save")]]')
     SAVED_MAP_FOR_MOBILE = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "FOR MOBILE")]]')
+    SAVED_MAP_ALL_ACTIVE_EVENTS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "All active events")]]')
+    SAVED_MAP_ALL_ASSETS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "All assets")]]')
+    SAVED_MAP_ALL_CONTACTS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "All contacts")]]')
+    SAVED_MAP_ALL_TASKS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "All tasks")]]')
 
 
 class PhotoScreen:

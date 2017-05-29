@@ -100,7 +100,7 @@ class TasksPage(BasePage):
         search_field.send_keys(text)
         sleep(1)
 
-    def edit_created_task_with_approval(self):
+    def open_existing_task(self):
 
         self.switch_context_to_webview()
 

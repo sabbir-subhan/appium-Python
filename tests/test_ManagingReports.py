@@ -241,7 +241,7 @@ class TestManagingReports(SetupTestCase):
         tasks_page.type_text_into_search_field("Report approval")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
-        tasks_page.edit_created_task_with_approval()
+        tasks_page.open_existing_task()  # first task on the list
         common_page.wait_for_app_loading()
         tasks_page.click_button_yes_for_action_required()
         tasks_page.alert_confirm_action_required()
@@ -287,6 +287,7 @@ class TestManagingReports(SetupTestCase):
         common_page.alert_popup_allow()
         map_page = LoadClass.load_page('MapPage')
         map_page.setDriver(self.driver)
+        map_page.wait_for_map_to_load()
         map_page.click_tool_button()
         map_page.click_point_button()
         map_page.click_default_button()
