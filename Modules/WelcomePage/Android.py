@@ -2,8 +2,8 @@
 
 from Modules.WelcomePage.WelcomePage import WelcomePage
 from selenium.common.exceptions import *
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions
+# from selenium.webdriver.support.ui import WebDriverWait
 import logging
 from Conf.desired_capabilities import DesiredCapabilities
 from time import sleep
@@ -63,7 +63,7 @@ class Android(WelcomePage):
                     self.driver.tap(positions)
                 else:
                     pass
-            except:
+            except NoSuchElementException:
                 self.fail('could not find Sound button')
         else:
             sound_button = self.driver.find_element(*self.configuration.WelcomeScreen.SOUND_BUTTON)

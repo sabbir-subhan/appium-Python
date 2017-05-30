@@ -299,37 +299,39 @@ class MapPage(BasePage):
 
         self.switch_context_to_native()
 
-    # def click_on_added_geometry(self):
-    #
-    #     logging.info("click on added geometry")
-    #
-    #     try:
-    #         logging.info("1")
-    #         self.switch_context_to_webview()
-    #         click_on_added_geometry = self.driver.find_elements(*self.configuration.Map.MAP_ADDED_GEOMETRY_ALL)
-    #         self.assertIsNotNone(click_on_added_geometry[0], "added geometry not found")
-    #         click_on_added_geometry[0].click()
-    #         self.switch_context_to_native()
-    #     except NoSuchElementException:
-    #         logging.info("2")
-    #         self.switch_context_to_webview()
-    #         click_on_added_geometry = self.driver.find_elements(*self.configuration.Map.MAP_ADDED_GEOMETRY_ALL)
-    #         action = TouchAction(self.driver)
-    #         action.tap(element=click_on_added_geometry[0], count=1)
-    #         self.switch_context_to_native()
-
     def click_on_added_geometry(self):
 
-        self.switch_context_to_webview()
-        sleep(2)
         logging.info("click on added geometry")
 
-        click_on_added_geometry = self.driver.find_elements(*self.configuration.Map.MAP_ADDED_GEOMETRY_ALL)
-        action = TouchAction(self.driver)
-        action.tap(element=click_on_added_geometry[0], count=1)
-        sleep(1)
+        try:
+            logging.info("1")
+            self.switch_context_to_webview()
+            click_on_added_geometry = self.driver.find_elements(*self.configuration.Map.MAP_ADDED_GEOMETRY_ALL)
+            self.assertIsNotNone(click_on_added_geometry[0], "added geometry not found")
+            click_on_added_geometry[1].click()
+            self.switch_context_to_native()
+        except IndexError:
+            logging.info("2")
+            self.switch_context_to_webview()
+            click_on_added_geometry = self.driver.find_elements(*self.configuration.Map.MAP_ADDED_GEOMETRY_ALL)
+            action = TouchAction(self.driver)
+            action.tap(element=click_on_added_geometry[0], count=1)
+            sleep(2)
 
-        self.switch_context_to_native()
+            self.switch_context_to_native()
+
+    # def click_on_added_geometry(self):
+    #
+    #     self.switch_context_to_webview()
+    #     sleep(2)
+    #     logging.info("click on added geometry")
+    #
+    #     click_on_added_geometry = self.driver.find_elements(*self.configuration.Map.MAP_ADDED_GEOMETRY_ALL)
+    #     action = TouchAction(self.driver)
+    #     action.tap(element=click_on_added_geometry[0], count=1)
+    #     sleep(1)
+    #
+    #     self.switch_context_to_native()
 
     def choose_map_all_tasks(self):
 

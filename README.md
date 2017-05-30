@@ -312,4 +312,6 @@ OCA APP VERSIONS:
 - sometimes there are problems with real iOS 10 device - tests are failing because of appium server errors --try to reconnect device and restart appium server
 - double clicking action is not working properly with appium above 1.5.3
 - double clicking action may not work properly on iOS emulators
-
+- "selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing 
+the command. Original error: Could not install app: 'Command 'ios-deploy --id 4b15c4284897fa6f9b4c5205325a9cece997ad35 --uninstall --bundle
+ /Users/lukasl/repos/appium-poc/iPhone6_10.3_OCA.app' exited with code 253'"   ---> kill Appium server and restart

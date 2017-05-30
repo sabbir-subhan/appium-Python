@@ -6,7 +6,7 @@ from Modules.load_class import LoadClass
 from time import sleep
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
-import selenium.webdriver.support.ui
+# import selenium.webdriver.support.ui
 from configuration import platform
 
 

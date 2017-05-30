@@ -265,9 +265,9 @@ class DesiredCapabilities(object):
         "IOS_10": {
             # iPhone 6 with iOS 10.2 - new iOS need Xcuit Test
             "platformName": "iOS",
-            "platformVersion": "10.2",
+            "platformVersion": "10.3",
             "deviceName": "iPhone 6",
-            "app": os.path.join(PROJECT_ROOT, "iPhone_10.2_OCA.app"),  # path to .apk file
+            "app": os.path.join(PROJECT_ROOT, "iPhone6_10.3_OCA.app"),  # path to .apk file (real device has different apk file than emulator)
             # "app": PATH("/Users/lukasl/Build_xcode/Products/iPhone10.2/OCA.app"),
             "bundleId": "com.noggin.ocalukasl",
             # "autoAcceptAlerts": True,  # not working on iOS10

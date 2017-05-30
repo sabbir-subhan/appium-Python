@@ -266,6 +266,7 @@ class Map:
     # MAP_ADDED_GEOMETRY = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image')
     MAP_ADDED_GEOMETRY = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:nth-child(2)')
     MAP_ADDED_GEOMETRY_ALL = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer')
+    WHOLE_MAP = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers')
 
 
 class PhotoScreen:

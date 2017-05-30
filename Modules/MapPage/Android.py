@@ -41,7 +41,7 @@ class Android(MapPage):
                 expected_conditions.presence_of_element_located(self.configuration.Map.MAP_AREA_6),
                 "Failed to load map")
             logging.info("Map was successfully loaded")
-        except:
+        except TimeoutException:
             sleep(5)
             logging.info("trying to wait for map")
             # logging.info("Failed to load map")
@@ -50,52 +50,78 @@ class Android(MapPage):
     def click_in_map_area_1(self):
 
         logging.info("click on map")
+
         action = TouchAction(self.driver)
-        screen_size = self.driver.get_window_size(windowHandle='current')  # it creates dictionary
-        try:
-            if screen_size['width'] > 1400:
-                action.tap(element=None, x=600, y=900, count=1).perform()
-            else:
-                logging.info("executing tap on map - width < 1400")
-                action.tap(element=None, x=300, y=450, count=1).perform()
-        except:
-            map9 = self.driver.find_element(*self.configuration.Map.MAP_AREA_9)
-            action.tap(element=map9, count=1).perform()
+
+        window_size = self.driver.get_window_size()  # this returns dictionary
+        logging.info(window_size)
+
+        position_x = window_size["width"] * 0.4
+        position_y = window_size["height"] * 0.4
+        action.tap(element=None, x=position_x, y=position_y, count=1).perform()
+
+        # action = TouchAction(self.driver)
+        # screen_size = self.driver.get_window_size(windowHandle='current')  # it creates dictionary
+        # try:
+        #     if screen_size['width'] > 1400:
+        #         action.tap(element=None, x=600, y=900, count=1).perform()
+        #     else:
+        #         logging.info("executing tap on map - width < 1400")
+        #         action.tap(element=None, x=300, y=450, count=1).perform()
+        # except NoSuchWindowException:
+        #     map9 = self.driver.find_element(*self.configuration.Map.MAP_AREA_9)
+        #     action.tap(element=map9, count=1).perform()
         sleep(1)
 
     def click_in_map_area_2(self):
 
         logging.info("click on map")
         action = TouchAction(self.driver)
-        screen_size = self.driver.get_window_size(windowHandle='current')
-        try:
-            if screen_size['width'] > 1400:
-                action.tap(element=None, x=300, y=1600, count=1).perform()
-            else:
-                logging.info("executing tap on map - width < 1400")
-                action.tap(element=None, x=150, y=400, count=1).perform()
-        except:
-            map3 = self.driver.find_element(*self.configuration.Map.MAP_AREA_3)
-            action.tap(element=map3, count=1).perform()
+
+        window_size = self.driver.get_window_size()  # this returns dictionary
+        logging.info(window_size)
+
+        position_x = window_size["width"] * 0.60
+        position_y = window_size["height"] * 0.60
+        action.tap(element=None, x=position_x, y=position_y, count=1).perform()
+
+        # screen_size = self.driver.get_window_size(windowHandle='current')
+        # try:
+        #     if screen_size['width'] > 1400:
+        #         action.tap(element=None, x=300, y=1600, count=1).perform()
+        #     else:
+        #         logging.info("executing tap on map - width < 1400")
+        #         action.tap(element=None, x=150, y=400, count=1).perform()
+        # except NoSuchWindowException:
+        #     map3 = self.driver.find_element(*self.configuration.Map.MAP_AREA_3)
+        #     action.tap(element=map3, count=1).perform()
         sleep(1)
 
     def double_click_in_map_area_3(self):
 
         logging.info("double click on map")
         action = TouchAction(self.driver)
-        screen_size = self.driver.get_window_size(windowHandle='current')
-        try:
-            if screen_size['width'] > 1280:
-                logging.info("executing tap on map - device width > 1280")
-                action.tap(element=None, x=1200, y=1900, count=2).perform()
-            elif screen_size['height'] <= 1980 and screen_size['width'] >= 768:
-                logging.info("executing tap on map - device width => 768 and <= 1280")
-                action.tap(element=None, x=150, y=800, count=2).perform()
-            else:
-                logging.info("executing tap on map - device width < 768")
-                action.tap(element=None, x=100, y=600, count=2).perform()
-        except:
-            map6 = self.driver.find_element(*self.configuration.Map.MAP_AREA_6)
-            action.tap(element=map6, count=2).perform()
+
+        window_size = self.driver.get_window_size()  # this returns dictionary
+        logging.info(window_size)
+
+        position_x = window_size["width"] * 0.50
+        position_y = window_size["height"] * 0.50
+        action.tap(element=None, x=position_x, y=position_y, count=2).perform()
+
+        # screen_size = self.driver.get_window_size(windowHandle='current')
+        # try:
+        #     if screen_size['width'] > 1280:
+        #         logging.info("executing tap on map - device width > 1280")
+        #         action.tap(element=None, x=1200, y=1900, count=2).perform()
+        #     elif screen_size['height'] <= 1980 and screen_size['width'] >= 768:
+        #         logging.info("executing tap on map - device width => 768 and <= 1280")
+        #         action.tap(element=None, x=150, y=800, count=2).perform()
+        #     else:
+        #         logging.info("executing tap on map - device width < 768")
+        #         action.tap(element=None, x=100, y=600, count=2).perform()
+        # except NoSuchWindowException:
+        #     map6 = self.driver.find_element(*self.configuration.Map.MAP_AREA_6)
+        #     action.tap(element=map6, count=2).perform()
         sleep(1)
 

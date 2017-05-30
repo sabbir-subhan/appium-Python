@@ -4,6 +4,7 @@ from Modules.BasePage.BasePage import BasePage
 import logging
 from time import sleep
 from configuration import platform
+from selenium.common.exceptions import *
 
 
 class CameraPage(BasePage):
@@ -49,7 +50,7 @@ class CameraPage(BasePage):
             cancel = self.driver.find_element(*self.configuration.CameraScreen.CANCEL_BUTTON)
             self.assertIsNotNone(cancel, "Cancel button not found")
             cancel.click()
-        except:
+        except NoSuchElementException:
             logging.info("Cancel button not found")
             pass
 
@@ -60,7 +61,7 @@ class CameraPage(BasePage):
             use_photo = self.driver.find_element(*self.configuration.CameraScreen.USE_PHOTO)
             self.assertIsNotNone(use_photo, "Use photo button not found")
             use_photo.click()
-        except:
+        except NoSuchElementException:
             logging.info("Use photo button not found")
             pass
         sleep(1)
@@ -73,7 +74,7 @@ class CameraPage(BasePage):
             self.assertIsNotNone(use_video, "Use video button not found")
             use_video.click()
             sleep(2)
-        except:
+        except NoSuchElementException:
             logging.info("Use video button not found")
             pass
 
@@ -84,7 +85,7 @@ class CameraPage(BasePage):
             retake_photo = self.driver.find_element(*self.configuration.CameraScreen.RETAKE)
             self.assertIsNotNone(retake_photo, "Retake button not found")
             retake_photo.click()
-        except:
+        except NoSuchElementException:
             logging.info("Retake button not found")
             pass
 

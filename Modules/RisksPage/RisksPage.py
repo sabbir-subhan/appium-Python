@@ -3,7 +3,8 @@
 from Modules.BasePage.BasePage import BasePage
 import logging
 from time import sleep
-from appium.webdriver.common.touch_action import TouchAction
+# from appium.webdriver.common.touch_action import TouchAction
+from selenium.common.exceptions import *
 
 
 class RisksPage(BasePage):
@@ -425,7 +426,7 @@ class RisksPage(BasePage):
                 self.assertIsNotNone(clear_search_field_button, "clear search field button not found")
                 clear_search_field_button.click()
                 sleep(2)
-        except:
+        except NoSuchElementException:
             pass
 
         self.switch_context_to_native()

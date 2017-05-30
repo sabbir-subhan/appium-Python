@@ -4,6 +4,7 @@ from Modules.BasePage.BasePage import BasePage
 from Modules.load_class import LoadClass
 import logging
 from time import sleep
+from selenium.common.exceptions import *
 
 
 class LogsPage(BasePage):
@@ -483,7 +484,7 @@ class LogsPage(BasePage):
                 self.assertIsNotNone(clear_search_field_button, "clear search field button not found")
                 clear_search_field_button.click()
                 sleep(2)
-        except:
+        except NoSuchElementException:
             pass
 
         self.switch_context_to_native()

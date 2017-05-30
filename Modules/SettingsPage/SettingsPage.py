@@ -1,12 +1,12 @@
 """A class for methods to handle Settings Page """
 
 from Modules.BasePage.BasePage import BasePage
-from Modules.load_class import LoadClass
 import logging
-from appium.webdriver.common.touch_action import TouchAction
 from credentials import ContactIdentifierPIN
 from selenium.common.exceptions import *
 from time import sleep
+# from appium.webdriver.common.touch_action import TouchAction
+# from Modules.load_class import LoadClass
 
 
 class SettingsPage(BasePage):

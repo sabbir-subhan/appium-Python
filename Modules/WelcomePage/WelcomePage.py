@@ -2,7 +2,7 @@
 
 import logging
 from Modules.BasePage.BasePage import BasePage
-from credentials import ContactIdentifierPIN
+# from credentials import ContactIdentifierPIN
 from time import sleep
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait

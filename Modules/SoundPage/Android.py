@@ -1,7 +1,7 @@
 """ Methods for Android on Sound Page """
 
 from Modules.SoundPage.SoundPage import SoundPage
-import logging
+# import logging
 
 
 class Android(SoundPage):

@@ -5,8 +5,8 @@ from Modules.load_class import LoadClass
 import logging
 from time import sleep
 from selenium.common.exceptions import *
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions
+# from selenium.webdriver.support.ui import WebDriverWait
 
 
 class IOS(WelcomePage):

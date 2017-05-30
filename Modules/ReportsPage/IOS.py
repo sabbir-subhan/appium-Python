@@ -5,6 +5,7 @@ from Modules.load_class import LoadClass
 import logging
 from time import sleep
 from appium.webdriver.common.touch_action import TouchAction
+from selenium.common.exceptions import *
 
 
 class IOS(ReportsPage):
@@ -55,7 +56,7 @@ class IOS(ReportsPage):
             choose_lodging_agency = self.driver.find_element(*self.configuration.ReportsScreen.LODGING_AGENCY)
             self.assertIsNotNone(choose_lodging_agency, "Lodging Agency inside picker was not found")
             choose_lodging_agency.click()
-        except:
+        except NoSuchElementException:
             picker_wheel = self.driver.find_element(*self.configuration.CommonScreen.PICKER_WHEEL)
             picker_wheel.send_keys("contact_group_for_tests")
             common_page = LoadClass.load_page('CommonPage')

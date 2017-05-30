@@ -5,8 +5,8 @@ import logging
 from time import sleep
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
-from configuration import platform
-from Modules.load_class import LoadClass
+# from configuration import platform
+# from Modules.load_class import LoadClass
 
 
 class PhotoPage(BasePage):

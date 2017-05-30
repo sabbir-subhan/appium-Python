@@ -1,12 +1,12 @@
 """ Methods for Android on Select Media Page """
 
 from Modules.SelectMediaPage.SelectMediaPage import SelectMediaPage
-from appium.webdriver.common.touch_action import TouchAction
-import logging
-from Conf.desired_capabilities import DesiredCapabilities
 from time import sleep
-from selenium.common.exceptions import *
-from configuration import platform
+import logging
+# from appium.webdriver.common.touch_action import TouchAction
+# from Conf.desired_capabilities import DesiredCapabilities
+# from selenium.common.exceptions import *
+# from configuration import platform
 
 
 class Android(SelectMediaPage):

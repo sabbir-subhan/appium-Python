@@ -285,6 +285,16 @@ class TestCreateObjectsFromMappingLayer(SetupTestCase):
         # Click on Map > Click on layers > Click on Saved map > Click on geometry > Click on View attributes
         main_page.open_MAP()
         map_page.wait_for_map_to_load()
+
+
+        # map_page.click_plot_button()  # for tests - not part of the TC
+        # map_page.click_tool_button()
+        # map_page.click_line_button()
+        # map_page.click_default_button()
+        # map_page.click_in_map_area_2()
+        # map_page.double_click_in_map_area_3()
+
+
         map_page.click_layers_button()
         map_page.click_saved_maps_button()
         map_page.choose_map_for_mobile()

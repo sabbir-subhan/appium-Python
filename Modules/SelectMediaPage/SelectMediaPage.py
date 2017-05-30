@@ -3,8 +3,8 @@
 from Modules.BasePage.BasePage import BasePage
 import logging
 from time import sleep
-from selenium.common.exceptions import *
 from configuration import platform
+# from selenium.common.exceptions import *
 
 
 class SelectMediaPage(BasePage):

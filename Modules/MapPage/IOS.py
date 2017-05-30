@@ -7,6 +7,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from appium.webdriver.common.touch_action import TouchAction
 from time import sleep
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.touch_actions import TouchActions
+from appium.webdriver.common.multi_action import MultiAction
+from appium.webdriver.webelement import WebElement
 
 
 class IOS(MapPage):
@@ -129,25 +133,50 @@ class IOS(MapPage):
         # sleep(1)
 
         logging.info("double click on map")
-        window_size = self.driver.get_window_size()  # this returns dictionary
-        logging.info(window_size)
-        position_x = window_size["width"] * 0.50
-        position_y = window_size["height"] * 0.50
-        logging.info("position_x = " + str(position_x))
-        logging.info("position_y = " + str(position_y))
-        element = self.driver.find_element(*self.configuration.Map.MAP_AREA_18)
-        action = TouchAction(self.driver)
 
-        # sleep(1)
-        # positions = [(position_x, position_y)]
-        # self.driver.tap(positions)
-        # self.driver.tap(positions)
+        self.switch_context_to_webview()
+
+        # logging.info("position_x = " + str(position_x))
+        # logging.info("position_y = " + str(position_y))
+        # element = self.driver.find_element(*self.configuration.Map.MAP_AREA_18)
+
+        # map6 = self.driver.find_element(*self.configuration.Map.WHOLE_MAP)
+        # action.tap(element=map6, count=2).perform()
+
+        # actions = TouchActions(self.driver)
+        # element = self.driver.find_element(*self.configuration.Map.WHOLE_MAP)
+        element2 = self.driver.find_element_by_css_selector('div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>div#mapCanvas_layer0>div>img:nth-child(2)')
+        # actions.double_tap(on_element=element)
+
+        # action = TouchAction(self.driver)
 
         sleep(1)
-        #action.tap(element=element, count=2).perform()
+        # action.tap(element=element, count=2).perform()
         # action.tap(element=element, count=2).release()
-        #action.tap(element=element, x=position_x, y=position_y, count=2).perform()
+        # action.tap(element=element, x=position_x, y=position_y, count=2).perform()
         # action.tap(element=element, x=position_x, y=position_y, count=2).release()
-        action.tap(element=None, x=position_x, y=position_y, count=2)
+        # action.tap(element=None, x=position_x, y=position_y, count=2)
+
+        action = TouchAction(self.driver)
+
+        window_size = self.driver.get_window_size()  # this returns dictionary
+        logging.info(window_size)
+
+        position_x = window_size["width"] * 0.50
+        position_y = window_size["height"] * 0.50
+
+        sleep(1)
+        action.tap(element=element2, x=position_x, y=position_y, count=2).perform()
+        sleep(1)
+
+        # actions = MultiAction(self.driver)
+        # actions.add(TouchAction.tap(element2).tap(element2).perform())
+
+        self.switch_context_to_native()
+
+        # positions = [(position_x, position_y)]
+        # self.driver.tap(positions, 10)
+        # self.driver.tap(positions, 10)
+
         logging.info("wait a second after double tapping")
         sleep(2)

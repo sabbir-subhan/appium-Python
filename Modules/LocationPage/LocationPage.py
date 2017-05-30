@@ -46,7 +46,7 @@ class LocationPage(BasePage):
             # WebDriverWait(self.driver, 50).until(expected_conditions.presence_of_element_located(self.configuration.iOS.IOS_ALLOW), "alert allow not found")
             button_allow_location = self.driver.find_element(*self.configuration.iOS.IOS_ALLOW)
             button_allow_location.click()
-        except:
+        except NoSuchElementException:
             pass
 
     def click_send_every(self):

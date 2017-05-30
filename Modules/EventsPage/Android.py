@@ -5,6 +5,7 @@ from appium.webdriver.common.touch_action import TouchAction
 import logging
 from time import sleep
 from Modules.load_class import LoadClass
+from selenium.common.exceptions import *
 
 
 class Android(EventsPage):
@@ -304,7 +305,7 @@ class Android(EventsPage):
         action = TouchAction(self.driver)
         try:
             action.tap(element=option_1, count=1).perform()
-        except:
+        except ElementNotSelectableException:
             option_1.click()
 
     def click_on_option_2(self):
@@ -315,7 +316,7 @@ class Android(EventsPage):
         action = TouchAction(self.driver)
         try:
             action.tap(element=option_2, count=1).perform()
-        except:
+        except ElementNotSelectableException:
             option_2.click()
 
     def click_on_option_3(self):
@@ -326,5 +327,5 @@ class Android(EventsPage):
         action = TouchAction(self.driver)
         try:
             action.tap(element=option_3, count=1).perform()
-        except:
+        except ElementNotSelectableException:
             option_3.click()

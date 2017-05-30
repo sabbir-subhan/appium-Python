@@ -1,12 +1,12 @@
 """ Methods for IOS9 on Welcome Page """
 
 from Modules.WelcomePage.IOS import IOS
-from Modules.load_class import LoadClass
-from selenium.common.exceptions import *
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.ui import WebDriverWait
-import logging
-from time import sleep
+# from Modules.load_class import LoadClass
+# from selenium.common.exceptions import *
+# from selenium.webdriver.support import expected_conditions
+# from selenium.webdriver.support.ui import WebDriverWait
+# import logging
+# from time import sleep
 
 
 class IOS9(IOS):

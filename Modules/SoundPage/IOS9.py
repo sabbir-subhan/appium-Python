@@ -1,7 +1,7 @@
 """ Methods for IOS9 on Sound Page """
 
 from Modules.SoundPage.IOS import IOS
-import logging
+# import logging
 
 
 class IOS9(IOS):

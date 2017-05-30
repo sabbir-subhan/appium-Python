@@ -28,7 +28,7 @@ class IOS(LocationPage):
             choose_5_minutes_option = self.driver.find_element(*self.configuration.LocationScreen.CHOOSE_5_MINUTES_OPTION_iPad)
             self.assertIsNotNone(choose_5_minutes_option, "5 minutes option not found")
             choose_5_minutes_option.click()
-        except:
+        except NoSuchElementException:
             picker_wheel = self.driver.find_element(*self.configuration.CommonScreen.PICKER_WHEEL)
             picker_wheel.send_keys('5 minutes')
             common_page = LoadClass.load_page('CommonPage')

@@ -5,6 +5,7 @@ import logging
 from time import sleep
 from Modules.load_class import LoadClass
 from appium.webdriver.common.touch_action import TouchAction
+from selenium.common.exceptions import *
 
 
 class IOS(EventsPage):
@@ -158,7 +159,7 @@ class IOS(EventsPage):
                                                             CHOOSE_SEVERITY_LVL1_iPad)
             self.assertIsNotNone(choose_severity_lvl1, "severity level 1 not found")
             choose_severity_lvl1.click()
-        except:
+        except NoSuchElementException:
             picker_wheel = self.driver.find_element(*self.configuration.CommonScreen.PICKER_WHEEL)
             picker_wheel.send_keys('Severity 1')
             common_page = LoadClass.load_page('CommonPage')
@@ -173,7 +174,7 @@ class IOS(EventsPage):
                                                             CHOOSE_SEVERITY_LVL2_iPad)
             self.assertIsNotNone(choose_severity_lvl2, "severity level 2 not found")
             choose_severity_lvl2.click()
-        except:
+        except NoSuchElementException:
             picker_wheel = self.driver.find_element(*self.configuration.CommonScreen.PICKER_WHEEL)
             picker_wheel.send_keys('Severity 2')
             common_page = LoadClass.load_page('CommonPage')
@@ -188,7 +189,7 @@ class IOS(EventsPage):
                                                             CHOOSE_SEVERITY_LVL3_iPad)
             self.assertIsNotNone(choose_severity_lvl3, "severity level 3 not found")
             choose_severity_lvl3.click()
-        except:
+        except NoSuchElementException:
             picker_wheel = self.driver.find_element(*self.configuration.CommonScreen.PICKER_WHEEL)
             picker_wheel.send_keys('Severity 3')
             common_page = LoadClass.load_page('CommonPage')
@@ -203,7 +204,7 @@ class IOS(EventsPage):
                                                             CHOOSE_SEVERITY_LVL4_iPad)
             self.assertIsNotNone(choose_severity_lvl4, "severity level 4 not found")
             choose_severity_lvl4.click()
-        except:
+        except NoSuchElementException:
             picker_wheel = self.driver.find_element(*self.configuration.CommonScreen.PICKER_WHEEL)
             picker_wheel.send_keys('Severity 4')
             common_page = LoadClass.load_page('CommonPage')
@@ -217,7 +218,7 @@ class IOS(EventsPage):
             choose_severity_lvl = self.driver.find_element(*self.configuration.EventEditScreen.CHOOSE_SEVERITY_LVL5_iPad)
             self.assertIsNotNone(choose_severity_lvl, "severity level 5 not found")
             choose_severity_lvl.click()
-        except:
+        except NoSuchElementException:
             picker_wheel = self.driver.find_element(*self.configuration.CommonScreen.PICKER_WHEEL)
             picker_wheel.send_keys("Severity 5")
             common_page = LoadClass.load_page('CommonPage')
