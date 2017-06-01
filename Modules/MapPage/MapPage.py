@@ -82,7 +82,50 @@ class MapPage(BasePage):
         default_button = self.driver.find_element(*self.configuration.Map.DEFAULT_BUTTON)
         self.assertIsNotNone(default_button, "default button not found")
         default_button.click()
-        sleep(1)
+
+    def click_point_default_button(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Point default button")
+        point_default_button = self.driver.find_element(*self.configuration.Map.POINT_DEFAULT_BUTTON)
+        self.assertIsNotNone(point_default_button, "Point default button not found")
+        point_default_button.click()
+
+        self.switch_context_to_native()
+
+    def click_line_default_button(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Line default button")
+        line_default_button = self.driver.find_element(*self.configuration.Map.LINE_DEFAULT_BUTTON)
+        self.assertIsNotNone(line_default_button, "Line default button not found")
+        line_default_button.click()
+
+        self.switch_context_to_native()
+
+    def click_circle_default_button(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Circle default button")
+        circle_default_button = self.driver.find_element(*self.configuration.Map.CIRCLE_DEFAULT_BUTTON)
+        self.assertIsNotNone(circle_default_button, "Circle default button not found")
+        circle_default_button.click()
+
+        self.switch_context_to_native()
+
+    def click_polygon_default_button(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Polygon default button")
+        polygon_default_button = self.driver.find_element(*self.configuration.Map.POLYGON_DEFAULT_BUTTON)
+        self.assertIsNotNone(polygon_default_button, "Polygon default button not found")
+        polygon_default_button.click()
+
+        self.switch_context_to_native()
 
     def click_point_2_button(self):
 
@@ -105,18 +148,18 @@ class MapPage(BasePage):
 
     def save_map(self):
 
+        sleep(1)
+
         self.switch_context_to_webview()
 
-        sleep(1)
         logging.info("Save map")
         save_map_button = self.driver.find_element(*self.configuration.Map.SAVE_MAP_BUTTON)
         self.assertIsNotNone(save_map_button, "save map button not found")
         save_map_button.click()
-        sleep(4)
 
         self.switch_context_to_native()
 
-        sleep(1)
+        sleep(4)
 
     def choose_plot_type_asset(self):
 
@@ -287,51 +330,20 @@ class MapPage(BasePage):
 
         self.switch_context_to_native()
 
-    def click_on_added_layer(self):
-
-        self.switch_context_to_webview()
-
-        logging.info("click on added layer")
-        click_on_added_layer = self.driver.find_element(*self.configuration.Map.MAP_ADDED_LAYER)
-        self.assertIsNotNone(click_on_added_layer, "added layer not found")
-        click_on_added_layer.click()
-        sleep(1)
-
-        self.switch_context_to_native()
-
     def click_on_added_geometry(self):
 
         logging.info("click on added geometry")
+        sleep(1)
+
+        self.switch_context_to_webview()
 
         try:
-            logging.info("1")
-            self.switch_context_to_webview()
-            click_on_added_geometry = self.driver.find_elements(*self.configuration.Map.MAP_ADDED_GEOMETRY_ALL)
-            self.assertIsNotNone(click_on_added_geometry[0], "added geometry not found")
-            click_on_added_geometry[1].click()
-            self.switch_context_to_native()
-        except IndexError:
-            logging.info("2")
-            self.switch_context_to_webview()
-            click_on_added_geometry = self.driver.find_elements(*self.configuration.Map.MAP_ADDED_GEOMETRY_ALL)
-            action = TouchAction(self.driver)
-            action.tap(element=click_on_added_geometry[0], count=1)
-            sleep(2)
+            el = self.driver.find_element(*self.configuration.Map.ALL_ASSETS_AND_TASKS_GEOMETRY)
+        except NoSuchElementException:
+            el = self.driver.find_element(*self.configuration.Map.ALL_EVENTS_AND_CONTACTS_GEOMETRY)
+        el.click()
 
-            self.switch_context_to_native()
-
-    # def click_on_added_geometry(self):
-    #
-    #     self.switch_context_to_webview()
-    #     sleep(2)
-    #     logging.info("click on added geometry")
-    #
-    #     click_on_added_geometry = self.driver.find_elements(*self.configuration.Map.MAP_ADDED_GEOMETRY_ALL)
-    #     action = TouchAction(self.driver)
-    #     action.tap(element=click_on_added_geometry[0], count=1)
-    #     sleep(1)
-    #
-    #     self.switch_context_to_native()
+        self.switch_context_to_native()
 
     def choose_map_all_tasks(self):
 
@@ -484,6 +496,7 @@ class MapPage(BasePage):
     def press_and_drag_duplicated_geometry(self):
 
         logging.info("press and drag duplicated geometry")
+        sleep(1)
 
         self.switch_context_to_webview()
 
@@ -500,11 +513,13 @@ class MapPage(BasePage):
         print(y)
         action = TouchAction(self.driver)
         # action.long_press(el=duplicated_geometry, duration=1000).move_to(x=x, y=y).release().perform()
-        sleep(1)
+
         action.press(el=duplicated_geometry).wait(ms=500).move_to(x=x, y=y).release()
-        #action.press(el=duplicated_geometry).move_to(x=x, y=y).release()
+        # action.press(el=duplicated_geometry).move_to(x=x, y=y).release()
         logging.info("wait a second after dragging")
-        sleep(2)
 
         self.switch_context_to_native()
+
+        sleep(2)
+
 

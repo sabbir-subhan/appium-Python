@@ -133,12 +133,19 @@ class IOS(MapPage):
         # sleep(1)
 
         logging.info("double click on map")
+        sleep(1)
 
         self.switch_context_to_webview()
 
+        whole_map = self.driver.find_element(*self.configuration.Map.WHOLE_MAP)
+        #whole_map.click()
+
+        actions = TouchActions(self.driver)
+        actions.double_tap(on_element=whole_map)
+
         # logging.info("position_x = " + str(position_x))
         # logging.info("position_y = " + str(position_y))
-        # element = self.driver.find_element(*self.configuration.Map.MAP_AREA_18)
+        # element1 = self.driver.find_element(*self.configuration.Map.MAP_AREA_18)
 
         # map6 = self.driver.find_element(*self.configuration.Map.WHOLE_MAP)
         # action.tap(element=map6, count=2).perform()
@@ -156,8 +163,13 @@ class IOS(MapPage):
         # action.tap(element=element, x=position_x, y=position_y, count=2).perform()
         # action.tap(element=element, x=position_x, y=position_y, count=2).release()
         # action.tap(element=None, x=position_x, y=position_y, count=2)
-
+        el3 = self.driver.find_element_by_css_selector("#mapCanvas_layer0_tile_12_1_1")
         action = TouchAction(self.driver)
+        # x = el3.get_attribute("x")
+        # y = el3.get_attribute("y")
+        # position = [(x, y)]
+
+        # action.tap(el3, count=2).perform()  # TEST IT
 
         window_size = self.driver.get_window_size()  # this returns dictionary
         logging.info(window_size)
@@ -165,14 +177,28 @@ class IOS(MapPage):
         position_x = window_size["width"] * 0.50
         position_y = window_size["height"] * 0.50
 
-        sleep(1)
-        action.tap(element=element2, x=position_x, y=position_y, count=2).perform()
-        sleep(1)
+        # action.tap(None, position_x, position_y, 2).perform()
+        # action.tap(element=element2, x=position_x, y=position_y, count=2).perform()
+
+        # action.tap(element=element2, count=2).perform()
+
+        # action.tap(element2).perform()
+        # action.tap(element2).perform()
 
         # actions = MultiAction(self.driver)
         # actions.add(TouchAction.tap(element2).tap(element2).perform())
 
         self.switch_context_to_native()
+
+        sleep(1)
+
+        element1 = self.driver.find_element(*self.configuration.Map.MAP_AREA_18)
+        action.tap(element1).perform()
+        action.tap(element1).perform()
+
+        # action.tap(element=element1, x=position_x, y=position_y, count=2).perform()  # THIS SHOULD WORK
+        #
+        # action.tap(element=element1, count=2).perform()
 
         # positions = [(position_x, position_y)]
         # self.driver.tap(positions, 10)
@@ -180,3 +206,24 @@ class IOS(MapPage):
 
         logging.info("wait a second after double tapping")
         sleep(2)
+
+    def double_click_on_element(self, element, x=None, y=None):
+        """
+        :param element - element where action multiple click has to be executed - mandatory
+        :param x: x coordinate
+        :param y: y coordinate
+
+        x and y can be use without element if action double click
+        has to be executed in specific place
+
+        ways of usage:
+        1. self.double_click_on_element(el)
+        2. self.double_click_on_element(el, 200, 200) - el is ignored here
+        """
+        action = TouchAction(self.driver)
+
+        if x is not None and y is not None:
+            action.tap(None, x, y, 2).perform()
+
+        action.tap(element).perform()
+        action.tap(element).perform()

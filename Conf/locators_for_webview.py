@@ -185,7 +185,8 @@ class EventEditScreen:
     # CHOOSE_SEVERITY_LVL5_iPad = (MobileBy.CSS_SELECTOR, '')
     # FINISHED_FIELD = (MobileBy.CSS_SELECTOR, '')
     DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'iframe[title="Rich Text Editor, description"]')
-    CREATE_MAPPING_DATA = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div>ul.edit-view.ui-listview>li.geometryinput>a')
+    CREATE_MAPPING_DATA_EDIT = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div>ul.edit-view.ui-listview>li.geometryinput>a')
+    CREATE_MAPPING_DATA_NEW = (MobileBy.CSS_SELECTOR, 'div#emeNew>div>ul.edit-view.ui-listview>li.geometryinput>a')
     # EDIT_MAPPING_DATA = (MobileBy.CSS_SELECTOR, '')
     # ELEMENT_TO_SCROLL = (MobileBy.CSS_SELECTOR, '')
     # SEQUENCE_ONLOAD_HEADER = (MobileBy.CSS_SELECTOR, '')
@@ -224,19 +225,16 @@ class Map:
     """A class for Map screen locators."""
     PLOT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-b>li#mapPlot>a')
     TOOL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-b>li#openMapToolMore>a[href="#mapToolMore"]')
-    POINT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="POINT"]>h2>a')
-    POINT_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="POINT"]>div>ul>li.ui-first-child>a')
-    POINT_2_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="POINT"]>div>ul>li.ui-last-child>a')  # new symbology created in OCA
-    LINE_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="LINESTRING"]>div>ul>li>a')
-    CIRCLE_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="CIRCLE"]>div>ul>li>a')
-    POLYGON_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="POLYGON"]>div>ul>li>a')
-    # MAP_AREA_12 = (MobileBy.CSS_SELECTOR, '')
-    # MAP_AREA_13 = (MobileBy.CSS_SELECTOR, '')
-    # MAP_AREA_17 = (MobileBy.CSS_SELECTOR, '')
+    POINT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div.Point>h2')
+    POINT_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div.Point>div>ul>li:first-child')
+    POINT_2_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div.Point>div>ul>li.ui-last-child')  # new symbology created in OCA
+    LINE_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div.Line>div>ul>li')
+    CIRCLE_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div.Circle>div>ul>li')
+    POLYGON_DEFAULT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div.Polygon>div>ul>li')
     MAP_AREA_18 = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>div#mapCanvas_layer0>div>img#mapCanvas_layer0_tile_12_2_2')
-    LINE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="LINESTRING"]>h2>a')
-    CIRCLE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="CIRCLE"]>h2>a')
-    POLYGON_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div[data-wkt="POLYGON"]>h2>a')
+    LINE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div.Line>h2')
+    CIRCLE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div.Circle>h2')
+    POLYGON_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div#mapToolMore-popup>div#mapToolMore>div[data-collapsed-icon="arrow-d"]>div.Polygon>h2')
     SAVE_MAP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                               'a[data-translate="Save"]')
     CANCEL_MAP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
@@ -263,10 +261,13 @@ class Map:
     VIEW_ATTRIBUTES_FROM_LAYER = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#tools>a')  # view asset, event, task, contact
     DUPLICATED_GEOMETRY_ON_MAP = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:last-child')
     DUPLICATE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#tools>a:nth-child(2)')
-    # MAP_ADDED_GEOMETRY = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image')
+    MAP_ADDED_GEOMETRY_LAST = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:last-child')
     MAP_ADDED_GEOMETRY = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:nth-child(2)')
     MAP_ADDED_GEOMETRY_ALL = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer')
     WHOLE_MAP = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers')
+    ALL_ASSETS_GEOMETRY = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:nth-child(2)')
+    ALL_EVENTS_AND_CONTACTS_GEOMETRY = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:last-child')
+    ALL_ASSETS_AND_TASKS_GEOMETRY = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:nth-child(2)')
 
 
 class PhotoScreen:
