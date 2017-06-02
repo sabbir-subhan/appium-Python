@@ -253,7 +253,6 @@ class Map:
     ZOOM_IN_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_zoom_slider>div:first-child')
     ZOOM_OUT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_zoom_slider>div:last-child')
     CLEAR_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-b>li#mapClear>a')
-    MAP_ADDED_LAYER = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer')
     FIRST_PLOT_OBJECT = (MobileBy.CSS_SELECTOR, 'div#mapPlotType>div.ui-content>ul.ui-listview>li:first-child>a')  # asset
     SECOND_PLOT_OBJECT = (MobileBy.CSS_SELECTOR, 'div#mapPlotType>div.ui-content>ul.ui-listview>li:nth-child(2)>a')  # event
     THIRD_PLOT_OBJECT = (MobileBy.CSS_SELECTOR, 'div#mapPlotType>div.ui-content>ul.ui-listview>li:nth-child(3)>a')  # report
@@ -261,13 +260,12 @@ class Map:
     VIEW_ATTRIBUTES_FROM_LAYER = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#tools>a')  # view asset, event, task, contact
     DUPLICATED_GEOMETRY_ON_MAP = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:last-child')
     DUPLICATE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#tools>a:nth-child(2)')
-    MAP_ADDED_GEOMETRY_LAST = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:last-child')
-    MAP_ADDED_GEOMETRY = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:nth-child(2)')
     MAP_ADDED_GEOMETRY_ALL = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer')
     WHOLE_MAP = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers')
-    ALL_ASSETS_GEOMETRY = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:nth-child(2)')
     ALL_EVENTS_AND_CONTACTS_GEOMETRY = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:last-child')
     ALL_ASSETS_AND_TASKS_GEOMETRY = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:nth-child(2)')
+    MAP_ADDED_LAYER = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:last-child')
+    MAP_ADDED_LAYER_FOR_MOBILE = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>path:last-child')
 
 
 class PhotoScreen:

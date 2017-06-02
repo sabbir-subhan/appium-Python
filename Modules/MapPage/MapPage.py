@@ -320,13 +320,94 @@ class MapPage(BasePage):
 
         sleep(1)
 
-    def check_presents_of_added_layer(self):  # it searches for added graphic layer on the map
+    def check_presents_of_added_layer_for_mobile(self):  # it searches for added graphic layer on the map - "FOR MOBILE" is saved map (created in OCA)
 
+        sleep(1)
+        self.switch_context_to_webview()
+
+        logging.info("check if added layer is present on the map")
+        check_presents_of_added_layer = self.driver.find_element(*self.configuration.Map.MAP_ADDED_LAYER_FOR_MOBILE)  # first element in <g#mapCanvas_graphics_layer
+        self.assertIsNotNone(check_presents_of_added_layer, "added layer not found")
+
+        self.switch_context_to_native()
+
+    def check_presents_of_added_layer(self):  # it searches for added graphic element on the map
+
+        sleep(2)
         self.switch_context_to_webview()
 
         logging.info("check if added layer is present on the map")
         check_presents_of_added_layer = self.driver.find_element(*self.configuration.Map.MAP_ADDED_LAYER)
         self.assertIsNotNone(check_presents_of_added_layer, "added layer not found")
+
+        self.switch_context_to_native()
+
+    def click_on_added_layer(self):  # it searches for added graphic layer on the map
+
+        sleep(1)
+        self.switch_context_to_webview()
+
+        logging.info("click on added layer")
+        click_on_added_layer = self.driver.find_elements(*self.configuration.Map.MAP_ADDED_LAYER)
+        self.assertIsNotNone(click_on_added_layer[0], "added layer not found")
+        sleep(1)
+        click_on_added_layer[0].click()
+
+        self.switch_context_to_native()
+        sleep(1)
+
+    def click_on_added_geometry_assets_and_tasks(self):
+
+        logging.info("click on added geometry")
+        sleep(1)
+
+        self.switch_context_to_webview()
+
+        el = self.driver.find_element(*self.configuration.Map.ALL_ASSETS_AND_TASKS_GEOMETRY)
+        el.click()
+
+        self.switch_context_to_native()
+
+    def click_on_added_geometry_events_and_contacts(self):
+
+        logging.info("click on added geometry")
+        sleep(1)
+
+        self.switch_context_to_webview()
+
+        el = self.driver.find_element(*self.configuration.Map.ALL_EVENTS_AND_CONTACTS_GEOMETRY)
+        el.click()
+
+        # try:
+        #     el = self.driver.find_element(*self.configuration.Map.ALL_ASSETS_AND_TASKS_GEOMETRY)
+        # except NoSuchElementException:
+        #     el = self.driver.find_element(*self.configuration.Map.ALL_EVENTS_AND_CONTACTS_GEOMETRY)
+        # el.click()
+
+        # action = TouchAction(self.driver)
+        # action.tap(element=el).perform()  # method not yet implemented
+
+        # try:
+        #     el1 = self.driver.find_element(*self.configuration.Map.ALL_ASSETS_AND_TASKS_GEOMETRY)
+        #     el2 = self.driver.find_element(*self.configuration.Map.ALL_EVENTS_AND_CONTACTS_GEOMETRY)
+        #     el3 = self.driver.find_element(*self.configuration.Map.MAP_ADDED_GEOMETRY_ALL)
+        #     el4 = self.driver.find_element(*self.configuration.Map.WHOLE_MAP)
+        #     if el1.is_displayed():
+        #         el1.click()
+        #         print("1")
+        #     elif el2.is_displayed():
+        #         el2.click()
+        #         print("2")
+        #     elif el3.is_displayed():
+        #         el3.click()
+        #         print("3")
+        #     elif el4.is_displayed():
+        #         el4.click()
+        #         print("4")
+        #     else:
+        #         print("elements not found")
+        # except NoSuchElementException:
+        #     print("elements not found")
 
         self.switch_context_to_native()
 
@@ -465,7 +546,7 @@ class MapPage(BasePage):
 
         logging.info("click view layer attributes, for example view asset button")
         click_view_layer_attributes = self.driver.find_element(*self.configuration.Map.VIEW_ATTRIBUTES_FROM_LAYER)
-        self.assertIsNotNone(click_view_layer_attributes, "Tool button not present")
+        self.assertIsNotNone(click_view_layer_attributes, "view layer attributes button not present")
         click_view_layer_attributes.click()
 
         self.switch_context_to_native()
@@ -503,8 +584,8 @@ class MapPage(BasePage):
         duplicated_geometry = self.driver.find_element(*self.configuration.Map.DUPLICATED_GEOMETRY_ON_MAP)
         location = duplicated_geometry.location
         print(location)
-        x = location["x"]
-        y = location["y"]
+        x = int(location["x"])
+        y = int(location["y"])
         print(x)
         print(y)
         x = x + x * 0.5
@@ -513,8 +594,8 @@ class MapPage(BasePage):
         print(y)
         action = TouchAction(self.driver)
         # action.long_press(el=duplicated_geometry, duration=1000).move_to(x=x, y=y).release().perform()
-
-        action.press(el=duplicated_geometry).wait(ms=500).move_to(x=x, y=y).release()
+        sleep(1)
+        action.press(el=duplicated_geometry).wait(ms=1500).move_to(x=x, y=y).release()
         # action.press(el=duplicated_geometry).move_to(x=x, y=y).release()
         logging.info("wait a second after dragging")
 

@@ -7,10 +7,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from appium.webdriver.common.touch_action import TouchAction
 from time import sleep
-from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.touch_actions import TouchActions
-from appium.webdriver.common.multi_action import MultiAction
-from appium.webdriver.webelement import WebElement
+# from appium.webdriver.common.multi_action import MultiAction
+# from appium.webdriver.webelement import WebElement
+# from selenium.webdriver.common.action_chains import ActionChains
 
 
 class IOS(MapPage):
@@ -18,18 +18,17 @@ class IOS(MapPage):
     def wait_for_map_to_load(self):
 
         logging.info("Waiting for map to load")
-        sleep(4)
         try:
-            WebDriverWait(self.driver, 30).until(
+            WebDriverWait(self.driver, 5).until(
                 expected_conditions.presence_of_element_located(self.configuration.Map.MAP_AREA_12),
                 "Failed to load map")
             logging.info("Map was successfully loaded")
-        except:
+        except TimeoutException:
             sleep(5)
             logging.info("trying to wait for map")
             # logging.info("Failed to load map")
             # self.fail("Map was not found")
-        sleep(1)
+        sleep(2)
 
     def click_in_map_area_1(self):
 
