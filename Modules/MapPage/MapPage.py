@@ -280,9 +280,11 @@ class MapPage(BasePage):
         click_search_button.click()
 
         self.switch_context_to_native()
+        sleep(1)
 
     def click_first_address_on_the_list(self):
 
+        sleep(1)
         self.switch_context_to_webview()
 
         logging.info("click first address on the list")
@@ -331,14 +333,38 @@ class MapPage(BasePage):
 
         self.switch_context_to_native()
 
+    # def check_presents_of_added_layer(self):  # it searches for added graphic element on the map
+    #
+    #     sleep(2)
+    #     self.switch_context_to_webview()
+    #
+    #     logging.info("check if added layer is present on the map")
+    #     check_presents_of_added_layer = self.driver.find_element(*self.configuration.Map.MAP_ADDED_LAYER)
+    #     self.assertIsNotNone(check_presents_of_added_layer, "added layer not found")
+    #
+    #     self.switch_context_to_native()
+
     def check_presents_of_added_layer(self):  # it searches for added graphic element on the map
 
         sleep(2)
         self.switch_context_to_webview()
 
         logging.info("check if added layer is present on the map")
-        check_presents_of_added_layer = self.driver.find_element(*self.configuration.Map.MAP_ADDED_LAYER)
-        self.assertIsNotNone(check_presents_of_added_layer, "added layer not found")
+        sleep(1)
+        # try:
+        #     check_presents_of_added_layer = self.driver.find_element(*self.configuration.Map.MAP_ADDED_LAYER)
+        #     self.assertIsNotNone(check_presents_of_added_layer, "added layer not found")
+        # except NoSuchElementException:
+        #     whole_g_element = self.driver.find_element(*self.configuration.Map.MAP_ADDED_LAYER_SECOND_ELEMENT)
+        #     self.assertIsNotNone(whole_g_element, "whole graphic element not found")
+        try:
+            added_layer = self.driver.find_element(*self.configuration.Map.MAP_ADDED_LAYER_SECOND_ELEMENT)  # actually it is first element because first-child is empty <g> tag
+            if added_layer.is_displayed():
+                self.assertIsNotNone(added_layer, "added layer not found")
+            else:
+                pass
+        except NoSuchElementException:
+            logging.warning("added layer not found - check if, for example contact with address, is present")
 
         self.switch_context_to_native()
 
@@ -348,35 +374,61 @@ class MapPage(BasePage):
         self.switch_context_to_webview()
 
         logging.info("click on added layer")
-        click_on_added_layer = self.driver.find_elements(*self.configuration.Map.MAP_ADDED_LAYER)
-        self.assertIsNotNone(click_on_added_layer[0], "added layer not found")
-        sleep(1)
-        click_on_added_layer[0].click()
+
+        try:
+            el = self.driver.find_element(*self.configuration.Map.MAP_ADDED_LAYER_SECOND_ELEMENT)
+            el.click()
+        except:
+            logging.warning("added layer not found - there is too many elements on map, Appium can't tap on single element because they are overlapping")
+
+        # click_on_added_layer = self.driver.find_elements(*self.configuration.Map.MAP_ADDED_LAYER)
+        # self.assertIsNotNone(click_on_added_layer[0], "added layer not found")
+        # sleep(1)
+        # click_on_added_layer[0].click()
 
         self.switch_context_to_native()
         sleep(1)
 
-    def click_on_added_geometry_assets_and_tasks(self):
+    # def click_on_added_geometry_assets_and_tasks(self):
+    #
+    #     logging.info("click on added geometry")
+    #     sleep(1)
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     el = self.driver.find_element(*self.configuration.Map.ALL_ASSETS_AND_TASKS_GEOMETRY)
+    #     el.click()
 
-        logging.info("click on added geometry")
-        sleep(1)
+        # try:
+        #     print("1")
+        #     el = self.driver.find_elements(*self.configuration.Map.MAP_ADDED_GEOMETRY_ALL)
+        #     el[0].click()
+        #     # el = self.driver.find_element(*self.configuration.Map.MAP_ADDED_LAYER_SECOND_ELEMENT)
+        # except NoSuchElementException:
+        #     print("2")
+        #     el = self.driver.find_element(*self.configuration.Map.MAP_ADDED_LAYER)  # last child
+        # sleep(1)
+        # el.click()
 
-        self.switch_context_to_webview()
+        # try:
+        #     el1 = self.driver.find_element(*self.configuration.Map.MAP_ADDED_LAYER_SECOND_ELEMENT)
+        #     el1.click()
+        # except NoSuchElementException:
+        #     logging.info("search for another element")
+        #     el2 = self.driver.find_element(*self.configuration.Map.ALL_ASSETS_AND_TASKS_GEOMETRY)
+        #     el2.click()
 
-        el = self.driver.find_element(*self.configuration.Map.ALL_ASSETS_AND_TASKS_GEOMETRY)
-        el.click()
+        # self.switch_context_to_native()
 
-        self.switch_context_to_native()
-
-    def click_on_added_geometry_events_and_contacts(self):
-
-        logging.info("click on added geometry")
-        sleep(1)
-
-        self.switch_context_to_webview()
-
-        el = self.driver.find_element(*self.configuration.Map.ALL_EVENTS_AND_CONTACTS_GEOMETRY)
-        el.click()
+    # def click_on_added_geometry_events_and_contacts(self):
+    #
+    #     logging.info("click on added geometry")
+    #     sleep(1)
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     el = self.driver.find_element(*self.configuration.Map.ALL_EVENTS_AND_CONTACTS_GEOMETRY)
+    #     el.click()
 
         # try:
         #     el = self.driver.find_element(*self.configuration.Map.ALL_ASSETS_AND_TASKS_GEOMETRY)
@@ -409,22 +461,22 @@ class MapPage(BasePage):
         # except NoSuchElementException:
         #     print("elements not found")
 
-        self.switch_context_to_native()
+        # self.switch_context_to_native()
 
-    def click_on_added_geometry(self):
-
-        logging.info("click on added geometry")
-        sleep(1)
-
-        self.switch_context_to_webview()
-
-        try:
-            el = self.driver.find_element(*self.configuration.Map.ALL_ASSETS_AND_TASKS_GEOMETRY)
-        except NoSuchElementException:
-            el = self.driver.find_element(*self.configuration.Map.ALL_EVENTS_AND_CONTACTS_GEOMETRY)
-        el.click()
-
-        self.switch_context_to_native()
+    # def click_on_added_geometry(self):
+    #
+    #     logging.info("click on added geometry")
+    #     sleep(1)
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     try:
+    #         el = self.driver.find_element(*self.configuration.Map.ALL_ASSETS_AND_TASKS_GEOMETRY)
+    #     except NoSuchElementException:
+    #         el = self.driver.find_element(*self.configuration.Map.ALL_EVENTS_AND_CONTACTS_GEOMETRY)
+    #     el.click()
+    #
+    #     self.switch_context_to_native()
 
     def choose_map_all_tasks(self):
 
@@ -545,9 +597,13 @@ class MapPage(BasePage):
         self.switch_context_to_webview()
 
         logging.info("click view layer attributes, for example view asset button")
-        click_view_layer_attributes = self.driver.find_element(*self.configuration.Map.VIEW_ATTRIBUTES_FROM_LAYER)
-        self.assertIsNotNone(click_view_layer_attributes, "view layer attributes button not present")
-        click_view_layer_attributes.click()
+
+        try:
+            click_view_layer_attributes = self.driver.find_element(*self.configuration.Map.VIEW_ATTRIBUTES_FROM_LAYER)
+            self.assertIsNotNone(click_view_layer_attributes, "view layer attributes button not present")
+            click_view_layer_attributes.click()
+        except NoSuchElementException:
+            logging.info("view layer attributes button not present - previous step was skipped")
 
         self.switch_context_to_native()
 

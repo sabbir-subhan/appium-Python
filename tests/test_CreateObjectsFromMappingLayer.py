@@ -3,8 +3,11 @@
 # before running this test create:
 
 # - Login to the OCA server > Click on OCA designer > Symbology and Colour Coding > Add more symbology - new point symbol name: "point2"
-# - Login to oca server > Click on mapping > Draw geometry > Save map as "FOR MOBILE"
-
+# - Login to oca server > Click on mapping > > Layers > Add > Drawing > Ok > Draw geometry (draw some shape using line tool) > Save map as "FOR MOBILE"
+# - other Saved maps that are needed for TC: All active events, All assets, All contacts, All tasks - for proper TC execution
+# in OCA app should be present one event, asset, task and contact with mapping data or address data
+# (Contact with address is created in TC: Contacts Directory, Event with mapping data is created in TC: Managing Events,
+# Report with mapping data is created in TC: Managing Reports)
 
 # open OCA app
 # dismiss iOS notifications
@@ -303,7 +306,7 @@ class TestCreateObjectsFromMappingLayer(SetupTestCase):
         map_page.choose_map_all_active_events()
         common_page.wait_for_app_loading()
         map_page.check_presents_of_added_layer()
-        map_page.click_on_added_geometry_events_and_contacts()
+        map_page.click_on_added_layer()
         map_page.click_view_layer_attributes()
         common_page.wait_for_app_loading()
         common_page.hamburger_button()
@@ -316,8 +319,8 @@ class TestCreateObjectsFromMappingLayer(SetupTestCase):
         map_page.click_saved_maps_button()
         map_page.choose_map_all_assets()
         common_page.wait_for_app_loading()
-        map_page.check_presents_of_added_layer()  # android crash
-        map_page.click_on_added_geometry_assets_and_tasks()
+        map_page.check_presents_of_added_layer()
+        map_page.click_on_added_layer()
         map_page.click_view_layer_attributes()
         common_page.wait_for_app_loading()
         common_page.hamburger_button()
@@ -331,7 +334,7 @@ class TestCreateObjectsFromMappingLayer(SetupTestCase):
         map_page.choose_map_all_contacts()
         common_page.wait_for_app_loading()
         map_page.check_presents_of_added_layer()
-        map_page.click_on_added_geometry_events_and_contacts()
+        map_page.click_on_added_layer()
         map_page.click_view_layer_attributes()
         common_page.wait_for_app_loading()
         common_page.hamburger_button()
@@ -345,7 +348,7 @@ class TestCreateObjectsFromMappingLayer(SetupTestCase):
         map_page.choose_map_all_tasks()
         common_page.wait_for_app_loading()
         map_page.check_presents_of_added_layer()
-        map_page.click_on_added_geometry_assets_and_tasks()
+        map_page.click_on_added_layer()
         map_page.click_view_layer_attributes()
         common_page.wait_for_app_loading()
         common_page.hamburger_button()
@@ -357,7 +360,6 @@ class TestCreateObjectsFromMappingLayer(SetupTestCase):
         map_page.wait_for_map_to_load()
         map_page.click_plot_button()
         map_page.click_tool_button()
-        #map_page.click_point_button() # comment it
         map_page.click_point_default_button()
         map_page.click_in_map_area_1()
         map_page.check_presents_of_added_layer()

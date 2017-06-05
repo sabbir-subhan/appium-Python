@@ -5,8 +5,9 @@ import logging
 from time import sleep
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
-from importlib import import_module
-from configuration import ENVIRONMENT_TEST
+from Modules.load_class import LoadClass
+# from importlib import import_module
+# from configuration import ENVIRONMENT_TEST
 
 
 class CommonPage(BasePage):
@@ -15,11 +16,17 @@ class CommonPage(BasePage):
 
         self.switch_context_to_webview()
 
+        logging.info("click back arrow")
+
         back_arrow = self.driver.find_element(*self.configuration.TopBar.BACK_ARROW)
         self.assertIsNotNone(back_arrow, "back arrow not found")
         back_arrow.click()
 
         self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
     def hamburger_button(self):
 

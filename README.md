@@ -258,8 +258,12 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 
 ### for TC: Maps
 - Login to the OCA server > Click on OCA designer > Symbology and Colour Coding > Add more symbology - new point symbol name: "point2"
-- Login to oca server > Click on mapping > Draw geometry > Save map as "FOR MOBILE"
+- Login to oca server > Click on mapping > Layers > Add > Drawing > Ok > Draw geometry (draw some shape using line tool) > Save map as "FOR MOBILE"
 
+### for TC: Create Objects From Mapping Layer
+- Login to the OCA server > Click on OCA designer > Symbology and Colour Coding > Add more symbology - new point symbol name: "point2"
+- Login to oca server > Click on mapping > Layers > Add > Drawing > Ok > Draw geometry (draw some shape using line tool) > Save map as "FOR MOBILE" (the same map as in TC: Maps)
+- other Saved maps that are needed for TC: All active events, All assets, All contacts, All tasks - for proper TC execution in OCA app should be present one event, asset, task and contact with mapping data or address data
 
 
 #**BEFORE EACH NEW RUN OF TESTS:**

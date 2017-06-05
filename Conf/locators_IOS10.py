@@ -334,6 +334,7 @@ class ContactsScreen:
     EMAIL_FIELD = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="Email"]')
     IMPORTED_CONTACT_FIRST_NAME_VALUE = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="Communication"]')
     SEQUENCE_ONSAVE_VALUE = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="test on save"]')
+    ADDRESS_FIELD = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="Address"]')
 
 
 class TasksScreen:

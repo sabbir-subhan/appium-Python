@@ -3,7 +3,7 @@
 from Modules.ContactsPage.ContactsPage import ContactsPage
 import logging
 from time import sleep
-from appium.webdriver.common.touch_action import TouchAction
+# from appium.webdriver.common.touch_action import TouchAction
 from Modules.load_class import LoadClass
 
 
@@ -68,6 +68,14 @@ class Android(ContactsPage):
         logging.info("scroll down to on load field")
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
+        common_page.scroll_down_one_view()
+
+    def scroll_down_to_address_input_field(self):
+
+        logging.info("scroll down to address input field")
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.scroll_down_one_view()
         common_page.scroll_down_one_view()
 
 

@@ -2,7 +2,7 @@
 
 # before running this test create:
 
-# create new contact type in OCA name: "Person",
+# create new contact type in OCA, named: "Person"
 # - contact type with on load and on save sequence (with default value = "test on load") and on save sequence, named: "contact_with_on_load_sequence" (like in TC: Managing Events)
 # - contact type with visibility rules, named: "contact_with_visibility_rules", with fields "New option list" - with options; "1", "2", "3" that options should restore 3 other fields. "field to restore",
 # "New website address" with value: "http://bitnoi.se/" and "New email address" with value: "test@noggin.com" - visibility rules like in TC: Managing Events

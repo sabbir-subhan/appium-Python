@@ -260,11 +260,12 @@ class Map:
     VIEW_ATTRIBUTES_FROM_LAYER = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#tools>a')  # view asset, event, task, contact
     DUPLICATED_GEOMETRY_ON_MAP = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:last-child')
     DUPLICATE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#tools>a:nth-child(2)')
-    MAP_ADDED_GEOMETRY_ALL = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer')
+    MAP_ADDED_GEOMETRY_ALL = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image')
     WHOLE_MAP = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers')
     ALL_EVENTS_AND_CONTACTS_GEOMETRY = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:last-child')
     ALL_ASSETS_AND_TASKS_GEOMETRY = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:nth-child(2)')
     MAP_ADDED_LAYER = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>image:last-child')
+    MAP_ADDED_LAYER_SECOND_ELEMENT = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g>image:nth-child(2)')
     MAP_ADDED_LAYER_FOR_MOBILE = (MobileBy.CSS_SELECTOR, 'div#mapPage>div.ui-content>div#mapCanvas>div#mapCanvas_root>div#mapCanvas_container>div#mapCanvas_layers>svg>g#mapCanvas_graphics_layer>path:last-child')
 
 
@@ -356,6 +357,11 @@ class ContactsScreen:
     SEQUENCE_ON_SAVE = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_save"]')
     OPTION_LIST = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.edit-view>li[name="new option list"]')
     CLEAR_SEARCH_FIELD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.ui-input-search>a.ui-input-clear')
+    ADDRESS_FIELD = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul>li>textarea.ui-body-c')
+    ADDRESS_NUMBER = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li.ui-field-contain>ul.ui-listview>li>div>input#number')
+    ADDRESS_STREET = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li.ui-field-contain>ul.ui-listview>li>div>input#street')
+    ADDRESS_POST_CODE = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li.ui-field-contain>ul.ui-listview>li>div>input[id="post code"]')
+    ADDRESS_COUNTRY = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li.ui-field-contain>ul.ui-listview>li>div>input#country')
 
 
 class TasksScreen:

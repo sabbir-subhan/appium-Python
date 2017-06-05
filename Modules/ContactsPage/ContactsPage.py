@@ -24,6 +24,70 @@ class ContactsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def click_address_field(self):
+
+        sleep(1)
+        self.switch_context_to_webview()
+
+        logging.info("type address")
+        address = self.driver.find_elements(*self.configuration.ContactsScreen.ADDRESS_FIELD)
+        self.assertIsNotNone(address[0], "Address input field was not found")
+        address[0].click()
+
+        self.switch_context_to_native()
+
+    def type_address_number(self, text):
+
+        sleep(1)
+        self.switch_context_to_webview()
+
+        logging.info("type address number")
+        address_number = self.driver.find_element(*self.configuration.ContactsScreen.ADDRESS_NUMBER)
+        self.assertIsNotNone(address_number, "Address number input field was not found")
+        address_number.click()
+        address_number.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def type_address_street(self, text):
+
+        sleep(1)
+        self.switch_context_to_webview()
+
+        logging.info("type address street")
+        address_street = self.driver.find_element(*self.configuration.ContactsScreen.ADDRESS_STREET)
+        self.assertIsNotNone(address_street, "Address street input field was not found")
+        address_street.click()
+        address_street.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def type_address_post_code(self, text):
+
+        sleep(1)
+        self.switch_context_to_webview()
+
+        logging.info("type address post code")
+        address_post_code = self.driver.find_element(*self.configuration.ContactsScreen.ADDRESS_POST_CODE)
+        self.assertIsNotNone(address_post_code, "Address post code input field was not found")
+        address_post_code.click()
+        address_post_code.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def type_address_country(self, text):
+
+        sleep(1)
+        self.switch_context_to_webview()
+
+        logging.info("type address country")
+        address_country = self.driver.find_element(*self.configuration.ContactsScreen.ADDRESS_COUNTRY)
+        self.assertIsNotNone(address_country, "Address country input field was not found")
+        address_country.click()
+        address_country.send_keys(text)
+
+        self.switch_context_to_native()
+
     def type_first_name_for_edit_contact(self, text):
 
         sleep(1)
@@ -101,10 +165,11 @@ class ContactsPage(BasePage):
         self.switch_context_to_native()
         sleep(1)
 
-    def open_first_contact_group(self):
+    def open_first_contact_group(self):  # Users
         
         self.switch_context_to_webview()
-        
+
+        sleep(1)
         logging.info("open contact group")
         first_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_CONTACT_GROUP)
         self.assertIsNotNone(first_contact_group, "first contact group not found")
@@ -116,7 +181,7 @@ class ContactsPage(BasePage):
         common_page.setDriver(self.driver)
         common_page.wait_for_app_loading()
 
-    def open_second_contact_group(self):
+    def open_second_contact_group(self):  # Contacts
 
         self.switch_context_to_webview()
 
@@ -133,10 +198,11 @@ class ContactsPage(BasePage):
         common_page.setDriver(self.driver)
         common_page.wait_for_app_loading()
 
-    def open_third_contact_group(self):
+    def open_third_contact_group(self):  # Mailing list unsubscribes
 
         self.switch_context_to_webview()
 
+        sleep(1)
         logging.info("open contact group")
         third_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.THIRD_CONTACT_GROUP)
         self.assertIsNotNone(third_contact_group, "third contact group not found")
