@@ -43,10 +43,15 @@ class IOS9(IOS):
         sleep(1)
 
     def click_Return_button_on_keyboard(self):
+        # try/except because on iPhone with iOS9 after clicking on "clear search field" button keyboard is not
+        # displayed automatically
 
-        logging.info("click 'Return' on keyboard")
-        self.driver.find_element(*self.configuration.iOS.RETURN_BUTTON).click()
-        sleep(1)
+        try:
+            logging.info("click 'Return' on keyboard")
+            self.driver.find_element(*self.configuration.iOS.RETURN_BUTTON).click()
+            sleep(1)
+        except NoSuchElementException:
+            pass
 
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)

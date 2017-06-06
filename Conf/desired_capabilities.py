@@ -240,7 +240,7 @@ class DesiredCapabilities(object):
             "autoAcceptAlerts": True,
             "automationName": "Appium",
             "clearSystemFiles": True,
-            "startIWDP": True,
+            "startIWDP": True,  # start ios-webkit-debug-proxy
             # "noReset": False,
             "fullReset": True,  # iOS9 is not logging out automatically so fullReset is necessary
             "udid": "db55c238e873230ee454c54a63724397a2981acd"
@@ -254,10 +254,10 @@ class DesiredCapabilities(object):
             "app": os.path.join(PROJECT_ROOT, "iPhone_9.3_OCA.app"),  # path to .apk file
             # "app": PATH("/Users/lukasl/Build_xcode/Products/iPhone9.3/OCA.app"),
             "bundleId": "com.noggin.ocalukasl",
-            # "newCommandTimeout": "60",
+            "newCommandTimeout": 60,
             "launchTimeout": 200000,  # iOS only
             "clearSystemFiles": True,
-            "startIWDP": True,
+            "startIWDP": True,  # start ios-webkit-debug-proxy
             "fullReset": True,
             "autoAcceptAlerts": True
         },
@@ -303,7 +303,7 @@ class DesiredCapabilities(object):
             "xcodeSigningId": "iPhone Developer",
             # "showXcodeLog": True,
             "clearSystemFiles": True,
-            "startIWDP": True,
+            "startIWDP": True,  # start ios-webkit-debug-proxy
             "preventWDAAttachments": True,  # capability to help with XCUITest speed and disk usage
             # "useNewWDA": True,
             "usePrebuiltWDA": True,

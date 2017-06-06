@@ -8,7 +8,7 @@
 # from time import sleep
 # import subprocess
 # import os
-# from configuration import ENVIRONMENT_TEST
+from configuration import ENVIRONMENT_TEST
 # import pytest
 # from importlib import import_module
 from Conf.desired_capabilities import DesiredCapabilities
@@ -58,7 +58,12 @@ class SetupTestCase(unittest.TestCase):
 
         sleep(15)  # wait for app launching + optional app installation or/and installation/launching WebDriverAgent
 
-        self.driver.implicitly_wait(6)  # seconds - how long Appium will wait for conditions, for example try/except
+        if ENVIRONMENT_TEST == "IOS9":
+            print("implicitly wait = 12 seconds")
+            self.driver.implicitly_wait(12)
+        else:
+            print("implicitly wait = 6 seconds")
+            self.driver.implicitly_wait(6)  # seconds - how long Appium will wait for conditions, for example try/except
 
         # self.driver.implicitly_wait(14)  # seconds - how long Appium will wait for conditions, for example try/except
 

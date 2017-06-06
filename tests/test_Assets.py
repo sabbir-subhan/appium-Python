@@ -194,9 +194,9 @@ class TestAssets(SetupTestCase):
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
-        # Click on Assets>Search Assets
+        # Click on Assets > Search Assets
         main_page.open_ASSETS()
-        assets_page.type_text_into_search_field()
+        assets_page.type_text_into_search_field("Map asset")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         assets_page.check_result()

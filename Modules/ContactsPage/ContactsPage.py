@@ -170,7 +170,7 @@ class ContactsPage(BasePage):
         self.switch_context_to_webview()
 
         sleep(1)
-        logging.info("open contact group")
+        logging.info("open first contact group - Users")
         first_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_CONTACT_GROUP)
         self.assertIsNotNone(first_contact_group, "first contact group not found")
         first_contact_group.click()
@@ -186,7 +186,7 @@ class ContactsPage(BasePage):
         self.switch_context_to_webview()
 
         sleep(1)
-        logging.info("open contact group")
+        logging.info("open second contact group - Contacts")
         second_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.SECOND_CONTACT_GROUP)
         self.assertIsNotNone(second_contact_group, "second contact group not found")
         second_contact_group.click()
@@ -203,7 +203,7 @@ class ContactsPage(BasePage):
         self.switch_context_to_webview()
 
         sleep(1)
-        logging.info("open contact group")
+        logging.info("open third contact group - Mailing list unsubscribes")
         third_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.THIRD_CONTACT_GROUP)
         self.assertIsNotNone(third_contact_group, "third contact group not found")
         third_contact_group.click()
