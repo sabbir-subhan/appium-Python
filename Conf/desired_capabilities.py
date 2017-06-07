@@ -258,7 +258,8 @@ class DesiredCapabilities(object):
             "launchTimeout": 200000,  # iOS only
             "clearSystemFiles": True,
             "startIWDP": True,  # start ios-webkit-debug-proxy
-            "fullReset": True,
+            "fullReset": False,  # if True - Uninstall app after real device test, destroy Simulator after sim test
+            "noReset": True,  # if True - Do not destroy or shut down sim after test. Start tests running on whichever sim is running, or device is plugged in
             "autoAcceptAlerts": True
         },
 

@@ -38,16 +38,25 @@ class LocationPage(BasePage):
             logging.info("Failed to send location")
             self.fail("Failed to send location")
 
-    def alert_allow_location(self):
-
-        logging.info("Check alert allow location")
-        try:
-            WebDriverWait(self.driver, 40).until(expected_conditions.visibility_of_element_located(self.configuration.iOS.IOS_ALLOW), "alert allow not found")
-            # WebDriverWait(self.driver, 50).until(expected_conditions.presence_of_element_located(self.configuration.iOS.IOS_ALLOW), "alert allow not found")
-            button_allow_location = self.driver.find_element(*self.configuration.iOS.IOS_ALLOW)
-            button_allow_location.click()
-        except NoSuchElementException:
-            pass
+    # def alert_allow_location(self):
+    #
+    #     logging.info("Check alert allow location")
+    #     # try:
+    #     #     WebDriverWait(self.driver, 40).until(expected_conditions.visibility_of_element_located(self.configuration.iOS.IOS_ALLOW), "alert allow not found")
+    #     #     # WebDriverWait(self.driver, 50).until(expected_conditions.presence_of_element_located(self.configuration.iOS.IOS_ALLOW), "alert allow not found")
+    #     #     button_allow_location = self.driver.find_element(*self.configuration.iOS.IOS_ALLOW)
+    #     #     button_allow_location.click()
+    #     # except NoSuchElementException:
+    #     #     pass
+    #     try:
+    #         WebDriverWait(self.driver, 40).until(expected_conditions.visibility_of_element_located(self.configuration.iOS.IOS_ALLOW), "alert allow not found")
+    #     except TimeoutException:
+    #         pass
+    #     try:
+    #         button_allow_location = self.driver.find_element(*self.configuration.iOS.IOS_ALLOW)
+    #         button_allow_location.click()
+    #     except NoSuchElementException:
+    #         pass
 
     def click_send_every(self):
 

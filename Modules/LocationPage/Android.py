@@ -3,9 +3,31 @@
 from Modules.LocationPage.LocationPage import LocationPage
 from selenium.common.exceptions import *
 import logging
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class Android(LocationPage):
+
+    def alert_allow_location(self):
+
+        logging.info("Check alert allow location")
+        # try:
+        #     WebDriverWait(self.driver, 40).until(expected_conditions.visibility_of_element_located(self.configuration.iOS.IOS_ALLOW), "alert allow not found")
+        #     # WebDriverWait(self.driver, 50).until(expected_conditions.presence_of_element_located(self.configuration.iOS.IOS_ALLOW), "alert allow not found")
+        #     button_allow_location = self.driver.find_element(*self.configuration.iOS.IOS_ALLOW)
+        #     button_allow_location.click()
+        # except NoSuchElementException:
+        #     pass
+        try:
+            WebDriverWait(self.driver, 40).until(expected_conditions.visibility_of_element_located(self.configuration.Android.ANDROID_ALLOW), "alert allow not found")
+        except TimeoutException:
+            pass
+        try:
+            button_allow_location = self.driver.find_element(*self.configuration.Android.ANDROID_ALLOW)
+            button_allow_location.click()
+        except NoSuchElementException:
+            pass
 
     def check_if_start_button_was_clicked(self):
 

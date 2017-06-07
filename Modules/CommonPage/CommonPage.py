@@ -5,12 +5,40 @@ import logging
 from time import sleep
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
+import os
+from configuration import platform, PROJECT_ROOT
 from Modules.load_class import LoadClass
 # from importlib import import_module
 # from configuration import ENVIRONMENT_TEST
+import base64
 
 
 class CommonPage(BasePage):
+
+    def push_files(self):  # not working
+
+        sleep(2)
+        if "emulator" in platform:
+            logging.info("push video file to the emulator")
+            path1 = os.path.join(PROJECT_ROOT, "sample_video.mp4")
+            # self.driver.push_file(path, "mp4")
+            with open(file=path1, mode='rb') as myfile1:
+                encoded_file = base64.b64encode(myfile1.read())
+            # We need to decode to get rid of the b'' bytes literal for the upload to work
+            sleep(1)
+            self.driver.push_file(path1, encoded_file.decode())
+            # On the device, the file appears in the correct format
+            sleep(5)
+            logging.info("push image file to the emulator")
+            path2 = os.path.join(PROJECT_ROOT, "sample_image.jpg")
+            with open(file=path2, mode='rb') as myfile2:
+                encoded_file = base64.b64encode(myfile2.read())
+            sleep(1)
+            self.driver.push_file(path2, encoded_file.decode())
+            # self.driver.push_file(path2, "jpg")
+            sleep(5)
+        else:
+            pass
 
     def back_arrow(self):
 

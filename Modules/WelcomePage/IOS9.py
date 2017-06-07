@@ -1,41 +1,42 @@
 """ Methods for IOS9 on Welcome Page """
 
 from Modules.WelcomePage.IOS import IOS
-# from Modules.load_class import LoadClass
+from Modules.load_class import LoadClass
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
+import logging
+from time import sleep
 # from selenium.common.exceptions import *
-# from selenium.webdriver.support import expected_conditions
-# from selenium.webdriver.support.ui import WebDriverWait
-# import logging
-# from time import sleep
 
 
 class IOS9(IOS):
 
-    pass
+    # pass
 
-    # def click_login_button(self):
-    #
-    #     # welcome_page = LoadClass.load_page('WelcomePage')
-    #     # welcome_page.setDriver(self.driver)
-    #     # welcome_page.logout()  # not necessary if using fullReset desire_capability in Conf/desired_capabilities.py
-    #
-    #     # logging.info("relaunching app to avoid problems with locating elements")
-    #     # self.driver.reset()  # reset app to avoid problems with locating elements
-    #
-    #     logging.info("click in LOGIN button")
-    #     sleep(2)
-    #
-    #     self.switch_context_to_webview()
-    #
-    #     WebDriverWait(self.driver, 20).until(
-    #         expected_conditions.presence_of_element_located(self.configuration.WelcomeScreen.LOGIN_BUTTON),
-    #         "Login button not found")
-    #     self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON).click()
-    #     sleep(2)
-    #
-    #     self.switch_context_to_native()
-    #
-    #     sleep(2)
+    def click_login_button(self):
+
+        welcome_page = LoadClass.load_page('WelcomePage')
+        welcome_page.setDriver(self.driver)
+        welcome_page.logout()  # not necessary if using fullReset desire_capability in Conf/desired_capabilities.py
+
+        logging.info("relaunching app to avoid problems with locating elements")
+        self.driver.reset()  # reset app to avoid problems with locating elements
+        sleep(2)
+        logging.info("click in LOGIN button")
+        sleep(2)
+
+        self.switch_context_to_webview()
+
+        WebDriverWait(self.driver, 20).until(
+            expected_conditions.presence_of_element_located(self.configuration.WelcomeScreen.LOGIN_BUTTON),
+            "Login button not found")
+        sleep(1)
+        self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON).click()
+        sleep(1)
+
+        self.switch_context_to_native()
+
+        sleep(1)
 
         # logging.info("click in LOGIN button")
         # sleep(2)

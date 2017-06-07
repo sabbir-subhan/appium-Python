@@ -12,6 +12,9 @@ class iOS:
     BUTTON_ALLOW_LOCATION = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]'
                                              '/UIACollectionCell[2]/UIAButton[@name="Allow"]')
     IOS_OK = (MobileBy.ACCESSIBILITY_ID, 'OK')
+    # IOS_ALLOW = (MobileBy.ACCESSIBILITY_ID, "Allow")
+    IOS_ALLOW = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]'
+                                 '/UIACollectionCell[2]/UIAButton[@name="Allow"]')
 
 
 class CommonScreen:
@@ -158,7 +161,8 @@ class EventsScreen:
     CHOOSE_ANY_STATUS = (MobileBy.XPATH, '//UIALink[@name="Any Status"]')
 
     # filtering events using search field
-    SEARCH_FIELD = (MobileBy.XPATH, '//UIATextField[@name="Search:"]')
+    # SEARCH_FIELD = (MobileBy.XPATH, '//UIATextField[@name="Search:"]')
+    SEARCH_FIELD = (MobileBy.XPATH, '//UIATextField[@name[contains(., "Search")]]')  # TEST IT
 
     # creating and editing Events
     MORE_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "More")]]')
@@ -286,8 +290,10 @@ class SoundRecorderScreen:
 
 class GalleryScreen:
     """A class for handling Gallery"""
-    GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//UIAPopover[1]/UIACollectionView[1]/UIACollectionCell[1]')
-    GALLERY_VIDEOS_POPOVER = (MobileBy.XPATH, '//UIAPopover[1]/UIATableView[1]/UIATableCell[@name="Videos"]')
+    GALLERY_ELEMENT_1_iPad = (MobileBy.XPATH, '//UIAPopover[1]/UIACollectionView[1]/UIACollectionCell[1]')
+    GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//UIATableView[1]/UIATableCell[1]')  # not working for iOS9 emulator
+    GALLERY_VIDEOS_POPOVER_iPad = (MobileBy.XPATH, '//UIAPopover[1]/UIATableView[1]/UIATableCell[@name="Videos"]')
+    GALLERY_VIDEOS_POPOVER = (MobileBy.XPATH, '//UIATableCell[@name="Videos"]')
     USE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Use')
 
 

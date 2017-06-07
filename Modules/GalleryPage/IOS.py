@@ -3,6 +3,9 @@
 from Modules.GalleryPage.GalleryPage import GalleryPage
 import logging
 from time import sleep
+from selenium.common.exceptions import *
+import os
+from configuration import platform, PROJECT_ROOT
 
 
 class IOS(GalleryPage):
@@ -56,10 +59,18 @@ class IOS(GalleryPage):
 
     def choose_videos_gallery(self):
 
-        sleep(2)
+        sleep(1)
+
         logging.info("choose videos gallery")
-        choose_videos_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_VIDEOS_POPOVER)
-        self.assertIsNotNone(choose_videos_gallery, "videos gallery not found")
-        choose_videos_gallery.click()
+        try:
+            choose_videos_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_VIDEOS_POPOVER_iPad)
+            self.assertIsNotNone(choose_videos_gallery, "videos gallery not found")
+            choose_videos_gallery.click()
+        except NoSuchElementException:
+            choose_videos_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_VIDEOS_POPOVER)
+            self.assertIsNotNone(choose_videos_gallery, "videos gallery not found")
+            choose_videos_gallery.click()
+
+
 
 

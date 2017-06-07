@@ -95,6 +95,7 @@ class TestSendVideo(SetupTestCase):
         gallery_video_page = LoadClass.load_page('GalleryPage')
         gallery_video_page.setDriver(self.driver)
         common_page.alert_popup_allow()
+        common_page.push_files()
         gallery_video_page.choose_videos_gallery()
         gallery_video_page.choose_video_from_gallery()
         gallery_video_page.click_use_button()

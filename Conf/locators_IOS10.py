@@ -305,6 +305,7 @@ class SoundRecorderScreen:
 class GalleryScreen:
     """A class for handling Gallery"""
     GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//XCUIElementTypeCell[@name[contains(., "Photo")]][1]')
+    GALLERY_VIDEOS_POPOVER_iPad = (MobileBy.XPATH, '//XCUIElementTypePopover/XCUIElementTypeTableView/XCUIElementTypeCell[@name="Videos"]')
     GALLERY_VIDEOS_POPOVER = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Videos"]')
     GALLERY_VIDEO_ELEMENT_1 = (MobileBy.XPATH, '//XCUIElementTypeCell[1]')
     USE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Choose')
