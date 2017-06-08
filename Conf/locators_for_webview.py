@@ -283,7 +283,8 @@ class VideoScreen:
     """A class for Video screen locators - screen after clicking into Video button in Main Menu."""
     # VIDEO_PAGE_HEADER = (MobileBy.CSS_SELECTOR, '')
     GALLERY_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div.ui-content>div#video-placeholder>div.ui-block-a>div.center-text>span[data-open="album"]>span.icon')
-    RECORD_NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div.ui-content>div.ui-grid-a>div.ui-block-b>div.center-text>span[data-open="camera"]>span.icon')
+    # RECORD_NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div.ui-content>div.ui-grid-a>div.ui-block-b>div.center-text>span[data-open="camera"]>span.icon')
+    RECORD_NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div.ui-content>div#video-placeholder>div.ui-block-b>div.center-text>span:first-child>span.icon')
     SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'div#video>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a#videoBtnSend')
     DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'textarea#video-input-description')
 

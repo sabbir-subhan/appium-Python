@@ -8,6 +8,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 # import selenium.webdriver.support.ui
 from configuration import platform
+from selenium.common.exceptions import *
 
 
 class VideoPage(BasePage):
@@ -93,6 +94,22 @@ class VideoPage(BasePage):
             record_new_button.click()
 
             self.switch_context_to_native()
+
+        if str(platform) == "Android_7":
+            logging.info("Appium is running on Android 7")
+            self.switch_context_to_webview()
+            
+            try:
+                logging.info("clicking in 'Record new' button")
+                record_new_button = self.driver.find_element(*self.configuration.VideoScreen.RECORD_NEW_BUTTON)
+                self.assertIsNotNone(record_new_button, "record new button not found")
+                record_new_button.click()
+            except NoSuchElementException:
+                pass
+
+            self.switch_context_to_native()
+        else:
+            pass
 
     def type_description(self, description):
 
