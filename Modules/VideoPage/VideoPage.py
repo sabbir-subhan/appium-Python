@@ -98,7 +98,7 @@ class VideoPage(BasePage):
         if str(platform) == "Android_7":
             logging.info("Appium is running on Android 7")
             self.switch_context_to_webview()
-            
+
             try:
                 logging.info("clicking in 'Record new' button")
                 record_new_button = self.driver.find_element(*self.configuration.VideoScreen.RECORD_NEW_BUTTON)

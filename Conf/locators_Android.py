@@ -385,6 +385,10 @@ class ContactsScreen:
     DELETED_CONTACT = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "delete")]]')
     IMPORTED_CONTACT_FIRST_NAME_VALUE = (MobileBy.ACCESSIBILITY_ID, 'Communication')
     SEQUENCE_ONSAVE_VALUE = (MobileBy.ACCESSIBILITY_ID, 'test on save')
+    NEW_CONTACT_GROUP_TYPE_GROUP = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Group")]]')
+    CONTACTS_GROUP = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Contacts")]]')
+    USERS_GROUP = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Users")]]')
+    MAILING_LIST_GROUP = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Mailing list")]]')
 
 
 class TasksScreen:

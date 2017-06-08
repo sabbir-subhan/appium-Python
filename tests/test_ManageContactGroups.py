@@ -2,7 +2,8 @@
 
 # before running this test create:
 
-# create new contact type in OCA, named: "Person"
+# create new contact group type in OCA - named: "Appium Group"
+# create new contact group type in OCA - named: "Group"
 
 
 # open OCA app
@@ -78,6 +79,28 @@ class TestManagingContactGroup(SetupTestCase):
         main_page.open_CONTACTS()
         contacts_page = LoadClass.load_page('ContactsPage')
         contacts_page.setDriver(self.driver)
+
+        # Press New > Create new contact group.
+        contacts_page.click_new_button()
+        contacts_page.add_new_contact_group()
+
+        # Select a contact group type.
+        contacts_page.choose_group_for_new_contact_group_type()
+
+        # Fill in the form for the new contact group type and press save.
+        contacts_page.type_name_for_new_contact_group("Appium contact group")
+
+
+        # Open a contact group. Select New > Create new contact group in this group.
+        # Select a contact group type. Fill in the form and press save.
+        # Open a contact group. Press Group Info > Edit.
+        # Make some changes and press Save.
+        # Press More > Delete group. Press delete on the prompt.
+        # Press More > Delete group. Press delete on the prompt.
+        # On OCA Server (the website), configure a contact group type to have an on load sequence and on save sequence in two of its fields.
+        # On the mobile app, create contact groups of this type.
+        # Open new contact groups but don't save them.
+        # Create an event that has option lists and fields with visibility rules that clears hidden fields and restores default values.
 
 
 if __name__ == '__main__':

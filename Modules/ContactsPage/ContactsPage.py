@@ -165,54 +165,90 @@ class ContactsPage(BasePage):
         self.switch_context_to_native()
         sleep(1)
 
-    def open_first_contact_group(self):  # Users
-        
-        self.switch_context_to_webview()
+    # def open_first_contact_group(self):  # Users
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     sleep(1)
+    #     logging.info("open first contact group - Users")
+    #     first_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_CONTACT_GROUP)
+    #     self.assertIsNotNone(first_contact_group, "first contact group not found")
+    #     first_contact_group.click()
+    #
+    #     self.switch_context_to_native()
+    #
+    #     common_page = LoadClass.load_page('CommonPage')
+    #     common_page.setDriver(self.driver)
+    #     common_page.wait_for_app_loading()
+
+    # def open_second_contact_group(self):  # Contacts
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     sleep(1)
+    #     logging.info("open second contact group - Contacts")
+    #     second_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.SECOND_CONTACT_GROUP)
+    #     self.assertIsNotNone(second_contact_group, "second contact group not found")
+    #     second_contact_group.click()
+    #
+    #     self.switch_context_to_native()
+    #     sleep(0.5)
+    #
+    #     common_page = LoadClass.load_page('CommonPage')
+    #     common_page.setDriver(self.driver)
+    #     common_page.wait_for_app_loading()
+
+    def open_contacts_group(self):  # Contacts
 
         sleep(1)
-        logging.info("open first contact group - Users")
-        first_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_CONTACT_GROUP)
-        self.assertIsNotNone(first_contact_group, "first contact group not found")
-        first_contact_group.click()
-
-        self.switch_context_to_native()
-
-        common_page = LoadClass.load_page('CommonPage')
-        common_page.setDriver(self.driver)
-        common_page.wait_for_app_loading()
-
-    def open_second_contact_group(self):  # Contacts
-
-        self.switch_context_to_webview()
-
-        sleep(1)
-        logging.info("open second contact group - Contacts")
-        second_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.SECOND_CONTACT_GROUP)
-        self.assertIsNotNone(second_contact_group, "second contact group not found")
+        logging.info("open contacts group")
+        second_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.CONTACTS_GROUP)
+        self.assertIsNotNone(second_contact_group, "contacts group not found")
         second_contact_group.click()
 
-        self.switch_context_to_native()
-        sleep(0.5)
-
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         common_page.wait_for_app_loading()
 
-    def open_third_contact_group(self):  # Mailing list unsubscribes
-
-        self.switch_context_to_webview()
+    def open_mailing_list_group(self):  # Mailing list unsubscribes
 
         sleep(1)
-        logging.info("open third contact group - Mailing list unsubscribes")
-        third_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.THIRD_CONTACT_GROUP)
-        self.assertIsNotNone(third_contact_group, "third contact group not found")
-        third_contact_group.click()
-
-        self.switch_context_to_native()
+        logging.info("open Mailing list unsubscribes group")
+        second_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.MAILING_LIST_GROUP)
+        self.assertIsNotNone(second_contact_group, "Mailing list unsubscribes group not found")
+        second_contact_group.click()
 
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         common_page.wait_for_app_loading()
+
+    def open_users_group(self):  # Users
+
+        sleep(1)
+        logging.info("open Users group")
+        second_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.USERS_GROUP)
+        self.assertIsNotNone(second_contact_group, "Users group not found")
+        second_contact_group.click()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
+    # def open_third_contact_group(self):  # Mailing list unsubscribes
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     sleep(1)
+    #     logging.info("open third contact group - Mailing list unsubscribes")
+    #     third_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.THIRD_CONTACT_GROUP)
+    #     self.assertIsNotNone(third_contact_group, "third contact group not found")
+    #     third_contact_group.click()
+    #
+    #     self.switch_context_to_native()
+    #
+    #     common_page = LoadClass.load_page('CommonPage')
+    #     common_page.setDriver(self.driver)
+    #     common_page.wait_for_app_loading()
 
     def click_new_button(self):
 
@@ -638,4 +674,22 @@ class ContactsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def choose_group_for_new_contact_group_type(self):
+
+        logging.info("choose new contact group type = Group")
+        choose_group_for_new_contact_group_type = self.driver.find_element(*self.configuration.ContactsScreen.NEW_CONTACT_GROUP_TYPE_GROUP)
+        self.assertIsNotNone(choose_group_for_new_contact_group_type, "new contact group type = Group not found")
+        choose_group_for_new_contact_group_type.click()
+
+    def type_name_for_new_contact_group(self, text):
+
+        self.switch_context_to_webview()
+
+        logging.info("Type Name for new contact group")
+        name_field = self.driver.find_element(*self.configuration.ContactsScreen.NAME_FIELD_FOR_NEW_CONTACT_GROUP)
+        self.assertIsNotNone(name_field, "name field not found")
+        name_field.click()
+        name_field.send_keys(text)
+
+        self.switch_context_to_native()
 

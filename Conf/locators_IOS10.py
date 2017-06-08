@@ -336,6 +336,10 @@ class ContactsScreen:
     IMPORTED_CONTACT_FIRST_NAME_VALUE = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="Communication"]')
     SEQUENCE_ONSAVE_VALUE = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="test on save"]')
     ADDRESS_FIELD = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="Address"]')
+    NEW_CONTACT_GROUP_TYPE_GROUP = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Group")]]')
+    CONTACTS_GROUP = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Contacts")]]')
+    USERS_GROUP = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Users")]]')
+    MAILING_LIST_GROUP = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Mailing list")]]')
 
 
 class TasksScreen:

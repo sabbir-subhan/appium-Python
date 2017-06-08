@@ -71,7 +71,7 @@ class TestContactsDirectory(SetupTestCase):
         main_page.open_CONTACTS()
         contacts_page = LoadClass.load_page('ContactsPage')
         contacts_page.setDriver(self.driver)
-        contacts_page.open_second_contact_group()  # Contacts
+        contacts_page.open_contacts_group()  # Contacts
         contacts_page.click_new_button()
         contacts_page.add_new_contact_into_group()
         contacts_page.choose_contact_type_person()
@@ -96,11 +96,11 @@ class TestContactsDirectory(SetupTestCase):
         common_page.hide_keyboard()
         contacts_page.clear_Search_field()
         common_page.hide_keyboard()
-        contacts_page.open_second_contact_group()  # Contacts
+        contacts_page.open_contacts_group()  # Contacts
         common_page.back_arrow()
-        contacts_page.open_first_contact_group()  # Users
+        contacts_page.open_users_group()  # Users
         common_page.back_arrow()
-        contacts_page.open_third_contact_group()  # Mailing list unsubscribes
+        contacts_page.open_mailing_list_group()  # Mailing list unsubscribes
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()
 

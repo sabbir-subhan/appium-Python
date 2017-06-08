@@ -87,7 +87,7 @@ class TestManagingContacts(SetupTestCase):
         main_page.open_CONTACTS()
         contacts_page = LoadClass.load_page('ContactsPage')
         contacts_page.setDriver(self.driver)
-        contacts_page.open_second_contact_group()  # Contacts
+        contacts_page.open_contacts_group()  # Contacts
         contacts_page.click_new_button()
         contacts_page.add_new_contact_into_group()
         contacts_page.choose_contact_type_person()
@@ -151,7 +151,7 @@ class TestManagingContacts(SetupTestCase):
         main_page.open_CONTACTS()
         contacts_page.clear_Search_field()
         common_page.hide_keyboard()
-        contacts_page.open_second_contact_group()  # Contacts
+        contacts_page.open_contacts_group()  # Contacts
         contacts_page.click_new_button()
         contacts_page.add_new_contact_into_group()
         contacts_page.choose_contact_type_person()
@@ -235,7 +235,7 @@ class TestManagingContacts(SetupTestCase):
         main_page.open_CONTACTS()
         contacts_page.clear_Search_field()
         common_page.hide_keyboard()
-        contacts_page.open_second_contact_group()  # Contacts
+        contacts_page.open_contacts_group()  # Contacts
         contacts_page.click_new_button()
         contacts_page.import_contact_from_device_to_this_group()
         common_page.alert_popup_allow()
@@ -254,7 +254,7 @@ class TestManagingContacts(SetupTestCase):
         main_page.open_CONTACTS()
         contacts_page.clear_Search_field()
         common_page.hide_keyboard()
-        contacts_page.open_second_contact_group()  # Contacts
+        contacts_page.open_contacts_group()  # Contacts
         contacts_page.click_new_button()
         contacts_page.add_new_contact_into_group()
         contacts_page.choose_contact_type_with_on_load_and_on_save_sequence()
@@ -286,7 +286,7 @@ class TestManagingContacts(SetupTestCase):
         main_page.open_CONTACTS()
         contacts_page.clear_Search_field()
         common_page.hide_keyboard()
-        contacts_page.open_second_contact_group()  # Contacts
+        contacts_page.open_contacts_group()  # Contacts
         contacts_page.click_new_button()
         contacts_page.add_new_contact_into_group()
         contacts_page.choose_contact_type_with_visibility_rules()

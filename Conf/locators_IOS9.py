@@ -318,6 +318,10 @@ class ContactsScreen:
     EMAIL_FIELD = (MobileBy.XPATH, '//UIATextField[@name="Email"]')
     IMPORTED_CONTACT_FIRST_NAME_VALUE = (MobileBy.XPATH, '//UIATextField[@value="Communication"]')
     SEQUENCE_ONSAVE_VALUE = (MobileBy.XPATH, '//UIATextField[@value="test on save"]')
+    NEW_CONTACT_GROUP_TYPE_GROUP = (MobileBy.XPATH, '//UIALink[@name[contains(., "Group")]]')
+    CONTACTS_GROUP = (MobileBy.XPATH, '//UIALink[@name[contains(., "Contacts")]]')
+    USERS_GROUP = (MobileBy.XPATH, '//UIALink[@name[contains(., "Users")]]')
+    MAILING_LIST_GROUP = (MobileBy.XPATH, '//UIALink[@name[contains(., "Mailing list")]]')
 
 
 class TasksScreen:

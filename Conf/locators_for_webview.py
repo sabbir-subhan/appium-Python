@@ -363,6 +363,7 @@ class ContactsScreen:
     ADDRESS_STREET = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li.ui-field-contain>ul.ui-listview>li>div>input#street')
     ADDRESS_POST_CODE = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li.ui-field-contain>ul.ui-listview>li>div>input[id="post code"]')
     ADDRESS_COUNTRY = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li.ui-field-contain>ul.ui-listview>li>div>input#country')
+    NAME_FIELD_FOR_NEW_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupNew>div.ui-content>ul>li:first-child>div.ui-input-text>input#name')
 
 
 class TasksScreen:
