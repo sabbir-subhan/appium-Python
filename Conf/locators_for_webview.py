@@ -342,13 +342,16 @@ class ContactsScreen:
     IMPORT_CONTACT_FROM_DEVICE_INTO_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div#contactgroupTreeMore-popup>div#contactgroupTreeMore>ul>li.ingroup.new.import>a')
     FIRST_CONTACT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.secondary>ul>li:first-child>a')
     CONTACT_MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactView>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-a>li.ui-block-b>a[href="#contactViewMoreMenu"]')
+    CONTACT_GROUP_MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactgroupView>div.ui-footer>div.ui-navbar>ul.ui-grid-a>li#openContactGroupViewMore>a[href="#contactgroupViewMoreMenu"]')
     DELETE_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactView>div.ui-popup-container>div[data-role="popup"]>ul>li.delete.contact>a[href="#confirmDeleteContact"]')
+    DELETE_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupView>div#contactgroupViewMoreMenu-popup>div#contactgroupViewMoreMenu>ul.ui-listview>li.delete>a[href="#confirmDeleteContactGroup"]')
     CONFIRM_DELETE = (MobileBy.CSS_SELECTOR, 'div#contactView>div.ui-popup-container>div#confirmDeleteContact>div.ng-dialog-container>div>div>a:first-child')
+    CONFIRM_DELETE_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupView>div.ui-popup-container>div#confirmDeleteContactGroup>div.ng-dialog-container>div>div>a:first-child')
     CANCEL_DELETE = (MobileBy.CSS_SELECTOR, 'div#contactView>div.ui-popup-container>div#confirmDeleteContact>div.ng-dialog-container>div>div>a:last-child')
     CONTACT_EDIT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactView>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-a>li.edit.ui-block-a>a')
     ORGANISATION_FIELD = (MobileBy.CSS_SELECTOR, 'input#organisation')
     EMAIL_FIELD = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li.ui-field-contain>div.ui-input-text>input#email')
-    SEND_COMMUNICATION = (MobileBy.CSS_SELECTOR, 'div#contactView>div.ui-popup-container>div[data-role="popup"]>ul>li.send>a[href="#messagePage"]')
+    CONTACT_SEND_COMMUNICATION = (MobileBy.CSS_SELECTOR, 'div#contactView>div.ui-popup-container>div[data-role="popup"]>ul>li.send>a[href="#messagePage"]')
     SAVE_TO_DEVICE = (MobileBy.CSS_SELECTOR, 'div#contactView>div.ui-popup-container>div[data-role="popup"]>ul>li.save.contact.ui-last-child>a')
     WRITE_ACCESS_LEVEL = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li[name="write access level"]>div.ui-select>div')
     # CHOOSE_ADMINISTRATORS_ONLY_AS_WRITE_ACCESS_LEVEL = (MobileBy.CSS_SELECTOR, 'div#optionList>div.ui-content>ul>li:first-child')
@@ -364,6 +367,15 @@ class ContactsScreen:
     ADDRESS_POST_CODE = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li.ui-field-contain>ul.ui-listview>li>div>input[id="post code"]')
     ADDRESS_COUNTRY = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li.ui-field-contain>ul.ui-listview>li>div>input#country')
     NAME_FIELD_FOR_NEW_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupNew>div.ui-content>ul>li:first-child>div.ui-input-text>input#name')
+    NAME_FIELD_FOR_EDITED_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupEdit>div.ui-content>ul>li:first-child>div.ui-input-text>input#name')
+    SAVE_NEW_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupNew>div.ui-footer>div.ui-navbar>ul.ui-grid-a>li.ui-block-a>a')
+    SAVE_EDITED_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupEdit>div.ui-footer>div.ui-navbar>ul.ui-grid-a>li.ui-block-a>a')
+    GROUP_INFO_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.normal-mode.ui-footer>div.ui-navbar>ul.ui-grid-a>li.ui-block-a>a.groupView')
+    EDIT_GROUP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactgroupView>div.ui-footer>div.ui-navbar>ul.ui-grid-a>li.edit>a.edit')
+    CLEAR_NAME_FOR_EDITED_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupEdit>div.ui-content>ul.ui-listview>li.ui-field-contain>div.ui-input-text>a.ui-input-clear')
+    CLEAR_FIRST_NAME_FOR_EDITED_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactEdit>div.ui-content>ul.ui-listview>li.ui-field-contain:nth-child(2)>div.ui-input-text>a')
+    GROUP_SEND_COMMUNICATION = (MobileBy.CSS_SELECTOR, 'div#contactgroupView>div#contactgroupViewMoreMenu-popup>div#contactgroupViewMoreMenu>ul.ui-listview>li.send>a[href="#messagePage"]')
+    CANCEL_NEW_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupNew>div.ui-footer>div.ui-navbar>ul.ui-grid-a>li.ui-block-b>a[href="#cancel"]')
 
 
 class TasksScreen:
@@ -463,6 +475,10 @@ class ComposeScreen:
     CONTACT_FOR_APPIUM_TESTS = (MobileBy.CSS_SELECTOR, 'input[data-label="A_CONTACT_FOR_APPIUM_TESTS"]')
     SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#confirmSendMessage"]')
     ALERT_SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'div.ui-controlgroup-controls>a#messageSend')
+    RECIPIENT_FIELD = (MobileBy.CSS_SELECTOR, 'div#messagePage>div.ui-content>ul.recipients>li.recipient')
+    MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#messagePage>div.ui-footer>div.ui-navbar>ul.ui-grid-b>li.ui-block-c>a[href="#messageMore"]')
+    DISCARD_MESSAGE = (MobileBy.CSS_SELECTOR, 'div#messagePage>div#messageMore-popup>div#messageMore>ul.ui-listview>li.ui-first-child>a[href="#confirmDiscard"]')
+    CONFIRM_DISCARD_MESSAGE = (MobileBy.CSS_SELECTOR, 'div#messagePage>div#confirmDiscard-popup>div#confirmDiscard>div.ng-dialog-container>div.center-text>div>a#messageDiscard')
 
 
 class RisksScreen:

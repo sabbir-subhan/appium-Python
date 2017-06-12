@@ -340,6 +340,7 @@ class ContactsScreen:
     CONTACTS_GROUP = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Contacts")]]')
     USERS_GROUP = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Users")]]')
     MAILING_LIST_GROUP = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Mailing list")]]')
+    NEW_CONTACT_GROUP_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "contact_group_with_on_load_sequence")]]')
 
 
 class TasksScreen:

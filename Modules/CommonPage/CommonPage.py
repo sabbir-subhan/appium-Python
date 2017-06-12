@@ -35,7 +35,7 @@ class CommonPage(BasePage):
                 encoded_file = base64.b64encode(myfile2.read())
             sleep(1)
             self.driver.push_file(path2, encoded_file.decode())
-            # self.driver.push_file(path2, "jpg")
+            # self.driver.push_file(path2, "jpeg")
             sleep(5)
         else:
             pass

@@ -6,7 +6,7 @@ import logging
 from time import sleep
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
-from Conf.desired_capabilities import DesiredCapabilities
+# from Conf.desired_capabilities import DesiredCapabilities
 
 
 class ComposePage(BasePage):
@@ -318,3 +318,50 @@ class ComposePage(BasePage):
         file.click()
         sleep(1)
 
+    def check_recipient_field(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("check recipient field")
+        recipient_field = self.driver.find_element(*self.configuration.ComposeScreen.RECIPIENT_FIELD)
+        self.assertIsNotNone(recipient_field, "Recipient field is empty")
+        # try:
+        #     text = recipient_field.get_attribute("Text")
+        #     print(text)
+        # except:
+        #     print("except")
+
+        self.switch_context_to_native()
+
+    def click_more_button(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click More button")
+        more_button = self.driver.find_element(*self.configuration.ComposeScreen.MORE_BUTTON)
+        self.assertIsNotNone(more_button, "More button not found")
+        more_button.click()
+
+        self.switch_context_to_native()
+
+    def discard_message(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Discard button")
+        discard_button = self.driver.find_element(*self.configuration.ComposeScreen.DISCARD_MESSAGE)
+        self.assertIsNotNone(discard_button, "Discard button not found")
+        discard_button.click()
+
+        self.switch_context_to_native()
+
+    def confirm_discard_message(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Confirm Discard button on popup")
+        confirm_discard_button = self.driver.find_element(*self.configuration.ComposeScreen.CONFIRM_DISCARD_MESSAGE)
+        self.assertIsNotNone(confirm_discard_button, "Confirm Discard button not found")
+        confirm_discard_button.click()
+
+        self.switch_context_to_native()

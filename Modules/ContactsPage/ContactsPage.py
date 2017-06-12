@@ -107,8 +107,19 @@ class ContactsPage(BasePage):
 
         logging.info("clear first name")
         first_name = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_NAME_FOR_EDIT_CONTACT)
-        self.assertIsNotNone(first_name, "First name input field was not found")
-        first_name.clear()
+        self.assertIsNotNone(first_name, "First name clear button was not found")
+        first_name.click()
+
+        self.switch_context_to_native()
+
+    def clear_name_for_edited_contact_group(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("clear name for edited contact group")
+        first_name = self.driver.find_element(*self.configuration.ContactsScreen.CLEAR_NAME_FOR_EDITED_CONTACT_GROUP)
+        self.assertIsNotNone(first_name, "Name clear field button was not found")
+        first_name.click()
 
         self.switch_context_to_native()
 
@@ -165,21 +176,21 @@ class ContactsPage(BasePage):
         self.switch_context_to_native()
         sleep(1)
 
-    # def open_first_contact_group(self):  # Users
-    #
-    #     self.switch_context_to_webview()
-    #
-    #     sleep(1)
-    #     logging.info("open first contact group - Users")
-    #     first_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_CONTACT_GROUP)
-    #     self.assertIsNotNone(first_contact_group, "first contact group not found")
-    #     first_contact_group.click()
-    #
-    #     self.switch_context_to_native()
-    #
-    #     common_page = LoadClass.load_page('CommonPage')
-    #     common_page.setDriver(self.driver)
-    #     common_page.wait_for_app_loading()
+    def open_first_contact_group(self):
+
+        self.switch_context_to_webview()
+
+        sleep(1)
+        logging.info("open first contact group")
+        first_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_CONTACT_GROUP)
+        self.assertIsNotNone(first_contact_group, "first contact group not found")
+        first_contact_group.click()
+
+        self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
     # def open_second_contact_group(self):  # Contacts
     #
@@ -258,6 +269,17 @@ class ContactsPage(BasePage):
         new_button = self.driver.find_element(*self.configuration.ContactsScreen.NEW_BUTTON)
         self.assertIsNotNone(new_button, "new button not found")
         new_button.click()
+
+        self.switch_context_to_native()
+
+    def click_group_info_button(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Group info button")
+        group_info_button = self.driver.find_element(*self.configuration.ContactsScreen.GROUP_INFO_BUTTON)
+        self.assertIsNotNone(group_info_button, "Group info button not found")
+        group_info_button.click()
 
         self.switch_context_to_native()
 
@@ -361,13 +383,25 @@ class ContactsPage(BasePage):
         self.switch_context_to_native()
         sleep(2)
 
-    def click_more_button(self):
+    def click_contact_more_button(self):
 
         sleep(1)
         self.switch_context_to_webview()
 
         logging.info("click More button")
         more_button = self.driver.find_element(*self.configuration.ContactsScreen.CONTACT_MORE_BUTTON)
+        self.assertIsNotNone(more_button, "More button not found")
+        more_button.click()
+
+        self.switch_context_to_native()
+
+    def click_group_more_button(self):
+
+        sleep(1)
+        self.switch_context_to_webview()
+
+        logging.info("click More button")
+        more_button = self.driver.find_element(*self.configuration.ContactsScreen.CONTACT_GROUP_MORE_BUTTON)
         self.assertIsNotNone(more_button, "More button not found")
         more_button.click()
 
@@ -388,12 +422,34 @@ class ContactsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def delete_contact_group(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click delete button")
+        delete_button = self.driver.find_element(*self.configuration.ContactsScreen.DELETE_CONTACT_GROUP)
+        self.assertIsNotNone(delete_button, "delete button not found")
+        delete_button.click()
+
+        self.switch_context_to_native()
+
     def confirm_delete(self):
 
         self.switch_context_to_webview()
 
         logging.info("click confirm delete")
         delete_button = self.driver.find_element(*self.configuration.ContactsScreen.CONFIRM_DELETE)
+        self.assertIsNotNone(delete_button, "delete button not found")
+        delete_button.click()
+
+        self.switch_context_to_native()
+
+    def confirm_delete_contact_group(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click confirm delete")
+        delete_button = self.driver.find_element(*self.configuration.ContactsScreen.CONFIRM_DELETE_GROUP)
         self.assertIsNotNone(delete_button, "delete button not found")
         delete_button.click()
 
@@ -495,8 +551,19 @@ class ContactsPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("click send communication button")
-        click_send_communication = self.driver.find_element(*self.configuration.ContactsScreen.SEND_COMMUNICATION)
+        logging.info("click send communication button for Contact")
+        click_send_communication = self.driver.find_element(*self.configuration.ContactsScreen.CONTACT_SEND_COMMUNICATION)
+        self.assertIsNotNone(click_send_communication, "send communication button not found")
+        click_send_communication.click()
+
+        self.switch_context_to_native()
+
+    def group_send_communication(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click send communication button for Contact Group")
+        click_send_communication = self.driver.find_element(*self.configuration.ContactsScreen.GROUP_SEND_COMMUNICATION)
         self.assertIsNotNone(click_send_communication, "send communication button not found")
         click_send_communication.click()
 
@@ -674,12 +741,19 @@ class ContactsPage(BasePage):
 
         self.switch_context_to_native()
 
-    def choose_group_for_new_contact_group_type(self):
+    def choose_group_for_new_contact_group_type(self):  # Group
 
-        logging.info("choose new contact group type = Group")
+        logging.info("choose new contact group type = 'Group' ")
         choose_group_for_new_contact_group_type = self.driver.find_element(*self.configuration.ContactsScreen.NEW_CONTACT_GROUP_TYPE_GROUP)
-        self.assertIsNotNone(choose_group_for_new_contact_group_type, "new contact group type = Group not found")
+        self.assertIsNotNone(choose_group_for_new_contact_group_type, "new contact group type = 'Group' not found")
         choose_group_for_new_contact_group_type.click()
+
+    def choose_group_type_with_on_load_and_on_save_sequence(self):  # contact_group_with_visibility_rules
+
+        logging.info("choose new contact group type = 'contact_group_with_visibility_rules' ")
+        choose_group_type_with_on_load_and_on_save_sequence = self.driver.find_element(*self.configuration.ContactsScreen.NEW_CONTACT_GROUP_WITH_ON_LOAD_SEQUENCE)
+        self.assertIsNotNone(choose_group_type_with_on_load_and_on_save_sequence, "new contact group type = 'contact_group_with_visibility_rules' not found")
+        choose_group_type_with_on_load_and_on_save_sequence.click()
 
     def type_name_for_new_contact_group(self, text):
 
@@ -690,6 +764,58 @@ class ContactsPage(BasePage):
         self.assertIsNotNone(name_field, "name field not found")
         name_field.click()
         name_field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def type_name_for_edited_contact_group(self, text):
+
+        self.switch_context_to_webview()
+
+        logging.info("Type Name for edited contact group")
+        name_field = self.driver.find_element(*self.configuration.ContactsScreen.NAME_FIELD_FOR_EDITED_CONTACT_GROUP)
+        self.assertIsNotNone(name_field, "name field not found")
+        name_field.click()
+        name_field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def save_new_contact_group(self):
+
+        self.switch_context_to_webview()
+
+        logging.info('click Save button')
+        save_button = self.driver.find_element(*self.configuration.ContactsScreen.SAVE_NEW_CONTACT_GROUP)
+        save_button.click()
+
+        self.switch_context_to_native()
+
+    def save_edited_contact_group(self):
+
+        self.switch_context_to_webview()
+
+        logging.info('click Save button')
+        save_button = self.driver.find_element(*self.configuration.ContactsScreen.SAVE_EDITED_CONTACT_GROUP)
+        save_button.click()
+
+        self.switch_context_to_native()
+
+    def cancel_new_contact_group(self):
+
+        self.switch_context_to_webview()
+
+        logging.info('click Cancel button')
+        cancel_button = self.driver.find_element(*self.configuration.ContactsScreen.CANCEL_NEW_CONTACT_GROUP)
+        cancel_button.click()
+
+        self.switch_context_to_native()
+
+    def click_edit_group_button(self):
+
+        self.switch_context_to_webview()
+
+        logging.info('click Edit group button')
+        save_button = self.driver.find_element(*self.configuration.ContactsScreen.EDIT_GROUP_BUTTON)
+        save_button.click()
 
         self.switch_context_to_native()
 

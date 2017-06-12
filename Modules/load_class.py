@@ -1,10 +1,10 @@
 """ Method for loading classes """
 
-try:
-    from configuration import ENVIRONMENT_TEST
-except ImportError:
-    raise ImportError("wrong platform name - check available platforms in /appium-poc/configuration.py")
-
+# try:
+#     from configuration import ENVIRONMENT_TEST
+# except ImportError:
+#     raise ImportError("wrong platform name - check available platforms in /appium-poc/configuration.py")
+from configuration import ENVIRONMENT_TEST
 from configuration import ENVIRONMENT_MIDDLE_CLASS
 from importlib import import_module
 

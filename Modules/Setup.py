@@ -8,7 +8,11 @@
 # from time import sleep
 # import subprocess
 # import os
-from configuration import ENVIRONMENT_TEST
+# from configuration import ENVIRONMENT_TEST
+try:
+    from configuration import ENVIRONMENT_TEST
+except ImportError:
+    raise ImportError("WRONG PLATFORM NAME !!! - check available platforms in /appium-poc/configuration.py")
 # import pytest
 # from importlib import import_module
 from Conf.desired_capabilities import DesiredCapabilities
