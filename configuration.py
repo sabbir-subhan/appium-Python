@@ -1,5 +1,6 @@
 """Script containing configurations for running tests"""
 
+import logging
 import os
 from settings import Settings
 from settings import SettingsPort
@@ -9,8 +10,8 @@ DEFINITIONS_ROOT = os.path.join(PROJECT_ROOT)
 platform = Settings.platform
 PORT = SettingsPort.port
 
-print("platform = ", platform)
-print("port = ", PORT)
+logging.warning("platform = " + str(platform))
+logging.warning("port = " + str(PORT))
 
 # platform = "IOS_10_emulator"
 # PORT = "4723"  # port on which Appium server is running

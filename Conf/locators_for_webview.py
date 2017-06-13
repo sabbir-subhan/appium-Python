@@ -353,9 +353,9 @@ class ContactsScreen:
     EMAIL_FIELD = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li.ui-field-contain>div.ui-input-text>input#email')
     CONTACT_SEND_COMMUNICATION = (MobileBy.CSS_SELECTOR, 'div#contactView>div.ui-popup-container>div[data-role="popup"]>ul>li.send>a[href="#messagePage"]')
     SAVE_TO_DEVICE = (MobileBy.CSS_SELECTOR, 'div#contactView>div.ui-popup-container>div[data-role="popup"]>ul>li.save.contact.ui-last-child>a')
-    WRITE_ACCESS_LEVEL = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li[name="write access level"]>div.ui-select>div')
-    # CHOOSE_ADMINISTRATORS_ONLY_AS_WRITE_ACCESS_LEVEL = (MobileBy.CSS_SELECTOR, 'div#optionList>div.ui-content>ul>li:first-child')
-    CHOOSE_ADMINISTRATORS_ONLY_AS_WRITE_ACCESS_LEVEL = (MobileBy.CSS_SELECTOR, 'div#optionList>div.ui-content>ul>li:first-child>div')
+    WRITE_ACCESS_LEVEL_FOR_NEW_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li[name="write access level"]>div.ui-select>div')  # for new contact
+    READ_ACCESS_LEVEL_FOR_NEW_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupNew>div.ui-content>ul.edit-view>li[name="read access level"]>div.ui-select>div')  # for new contact group
+    OPTION_LIST_ADMINISTRATORS_ONLY = (MobileBy.CSS_SELECTOR, 'div#optionList>div.ui-content>ul>li:first-child>div')
     FIRST_CONTACT_ON_THE_LIST_TO_IMPORT_FROM_DEVICE = (MobileBy.CSS_SELECTOR, 'div#contactImport>div.ui-content>ul.contacts>li:first-child>a')
     SEQUENCE_ON_LOAD = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_load"]')
     SEQUENCE_ON_SAVE = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_save"]')

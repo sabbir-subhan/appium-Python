@@ -1,16 +1,47 @@
 """Script for launching tests"""
 
 import argparse
-# import fire
-# import colour_runner
-# from colour_runner import *
 import unittest
-# import logging
 import os
-# import sys
+import logging
+from logging import handlers
+import sys
 from settings import Settings
 from settings import SettingsPort
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+
+log = logging.getLogger('')
+LOGFILE = './tests/TCs.log'
+format_without_colors = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+file_handler = handlers.RotatingFileHandler(LOGFILE, maxBytes=(10*1024*1024), backupCount=4)
+file_handler.setFormatter(format_without_colors)
+log.addHandler(file_handler)
+
+
+class ColoredFormatter(logging.Formatter):
+
+    def format(self, record):
+        if record.levelno == logging.WARNING:
+            record.msg = '\033[93m%s\033[0m' % record.msg
+        elif record.levelno == logging.ERROR:
+            record.msg = '\033[91m%s\033[0m' % record.msg
+        elif record.levelno == logging.INFO:
+            record.msg = '\033[92m%s\033[0m' % record.msg
+        return logging.Formatter.format(self, record)
+
+log = logging.getLogger('')
+log.setLevel(logging.INFO)
+format_with_colors = ColoredFormatter("%(asctime)s - %(levelname)s - %(message)s")
+console_handler = logging.StreamHandler(sys.stdout)
+console_handler.setFormatter(format_with_colors)
+log.addHandler(console_handler)
+
+# import fire
+# import colour_runner
+# from colour_runner import *
+# import logging
+
+# import sys
 # sys.path.insert(0, os.path.dirname(__file__))
 # sys.path.insert(0, PROJECT_ROOT + '/../')
 
@@ -77,9 +108,9 @@ def runner():
     # results.printErrors()
     # results.wasSuccessful()
 
-    print("test = ", args.test)
-    print("platform = ", args.platform)
-    print("port = ", args.port)
+    logging.warning("test = " + args.test)
+    logging.warning("platform = " + args.platform)
+    logging.warning("port = " + args.port)
 
     return args.platform, args.port
 

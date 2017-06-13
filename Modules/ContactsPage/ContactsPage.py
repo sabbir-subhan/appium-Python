@@ -591,25 +591,36 @@ class ContactsPage(BasePage):
         action.tap(element=None, x=start_x, y=start_y, count=1).perform()
         sleep(0.5)
 
-    def click_write_access_level(self):
+    def click_read_access_level_for_new_group(self):  # for new contact group
 
         self.switch_context_to_webview()
 
-        logging.info("click write access level")
-        click_write_access_level = self.driver.find_element(*self.configuration.ContactsScreen.WRITE_ACCESS_LEVEL)
+        logging.info("click read access level")
+        click_read_access_level = self.driver.find_element(*self.configuration.ContactsScreen.READ_ACCESS_LEVEL_FOR_NEW_GROUP)
+        self.assertIsNotNone(click_read_access_level, "read access level not found")
+        click_read_access_level.click()
+
+        self.switch_context_to_native()
+
+    def click_write_access_level_for_new_contact(self):  # for new contact
+
+        self.switch_context_to_webview()
+
+        logging.info("click write access level for new contact")
+        click_write_access_level = self.driver.find_element(*self.configuration.ContactsScreen.WRITE_ACCESS_LEVEL_FOR_NEW_CONTACT)
         self.assertIsNotNone(click_write_access_level, "write access level not found")
         click_write_access_level.click()
 
         self.switch_context_to_native()
 
-    def choose_administrators_only_as_write_access_level(self):
+    def option_list_administrators_only(self):
 
         self.switch_context_to_webview()
 
-        logging.info("choose 'administrators only' as write access level")
-        choose_administrators_only_as_write_access_level = self.driver.find_element(*self.configuration.ContactsScreen.CHOOSE_ADMINISTRATORS_ONLY_AS_WRITE_ACCESS_LEVEL)
-        self.assertIsNotNone(choose_administrators_only_as_write_access_level, "write access level not found")
-        choose_administrators_only_as_write_access_level.click()
+        logging.info("choose 'administrators only' from option list")
+        option_list_administrators_only = self.driver.find_element(*self.configuration.ContactsScreen.OPTION_LIST_ADMINISTRATORS_ONLY)
+        self.assertIsNotNone(option_list_administrators_only, "administrators only access level not found")
+        option_list_administrators_only.click()
 
         self.switch_context_to_native()
 
@@ -818,4 +829,22 @@ class ContactsPage(BasePage):
         save_button.click()
 
         self.switch_context_to_native()
+
+    def check_first_contact_group_on_the_list(self):
+
+        self.switch_context_to_webview()
+
+        sleep(1)
+        logging.info("check first contact group")
+        try:
+            check_first_contact_group_on_the_list = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_CONTACT_GROUP)
+            if check_first_contact_group_on_the_list.is_displayed():
+                self.fail("first contact group on the list is displayed")
+            else:
+                pass
+        except NoSuchElementException:
+            logging.info("first contact group on the list not found = OK")
+
+        self.switch_context_to_native()
+
 
