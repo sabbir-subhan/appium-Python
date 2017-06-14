@@ -249,7 +249,7 @@ class TestManagingContacts(SetupTestCase):
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()
 
-        # Create contact with on load and on save sequence in two of its fields, but don't save it.
+        # Create contact with on load and on save sequence in two of its fields.
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
         contacts_page.clear_Search_field()
@@ -281,7 +281,7 @@ class TestManagingContacts(SetupTestCase):
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()
 
-        # Create contact with visibility rules, but don't save it.
+        # Create contact with visibility rules.
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
         contacts_page.clear_Search_field()

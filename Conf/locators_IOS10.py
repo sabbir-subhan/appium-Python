@@ -449,5 +449,6 @@ class RisksScreen:
 class AssetsScreen:
     """A class for handling Assets screen"""
     CREATED_MAP_ASSET = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Map")]]')
+    CREATED_ASSET_WITH_NAME_BALLART = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Ballarat")]]')
     ASSET_TYPE_WITH_MAX_NUMBER_OF_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "asset_with_max_number_of_fields")]]')
     ASSET_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "asset_with_visibility_rules")]]')

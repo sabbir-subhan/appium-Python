@@ -49,10 +49,11 @@ log.addHandler(console_handler)
 $ python run.py -t <test_file_name> -p <platform>
 $ python run.py --test <test_file_name> --platform <platform>
 example: $ python run.py --test test_Assets --platform IOS_10_emulator
+example 2: $ python run.py -t test_Assets -p IOS_10_emulator -port 4735
 '''
 
 '''
-usage: run.py [-h] [-t TEST] [-p PLATFORM] [--port PORT]
+usage: run.py [-h] [-t TEST] [-p PLATFORM] [-port PORT]
 
 Pass test, platform and port.
 
@@ -68,10 +69,9 @@ devices are defined in /Conf/desired_capabilities.py
 
 optional arguments:
  -h, --help            show this help message and exit
- -t TEST, --test TEST  test name (default: all)
- -p PLATFORM, --platform PLATFORM
-                       platform name (default: Android_5)
- --port PORT NUMBER ON WHICH APPIUM SERVER IS RUNNING (default: 4723)
+ -t TEST, --test TEST  <test name> (default: all)
+ -p PLATFORM, --platform <platform name> (default: Android_5)
+ -port, --port <port number> PORT NUMBER ON WHICH APPIUM SERVER IS RUNNING (default: 4723)
 '''
 
 
@@ -86,7 +86,7 @@ def runner():
 
     parser.add_argument('-t', '--test', default='all', help='test name (default: all)')
     parser.add_argument('-p', '--platform', default='Android_5', help='platform name (default: Android_5)')
-    parser.add_argument('--port', default='4723', help='Appium port (default: 4723)')
+    parser.add_argument('-port', '--port', default='4723', help='Appium port (default: 4723)')
     # parser.add_argument('unittest_args', nargs='*')
 
     args = parser.parse_args()

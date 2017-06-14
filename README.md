@@ -120,15 +120,15 @@ and provide name of that file in desired_capabilities.py
 
 **to run tests on IOS9 (real device):**
 - switch Xcode version using: sudo xcode-select -switch /Applications/Xcode7.app
-- in another console run: ios_webkit_debug_proxy -c <device uuid>:27753
+- in another console run: ios_webkit_debug_proxy -c <device udid>:27753
 - iPad: ios_webkit_debug_proxy -c db55c238e873230ee454c54a63724397a2981acd:27753
 - in new console start Appium server using CLI command: "appium"
 - start test using CLI command: "python run.py -t test_Login -p IOS_9"
 
 **to run tests on IOS10 (real device):**
 - switch Xcode version using: sudo xcode-select -switch /Applications/Xcode.app
-- in another console run: ios_webkit_debug_proxy -c <device uuid>:27753
-- iPhone: ios_webkit_debug_proxy -c 4b15c4284897fa6f9b4c5205325a9cece997ad35:27753
+~~- in another console run: ios_webkit_debug_proxy -c <device udid>:27753~~ (not necessary = it will start automatically)
+~~- iPhone: ios_webkit_debug_proxy -c 4b15c4284897fa6f9b4c5205325a9cece997ad35:27753~~
 - in new console start Appium server using CLI command: "appium"
 - start test using CLI command: "python run.py -t test_Login -p IOS_10"
 
@@ -318,4 +318,5 @@ OCA APP VERSIONS:
 - double clicking action may not work properly on iOS emulators
 - "selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing 
 the command. Original error: Could not install app: 'Command 'ios-deploy --id 4b15c4284897fa6f9b4c5205325a9cece997ad35 --uninstall --bundle
- /Users/lukasl/repos/appium-poc/iPhone6_10.3_OCA.app' exited with code 253'"   ---> kill Appium server and restart
+ /Users/lukasl/repos/appium-poc/iPhone6_10.3_OCA.app' exited with code 253'"   ---> start from killing Appium server and restarting it, if this won't worked - rebuild WebDriverAgent and/or rebuild OCA app through Xcode 
+ (usually, it occurs after switching iOS versions)

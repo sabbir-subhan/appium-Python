@@ -564,17 +564,21 @@ class EventsPage(BasePage):
 
     def click_create_mapping_data(self):
 
-        sleep(2)
+        sleep(1)
 
         self.switch_context_to_webview()
 
         logging.info("create mapping data")
         try:
             create_mapping_data_button = self.driver.find_element(*self.configuration.EventEditScreen.CREATE_MAPPING_DATA_NEW)
-        except NoSuchElementException:
+            self.assertIsNotNone(create_mapping_data_button, "Button for creating map data is not present")
+            logging.info("test1")
+            create_mapping_data_button.click()
+        except ElementNotVisibleException:
             create_mapping_data_button = self.driver.find_element(*self.configuration.EventEditScreen.CREATE_MAPPING_DATA_EDIT)
-        self.assertIsNotNone(create_mapping_data_button, "Button for creating map data is not present")
-        create_mapping_data_button.click()
+            self.assertIsNotNone(create_mapping_data_button, "Button for creating map data is not present")
+            logging.info("test2")
+            create_mapping_data_button.click()
 
         self.switch_context_to_native()
 

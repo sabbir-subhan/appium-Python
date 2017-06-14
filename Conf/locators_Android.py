@@ -506,6 +506,7 @@ class RisksScreen:
 class AssetsScreen:
     """A class for handling Assets screen"""
     CREATED_MAP_ASSET = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Map")]]')
+    CREATED_ASSET_WITH_NAME_BALLART = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Ballarat")]]')
     ASSET_TYPE_WITH_MAX_NUMBER_OF_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "asset_with_max_number_of_fields")]]')
     ASSET_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "asset_with_visibility_rules")]]')
 

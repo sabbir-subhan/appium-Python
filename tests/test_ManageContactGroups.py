@@ -143,9 +143,35 @@ class TestManagingContactGroup(SetupTestCase):
         contacts_page.type_name_for_new_contact_group("group with on load sequence")
         contacts_page.scroll_down_to_save_button()
         contacts_page.cancel_new_contact_group()
+        common_page.hamburger_button()
+        main_page.check_presence_of_inbox_button()
 
-        # Create an contact type that has option lists and fields with visibility rules that clears hidden fields and restores default values.
-        # CAN NOT CREATE VISIBILITY RULES IN OCA FOR CONTACT GROUP TYPE
+        main_page.scroll_down_to_contacts_button()
+        main_page.open_CONTACTS()
+        contacts_page.clear_Search_field()
+        common_page.hide_keyboard()
+        contacts_page.open_contacts_group()  # Contacts
+        contacts_page.click_new_button()
+        contacts_page.add_new_contact_into_group()
+        contacts_page.choose_contact_type_with_visibility_rules()
+        contacts_page.type_first_name_for_new_contact("Visibility rules")
+        contacts_page.scroll_down_to_option_list()
+        contacts_page.click_on_option_list()
+        contacts_page.click_on_option_1()
+        contacts_page.check_restored_field_1()
+        contacts_page.click_on_option_list()
+        contacts_page.click_on_option_2()
+        contacts_page.check_restored_field_2()
+        contacts_page.check_hidden_field_1()
+        contacts_page.click_on_option_list()
+        contacts_page.click_on_option_3()
+        contacts_page.check_hidden_fields_1_and_2()
+        contacts_page.check_restored_field_3()
+        contacts_page.scroll_down_to_save_button()
+        contacts_page.save_new_contact()
+        common_page.wait_for_app_loading()
+        common_page.hamburger_button()
+        main_page.check_presence_of_inbox_button()
 
 
 if __name__ == '__main__':
