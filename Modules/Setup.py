@@ -93,7 +93,7 @@ class SetupTestCase(unittest.TestCase):
 
         # sleep(45)  # wait for appium server to start
 
-        logging.info(" WebDriver request initiated. Waiting for response, this may take a while.")
+        logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()
 
@@ -104,10 +104,10 @@ class SetupTestCase(unittest.TestCase):
         sleep(15)  # wait for app launching + optional app installation or/and installation/launching WebDriverAgent
 
         if ENVIRONMENT_TEST == "IOS9":
-            print("implicitly wait = 12 seconds")
+            logging.warning("global wait = 12 seconds")
             self.driver.implicitly_wait(12)
         else:
-            print("implicitly wait = 6 seconds")
+            logging.warning("global wait = 6 seconds")
             self.driver.implicitly_wait(6)  # seconds - how long Appium will wait for conditions, for example try/except
 
         # self.driver.implicitly_wait(14)  # seconds - how long Appium will wait for conditions, for example try/except

@@ -73,8 +73,15 @@ class TestSentCommunications(SetupTestCase):
         compose_page.setDriver(self.driver)
         compose_page.add_recipients()
         compose_page.add_contacts_and_groups()
-        compose_page.contacts_arrow()
-        compose_page.filter_contacts_by_search_field()
+
+        compose_page.clear_Search_field()
+        compose_page.type_text_into_search_field("Contacts")
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
+
+        compose_page.first_element_arrow_button()
+        compose_page.clear_Search_field()
+        compose_page.type_text_into_search_field("A_CONTACT_FOR_APPIUM_TESTS")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         compose_page.choose_contact_for_test()
@@ -101,10 +108,12 @@ class TestSentCommunications(SetupTestCase):
         common_page.hamburger_button()
         main_page.scroll_down_to_sent_button()
         main_page.open_SENT()
+        common_page.take_screenshot("Sent_communications")
         common_page.hamburger_button()
         main_page.open_INBOX()
         inbox_page = LoadClass.load_page('InboxPage')
         inbox_page.setDriver(self.driver)
+        common_page.take_screenshot("Inbox_screenshot")
         common_page.hamburger_button()
 
 

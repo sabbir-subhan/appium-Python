@@ -115,7 +115,7 @@ class TestSendVideo(SetupTestCase):
         sleep(1)  # time for recording video
         camera_page.stop_recording_video()
         camera_page.click_use_video()
-        video_page.type_description("test- video 2")
+        video_page.type_description("test - video 2")
         # common_page.hide_keyboard()
         video_page.click_send_button_camera()  # click and wait for 720s
         video_page.click_back_arrow_if_running_on_emulator()

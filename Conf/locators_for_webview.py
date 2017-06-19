@@ -470,8 +470,8 @@ class ComposeScreen:
     COMMS_DOCUMENTS_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#documentfolderTreeView?selector=true&id=2"]')
     ADD_CONTACTS_AND_GROUPS = (MobileBy.CSS_SELECTOR, 'a.maywrap.ui-link.ui-btn.ui-shadow.ui-corner-all')  # list of two elements - select [0]
     ADD_RESOURCES_STRUCTURE_NODES = (MobileBy.CSS_SELECTOR, 'a.maywrap.ui-link.ui-btn.ui-shadow.ui-corner-all')  # list of two elements - select [1]
-    CONTACTS_ARROW = (MobileBy.CSS_SELECTOR, 'a[href="#contactgroupTreeView?selector=true&id=4"]')
-    USERS_ARROW = (MobileBy.CSS_SELECTOR, 'a[href="#contactgroupTreeView?selector=true&id=3"]')
+    # CONTACTS_ARROW = (MobileBy.CSS_SELECTOR, 'a[href="#contactgroupTreeView?selector=true&id=4"]')
+    FIRST_ELEMENT_ARROW = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul>li:first-child>a.ui-btn')
     CONTACT_FOR_APPIUM_TESTS = (MobileBy.CSS_SELECTOR, 'input[data-label="A_CONTACT_FOR_APPIUM_TESTS"]')
     SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#confirmSendMessage"]')
     ALERT_SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'div.ui-controlgroup-controls>a#messageSend')

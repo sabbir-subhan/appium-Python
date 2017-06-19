@@ -26,16 +26,17 @@ logging.warning("port = " + str(PORT))
 # Android_7
 # Android_7_emulator
 # Android_7.1_emulator
-# IOS_9
+# IOS_9_iPad
 # IOS_9_emulator
 # IOS_10
+# IOS_10_iPad
 # IOS_10_emulator
 
 
 # devices are defined in /Conf/desired_capabilities.py
 
 
-if platform == "IOS_9":
+if platform == "IOS_9_iPad":
 
     ENVIRONMENT_TEST = "IOS9"
     ENVIRONMENT_MIDDLE_CLASS = "IOS"
@@ -48,6 +49,12 @@ elif platform == "IOS_9_emulator":
     PLATFORM_VERSION = ""
 
 elif platform == "IOS_10":
+
+    ENVIRONMENT_TEST = "IOS10"
+    ENVIRONMENT_MIDDLE_CLASS = "IOS"
+    PLATFORM_VERSION = ""
+
+elif platform == "IOS_10_iPad":
 
     ENVIRONMENT_TEST = "IOS10"
     ENVIRONMENT_MIDDLE_CLASS = "IOS"

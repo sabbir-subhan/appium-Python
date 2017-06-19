@@ -4,3 +4,4 @@
 .tmp/
 tests/__pycache__/
 *.pyc
+screenshots/*.png

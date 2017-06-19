@@ -111,6 +111,7 @@ def runner():
     logging.warning("test = " + args.test)
     logging.warning("platform = " + args.platform)
     logging.warning("port = " + args.port)
+    logging.info("---------------------------------- END OF THE TEST -------------------------------------------------")
 
     return args.platform, args.port
 

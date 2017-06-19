@@ -134,6 +134,9 @@ class TestSortAssets(SetupTestCase):
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
+        main_page.open_ASSETS()
+        common_page.take_screenshot("Assets_sort_order")
+
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(TestSortAssets)

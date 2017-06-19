@@ -6,6 +6,7 @@ import logging
 from time import sleep
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import NoSuchElementException
 # from Conf.desired_capabilities import DesiredCapabilities
 
 
@@ -132,27 +133,54 @@ class ComposePage(BasePage):
 
         sleep(2)
 
-    def contacts_arrow(self):
+    def first_element_arrow_button(self):
 
         self.switch_context_to_webview()
 
-        logging.info('click in Contacts arrow to choose specific contact')
-        contacts_arrow = self.driver.find_element(*self.configuration.ComposeScreen.CONTACTS_ARROW)
-        self.assertIsNotNone(contacts_arrow, 'add recipients button not found')
+        logging.info('click in arrow button')
+        contacts_arrow = self.driver.find_element(*self.configuration.ComposeScreen.FIRST_ELEMENT_ARROW)
+        self.assertIsNotNone(contacts_arrow, 'arrow button not found')
         contacts_arrow.click()
 
         self.switch_context_to_native()
 
-    def filter_contacts_by_search_field(self):
+    # def filter_contacts_by_search_field(self):
+    #
+    #     logging.info("filter contacts by search field")
+    #
+    #     search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+    #     self.assertIsNotNone(search_field, "Search field not found")
+    #     search_field.click()
+    #     sleep(2)
+    #     search_field.send_keys('A_CONTACT_FOR_APPIUM_TESTS')
+    #     sleep(1)
 
-        logging.info("filter contacts by search field")
+    def type_text_into_search_field(self, text):
 
+        sleep(1)
+        logging.info("type text into search field")
         search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
         self.assertIsNotNone(search_field, "Search field not found")
         search_field.click()
         sleep(2)
-        search_field.send_keys('A_CONTACT_FOR_APPIUM_TESTS')
+        search_field.send_keys(text)
         sleep(1)
+
+    def clear_Search_field(self):
+
+        self.switch_context_to_webview()
+
+        try:
+            clear_search_field_button = self.driver.find_element(*self.configuration.AssetsScreen.CLEAR_SEARCH_FIELD_BUTTON)
+            if clear_search_field_button.is_displayed():
+                logging.info("clear Search field by clicking clear button")
+                self.assertIsNotNone(clear_search_field_button, "clear search field button not found")
+                clear_search_field_button.click()
+                sleep(2)
+        except NoSuchElementException:
+            pass
+
+        self.switch_context_to_native()
 
     def choose_contact_for_test(self):
 

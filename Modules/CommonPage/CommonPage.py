@@ -15,30 +15,52 @@ import base64
 
 class CommonPage(BasePage):
 
-    def push_files(self):  # not working
+    def push_sample_files(self):  # push sample photo and video files for executing TCs on emulators - not working
 
         sleep(2)
-        if "emulator" in platform:
-            logging.info("push video file to the emulator")
-            path1 = os.path.join(PROJECT_ROOT, "sample_video.mp4")
-            # self.driver.push_file(path, "mp4")
-            with open(file=path1, mode='rb') as myfile1:
-                encoded_file = base64.b64encode(myfile1.read())
-            # We need to decode to get rid of the b'' bytes literal for the upload to work
-            sleep(1)
-            self.driver.push_file(path1, encoded_file.decode())
-            # On the device, the file appears in the correct format
-            sleep(5)
-            logging.info("push image file to the emulator")
-            path2 = os.path.join(PROJECT_ROOT, "sample_image.jpg")
-            with open(file=path2, mode='rb') as myfile2:
-                encoded_file = base64.b64encode(myfile2.read())
-            sleep(1)
-            self.driver.push_file(path2, encoded_file.decode())
-            # self.driver.push_file(path2, "jpeg")
-            sleep(5)
-        else:
-            pass
+
+        logging.info("push video file to the emulator")
+        path1 = "sample_video.mp4"
+        # path1 = os.path.join(PROJECT_ROOT, "sample_video.mp4")
+        # self.driver.push_file(path, "mp4")
+        with open(file=path1, mode='rb') as myfile1:
+            encoded_file = base64.b64encode(myfile1.read())
+        # We need to decode to get rid of the b'' bytes literal for the upload to work
+        sleep(1)
+        self.driver.push_file(path1, encoded_file.decode())
+        # On the device, the file appears in the correct format
+        sleep(5)
+        logging.info("push image file to the emulator")
+        path2 = os.path.join(PROJECT_ROOT, "sample_image.jpg")
+        with open(file=path2, mode='rb') as myfile2:
+            encoded_file = base64.b64encode(myfile2.read())
+        sleep(1)
+        self.driver.push_file(path2, encoded_file.decode())
+        # self.driver.push_file(path2, "jpeg")
+        sleep(5)
+
+        # if "emulator" in platform:
+        #     logging.info("push video file to the emulator")
+        #     path1 = "sample_video.mp4"
+        #     # path1 = os.path.join(PROJECT_ROOT, "sample_video.mp4")
+        #     # self.driver.push_file(path, "mp4")
+        #     with open(file=path1, mode='rb') as myfile1:
+        #         encoded_file = base64.b64encode(myfile1.read())
+        #     # We need to decode to get rid of the b'' bytes literal for the upload to work
+        #     sleep(1)
+        #     self.driver.push_file(path1, encoded_file.decode())
+        #     # On the device, the file appears in the correct format
+        #     sleep(5)
+        #     logging.info("push image file to the emulator")
+        #     path2 = os.path.join(PROJECT_ROOT, "sample_image.jpg")
+        #     with open(file=path2, mode='rb') as myfile2:
+        #         encoded_file = base64.b64encode(myfile2.read())
+        #     sleep(1)
+        #     self.driver.push_file(path2, encoded_file.decode())
+        #     # self.driver.push_file(path2, "jpeg")
+        #     sleep(5)
+        # else:
+        #     pass
 
     def back_arrow(self):
 
@@ -80,8 +102,11 @@ class CommonPage(BasePage):
     def take_screenshot(self, file_name):
 
         logging.info("taking screenshot")
-        sleep(2)
-        self.driver.save_screenshot(file_name)
+        sleep(1)
+        path = "./screenshots"
+        os.chdir(path)
+        self.driver.save_screenshot(file_name + ".png")
+        os.chdir("..")
 
     def reset(self):
         """This method will reset driver - so for example app will be force to logout"""
