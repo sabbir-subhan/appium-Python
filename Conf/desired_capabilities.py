@@ -1,12 +1,9 @@
 import os
 from configuration import platform, PROJECT_ROOT
 import logging
-# from run import platform
-# from configuration import PROJECT_ROOT
-
-PATH = lambda p: os.path.abspath(
-    os.path.join(os.path.dirname(__file__), p)
-)
+# PATH = lambda p: os.path.abspath(
+#     os.path.join(os.path.dirname(__file__), p)
+# )
 
 
 class DesiredCapabilities(object):

@@ -29,7 +29,7 @@ class TestLogin(SetupTestCase):
 
     def test_login(self):
 
-        logging.info("starting Test Case: login into active account")
+        logging.info("starting Test Case: Login into active account")
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         welcome_page = LoadClass.load_page('WelcomePage')

@@ -4,7 +4,7 @@ from time import sleep
 import logging
 from selenium.common.exceptions import *
 from Modules.BasePage.BasePage import BasePage
-# from Modules.load_class import LoadClass
+from Modules.load_class import LoadClass
 # from credentials import Credentials
 
 
@@ -16,13 +16,13 @@ class LoginPage(BasePage):
 
         logging.info("click in Submit button")
         self.driver.find_element(*self.configuration.LoginScreen.SUBMIT_BUTTON).click()
-        sleep(2)
-
-        # common_page = LoadClass.load_page('CommonPage')
-        # common_page.setDriver(self.driver)
-        # common_page.wait_for_app_loading()
+        # sleep(2)
 
         self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
     def accept_terms(self):
 
