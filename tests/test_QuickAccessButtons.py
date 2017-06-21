@@ -14,6 +14,7 @@
 # dismiss alert about expiring password
 # dismiss iOS notifications
 # check if button "EVENTS" is present
+
 # Click on Activate workflow quick access
 # Click on Create contact quick access link
 # Click on Create Task Quick access link
@@ -41,7 +42,7 @@ class TestQuickAccessButtons(SetupTestCase):
         logging.info("Quitting")
         self.driver.quit()
 
-    def test_Quick_Access_buttons(self):
+    def test_quick_access_buttons(self):
 
         logging.info("starting Test Case: Quick Access buttons on OCA app")
         common_page = LoadClass.load_page('CommonPage')
@@ -86,13 +87,13 @@ class TestQuickAccessButtons(SetupTestCase):
         new_task_page.setDriver(self.driver)
         new_task_page.type_title("Title for new task test")
         new_task_page.click_on_assigned()
-        new_task_page.add_contacts()
+        new_task_page.add_contacts_and_groups()
         new_task_page.choose_users()
         new_task_page.click_ok_button()
         new_task_page.click_start_date()
         new_task_page.choose_current_date()
         new_task_page.scroll_down_to_save_button()
-        new_task_page.click_save_button()
+        new_task_page.click_save_new_task()
         common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()

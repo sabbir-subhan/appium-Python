@@ -7,7 +7,6 @@ from time import sleep
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
-# from Conf.desired_capabilities import DesiredCapabilities
 
 
 class ComposePage(BasePage):
@@ -137,9 +136,9 @@ class ComposePage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info('click in arrow button')
+        logging.info('click in arrow button of the first element on the list')
         contacts_arrow = self.driver.find_element(*self.configuration.ComposeScreen.FIRST_ELEMENT_ARROW)
-        self.assertIsNotNone(contacts_arrow, 'arrow button not found')
+        self.assertIsNotNone(contacts_arrow, 'arrow button for the first element on the list not found')
         contacts_arrow.click()
 
         self.switch_context_to_native()
@@ -171,7 +170,7 @@ class ComposePage(BasePage):
         self.switch_context_to_webview()
 
         try:
-            clear_search_field_button = self.driver.find_element(*self.configuration.AssetsScreen.CLEAR_SEARCH_FIELD_BUTTON)
+            clear_search_field_button = self.driver.find_element(*self.configuration.ContactsScreen.CLEAR_SEARCH_FIELD_BUTTON)
             if clear_search_field_button.is_displayed():
                 logging.info("clear Search field by clicking clear button")
                 self.assertIsNotNone(clear_search_field_button, "clear search field button not found")

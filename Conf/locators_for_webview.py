@@ -340,7 +340,9 @@ class ContactsScreen:
     ADD_NEW_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div#contactgroupTreeMore-popup>div#contactgroupTreeMore>ul>li.new.contactgroup>a')
     ADD_NEW_CONTACT_INTO_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div#contactgroupTreeMore-popup>div#contactgroupTreeMore>ul>li:nth-child(2)>a')
     IMPORT_CONTACT_FROM_DEVICE_INTO_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div#contactgroupTreeMore-popup>div#contactgroupTreeMore>ul>li.ingroup.new.import>a')
-    FIRST_CONTACT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.secondary>ul>li:first-child>a')
+    # FIRST_CONTACT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.secondary>ul>li:first-child>a')
+    FIRST_CONTACT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.secondary>ul>li:first-child')
+    FIRST_CONTACT_GROUP_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul>li:first-child')
     CONTACT_MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactView>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-a>li.ui-block-b>a[href="#contactViewMoreMenu"]')
     CONTACT_GROUP_MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactgroupView>div.ui-footer>div.ui-navbar>ul.ui-grid-a>li#openContactGroupViewMore>a[href="#contactgroupViewMoreMenu"]')
     DELETE_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactView>div.ui-popup-container>div[data-role="popup"]>ul>li.delete.contact>a[href="#confirmDeleteContact"]')
@@ -380,11 +382,13 @@ class ContactsScreen:
 
 class TasksScreen:
     """A class for handling Tasks screen"""
-    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
-                                          'a[href="#save"]')
+    SAVE_NEW_TASK_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
+                                                   'a[href="#save"]')
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
-    TITLE = (MobileBy.CSS_SELECTOR, 'input.field-Name')
+    SAVE_EDITED_TASK_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#save"]')
+    # TITLE = (MobileBy.CSS_SELECTOR, 'input.field-Name')
+    TITLE = (MobileBy.CSS_SELECTOR, 'div#taskNew>div.ui-content>ul.edit-view>li:first-child>div.ui-input-text>input#title')
     # ASSIGNED = (MobileBy.CSS_SELECTOR, '')
     # ADD_CONTACTS_AND_GROUPS = (MobileBy.CSS_SELECTOR, '')
     # ADD_RESOURCE_STRUCTURE_NODES = (MobileBy.CSS_SELECTOR, '')
@@ -403,6 +407,14 @@ class TasksScreen:
     FIRST_TASK_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-content>div.main>ul.tasks>li:first-child>a')
     CLEAR_SEARCH_FIELD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-content>div.ui-input-search>a.ui-input-clear')
     VIEW_ON_MAP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskView>div.ui-content>ul.ui-listview>li>a[href="#mapPage?geometry=true"]')  # button inside task details
+    CREATE_NEW_TASK_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-footer>div.ui-navbar>ul>li>a[href="#taskNew"]')
+    EDIT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskView>div.ui-footer>div.ui-navbar>ul.ui-grid-a>li.edit>a')
+    FIRST_STRUCTURE_NODE_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamroleIndex>div.ui-content>ul.teamroles>li:first-child')
+    SECOND_STRUCTURE_NODE_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamroleIndex>div.ui-content>ul.teamroles>li:nth-child(2)')
+    LAST_STRUCTURE_NODE_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamroleIndex>div.ui-content>ul.teamroles>li:last-child')
+    FIRST_RESOURCE_ASSIGNMENT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamIndex>div.ui-content>ul.teams>li:first-child')
+    SECOND_RESOURCE_ASSIGNMENT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamIndex>div.ui-content>ul.teams>li:nth-child(2)')
+    LAST_RESOURCE_ASSIGNMENT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamIndex>div.ui-content>ul.teams>li:last-child')
 
 
 class ReportsScreen:

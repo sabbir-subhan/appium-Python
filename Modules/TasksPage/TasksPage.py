@@ -15,7 +15,7 @@ class TasksPage(BasePage):
 
         logging.info("type title")
         title = self.driver.find_element(*self.configuration.TasksScreen.TITLE)
-        self.assertIsNotNone(title, "Title input field was not found")
+        self.assertIsNotNone(title, "Title input field not found")
         title.click()
         title.send_keys(text)
 
@@ -25,22 +25,109 @@ class TasksPage(BasePage):
 
         logging.info("click on Assigned field")
         assigned = self.driver.find_element(*self.configuration.TasksScreen.ASSIGNED)
-        self.assertIsNotNone(assigned, "Assigned field was not found")
+        self.assertIsNotNone(assigned, "Assigned field not found")
         assigned.click()
 
-    def add_contacts(self):
+    def add_contacts_and_groups(self):
 
-        logging.info("Add Assignees")
-        assignees = self.driver.find_element(*self.configuration.TasksScreen.ADD_CONTACTS_AND_GROUPS)
-        self.assertIsNotNone(assignees, "Assignees field was not found")
-        assignees.click()
+        logging.info("Add Contacts and Groups")
+        add_contacts_and_groups = self.driver.find_element(*self.configuration.TasksScreen.ADD_CONTACTS_AND_GROUPS)
+        self.assertIsNotNone(add_contacts_and_groups, "Add Contacts and Groups button not found")
+        add_contacts_and_groups.click()
 
     def choose_users(self):
 
         logging.info("Choose Users")
-        assignees = self.driver.find_element(*self.configuration.TasksScreen.CHOOSE_USERS)
-        self.assertIsNotNone(assignees, "Users option list was not found")
-        assignees.click()
+        choose_users = self.driver.find_element(*self.configuration.TasksScreen.CHOOSE_USERS)
+        self.assertIsNotNone(choose_users, "Users option list not found")
+        choose_users.click()
+
+    def choose_contacts(self):
+
+        logging.info("Choose Contacts")
+        choose_contacts = self.driver.find_element(*self.configuration.TasksScreen.CHOOSE_CONTACTS)
+        self.assertIsNotNone(choose_contacts, "Contacts option list not found")
+        choose_contacts.click()
+
+    def add_resource_structure_nodes(self):
+
+        logging.info("Add Resource Structure Nodes")
+        add_resource_structure_nodes = self.driver.find_element(*self.configuration.TasksScreen.ADD_RESOURCE_STRUCTURE_NODES)
+        self.assertIsNotNone(add_resource_structure_nodes, "Add Resource Structure Nodes button not found")
+        add_resource_structure_nodes.click()
+
+    def click_first_resource_structure_node_on_the_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("Choose first structure node on the list")
+        click_first_resource_structure_node_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.FIRST_STRUCTURE_NODE_ON_THE_LIST)
+        self.assertIsNotNone(click_first_resource_structure_node_on_the_list, "Structure node not found")
+        click_first_resource_structure_node_on_the_list.click()
+
+        self.switch_context_to_native()
+
+    def click_second_resource_structure_node_on_the_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("Choose second structure node on the list")
+        click_second_resource_structure_node_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.SECOND_STRUCTURE_NODE_ON_THE_LIST)
+        self.assertIsNotNone(click_second_resource_structure_node_on_the_list, "Structure node not found")
+        click_second_resource_structure_node_on_the_list.click()
+
+        self.switch_context_to_native()
+
+    def click_last_resource_structure_node_on_the_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("Choose last structure node on the list")
+        click_last_resource_structure_node_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.LAST_STRUCTURE_NODE_ON_THE_LIST)
+        self.assertIsNotNone(click_last_resource_structure_node_on_the_list, "Structure node not found")
+        click_last_resource_structure_node_on_the_list.click()
+
+        self.switch_context_to_native()
+
+    def add_resource_assignments(self):
+
+        logging.info("Add Resource Assignments")
+        add_resource_assignments = self.driver.find_element(*self.configuration.TasksScreen.ADD_RESOURCE_ASSIGNMENTS)
+        self.assertIsNotNone(add_resource_assignments, "Add Resource Assignments button not found")
+        add_resource_assignments.click()
+
+    def click_first_resource_assignment_on_the_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("Choose first resource assignment on the list")
+        click_first_resource_assignment_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.FIRST_RESOURCE_ASSIGNMENT_ON_THE_LIST)
+        self.assertIsNotNone(click_first_resource_assignment_on_the_list, "Resource assignment not found")
+        click_first_resource_assignment_on_the_list.click()
+
+        self.switch_context_to_native()
+
+    def click_second_resource_assignment_on_the_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("Choose second resource assignment on the list")
+        click_second_resource_assignment_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.SECOND_RESOURCE_ASSIGNMENT_ON_THE_LIST)
+        self.assertIsNotNone(click_second_resource_assignment_on_the_list, "Resource assignment not found")
+        click_second_resource_assignment_on_the_list.click()
+
+        self.switch_context_to_native()
+
+    def click_last_resource_assignment_on_the_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("Choose last resource assignment on the list")
+        click_last_resource_assignment_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.LAST_RESOURCE_ASSIGNMENT_ON_THE_LIST)
+        self.assertIsNotNone(click_last_resource_assignment_on_the_list, "Resource assignment not found")
+        click_last_resource_assignment_on_the_list.click()
+
+        self.switch_context_to_native()
 
     def click_start_date(self):
 
@@ -49,7 +136,7 @@ class TasksPage(BasePage):
             start_date = self.driver.find_element(*self.configuration.TasksScreen.START_DATE)
         except NoSuchElementException:
             start_date = self.driver.find_element(*self.configuration.TasksScreen.START_DATE2)
-        self.assertIsNotNone(start_date, "Start Date field was not found")
+        self.assertIsNotNone(start_date, "Start Date field not found")
         start_date.click()
 
     def click_ok_button(self):
@@ -64,34 +151,31 @@ class TasksPage(BasePage):
         events_page.setDriver(self.driver)
         events_page.scroll_down_to_save_button()
 
-    def click_save_button(self):
+    def click_save_new_task(self):
 
         self.switch_context_to_webview()
 
         logging.info('click Save button')
-        save_button = self.driver.find_element(*self.configuration.TasksScreen.SAVE_BUTTON)
+        save_button = self.driver.find_element(*self.configuration.TasksScreen.SAVE_NEW_TASK_BUTTON)
+        self.assertIsNotNone(save_button, "save button not found")
         save_button.click()
 
         self.switch_context_to_native()
 
-    # def clear_Search_field(self):
-    #
-    #     logging.info("clear search field")
-    #     sleep(1)
-    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).click()
-    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()  # each clear is clearing one character
-    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-    #     self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD).clear()
-    #     sleep(1)
+    def click_save_edited_task(self):
+
+        self.switch_context_to_webview()
+
+        logging.info('click Save button')
+        save_button = self.driver.find_element(*self.configuration.TasksScreen.SAVE_EDITED_TASK_BUTTON)
+        self.assertIsNotNone(save_button, "save button not found")
+        save_button.click()
+
+        self.switch_context_to_native()
 
     def type_text_into_search_field(self, text):
 
-        logging.info("filter reports by search field")
+        logging.info("filter list by search field")
 
         search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
         self.assertIsNotNone(search_field, "Search field not found")
@@ -100,17 +184,17 @@ class TasksPage(BasePage):
         search_field.send_keys(text)
         sleep(1)
 
-    def open_existing_task(self):
-
-        self.switch_context_to_webview()
-
-        logging.info('edit created report approval task')
-        edit_created_task = self.driver.find_element(*self.configuration.TasksScreen.FIRST_TASK_ON_THE_LIST)
-        self.assertIsNotNone(edit_created_task, 'previously created task, not found')
-        edit_created_task.click()
-        sleep(2)
-
-        self.switch_context_to_native()
+    # def open_existing_task(self):
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     logging.info('edit created report approval task')
+    #     edit_created_task = self.driver.find_element(*self.configuration.TasksScreen.FIRST_TASK_ON_THE_LIST)
+    #     self.assertIsNotNone(edit_created_task, 'previously created task, not found')
+    #     edit_created_task.click()
+    #     sleep(2)
+    #
+    #     self.switch_context_to_native()
 
     def click_button_yes_for_action_required(self):
 
@@ -194,3 +278,36 @@ class TasksPage(BasePage):
 
         self.switch_context_to_native()
 
+    def create_new_task(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Create new task button")
+        create_new_task = self.driver.find_element(*self.configuration.TasksScreen.CREATE_NEW_TASK_BUTTON)
+        self.assertIsNotNone(create_new_task, "create new task button not found")
+        create_new_task.click()
+
+        self.switch_context_to_native()
+
+    def click_first_task_on_the_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info('click first task on the list')
+        first_task_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.FIRST_TASK_ON_THE_LIST)  # first-child
+        self.assertIsNotNone(first_task_on_the_list, 'first task on the list, not found')
+        first_task_on_the_list.click()
+
+        self.switch_context_to_native()
+        sleep(2)
+
+    def edit_task(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click on edit button after opening existing task")
+        edit_button = self.driver.find_element(*self.configuration.TasksScreen.EDIT_BUTTON)
+        self.assertIsNotNone(edit_button, "edit button not found")
+        edit_button.click()
+
+        self.switch_context_to_native()

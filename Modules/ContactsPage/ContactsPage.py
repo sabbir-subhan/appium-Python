@@ -371,14 +371,27 @@ class ContactsPage(BasePage):
         search_field.send_keys(text)
         sleep(1)
 
-    def edit_first_contact_on_the_list(self):
+    def click_first_contact_on_the_list(self):
 
         self.switch_context_to_webview()
 
-        logging.info('edit first contact on the list')
-        first_contact_on_the_list = self.driver.find_elements(*self.configuration.ContactsScreen.FIRST_CONTACT_ON_THE_LIST)
+        logging.info('click first contact on the list')
+        first_contact_on_the_list = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_CONTACT_ON_THE_LIST)  # first-child
         self.assertIsNotNone(first_contact_on_the_list, 'first contact on the list, not found')
-        first_contact_on_the_list[0].click()
+        # first_contact_on_the_list[0].click()
+        first_contact_on_the_list.click()
+
+        self.switch_context_to_native()
+        sleep(2)
+
+    def click_first_contact_group_on_the_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info('click first contact group on the list')
+        first_contact_group_on_the_list = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_CONTACT_GROUP_ON_THE_LIST)  # first-child
+        self.assertIsNotNone(first_contact_group_on_the_list, 'first contact group on the list, not found')
+        first_contact_group_on_the_list.click()
 
         self.switch_context_to_native()
         sleep(2)

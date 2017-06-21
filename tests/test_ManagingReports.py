@@ -241,7 +241,7 @@ class TestManagingReports(SetupTestCase):
         tasks_page.type_text_into_search_field("Report approval")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
-        tasks_page.open_existing_task()  # first task on the list
+        tasks_page.click_first_task_on_the_list()
         common_page.wait_for_app_loading()
         tasks_page.click_button_yes_for_action_required()
         tasks_page.alert_confirm_action_required()

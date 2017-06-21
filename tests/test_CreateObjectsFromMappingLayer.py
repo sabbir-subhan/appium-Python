@@ -194,7 +194,7 @@ class TestCreateObjectsFromMappingLayer(SetupTestCase):
         tasks_page.setDriver(self.driver)
         tasks_page.type_title("Mapping")
         tasks_page.click_on_assigned()
-        tasks_page.add_contacts()
+        tasks_page.add_contacts_and_groups()
         tasks_page.choose_users()
         tasks_page.click_ok_button()
         tasks_page.click_start_date()
