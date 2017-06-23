@@ -362,39 +362,53 @@ class ContactsPage(BasePage):
 
     def type_text_into_search_field(self, text):
 
-        logging.info("filter contacts by search field")
+        # logging.info("type text into search field")
 
-        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
-        self.assertIsNotNone(search_field, "Search field not found")
-        search_field.click()
-        sleep(2)
-        search_field.send_keys(text)
-        sleep(1)
+        # search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+        # self.assertIsNotNone(search_field, "Search field not found")
+        # search_field.click()
+        # sleep(2)
+        # search_field.send_keys(text)
+        # sleep(1)
+
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.type_text_into_search_field(text)
 
     def click_first_contact_on_the_list(self):
 
+        sleep(1)
         self.switch_context_to_webview()
 
         logging.info('click first contact on the list')
         first_contact_on_the_list = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_CONTACT_ON_THE_LIST)  # first-child
         self.assertIsNotNone(first_contact_on_the_list, 'first contact on the list, not found')
-        # first_contact_on_the_list[0].click()
         first_contact_on_the_list.click()
 
         self.switch_context_to_native()
-        sleep(2)
+
+    def click_first_contact_on_the_list_with_checkbox(self):
+
+        sleep(1)
+        self.switch_context_to_webview()
+
+        logging.info('click first contact on the list with checkbox')
+        first_contact_on_the_list = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_CONTACT_ON_THE_LIST_WITH_CHECKBOX)  # first-child
+        self.assertIsNotNone(first_contact_on_the_list, 'first contact on the list, not found')
+        first_contact_on_the_list.click()
+
+        self.switch_context_to_native()
 
     def click_first_contact_group_on_the_list(self):
 
         self.switch_context_to_webview()
 
         logging.info('click first contact group on the list')
-        first_contact_group_on_the_list = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_CONTACT_GROUP_ON_THE_LIST)  # first-child
+        first_contact_group_on_the_list = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_CONTACT_GROUP_ON_THE_LIST_WITH_CHECKBOX)  # first-child
         self.assertIsNotNone(first_contact_group_on_the_list, 'first contact group on the list, not found')
         first_contact_group_on_the_list.click()
 
         self.switch_context_to_native()
-        sleep(2)
 
     def click_contact_more_button(self):
 

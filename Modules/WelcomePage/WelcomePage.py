@@ -21,7 +21,9 @@ class WelcomePage(BasePage):
 
         self.switch_context_to_webview()
 
-        self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON).click()
+        login_button = self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON)
+        self.assertIsNotNone(login_button, "Login button not found")
+        login_button.click()
         sleep(2)
 
         self.switch_context_to_native()

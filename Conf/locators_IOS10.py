@@ -359,6 +359,11 @@ class TasksScreen:
     HIDE_DATE_PICKER = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Completed Date"]')
     # CREATED_TASK_WITH_APPROVAL = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Report approval")]]')
     CREATED_TASK_WITH_APPROVAL = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="Report approval"]')
+    MY_TASKS = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="My Tasks"]')
+    ALL_TASKS = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="All Tasks"]')
+    COMPLETED_TASKS = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Completed Tasks"]')
+    INCOMPLETE_TASKS = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Incomplete Tasks"]')
+    ACTION_REQUIRED_TASKS = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Action Required Tasks"]')
 
 
 class ReportsScreen:

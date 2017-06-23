@@ -408,6 +408,11 @@ class TasksScreen:
     START_DATE = (MobileBy.ID, 'start date')
     START_DATE2 = (MobileBy.XPATH, '//android.view.View[2][@content-desc="Start Date"]')
     CREATED_TASK_WITH_APPROVAL = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Report approval")]]')
+    MY_TASKS = (MobileBy.ACCESSIBILITY_ID, 'My Tasks')
+    ALL_TASKS = (MobileBy.ACCESSIBILITY_ID, 'All Tasks')
+    COMPLETED_TASKS = (MobileBy.ACCESSIBILITY_ID, 'Completed Tasks')
+    INCOMPLETE_TASKS = (MobileBy.XPATH, 'Incomplete Tasks')
+    ACTION_REQUIRED_TASKS = (MobileBy.XPATH, 'Action Required Tasks')
 
 
 class ReportsScreen:

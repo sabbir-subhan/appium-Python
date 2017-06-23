@@ -769,7 +769,7 @@ class EventsPage(BasePage):
 
     def type_text_into_search_field(self, text):
 
-        logging.info("filter events by search field")
+        logging.info("type text into search field")
 
         search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
         self.assertIsNotNone(search_field, "Search field not found")

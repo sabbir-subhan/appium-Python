@@ -156,14 +156,18 @@ class ComposePage(BasePage):
 
     def type_text_into_search_field(self, text):
 
-        sleep(1)
-        logging.info("type text into search field")
-        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
-        self.assertIsNotNone(search_field, "Search field not found")
-        search_field.click()
-        sleep(2)
-        search_field.send_keys(text)
-        sleep(1)
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.type_text_into_search_field(text)
+
+        # sleep(1)
+        # logging.info("type text into search field")
+        # search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+        # self.assertIsNotNone(search_field, "Search field not found")
+        # search_field.click()
+        # sleep(2)
+        # search_field.send_keys(text)
+        # sleep(1)
 
     def clear_Search_field(self):
 

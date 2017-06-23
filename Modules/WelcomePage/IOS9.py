@@ -31,7 +31,9 @@ class IOS9(IOS):
             expected_conditions.presence_of_element_located(self.configuration.WelcomeScreen.LOGIN_BUTTON),
             "Login button not found")
         sleep(1)
-        self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON).click()
+        login_button = self.driver.find_element(*self.configuration.WelcomeScreen.LOGIN_BUTTON)
+        self.assertIsNotNone(login_button, "Login button not found")
+        login_button.click()
         sleep(1)
 
         self.switch_context_to_native()

@@ -300,14 +300,18 @@ class ReportsPage(BasePage):
 
     def type_text_into_search_field(self, text):
 
-        logging.info("filter reports by search field")
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.type_text_into_search_field(text)
 
-        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
-        self.assertIsNotNone(search_field, "Search field not found")
-        search_field.click()
-        sleep(2)
-        search_field.send_keys(text)
-        sleep(1)
+        # logging.info("filter reports by search field")
+        #
+        # search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+        # self.assertIsNotNone(search_field, "Search field not found")
+        # search_field.click()
+        # sleep(2)
+        # search_field.send_keys(text)
+        # sleep(1)
     #
     # def search_for_report_with_chooser_fields(self):
     #

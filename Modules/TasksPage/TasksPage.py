@@ -5,6 +5,8 @@ from Modules.load_class import LoadClass
 from selenium.common.exceptions import *
 import logging
 from time import sleep
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class TasksPage(BasePage):
@@ -61,7 +63,7 @@ class TasksPage(BasePage):
         self.switch_context_to_webview()
 
         logging.info("Choose first structure node on the list")
-        click_first_resource_structure_node_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.FIRST_STRUCTURE_NODE_ON_THE_LIST)
+        click_first_resource_structure_node_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.FIRST_STRUCTURE_NODE_ON_THE_LIST)  # first - child
         self.assertIsNotNone(click_first_resource_structure_node_on_the_list, "Structure node not found")
         click_first_resource_structure_node_on_the_list.click()
 
@@ -72,7 +74,7 @@ class TasksPage(BasePage):
         self.switch_context_to_webview()
 
         logging.info("Choose second structure node on the list")
-        click_second_resource_structure_node_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.SECOND_STRUCTURE_NODE_ON_THE_LIST)
+        click_second_resource_structure_node_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.SECOND_STRUCTURE_NODE_ON_THE_LIST)  # second - child
         self.assertIsNotNone(click_second_resource_structure_node_on_the_list, "Structure node not found")
         click_second_resource_structure_node_on_the_list.click()
 
@@ -83,7 +85,7 @@ class TasksPage(BasePage):
         self.switch_context_to_webview()
 
         logging.info("Choose last structure node on the list")
-        click_last_resource_structure_node_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.LAST_STRUCTURE_NODE_ON_THE_LIST)
+        click_last_resource_structure_node_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.LAST_STRUCTURE_NODE_ON_THE_LIST)  # last- child
         self.assertIsNotNone(click_last_resource_structure_node_on_the_list, "Structure node not found")
         click_last_resource_structure_node_on_the_list.click()
 
@@ -101,7 +103,7 @@ class TasksPage(BasePage):
         self.switch_context_to_webview()
 
         logging.info("Choose first resource assignment on the list")
-        click_first_resource_assignment_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.FIRST_RESOURCE_ASSIGNMENT_ON_THE_LIST)
+        click_first_resource_assignment_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.FIRST_RESOURCE_ASSIGNMENT_ON_THE_LIST)  # first - child
         self.assertIsNotNone(click_first_resource_assignment_on_the_list, "Resource assignment not found")
         click_first_resource_assignment_on_the_list.click()
 
@@ -112,7 +114,7 @@ class TasksPage(BasePage):
         self.switch_context_to_webview()
 
         logging.info("Choose second resource assignment on the list")
-        click_second_resource_assignment_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.SECOND_RESOURCE_ASSIGNMENT_ON_THE_LIST)
+        click_second_resource_assignment_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.SECOND_RESOURCE_ASSIGNMENT_ON_THE_LIST)  # second - child
         self.assertIsNotNone(click_second_resource_assignment_on_the_list, "Resource assignment not found")
         click_second_resource_assignment_on_the_list.click()
 
@@ -123,7 +125,7 @@ class TasksPage(BasePage):
         self.switch_context_to_webview()
 
         logging.info("Choose last resource assignment on the list")
-        click_last_resource_assignment_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.LAST_RESOURCE_ASSIGNMENT_ON_THE_LIST)
+        click_last_resource_assignment_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.LAST_RESOURCE_ASSIGNMENT_ON_THE_LIST)  # last- child
         self.assertIsNotNone(click_last_resource_assignment_on_the_list, "Resource assignment not found")
         click_last_resource_assignment_on_the_list.click()
 
@@ -173,16 +175,16 @@ class TasksPage(BasePage):
 
         self.switch_context_to_native()
 
-    def type_text_into_search_field(self, text):
-
-        logging.info("filter list by search field")
-
-        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
-        self.assertIsNotNone(search_field, "Search field not found")
-        search_field.click()
-        sleep(2)
-        search_field.send_keys(text)
-        sleep(1)
+    # def type_text_into_search_field(self, text):
+    #
+    #     logging.info("filter list by search field")
+    #
+    #     search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+    #     self.assertIsNotNone(search_field, "Search field not found")
+    #     search_field.click()
+    #     sleep(2)
+    #     search_field.send_keys(text)
+    #     sleep(1)
 
     # def open_existing_task(self):
     #
@@ -218,6 +220,23 @@ class TasksPage(BasePage):
 
         self.switch_context_to_native()
 
+    def filter_tasks_to_my_tasks(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("filter tasks to my tasks")
+
+        expand_filters = self.driver.find_element(*self.configuration.TasksScreen.FILTERS)
+        self.assertIsNotNone(expand_filters, "filters not found")
+        expand_filters.click()
+
+        self.switch_context_to_native()
+
+        choose_my_tasks = self.driver.find_element(*self.configuration.TasksScreen.MY_TASKS)
+        self.assertIsNotNone(choose_my_tasks, "my tasks filter not found")
+        choose_my_tasks.click()
+        sleep(1)
+
     def filter_tasks_to_all_tasks(self):
 
         self.switch_context_to_webview()
@@ -228,12 +247,46 @@ class TasksPage(BasePage):
         self.assertIsNotNone(expand_filters, "filters not found")
         expand_filters.click()
 
+        self.switch_context_to_native()
+
         choose_all_tasks = self.driver.find_element(*self.configuration.TasksScreen.ALL_TASKS)
         self.assertIsNotNone(choose_all_tasks, "all tasks filter not found")
         choose_all_tasks.click()
         sleep(1)
 
+    def filter_tasks_to_completed_tasks(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("filter tasks to completed tasks")
+
+        expand_filters = self.driver.find_element(*self.configuration.TasksScreen.FILTERS)
+        self.assertIsNotNone(expand_filters, "filters not found")
+        expand_filters.click()
+
         self.switch_context_to_native()
+
+        completed_tasks = self.driver.find_element(*self.configuration.TasksScreen.COMPLETED_TASKS)
+        self.assertIsNotNone(completed_tasks, "completed tasks filter not found")
+        completed_tasks.click()
+        sleep(1)
+
+    def filter_tasks_to_incomplete_tasks(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("filter tasks to incomplete tasks")
+
+        expand_filters = self.driver.find_element(*self.configuration.TasksScreen.FILTERS)
+        self.assertIsNotNone(expand_filters, "filters not found")
+        expand_filters.click()
+
+        self.switch_context_to_native()
+
+        incomplete_tasks = self.driver.find_element(*self.configuration.TasksScreen.INCOMPLETE_TASKS)
+        self.assertIsNotNone(incomplete_tasks, "incomplete tasks filter not found")
+        incomplete_tasks.click()
+        sleep(1)
 
     def filter_tasks_to_required_action(self):
 
@@ -245,12 +298,12 @@ class TasksPage(BasePage):
         self.assertIsNotNone(expand_filters, "filters not found")
         expand_filters.click()
 
+        self.switch_context_to_native()
+
         choose_action_required_tasks = self.driver.find_element(*self.configuration.TasksScreen.ACTION_REQUIRED_TASKS)
         self.assertIsNotNone(choose_action_required_tasks, "action required tasks filter not found")
         choose_action_required_tasks.click()
         sleep(1)
-
-        self.switch_context_to_native()
 
     def clear_Search_field(self):
 
@@ -309,5 +362,19 @@ class TasksPage(BasePage):
         edit_button = self.driver.find_element(*self.configuration.TasksScreen.EDIT_BUTTON)
         self.assertIsNotNone(edit_button, "edit button not found")
         edit_button.click()
+
+        self.switch_context_to_native()
+
+    def check_if_task_was_filled_correctly(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("check if task form was filled correctly - Validation error is not present")
+        WebDriverWait(self.driver, 1).until(
+            expected_conditions.invisibility_of_element_located(self.configuration.TasksScreen.VALIDATION_ERROR_POPUP),
+            "Validation Error popup is present - form was not filled correctly")
+
+        # validation_error_popup = self.driver.find_element(*self.configuration.TasksScreen.VALIDATION_ERROR_POPUP)
+        # self.assertIsNone(validation_error_popup, "Validation Error popup is present")
 
         self.switch_context_to_native()

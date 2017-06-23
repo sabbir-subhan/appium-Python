@@ -338,6 +338,11 @@ class TasksScreen:
     START_DATE = (MobileBy.XPATH, '//UIAStaticText[@name="Start Date"]')
     HIDE_DATE_PICKER = (MobileBy.XPATH, '//UIAStaticText[@name="Completed Date"]')
     CREATED_TASK_WITH_APPROVAL = (MobileBy.XPATH, '//UIALink[@name[contains(., "Report approval")]]')
+    MY_TASKS = (MobileBy.XPATH, '//UIAStaticText[@name="My Tasks"]')
+    ALL_TASKS = (MobileBy.XPATH, '//UIAStaticText[@name="All Tasks"]')
+    COMPLETED_TASKS = (MobileBy.XPATH, '//UIAStaticText[@name="Completed Tasks"]')
+    INCOMPLETE_TASKS = (MobileBy.XPATH, '//UIAStaticText[@name="Incomplete Tasks"]')
+    ACTION_REQUIRED_TASKS = (MobileBy.XPATH, '//UIAStaticText[@name="Action Required Tasks"]')
 
 
 class ReportsScreen:
