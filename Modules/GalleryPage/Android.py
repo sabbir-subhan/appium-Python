@@ -4,7 +4,7 @@ from Modules.GalleryPage.GalleryPage import GalleryPage
 import logging
 from Modules.load_class import LoadClass
 from Conf.desired_capabilities import DesiredCapabilities
-from appium.webdriver.common.touch_action import TouchAction
+# from appium.webdriver.common.touch_action import TouchAction
 from time import sleep
 
 

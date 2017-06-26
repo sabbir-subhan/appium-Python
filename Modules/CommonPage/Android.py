@@ -8,9 +8,38 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 from appium.webdriver.common.touch_action import TouchAction
 from Modules.load_class import LoadClass
+from configuration import platform
+from Conf.desired_capabilities import DesiredCapabilities
 
 
 class Android(CommonPage):
+
+    def turn_on_flight_mode(self):  # works only on Android
+
+        logging.info("turn flight mode on or turn off all network connections")
+
+        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        platform_version = desired_capabilities.get('platformVersion')
+        if float(platform_version) >= 7:
+            logging.error("Appium is running on Android version >= 7 (" + str(platform) + ") --turning on flight mode is not working for that version")
+        else:
+            logging.info("Appium is running on real device (" + str(platform) + ") = turn on flight mode")
+            self.driver.set_network_connection(1)  # this is working for Android 6 and older
+
+    def flight_mode_on(self):  # works only on Android
+
+        logging.info("turn flight mode on")
+        self.driver.set_network_connection(1)
+
+    def turn_off_all_network(self):  # works only on Android
+
+        logging.info("turn off network - data and wifi connections")
+        self.driver.set_network_connection(0)
+
+    def turn_on_all_network(self):  # works only on Android
+
+        logging.info("turn on all network")
+        self.driver.set_network_connection(6)
 
     def clear_Search_field(self):
 

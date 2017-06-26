@@ -239,7 +239,7 @@ class DesiredCapabilities(object):
             "autoAcceptAlerts": True,
             "automationName": "Appium",
             "clearSystemFiles": True,
-            "startIWDP": True,  # start ios-webkit-debug-proxy
+            "startIWDP": True,  # start ios-webkit-debug-proxy - not working for iOS9
             # "noReset": False,
             "fullReset": True,  # iOS9 is not logging out automatically so fullReset is necessary
             "udid": "db55c238e873230ee454c54a63724397a2981acd"

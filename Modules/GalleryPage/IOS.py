@@ -4,8 +4,8 @@ from Modules.GalleryPage.GalleryPage import GalleryPage
 import logging
 from time import sleep
 from selenium.common.exceptions import *
-import os
-from configuration import platform, PROJECT_ROOT
+# import os
+# from configuration import platform, PROJECT_ROOT
 
 
 class IOS(GalleryPage):

@@ -15,6 +15,8 @@ class iOS:
     # IOS_ALLOW = (MobileBy.ACCESSIBILITY_ID, "Allow")
     IOS_ALLOW = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]'
                                  '/UIACollectionCell[2]/UIAButton[@name="Allow"]')
+    AIRPLANE_MODE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Airplane Mode')
+    # AIRPLANE_MODE_BUTTON = (MobileBy.XPATH, '//UIAElement[@name="Airplane Mode"]')
 
 
 class CommonScreen:

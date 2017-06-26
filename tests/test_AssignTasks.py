@@ -28,7 +28,6 @@
 
 from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
-from credentials import Credentials
 import logging
 import unittest
 
@@ -50,6 +49,10 @@ class TestAssignTasks(SetupTestCase):
         logging.info("starting Test Case: Assign Tasks directly to Team")
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
+
+        common_page.swipe_up()  # for test
+        # common_page.turn_on_flight_mode()  # for test
+
         welcome_page = LoadClass.load_page('WelcomePage')
         welcome_page.setDriver(self.driver)
         welcome_page.click_login_button()
@@ -150,7 +153,6 @@ class TestAssignTasks(SetupTestCase):
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()
 
-        # step 5
         main_page.scroll_down_to_tasks_button()
         main_page.open_TASKS()
         tasks_page.create_new_task()

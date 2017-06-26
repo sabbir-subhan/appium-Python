@@ -651,7 +651,9 @@ class MapPage(BasePage):
         action = TouchAction(self.driver)
         # action.long_press(el=duplicated_geometry, duration=1000).move_to(x=x, y=y).release().perform()
         sleep(1)
-        action.press(el=duplicated_geometry).wait(ms=1500).move_to(x=x, y=y).release()
+        positions = [x, y]
+        self.driver.execute_script("mobile: dragFromToForDuration", positions)
+        #action.press(el=duplicated_geometry).wait(ms=1500).move_to(x=x, y=y).release()
         # action.press(el=duplicated_geometry).move_to(x=x, y=y).release()
         logging.info("wait a second after dragging")
 

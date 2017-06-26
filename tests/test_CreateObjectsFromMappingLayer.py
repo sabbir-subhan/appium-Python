@@ -200,7 +200,7 @@ class TestCreateObjectsFromMappingLayer(SetupTestCase):
         tasks_page.click_start_date()
         tasks_page.choose_current_date()
         tasks_page.scroll_down_to_save_button()
-        tasks_page.click_save_button()
+        tasks_page.click_save_new_task()
         common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()

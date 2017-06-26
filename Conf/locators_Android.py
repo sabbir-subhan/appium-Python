@@ -352,8 +352,8 @@ class SoundRecorderScreen:
 
 class CameraScreen:
     """A class for handling Camera"""
-    CAPTURE_BUTTON_ANDROID_4_and_5 = (MobileBy.ACCESSIBILITY_ID, 'Shutter')
-    CAPTURE_BUTTON_ANDROID_6 = (MobileBy.XPATH, '//GLButton[@text="Shutter"]')  # Android 7 too
+    CAPTURE_BUTTON_ANDROID_4_and_5 = (MobileBy.ACCESSIBILITY_ID, 'Shutter')  # and Android 6
+    CAPTURE_BUTTON_ANDROID_6 = (MobileBy.XPATH, '//GLButton[@text="Shutter"]')  # Android 7
     CAPTURE_BUTTON_ANDROID_6_version2 = (MobileBy.ACCESSIBILITY_ID, 'Shutter button')
     # CAPTURE_BUTTON_ANDROID_7 = (MobileBy.XPATH, '//GLViewGroup[3]/GLViewGroup[1]/GLButton[2]')
     RECORD_BUTTON_ANDROID_7 = (MobileBy.XPATH, '//GLButton[@text="Record"]')

@@ -26,7 +26,7 @@ class Android(CameraPage):
             photo_capture1.click()
             sleep(4)
         else:
-            photo_capture3 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_4_and_5)
+            photo_capture3 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_4_and_5)  # also for Android 6
             self.assertIsNotNone(photo_capture3)
             photo_capture3.click()
             sleep(4)
