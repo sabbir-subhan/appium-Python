@@ -104,8 +104,8 @@ class SetupTestCase(unittest.TestCase):
         sleep(15)  # wait for app launching + optional app installation or/and installation/launching WebDriverAgent
 
         if ENVIRONMENT_TEST == "IOS9":
-            logging.warning("global wait = 12 seconds")
-            self.driver.implicitly_wait(12)
+            logging.warning("global wait = 14 seconds")
+            self.driver.implicitly_wait(14)
         else:
             logging.warning("global wait = 6 seconds")
             self.driver.implicitly_wait(6)  # seconds - how long Appium will wait for conditions, for example try/except

@@ -640,24 +640,26 @@ class MapPage(BasePage):
         duplicated_geometry = self.driver.find_element(*self.configuration.Map.DUPLICATED_GEOMETRY_ON_MAP)
         location = duplicated_geometry.location
         print(location)
-        x = int(location["x"])
-        y = int(location["y"])
-        print(x)
-        print(y)
-        x = x + x * 0.5
-        y = y + y * 0.5
-        print(x)
-        print(y)
-        action = TouchAction(self.driver)
-        # action.long_press(el=duplicated_geometry, duration=1000).move_to(x=x, y=y).release().perform()
-        sleep(1)
-        positions = [x, y]
-        self.driver.execute_script("mobile: dragFromToForDuration", positions)
-        #action.press(el=duplicated_geometry).wait(ms=1500).move_to(x=x, y=y).release()
-        # action.press(el=duplicated_geometry).move_to(x=x, y=y).release()
-        logging.info("wait a second after dragging")
+        start_x = int(location["x"])
+        start_y = int(location["y"])
+        print(start_x)
+        print(start_y)
+        end_x = start_x + start_x * 0.8
+        end_y = start_y + start_y * 0.8
+        print(end_x)
+        print(end_y)
 
         self.switch_context_to_native()
+        sleep(1)
+        # positions = [x, y]
+        # self.driver.execute_script("mobile: dragFromToForDuration", positions)
+        # action.press(el=duplicated_geometry).wait(ms=1500).move_to(x=x, y=y).release()
+        # action.press(el=duplicated_geometry).move_to(x=x, y=y).release()
+
+        el = self.driver.find_element(*self.configuration.CommonScreen.WEB_VIEW)
+        action = TouchAction(self.driver)
+        action.press(el, start_x, start_y).wait(100).move_to(el, end_x - start_x, end_y - start_y).release().perform()
+        logging.info("wait a second after dragging")
 
         sleep(2)
 

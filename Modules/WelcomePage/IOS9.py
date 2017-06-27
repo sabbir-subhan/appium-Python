@@ -19,8 +19,8 @@ class IOS9(IOS):
         welcome_page.setDriver(self.driver)
         welcome_page.logout()  # not necessary if using fullReset desire_capability in Conf/desired_capabilities.py
 
-        logging.info("relaunching app to avoid problems with locating elements")
-        self.driver.reset()  # reset app to avoid problems with locating elements
+        # logging.info("relaunching app to avoid problems with locating elements")
+        # self.driver.reset()  # reset app to avoid problems with locating elements
         sleep(2)
         logging.info("click in LOGIN button")
         sleep(2)

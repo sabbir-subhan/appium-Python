@@ -119,14 +119,14 @@ and provide name of that file in desired_capabilities.py
 - in CLI (Appium 1.6.3) 
 
 **to run tests on IOS9 (real device):**
-- switch Xcode version using: sudo xcode-select -switch /Applications/Xcode7.app
+- switch Xcode 7 version using: sudo xcode-select -switch /Applications/Xcode7.app
 - in another console run: ios_webkit_debug_proxy -c <device udid>:27753
 - iPad: ios_webkit_debug_proxy -c db55c238e873230ee454c54a63724397a2981acd:27753
 - in new console start Appium server using CLI command: "appium"
 - start test using CLI command: "python run.py -t test_Login -p IOS_9"
 
 **to run tests on IOS10 (real device):**
-- switch Xcode version using: sudo xcode-select -switch /Applications/Xcode.app
+- switch Xcode 8 version using: sudo xcode-select -switch /Applications/Xcode.app
 ~~- in another console run: ios_webkit_debug_proxy -c <device udid>:27753~~ (not necessary = it will start automatically)
 ~~- iPhone: ios_webkit_debug_proxy -c 4b15c4284897fa6f9b4c5205325a9cece997ad35:27753~~
 - in new console start Appium server using CLI command: "appium"

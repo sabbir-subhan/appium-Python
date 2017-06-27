@@ -25,7 +25,8 @@ class CommonScreen:
     CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Cancel')
     CANCEL_BUTTON_by_index = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Button')
     OK_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Ok')
-    WEB_VIEW = (MobileBy.XPATH, '//android.webkit.WebView[@scrollable="true"]')
+    # WEB_VIEW = (MobileBy.XPATH, '//android.webkit.WebView[@scrollable="true"]')
+    WEB_VIEW = (MobileBy.CLASS_NAME, 'android.webkit.WebView')
     SPINNER_ON_THE_RIGHT = (MobileBy.XPATH, '//android.widget.ListView[1]/android.view.View[2]'
                                             '/android.widget.Spinner[@clickable="true"]')
     SPINNER_ON_THE_LEFT = (MobileBy.XPATH, '//android.widget.ListView[1]/android.view.View[1]'

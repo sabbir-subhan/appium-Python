@@ -27,6 +27,7 @@ class CommonScreen:
     CANCEL_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Cancel"]')
     OK_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Ok"]')
     PICKER_WHEEL = (MobileBy.CLASS_NAME, 'UIAPickerWheel')
+    WEB_VIEW = (MobileBy.CLASS_NAME, 'UIAWebView')
 
 
 class TopBar:
