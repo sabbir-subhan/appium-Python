@@ -305,6 +305,7 @@ class Map:
     SAVED_MAP_ALL_ASSETS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "All assets")]]')
     SAVED_MAP_ALL_CONTACTS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "All contacts")]]')
     SAVED_MAP_ALL_TASKS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "All tasks")]]')
+    DUPLICATED_GEOMETRY = (MobileBy.XPATH, '//android.widget.Image[@clickable="false"][last()]')
 
 
 class PhotoScreen:

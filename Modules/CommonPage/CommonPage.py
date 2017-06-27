@@ -11,33 +11,9 @@ from Modules.load_class import LoadClass
 # from importlib import import_module
 # from configuration import ENVIRONMENT_TEST
 import base64
-from appium.webdriver.common.touch_action import TouchAction
 
 
 class CommonPage(BasePage):
-
-    def swipe_up(self):
-
-        logging.info("swipe up")
-        sleep(1)
-        window_size = self.driver.get_window_size()  # this returns dictionary
-        logging.info(window_size)
-
-        height_max = window_size["height"]
-
-        # print(height_max)
-        # print(type(height_max))
-        # sleep(2)
-        # self.driver.swipe(start_x=50, start_y=height_max, end_x=50, end_y=10, duration=800)
-        sleep(1)
-
-        start_x = 50
-        start_y = height_max
-        end_x = 50
-        end_y = height_max * 0.5
-        el = self.driver.find_element(*self.configuration.CommonScreen.WEB_VIEW)
-        action = TouchAction(self.driver)
-        action.press(el, start_x, start_y).wait(100).move_to(el, end_x - start_x, end_y - start_y).release().perform()
 
     def swipe_down(self):
 

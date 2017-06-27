@@ -34,8 +34,10 @@ class IOS(MapPage):
 
         logging.info("click on map")
         window_size = self.driver.get_window_size()  # this returns dictionary
-        position_x = window_size["width"] * 0.30
-        position_y = window_size["height"] * 0.60
+        # position_x = window_size["width"] * 0.30
+        # position_y = window_size["height"] * 0.60
+        position_x = window_size["width"] * 0.4
+        position_y = window_size["height"] * 0.4
         positions = [(position_x, position_y)]
         # action = TouchAction(self.driver)
         # action.tap(element=None, x=position_x, y=position_y, count=1).perform()

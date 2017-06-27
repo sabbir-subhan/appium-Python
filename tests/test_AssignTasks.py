@@ -51,7 +51,7 @@ class TestAssignTasks(SetupTestCase):
         common_page.setDriver(self.driver)
 
         common_page.swipe_up()  # for test
-        # common_page.turn_on_flight_mode()  # for test
+        common_page.turn_on_flight_mode()  # for test
 
         welcome_page = LoadClass.load_page('WelcomePage')
         welcome_page.setDriver(self.driver)

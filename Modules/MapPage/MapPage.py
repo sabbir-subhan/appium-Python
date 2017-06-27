@@ -630,37 +630,71 @@ class MapPage(BasePage):
 
         self.switch_context_to_native()
 
-    def press_and_drag_duplicated_geometry(self):
+    def drag_and_drag_duplicated_geometry(self):
 
-        logging.info("press and drag duplicated geometry")
+        logging.info("drag and drag duplicated geometry")
         sleep(1)
 
-        self.switch_context_to_webview()
+        # self.switch_context_to_webview()
+        #
+        # duplicated_geometry = self.driver.find_element(*self.configuration.Map.DUPLICATED_GEOMETRY_ON_MAP)
+        # location = duplicated_geometry.location
+        # logging.warning("location in web view = " + str(location))
+        #
+        # start_x = int(location["x"])
+        # start_y = int(location["y"])
+        # logging.warning("start_x at the beginning = " + str(start_x))
+        # logging.warning("start_y at the beginning = " + str(start_y))
+        # end_x = start_x + start_x * 0.1
+        # end_y = start_y + start_y * 0.1
+        # logging.warning("end_x = " + str(end_x))
+        # logging.warning("end_y = " + str(end_y))
+        #
+        # window_size = self.driver.get_window_size()  # this returns dictionary
+        # logging.info("window size in web view = " + str(window_size))
+        #
+        # self.switch_context_to_native()
 
-        duplicated_geometry = self.driver.find_element(*self.configuration.Map.DUPLICATED_GEOMETRY_ON_MAP)
-        location = duplicated_geometry.location
-        print(location)
-        start_x = int(location["x"])
-        start_y = int(location["y"])
-        print(start_x)
-        print(start_y)
-        end_x = start_x + start_x * 0.8
-        end_y = start_y + start_y * 0.8
-        print(end_x)
-        print(end_y)
-
-        self.switch_context_to_native()
         sleep(1)
+
+        window_size = self.driver.get_window_size()  # this returns dictionary
+        logging.info("window size in native view = " + str(window_size))
+
         # positions = [x, y]
         # self.driver.execute_script("mobile: dragFromToForDuration", positions)
         # action.press(el=duplicated_geometry).wait(ms=1500).move_to(x=x, y=y).release()
         # action.press(el=duplicated_geometry).move_to(x=x, y=y).release()
 
-        el = self.driver.find_element(*self.configuration.CommonScreen.WEB_VIEW)
+        # el = self.driver.find_element(*self.configuration.CommonScreen.WEB_VIEW)
+        el = self.driver.find_element(*self.configuration.Map.DUPLICATED_GEOMETRY)
+
+        location = el.location
+        logging.warning("location in native view = " + str(location))
+
+        size = el.size
+        logging.warning("size in native view = " + str(size))
+        size_x = int(size["height"])
+        size_y = int(size["width"])
+        logging.warning("size_x - height = " + str(size_x))
+        logging.warning("size_y - height = " + str(size_y))
+
+        start_x = int(location["x"])
+        start_y = int(location["y"])
+        logging.warning("start_x = " + str(start_x))
+        logging.warning("start_y = " + str(start_y))
+        end_x = start_x + start_x * 0.4
+        end_y = start_y + start_y * 0.4
+        logging.warning("end_x = " + str(end_x))
+        logging.warning("end_y = " + str(end_y))
+
         action = TouchAction(self.driver)
-        action.press(el, start_x, start_y).wait(100).move_to(el, end_x - start_x, end_y - start_y).release().perform()
+        # logging.warning("start_x in native view = " + str(start_x))
+        # logging.warning("start_y in native view = " + str(start_y))
+        # logging.warning("end_x in native view = " + str(end_x))
+        # logging.warning("end_y in native view = " + str(end_y))
+
+        #action.press(el, start_x, start_y).wait(1000).move_to(el, end_x - start_x, end_y - start_y).release().perform()  # this method is implemented only in native view
+        action.press(el, start_x, start_y).wait(1000).move_to(el, start_x, end_y + size_x).release().perform()  # this method is implemented only in native view
         logging.info("wait a second after dragging")
 
         sleep(2)
-
-

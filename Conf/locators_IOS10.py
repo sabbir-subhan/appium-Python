@@ -267,6 +267,7 @@ class Map:
     SAVED_MAP_ALL_ASSETS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "All assets")]]')
     SAVED_MAP_ALL_CONTACTS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "All contacts")]]')
     SAVED_MAP_ALL_TASKS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "All tasks")]]')
+    DUPLICATED_GEOMETRY = (MobileBy.XPATH, '//')
 
 
 class PhotoScreen:

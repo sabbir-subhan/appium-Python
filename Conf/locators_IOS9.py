@@ -258,6 +258,7 @@ class Map:
     SAVED_MAP_ALL_ASSETS = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "All assets")]]')
     SAVED_MAP_ALL_CONTACTS = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "All contacts")]]')
     SAVED_MAP_ALL_TASKS = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "All tasks")]]')
+    DUPLICATED_GEOMETRY = (MobileBy.XPATH, '//UIAWebView[1]/UIAImage[@visible="true"][last()]')
 
 
 class PhotoScreen:
