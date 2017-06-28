@@ -264,7 +264,7 @@ class MapPage(BasePage):
 
     def type_address_into_search_field(self, text):
 
-        logging.info("type_address_into_search_field")
+        logging.info("type address into search field")
         search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
         self.assertIsNotNone(search_field, "search field not found")
         search_field.click()
@@ -630,9 +630,9 @@ class MapPage(BasePage):
 
         self.switch_context_to_native()
 
-    def drag_and_drag_duplicated_geometry(self):
+    def drag_and_drop_duplicated_geometry(self):
 
-        logging.info("drag and drag duplicated geometry")
+        logging.info("drag and drop duplicated geometry")
         sleep(1)
 
         # self.switch_context_to_webview()
@@ -657,8 +657,8 @@ class MapPage(BasePage):
 
         sleep(1)
 
-        window_size = self.driver.get_window_size()  # this returns dictionary
-        logging.info("window size in native view = " + str(window_size))
+        # window_size = self.driver.get_window_size()  # this returns dictionary
+        # logging.info("window size in native view = " + str(window_size))
 
         # positions = [x, y]
         # self.driver.execute_script("mobile: dragFromToForDuration", positions)
@@ -671,12 +671,12 @@ class MapPage(BasePage):
         location = el.location
         logging.warning("location in native view = " + str(location))
 
-        size = el.size
-        logging.warning("size in native view = " + str(size))
-        size_x = int(size["height"])
-        size_y = int(size["width"])
-        logging.warning("size_x - height = " + str(size_x))
-        logging.warning("size_y - height = " + str(size_y))
+        # size = el.size
+        # logging.warning("size in native view = " + str(size))
+        # size_x = int(size["height"])
+        # size_y = int(size["width"])
+        # logging.warning("size_x - height = " + str(size_x))
+        # logging.warning("size_y - height = " + str(size_y))
 
         start_x = int(location["x"])
         start_y = int(location["y"])
@@ -694,7 +694,18 @@ class MapPage(BasePage):
         # logging.warning("end_y in native view = " + str(end_y))
 
         #action.press(el, start_x, start_y).wait(1000).move_to(el, end_x - start_x, end_y - start_y).release().perform()  # this method is implemented only in native view
-        action.press(el, start_x, start_y).wait(1000).move_to(el, start_x, end_y + size_x).release().perform()  # this method is implemented only in native view
+        # action.press(el, start_x, start_y).wait(1000).move_to(el, start_x, end_y + size_x).release().perform()  # this method is implemented only in native view
+
+        # window_size = self.driver.get_window_size()  # this returns dictionary
+        # logging.info(window_size)
+        # height_max = window_size["height"]
+        # start_x = 50
+        # start_y = height_max
+        # end_x = 50
+        # end_y = height_max * 0.5
+        # action.press(el).wait(1000).move_to(el, start_x, end_y).release().perform()  # also works
+        action.press(el).wait(1000).move_to(el, end_x, end_y).release().perform()  # this is working fine :)
         logging.info("wait a second after dragging")
 
         sleep(2)
+

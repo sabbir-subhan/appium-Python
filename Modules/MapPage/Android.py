@@ -55,10 +55,13 @@ class Android(MapPage):
         action = TouchAction(self.driver)
 
         window_size = self.driver.get_window_size()  # this returns dictionary
-        logging.info(window_size)
+        # logging.info(window_size)
 
         position_x = window_size["width"] * 0.4
         position_y = window_size["height"] * 0.4
+        logging.info("position_x = " + str(position_x))
+        logging.info("position_y = " + str(position_y))
+        sleep(1)
         action.tap(element=None, x=position_x, y=position_y, count=1).perform()
 
         # action = TouchAction(self.driver)
@@ -80,10 +83,13 @@ class Android(MapPage):
         action = TouchAction(self.driver)
 
         window_size = self.driver.get_window_size()  # this returns dictionary
-        logging.info(window_size)
+        # logging.info(window_size)
 
-        position_x = window_size["width"] * 0.60
-        position_y = window_size["height"] * 0.60
+        position_x = window_size["width"] * 0.6
+        position_y = window_size["height"] * 0.6
+        logging.info("position_x = " + str(position_x))
+        logging.info("position_y = " + str(position_y))
+        sleep(1)
         action.tap(element=None, x=position_x, y=position_y, count=1).perform()
 
         # screen_size = self.driver.get_window_size(windowHandle='current')
@@ -98,16 +104,20 @@ class Android(MapPage):
         #     action.tap(element=map3, count=1).perform()
         sleep(1)
 
-    def double_click_in_map_area_3(self):
+    def double_tap_on_map(self):
 
         logging.info("double click on map")
         action = TouchAction(self.driver)
 
         window_size = self.driver.get_window_size()  # this returns dictionary
-        logging.info(window_size)
+        logging.info("window size = " + str(window_size))
 
-        position_x = window_size["width"] * 0.50
-        position_y = window_size["height"] * 0.50
+        # position_x = window_size["width"] * 0.50
+        # position_y = window_size["height"] * 0.50
+        position_x = window_size["width"] * 0.5
+        position_y = window_size["height"] * 0.7
+        logging.info("position_x = " + str(position_x))
+        logging.info("position_y = " + str(position_y))
         action.tap(element=None, x=position_x, y=position_y, count=2).perform()
 
         # screen_size = self.driver.get_window_size(windowHandle='current')

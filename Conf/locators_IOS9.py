@@ -28,6 +28,7 @@ class CommonScreen:
     OK_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Ok"]')
     PICKER_WHEEL = (MobileBy.CLASS_NAME, 'UIAPickerWheel')
     WEB_VIEW = (MobileBy.CLASS_NAME, 'UIAWebView')
+    WHOLE_APP_SCREEN = (MobileBy.XPATH, '//UIAApplication[@name="OCA"]')
 
 
 class TopBar:

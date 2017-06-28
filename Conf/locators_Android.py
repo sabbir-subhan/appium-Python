@@ -31,6 +31,7 @@ class CommonScreen:
                                             '/android.widget.Spinner[@clickable="true"]')
     SPINNER_ON_THE_LEFT = (MobileBy.XPATH, '//android.widget.ListView[1]/android.view.View[1]'
                                            '/android.widget.Spinner[@clickable="true"]')
+    WHOLE_APP_SCREEN = (MobileBy.ACCESSIBILITY_ID, 'OCA')
 
 
 class TopBar:

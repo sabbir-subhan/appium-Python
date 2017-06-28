@@ -21,6 +21,7 @@ class CommonScreen:
     OK_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Ok"]')
     PICKER_WHEEL = (MobileBy.CLASS_NAME, 'XCUIElementTypePickerWheel')
     WEB_VIEW = (MobileBy.CLASS_NAME, 'XCUIElementTypeScrollView')
+    WHOLE_APP_SCREEN = (MobileBy.NAME, 'OCA')
 
 
 class TopBar:
@@ -267,7 +268,8 @@ class Map:
     SAVED_MAP_ALL_ASSETS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "All assets")]]')
     SAVED_MAP_ALL_CONTACTS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "All contacts")]]')
     SAVED_MAP_ALL_TASKS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "All tasks")]]')
-    DUPLICATED_GEOMETRY = (MobileBy.XPATH, '//')
+    DUPLICATED_GEOMETRY = (MobileBy.XPATH, '//XCUIElementTypeImage[@visible="true"][last()]')
+    WHOLE_MAP = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeWebView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]')
 
 
 class PhotoScreen:

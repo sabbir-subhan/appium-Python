@@ -106,10 +106,7 @@ class TestMaps(SetupTestCase):
         map_page.click_line_button()
         map_page.click_line_default_button()
         map_page.click_in_map_area_2()
-
-        map_page.double_tap_on_map()  # for testing
-
-        #map_page.double_click_in_map_area_3()
+        map_page.double_tap_on_map()
         map_page.click_tool_button()
         map_page.click_circle_button()
         map_page.click_circle_default_button()
@@ -119,7 +116,8 @@ class TestMaps(SetupTestCase):
         map_page.click_polygon_default_button()
         map_page.click_in_map_area_1()
         map_page.click_in_map_area_2()
-        map_page.double_click_in_map_area_3()
+        map_page.double_tap_on_map()
+        common_page.take_screenshot("Map_with_all_geometry")
         map_page.save_map()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
