@@ -114,7 +114,9 @@ class CommonPage(BasePage):
         path = "./screenshots"
         os.chdir(path)
         self.driver.save_screenshot(file_name + ".png")
+        sleep(1)
         os.chdir("..")
+        sleep(2)
 
     def reset(self):
         """This method will reset driver - so for example app will be force to logout"""

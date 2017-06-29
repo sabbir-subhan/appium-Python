@@ -5,8 +5,9 @@ import logging
 from selenium.common.exceptions import *
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
-from appium.webdriver.common.touch_action import TouchAction
 from time import sleep
+import random
+from appium.webdriver.common.touch_action import TouchAction
 from selenium.webdriver.common.touch_actions import TouchActions
 # from appium.webdriver.common.multi_action import MultiAction
 # from appium.webdriver.webelement import WebElement
@@ -36,38 +37,45 @@ class IOS(MapPage):
         window_size = self.driver.get_window_size()  # this returns dictionary
         # position_x = window_size["width"] * 0.30
         # position_y = window_size["height"] * 0.60
-        position_x = window_size["width"] * 0.4
-        position_y = window_size["height"] * 0.4
+        position_x = round(window_size["width"] * 0.4)
+        position_y = round(window_size["height"] * 0.4)
+        logging.info("width = x = " + str(position_x))
+        logging.info("height = y = " + str(position_y))
         positions = [(position_x, position_y)]
         # action = TouchAction(self.driver)
         # action.tap(element=None, x=position_x, y=position_y, count=1).perform()
         # position = [(350, 550)]
+        sleep(1)
         self.driver.tap(positions)
-        sleep(2)
+        sleep(1)
 
     def click_in_map_area_2(self):
 
         logging.info("click on map")
         window_size = self.driver.get_window_size()  # this returns dictionary
-        position_x = window_size["width"] * 0.5
-        position_y = window_size["height"] * 0.5
+        position_x = round(window_size["width"] * 0.5)
+        position_y = round(window_size["height"] * 0.5)
+        logging.info("width = x = " + str(position_x))
+        logging.info("height = y = " + str(position_y))
         positions = [(position_x, position_y)]
         # position = [(300, 500)]
+        sleep(1)
         self.driver.tap(positions)
-        sleep(2)
+        sleep(1)
 
-    def click_in_map_area_4(self):
+    def click_in_map_area_3(self):
 
         logging.info("click on map")
         window_size = self.driver.get_window_size()  # this returns dictionary
-        position_x = window_size["width"] * 0.70
-        position_y = window_size["height"] * 0.70
-        logging.info(position_x)
-        logging.info(position_y)
+        position_x = round(window_size["width"] * 0.7)
+        position_y = round(window_size["height"] * 0.7)
+        logging.info("width = x = " + str(position_x))
+        logging.info("height = y = " + str(position_y))
         positions = [(position_x, position_y)]
         # position = [(0, 0)]
+        sleep(1)
         self.driver.tap(positions)
-        sleep(2)
+        sleep(1)
 
     def double_tap_on_map(self):
 
@@ -79,25 +87,41 @@ class IOS(MapPage):
 
         el = self.driver.find_element(*self.configuration.CommonScreen.WHOLE_APP_SCREEN)
         location = el.location
-        logging.warning("location in native view = " + str(location))
+        # logging.warning("location in native view = " + str(location))
 
         size = el.size  # this returns dictionary
         logging.warning("size in native view = " + str(size))
         size_x = int(size["width"])
         size_y = int(size["height"])
-        logging.warning("size_x - width = " + str(size_x))
-        logging.warning("size_y - height = " + str(size_y))
+        logging.warning("size_x = width = " + str(size_x))
+        logging.warning("size_y = height = " + str(size_y))
 
         start_x = int(location["x"])
         start_y = int(location["y"])
         logging.warning("start_x = " + str(start_x))
         logging.warning("start_y = " + str(start_y))
-        end_x = size_x * 0.35
-        end_y = size_y * 0.35
+
+        # using random integers to vary double tap position between function calls
+        random_int_1 = random.randint(51, 60)  # hardcoded values
+        random_float_1 = random_int_1 / 100  # division to prepare some float similar to 0.5
+        random_int_2 = random.randint(30, 40)
+        random_float_2 = random_int_2 / 100
+
+        # for debugging
+        logging.error("random_int_1 = " + str(random_int_1))
+        logging.error("random_float_1 = " + str(random_float_1))
+        logging.error("random_int_2 = " + str(random_int_2))
+        logging.error("random_float_2 = " + str(random_float_2))
+        end_x = round(size_x * random_float_1)  # multiply whole screen width and float like 0.5
+        end_y = round(size_y * random_float_2)
+
+        # end_x = round(size_x * 0.55)
+        # end_y = round(size_y * 0.45)
+
         logging.warning("end_x = " + str(end_x))
         logging.warning("end_y = " + str(end_y))
 
-        sleep(1)
+        sleep(2)
 
         self.driver.execute_script("mobile: doubleTap", {"x": end_x, "y": end_y})
 

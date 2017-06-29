@@ -104,6 +104,22 @@ class Android(MapPage):
         #     action.tap(element=map3, count=1).perform()
         sleep(1)
 
+    def click_in_map_area_3(self):
+
+        logging.info("click on map")
+        action = TouchAction(self.driver)
+
+        window_size = self.driver.get_window_size()  # this returns dictionary
+        # logging.info(window_size)
+
+        position_x = window_size["width"] * 0.7
+        position_y = window_size["height"] * 0.7
+        logging.info("position_x = " + str(position_x))
+        logging.info("position_y = " + str(position_y))
+        sleep(1)
+        action.tap(element=None, x=position_x, y=position_y, count=1).perform()
+        sleep(1)
+
     def double_tap_on_map(self):
 
         logging.info("double click on map")

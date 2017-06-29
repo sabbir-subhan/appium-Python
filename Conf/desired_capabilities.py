@@ -262,7 +262,7 @@ class DesiredCapabilities(object):
             "autoAcceptAlerts": True
         },
 
-        "IOS_10": {
+        "IOS_10_iPhone": {
             # iPhone 6 with iOS 10.2 - new iOS need Xcuit Test
             "platformName": "iOS",
             "platformVersion": "10.3",

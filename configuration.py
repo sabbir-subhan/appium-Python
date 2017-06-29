@@ -28,7 +28,7 @@ logging.warning("port = " + str(PORT))
 # Android_7.1_emulator
 # IOS_9_iPad
 # IOS_9_emulator
-# IOS_10
+# IOS_10_iPhone
 # IOS_10_iPad
 # IOS_10_emulator
 
@@ -48,7 +48,7 @@ elif platform == "IOS_9_emulator":
     ENVIRONMENT_MIDDLE_CLASS = "IOS"
     PLATFORM_VERSION = ""
 
-elif platform == "IOS_10":
+elif platform == "IOS_10_iPhone":
 
     ENVIRONMENT_TEST = "IOS10"
     ENVIRONMENT_MIDDLE_CLASS = "IOS"
