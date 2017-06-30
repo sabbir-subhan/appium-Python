@@ -29,9 +29,9 @@
 - to switch between xcode versions, use: sudo xcode-select -switch /Applications/Xcode7.app
 
 **TO RUN APPIUM WITH iOS 10:**
-- You have to launch Appium in CLI and use version starting from 1.6.3 - currently 1.6.4 is the latest 
+- You have to launch Appium in CLI and use version starting from 1.6.3 - currently 1.6.5 is the latest 
 
-INSTALL APPIUM 1.6.4 TO WORK WITH iOS10: (CLI commands)
+INSTALL APPIUM > 1.6.3 TO WORK WITH iOS10: (CLI commands)
 
 - npm install -g webpack
 - brew install ideviceinstaller
@@ -283,8 +283,8 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 
 OCA APP VERSIONS:
 
-- android: 10.0.7
-- iOS: 10.0.8
+- android: 10.0.13
+- iOS: 10.0.13
 
 
 #**Known issues:**
@@ -292,7 +292,7 @@ OCA APP VERSIONS:
 - real devices can overheat, which is causing test to fail
 - if You are running tests on real iOS device, sometimes Appium server and ios_webkit_debug_proxy need to be restarted to work properly 
 - "in switch_context_to_webview self.driver.switch_to.context(contexts[1]) IndexError: list index out of range"  --> You have to launch ios_webkit_debug_proxy for real device
-- some elements have attribute "visible: false" and appium is unable to interact with those elements for example map --that is bug in Appium
+- some elements have attribute "visible: false" and appium is unable to interact with those elements for example map --this is bug in Appium
 - for some reason test sometimes fail to start on the first run, but after running it again it is working correctly (it may depends on that how fast device/simulator is starting)
 - if Appium, after running test, will throws: "An unknown server-side error occurred while processing the command. Original error: Installing", use: sudo chmod -R 777 /var/db/lockdown/
 - if Appium, after running test, throws error: "is device plugged in?" -- just disconnect device and reconnect it again (it may happen after booting OSX with connected device)
@@ -320,3 +320,4 @@ OCA APP VERSIONS:
 the command. Original error: Could not install app: 'Command 'ios-deploy --id 4b15c4284897fa6f9b4c5205325a9cece997ad35 --uninstall --bundle
  /Users/lukasl/repos/appium-poc/iPhone6_10.3_OCA.app' exited with code 253'"   ---> start from killing Appium server and restarting it, if this won't worked - rebuild WebDriverAgent and/or rebuild OCA app through Xcode 
  (usually, it occurs after switching iOS versions)
+- An unknown server-side error occurred while processing the command. Original error: Command failed: ideviceinstaller -u  ????? - observed on iPad with iOS9 ?????  (try "brew install --HEAD ideviceinstaller")   ??

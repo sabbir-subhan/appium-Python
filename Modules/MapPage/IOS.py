@@ -86,47 +86,88 @@ class IOS(MapPage):
         logging.info("window size = " + str(window_size))
 
         el = self.driver.find_element(*self.configuration.CommonScreen.WHOLE_APP_SCREEN)
-        location = el.location
+        # location = el.location
         # logging.warning("location in native view = " + str(location))
 
-        size = el.size  # this returns dictionary
-        logging.warning("size in native view = " + str(size))
-        size_x = int(size["width"])
-        size_y = int(size["height"])
-        logging.warning("size_x = width = " + str(size_x))
-        logging.warning("size_y = height = " + str(size_y))
+        # size = el.size  # this returns dictionary -- size of that element is bigger than window size ?
+        # logging.warning("size in native view = " + str(size))
+        # size_x = int(size["width"])
+        # size_y = int(size["height"])
+        # logging.warning("size_x = width = " + str(size_x))
+        # logging.warning("size_y = height = " + str(size_y))
+        #
+        # start_x = int(location["x"])
+        # start_y = int(location["y"])
+        # logging.warning("start_x = " + str(start_x))
+        # logging.warning("start_y = " + str(start_y))
 
-        start_x = int(location["x"])
-        start_y = int(location["y"])
+        # using random integers to vary double tap position between function calls
+        # random_int_1 = random.randint(51, 60)  # hardcoded values
+        # random_float_1 = random_int_1 / 100  # division to prepare some float similar to 0.5
+        # random_int_2 = random.randint(30, 40)  # WORKS ON EMULATOR BUT NOT ON RD
+        # random_float_2 = random_int_2 / 100
+
+        # for debugging
+        # random_int_1 = random.randint(50, 55)  # hardcoded values
+        # random_float_1 = random_int_1 / 100  # division to prepare some float similar to 0.5
+        # random_int_2 = random.randint(56, 61)
+        # random_float_2 = random_int_2 / 100
+
+        # NOTES:
+        # works on emu ios10: 52, 61 and 50, 59 and 55, 61 and
+        # doesn't work on iPhone 10: 52, 60 and 53, 60 and 55, 61 (206x472) and 0,5 0,2
+
+        # for debugging
+        # logging.error("random_int_1 = " + str(random_int_1))
+        # logging.error("random_float_1 = " + str(random_float_1))
+        # logging.error("random_int_2 = " + str(random_int_2))
+        # logging.error("random_float_2 = " + str(random_float_2))
+        # end_x = round(size_x * random_float_1)  # multiply whole screen width and float like 0.5
+        # end_y = round(size_y * random_float_2)
+
+        start_x = int(window_size["width"])
+        start_y = int(window_size["height"])
         logging.warning("start_x = " + str(start_x))
         logging.warning("start_y = " + str(start_y))
 
-        # using random integers to vary double tap position between function calls
         random_int_1 = random.randint(51, 60)  # hardcoded values
         random_float_1 = random_int_1 / 100  # division to prepare some float similar to 0.5
-        random_int_2 = random.randint(30, 40)
+        random_int_2 = random.randint(30, 50)
         random_float_2 = random_int_2 / 100
 
-        # for debugging
         logging.error("random_int_1 = " + str(random_int_1))
         logging.error("random_float_1 = " + str(random_float_1))
         logging.error("random_int_2 = " + str(random_int_2))
         logging.error("random_float_2 = " + str(random_float_2))
-        end_x = round(size_x * random_float_1)  # multiply whole screen width and float like 0.5
-        end_y = round(size_y * random_float_2)
+        end_x = round(start_x * random_float_1)  # multiply whole screen width and float like 0.5
+        end_y = round(start_y * random_float_2)
 
-        # end_x = round(size_x * 0.55)
-        # end_y = round(size_y * 0.45)
+        # end_x = round(start_x * 0.5)
+        # end_y = round(start_y * 0.35)
+        # end_x = round(start_x * 0.50)
+        # end_y = round(start_y * 0.50)
+        # end_x = round(size_x * 0.35)
+        # end_y = round(size_y * 0.35)
 
         logging.warning("end_x = " + str(end_x))
         logging.warning("end_y = " + str(end_y))
 
-        sleep(2)
+        sleep(1)
 
         self.driver.execute_script("mobile: doubleTap", {"x": end_x, "y": end_y})
+        sleep(2)
 
         logging.info("wait a second after double tapping")
-        sleep(1)
+
+        # action = TouchAction(self.driver)
+        # action.tap(element=el, x=150, y=150, count=2).perform()
+        #
+        # self.driver.execute_script("mobile: doubleTap", {"element": el, "x": end_x, "y": end_y})
+
+        self.switch_context_to_webview()
+        logging.error("double tap in webview")
+        self.driver.execute_script("mobile: doubleTap", {"x": end_x, "y": end_y})
+        self.switch_context_to_native()
 
     # def double_tap_on_map(self):
     #

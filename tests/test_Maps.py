@@ -60,6 +60,9 @@ class TestMaps(SetupTestCase):
         common_page.setDriver(self.driver)
         welcome_page = LoadClass.load_page('WelcomePage')
         welcome_page.setDriver(self.driver)
+
+        common_page.swipe_up()  # for test
+
         welcome_page.click_login_button()
         login_page = LoadClass.load_page('LoginPage')
         login_page.setDriver(self.driver)
@@ -102,6 +105,7 @@ class TestMaps(SetupTestCase):
         # map_page.click_point_button()
         # map_page.click_point_default_button()
         # map_page.click_in_map_area_1()
+
         map_page.click_tool_button()
         map_page.click_line_button()
         map_page.click_line_default_button()
@@ -119,6 +123,12 @@ class TestMaps(SetupTestCase):
         map_page.click_in_map_area_2()
         map_page.double_tap_on_map()
         common_page.take_screenshot("Map_with_all_geometry")
+
+        common_page.hamburger_button()  # for test
+        main_page.open_PHOTO()  # for test
+        common_page.swipe_up()  # for test
+        common_page.turn_on_flight_mode()  # for test
+
         # map_page.save_map()
         # common_page.hamburger_button()
         # main_page.check_presence_of_events_button()

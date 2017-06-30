@@ -269,7 +269,7 @@ class Map:
     SAVED_MAP_ALL_CONTACTS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "All contacts")]]')
     SAVED_MAP_ALL_TASKS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "All tasks")]]')
     DUPLICATED_GEOMETRY = (MobileBy.XPATH, '//XCUIElementTypeImage[@visible="true"][last()]')
-    WHOLE_MAP = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeWebView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]')
+    # WHOLE_MAP = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeWebView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]')  # wrong locator
 
 
 class PhotoScreen:

@@ -12,6 +12,47 @@ from appium.webdriver.common.touch_action import TouchAction
 
 class IOS(CommonPage):
 
+    # def swipe_up(self):
+    #
+    #     logging.info("swipe up")
+    #     sleep(1)
+    #     window_size = self.driver.get_window_size()  # this returns dictionary
+    #     logging.info(window_size)
+    #
+    #     height_max = window_size["height"]
+    #
+    #     # print(height_max)
+    #     # print(type(height_max))
+    #     # sleep(2)
+    #     # self.driver.swipe(start_x=50, start_y=height_max, end_x=50, end_y=10, duration=800)
+    #     sleep(1)
+    #
+    #     # start_x = int(height_max) * 0.5
+    #     # start_y = int(height_max)
+    #     # end_x = int(height_max) * 0.5
+    #     # end_y = int(height_max) * 0.5
+    #     # logging.error("start_x = " + str(start_x))
+    #     # logging.error("start_y = " + str(start_y))
+    #     # logging.error("end_x = " + str(end_x))
+    #     # logging.error("end_y = " + str(end_y))
+    #     el = self.driver.find_element(*self.configuration.CommonScreen.WEB_VIEW)
+    #     size = el.size
+    #     size_x = int(size["width"])
+    #     size_y = int(size["height"])
+    #     start_x = int(size_x) * 0.5
+    #     start_y = int(size_y)
+    #     end_x = int(size_x) * 0.5
+    #     end_y = int(size_y) * 0.5
+    #     logging.error("start_x = " + str(start_x))
+    #     logging.error("start_y = " + str(start_y))
+    #     logging.error("end_x = " + str(end_x))
+    #     logging.error("end_y = " + str(end_y))
+    #     action = TouchAction(self.driver)
+    #     sleep(1)
+    #     action.press(el, start_x, start_y).wait(1000).move_to(el, end_x - start_x, end_y - start_y).release().perform()
+    #     # action.press(el, 50, start_y).wait(1000).move_to(el, 50, end_y).release().perform()
+    #     sleep(1)
+
     def swipe_up(self):
 
         logging.info("swipe up")
