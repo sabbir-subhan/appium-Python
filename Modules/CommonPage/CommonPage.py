@@ -15,14 +15,6 @@ import base64
 
 class CommonPage(BasePage):
 
-    def swipe_down(self):
-
-        logging.info("swipe down")
-        sleep(1)
-
-        self.driver.swipe(start_x=50, start_y=0, end_x=50, end_y=200, duration=800)
-        sleep(1)
-
     def push_sample_files(self):  # push sample photo and video files for executing TCs on emulators - not working
 
         sleep(2)

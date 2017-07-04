@@ -164,10 +164,10 @@ class IOS(MapPage):
         #
         # self.driver.execute_script("mobile: doubleTap", {"element": el, "x": end_x, "y": end_y})
 
-        self.switch_context_to_webview()
-        logging.error("double tap in webview")
-        self.driver.execute_script("mobile: doubleTap", {"x": end_x, "y": end_y})
-        self.switch_context_to_native()
+        # self.switch_context_to_webview()
+        # logging.error("double tap in webview")
+        # self.driver.execute_script("mobile: doubleTap", {"x": end_x, "y": end_y})
+        # self.switch_context_to_native()
 
     # def double_tap_on_map(self):
     #

@@ -7,9 +7,33 @@ from selenium.common.exceptions import *
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 from Modules.load_class import LoadClass
+from appium.webdriver.common.touch_action import TouchAction
 
 
 class IOS9(IOS):
+
+    def swipe_up_to_show_control_center(self):  # this will bring control center
+
+        logging.info("swipe up to show control center")
+        window_size = self.driver.get_window_size()  # this returns dictionary
+        el = self.driver.find_element(*self.configuration.CommonScreen.WEB_VIEW)
+        action = TouchAction(self.driver)
+        start_x = window_size["width"] * 0.5
+        start_y = window_size["height"]
+        end_x = window_size["width"] * 0.5
+        end_y = window_size["height"] * 0.5
+        action.press(el, start_x, start_y).wait(1000).move_to(el, end_x, end_y).release().perform()
+        sleep(1)
+
+    def swipe_up_to_hide_notifications(self):
+
+        logging.info("swipe up to hide notifications")
+        window_size = self.driver.get_window_size()  # this returns dictionary
+        start_x = window_size["width"] * 0.5
+        start_y = window_size["height"] - 1
+        self.driver.swipe(start_x=start_x, start_y=start_y, end_x=start_x, end_y=-10, duration=1000)
+        # action.press(el, start_x, start_y).wait(1000).move_to(el, end_x, end_y).release().perform()
+        sleep(1)
 
     # # OCA top bar
     # def hamburger_button(self):

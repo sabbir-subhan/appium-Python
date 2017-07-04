@@ -14,9 +14,33 @@ from Conf.desired_capabilities import DesiredCapabilities
 
 class Android(CommonPage):
 
-    def swipe_up(self):
+    @staticmethod
+    def swipe_up_to_show_control_center():
 
-        pass
+        logging.warning("Appium is running on Android device - there is no control center to show")
+
+    @staticmethod
+    def swipe_down_to_hide_control_center():
+
+        logging.warning("Appium is running on Android device - there is no control center to hide")
+
+    def swipe_down_to_show_notifications(self):  # this will bring android notifications
+
+        logging.info("swipe down to show notifications")
+        window_size = self.driver.get_window_size()  # this returns dictionary
+        height_center = window_size["height"] * 0.5
+        width_center = window_size["width"] * 0.5
+        self.driver.swipe(start_x=width_center, start_y=1, end_x=width_center, end_y=height_center, duration=800)
+        sleep(2)
+
+    def swipe_up_to_hide_notifications(self):
+
+        logging.info("swipe up to hide notifications")
+        window_size = self.driver.get_window_size()  # this returns dictionary
+        start_x = window_size["width"] * 0.5
+        start_y = window_size["height"] - 1
+        self.driver.swipe(start_x=start_x, start_y=start_y, end_x=start_x, end_y=10, duration=1000)
+        sleep(1)
 
     def turn_on_flight_mode(self):  # works only on Android
 

@@ -39,7 +39,7 @@ log = logging.getLogger('')
 LOGFILE = './tests/TCs.log'
 # format_without_colors = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
 format_without_colors = logging.Formatter("%(asctime)s - %(message)s")
-file_handler = handlers.RotatingFileHandler(LOGFILE, maxBytes=(10*1024*1024), backupCount=4)
+file_handler = handlers.RotatingFileHandler(LOGFILE, maxBytes=2550000, backupCount=4)
 file_handler.setFormatter(format_without_colors)
 log.addHandler(file_handler)
 

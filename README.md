@@ -65,6 +65,8 @@ xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -desti
 
 Last line output after using above command should be; "Listening on USB". Then you are all set!
 
+THIS IS NOT MANDATORY (Appium should handle it, only signing WebDriverAgent code in Xcode maybe necessary)
+
 
 - id = UDID from real device - open iTunes with connected device and click on serial number or use terminal command: "idevice_id -l"
 
@@ -321,3 +323,5 @@ the command. Original error: Could not install app: 'Command 'ios-deploy --id 4b
  /Users/lukasl/repos/appium-poc/iPhone6_10.3_OCA.app' exited with code 253'"   ---> start from killing Appium server and restarting it, if this won't worked - rebuild WebDriverAgent and/or rebuild OCA app through Xcode 
  (usually, it occurs after switching iOS versions)
 - An unknown server-side error occurred while processing the command. Original error: Command failed: ideviceinstaller -u  ????? - observed on iPad with iOS9 ?????  (try "brew install --HEAD ideviceinstaller")   ??
+- Error: connect ECONNREFUSED 127.0.0.1:8100   -- reinstall appium - npm uninstall -g appium + npm install -g appium
+- (The application does not have a valid signature.)  -- rebuild and install OCA app through Xcode 
