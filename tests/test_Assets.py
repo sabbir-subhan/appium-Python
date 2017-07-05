@@ -96,6 +96,7 @@ class TestAssets(SetupTestCase):
         assets_page.open_existing_asset()
         assets_page.click_edit_button()
         assets_page.type_cost_per_unit("2")
+        common_page.hide_keyboard()
         assets_page.scroll_down_to_save_button()
         assets_page.save_edited_asset()
         common_page.hamburger_button()
@@ -142,12 +143,13 @@ class TestAssets(SetupTestCase):
         assets_page.open_existing_child_asset()
         assets_page.click_edit_button()
         assets_page.type_cost_per_unit("4")
+        common_page.hide_keyboard()
         assets_page.scroll_down_to_save_button()
         assets_page.save_edited_asset()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
-        # Delete child asset Asset > Select parent > Child is displayed >Select Child > More > Delete this asset
+        # Delete child asset Asset > Select parent > Child is displayed > Select Child > More > Delete this asset
         main_page.open_ASSETS()
         assets_page.open_existing_asset()
         assets_page.open_existing_child_asset()
@@ -201,7 +203,6 @@ class TestAssets(SetupTestCase):
         common_page.hide_keyboard()
         assets_page.check_result_for_asset_with_name_containing_map()
         assets_page.clear_Search_field()
-        # common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
@@ -266,12 +267,12 @@ class TestAssets(SetupTestCase):
         camera_page.click_use_photo()
         common_page.alert_popup_allow()
         assets_page.click_back_arrow_if_running_on_ios_emulator()
-
         assets_page.click_add_media()
         select_media_page.click_video_gallery()
         common_page.alert_popup_allow()
         gallery_video_page = LoadClass.load_page('GalleryPage')
         gallery_video_page.setDriver(self.driver)
+        gallery_video_page.choose_videos_gallery()
         gallery_video_page.choose_video_from_gallery()
         gallery_video_page.click_use_button()
         common_page.alert_popup_allow()
@@ -281,11 +282,10 @@ class TestAssets(SetupTestCase):
         sound_recorder = LoadClass.load_page('SoundRecorderPage')
         sound_recorder.setDriver(self.driver)
         sound_recorder.record_sound()
-        sleep(2)  # time for recording sound
+        sleep(1)  # time for recording sound
         sound_recorder.stop_recording()
         sound_recorder.click_done_button()
         assets_page.click_back_arrow_if_running_on_emulators()
-
         assets_page.scroll_down_to_save_button()
         assets_page.click_save_button()
         common_page.hamburger_button()

@@ -55,8 +55,11 @@ class Android(SoundRecorderPage):
             desired_capabilities = DesiredCapabilities.get_desired_capabilities()
             platform_version = desired_capabilities.get('platformVersion')
             if platform_version >= "6":
-                stop_recording_android_6 = self.driver.find_element(*self.configuration.SoundRecorderScreen.
-                                                                    STOP_RECORDING_android_6)
+                try:
+                    stop_recording_android_6 = self.driver.find_element(*self.configuration.SoundRecorderScreen.
+                                                                        STOP_RECORDING_android_6)
+                except NoSuchElementException:
+                    stop_recording_android_6 = self.driver.find_element(*self.configuration.SoundRecorderScreen.STOP_RECORDING_android_7)
                 self.assertIsNotNone(stop_recording_android_6, "stop recording button not found")
                 stop_recording_android_6.click()
             elif platform_version < "5":

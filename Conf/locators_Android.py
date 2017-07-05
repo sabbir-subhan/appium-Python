@@ -330,6 +330,12 @@ class GalleryScreen:
     GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//android.widget.GridView[1]/android.widget.FrameLayout[1]')
     GALLERY_ELEMENT_1_android7 = (MobileBy.XPATH, '//android.widget.RelativeLayout[1]/android.view.View[1]')
     GALLERY_ELEMENTS_android7 = (MobileBy.ID, 'com.android.documentsui:id/icon_mime_lg')  # list of elements
+    # VIDEOS = (MobileBy.XPATH, '//android.view.ViewGroup[1]/android.widget.FrameLayout[1]/android.view.View[1]/*[1]')  # first child
+    # VIDEOS = (MobileBy.ID, 'com.android.gallery3d:id/gl_root_view')
+    # VIDEOS2 = (MobileBy.ID, 'com.sec.android.gallery3d:id/gl_root_view')
+    # GALLERY_BUTTON_IN_SIDE_MENU = (MobileBy.XPATH, '//android.widget.TextView[@text="Gallery"]')
+    GALLERY_BUTTON_IN_SIDE_MENU = (MobileBy.XPATH, '//android.widget.TextView[@text="Videos"]')
+    VIDEOS = (MobileBy.XPATH, '//android.widget.TextView[@text="Camera"]')
 
 
 class SoundScreen:
@@ -350,7 +356,8 @@ class SoundRecorderScreen:
     RECORD_SOUND_android_6 = (MobileBy.ACCESSIBILITY_ID, 'Record')  # android 6
     RECORD_SOUND_android_6_version2 = (MobileBy.ID, 'com.android.soundrecorder:id/recordButton')  # android 6
     STOP_RECORDING_android_6 = (MobileBy.ACCESSIBILITY_ID, 'Stop')  # android 6
-    DONE_BUTTON_android_6 = (MobileBy.ACCESSIBILITY_ID, 'Done')  # android 6
+    DONE_BUTTON_android_6 = (MobileBy.ACCESSIBILITY_ID, 'Done')  # android 6, 7
+    STOP_RECORDING_android_7 = (MobileBy.XPATH, '//android.widget.ImageButton[@content-desc="Stop"]')  # android 7
 
 
 class CameraScreen:

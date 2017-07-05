@@ -9,9 +9,9 @@ class GalleryPage(BasePage):
 
         pass
 
-    def choose_videos_gallery(self):
-
-        pass
+    # def choose_videos_gallery(self):
+    #
+    #     pass
 
     def click_use_button(self):
 

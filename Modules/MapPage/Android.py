@@ -59,8 +59,8 @@ class Android(MapPage):
 
         position_x = window_size["width"] * 0.4
         position_y = window_size["height"] * 0.4
-        logging.info("position_x = " + str(position_x))
-        logging.info("position_y = " + str(position_y))
+        # logging.info("position_x = " + str(position_x))
+        # logging.info("position_y = " + str(position_y))
         sleep(1)
         action.tap(element=None, x=position_x, y=position_y, count=1).perform()
 
@@ -87,8 +87,8 @@ class Android(MapPage):
 
         position_x = window_size["width"] * 0.6
         position_y = window_size["height"] * 0.6
-        logging.info("position_x = " + str(position_x))
-        logging.info("position_y = " + str(position_y))
+        # logging.info("position_x = " + str(position_x))
+        # logging.info("position_y = " + str(position_y))
         sleep(1)
         action.tap(element=None, x=position_x, y=position_y, count=1).perform()
 
@@ -114,8 +114,8 @@ class Android(MapPage):
 
         position_x = window_size["width"] * 0.7
         position_y = window_size["height"] * 0.7
-        logging.info("position_x = " + str(position_x))
-        logging.info("position_y = " + str(position_y))
+        # logging.info("position_x = " + str(position_x))
+        # logging.info("position_y = " + str(position_y))
         sleep(1)
         action.tap(element=None, x=position_x, y=position_y, count=1).perform()
         sleep(1)
@@ -132,8 +132,8 @@ class Android(MapPage):
         # position_y = window_size["height"] * 0.50
         position_x = window_size["width"] * 0.5
         position_y = window_size["height"] * 0.7
-        logging.info("position_x = " + str(position_x))
-        logging.info("position_y = " + str(position_y))
+        # logging.info("position_x = " + str(position_x))
+        # logging.info("position_y = " + str(position_y))
         action.tap(element=None, x=position_x, y=position_y, count=2).perform()
 
         # screen_size = self.driver.get_window_size(windowHandle='current')

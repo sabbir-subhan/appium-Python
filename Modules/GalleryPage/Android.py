@@ -6,6 +6,7 @@ from Modules.load_class import LoadClass
 from Conf.desired_capabilities import DesiredCapabilities
 # from appium.webdriver.common.touch_action import TouchAction
 from time import sleep
+from selenium.common.exceptions import *
 
 
 class Android(GalleryPage):
@@ -94,3 +95,61 @@ class Android(GalleryPage):
         common_page.setDriver(self.driver)
         common_page.alert_popup_allow()
         sleep(1)
+
+    def choose_videos_gallery(self):
+
+        logging.info("choose videos gallery in left side menu if it is visible")
+        try:
+            choose_videos_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_BUTTON_IN_SIDE_MENU)
+            self.assertIsNotNone(choose_videos_gallery, "Videos gallery not found")
+            choose_videos_gallery.click()
+        except NoSuchElementException:
+            pass
+        sleep(1)
+        try:
+            logging.info("choose Camera videos if it is visible")
+            camera_videos = self.driver.find_element(*self.configuration.GalleryScreen.VIDEOS)
+            self.assertIsNotNone(camera_videos, "Camera videos not found")
+            camera_videos.click()
+        except NoSuchElementException:
+            pass
+        sleep(1)
+
+        # choose_videos_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_BUTTON_IN_SIDE_MENU)
+        # self.assertIsNotNone(choose_videos_gallery, "gallery not found")
+        # choose_videos_gallery.click()
+        # sleep(1)
+        # try:
+        #     videos = self.driver.find_element(*self.configuration.GalleryScreen.VIDEOS)
+        #     self.assertIsNotNone(videos, "videos not found")
+        # except NoSuchElementException:
+        #     videos = self.driver.find_element(*self.configuration.GalleryScreen.VIDEOS2)
+        #     self.assertIsNotNone(videos, "videos not found")
+        # size = videos.size
+        # logging.error(size)
+        #
+        # x = self.driver.find_element_by_xpath('//android.view.ViewGroup[1]/android.widget.FrameLayout[1]/android.view.View[1]/com.sec.samsung.gallery.glview.composeView.PositionControllerBase.ThumbObject[1]')
+        # location = x.location
+        # print(location)
+
+        # action = TouchAction(self.driver)
+        # source = self.driver.page_source
+        # logging.warning(source)
+        # bounds = source.__getattribute__("bounds")
+        # logging.error(bounds)
+        # bounds2 = source.__getitem__("bounds")
+        # logging.error(bounds2)
+        # action.tap(x=70, y=375, count=1).perform()
+        # sleep(0.5)
+
+        # # bounds = videos.get_attribute("bounds")
+        # # logging.error(bounds)
+        # # bounds2 = videos.get_property("bounds")
+        # # logging.error(bounds2)
+        #
+        # action.tap(x=64, y=372, count=1).perform()
+        # videos.click()
+        #
+        # action.tap(element=videos, count=1).perform()
+        #
+        # sleep(2)

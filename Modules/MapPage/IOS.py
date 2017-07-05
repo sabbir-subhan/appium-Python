@@ -7,8 +7,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from time import sleep
 import random
-from appium.webdriver.common.touch_action import TouchAction
-from selenium.webdriver.common.touch_actions import TouchActions
+# from appium.webdriver.common.touch_action import TouchAction
+# from selenium.webdriver.common.touch_actions import TouchActions
 # from appium.webdriver.common.multi_action import MultiAction
 # from appium.webdriver.webelement import WebElement
 # from selenium.webdriver.common.action_chains import ActionChains
@@ -39,8 +39,8 @@ class IOS(MapPage):
         # position_y = window_size["height"] * 0.60
         position_x = round(window_size["width"] * 0.4)
         position_y = round(window_size["height"] * 0.4)
-        logging.info("width = x = " + str(position_x))
-        logging.info("height = y = " + str(position_y))
+        # logging.info("width = x = " + str(position_x))
+        # logging.info("height = y = " + str(position_y))
         positions = [(position_x, position_y)]
         # action = TouchAction(self.driver)
         # action.tap(element=None, x=position_x, y=position_y, count=1).perform()
@@ -55,8 +55,8 @@ class IOS(MapPage):
         window_size = self.driver.get_window_size()  # this returns dictionary
         position_x = round(window_size["width"] * 0.5)
         position_y = round(window_size["height"] * 0.5)
-        logging.info("width = x = " + str(position_x))
-        logging.info("height = y = " + str(position_y))
+        # logging.info("width = x = " + str(position_x))
+        # logging.info("height = y = " + str(position_y))
         positions = [(position_x, position_y)]
         # position = [(300, 500)]
         sleep(1)

@@ -3,10 +3,10 @@
 from Modules.MapPage.IOS import IOS
 from time import sleep
 from appium.webdriver.common.touch_action import TouchAction
-from appium.webdriver.common.multi_action import MultiAction
 import logging
 import random
-from selenium.webdriver.remote.command import Command
+# from selenium.webdriver.remote.command import Command
+# from appium.webdriver.common.multi_action import MultiAction
 
 
 class IOS9(IOS):
@@ -85,23 +85,23 @@ class IOS9(IOS):
 
         start_x = int(window_size["width"])
         start_y = int(window_size["height"])
-        logging.warning("start_x = " + str(start_x))
-        logging.warning("start_y = " + str(start_y))
+        # logging.warning("start_x = " + str(start_x))
+        # logging.warning("start_y = " + str(start_y))
 
         random_int_1 = random.randint(51, 60)  # hardcoded values
         random_float_1 = random_int_1 / 100  # division to prepare some float similar to 0.5
         random_int_2 = random.randint(30, 50)
         random_float_2 = random_int_2 / 100
 
-        logging.error("random_int_1 = " + str(random_int_1))
-        logging.error("random_float_1 = " + str(random_float_1))
-        logging.error("random_int_2 = " + str(random_int_2))
-        logging.error("random_float_2 = " + str(random_float_2))
+        # logging.error("random_int_1 = " + str(random_int_1))
+        # logging.error("random_float_1 = " + str(random_float_1))
+        # logging.error("random_int_2 = " + str(random_int_2))
+        # logging.error("random_float_2 = " + str(random_float_2))
         end_x = round(start_x * random_float_1)  # multiply whole screen width and float like 0.5
         end_y = round(start_y * random_float_2)
 
-        logging.warning("end_x = " + str(end_x))
-        logging.warning("end_y = " + str(end_y))
+        # logging.warning("end_x = " + str(end_x))
+        # logging.warning("end_y = " + str(end_y))
 
         action = TouchAction(self.driver)
         sleep(1)
@@ -123,7 +123,6 @@ class IOS9(IOS):
 
         logging.info("wait a second after double tapping")
         sleep(2)
-
 
         # """
         # Double taps on a given element.  -- method from selenium

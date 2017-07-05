@@ -241,11 +241,11 @@ class Android(EventsPage):
 
         new_option_list = self.driver.find_element(*self.configuration.EventEditScreen.NEW_OPTION_LIST_HEADER)
         location = new_option_list.location
-        print(location)
+        # print(location)
         x = location["x"]
         y = location["y"]
-        print(x)
-        print(y)
+        # print(x)
+        # print(y)
         positions = [(x, y)]
         self.driver.tap(positions)
 
