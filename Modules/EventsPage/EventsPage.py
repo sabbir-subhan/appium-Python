@@ -582,6 +582,32 @@ class EventsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def click_create_mapping_data_for_new_event(self):
+
+        sleep(1)
+
+        self.switch_context_to_webview()
+
+        logging.info("create mapping data")
+        create_mapping_data_button = self.driver.find_element(*self.configuration.EventEditScreen.CREATE_MAPPING_DATA_NEW)
+        self.assertIsNotNone(create_mapping_data_button, "Button for creating map data is not present")
+        create_mapping_data_button.click()
+
+        self.switch_context_to_native()
+
+    def click_create_mapping_data_for_existing_event(self):
+
+        sleep(1)
+
+        self.switch_context_to_webview()
+
+        logging.info("create mapping data")
+        create_mapping_data_button = self.driver.find_element(*self.configuration.EventEditScreen.CREATE_MAPPING_DATA_EDIT)
+        self.assertIsNotNone(create_mapping_data_button, "Button for creating map data is not present")
+        create_mapping_data_button.click()
+
+        self.switch_context_to_native()
+
     def check_restored_field_1(self):
 
         logging.info("assert restored field 1")

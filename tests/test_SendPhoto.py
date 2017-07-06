@@ -85,7 +85,6 @@ class TestSendPhoto(SetupTestCase):
         camera_page.click_use_photo()
         common_page.alert_popup_allow()
         photo_page.type_description("test - take a photo 1")
-        # common_page.hide_keyboard()
         photo_page.click_send_button_camera()  # click and wait for 720s
         photo_page.click_back_arrow_if_running_on_emulator()
         main_page.check_presence_of_inbox_button()
@@ -100,7 +99,6 @@ class TestSendPhoto(SetupTestCase):
         gallery_page.choose_element_1()
         common_page.alert_popup_allow()
         photo_page.type_description("test - photo 1 from gallery")
-        # common_page.hide_keyboard()
         photo_page.click_send_button_gallery()  # click and wait for 720s
         main_page.check_presence_of_inbox_button()
         main_page.scroll_down_to_photo_button()
@@ -114,7 +112,6 @@ class TestSendPhoto(SetupTestCase):
         camera_page.capture_photo()
         camera_page.click_use_photo()
         photo_page.type_description("test - take a photo 2")
-        # common_page.hide_keyboard()
         photo_page.click_send_button_camera()  # click and wait for 720s
         photo_page.click_back_arrow_if_running_on_emulator()
         main_page.check_presence_of_inbox_button()

@@ -233,7 +233,7 @@ class TestAssets(SetupTestCase):
         assets_page.click_new_asset()
         assets_page.choose_asset_type()
         assets_page.fill_Name_input_field("Asset with mapping data and media files")
-        assets_page.click_create_mapping_data()
+        assets_page.click_create_mapping_data_for_new_asset()
         common_page.alert_popup_allow()
         map_page.click_tool_button()
         map_page.click_point_button()

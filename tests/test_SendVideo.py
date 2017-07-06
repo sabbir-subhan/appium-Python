@@ -83,7 +83,6 @@ class TestSendVideo(SetupTestCase):
         camera_page.stop_recording_video()
         camera_page.click_use_video()
         video_page.type_description("test - video 1")
-        # common_page.hide_keyboard()
         video_page.click_send_button_camera()  # click and wait for 720s
         video_page.click_back_arrow_if_running_on_emulator()
         main_page.check_presence_of_inbox_button()
@@ -100,7 +99,6 @@ class TestSendVideo(SetupTestCase):
         gallery_video_page.choose_video_from_gallery()
         gallery_video_page.click_use_button()
         video_page.type_description("test - video 1 from gallery")
-        # common_page.hide_keyboard()
         video_page.click_send_button_gallery()  # click and wait for 720s
         main_page.check_presence_of_inbox_button()
         main_page.scroll_down_to_video_button()
@@ -116,7 +114,6 @@ class TestSendVideo(SetupTestCase):
         camera_page.stop_recording_video()
         camera_page.click_use_video()
         video_page.type_description("test - video 2")
-        # common_page.hide_keyboard()
         video_page.click_send_button_camera()  # click and wait for 720s
         video_page.click_back_arrow_if_running_on_emulator()
         main_page.check_presence_of_inbox_button()

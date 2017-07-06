@@ -301,7 +301,7 @@ class AssetsPage(BasePage):
         self.assertIsNotNone(asset_type, "asset type with visibility rules not found")
         asset_type.click()
 
-    def click_create_mapping_data(self):
+    def click_create_mapping_data_for_new_asset(self):
 
         self.switch_context_to_webview()
 

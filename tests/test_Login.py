@@ -52,6 +52,7 @@ class TestLogin(SetupTestCase):
         main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
 
+        common_page.push_sample_files()  # for test
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(TestLogin)

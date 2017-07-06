@@ -106,6 +106,7 @@ class CameraPage(BasePage):
             chooser_camera = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER)
             self.assertIsNotNone(chooser_camera, "Choose camera button not found")
             chooser_camera.click()
+            sleep(1)
 
     def choose_video_camera(self):
 

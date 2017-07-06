@@ -3,7 +3,6 @@
 from Modules.GalleryPage.IOS import IOS
 import logging
 from selenium.common.exceptions import *
-# from appium.webdriver.common.touch_action import TouchAction
 
 
 class IOS9(IOS):
@@ -25,11 +24,18 @@ class IOS9(IOS):
 
         logging.info("choose video from gallery")
         try:
-            choose_video_from_gallery1 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1)
-            self.assertIsNotNone(choose_video_from_gallery1, "video in gallery not found")
-            choose_video_from_gallery1.click()
-            # action = TouchAction(self.driver)
-            # action.tap(element=choose_video_from_gallery1, count=1).perform()
+            try:
+                choose_video_from_gallery1 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1)
+                self.assertIsNotNone(choose_video_from_gallery1, "video in gallery not found")
+                choose_video_from_gallery1.click()
+            except NoSuchElementException:
+                pass
+            try:
+                choose_video_from_gallery1 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_2)
+                self.assertIsNotNone(choose_video_from_gallery1, "video in gallery not found")
+                choose_video_from_gallery1.click()
+            except NoSuchElementException:
+                pass
         except NoSuchElementException:
             choose_video_from_gallery2 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1_iPad)
             self.assertIsNotNone(choose_video_from_gallery2, "video for iPad in gallery not found")

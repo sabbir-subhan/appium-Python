@@ -131,7 +131,7 @@ class TestManagingEvents(SetupTestCase):
         common_page.wait_for_app_loading()
         events_page.click_edit_button()
         events_page.scroll_down_to_save_button()
-        events_page.click_create_mapping_data()
+        events_page.click_create_mapping_data_for_existing_event()
         common_page.alert_popup_allow()
         map_page = LoadClass.load_page('MapPage')
         map_page.setDriver(self.driver)

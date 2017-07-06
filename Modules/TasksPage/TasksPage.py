@@ -131,13 +131,10 @@ class TasksPage(BasePage):
 
         self.switch_context_to_native()
 
-    def click_start_date(self):
+    def click_start_date(self):  # Android is using other method
 
         logging.info("Choose Start Date")
-        try:
-            start_date = self.driver.find_element(*self.configuration.TasksScreen.START_DATE)
-        except NoSuchElementException:
-            start_date = self.driver.find_element(*self.configuration.TasksScreen.START_DATE2)
+        start_date = self.driver.find_element(*self.configuration.TasksScreen.START_DATE)
         self.assertIsNotNone(start_date, "Start Date field not found")
         start_date.click()
 

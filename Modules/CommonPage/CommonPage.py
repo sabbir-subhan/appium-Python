@@ -15,29 +15,31 @@ import base64
 
 class CommonPage(BasePage):
 
-    def push_sample_files(self):  # push sample photo and video files for executing TCs on emulators - not working
-
-        sleep(2)
+    def push_sample_files(self):  # push sample photo and video files for executing TCs on emulators
+        # - works only for rooted android devices and emulators but gallery need some unspecific time to update ?
 
         logging.info("push video file to the emulator")
-        path1 = "sample_video.mp4"
-        # path1 = os.path.join(PROJECT_ROOT, "sample_video.mp4")
-        # self.driver.push_file(path, "mp4")
-        with open(file=path1, mode='rb') as myfile1:
-            encoded_file = base64.b64encode(myfile1.read())
-        # We need to decode to get rid of the b'' bytes literal for the upload to work
-        sleep(1)
-        self.driver.push_file(path1, encoded_file.decode())
-        # On the device, the file appears in the correct format
-        sleep(5)
+
+        logging.error(str(self.driver))
+
+        video_file_to_send = os.path.join(PROJECT_ROOT, "sample_video.mp4")
+        path_on_device1 = "/storage/self/primary/DCIM/sample_video.mp4"
+        with open(file=video_file_to_send, mode='rb') as file1:
+            encoded_file1 = base64.standard_b64encode(file1.read())  # open binary file in read mode
+        decoded_file1 = encoded_file1.decode()
+        self.driver.push_file(path_on_device1, decoded_file1)
+        sleep(2)
+
         logging.info("push image file to the emulator")
-        path2 = os.path.join(PROJECT_ROOT, "sample_image.jpg")
-        with open(file=path2, mode='rb') as myfile2:
-            encoded_file = base64.b64encode(myfile2.read())
-        sleep(1)
-        self.driver.push_file(path2, encoded_file.decode())
-        # self.driver.push_file(path2, "jpeg")
-        sleep(5)
+
+        image_file_to_send = os.path.join(PROJECT_ROOT, "sample_image.jpg")
+        # path_on_device2 = "/storage/sdcard0/sample_image.jpg"
+        path_on_device2 = "/storage/self/primary/DCIM/sample_image.jpg"
+        with open(file=image_file_to_send, mode='rb') as file2:
+            encoded_file2 = base64.b64encode(file2.read())
+        decoded_file2 = encoded_file2.decode()
+        self.driver.push_file(path_on_device2, decoded_file2)
+        sleep(2)
 
         # if "emulator" in platform:
         #     logging.info("push video file to the emulator")
@@ -61,6 +63,15 @@ class CommonPage(BasePage):
         #     sleep(5)
         # else:
         #     pass
+
+        # works but extension of the pushed file is .tmp ?
+        # path3 = os.path.join(PROJECT_ROOT, "sample_image.jpg")
+        # path4 = "/mnt/extsd/media"
+        # with open(file=path3, mode='rb') as file2:
+        #     encoded_file = base64.b64encode(file2.read())
+        # sleep(1)
+        # self.driver.push_file(path4, encoded_file.decode())
+        # sleep(5)
 
     def back_arrow(self):
 
