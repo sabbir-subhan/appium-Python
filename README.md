@@ -109,7 +109,9 @@ and provide name of that file in desired_capabilities.py
 
 ### **run on iOS9 and iOS10**
 
-- You need to install Xcode 7 and Xcode 8, Appium >= 1.6 in CLI mode, can run both iOS versions but You need to switch between Xcode versions 
+- You need to install Xcode 7 and Xcode 8 and Appium >= 1.6.3 in CLI mode, 
+
+Appium can run both iOS versions but You need to switch between Xcode versions 
 (Xcode7 must have different name because appium in CLI will search for app "Xcode" so that should be version 8)
 (with Xcode 8 You can run tests for iOS10 and to run tests for iOS9 You have to switch to Xcode 7)
 
@@ -118,21 +120,20 @@ and provide name of that file in desired_capabilities.py
 - remember to restart Appium server after changing Xcode version
 (Appium 1.5.3 can run only iOS9)
 
-- in CLI (Appium 1.6.3) 
 
-**to run tests on IOS9 (real device):**
+####**to run tests on IOS9 (real device):**
+
 - switch Xcode 7 version using: sudo xcode-select -switch /Applications/Xcode7.app
 - in another console run: ios_webkit_debug_proxy -c <device udid>:27753
-- iPad: ios_webkit_debug_proxy -c db55c238e873230ee454c54a63724397a2981acd:27753
+- **iPad:** ios_webkit_debug_proxy -c db55c238e873230ee454c54a63724397a2981acd:27753
 - in new console start Appium server using CLI command: "appium"
-- start test using CLI command: "python run.py -t test_Login -p IOS_9"
+- start test using CLI command: "python run.py -t test_Login -p IOS_9_iPad"
 
-**to run tests on IOS10 (real device):**
+####**to run tests on IOS10 (real device):**
+
 - switch Xcode 8 version using: sudo xcode-select -switch /Applications/Xcode.app
-~~- in another console run: ios_webkit_debug_proxy -c <device udid>:27753~~ (not necessary = it will start automatically)
-~~- iPhone: ios_webkit_debug_proxy -c 4b15c4284897fa6f9b4c5205325a9cece997ad35:27753~~
 - in new console start Appium server using CLI command: "appium"
-- start test using CLI command: "python run.py -t test_Login -p IOS_10"
+- start test using CLI command: "python run.py -t test_Login -p IOS_10_iPhone"
 
 
 ## **CONFIGURING ANDROID DEVICE:**
@@ -324,4 +325,5 @@ the command. Original error: Could not install app: 'Command 'ios-deploy --id 4b
  (usually, it occurs after switching iOS versions)
 - An unknown server-side error occurred while processing the command. Original error: Command failed: ideviceinstaller -u  ????? - observed on iPad with iOS9 ?????  (try "brew install --HEAD ideviceinstaller")   ??
 - Error: connect ECONNREFUSED 127.0.0.1:8100   -- reinstall appium - npm uninstall -g appium + npm install -g appium
-- (The application does not have a valid signature.)  -- rebuild and install OCA app through Xcode 
+- (The application does not have a valid signature.)  -- rebuild and install OCA app through Xcode
+- When running on Android, Appium sometimes can freeze on "Getting connected devices..." ---> restart Appium server

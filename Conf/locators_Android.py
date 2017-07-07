@@ -9,7 +9,7 @@ class Android:
     # Android alerts
     ANDROID_ALLOW = (MobileBy.ID, 'com.android.packageinstaller:id/permission_allow_button')
     ANDROID_DENY = (MobileBy.ID, 'com.android.packageinstaller:id/permission_deny_button')
-    # //android.widget.Button[@text="ALLOW"]
+    ANDROID_ALLOW2 = (MobileBy.XPATH, '//android.widget.Button[@text="ALLOW"]')
 
     # Set date and time
     ANDROID_SET_BUTTON = (MobileBy.ID, 'android:id/button1')
@@ -373,16 +373,15 @@ class CameraScreen:
     CAMERA_CHOOSER_ANDROID5 = (MobileBy.ID, 'com.tct.camera:id/onscreen_camera_picker')
     CAMERA_CHOOSER_ANDROID6 = (MobileBy.ACCESSIBILITY_ID, 'Switch camera')
     CAMERA_CHOOSER_ANDROID_6 = (MobileBy.ACCESSIBILITY_ID, 'Front and back camera switch')
-    CAMERA_CHOOSER_ANDROID7 = (MobileBy.XPATH, '//SideQuickSetting[1]/SideQuickSettingItem[3]'
-                                               '/ItemDataButton[1]/GLButton[1]')
+    CAMERA_CHOOSER_ANDROID7 = (MobileBy.XPATH, '//SideQuickSetting[1]/SideQuickSettingItem[3]/ItemDataButton[1]/GLButton[1]')
     RETAKE_ANDROID_4 = (MobileBy.ACCESSIBILITY_ID, 'Review retake')
     RETAKE_ANDROID_5 = (MobileBy.ID, 'com.tct.camera:id/btn_retake')
     RETAKE_ANDROID_6 = (MobileBy.ID, 'com.sec.android.app.camera:id/retry')
     RETAKE_ANDROID_6_version2 = (MobileBy.ID, 'com.android.camera:id/btn_retake')
     USE_PHOTO_ANDROID4 = (MobileBy.ACCESSIBILITY_ID, 'Review done')
     USE_PHOTO_ANDROID5 = (MobileBy.ACCESSIBILITY_ID, 'OK')  # com.tct.camera:id/btn_done
-    USE_PHOTO_ANDROID6 = (MobileBy.ID, 'com.sec.android.app.camera:id/okay')  # android 7 also
-    USE_PHOTO_ANDROID6_version2 = (MobileBy.ID, 'com.android.camera:id/btn_done')
+    USE_PHOTO_ANDROID7 = (MobileBy.ID, 'com.sec.android.app.camera:id/okay')  # Android 7
+    USE_PHOTO_ANDROID6 = (MobileBy.ID, 'com.android.camera:id/btn_done')  # Android 6
 
 
 class ContactsScreen:

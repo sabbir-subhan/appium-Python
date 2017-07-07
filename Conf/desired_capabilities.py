@@ -285,6 +285,7 @@ class DesiredCapabilities(object):
             "startIWDP": True,  # start ios-webkit-debug-proxy
             "noReset": False,
             "fullReset": False,
+            "autoAcceptAlerts": True,
             "udid": "4b15c4284897fa6f9b4c5205325a9cece997ad35"
         },
 
@@ -304,6 +305,7 @@ class DesiredCapabilities(object):
             "startIWDP": True,  # start ios-webkit-debug-proxy
             "noReset": False,
             "fullReset": False,
+            "autoAcceptAlerts": True,
             "udid": "16edd6bdad3ea6ba8a00a034adfe70ecaa03c639"
         },
 

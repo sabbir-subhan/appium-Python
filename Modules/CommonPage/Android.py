@@ -2,7 +2,7 @@
 
 import logging
 from time import sleep
-# from selenium.common.exceptions import *
+from selenium.common.exceptions import *
 from Modules.CommonPage.CommonPage import CommonPage
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
@@ -123,17 +123,31 @@ class Android(CommonPage):
     def alert_popup_allow(self):
 
         logging.info('search for alert and click "Allow" if found')
+
+        # action = TouchAction(self.driver)
         try:
-            button_allow_location = self.driver.find_element(*self.configuration.Android.ANDROID_ALLOW)
-            if button_allow_location.is_displayed():
-                # logging.info("Accept for example using location - device will store that info for later use")
-                button_allow_location.click()
+            button_allow1 = self.driver.find_element(*self.configuration.Android.ANDROID_ALLOW)
+            # logging.info("Accept for example using location - device will store that info for later use")
+            self.assertIsNotNone("button allow not found", button_allow1)
+            button_allow1.click()
+            sleep(0.5)
+            # action.tap(button_allow1, count=1).perform()
         except:
             pass
         try:
-            button_allow_location = self.driver.find_element(*self.configuration.Android.ANDROID_ALLOW)
-            if button_allow_location.is_displayed():
-                button_allow_location.click()
+            button_allow2 = self.driver.find_element(*self.configuration.Android.ANDROID_ALLOW)
+            self.assertIsNotNone("button allow not found", button_allow2)
+            button_allow2.click()
+            sleep(0.5)
+            # action.tap(button_allow2, count=1).perform()
+        except:
+            pass
+        try:
+            button_allow3 = self.driver.find_element(*self.configuration.Android.ANDROID_ALLOW)
+            self.assertIsNotNone("button allow not found", button_allow3)
+            button_allow3.click()
+            sleep(0.5)
+            # action.tap(button_allow, count=1).perform()
         except:
             pass
 
@@ -145,6 +159,25 @@ class Android(CommonPage):
             sleep(1)
         except:
             logging.info("screen keyboard not found")
+
+    # def alert_popup_allow(self):
+    #
+    #     logging.info('search for alert and click "Allow" if found')
+    #     # action = TouchAction(self.driver)
+    #     try:
+    #         button_allow = self.driver.find_element(*self.configuration.Android.ANDROID_ALLOW)
+    #         tries = 4
+    #         while button_allow.is_displayed() and tries > 0:
+    #             # self.assertIsNotNone("button allow not found", button_allow)
+    #             button_allow.click()
+    #             # action.tap(button_allow, count=1).perform()
+    #             sleep(0.5)
+    #             tries = tries - 1
+    #             # if NoSuchElementException:
+    #             #     break
+    #     except NoSuchElementException:
+    #         pass
+    #     sleep(1)
 
     def click_Return_button_on_keyboard(self):
 
