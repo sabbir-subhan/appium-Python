@@ -3,13 +3,15 @@
 try:
     from configuration import ENVIRONMENT_TEST
 except ImportError:
-    raise ImportError("WRONG PLATFORM NAME !!! - check available platforms in /appium-poc/configuration.py")
+    raise ImportError("WRONG PLATFORM NAME !!! - check available platforms in /appium-poc/configuration.py ")
 from Conf.desired_capabilities import DesiredCapabilities
-from configuration import PORT
+from configuration import PORT, platform
 from appium import webdriver
 import unittest
 from time import sleep
 import logging
+from Modules.load_class import LoadClass
+
 # from logging import handlers
 # import sys
 # log = logging.getLogger('')
@@ -99,6 +101,13 @@ class SetupTestCase(unittest.TestCase):
 
         # self.configuration = import_module('Conf.locators_' + ENVIRONMENT_TEST)
 
+        if "IOS" and "emulator" in platform:
+            logging.warning("Running test on iOS emulator")
+            device_settings = LoadClass.load_page('DeviceSettings')
+            device_settings.turn_off_auto_correction_in_settings()
+        else:
+            pass
+
         self.driver = webdriver.Remote("http://localhost:" + str(PORT) + "/wd/hub", desired_capabilities)
 
         sleep(15)  # wait for app launching + optional app installation or/and installation/launching WebDriverAgent
@@ -112,5 +121,7 @@ class SetupTestCase(unittest.TestCase):
 
         # self.driver.implicitly_wait(14)  # seconds - how long Appium will wait for conditions, for example try/except
 
+        # from subprocess import call
+        # call(["ios_webkit_debug_proxy", "-c", "db55c238e873230ee454c54a63724397a2981acd:27753"])
 
 

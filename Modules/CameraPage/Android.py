@@ -1,12 +1,12 @@
 """ Methods for Android on Camera Page """
 
 from Modules.CameraPage.CameraPage import CameraPage
-from appium.webdriver.common.touch_action import TouchAction
 import logging
 from Conf.desired_capabilities import DesiredCapabilities
 from time import sleep
 from selenium.common.exceptions import *
 from configuration import platform
+from appium.webdriver.common.touch_action import TouchAction
 
 
 class Android(CameraPage):
@@ -17,18 +17,24 @@ class Android(CameraPage):
         platform_version = desired_capabilities.get('platformVersion')
         logging.info("capture")
         sleep(4)
+        action = TouchAction(self.driver)
         if platform_version > "6":
             try:
                 photo_capture1 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_6)
             except NoSuchElementException:
                 photo_capture1 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_6_version2)
             self.assertIsNotNone(photo_capture1)
-            photo_capture1.click()
+            # photo_capture1.click()
+            action.tap(element=photo_capture1, count=1).perform()
             sleep(4)
         else:
-            photo_capture3 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_4_and_5)  # also for Android 6
+            try:
+                photo_capture3 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_4_and_5)  # also for Android 6
+            except NoSuchElementException:
+                photo_capture3 = self.driver.find_element(*self.configuration.CameraScreen.CAPTURE_BUTTON_ANDROID_6_version2)
             self.assertIsNotNone(photo_capture3)
-            photo_capture3.click()
+            action.tap(element=photo_capture3, count=1).perform()
+            # photo_capture3.click()
             sleep(4)
 
         # if platform_version > "5" and "6" in str(platform_version):
@@ -131,15 +137,15 @@ class Android(CameraPage):
 
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()
         platform_version = desired_capabilities.get('platformVersion')
-        # action = TouchAction(self.driver)
+        action = TouchAction(self.driver)
         sleep(1)
         if platform_version >= "6" and platform_version < "7":
             logging.info("Use - Android >= 6 and < 7")
             use_photo3 = self.driver.find_element(*self.configuration.CameraScreen.USE_PHOTO_ANDROID6)
             self.assertIsNotNone(use_photo3)
-            use_photo3.click()
-            sleep(0.5)
-            # action.tap(element=use_photo3, count=1).perform()
+            # use_photo3.click()
+            action.tap(element=use_photo3, count=1).perform()
+            sleep(1)
             # try:
             #     use_photo3 = self.driver.find_element(*self.configuration.CameraScreen.USE_PHOTO_ANDROID6)
             # except NoSuchElementException:
@@ -150,23 +156,26 @@ class Android(CameraPage):
             logging.info("Use - Android > 7")
             use_photo4 = self.driver.find_element(*self.configuration.CameraScreen.USE_PHOTO_ANDROID7)
             self.assertIsNotNone(use_photo4)
-            use_photo4.click()
-            sleep(0.5)
-            # action.tap(element=use_photo4, count=1).perform()
+            # use_photo4.click()
+            action.tap(element=use_photo4, count=1).perform()
+            sleep(1)
         elif platform_version >= "5" and platform_version < "6":
             logging.info("Use - Android >= 5 and < 6")
-            use_photo2 = self.driver.find_element(*self.configuration.CameraScreen.USE_PHOTO_ANDROID5)
+            try:
+                use_photo2 = self.driver.find_element(*self.configuration.CameraScreen.USE_PHOTO_ANDROID5)
+            except NoSuchElementException:
+                use_photo2 = self.driver.find_element(*self.configuration.CameraScreen.USE_PHOTO_ANDROID6)
             self.assertIsNotNone(use_photo2)
-            use_photo2.click()
-            sleep(0.5)
-            # action.tap(element=use_photo2, count=1).perform()
+            # use_photo2.click()
+            action.tap(element=use_photo2, count=1).perform()
+            sleep(1)
         else:
             logging.info("Use - Android < 5")
             use_photo1 = self.driver.find_element(*self.configuration.CameraScreen.USE_PHOTO_ANDROID4)
             self.assertIsNotNone(use_photo1)
-            use_photo1.click()
-            sleep(0.5)
-            # action.tap(element=use_photo1, count=1).perform()
+            # use_photo1.click()
+            action.tap(element=use_photo1, count=1).perform()
+            sleep(1)
         sleep(4)
 
     def click_use_video(self):
@@ -236,9 +245,12 @@ class Android(CameraPage):
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()
         platform_version = desired_capabilities.get('platformVersion')
         if platform_version > "5" and platform_version < "6":
-            chooser_camera_android5 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID5)
-            self.assertIsNotNone(chooser_camera_android5)
-            chooser_camera_android5.click()
+            try:
+                chooser_camera_android = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID5)
+            except NoSuchElementException:
+                chooser_camera_android = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID_6)
+            self.assertIsNotNone(chooser_camera_android)
+            chooser_camera_android.click()
         elif platform_version < "5":
             chooser_camera_android4 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID4)
             self.assertIsNotNone(chooser_camera_android4)

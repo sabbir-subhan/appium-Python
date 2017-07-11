@@ -165,7 +165,7 @@ class DesiredCapabilities(object):
             # "appWaitDuration": 20000,
             "deviceReadyTimeout": 5,
             # "newCommandTimeout": "60",
-            # "automationName": "Appium",  # (by default appium passes to appium-android-driver on the absence of automationName)
+            # "automationName": "Appium",
             "automationName": "uiautomator2",
             # "autoAcceptAlerts": True,  # not working with Android
             # "browserName": "Chromium",

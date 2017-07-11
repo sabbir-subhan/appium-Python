@@ -290,7 +290,7 @@
 		</data>
 		<key>config.xml</key>
 		<data>
-		8CyrjEl3gp5ZqdQBSMdWaNSJp5I=
+		KYB1phKycAlV8U93HARwM6StEso=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
@@ -12646,7 +12646,7 @@
 		</data>
 		<key>www/cordova_plugins.js</key>
 		<data>
-		IeUBjGKmdmWWNwYBmykIUvQ6zTQ=
+		JpydcMCCOgpq0VBTBIFWs5nYU74=
 		</data>
 		<key>www/css/images/ajax-loader.gif</key>
 		<data>
@@ -14108,14 +14108,6 @@
 		<data>
 		BGPJLreG2O+OYfIg0g0vbA3c7FM=
 		</data>
-		<key>www/plugins/cordova-plugin-console/www/console-via-logger.js</key>
-		<data>
-		NyUkntRl9vFIiOC3onmXNsxpedU=
-		</data>
-		<key>www/plugins/cordova-plugin-console/www/logger.js</key>
-		<data>
-		tmAfmQQR8NZd7y+bTWuju4/TbY0=
-		</data>
 		<key>www/plugins/cordova-plugin-contacts/www/Contact.js</key>
 		<data>
 		l0qGg9gHRMrwBaG2Cjk/kiTOEIA=
@@ -15063,11 +15055,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			8CyrjEl3gp5ZqdQBSMdWaNSJp5I=
+			KYB1phKycAlV8U93HARwM6StEso=
 			</data>
 			<key>hash2</key>
 			<data>
-			q638+slfN/+CJyLirhWVA0OyLUnP4tKzcANi78oCKTw=
+			ztUe9mdN8FgOfR7VVDU7s+GYeqP9iC1nKsYgXNWEtJk=
 			</data>
 		</dict>
 		<key>embedded.mobileprovision</key>
@@ -49042,11 +49034,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			IeUBjGKmdmWWNwYBmykIUvQ6zTQ=
+			JpydcMCCOgpq0VBTBIFWs5nYU74=
 			</data>
 			<key>hash2</key>
 			<data>
-			Glo5Et8UjzN12qglrntWzjjjjqZcYM9MPD1nY75CT1w=
+			w95X85EN7LtF9S0//AZ1HEgk5MMvnDRvtObWFsZm+Bo=
 			</data>
 		</dict>
 		<key>www/css/images/ajax-loader.gif</key>
@@ -53062,28 +53054,6 @@
 			<key>hash2</key>
 			<data>
 			+M+Og3e2du+I94HT47ZQ/sNHjeVhel4YuJl9Dy/bejo=
-			</data>
-		</dict>
-		<key>www/plugins/cordova-plugin-console/www/console-via-logger.js</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			NyUkntRl9vFIiOC3onmXNsxpedU=
-			</data>
-			<key>hash2</key>
-			<data>
-			cCcOHB0gfKqE6bS4NoAZMvlzcHaWDemJfOWOOw+cI/8=
-			</data>
-		</dict>
-		<key>www/plugins/cordova-plugin-console/www/logger.js</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			tmAfmQQR8NZd7y+bTWuju4/TbY0=
-			</data>
-			<key>hash2</key>
-			<data>
-			ESzk4H7ypO9esEfCCJl4Sw+BH3M31e0OkRdbsNe0Wcc=
 			</data>
 		</dict>
 		<key>www/plugins/cordova-plugin-contacts/www/Contact.js</key>

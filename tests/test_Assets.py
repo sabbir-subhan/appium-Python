@@ -267,6 +267,7 @@ class TestAssets(SetupTestCase):
         camera_page.click_use_photo()
         common_page.alert_popup_allow()
         assets_page.click_back_arrow_if_running_on_ios_emulator()
+        common_page.push_sample_video_file()  # push sample video file for emulators
         assets_page.click_add_media()
         select_media_page.click_video_gallery()
         common_page.alert_popup_allow()

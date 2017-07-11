@@ -24,9 +24,6 @@
     <feature name="Camera">
         <param name="ios-package" value="CDVCamera" />
     </feature>
-    <feature name="Console">
-        <param name="ios-package" value="CDVLogger" />
-    </feature>
     <feature name="Contacts">
         <param name="ios-package" value="CDVContacts" />
     </feature>

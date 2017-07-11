@@ -8,9 +8,30 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 from Modules.load_class import LoadClass
 from appium.webdriver.common.touch_action import TouchAction
+from configuration import PROJECT_ROOT, platform
+import os
+from subprocess import call
 
 
 class IOS(CommonPage):
+
+    @staticmethod
+    def push_sample_image_file():
+
+        if "emulator" in platform:
+            logging.info("push image file to the emulator")
+            path_to_image_sample_file = os.path.join(PROJECT_ROOT, "sample_image.jpg")
+            call(["xcrun", "simctl", "addphoto", "booted", path_to_image_sample_file])
+            sleep(1)
+
+    @staticmethod
+    def push_sample_video_file():
+
+        if "emulator" in platform:
+            logging.info("push video file to the emulator")
+            path_to_video_sample_file = os.path.join(PROJECT_ROOT, "sample_video.mp4")
+            call(["xcrun", "simctl", "addvideo", "booted", path_to_video_sample_file])
+            sleep(1)
 
     def swipe_down_to_hide_control_center(self):  # this will hide control center
 
@@ -71,21 +92,17 @@ class IOS(CommonPage):
         if width > 376:
             position_x = window_size["width"] * 0.008
             position_y = window_size["height"] * 0.009
-            logging.info(position_x)
-            logging.info(position_y)
-            positions = [(position_x, position_y)]
-            self.driver.tap(positions)
-            sleep(2)
         else:
             position_x = window_size["width"] * 0.03
             position_y = window_size["height"] * 0.02
-            logging.info(position_x)
-            logging.info(position_y)
-            positions = [(position_x, position_y)]
-            self.driver.tap(positions)
-            sleep(2)
 
-        WebDriverWait(self.driver, 30).until(
+        logging.info("position x = " + str(position_x))
+        logging.info("position y = " + str(position_y))
+        positions = [(position_x, position_y)]
+        self.driver.tap(positions)
+        sleep(2)
+
+        WebDriverWait(self.driver, 20).until(
             expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
             "Failed to locate Events button")
 

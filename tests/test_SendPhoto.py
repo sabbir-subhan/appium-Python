@@ -92,6 +92,7 @@ class TestSendPhoto(SetupTestCase):
 
         main_page.open_PHOTO()
         photo_page.check_if_photo_page_was_opened()
+        common_page.push_sample_image_file()  # push sample image file for emulators
         photo_page.click_gallery_button()
         common_page.alert_popup_allow()
         gallery_page = LoadClass.load_page('GalleryPage')

@@ -49,22 +49,6 @@ module.exports = [
         ]
     },
     {
-        "id": "cordova-plugin-console.console",
-        "file": "plugins/cordova-plugin-console/www/console-via-logger.js",
-        "pluginId": "cordova-plugin-console",
-        "clobbers": [
-            "console"
-        ]
-    },
-    {
-        "id": "cordova-plugin-console.logger",
-        "file": "plugins/cordova-plugin-console/www/logger.js",
-        "pluginId": "cordova-plugin-console",
-        "clobbers": [
-            "cordova.logger"
-        ]
-    },
-    {
         "id": "cordova-plugin-contacts.contacts",
         "file": "plugins/cordova-plugin-contacts/www/contacts.js",
         "pluginId": "cordova-plugin-contacts",
@@ -526,7 +510,6 @@ module.exports.metadata =
     "com.noggin.oca": "4.0.1",
     "cordova-plugin-compat": "1.1.0",
     "cordova-plugin-camera": "2.3.1",
-    "cordova-plugin-console": "1.0.6",
     "cordova-plugin-contacts": "2.0.1",
     "cordova-plugin-crosswalk-webview": "1.7.2",
     "cordova-plugin-device": "1.1.5",

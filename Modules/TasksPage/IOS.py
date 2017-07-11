@@ -20,8 +20,8 @@ class IOS(TasksPage):
             location = start_date.location
             x = location["x"]
             y = location["y"]
-            print(x)
-            print(y)
+            # print(x)
+            # print(y)
             action = TouchAction(self.driver)
             action.tap(element=None, x=x, y=y, count=1).perform()
 

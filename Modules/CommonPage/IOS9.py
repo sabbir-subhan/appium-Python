@@ -97,17 +97,22 @@ class IOS9(IOS):
 
         window_size = self.driver.get_window_size()  # this returns dictionary
         logging.info(window_size)
+        width = window_size["width"]
 
-        position_x = window_size["width"] * 0.008  # works for iPad
-        position_y = window_size["height"] * 0.009
+        if width > 321:
+            position_x = round(window_size["width"] * 0.008)  # works for iPad
+            position_y = round(window_size["height"] * 0.009)
+        else:
+            position_x = round(window_size["width"] * 0.06)
+            position_y = round(window_size["height"] * 0.018)
 
-        logging.info(position_x)
-        logging.info(position_y)
+        logging.info("position x = " + str(position_x))
+        logging.info("position y = " + str(position_y))
         positions = [(position_x, position_y)]
         sleep(2)
-        self.driver.tap(positions, duration=1200)  # for iOS10 - 'Support for this gesture is not yet implemented'
+        self.driver.tap(positions, duration=1200)
         sleep(2)
-        WebDriverWait(self.driver, 30).until(
+        WebDriverWait(self.driver, 20).until(
             expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
             "Failed to locate Events button")
 

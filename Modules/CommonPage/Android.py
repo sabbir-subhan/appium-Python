@@ -2,17 +2,49 @@
 
 import logging
 from time import sleep
-from selenium.common.exceptions import *
 from Modules.CommonPage.CommonPage import CommonPage
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 from appium.webdriver.common.touch_action import TouchAction
 from Modules.load_class import LoadClass
-from configuration import platform
 from Conf.desired_capabilities import DesiredCapabilities
+import base64
+from configuration import PROJECT_ROOT, platform
+import os
 
 
 class Android(CommonPage):
+
+    def push_sample_image_file(self):  # push sample photo file for executing TCs on emulators
+        # - works only for rooted android devices and emulators but gallery need some unspecific time to update ?
+
+        if "emulator" in platform:
+            logging.info("push image file to the emulator")
+
+            image_file_to_send = os.path.join(PROJECT_ROOT, "sample_image.jpg")
+            # path_on_device2 = "/storage/sdcard0/sample_image.jpg"
+            path_on_device2 = "/storage/self/primary/DCIM/sample_image.jpg"
+            with open(file=image_file_to_send, mode='rb') as file2:
+                encoded_file2 = base64.b64encode(file2.read())
+            decoded_file2 = encoded_file2.decode()
+            self.driver.push_file(path_on_device2, decoded_file2)
+            sleep(2)
+        else:
+            pass
+
+    def push_sample_video_file(self):  # push sample video file for executing TCs on emulators
+        # - works only for rooted android devices and emulators but gallery need some unspecific time to update ?
+
+        if "emulator" in platform:
+            logging.info("push video file to the emulator")
+
+            video_file_to_send = os.path.join(PROJECT_ROOT, "sample_video.mp4")
+            path_on_device1 = "/storage/self/primary/DCIM/sample_video.mp4"
+            with open(file=video_file_to_send, mode='rb') as file1:
+                encoded_file1 = base64.standard_b64encode(file1.read())  # open binary file in read mode
+            decoded_file1 = encoded_file1.decode()
+            self.driver.push_file(path_on_device1, decoded_file1)
+            sleep(2)
 
     @staticmethod
     def swipe_up_to_show_control_center():

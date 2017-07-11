@@ -71,6 +71,20 @@ class IOS(GalleryPage):
             self.assertIsNotNone(choose_videos_gallery, "videos gallery not found")
             choose_videos_gallery.click()
 
+    # def choose_videos_gallery(self):
+    #
+    #     sleep(1)
+    #
+    #     logging.info("choose videos gallery")
+    #     try:
+    #         choose_videos_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_VIDEOS_POPOVER_iPad)
+    #         self.assertIsNotNone(choose_videos_gallery, "videos gallery not found")
+    #         choose_videos_gallery.click()
+    #     except NoSuchElementException:
+    #         choose_videos_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_VIDEOS_POPOVER)
+    #         self.assertIsNotNone(choose_videos_gallery, "videos gallery not found")
+    #         choose_videos_gallery.click()
+
 
 
 

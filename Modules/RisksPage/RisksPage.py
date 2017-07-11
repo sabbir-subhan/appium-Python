@@ -112,7 +112,7 @@ class RisksPage(BasePage):
         name_field = self.driver.find_element(*self.configuration.RisksScreen.NAME_FOR_NEW_CONTEXT)
         self.assertIsNotNone(name_field, "name field not found")
         name_field.clear()
-        name_field.click()
+        # name_field.click()
         name_field.send_keys("Appium new context")
 
         self.switch_context_to_native()

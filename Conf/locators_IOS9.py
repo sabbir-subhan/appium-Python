@@ -296,8 +296,10 @@ class SoundRecorderScreen:
 class GalleryScreen:
     """A class for handling Gallery"""
     GALLERY_ELEMENT_1_iPad = (MobileBy.XPATH, '//UIAPopover[1]/UIACollectionView[1]/UIACollectionCell[1]')
-    GALLERY_ELEMENT_2 = (MobileBy.XPATH, '//UIATableView[1]/UIATableCell[1]')  # not working for iOS9 emulator
-    GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[2][@visible="true"]')
+    # GALLERY_ELEMENT_2 = (MobileBy.XPATH, '//UIATableView[1]/UIATableCell[1]')  # not working for iOS9 emulator
+    # GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[2][@visible="true"]')
+    GALLERY_IMAGE = (MobileBy.XPATH, '//UIACollectionView[@name="PhotosGridView"]/UIACollectionCell[@visible="true"][last()]')
+    GALLERY_VIDEO = (MobileBy.XPATH, '//UIACollectionView[@name="VideosGridView"]/UIACollectionCell[@visible="true"][last()]')
     GALLERY_VIDEOS_POPOVER_iPad = (MobileBy.XPATH, '//UIAPopover[1]/UIATableView[1]/UIATableCell[@name="Videos"]')
     GALLERY_VIDEOS_POPOVER = (MobileBy.XPATH, '//UIATableCell[@name="Videos"]')
     USE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Use')

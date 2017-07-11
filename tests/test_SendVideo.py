@@ -90,11 +90,11 @@ class TestSendVideo(SetupTestCase):
 
         main_page.open_VIDEO()
         video_page.check_if_video_page_was_opened()
+        common_page.push_sample_video_file()  # push sample video file for emulators
         video_page.click_gallery_button()
         gallery_video_page = LoadClass.load_page('GalleryPage')
         gallery_video_page.setDriver(self.driver)
         common_page.alert_popup_allow()
-        common_page.push_sample_files()
         gallery_video_page.choose_videos_gallery()
         gallery_video_page.choose_video_from_gallery()
         gallery_video_page.click_use_button()

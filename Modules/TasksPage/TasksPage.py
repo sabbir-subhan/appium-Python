@@ -134,6 +134,7 @@ class TasksPage(BasePage):
     def click_start_date(self):  # Android is using other method
 
         logging.info("Choose Start Date")
+        sleep(2)
         start_date = self.driver.find_element(*self.configuration.TasksScreen.START_DATE)
         self.assertIsNotNone(start_date, "Start Date field not found")
         start_date.click()
