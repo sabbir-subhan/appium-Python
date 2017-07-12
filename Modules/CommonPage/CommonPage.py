@@ -48,7 +48,7 @@ class CommonPage(BasePage):
         self.assertIsNotNone(cancel_button, "Cancel button was not found")
         cancel_button.click()
 
-    def take_screenshot(self, file_name):
+    def take_screenshot(self, file_name):  # pass file name to this method
 
         logging.info("taking screenshot")
         sleep(1)

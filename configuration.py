@@ -19,6 +19,7 @@ logging.warning("port = " + str(PORT))
 # You can use:
 
 # Android_4
+# Android_4_emulator
 # Android_5
 # Android_5_emulator
 # Android_6
@@ -65,6 +66,12 @@ elif platform == "IOS_10_emulator":
     ENVIRONMENT_TEST = "IOS10"
     ENVIRONMENT_MIDDLE_CLASS = "IOS"
     PLATFORM_VERSION = ""
+
+elif platform == "Android_8_emulator":
+
+    ENVIRONMENT_TEST = "Android"
+    ENVIRONMENT_MIDDLE_CLASS = None
+    PLATFORM_VERSION = "8.0"
 
 elif platform == "Android_7":
 

@@ -54,11 +54,11 @@ class Android(WelcomePage):
                 sound_button = self.driver.find_element(*self.configuration.WelcomeScreen.SOUND_BUTTON)
                 if sound_button.is_displayed():  # on Android all elements are display, regardless if they can/can't be clicked
                     location = sound_button.location
-                    print(location)
+                    # print(location)
                     x = location["x"]
                     y = location["y"]
-                    print(x)
-                    print(y)
+                    # print(x)
+                    # print(y)
                     positions = [(x, y)]
                     self.driver.tap(positions)
                 else:

@@ -19,6 +19,13 @@ class iOS:
     # AIRPLANE_MODE_BUTTON = (MobileBy.XPATH, '//UIAElement[@name="Airplane Mode"]')
 
 
+class DeviceSettings:
+    """A class for handling Device Settings"""
+    GENERAL = (MobileBy.XPATH, '//UIATableCell[@name="General"]')
+    KEYBOARD = (MobileBy.XPATH, '//UIATableCell[@name="Keyboard"]')
+    AUTO_CORRECTION = (MobileBy.XPATH, '//UIATableCell[@name="Auto-Correction"][@value="1"]')
+
+
 class CommonScreen:
     """A class for handling Common buttons on different screen"""
     LOADING = (MobileBy.XPATH, '//UIAStaticText[@name="loading"]')
@@ -298,11 +305,12 @@ class GalleryScreen:
     GALLERY_ELEMENT_1_iPad = (MobileBy.XPATH, '//UIAPopover[1]/UIACollectionView[1]/UIACollectionCell[1]')
     # GALLERY_ELEMENT_2 = (MobileBy.XPATH, '//UIATableView[1]/UIATableCell[1]')  # not working for iOS9 emulator
     # GALLERY_ELEMENT_1 = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[2][@visible="true"]')
-    GALLERY_IMAGE = (MobileBy.XPATH, '//UIACollectionView[@name="PhotosGridView"]/UIACollectionCell[@visible="true"][last()]')
-    GALLERY_VIDEO = (MobileBy.XPATH, '//UIACollectionView[@name="VideosGridView"]/UIACollectionCell[@visible="true"][last()]')
+    GALLERY_ELEMENT = (MobileBy.XPATH, '//UIACollectionView[@name="PhotosGridView"]/UIACollectionCell[@visible="true"][last()]')
+    # GALLERY_VIDEO = (MobileBy.XPATH, '//UIACollectionView[@name="VideosGridView"]/UIACollectionCell[@visible="true"][last()]')
     GALLERY_VIDEOS_POPOVER_iPad = (MobileBy.XPATH, '//UIAPopover[1]/UIATableView[1]/UIATableCell[@name="Videos"]')
     GALLERY_VIDEOS_POPOVER = (MobileBy.XPATH, '//UIATableCell[@name="Videos"]')
     USE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Use')
+    CHOOSE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Choose')
 
 
 class CameraScreen:

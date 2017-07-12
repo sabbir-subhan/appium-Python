@@ -347,11 +347,10 @@ class EventsPage(BasePage):
         # created_event[0].click()
         created_event = self.driver.find_element(*self.configuration.EventsScreen.PREVIOUSLY_CREATED_EVENT)
         created_event.click()
-        # sleep(5)
+        sleep(1)
 
         self.switch_context_to_native()
 
-        # sleep(2)
         # logging.info("open created event")
         # created_event = self.driver.find_element(*self.configuration.EventsScreen.PREVIOUSLY_CREATED_EVENT)
         # self.assertIsNotNone(created_event, "Previously created event not found")

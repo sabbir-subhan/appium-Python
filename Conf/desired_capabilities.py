@@ -107,6 +107,28 @@ class DesiredCapabilities(object):
             "androidDeviceReadyTimeout": 60  # Android only
         },
 
+        "Android_6": {
+            "platformName": "ANDROID",
+            "platformVersion": "6.0.1",
+            # "automationName": "Appium",  # probably necessary to enable this and disable platformVersion when switching to webview context, but currently there is only NATIVE_APP context
+            "deviceName": "SM-G930F",
+            "app": os.path.join(PROJECT_ROOT, "oca.apk"),  # path to .apk file
+            "appPackage": "com.noggin.ocalukasl",
+            "appActivity": "com.noggin.ocalukasl.MainActivity",
+            "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
+            "automationName": "uiautomator2",
+            # "appWaitDuration": 20000,
+            "deviceReadyTimeout": 5,
+            # "newCommandTimeout": "60",
+            "clearSystemFiles": True,
+            "chromedriverExecutable": os.path.join(PROJECT_ROOT, "chromedriver"),
+            "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
+            "chromeOptions": {
+                "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
+            },
+            "udid": "ad0816033848eb0443"
+        },
+
         "Android_6_emulator": {
             # Google Nexus 5X
             "platformName": "ANDROID",
@@ -128,28 +150,6 @@ class DesiredCapabilities(object):
                 "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
             },
             "androidDeviceReadyTimeout": 60  # Android only
-        },
-
-        "Android_6": {
-            "platformName": "ANDROID",
-            "platformVersion": "6.0.1",
-            # "automationName": "Appium",  # probably necessary to enable this and disable platformVersion when switching to webview context, but currently there is only NATIVE_APP context
-            "deviceName": "SM-G930F",
-            "app": os.path.join(PROJECT_ROOT, "oca.apk"),  # path to .apk file
-            "appPackage": "com.noggin.ocalukasl",
-            "appActivity": "com.noggin.ocalukasl.MainActivity",
-            "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
-            "automationName": "uiautomator2",
-            # "appWaitDuration": 20000,
-            "deviceReadyTimeout": 5,
-            # "newCommandTimeout": "60",
-            "clearSystemFiles": True,
-            "chromedriverExecutable": os.path.join(PROJECT_ROOT, "chromedriver"),
-            "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
-            "chromeOptions": {
-                "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
-            },
-            "udid": "ad0816033848eb0443"
         },
 
         "Android_7": {
@@ -208,6 +208,29 @@ class DesiredCapabilities(object):
             # Google Nexus 5X - API 25
             "platformName": "ANDROID",
             "platformVersion": "7.1",
+            "deviceName": "emulator-5554",
+            "app": os.path.join(PROJECT_ROOT, "oca-x86.apk"),  # path to .apk file
+            "appPackage": "com.noggin.ocalukasl",
+            "appActivity": "com.noggin.ocalukasl.MainActivity",
+            "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
+            "automationName": "uiautomator2",
+            # "appWaitDuration": 20000,
+            "deviceReadyTimeout": 5,
+            # "fullReset": True,
+            # "newCommandTimeout": "60",
+            "clearSystemFiles": True,
+            "chromedriverExecutable": os.path.join(PROJECT_ROOT, "chromedriver"),
+            "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
+            "chromeOptions": {
+                "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
+            },
+            "androidDeviceReadyTimeout": 60  # Android only
+        },
+
+        "Android_8_emulator": {
+            # Google Nexus 6 - API 26
+            "platformName": "ANDROID",
+            "platformVersion": "8.0",
             "deviceName": "emulator-5554",
             "app": os.path.join(PROJECT_ROOT, "oca-x86.apk"),  # path to .apk file
             "appPackage": "com.noggin.ocalukasl",
@@ -339,3 +362,9 @@ class DesiredCapabilities(object):
 
         # return DesiredCapabilities.capabilities[ENVIRONMENT_TEST + PLATFORM_VERSION]
         return DesiredCapabilities.capabilities[platform]
+
+    @staticmethod
+    def get_list_of_available_devices():
+
+        return DesiredCapabilities.capabilities.keys()
+

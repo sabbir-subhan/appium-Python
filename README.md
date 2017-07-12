@@ -327,3 +327,4 @@ the command. Original error: Could not install app: 'Command 'ios-deploy --id 4b
 - Error: connect ECONNREFUSED 127.0.0.1:8100   -- reinstall appium - npm uninstall -g appium + npm install -g appium
 - (The application does not have a valid signature.)  -- rebuild and install OCA app through Xcode
 - When running on Android, Appium sometimes can freeze on "Getting connected devices..." ---> restart Appium server
+- error: "failed to tap 'h'"  -- observed on iOS 9 emulator - choose Simulator -> Hardware -> Keyboard -> Toggle Software Keyboard

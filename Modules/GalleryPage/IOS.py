@@ -52,7 +52,10 @@ class IOS(GalleryPage):
 
         sleep(2)
         logging.info("click 'Use' button")
-        use_button = self.driver.find_element(*self.configuration.GalleryScreen.USE_BUTTON)
+        try:
+            use_button = self.driver.find_element(*self.configuration.GalleryScreen.USE_BUTTON)
+        except NoSuchElementException:
+            use_button = self.driver.find_element(*self.configuration.GalleryScreen.CHOOSE_BUTTON)
         self.assertIsNotNone(use_button, "use video button not found")
         use_button.click()
         sleep(2)

@@ -1,16 +1,27 @@
 """ Setup class and methods """
 
+from Conf.desired_capabilities import DesiredCapabilities
 try:
     from configuration import ENVIRONMENT_TEST
 except ImportError:
-    raise ImportError("WRONG PLATFORM NAME !!! - check available platforms in /appium-poc/configuration.py ")
-from Conf.desired_capabilities import DesiredCapabilities
+    raise ImportError("\n\nWRONG PLATFORM NAME !!! --- check available platforms in /appium-poc/configuration.py ---" +
+                      # "\n\n You can use: \n\t Android_4 \n\t Android_4_emulator \n\t Android_5 \n\t Android_5_emulator"
+                      # "\n\t Android_6 \n\t Android_6_emulator \n\t Android_7 \n\t Android_7_emulator"
+                      # "\n\t Android_7.1_emulator \n\t IOS_9_iPad \n\t IOS_9_emulator \n\t IOS_10_iPhone "
+                      # "\n\t IOS_10_iPad \n\t IOS_10_emulator" +
+                      "\n list of available devices: \n\t" +
+                      str([DesiredCapabilities.get_list_of_available_devices()]).replace("[dict_keys([", "")
+                      .replace("])]", "").replace("'", "\n\t").replace(",", ""))
+# from Conf.desired_capabilities import DesiredCapabilities
+# list_of_available_devices = [DesiredCapabilities.get_list_of_available_devices()]
 from configuration import PORT, platform
 from appium import webdriver
 import unittest
 from time import sleep
 import logging
 from Modules.load_class import LoadClass
+# import os
+# import subprocess
 
 # from logging import handlers
 # import sys
@@ -91,37 +102,39 @@ class SetupTestCase(unittest.TestCase):
 
         # logging.info('starting Appium server')
 
-        # subprocess.call(['/Users/lukasl/repos/appium-poc/cli.sh'])  # call shell script that will start appium server in new terminal
+        # call shell script that will start appium server in new terminal
+        # subprocess.call([os.path.join(PROJECT_ROOT, "cli.sh")])
 
         # sleep(45)  # wait for appium server to start
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
-        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        logging.error("platform = " + str(platform))
 
-        # self.configuration = import_module('Conf.locators_' + ENVIRONMENT_TEST)
-
-        if "IOS" and "emulator" in platform:
-            logging.warning("Running test on iOS emulator")
+        # if "IOS" in str(platform):  # opening device Settings won't work on real device
+        if "IOS" and "emulator" in str(platform):
+            logging.warning("Running test on iOS")
             device_settings = LoadClass.load_page('DeviceSettings')
             device_settings.turn_off_auto_correction_in_settings()
         else:
             pass
+
+        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        print("cabs in Setup = " + str(desired_capabilities))
 
         self.driver = webdriver.Remote("http://localhost:" + str(PORT) + "/wd/hub", desired_capabilities)
 
         sleep(15)  # wait for app launching + optional app installation or/and installation/launching WebDriverAgent
 
         if ENVIRONMENT_TEST == "IOS9":
-            logging.warning("global wait = 10 seconds")
-            self.driver.implicitly_wait(10)
+            logging.warning("global wait = 8 seconds")
+            # self.driver.implicitly_wait(10)
+            self.driver.implicitly_wait(8)
         else:
             logging.warning("global wait = 6 seconds")
             self.driver.implicitly_wait(6)  # seconds - how long Appium will wait for conditions, for example try/except
 
-        # self.driver.implicitly_wait(14)  # seconds - how long Appium will wait for conditions, for example try/except
-
-        # from subprocess import call
-        # call(["ios_webkit_debug_proxy", "-c", "db55c238e873230ee454c54a63724397a2981acd:27753"])
+        # this will start ios proxy in the same console as running test
+        # subprocess.call(["ios_webkit_debug_proxy", "-c", "db55c238e873230ee454c54a63724397a2981acd:27753"])
 
 
