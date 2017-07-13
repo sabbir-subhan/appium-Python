@@ -70,9 +70,13 @@ class IOS(GalleryPage):
             self.assertIsNotNone(choose_videos_gallery, "videos gallery not found")
             choose_videos_gallery.click()
         except NoSuchElementException:
+            pass
+        try:
             choose_videos_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_VIDEOS_POPOVER)
             self.assertIsNotNone(choose_videos_gallery, "videos gallery not found")
             choose_videos_gallery.click()
+        except NoSuchElementException:
+            pass
 
     # def choose_videos_gallery(self):
     #

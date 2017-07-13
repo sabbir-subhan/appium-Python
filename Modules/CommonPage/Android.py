@@ -22,8 +22,14 @@ class Android(CommonPage):
             logging.info("push image file to the emulator")
 
             image_file_to_send = os.path.join(PROJECT_ROOT, "sample_image.jpg")
-            # path_on_device2 = "/storage/sdcard0/sample_image.jpg"
-            path_on_device2 = "/storage/self/primary/DCIM/sample_image.jpg"
+            path_on_device1 = "/storage/self/primary/DCIM/sample_image.jpg"
+            with open(file=image_file_to_send, mode='rb') as file2:
+                encoded_file2 = base64.b64encode(file2.read())
+            decoded_file2 = encoded_file2.decode()
+            self.driver.push_file(path_on_device1, decoded_file2)
+            sleep(2)
+            # path for some emulators
+            path_on_device2 = "/storage/sdcard/DCIM/sample_image.jpg"
             with open(file=image_file_to_send, mode='rb') as file2:
                 encoded_file2 = base64.b64encode(file2.read())
             decoded_file2 = encoded_file2.decode()
@@ -39,11 +45,19 @@ class Android(CommonPage):
             logging.info("push video file to the emulator")
 
             video_file_to_send = os.path.join(PROJECT_ROOT, "sample_video.mp4")
-            path_on_device1 = "/storage/self/primary/DCIM/sample_video.mp4"
+            path_on_device1 = "/storage/self/primary/DCIM/sample_video.mp4"  # works for example for emulator Android 6
             with open(file=video_file_to_send, mode='rb') as file1:
                 encoded_file1 = base64.standard_b64encode(file1.read())  # open binary file in read mode
             decoded_file1 = encoded_file1.decode()
             self.driver.push_file(path_on_device1, decoded_file1)
+            sleep(2)
+            # path for some emulators
+            path_on_device2 = "/storage/sdcard/DCIM/sample_video.mp4"
+            # path_on_device2 = "/storage/sdcard/DCIM/Camera/sample_video.mp4"
+            with open(file=video_file_to_send, mode='rb') as file1:
+                encoded_file1 = base64.standard_b64encode(file1.read())  # open binary file in read mode
+            decoded_file1 = encoded_file1.decode()
+            self.driver.push_file(path_on_device2, decoded_file1)
             sleep(2)
 
     @staticmethod
@@ -340,3 +354,7 @@ class Android(CommonPage):
             scrolls = scrolls - 1
         sleep(2)
 
+    def power_button(self):
+
+        logging.info("power button")
+        self.driver.press_keycode(26)

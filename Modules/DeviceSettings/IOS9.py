@@ -6,7 +6,7 @@ from configuration import PORT
 import logging
 from time import sleep
 from selenium.common.exceptions import NoSuchElementException
-# from Conf.desired_capabilities import DesiredCapabilities
+from Conf.desired_capabilities import DesiredCapabilities
 
 
 class IOS9(IOS):
@@ -15,25 +15,14 @@ class IOS9(IOS):
 
         logging.warning("Turn off auto correction in device settings for iOS 9")
 
-        # desired_capabilities = DesiredCapabilities.get_desired_capabilities()
-        #
-        # print("cabs before = " + str(desired_capabilities))
-        #
-        # desired_capabilities.get('app') and desired_capabilities.update({'app': 'settings'})
-        # desired_capabilities.get('bundleId') and desired_capabilities.pop('bundleId', None)
-        #
-        # print("cabs after = " + str(desired_capabilities))
+        desired_capabilities = DesiredCapabilities.get_desired_capabilities()  # create local object
 
-        desired_capabilities = {
-            "platformName": "iOS",
-            "platformVersion": "9.3",
-            "deviceName": "iPhone 5s",
-            "app": "settings",
-            "noReset": True,
-            "autoAcceptAlerts": True,
-            "newCommandTimeout": 60,
-            "launchTimeout": 200000,  # iOS only
-        }
+        # print("capabilities before update = " + str(desired_capabilities))
+
+        desired_capabilities.get('app') and desired_capabilities.update({'app': 'settings'})
+        desired_capabilities.get('bundleId') and desired_capabilities.pop('bundleId', None)
+
+        # print("capabilities after update = " + str(desired_capabilities))
 
         logging.warning("starting additional driver")
 
@@ -63,10 +52,7 @@ class IOS9(IOS):
 
         sleep(1)
 
-        logging.info("quick additional driver session")
-
-        # desired_capabilities.clear()
-        # print("cabs after clear = " + str(desired_capabilities))
+        logging.info("Quit additional driver session")
 
         self.driver.quit()
 

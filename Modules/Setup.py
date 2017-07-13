@@ -109,18 +109,18 @@ class SetupTestCase(unittest.TestCase):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
-        logging.error("platform = " + str(platform))
+        # logging.error("platform = " + str(platform))
 
-        # if "IOS" in str(platform):  # opening device Settings won't work on real device
+        # opening device Settings won't work on real device
         if "IOS" and "emulator" in str(platform):
-            logging.warning("Running test on iOS")
+            logging.info("Running test on iOS emulator")
             device_settings = LoadClass.load_page('DeviceSettings')
             device_settings.turn_off_auto_correction_in_settings()
         else:
             pass
 
-        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
-        print("cabs in Setup = " + str(desired_capabilities))
+        desired_capabilities = DesiredCapabilities.get_desired_capabilities()  # create local object
+        # print("capabilities in Setup = " + str(desired_capabilities))
 
         self.driver = webdriver.Remote("http://localhost:" + str(PORT) + "/wd/hub", desired_capabilities)
 

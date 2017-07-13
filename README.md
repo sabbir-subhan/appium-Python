@@ -328,3 +328,4 @@ the command. Original error: Could not install app: 'Command 'ios-deploy --id 4b
 - (The application does not have a valid signature.)  -- rebuild and install OCA app through Xcode
 - When running on Android, Appium sometimes can freeze on "Getting connected devices..." ---> restart Appium server
 - error: "failed to tap 'h'"  -- observed on iOS 9 emulator - choose Simulator -> Hardware -> Keyboard -> Toggle Software Keyboard
+- error: "A valid provisioning profile for this executable was not found."  --> rebuild OCA app through Xcode

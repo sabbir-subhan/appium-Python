@@ -55,6 +55,20 @@ class IOS(CommonPage):
         action.press(el, start_x, start_y).wait(100).move_to(el, end_x, end_y).release().perform()
         sleep(1)
 
+    def switch_airplane_mode(self):
+
+        logging.info("switch on/off airplane mode")
+        airplane_mode_button = self.driver.find_element(*self.configuration.iOS.AIRPLANE_MODE_BUTTON)
+        self.assertIsNotNone(airplane_mode_button, "airplane mode button not found")
+        airplane_mode_button.click()
+
+    # def turn_off_airplane_mode(self):
+    #
+    #     logging.info("turn off airplane mode")
+    #     airplane_mode_button = self.driver.find_element(*self.configuration.iOS.AIRPLANE_MODE_BUTTON)
+    #     self.assertIsNotNone(airplane_mode_button, "airplane mode button not found")
+    #     airplane_mode_button.click()
+
     def swipe_down_to_show_notifications(self):
 
         logging.info("swipe down to show notifications")
@@ -232,6 +246,11 @@ class IOS(CommonPage):
             search_field.clear()
         except:
             pass
+
+    def power_button(self):
+
+        logging.info("power button")
+        self.driver.press_keycode(26)
 
 
 

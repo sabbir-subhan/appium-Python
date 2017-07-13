@@ -13,8 +13,8 @@ PORT = SettingsPort.port
 logging.warning("platform = " + str(platform))
 logging.warning("port = " + str(PORT))
 
-# platform = "IOS_10_emulator"
-# PORT = "4723"  # port on which Appium server is running
+# platform = "IOS_9_emulator"  # use this for fixed values
+# PORT = "4723"  # port on which Appium server is running  # use this for fixed values
 
 # You can use:
 
