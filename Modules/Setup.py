@@ -14,14 +14,14 @@ except ImportError:
                       .replace("])]", "").replace("'", "\n\t").replace(",", ""))
 # from Conf.desired_capabilities import DesiredCapabilities
 # list_of_available_devices = [DesiredCapabilities.get_list_of_available_devices()]
-from configuration import PORT, platform
+from configuration import PORT, platform, PROJECT_ROOT
 from appium import webdriver
 import unittest
 from time import sleep
 import logging
 from Modules.load_class import LoadClass
-# import os
-# import subprocess
+import os
+import subprocess
 
 # from logging import handlers
 # import sys
@@ -102,29 +102,52 @@ class SetupTestCase(unittest.TestCase):
 
         # logging.info('starting Appium server')
 
-        # call shell script that will start appium server in new terminal
+        # call shell script that will start appium server in new terminal window
         # subprocess.call([os.path.join(PROJECT_ROOT, "cli.sh")])
 
         # sleep(45)  # wait for appium server to start
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
-        # logging.error("platform = " + str(platform))
-
-        # opening device Settings won't work on real device
-        if "IOS" and "emulator" in str(platform):
-            logging.info("Running test on iOS emulator")
-            device_settings = LoadClass.load_page('DeviceSettings')
-            device_settings.turn_off_auto_correction_in_settings()
-        else:
-            pass
+        logging.error("platform = " + str(platform))
 
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()  # create local object
         # print("capabilities in Setup = " + str(desired_capabilities))
 
+        platform_for_test = str(platform)
+        # opening device Settings won't work on real device
+        if "IOS" in ENVIRONMENT_TEST:
+            logging.info("Running test on iOS platform")
+            if "emulator" in platform_for_test:
+                logging.info("Running test on iOS emulator")
+                device_settings = LoadClass.load_page('DeviceSettings')
+                device_settings.turn_off_auto_correction_in_settings()
+            elif "9" in platform_for_test:
+                logging.info('Running test on real device with iOS 9 = "ios webkit debug proxy" is necessary')
+                # device_udid = str(desired_capabilities.get("udid")) + str(":27753")
+                # print(device_udid)
+
+                # call shell script that will start ios webkit proxy in new terminal window
+                subprocess.call([os.path.join(PROJECT_ROOT, "ios_webkit_proxy.sh")])  # bash cli command for iPad
+            else:
+                pass
+        else:
+            pass
+
+        # if ENVIRONMENT_TEST == "IOS9" and "iPad" or "iPhone" in platform_for_test:
+        #     logging.info("Running test on real device with iOS 9 = ios webkit debug proxy is necessary")
+        #     # device_udid = str(desired_capabilities.get("udid")) + str(":27753")
+        #     # print(device_udid)
+        #
+        #     # call shell script that will start ios webkit proxy in new terminal window
+        #     subprocess.call([os.path.join(PROJECT_ROOT, "ios_webkit_proxy.sh")])  # bash cli command for iPad
+        # else:
+        #     pass
+
         self.driver = webdriver.Remote("http://localhost:" + str(PORT) + "/wd/hub", desired_capabilities)
 
-        sleep(15)  # wait for app launching + optional app installation or/and installation/launching WebDriverAgent
+        # sleep(15)  # wait for app launching + optional app installation or/and installation/launching WebDriverAgent
+        sleep(10)  # wait for app launching + optional app installation or/and installation/launching WebDriverAgent
 
         if ENVIRONMENT_TEST == "IOS9":
             logging.warning("global wait = 8 seconds")
@@ -134,7 +157,5 @@ class SetupTestCase(unittest.TestCase):
             logging.warning("global wait = 6 seconds")
             self.driver.implicitly_wait(6)  # seconds - how long Appium will wait for conditions, for example try/except
 
-        # this will start ios proxy in the same console as running test
-        # subprocess.call(["ios_webkit_debug_proxy", "-c", "db55c238e873230ee454c54a63724397a2981acd:27753"])
 
 

@@ -7,6 +7,7 @@ import logging
 from time import sleep
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
+from appium.webdriver.common.touch_action import TouchAction
 
 
 class TasksPage(BasePage):
@@ -105,7 +106,13 @@ class TasksPage(BasePage):
         logging.info("Choose first resource assignment on the list")
         click_first_resource_assignment_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.FIRST_RESOURCE_ASSIGNMENT_ON_THE_LIST)  # first - child
         self.assertIsNotNone(click_first_resource_assignment_on_the_list, "Resource assignment not found")
-        click_first_resource_assignment_on_the_list.click()
+        try:
+            click_first_resource_assignment_on_the_list.click()
+        except WebDriverException:
+            pass
+            # self.switch_context_to_native()
+            # action = TouchAction(self.driver)
+            # action.tap(click_first_resource_assignment_on_the_list, count=1).perform()
 
         self.switch_context_to_native()
 

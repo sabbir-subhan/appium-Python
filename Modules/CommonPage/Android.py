@@ -11,6 +11,7 @@ from Conf.desired_capabilities import DesiredCapabilities
 import base64
 from configuration import PROJECT_ROOT, platform
 import os
+import subprocess
 
 
 class Android(CommonPage):
@@ -27,14 +28,21 @@ class Android(CommonPage):
                 encoded_file2 = base64.b64encode(file2.read())
             decoded_file2 = encoded_file2.decode()
             self.driver.push_file(path_on_device1, decoded_file2)
-            sleep(2)
+            sleep(1)
             # path for some emulators
             path_on_device2 = "/storage/sdcard/DCIM/sample_image.jpg"
             with open(file=image_file_to_send, mode='rb') as file2:
                 encoded_file2 = base64.b64encode(file2.read())
             decoded_file2 = encoded_file2.decode()
             self.driver.push_file(path_on_device2, decoded_file2)
-            sleep(2)
+            sleep(1)
+
+            desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+            device_name = desired_capabilities.get('deviceName')
+            # print(device_name)
+            subprocess.call(["adb", "-s", device_name, "shell", "am", "broadcast", "-a",
+                             "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])
+            sleep(1)
         else:
             pass
 
@@ -50,7 +58,7 @@ class Android(CommonPage):
                 encoded_file1 = base64.standard_b64encode(file1.read())  # open binary file in read mode
             decoded_file1 = encoded_file1.decode()
             self.driver.push_file(path_on_device1, decoded_file1)
-            sleep(2)
+            sleep(1)
             # path for some emulators
             path_on_device2 = "/storage/sdcard/DCIM/sample_video.mp4"
             # path_on_device2 = "/storage/sdcard/DCIM/Camera/sample_video.mp4"
@@ -58,7 +66,16 @@ class Android(CommonPage):
                 encoded_file1 = base64.standard_b64encode(file1.read())  # open binary file in read mode
             decoded_file1 = encoded_file1.decode()
             self.driver.push_file(path_on_device2, decoded_file1)
-            sleep(2)
+            sleep(1)
+
+            desired_capabilities = DesiredCapabilities.get_desired_capabilities()  # create local object
+            device_name = desired_capabilities.get('deviceName')
+            # print(device_name)
+            subprocess.call(["adb", "-s", device_name, "shell", "am", "broadcast", "-a",
+                             "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])
+            sleep(1)
+        else:
+            pass
 
     @staticmethod
     def swipe_up_to_show_control_center():
