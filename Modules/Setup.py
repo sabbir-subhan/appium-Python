@@ -109,14 +109,14 @@ class SetupTestCase(unittest.TestCase):
 
         logging.info("WebDriver request initiated. Waiting for response, this may take a while.")
 
-        logging.error("platform = " + str(platform))
+        # logging.error("platform = " + str(platform))
 
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()  # create local object
         # print("capabilities in Setup = " + str(desired_capabilities))
 
         platform_for_test = str(platform)
         # opening device Settings won't work on real device
-        if "IOS" in ENVIRONMENT_TEST:
+        if "IOS9" in ENVIRONMENT_TEST:
             logging.info("Running test on iOS platform")
             if "emulator" in platform_for_test:
                 logging.info("Running test on iOS emulator")

@@ -62,6 +62,14 @@ class IOS(CommonPage):
         self.assertIsNotNone(airplane_mode_button, "airplane mode button not found")
         airplane_mode_button.click()
 
+    def turn_on_all_network(self):  # method only for Android
+
+        pass
+
+    def turn_on_flight_mode(self):  # method only for Android
+
+        pass
+
     # def turn_off_airplane_mode(self):
     #
     #     logging.info("turn off airplane mode")

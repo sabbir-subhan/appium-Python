@@ -9,6 +9,9 @@ class iOS:
     RETURN_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Return"]')
     IOS_OK = (MobileBy.ACCESSIBILITY_ID, 'OK')
     IOS_ALLOW = (MobileBy.ACCESSIBILITY_ID, "Allow")
+    AIRPLANE_MODE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Airplane Mode')
+    # AIRPLANE_MODE_BUTTON = (MobileBy.XPATH, '//UIAElement[@name="Airplane Mode"][@value="0"]')
+    WIFI_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Wi-FI')
 
 
 class CommonScreen:

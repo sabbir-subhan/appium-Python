@@ -509,6 +509,7 @@ class ContactsPage(BasePage):
         logging.info("check if edit button is visible")
         try:
             edit_button = self.driver.find_element(*self.configuration.EventDetailsScreen.EDIT_BUTTON)
+            sleep(1)
             if edit_button.is_displayed():
                 self.fail("Edit button is visible but it should not, because of write access level set to"
                           " 'administrators only'")
@@ -645,9 +646,12 @@ class ContactsPage(BasePage):
         self.switch_context_to_webview()
 
         logging.info("choose 'administrators only' from option list")
+        sleep(1)
         option_list_administrators_only = self.driver.find_element(*self.configuration.ContactsScreen.OPTION_LIST_ADMINISTRATORS_ONLY)
         self.assertIsNotNone(option_list_administrators_only, "administrators only access level not found")
+        sleep(1)
         option_list_administrators_only.click()
+        sleep(1)
 
         self.switch_context_to_native()
 

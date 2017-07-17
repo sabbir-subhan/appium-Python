@@ -308,7 +308,7 @@ class TasksPage(BasePage):
         expand_filters.click()
 
         self.switch_context_to_native()
-
+        sleep(1)
         choose_action_required_tasks = self.driver.find_element(*self.configuration.TasksScreen.ACTION_REQUIRED_TASKS)
         self.assertIsNotNone(choose_action_required_tasks, "action required tasks filter not found")
         choose_action_required_tasks.click()

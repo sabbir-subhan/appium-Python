@@ -206,7 +206,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		IgdEetC1l9pWahwxIzn2ELTms7U=
+		yLEO9QfvNRRq2jhEndohF7tgICM=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -214,7 +214,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		tLUr76YR+vPA5lrMwuypx9KhxMg=
+		d8zN94t0eCGTM1AMFA1jnDn61LQ=
 		</data>
 		<key>CDVNotification.bundle/beep.wav</key>
 		<data>
@@ -222,7 +222,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		8Q97RaoC7DmmoKyGzqhOOQm0jh0=
+		nutRS8aUG1rz7MUtnWHhzztJ0l0=
 		</data>
 		<key>LaunchImage-568h@2x.png</key>
 		<data>
@@ -282,7 +282,7 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		/NCXBBf3hwaVFyux/q9rj8GoM/k=
+		9UKG+nuaURNzsBI1S9QKT4XK1i0=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -290,11 +290,11 @@
 		</data>
 		<key>config.xml</key>
 		<data>
-		8CyrjEl3gp5ZqdQBSMdWaNSJp5I=
+		KYB1phKycAlV8U93HARwM6StEso=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
-		uToafq5TM1kcCXg4J2huL8Kd+SA=
+		7qPYPHr63mzxNMIGcYdliMXFtQY=
 		</data>
 		<key>www/arcgis/builddate.txt</key>
 		<data>
@@ -12646,7 +12646,7 @@
 		</data>
 		<key>www/cordova_plugins.js</key>
 		<data>
-		IeUBjGKmdmWWNwYBmykIUvQ6zTQ=
+		JpydcMCCOgpq0VBTBIFWs5nYU74=
 		</data>
 		<key>www/css/images/ajax-loader.gif</key>
 		<data>
@@ -14108,14 +14108,6 @@
 		<data>
 		BGPJLreG2O+OYfIg0g0vbA3c7FM=
 		</data>
-		<key>www/plugins/cordova-plugin-console/www/console-via-logger.js</key>
-		<data>
-		NyUkntRl9vFIiOC3onmXNsxpedU=
-		</data>
-		<key>www/plugins/cordova-plugin-console/www/logger.js</key>
-		<data>
-		tmAfmQQR8NZd7y+bTWuju4/TbY0=
-		</data>
 		<key>www/plugins/cordova-plugin-contacts/www/Contact.js</key>
 		<data>
 		l0qGg9gHRMrwBaG2Cjk/kiTOEIA=
@@ -14854,11 +14846,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			IgdEetC1l9pWahwxIzn2ELTms7U=
+			yLEO9QfvNRRq2jhEndohF7tgICM=
 			</data>
 			<key>hash2</key>
 			<data>
-			xJqaWes/fWHY6Bx7xMxaQPPe8nNiwFmXedrtMRQ+aM4=
+			ab3X04dHOhR/iJxCwL5KqnDHvQN/TGPN3jw//NOKRyQ=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
@@ -14876,11 +14868,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tLUr76YR+vPA5lrMwuypx9KhxMg=
+			d8zN94t0eCGTM1AMFA1jnDn61LQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			dvy4K1+SRyfsRXM4TrhiPdetEx3bAUsETGFDgqcJzP8=
+			JD2sjEIyBRGI/vOfs5nQNXfSZufAOJpDSCh+Mjqk6EA=
 			</data>
 		</dict>
 		<key>CDVNotification.bundle/beep.wav</key>
@@ -15052,33 +15044,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			/NCXBBf3hwaVFyux/q9rj8GoM/k=
+			9UKG+nuaURNzsBI1S9QKT4XK1i0=
 			</data>
 			<key>hash2</key>
 			<data>
-			GpJVsahY5vll2tmvSpd/KDWc0eN0TZcdvGHNFxVu0gM=
+			MZ3yszvN5WN7MLeNtSdJAIp2LjYfzggQvUn0CiGolCU=
 			</data>
 		</dict>
 		<key>config.xml</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			8CyrjEl3gp5ZqdQBSMdWaNSJp5I=
+			KYB1phKycAlV8U93HARwM6StEso=
 			</data>
 			<key>hash2</key>
 			<data>
-			q638+slfN/+CJyLirhWVA0OyLUnP4tKzcANi78oCKTw=
+			ztUe9mdN8FgOfR7VVDU7s+GYeqP9iC1nKsYgXNWEtJk=
 			</data>
 		</dict>
 		<key>embedded.mobileprovision</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			uToafq5TM1kcCXg4J2huL8Kd+SA=
+			7qPYPHr63mzxNMIGcYdliMXFtQY=
 			</data>
 			<key>hash2</key>
 			<data>
-			AR94S0iljLPoPZDNX/5rrz4ZWpVAaY2XAAlkCSofCZc=
+			0/apG75NVmxOM3EpHwkuyyFA5JI7Z12agKIEOieKE9g=
 			</data>
 		</dict>
 		<key>www/arcgis/builddate.txt</key>
@@ -49042,11 +49034,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			IeUBjGKmdmWWNwYBmykIUvQ6zTQ=
+			JpydcMCCOgpq0VBTBIFWs5nYU74=
 			</data>
 			<key>hash2</key>
 			<data>
-			Glo5Et8UjzN12qglrntWzjjjjqZcYM9MPD1nY75CT1w=
+			w95X85EN7LtF9S0//AZ1HEgk5MMvnDRvtObWFsZm+Bo=
 			</data>
 		</dict>
 		<key>www/css/images/ajax-loader.gif</key>
@@ -53062,28 +53054,6 @@
 			<key>hash2</key>
 			<data>
 			+M+Og3e2du+I94HT47ZQ/sNHjeVhel4YuJl9Dy/bejo=
-			</data>
-		</dict>
-		<key>www/plugins/cordova-plugin-console/www/console-via-logger.js</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			NyUkntRl9vFIiOC3onmXNsxpedU=
-			</data>
-			<key>hash2</key>
-			<data>
-			cCcOHB0gfKqE6bS4NoAZMvlzcHaWDemJfOWOOw+cI/8=
-			</data>
-		</dict>
-		<key>www/plugins/cordova-plugin-console/www/logger.js</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			tmAfmQQR8NZd7y+bTWuju4/TbY0=
-			</data>
-			<key>hash2</key>
-			<data>
-			ESzk4H7ypO9esEfCCJl4Sw+BH3M31e0OkRdbsNe0Wcc=
 			</data>
 		</dict>
 		<key>www/plugins/cordova-plugin-contacts/www/Contact.js</key>

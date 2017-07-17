@@ -64,12 +64,22 @@ class TestLoadTypeDataAfterLogin(SetupTestCase):
         main_page.check_presence_of_events_button()
 
         common_page.swipe_up_to_show_control_center()
-        common_page.switch_airplane_mode()
+        common_page.switch_airplane_mode()  # method for iOS
+        common_page.turn_on_flight_mode()  # method for Android
         common_page.swipe_down_to_hide_control_center()
 
+        main_page.scroll_down_to_offline_sync_button()
+        main_page.open_OFFLINE_SYNC()
+        common_page.take_screenshot('offline_sync_in_offline_mode')
+
         common_page.swipe_up_to_show_control_center()
-        common_page.switch_airplane_mode()
+        common_page.switch_airplane_mode()  # method for iOS
+        common_page.turn_on_all_network()  # method for Android
         common_page.swipe_down_to_hide_control_center()
+
+        main_page.scroll_down_to_offline_sync_button()
+        main_page.open_OFFLINE_SYNC()
+        common_page.take_screenshot('offline_sync_in_online_mode')
 
 
 if __name__ == '__main__':

@@ -421,7 +421,8 @@ class TasksScreen:
     ALL_TASKS = (MobileBy.ACCESSIBILITY_ID, 'All Tasks')
     COMPLETED_TASKS = (MobileBy.ACCESSIBILITY_ID, 'Completed Tasks')
     INCOMPLETE_TASKS = (MobileBy.XPATH, 'Incomplete Tasks')
-    ACTION_REQUIRED_TASKS = (MobileBy.XPATH, 'Action Required Tasks')
+    # ACTION_REQUIRED_TASKS = (MobileBy.XPATH, 'Action Required Tasks')
+    ACTION_REQUIRED_TASKS = (MobileBy.ACCESSIBILITY_ID, 'Action Required Tasks')
 
 
 class ReportsScreen:

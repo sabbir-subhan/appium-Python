@@ -105,19 +105,23 @@ class Android(CommonPage):
         self.driver.swipe(start_x=start_x, start_y=start_y, end_x=start_x, end_y=10, duration=1000)
         sleep(1)
 
+    def switch_airplane_mode(self):  # method only for iOS
+
+        pass
+
+    # def turn_on_flight_mode(self):  # works only on Android
+    #
+    #     logging.info("turn flight mode on or turn off all network connections")
+    #
+    #     desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+    #     platform_version = desired_capabilities.get('platformVersion')
+    #     if platform_version >= "7":
+    #         logging.error("Appium is running on Android version >= 7 (" + str(platform) + ") --turning on flight mode is not working for that version")
+    #     else:
+    #         logging.info("Appium is running on real device (" + str(platform) + ") = turn on flight mode")
+    #         self.driver.set_network_connection(1)  # this is working for Android 6 and older
+
     def turn_on_flight_mode(self):  # works only on Android
-
-        logging.info("turn flight mode on or turn off all network connections")
-
-        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
-        platform_version = desired_capabilities.get('platformVersion')
-        if platform_version >= "7":
-            logging.error("Appium is running on Android version >= 7 (" + str(platform) + ") --turning on flight mode is not working for that version")
-        else:
-            logging.info("Appium is running on real device (" + str(platform) + ") = turn on flight mode")
-            self.driver.set_network_connection(1)  # this is working for Android 6 and older
-
-    def flight_mode_on(self):  # works only on Android
 
         logging.info("turn flight mode on")
         self.driver.set_network_connection(1)
