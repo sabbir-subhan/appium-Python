@@ -17,37 +17,66 @@ import subprocess
 class Android(CommonPage):
 
     def push_sample_image_file(self):  # push sample photo file for executing TCs on emulators
-        # - works only for rooted android devices and emulators but gallery need some unspecific time to update ?
+        # - works only for rooted android devices and emulators
 
-        if "emulator" in platform:
-            logging.info("push image file to the emulator")
+        # if "emulator" in platform:
+        #     logging.info("push image file to the emulator")
+        #
+        #     image_file_to_send = os.path.join(PROJECT_ROOT, "sample_image.jpg")
+        #     path_on_device1 = "/storage/self/primary/DCIM/sample_image.jpg"
+        #     with open(file=image_file_to_send, mode='rb') as file2:
+        #         encoded_file2 = base64.b64encode(file2.read())
+        #     decoded_file2 = encoded_file2.decode()
+        #     self.driver.push_file(path_on_device1, decoded_file2)
+        #     sleep(1)
+        #     # path for some emulators
+        #     path_on_device2 = "/storage/sdcard/DCIM/sample_image.jpg"
+        #     with open(file=image_file_to_send, mode='rb') as file2:
+        #         encoded_file2 = base64.b64encode(file2.read())
+        #     decoded_file2 = encoded_file2.decode()
+        #     self.driver.push_file(path_on_device2, decoded_file2)
+        #     sleep(1)
+        #
+        #     desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        #     device_name = desired_capabilities.get('deviceName')
+        #     # print(device_name)
+        #     subprocess.call(["adb", "-s", device_name, "shell", "am", "broadcast", "-a",
+        #                      "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])
+        #     sleep(1)
+        # else:
+        #     pass
 
-            image_file_to_send = os.path.join(PROJECT_ROOT, "sample_image.jpg")
-            path_on_device1 = "/storage/self/primary/DCIM/sample_image.jpg"
-            with open(file=image_file_to_send, mode='rb') as file2:
-                encoded_file2 = base64.b64encode(file2.read())
-            decoded_file2 = encoded_file2.decode()
-            self.driver.push_file(path_on_device1, decoded_file2)
-            sleep(1)
-            # path for some emulators
-            path_on_device2 = "/storage/sdcard/DCIM/sample_image.jpg"
-            with open(file=image_file_to_send, mode='rb') as file2:
-                encoded_file2 = base64.b64encode(file2.read())
-            decoded_file2 = encoded_file2.decode()
-            self.driver.push_file(path_on_device2, decoded_file2)
-            sleep(1)
+        logging.info("push image file to the emulator")
 
-            desired_capabilities = DesiredCapabilities.get_desired_capabilities()
-            device_name = desired_capabilities.get('deviceName')
-            # print(device_name)
-            subprocess.call(["adb", "-s", device_name, "shell", "am", "broadcast", "-a",
-                             "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])
-            sleep(1)
-        else:
-            pass
+        image_file_to_send = os.path.join(PROJECT_ROOT, "sample_image.jpg")
+        path_on_device1 = "/storage/self/primary/DCIM/sample_image.jpg"
+        with open(file=image_file_to_send, mode='rb') as file2:
+            encoded_file2 = base64.b64encode(file2.read())
+        decoded_file2 = encoded_file2.decode()
+        self.driver.push_file(path_on_device1, decoded_file2)
+        sleep(1)
+        # path for some emulators
+        path_on_device2 = "/storage/sdcard/DCIM/sample_image.jpg"
+        with open(file=image_file_to_send, mode='rb') as file2:
+            encoded_file2 = base64.b64encode(file2.read())
+        decoded_file2 = encoded_file2.decode()
+        self.driver.push_file(path_on_device2, decoded_file2)
+        sleep(1)
+
+        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        device_name = desired_capabilities.get('deviceName')
+        # print(device_name)
+        subprocess.call(["adb", "-s", device_name, "shell", "am", "broadcast", "-a",
+                         "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])  # works on emulators, on rd throws: "device not found" because for rd -s should point to udid
+
+        device_udid = desired_capabilities.get('udid')  # for tests - throws permission denial on not rooted device = Android 7
+        subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
+                         "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])  # for test
+
+        sleep(1)
 
     def push_sample_video_file(self):  # push sample video file for executing TCs on emulators
-        # - works only for rooted android devices and emulators but gallery need some unspecific time to update ?
+        # - works only for rooted android devices and emulators
 
         if "emulator" in platform:
             logging.info("push video file to the emulator")
@@ -109,22 +138,37 @@ class Android(CommonPage):
 
         pass
 
-    # def turn_on_flight_mode(self):  # works only on Android
-    #
-    #     logging.info("turn flight mode on or turn off all network connections")
-    #
-    #     desired_capabilities = DesiredCapabilities.get_desired_capabilities()
-    #     platform_version = desired_capabilities.get('platformVersion')
-    #     if platform_version >= "7":
-    #         logging.error("Appium is running on Android version >= 7 (" + str(platform) + ") --turning on flight mode is not working for that version")
-    #     else:
-    #         logging.info("Appium is running on real device (" + str(platform) + ") = turn on flight mode")
-    #         self.driver.set_network_connection(1)  # this is working for Android 6 and older
+    def switch_wifi(self):
+
+        logging.info("switch wi-fi on/off")
+        switch_wifi = self.driver.find_element(*self.configuration.Android.SWITCH_WIFI_ANDROID_7)
+        self.assertIsNotNone(switch_wifi, "wi-fi button not found")
+        switch_wifi.click()
 
     def turn_on_flight_mode(self):  # works only on Android
 
-        logging.info("turn flight mode on")
-        self.driver.set_network_connection(1)
+        logging.info("turn flight mode on or turn off wi-fi")
+
+        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        platform_version = desired_capabilities.get('platformVersion')
+        if platform_version >= "7":
+            logging.warning("Appium is running on Android version >= 7"
+                            " (" + str(platform) + ") -- swipe to show notifications and switch wi-fi")
+            common_page = LoadClass.load_page('CommonPage')
+            common_page.setDriver(self.driver)
+            common_page.swipe_down_to_show_notifications()
+            common_page.swipe_down_to_show_notifications()
+            common_page.switch_wifi()
+            common_page.swipe_up_to_hide_notifications()
+        else:
+            logging.info("Appium is running on real device (" + str(platform) + ") = turn on flight mode")
+            self.driver.set_network_connection(1)  # this is working for Android 6 and older
+
+    # def turn_on_flight_mode(self):  # works only on Android
+    #
+    #     logging.info("turn flight mode on")
+    #     self.driver.set_network_connection(1)  # not working for Android 7
+    #     # self.driver.set_network_connection(2)  # switch wi-fi - not working for Android 7
 
     def turn_off_all_network(self):  # works only on Android
 
@@ -133,8 +177,22 @@ class Android(CommonPage):
 
     def turn_on_all_network(self):  # works only on Android
 
-        logging.info("turn on all network")
-        self.driver.set_network_connection(6)
+        logging.info("turn flight mode off or turn on wi-fi")
+
+        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        platform_version = desired_capabilities.get('platformVersion')
+        if platform_version >= "7":
+            logging.warning("Appium is running on Android version >= 7"
+                            " (" + str(platform) + ") -- swipe to show notifications and switch wi-fi")
+            common_page = LoadClass.load_page('CommonPage')
+            common_page.setDriver(self.driver)
+            common_page.swipe_down_to_show_notifications()
+            common_page.swipe_down_to_show_notifications()
+            common_page.switch_wifi()
+            common_page.swipe_up_to_hide_notifications()
+        else:
+            logging.info("turn on all network")
+            self.driver.set_network_connection(6)
 
     def clear_Search_field(self):
 
@@ -318,7 +376,7 @@ class Android(CommonPage):
         start_x = window_size["width"] * 0.25
         start_y = window_size["height"] * 0.15
         end_y = window_size["height"] * 0.8
-        logging.info("scroll down only one screen")
+        logging.info("scroll up only one screen")
         sleep(2)
         self.driver.swipe(start_x, start_y, start_x, end_y, 3000)  # each swipe is scrolling one screen
         sleep(1)

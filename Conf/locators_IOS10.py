@@ -182,6 +182,7 @@ class EventsScreen:
                                                   '[contains(., "Clear primary event")]]')
     NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.XPATH, '//XCUIElementTypeStaticText['
                                                           '@name="Primary event cleared"]')
+    NOTIFICATION_ABOUT_OFFLINE_MODE = (MobileBy.ACCESSIBILITY_ID, 'Offline mode')
 
 
 class TypesOfEventsScreen:

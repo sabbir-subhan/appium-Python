@@ -15,6 +15,8 @@ class Android:
     ANDROID_SET_BUTTON = (MobileBy.ID, 'android:id/button1')
     ANDROID_CANCEL_BUTTON = (MobileBy.ID, 'android:id/button2')
     ANDROID_CLEAR_BUTTON = (MobileBy.ID, 'android:id/button3')
+    # TURN_WIFI_ON = (MobileBy.XPATH, '//android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.support.v4.view.ViewPager[1]/android.view.ViewGroup[1]/android.widget.LinearLayout[1]/android.view.ViewGroup[1]')
+    SWITCH_WIFI_ANDROID_7 = (MobileBy.XPATH, '//android.widget.LinearLayout[1]/android.support.v4.view.ViewPager[1]/android.view.ViewGroup[1]/android.widget.LinearLayout[1]/android.view.ViewGroup[1]')
 
 
 class CommonScreen:
@@ -198,6 +200,8 @@ class EventsScreen:
     GO_BACK_TO_MAIN_MENU_ARROW_BUTTON = (MobileBy.XPATH, "//android.webkit.WebView[@index='0']"
                                                          "//android.view.View[@index='0']"
                                                          "//android.view.View[@index='0']")
+    NOTIFICATION_ABOUT_OFFLINE_MODE = (MobileBy.XPATH, '//android.view.View[@content-desc="Offline mode"]')
+    #NOTIFICATION_ABOUT_OFFLINE_MODE = (MobileBy.ACCESSIBILITY_ID, 'Offline mode')
 
 
 class TypesOfEventsScreen:

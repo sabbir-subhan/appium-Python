@@ -156,6 +156,8 @@ class EventsScreen:
     # CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.CSS_SELECTOR, 'li.primary.eme.clear.ui-first-child>a')
     # NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.CSS_SELECTOR, '')
     VIEW_ON_MAP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeView>div.ui-content>ul.ui-listview>li>a[href="#mapPage?geometry=true"]')  # button inside event details
+    ADD_MEDIA_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeNew>div.ui-content>ul.edit-view>li.ui-li-static.ui-body-inherit>div.addmedia.edit-mode>a')
+    OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#emeNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
 
 
 class TypesOfEventsScreen:
@@ -380,6 +382,7 @@ class ContactsScreen:
     CLEAR_FIRST_NAME_FOR_EDITED_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactEdit>div.ui-content>ul.ui-listview>li.ui-field-contain:nth-child(2)>div.ui-input-text>a')
     GROUP_SEND_COMMUNICATION = (MobileBy.CSS_SELECTOR, 'div#contactgroupView>div#contactgroupViewMoreMenu-popup>div#contactgroupViewMoreMenu>ul.ui-listview>li.send>a[href="#messagePage"]')
     CANCEL_NEW_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupNew>div.ui-footer>div.ui-navbar>ul.ui-grid-a>li.ui-block-b>a[href="#cancel"]')
+    CHOOSE_FIRST_CONTACTS_GROUP_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul.groups>li:first-child')
 
 
 class TasksScreen:

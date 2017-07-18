@@ -207,7 +207,10 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 
 - locators for elements are partially based on visible texts, so if in OCA web page, for example event type name, will be changed, tests will stop working
 
-- create users accounts with correct settings (see credentials.py)
+- create users accounts with correct settings (see credentials.py) and check if You can login (accept Terms and Conditions for new user)
+
+- disable Auto-Correction on iOS devices
+
 
 ### for TC: Managing Events
 - 3 types of events (Incident, event_for_chooser_fields, event_for_on_load/save_test)
@@ -329,3 +332,4 @@ the command. Original error: Could not install app: 'Command 'ios-deploy --id 4b
 - When running on Android, Appium sometimes can freeze on "Getting connected devices..." ---> restart Appium server
 - error: "failed to tap 'h'"  -- observed on iOS 9 emulator - choose Simulator -> Hardware -> Keyboard -> Toggle Software Keyboard
 - error: "A valid provisioning profile for this executable was not found."  --> rebuild OCA app through Xcode
+- error: "Original error: ChromeDriver crashed during startup"  --> You started two parallel tests on Android devices and chromedriver just crashed

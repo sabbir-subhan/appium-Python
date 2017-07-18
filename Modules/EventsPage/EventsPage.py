@@ -5,6 +5,7 @@ from time import sleep
 import logging
 from selenium.common.exceptions import *
 from Modules.load_class import LoadClass
+from configuration import platform
 
 
 class EventsPage(BasePage):
@@ -571,12 +572,10 @@ class EventsPage(BasePage):
         try:
             create_mapping_data_button = self.driver.find_element(*self.configuration.EventEditScreen.CREATE_MAPPING_DATA_NEW)
             self.assertIsNotNone(create_mapping_data_button, "Button for creating map data is not present")
-            logging.info("test1")
             create_mapping_data_button.click()
         except ElementNotVisibleException:
             create_mapping_data_button = self.driver.find_element(*self.configuration.EventEditScreen.CREATE_MAPPING_DATA_EDIT)
             self.assertIsNotNone(create_mapping_data_button, "Button for creating map data is not present")
-            logging.info("test2")
             create_mapping_data_button.click()
 
         self.switch_context_to_native()
@@ -839,3 +838,60 @@ class EventsPage(BasePage):
         view_on_map_button.click()
 
         self.switch_context_to_native()
+
+    def click_add_media(self):
+
+        self.switch_context_to_webview()
+
+        sleep(1)
+        logging.info("click add media")
+
+        click_add_media = self.driver.find_element(*self.configuration.EventsScreen.ADD_MEDIA_BUTTON)
+        self.assertIsNotNone(click_add_media, "add media button not found")
+        click_add_media.click()
+        sleep(1)
+
+        self.switch_context_to_native()
+
+    def check_notification_about_offline_mode(self):
+
+        logging.info("check notification about offline mode")
+        sleep(1)
+        try:
+            notification_about_offline_mode = self.driver.find_element(*self.configuration.EventsScreen.NOTIFICATION_ABOUT_OFFLINE_MODE)
+            if notification_about_offline_mode.is_displayed():
+                self.assertIsNotNone(notification_about_offline_mode, "notification about offline mode not found")
+            else:
+                self.fail("notification about offline mode not found")
+        except:
+            logging.warning("notification about offline mode not found - appium did not switch to airplane mode")
+
+    def click_back_arrow_if_running_on_emulators(self):
+
+        logging.info("click back arrow if running on emulator")
+
+        logging.info("Appium is running on: " + str(platform))
+
+        if "emulator" in str(platform):
+            logging.info("Appium is running on emulator = click back arrow")
+            common_page = LoadClass.load_page('CommonPage')
+            common_page.setDriver(self.driver)
+            common_page.back_arrow()
+        else:
+            pass
+
+    def ok_button_on_offline_notification_popup(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Ok button on offline notification popup")
+        try:
+            ok_button = self.driver.find_element(*self.configuration.EventsScreen.OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP)
+            self.assertIsNotNone(ok_button, "ok button not found")
+            ok_button.click()
+        except NoSuchElementException:
+            pass
+        sleep(1)
+
+        self.switch_context_to_native()
+

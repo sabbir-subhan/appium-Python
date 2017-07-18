@@ -52,6 +52,17 @@ class TasksPage(BasePage):
         self.assertIsNotNone(choose_contacts, "Contacts option list not found")
         choose_contacts.click()
 
+    def choose_first_contacts_group_on_the_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("Choose first contact group on the list")
+        choose_first_contacts_group_on_the_list = self.driver.find_element(*self.configuration.ContactsScreen.CHOOSE_FIRST_CONTACTS_GROUP_ON_THE_LIST)
+        self.assertIsNotNone(choose_first_contacts_group_on_the_list, "First contacts group on the option list not found")
+        choose_first_contacts_group_on_the_list.click()
+
+        self.switch_context_to_native()
+
     def add_resource_structure_nodes(self):
 
         logging.info("Add Resource Structure Nodes")

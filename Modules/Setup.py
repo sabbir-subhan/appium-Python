@@ -155,7 +155,7 @@ class SetupTestCase(unittest.TestCase):
             self.driver.implicitly_wait(8)
         else:
             logging.warning("global wait = 6 seconds")
-            self.driver.implicitly_wait(6)  # seconds - how long Appium will wait for conditions, for example try/except
+            self.driver.implicitly_wait(6)  # seconds - how long Appium will wait, for example try/except
 
 
 

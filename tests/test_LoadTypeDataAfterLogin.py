@@ -24,6 +24,7 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
+from time import sleep
 
 
 class TestLoadTypeDataAfterLogin(SetupTestCase):
@@ -45,6 +46,12 @@ class TestLoadTypeDataAfterLogin(SetupTestCase):
         common_page.setDriver(self.driver)
         welcome_page = LoadClass.load_page('WelcomePage')
         welcome_page.setDriver(self.driver)
+
+        # common_page.swipe_down_to_show_notifications()  # for test
+        # common_page.swipe_down_to_show_notifications()  # for test
+        # common_page.turn_on_flight_mode()  # for test
+        # common_page.swipe_up_to_hide_notifications()  # for test
+
         welcome_page.click_login_button()
         login_page = LoadClass.load_page('LoginPage')
         login_page.setDriver(self.driver)
@@ -63,23 +70,86 @@ class TestLoadTypeDataAfterLogin(SetupTestCase):
         main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
 
+        main_page.scroll_down_to_offline_sync_button()
+        main_page.open_OFFLINE_SYNC()
+        common_page.take_screenshot('Offline_sync_in_online_mode')
+        common_page.hamburger_button()
+        main_page.check_presence_of_inbox_button()
+
         common_page.swipe_up_to_show_control_center()
         common_page.switch_airplane_mode()  # method for iOS
         common_page.turn_on_flight_mode()  # method for Android
         common_page.swipe_down_to_hide_control_center()
 
+        main_page.scroll_up_to_events_button()
+        main_page.open_EVENTS()
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.click_more_button_in_events_list()
+        events_page.click_New_event_button()
+        events_page.choose_Incident_type_of_event()
+        events_page.fill_Name_input_field("Event in offline mode")
+        events_page.click_severity_lvl_picker()
+        events_page.choose_severity_level_1()
+        events_page.scroll_down_to_save_button()
+
+        events_page.click_add_media()
+        select_media_page = LoadClass.load_page('SelectMediaPage')
+        select_media_page.setDriver(self.driver)
+        common_page.push_sample_image_file()
+        select_media_page.click_photo_gallery()
+        common_page.alert_popup_allow()
+        gallery_page = LoadClass.load_page('GalleryPage')
+        gallery_page.setDriver(self.driver)
+        gallery_page.choose_element_1()
+        common_page.alert_popup_allow()
+        events_page.scroll_down_to_save_button()
+
+        events_page.click_add_media()
+        common_page.push_sample_video_file()
+        select_media_page.click_video_gallery()
+        common_page.alert_popup_allow()
+        gallery_page.choose_video_from_gallery()
+        common_page.alert_popup_allow()
+        events_page.scroll_down_to_save_button()
+
+        events_page.click_add_media()
+        select_media_page.click_record_audio()
+        common_page.alert_popup_allow()
+        sound_recorder = LoadClass.load_page('SoundRecorderPage')
+        sound_recorder.setDriver(self.driver)
+        sound_recorder.record_sound()
+        sleep(1)  # time for recording sound
+        sound_recorder.stop_recording()
+        sound_recorder.click_done_button()
+        events_page.click_back_arrow_if_running_on_emulators()
+
+        events_page.scroll_down_to_save_button()
+        events_page.click_save_new_event()
+        events_page.check_notification_about_offline_mode()
+        events_page.ok_button_on_offline_notification_popup()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
         main_page.scroll_down_to_offline_sync_button()
         main_page.open_OFFLINE_SYNC()
-        common_page.take_screenshot('offline_sync_in_offline_mode')
+        common_page.take_screenshot('Offline_sync_in_offline_mode')
+        common_page.hamburger_button()
+        main_page.check_presence_of_inbox_button()
 
         common_page.swipe_up_to_show_control_center()
         common_page.switch_airplane_mode()  # method for iOS
         common_page.turn_on_all_network()  # method for Android
         common_page.swipe_down_to_hide_control_center()
 
-        main_page.scroll_down_to_offline_sync_button()
-        main_page.open_OFFLINE_SYNC()
-        common_page.take_screenshot('offline_sync_in_online_mode')
+        main_page.scroll_up_to_events_button()
+        main_page.open_EVENTS()
+        events_page.clear_Search_field()
+        events_page.type_text_into_search_field("offline mode")
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
 
 
 if __name__ == '__main__':

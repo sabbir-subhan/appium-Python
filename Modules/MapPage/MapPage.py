@@ -682,8 +682,8 @@ class MapPage(BasePage):
         start_y = int(location["y"])
         logging.warning("start_x = " + str(start_x))
         logging.warning("start_y = " + str(start_y))
-        end_x = start_x + start_x * 0.4
-        end_y = start_y + start_y * 0.4
+        end_x = round(start_x + start_x * 0.4)
+        end_y = round(start_y + start_y * 0.4)
         logging.warning("end_x = " + str(end_x))
         logging.warning("end_y = " + str(end_y))
 
