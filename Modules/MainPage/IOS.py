@@ -208,8 +208,8 @@ class IOS(MainPage):
         var = 4
         while var > 0:
             logging.info("check if events button is visible")
-            reports_button = self.driver.find_element(*self.configuration.MainMenuScreen.EVENTS_BUTTON)
-            if reports_button.is_displayed():
+            events_button = self.driver.find_element(*self.configuration.MainMenuScreen.EVENTS_BUTTON)
+            if events_button.is_displayed():
                 break
             else:
                 logging.info("scroll up")

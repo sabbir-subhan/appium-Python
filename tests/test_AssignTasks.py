@@ -155,7 +155,7 @@ class TestAssignTasks(SetupTestCase):
         tasks_page.type_title("Task for multiple resource assignments")
         tasks_page.click_on_assigned()
         tasks_page.add_resource_assignments()
-        #tasks_page.click_first_resource_assignment_on_the_list()
+        tasks_page.click_first_resource_assignment_on_the_list()
         tasks_page.click_second_resource_assignment_on_the_list()
         tasks_page.click_last_resource_assignment_on_the_list()
         tasks_page.click_ok_button()

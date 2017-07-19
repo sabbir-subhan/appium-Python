@@ -98,9 +98,9 @@ class Android(GalleryPage):
 
     def choose_videos_gallery(self):
 
-        logging.info("choose videos gallery in left side menu if it is visible")
+        logging.info("choose videos gallery if it is visible")
         try:
-            choose_videos_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_BUTTON_IN_SIDE_MENU)
+            choose_videos_gallery = self.driver.find_element(*self.configuration.GalleryScreen.VIDEOS_BUTTON_IN_GALLERY)
             self.assertIsNotNone(choose_videos_gallery, "Videos gallery not found")
             choose_videos_gallery.click()
         except NoSuchElementException:
@@ -114,6 +114,13 @@ class Android(GalleryPage):
         except NoSuchElementException:
             pass
         sleep(1)
+        try:
+            logging.info("if Videos gallery is not visible, click 'Gallery' button")
+            choose_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_BUTTON_IN_SIDE_MENU)
+            self.assertIsNotNone(choose_gallery, "Gallery not found")
+            choose_gallery.click()
+        except NoSuchElementException:
+            pass
 
         # choose_videos_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_BUTTON_IN_SIDE_MENU)
         # self.assertIsNotNone(choose_videos_gallery, "gallery not found")
@@ -153,3 +160,16 @@ class Android(GalleryPage):
         # action.tap(element=videos, count=1).perform()
         #
         # sleep(2)
+
+    def choose_photos_gallery(self):
+
+        logging.info("choose photos gallery if it is visible")
+        try:
+            choose_photos_gallery = self.driver.find_element(
+                *self.configuration.GalleryScreen.GALLERY_BUTTON_IN_SIDE_MENU)
+            self.assertIsNotNone(choose_photos_gallery, "Photos gallery not found")
+            choose_photos_gallery.click()
+        except NoSuchElementException:
+            pass
+        sleep(1)
+

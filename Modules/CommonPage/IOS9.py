@@ -8,9 +8,30 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 from Modules.load_class import LoadClass
 from appium.webdriver.common.touch_action import TouchAction
+from configuration import PROJECT_ROOT, platform
+import os
+from subprocess import call
 
 
 class IOS9(IOS):
+
+    @staticmethod
+    def push_sample_image_file():
+
+        if "emulator" in platform:
+            logging.info("push image file to the emulator")
+            path_to_image_sample_file = os.path.join(PROJECT_ROOT, "sample_image.jpg")
+            call(["xcrun", "simctl", "addphoto", "booted", path_to_image_sample_file])
+            sleep(1)
+
+    @staticmethod
+    def push_sample_video_file():
+
+        if "emulator" in platform:
+            logging.info("push video file to the emulator")
+            path_to_video_sample_file = os.path.join(PROJECT_ROOT, "sample_video.mp4")
+            call(["xcrun", "simctl", "addvideo", "booted", path_to_video_sample_file])
+            sleep(1)
 
     def swipe_up_to_show_control_center(self):  # this will bring control center
 

@@ -108,13 +108,13 @@ class DesiredCapabilities(object):
         "Android_6": {
             "platformName": "ANDROID",
             "platformVersion": "6.0.1",
-            "deviceName": "SM-G930F",
+            "deviceName": "Redmi 4X",
             "app": os.path.join(PROJECT_ROOT, "oca.apk"),  # path to .apk file
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
             "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
             "automationName": "uiautomator2",
-            # "appWaitDuration": 20000,
+            "appWaitDuration": 5000,
             "deviceReadyTimeout": 5,
             # "newCommandTimeout": "60",
             "clearSystemFiles": True,
@@ -123,7 +123,7 @@ class DesiredCapabilities(object):
             "chromeOptions": {
                 "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
             },
-            "udid": "ad0816033848eb0443"
+            "udid": "47959a957d14"
         },
 
         "Android_6_emulator": {
@@ -258,7 +258,7 @@ class DesiredCapabilities(object):
             "autoAcceptAlerts": True,
             "automationName": "Appium",
             "clearSystemFiles": True,
-            "startIWDP": True,  # start ios-webkit-debug-proxy - not working for iOS9
+            # "startIWDP": True,  # start ios-webkit-debug-proxy -- not recognize by appium server
             # "noReset": False,
             "fullReset": True,  # iOS9 is not logging out automatically so fullReset is necessary
             "udid": "db55c238e873230ee454c54a63724397a2981acd"
@@ -274,7 +274,7 @@ class DesiredCapabilities(object):
             "newCommandTimeout": 60,
             "launchTimeout": 200000,  # iOS only
             "clearSystemFiles": True,
-            "startIWDP": True,  # start ios-webkit-debug-proxy
+            # "startIWDP": True,  # start ios-webkit-debug-proxy -- not recognize by appium server
             "fullReset": False,  # if True - Uninstall app after real device test, destroy Simulator after sim test
             "noReset": True,  # if True - Do not destroy or shut down sim after test. Start tests running on whichever sim is running, or device is plugged in
             "autoAcceptAlerts": True

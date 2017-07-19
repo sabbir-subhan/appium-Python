@@ -109,7 +109,9 @@ class TestLoadTypeDataAfterLogin(SetupTestCase):
         common_page.push_sample_video_file()
         select_media_page.click_video_gallery()
         common_page.alert_popup_allow()
+        gallery_page.choose_videos_gallery()  # test
         gallery_page.choose_video_from_gallery()
+        gallery_page.click_use_button()
         common_page.alert_popup_allow()
         events_page.scroll_down_to_save_button()
 

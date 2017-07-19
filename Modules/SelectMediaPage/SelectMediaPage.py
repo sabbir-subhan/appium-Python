@@ -54,7 +54,7 @@ class SelectMediaPage(BasePage):
         logging.info("Appium is running on: " + str(platform))
 
         if "emulator" in str(platform):
-            logging.info("Appium is running on emulator = skip recording video because emulators don't "
+            logging.info("Appium is running on emulator = skip recording audio because emulators don't "
                          "support that functionality")
             pass
         else:

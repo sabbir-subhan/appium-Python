@@ -21,7 +21,7 @@ class IOS(CommonPage):
         if "emulator" in platform:
             logging.info("push image file to the emulator")
             path_to_image_sample_file = os.path.join(PROJECT_ROOT, "sample_image.jpg")
-            call(["xcrun", "simctl", "addphoto", "booted", path_to_image_sample_file])
+            call(["xcrun", "simctl", "addmedia", "booted", path_to_image_sample_file])  # iOS9 uses addphoto
             sleep(1)
 
     @staticmethod
@@ -30,7 +30,7 @@ class IOS(CommonPage):
         if "emulator" in platform:
             logging.info("push video file to the emulator")
             path_to_video_sample_file = os.path.join(PROJECT_ROOT, "sample_video.mp4")
-            call(["xcrun", "simctl", "addvideo", "booted", path_to_video_sample_file])
+            call(["xcrun", "simctl", "addmedia", "booted", path_to_video_sample_file])
             sleep(1)
 
     def swipe_down_to_hide_control_center(self):  # this will hide control center

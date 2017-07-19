@@ -115,15 +115,14 @@ class TasksPage(BasePage):
         self.switch_context_to_webview()
 
         logging.info("Choose first resource assignment on the list")
-        click_first_resource_assignment_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.FIRST_RESOURCE_ASSIGNMENT_ON_THE_LIST)  # first - child
-        self.assertIsNotNone(click_first_resource_assignment_on_the_list, "Resource assignment not found")
-        try:
-            click_first_resource_assignment_on_the_list.click()
-        except WebDriverException:
-            pass
-            # self.switch_context_to_native()
-            # action = TouchAction(self.driver)
-            # action.tap(click_first_resource_assignment_on_the_list, count=1).perform()
+
+        WebDriverWait(self.driver, 20).until(
+            expected_conditions.presence_of_element_located(self.configuration.TasksScreen.FIRST_RESOURCE_ASSIGNMENT_ON_THE_LIST),
+            "webdriver waited for FIRST_RESOURCE_ASSIGNMENT_ON_THE_LIST but it is not clickable")
+
+        first_resource_assignment_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.FIRST_RESOURCE_ASSIGNMENT_ON_THE_LIST)  # first - child
+        self.assertIsNotNone(first_resource_assignment_on_the_list, "Resource assignment not found")
+        first_resource_assignment_on_the_list.click()
 
         self.switch_context_to_native()
 
@@ -132,9 +131,9 @@ class TasksPage(BasePage):
         self.switch_context_to_webview()
 
         logging.info("Choose second resource assignment on the list")
-        click_second_resource_assignment_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.SECOND_RESOURCE_ASSIGNMENT_ON_THE_LIST)  # second - child
-        self.assertIsNotNone(click_second_resource_assignment_on_the_list, "Resource assignment not found")
-        click_second_resource_assignment_on_the_list.click()
+        second_resource_assignment_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.SECOND_RESOURCE_ASSIGNMENT_ON_THE_LIST)  # second - child
+        self.assertIsNotNone(second_resource_assignment_on_the_list, "Resource assignment not found")
+        second_resource_assignment_on_the_list.click()
 
         self.switch_context_to_native()
 
@@ -143,9 +142,9 @@ class TasksPage(BasePage):
         self.switch_context_to_webview()
 
         logging.info("Choose last resource assignment on the list")
-        click_last_resource_assignment_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.LAST_RESOURCE_ASSIGNMENT_ON_THE_LIST)  # last- child
-        self.assertIsNotNone(click_last_resource_assignment_on_the_list, "Resource assignment not found")
-        click_last_resource_assignment_on_the_list.click()
+        last_resource_assignment_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.LAST_RESOURCE_ASSIGNMENT_ON_THE_LIST)  # last- child
+        self.assertIsNotNone(last_resource_assignment_on_the_list, "Resource assignment not found")
+        last_resource_assignment_on_the_list.click()
 
         self.switch_context_to_native()
 

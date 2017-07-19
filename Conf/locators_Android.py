@@ -187,12 +187,12 @@ class EventsScreen:
 
     # creating and editing Events
     NEW_EVENT_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'New event ')
-    #NEW_EVENT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "New event")]]')
+    # NEW_EVENT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "New event")]]')
 
     # previously created event
     PREVIOUSLY_CREATED_EVENT = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Appium")]]')
     # CREATED_EVENT_2 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "second event")]]')
-    #CREATED_EVENT_2 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "sub event")]]')
+    # CREATED_EVENT_2 = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "sub event")]]')
 
     CLEAR_PRIMARY_EVENT_BUTTON = (MobileBy.XPATH, '//android.view.View[@content-desc="Clear primary event"]')
     NOTIFICATION_PRIMARY_EVENT_CLEARED = (MobileBy.XPATH, '//android.view.View[@content-desc[contains'
@@ -201,7 +201,7 @@ class EventsScreen:
                                                          "//android.view.View[@index='0']"
                                                          "//android.view.View[@index='0']")
     NOTIFICATION_ABOUT_OFFLINE_MODE = (MobileBy.XPATH, '//android.view.View[@content-desc="Offline mode"]')
-    #NOTIFICATION_ABOUT_OFFLINE_MODE = (MobileBy.ACCESSIBILITY_ID, 'Offline mode')
+    # NOTIFICATION_ABOUT_OFFLINE_MODE = (MobileBy.ACCESSIBILITY_ID, 'Offline mode')
 
 
 class TypesOfEventsScreen:
@@ -337,8 +337,9 @@ class GalleryScreen:
     # VIDEOS = (MobileBy.XPATH, '//android.view.ViewGroup[1]/android.widget.FrameLayout[1]/android.view.View[1]/*[1]')  # first child
     # VIDEOS = (MobileBy.ID, 'com.android.gallery3d:id/gl_root_view')
     # VIDEOS2 = (MobileBy.ID, 'com.sec.android.gallery3d:id/gl_root_view')
-    # GALLERY_BUTTON_IN_SIDE_MENU = (MobileBy.XPATH, '//android.widget.TextView[@text="Gallery"]')
-    GALLERY_BUTTON_IN_SIDE_MENU = (MobileBy.XPATH, '//android.widget.TextView[@text="Videos"]')
+    # GALLERY_BUTTON_IN_SIDE_MENU = (MobileBy.XPATH, '//android.widget.TextView[@text="Videos"]')
+    VIDEOS_BUTTON_IN_GALLERY = (MobileBy.XPATH, '//android.widget.TextView[@text="Videos"]')
+    GALLERY_BUTTON_IN_SIDE_MENU = (MobileBy.XPATH, '//android.widget.TextView[@text="Gallery"]')
     VIDEOS = (MobileBy.XPATH, '//android.widget.TextView[@text="Camera"]')
 
 
