@@ -97,6 +97,7 @@ class TestLoadTypeDataAfterLogin(SetupTestCase):
         select_media_page = LoadClass.load_page('SelectMediaPage')
         select_media_page.setDriver(self.driver)
         common_page.push_sample_image_file()
+        common_page.push_sample_video_file()
         select_media_page.click_photo_gallery()
         common_page.alert_popup_allow()
         gallery_page = LoadClass.load_page('GalleryPage')
@@ -106,7 +107,7 @@ class TestLoadTypeDataAfterLogin(SetupTestCase):
         events_page.scroll_down_to_save_button()
 
         events_page.click_add_media()
-        common_page.push_sample_video_file()
+        # common_page.push_sample_video_file()
         select_media_page.click_video_gallery()
         common_page.alert_popup_allow()
         gallery_page.choose_videos_gallery()  # test

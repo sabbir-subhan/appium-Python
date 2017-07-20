@@ -55,6 +55,7 @@ class Android(CommonPage):
         decoded_file2 = encoded_file2.decode()
         self.driver.push_file(path_on_device1, decoded_file2)
         sleep(1)
+
         # path for some emulators
         path_on_device2 = "/storage/sdcard/DCIM/sample_image.jpg"
         with open(file=image_file_to_send, mode='rb') as file2:
@@ -63,22 +64,30 @@ class Android(CommonPage):
         self.driver.push_file(path_on_device2, decoded_file2)
         sleep(1)
 
+        # path for some Androids, like Android 5.1.1
+        path_on_device3 = "/sdcard/DCIM/sample_image.jpg"
+        with open(file=image_file_to_send, mode='rb') as file1:
+            encoded_file1 = base64.standard_b64encode(file1.read())  # open binary file in read mode
+        decoded_file1 = encoded_file1.decode()
+        self.driver.push_file(path_on_device3, decoded_file1)
+        sleep(1)
+
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()
         device_name = desired_capabilities.get('deviceName')
-        # print(device_name)
-        try:
-            subprocess.call(["adb", "-s", device_name, "shell", "am", "broadcast", "-a",
-                            "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])  # works on emulators, on rd throws: "device not found" because for rd -s should point to udid
-        except:
-            pass
-        try:
-            device_udid = desired_capabilities.get('udid')  # throws permission denial on not rooted device = Android 7
-            subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
-                             "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])
-        except:
-            print("nope")
 
-        sleep(1)
+        # for emulators (no real device udid)
+        subprocess.call(["adb", "-s", device_name, "shell", "am", "broadcast", "-a",
+                        "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])  # works on emulators, on rd throws: "device not found" because for rd -s should point to udid
+
+        device_udid = desired_capabilities.get('udid')  # throws permission denial on not rooted device = Android 7
+        subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
+                         "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])
+
+        device_udid = desired_capabilities.get('udid')
+        subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
+                         "android.intent.action.MEDIA_MOUNTED", "-d", "file:////storage"])
+
+        sleep(10)  # wait for android gallery to refresh
 
     def push_sample_video_file(self):  # push sample video file for executing TCs on emulators
         # - works only for rooted android devices and emulators
@@ -140,61 +149,45 @@ class Android(CommonPage):
         # else:
         #     print("none of paths is valid")
 
-        try:
-            path_on_device1 = "/storage/self/primary/DCIM/sample_video.mp4"  # works for example for emulator Android 6
-            with open(file=video_file_to_send, mode='rb') as file1:
-                encoded_file1 = base64.standard_b64encode(file1.read())  # open binary file in read mode
-            decoded_file1 = encoded_file1.decode()
-            self.driver.push_file(path_on_device1, decoded_file1)
-            sleep(1)
-        except:
-            print("1")
+        path_on_device1 = "/storage/self/primary/DCIM/sample_video.mp4"  # works for example for emulator Android 6
+        with open(file=video_file_to_send, mode='rb') as file1:
+            encoded_file1 = base64.standard_b64encode(file1.read())  # open binary file in read mode
+        decoded_file1 = encoded_file1.decode()
+        self.driver.push_file(path_on_device1, decoded_file1)
+        sleep(1)
 
-        try:
-            path_on_device2 = "/storage/sdcard/DCIM/sample_video.mp4"  # path for some emulators
-            with open(file=video_file_to_send, mode='rb') as file1:
-                encoded_file1 = base64.standard_b64encode(file1.read())  # open binary file in read mode
-            decoded_file1 = encoded_file1.decode()
-            self.driver.push_file(path_on_device2, decoded_file1)
-            sleep(1)
-        except:
-            print("2")
+        path_on_device2 = "/storage/sdcard/DCIM/sample_video.mp4"  # path for some emulators
+        with open(file=video_file_to_send, mode='rb') as file1:
+            encoded_file1 = base64.standard_b64encode(file1.read())  # open binary file in read mode
+        decoded_file1 = encoded_file1.decode()
+        self.driver.push_file(path_on_device2, decoded_file1)
+        sleep(1)
 
-        try:
-            # path for some Androids, like Android 5.1.1
-            path_on_device3 = "/sdcard/DCIM/sample_video.mp4"
-            with open(file=video_file_to_send, mode='rb') as file1:
-                encoded_file1 = base64.standard_b64encode(file1.read())  # open binary file in read mode
-            decoded_file1 = encoded_file1.decode()
-            self.driver.push_file(path_on_device3, decoded_file1)
-            sleep(1)
-        except:
-            print("3")
+        # path for some Androids, like Android 5.1.1
+        path_on_device3 = "/sdcard/DCIM/sample_video.mp4"
+        with open(file=video_file_to_send, mode='rb') as file1:
+            encoded_file1 = base64.standard_b64encode(file1.read())  # open binary file in read mode
+        decoded_file1 = encoded_file1.decode()
+        self.driver.push_file(path_on_device3, decoded_file1)
+        sleep(1)
 
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()  # create local object
         device_name = desired_capabilities.get('deviceName')
         # print(device_name)
-        try:
-            subprocess.call(["adb", "-s", device_name, "shell", "am", "broadcast", "-a",
-                             "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])
-        except:
-            print("cos")
-        try:
-            device_udid = desired_capabilities.get('udid')
-            subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
-                             "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])
-        except:
-            print("nope2")
 
-        # test
-        try:
-            device_udid = desired_capabilities.get('udid')
-            subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
-                             "android.intent.action.MEDIA_MOUNTED"])
-        except:
-            print("nope2")
-            
-        sleep(1)
+        # for emulators (no real device udid)
+        subprocess.call(["adb", "-s", device_name, "shell", "am", "broadcast", "-a",
+                         "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])
+
+        device_udid = desired_capabilities.get('udid')
+        subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
+                         "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])
+
+        device_udid = desired_capabilities.get('udid')
+        subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
+                         "android.intent.action.MEDIA_MOUNTED", "-d", "file:////storage"])
+
+        sleep(10)  # wait for android gallery to refresh
 
     @staticmethod
     def swipe_up_to_show_control_center():
