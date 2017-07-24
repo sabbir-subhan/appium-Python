@@ -12,6 +12,7 @@ import base64
 from configuration import PROJECT_ROOT, platform
 import os
 import subprocess
+from selenium.common.exceptions import NoSuchElementException
 
 
 class Android(CommonPage):
@@ -76,16 +77,25 @@ class Android(CommonPage):
         device_name = desired_capabilities.get('deviceName')
 
         # for emulators (no real device udid)
+        print("adb broadcast command to refresh android gallery")
         subprocess.call(["adb", "-s", device_name, "shell", "am", "broadcast", "-a",
                         "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])  # works on emulators, on rd throws: "device not found" because for rd -s should point to udid
 
         device_udid = desired_capabilities.get('udid')  # throws permission denial on not rooted device = Android 7
-        subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
-                         "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])
+        print("adb broadcast command to refresh android gallery")
+        try:
+            subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
+                             "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])
+        except:
+            pass
 
         device_udid = desired_capabilities.get('udid')
-        subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
-                         "android.intent.action.MEDIA_MOUNTED", "-d", "file:////storage"])
+        print("adb broadcast command to refresh android gallery")
+        try:
+            subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
+                             "android.intent.action.MEDIA_MOUNTED", "-d", "file:////storage"])
+        except:
+            pass
 
         sleep(10)  # wait for android gallery to refresh
 
@@ -175,17 +185,26 @@ class Android(CommonPage):
         device_name = desired_capabilities.get('deviceName')
         # print(device_name)
 
+        print("adb broadcast command to refresh android gallery")
         # for emulators (no real device udid)
         subprocess.call(["adb", "-s", device_name, "shell", "am", "broadcast", "-a",
                          "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])
 
         device_udid = desired_capabilities.get('udid')
-        subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
-                         "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])
+        print("adb broadcast command to refresh android gallery")
+        try:
+            subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
+                             "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])
+        except:
+            pass
 
         device_udid = desired_capabilities.get('udid')
-        subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
-                         "android.intent.action.MEDIA_MOUNTED", "-d", "file:////storage"])
+        print("adb broadcast command to refresh android gallery")
+        try:
+            subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
+                             "android.intent.action.MEDIA_MOUNTED", "-d", "file:////storage"])
+        except:
+            pass
 
         sleep(10)  # wait for android gallery to refresh
 
@@ -224,28 +243,54 @@ class Android(CommonPage):
     def switch_wifi(self):
 
         logging.info("switch wi-fi on/off")
-        switch_wifi = self.driver.find_element(*self.configuration.Android.SWITCH_WIFI_ANDROID_7)
+        try:
+            switch_wifi = self.driver.find_element(*self.configuration.Android.SWITCH_WIFI_ANDROID_7)
+        except NoSuchElementException:
+            switch_wifi = self.driver.find_element(*self.configuration.Android.SWITCH_WIFI_ANDROID_7_1)
         self.assertIsNotNone(switch_wifi, "wi-fi button not found")
         switch_wifi.click()
 
+    def switch_off_airplane_mode(self):
+
+        logging.info("switch airplane mode off")
+        sleep(1)
+        try:
+            switch_off_airplane_mode = self.driver.find_element(*self.configuration.Android.SWITCH_OFF_AIRPLANE_MODE_7)
+        except NoSuchElementException:
+            switch_off_airplane_mode = self.driver.find_element(*self.configuration.Android.SWITCH_AIRPLANE_MODE_7_1)
+        self.assertIsNotNone(switch_off_airplane_mode, "airplane mode button not found")
+        switch_off_airplane_mode.click()
+
+    def switch_on_airplane_mode(self):
+
+        logging.info("switch airplane mode on")
+        try:
+            switch_on_airplane_mode = self.driver.find_element(*self.configuration.Android.SWITCH_ON_AIRPLANE_MODE_7)
+        except NoSuchElementException:
+            switch_on_airplane_mode = self.driver.find_element(*self.configuration.Android.SWITCH_AIRPLANE_MODE_7_1)
+        self.assertIsNotNone(switch_on_airplane_mode, "airplane mode button not found")
+        switch_on_airplane_mode.click()
+
     def turn_on_flight_mode(self):  # works only on Android
 
-        logging.info("turn flight mode on or turn off wi-fi")
+        logging.info("turn flight mode on")
 
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()
         platform_version = desired_capabilities.get('platformVersion')
         if platform_version >= "7":
             logging.warning("Appium is running on Android version >= 7"
-                            " (" + str(platform) + ") -- swipe to show notifications and switch wi-fi")
+                            " (" + str(platform) + ") -- swipe to show notifications and switch airplane mode")
             common_page = LoadClass.load_page('CommonPage')
             common_page.setDriver(self.driver)
             common_page.swipe_down_to_show_notifications()
             common_page.swipe_down_to_show_notifications()
-            common_page.switch_wifi()
+            # common_page.switch_wifi()
+            common_page.switch_on_airplane_mode()
             common_page.swipe_up_to_hide_notifications()
         else:
             logging.info("Appium is running on real device (" + str(platform) + ") = turn on flight mode")
             self.driver.set_network_connection(1)  # this is working for Android 6 and older
+        sleep(0.5)
 
     # def turn_on_flight_mode(self):  # works only on Android
     #
@@ -260,22 +305,24 @@ class Android(CommonPage):
 
     def turn_on_all_network(self):  # works only on Android
 
-        logging.info("turn flight mode off or turn on wi-fi")
+        logging.info("turn flight mode off")
 
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()
         platform_version = desired_capabilities.get('platformVersion')
         if platform_version >= "7":
             logging.warning("Appium is running on Android version >= 7"
-                            " (" + str(platform) + ") -- swipe to show notifications and switch wi-fi")
+                            " (" + str(platform) + ") -- swipe to show notifications and switch airplane mode")
             common_page = LoadClass.load_page('CommonPage')
             common_page.setDriver(self.driver)
             common_page.swipe_down_to_show_notifications()
             common_page.swipe_down_to_show_notifications()
-            common_page.switch_wifi()
+            # common_page.switch_wifi()
+            common_page.switch_off_airplane_mode()
             common_page.swipe_up_to_hide_notifications()
         else:
             logging.info("turn on all network")
             self.driver.set_network_connection(6)
+        sleep(0.5)
 
     def clear_Search_field(self):
 

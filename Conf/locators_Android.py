@@ -17,6 +17,10 @@ class Android:
     ANDROID_CLEAR_BUTTON = (MobileBy.ID, 'android:id/button3')
     # TURN_WIFI_ON = (MobileBy.XPATH, '//android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[2]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.support.v4.view.ViewPager[1]/android.view.ViewGroup[1]/android.widget.LinearLayout[1]/android.view.ViewGroup[1]')
     SWITCH_WIFI_ANDROID_7 = (MobileBy.XPATH, '//android.widget.LinearLayout[1]/android.support.v4.view.ViewPager[1]/android.view.ViewGroup[1]/android.widget.LinearLayout[1]/android.view.ViewGroup[1]')
+    SWITCH_WIFI_ANDROID_7_1 = (MobileBy.XPATH, '//android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.support.v4.view.ViewPager[1]/android.view.ViewGroup[1]/android.widget.Button[1]/android.view.ViewGroup[1]/android.widget.FrameLayout[1]/android.widget.ImageView[1]')
+    SWITCH_AIRPLANE_MODE_7_1 = (MobileBy.ACCESSIBILITY_ID, 'Airplane mode')
+    SWITCH_ON_AIRPLANE_MODE_7 = (MobileBy.ACCESSIBILITY_ID, 'Airplane,mode,On.,Button')
+    SWITCH_OFF_AIRPLANE_MODE_7 = (MobileBy.ACCESSIBILITY_ID, 'Airplane,mode,Off.,Button')
 
 
 class CommonScreen:
@@ -340,7 +344,9 @@ class GalleryScreen:
     # GALLERY_BUTTON_IN_SIDE_MENU = (MobileBy.XPATH, '//android.widget.TextView[@text="Videos"]')
     VIDEOS_BUTTON_IN_GALLERY = (MobileBy.XPATH, '//android.widget.TextView[@text="Videos"]')
     GALLERY_BUTTON_IN_SIDE_MENU = (MobileBy.XPATH, '//android.widget.TextView[@text="Gallery"]')
-    VIDEOS = (MobileBy.XPATH, '//android.widget.TextView[@text="Camera"]')
+    RECENT_BUTTON_IN_SIDE_MENU = (MobileBy.XPATH, '//android.widget.TextView[@text="Recent"]')
+    CAMERA_FOLDER = (MobileBy.XPATH, '//android.widget.TextView[@text="Camera"]')
+    GALLERY_SHOW_ROOTS = (MobileBy.ACCESSIBILITY_ID, 'Show roots')  # for Android 7.0 and 7.1
 
 
 class SoundScreen:

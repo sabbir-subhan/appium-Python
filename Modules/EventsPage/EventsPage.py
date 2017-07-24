@@ -864,7 +864,8 @@ class EventsPage(BasePage):
             else:
                 self.fail("notification about offline mode not found")
         except:
-            logging.warning("notification about offline mode not found - appium did not switch to airplane mode")
+            pass
+            # logging.warning("notification about offline mode not found - appium did not switch to airplane mode")
 
     def click_back_arrow_if_running_on_emulators(self):
 

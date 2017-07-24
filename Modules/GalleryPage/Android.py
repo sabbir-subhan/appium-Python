@@ -98,77 +98,60 @@ class Android(GalleryPage):
 
     def choose_videos_gallery(self):
 
-        logging.info("choose videos gallery if it is visible")
         try:
-            choose_videos_gallery = self.driver.find_element(*self.configuration.GalleryScreen.VIDEOS_BUTTON_IN_GALLERY)
-            self.assertIsNotNone(choose_videos_gallery, "Videos gallery not found")
-            choose_videos_gallery.click()
+            choose_recent = self.driver.find_element(*self.configuration.GalleryScreen.RECENT_BUTTON_IN_SIDE_MENU)
+            logging.info("if Videos gallery is not visible, click 'Recent' button")
+            self.assertIsNotNone(choose_recent, "Recent button not found")
+            choose_recent.click()
         except NoSuchElementException:
-            pass
-        sleep(1)
-        try:
-            logging.info("choose Camera videos if it is visible")
-            camera_videos = self.driver.find_element(*self.configuration.GalleryScreen.VIDEOS)
-            self.assertIsNotNone(camera_videos, "Camera videos not found")
-            camera_videos.click()
-        except NoSuchElementException:
-            pass
-        sleep(1)
-        try:
-            logging.info("if Videos gallery is not visible, click 'Gallery' button")
-            choose_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_BUTTON_IN_SIDE_MENU)
-            self.assertIsNotNone(choose_gallery, "Gallery not found")
-            choose_gallery.click()
-        except NoSuchElementException:
-            pass
+            show_roots = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_SHOW_ROOTS)
+            logging.info("click 'Show roots' button")
+            self.assertIsNotNone(show_roots, "Show roots button not found")
+            show_roots.click()
+            sleep(0.5)
+            choose_recent = self.driver.find_element(*self.configuration.GalleryScreen.RECENT_BUTTON_IN_SIDE_MENU)
+            logging.info("if Videos gallery is not visible, click 'Recent' button")
+            self.assertIsNotNone(choose_recent, "Recent button not found")
+            choose_recent.click()
 
-        # choose_videos_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_BUTTON_IN_SIDE_MENU)
-        # self.assertIsNotNone(choose_videos_gallery, "gallery not found")
-        # choose_videos_gallery.click()
+        # try:
+        #     choose_videos_gallery = self.driver.find_element(*self.configuration.GalleryScreen.VIDEOS_BUTTON_IN_GALLERY)
+        #     self.assertIsNotNone(choose_videos_gallery, "Videos gallery not found")
+        #     logging.info("choose videos gallery if it is visible")
+        #     choose_videos_gallery.click()
+        # except NoSuchElementException:
+        #     pass
         # sleep(1)
         # try:
-        #     videos = self.driver.find_element(*self.configuration.GalleryScreen.VIDEOS)
-        #     self.assertIsNotNone(videos, "videos not found")
+        #     camera_videos = self.driver.find_element(*self.configuration.GalleryScreen.VIDEOS)
+        #     self.assertIsNotNone(camera_videos, "Camera videos not found")
+        #     logging.info("choose Camera videos if it is visible")
+        #     camera_videos.click()
         # except NoSuchElementException:
-        #     videos = self.driver.find_element(*self.configuration.GalleryScreen.VIDEOS2)
-        #     self.assertIsNotNone(videos, "videos not found")
-        # size = videos.size
-        # logging.error(size)
-        #
-        # x = self.driver.find_element_by_xpath('//android.view.ViewGroup[1]/android.widget.FrameLayout[1]/android.view.View[1]/com.sec.samsung.gallery.glview.composeView.PositionControllerBase.ThumbObject[1]')
-        # location = x.location
-        # print(location)
-
-        # action = TouchAction(self.driver)
-        # source = self.driver.page_source
-        # logging.warning(source)
-        # bounds = source.__getattribute__("bounds")
-        # logging.error(bounds)
-        # bounds2 = source.__getitem__("bounds")
-        # logging.error(bounds2)
-        # action.tap(x=70, y=375, count=1).perform()
-        # sleep(0.5)
-
-        # # bounds = videos.get_attribute("bounds")
-        # # logging.error(bounds)
-        # # bounds2 = videos.get_property("bounds")
-        # # logging.error(bounds2)
-        #
-        # action.tap(x=64, y=372, count=1).perform()
-        # videos.click()
-        #
-        # action.tap(element=videos, count=1).perform()
-        #
-        # sleep(2)
+        #     pass
+        # sleep(1)
+        # try:
+        #     # choose_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_BUTTON_IN_SIDE_MENU)
+        #     # logging.info("if Videos gallery is not visible, click 'Gallery' button")
+        #     # self.assertIsNotNone(choose_gallery, "Gallery not found")
+        #     # choose_gallery.click()
+        #     choose_recent = self.driver.find_element(*self.configuration.GalleryScreen.RECENT_BUTTON_IN_SIDE_MENU)
+        #     logging.info("if Videos gallery is not visible, click 'Recent' button")
+        #     self.assertIsNotNone(choose_recent, "Recent button not found")
+        #     choose_recent.click()
+        # except NoSuchElementException:
+        #     pass
 
     def choose_photos_gallery(self):
 
         logging.info("choose photos gallery if it is visible")
         try:
-            choose_photos_gallery = self.driver.find_element(
-                *self.configuration.GalleryScreen.GALLERY_BUTTON_IN_SIDE_MENU)
-            self.assertIsNotNone(choose_photos_gallery, "Photos gallery not found")
-            choose_photos_gallery.click()
+            # choose_photos_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_BUTTON_IN_SIDE_MENU)
+            # self.assertIsNotNone(choose_photos_gallery, "Photos gallery not found")
+            # choose_photos_gallery.click()
+            choose_recent = self.driver.find_element(*self.configuration.GalleryScreen.RECENT_BUTTON_IN_SIDE_MENU)
+            self.assertIsNotNone(choose_recent, "Recent button not found")
+            choose_recent.click()
         except NoSuchElementException:
             pass
         sleep(1)
