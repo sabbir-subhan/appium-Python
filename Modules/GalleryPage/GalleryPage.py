@@ -5,17 +5,15 @@ from Modules.BasePage.BasePage import BasePage
 
 class GalleryPage(BasePage):
 
-    def choose_element_1(self):
+    pass
 
-        pass
-
-    # def choose_videos_gallery(self):
+    # def choose_element_1(self):
     #
     #     pass
-
-    def click_use_button(self):
-
-        pass
+    #
+    # def click_use_button(self):
+    #
+    #     pass
 
 
 

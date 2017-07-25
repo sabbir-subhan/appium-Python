@@ -274,7 +274,7 @@ class TestAssets(SetupTestCase):
         gallery_video_page = LoadClass.load_page('GalleryPage')
         gallery_video_page.setDriver(self.driver)
         gallery_video_page.choose_videos_gallery()
-        gallery_video_page.choose_video_from_gallery()
+        gallery_video_page.choose_element_from_gallery()
         gallery_video_page.click_use_button()
         common_page.alert_popup_allow()
         assets_page.click_add_media()

@@ -346,7 +346,8 @@ class GalleryScreen:
     GALLERY_BUTTON_IN_SIDE_MENU = (MobileBy.XPATH, '//android.widget.TextView[@text="Gallery"]')
     RECENT_BUTTON_IN_SIDE_MENU = (MobileBy.XPATH, '//android.widget.TextView[@text="Recent"]')
     CAMERA_FOLDER = (MobileBy.XPATH, '//android.widget.TextView[@text="Camera"]')
-    GALLERY_SHOW_ROOTS = (MobileBy.ACCESSIBILITY_ID, 'Show roots')  # for Android 7.0 and 7.1
+    GALLERY_SHOW_ROOTS = (MobileBy.ACCESSIBILITY_ID, 'Show roots')  # for Android 5.1.1, 7.0 and 7.1
+    GALLERY_SHOW_ROOTS_Android_4 = (MobileBy.ID, 'up')  # for Android 4.4.2
 
 
 class SoundScreen:
@@ -387,6 +388,7 @@ class CameraScreen:
     CAMERA_CHOOSER_ANDROID7 = (MobileBy.XPATH, '//SideQuickSetting[1]/SideQuickSettingItem[3]/ItemDataButton[1]/GLButton[1]')
     RETAKE_ANDROID_4 = (MobileBy.ACCESSIBILITY_ID, 'Review retake')
     RETAKE_ANDROID_5 = (MobileBy.ID, 'com.tct.camera:id/btn_retake')
+    RETAKE_ANDROID_5_emulator = (MobileBy.ID, 'com.android.camera:id/btn_retake')
     RETAKE_ANDROID_6 = (MobileBy.ID, 'com.sec.android.app.camera:id/retry')
     RETAKE_ANDROID_6_version2 = (MobileBy.ID, 'com.android.camera:id/btn_retake')
     USE_PHOTO_ANDROID4 = (MobileBy.ACCESSIBILITY_ID, 'Review done')

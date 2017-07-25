@@ -96,7 +96,7 @@ class TestSendVideo(SetupTestCase):
         gallery_video_page.setDriver(self.driver)
         common_page.alert_popup_allow()
         gallery_video_page.choose_videos_gallery()
-        gallery_video_page.choose_video_from_gallery()
+        gallery_video_page.choose_element_from_gallery()
         gallery_video_page.click_use_button()
         video_page.type_description("test - video 1 from gallery")
         video_page.click_send_button_gallery()  # click and wait for 720s

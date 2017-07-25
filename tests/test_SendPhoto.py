@@ -97,7 +97,7 @@ class TestSendPhoto(SetupTestCase):
         common_page.alert_popup_allow()
         gallery_page = LoadClass.load_page('GalleryPage')
         gallery_page.setDriver(self.driver)
-        gallery_page.choose_element_1()
+        gallery_page.choose_element_from_gallery()
         common_page.alert_popup_allow()
         photo_page.type_description("test - photo 1 from gallery")
         photo_page.click_send_button_gallery()  # click and wait for 720s

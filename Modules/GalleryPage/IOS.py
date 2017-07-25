@@ -4,18 +4,22 @@ from Modules.GalleryPage.GalleryPage import GalleryPage
 import logging
 from time import sleep
 from selenium.common.exceptions import *
-# import os
-# from configuration import platform, PROJECT_ROOT
 
 
 class IOS(GalleryPage):
 
-    def choose_element_1(self):  # iOS10 is opening gallery focused on latest element
+    def choose_element_from_gallery(self):  # iOS10 is opening gallery focused on latest element
 
         sleep(2)
         logging.info("choosing element from gallery")
-        choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.LAST_ELEMENT)
-        choose_element_1.click()
+        try:
+            choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.LAST_ELEMENT)
+            choose_element_1.click()
+        except NoSuchElementException:
+            choose_video_from_gallery = self.driver.find_element(
+                *self.configuration.GalleryScreen.GALLERY_VIDEO_ELEMENT_1)
+            self.assertIsNotNone(choose_video_from_gallery, "element in gallery not found")
+            choose_video_from_gallery.click()
         sleep(1)
 
         # scroll = 15
@@ -40,13 +44,13 @@ class IOS(GalleryPage):
         #     choose_element[1].click()
         #     sleep(1)
 
-    def choose_video_from_gallery(self):
-
-        sleep(2)
-        logging.info("choose video from gallery")
-        choose_video_from_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_VIDEO_ELEMENT_1)
-        self.assertIsNotNone(choose_video_from_gallery, "video in gallery not found")
-        choose_video_from_gallery.click()
+    # def choose_video_from_gallery(self):
+    #
+    #     sleep(2)
+    #     logging.info("choose video from gallery")
+    #     choose_video_from_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_VIDEO_ELEMENT_1)
+    #     self.assertIsNotNone(choose_video_from_gallery, "video in gallery not found")
+    #     choose_video_from_gallery.click()
 
     def click_use_button(self):
 

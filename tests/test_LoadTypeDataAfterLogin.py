@@ -46,12 +46,6 @@ class TestLoadTypeDataAfterLogin(SetupTestCase):
         common_page.setDriver(self.driver)
         welcome_page = LoadClass.load_page('WelcomePage')
         welcome_page.setDriver(self.driver)
-
-        # common_page.swipe_down_to_show_notifications()  # for test
-        # common_page.swipe_down_to_show_notifications()  # for test
-        # common_page.turn_on_flight_mode()  # for test
-        # common_page.swipe_up_to_hide_notifications()  # for test
-
         welcome_page.click_login_button()
         login_page = LoadClass.load_page('LoginPage')
         login_page.setDriver(self.driver)
@@ -102,16 +96,15 @@ class TestLoadTypeDataAfterLogin(SetupTestCase):
         common_page.alert_popup_allow()
         gallery_page = LoadClass.load_page('GalleryPage')
         gallery_page.setDriver(self.driver)
-        gallery_page.choose_element_1()
+        gallery_page.choose_element_from_gallery()
         common_page.alert_popup_allow()
         events_page.scroll_down_to_save_button()
 
         events_page.click_add_media()
-        # common_page.push_sample_video_file()
         select_media_page.click_video_gallery()
         common_page.alert_popup_allow()
-        gallery_page.choose_videos_gallery()  # test
-        gallery_page.choose_video_from_gallery()
+        gallery_page.choose_videos_gallery()
+        gallery_page.choose_element_from_gallery()
         gallery_page.click_use_button()
         common_page.alert_popup_allow()
         events_page.scroll_down_to_save_button()

@@ -4,63 +4,73 @@ from Modules.GalleryPage.GalleryPage import GalleryPage
 import logging
 from Modules.load_class import LoadClass
 from Conf.desired_capabilities import DesiredCapabilities
-# from appium.webdriver.common.touch_action import TouchAction
-from time import sleep
+from distutils.version import LooseVersion
 from selenium.common.exceptions import *
+from time import sleep
 
 
 class Android(GalleryPage):
 
-    def choose_element_1(self):
+    def choose_videos_gallery(self):
 
-        logging.info("choosing element 1 - Android")
+        pass
+
+    def click_use_button(self):
+
+        pass
+
+    def choose_element_from_gallery(self):
+
+        logging.info("choosing element from gallery - Android")
 
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()
         platform_version = desired_capabilities.get('platformVersion')
-        if platform_version >= "7":
-            # gallery_elements_android7 = self.driver.find_elements(*self.configuration.GalleryScreen.
-            #                                                       GALLERY_ELEMENTS_android7)
-            gallery_elements_android7 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1_android7)
-            gallery_elements_android7.click()
-            sleep(1)
 
-            # photo_page = LoadClass.load_page('PhotoPage')
-            # photo_page.setDriver(self.driver)
-            # photo_page.click_gallery_button()
+        try:
+            if LooseVersion(platform_version) >= LooseVersion("7"):
+                gallery_element = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1_android7)
+            else:
+                gallery_element = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1)
+            logging.info("click element in gallery")
+            gallery_element.click()
+        except NoSuchElementException:
+            pass
 
-            # try:
-            #     photo_page = LoadClass.load_page('PhotoPage')
-            #     photo_page.setDriver(self.driver)
-            #     photo_page.click_gallery_button()
-            # except No:
-            #     video_page = LoadClass.load_page('VideoPage')
-            #     video_page.setDriver(self.driver)
-            #     video_page.click_gallery_button()
+        sleep(0.5)
 
-            # location = gallery_elements_android7[0].location
-            # logging.info(location)
-            # x = location["x"]
-            # y = location["y"]
-            # logging.info(x)
-            # logging.info(y)
-            # positions = [(x, y)]
-            # sleep(2)
-            # self.driver.tap(positions)
+        try:
+            choose_recent = self.driver.find_element(*self.configuration.GalleryScreen.RECENT_BUTTON_IN_SIDE_MENU)
+            self.assertIsNotNone(choose_recent, "Recent button not found")
+            logging.info("click 'Recent' button")
+            choose_recent.click()
+        except NoSuchElementException:
+            pass
 
-            # common_page = LoadClass.load_page('CommonPage')
-            # common_page.setDriver(self.driver)
-            # common_page.alert_popup_allow()
-            #
-            # photo_page = LoadClass.load_page('PhotoPage')
-            # photo_page.setDriver(self.driver)
-            # photo_page.click_gallery_button()
-            #
-            # self.driver.tap(positions)
-            # # action = TouchAction(self.driver)
-            # # action.tap(element=gallery_elements_android7[0], x=x, y=y, count=1).perform()
-        else:
-            choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1)
-            choose_element_1.click()
+        try:
+            if LooseVersion(platform_version) > LooseVersion("4.4.2"):
+                show_roots = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_SHOW_ROOTS)
+            else:
+                show_roots = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_SHOW_ROOTS_Android_4)
+            logging.info("if Recent button is not visible, click 'Show roots' button")
+            self.assertIsNotNone(show_roots, "Show roots button not found")
+            show_roots.click()
+
+            choose_recent = self.driver.find_element(*self.configuration.GalleryScreen.RECENT_BUTTON_IN_SIDE_MENU)
+            logging.info("click 'Recent' button after clicking 'Show roots' button")
+            self.assertIsNotNone(choose_recent, "Recent button not found")
+            choose_recent.click()
+        except NoSuchElementException:
+            pass
+
+        try:
+            if LooseVersion(platform_version) >= LooseVersion("7"):
+                gallery_element = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1_android7)
+            else:
+                gallery_element = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1)
+            logging.info("click gallery element if visible")
+            gallery_element.click()
+        except NoSuchElementException:
+            pass
 
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
@@ -76,43 +86,50 @@ class Android(GalleryPage):
         # except:
         #     pass
 
-    def choose_video_from_gallery(self):
+    # def choose_videos_gallery(self):
+    #
+    #     desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+    #     platform_version = desired_capabilities.get('platformVersion')
+    #
+    #     try:
+    #         choose_recent = self.driver.find_element(*self.configuration.GalleryScreen.RECENT_BUTTON_IN_SIDE_MENU)
+    #         logging.info("if Videos gallery is not visible, click 'Recent' button")
+    #         self.assertIsNotNone(choose_recent, "Recent button not found")
+    #         choose_recent.click()
+    #     except NoSuchElementException:
+    #         if platform_version > "4.4.2":
+    #             show_roots = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_SHOW_ROOTS)
+    #         else:
+    #             show_roots = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_SHOW_ROOTS_Android_4)
+    #         logging.info("click 'Show roots' button")
+    #         self.assertIsNotNone(show_roots, "Show roots button not found")
+    #         show_roots.click()
+    #         sleep(0.5)
+    #         choose_recent = self.driver.find_element(*self.configuration.GalleryScreen.RECENT_BUTTON_IN_SIDE_MENU)
+    #         logging.info("if Videos gallery is not visible, click 'Recent' button")
+    #         self.assertIsNotNone(choose_recent, "Recent button not found")
+    #         choose_recent.click()
 
-        # gallery_page = LoadClass.load_page('GalleryPage')
-        # gallery_page.setDriver(self.driver)
-        # gallery_page.choose_element_1()
-        logging.info("choosing element 1 - Android")
-        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
-        platform_version = desired_capabilities.get('platformVersion')
-        if platform_version >= "7":
-            gallery_elements_android7 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1_android7)
-            gallery_elements_android7.click()
-            sleep(1)
-        else:
-            choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1)
-            choose_element_1.click()
-        common_page = LoadClass.load_page('CommonPage')
-        common_page.setDriver(self.driver)
-        common_page.alert_popup_allow()
-        sleep(1)
-
-    def choose_videos_gallery(self):
-
-        try:
-            choose_recent = self.driver.find_element(*self.configuration.GalleryScreen.RECENT_BUTTON_IN_SIDE_MENU)
-            logging.info("if Videos gallery is not visible, click 'Recent' button")
-            self.assertIsNotNone(choose_recent, "Recent button not found")
-            choose_recent.click()
-        except NoSuchElementException:
-            show_roots = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_SHOW_ROOTS)
-            logging.info("click 'Show roots' button")
-            self.assertIsNotNone(show_roots, "Show roots button not found")
-            show_roots.click()
-            sleep(0.5)
-            choose_recent = self.driver.find_element(*self.configuration.GalleryScreen.RECENT_BUTTON_IN_SIDE_MENU)
-            logging.info("if Videos gallery is not visible, click 'Recent' button")
-            self.assertIsNotNone(choose_recent, "Recent button not found")
-            choose_recent.click()
+    # def choose_video_from_gallery(self):
+    #
+    #     # gallery_page = LoadClass.load_page('GalleryPage')
+    #     # gallery_page.setDriver(self.driver)
+    #     # gallery_page.choose_element_1()
+    #     logging.info("choosing element 1 - Android")
+    #     desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+    #     platform_version = desired_capabilities.get('platformVersion')
+    #     if platform_version >= "7":
+    #         gallery_elements_android7 = self.driver.find_element(
+    #             *self.configuration.GalleryScreen.GALLERY_ELEMENT_1_android7)
+    #         gallery_elements_android7.click()
+    #         sleep(1)
+    #     else:
+    #         choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT_1)
+    #         choose_element_1.click()
+    #     common_page = LoadClass.load_page('CommonPage')
+    #     common_page.setDriver(self.driver)
+    #     common_page.alert_popup_allow()
+    #     sleep(1)
 
         # try:
         #     choose_videos_gallery = self.driver.find_element(*self.configuration.GalleryScreen.VIDEOS_BUTTON_IN_GALLERY)
@@ -142,17 +159,17 @@ class Android(GalleryPage):
         # except NoSuchElementException:
         #     pass
 
-    def choose_photos_gallery(self):
-
-        logging.info("choose photos gallery if it is visible")
-        try:
-            # choose_photos_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_BUTTON_IN_SIDE_MENU)
-            # self.assertIsNotNone(choose_photos_gallery, "Photos gallery not found")
-            # choose_photos_gallery.click()
-            choose_recent = self.driver.find_element(*self.configuration.GalleryScreen.RECENT_BUTTON_IN_SIDE_MENU)
-            self.assertIsNotNone(choose_recent, "Recent button not found")
-            choose_recent.click()
-        except NoSuchElementException:
-            pass
-        sleep(1)
+    # def choose_photos_gallery(self):
+    #
+    #     logging.info("choose photos gallery if it is visible")
+    #     try:
+    #         # choose_photos_gallery = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_BUTTON_IN_SIDE_MENU)
+    #         # self.assertIsNotNone(choose_photos_gallery, "Photos gallery not found")
+    #         # choose_photos_gallery.click()
+    #         choose_recent = self.driver.find_element(*self.configuration.GalleryScreen.RECENT_BUTTON_IN_SIDE_MENU)
+    #         self.assertIsNotNone(choose_recent, "Recent button not found")
+    #         choose_recent.click()
+    #     except NoSuchElementException:
+    #         pass
+    #     sleep(1)
 

@@ -16,6 +16,7 @@ class DesiredCapabilities(object):
             "platformName": "ANDROID",
             "platformVersion": "4.4.2",
             "deviceName": "QUANTUM_2_400",
+            # "deviceName": "0123456789ABCDEF",
             "app": os.path.join(PROJECT_ROOT, "oca.apk"),  # path to .apk file
             # "appPackage": "com.noggin.oca",
             # "appActivity": "com.noggin.oca.MainActivity",
@@ -41,7 +42,8 @@ class DesiredCapabilities(object):
             # Google Nexus 4 - 4.4.2 - API 19 - 768x1280
             "platformName": "ANDROID",
             "platformVersion": "4.4.2",
-            "deviceName": "192.168.56.101:5556",
+            # "deviceName": "192.168.56.101:5556",
+            "deviceName": "emulator-5554",
             "app": os.path.join(PROJECT_ROOT, "oca-x86.apk"),  # path to .apk file
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",

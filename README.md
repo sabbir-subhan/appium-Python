@@ -211,6 +211,8 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 
 - disable Auto-Correction on iOS devices
 
+- provide image and video sample file for real devices and android emulators (sample files should be copied while tests are running but for some devices or emulators that functionality may not work)
+
 
 ### for TC: Managing Events
 - 3 types of events (Incident, event_for_chooser_fields, event_for_on_load/save_test)
