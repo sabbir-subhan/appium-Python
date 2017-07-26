@@ -25,6 +25,7 @@ from Modules.load_class import LoadClass
 import logging
 import unittest
 from time import sleep
+import os
 
 
 class TestLoadTypeDataAfterLogin(SetupTestCase):
@@ -37,6 +38,13 @@ class TestLoadTypeDataAfterLogin(SetupTestCase):
     def tearDown(self):
 
         logging.info("Quitting")
+
+        # take screenshot on quit
+        path = "./screenshots"
+        os.chdir(path)
+        self.driver.save_screenshot("test_Load_Type_Data_After_Login" + ".png")
+        os.chdir("..")
+
         self.driver.quit()
 
     def test_Load_Type_Data_After_Login(self):
@@ -70,11 +78,10 @@ class TestLoadTypeDataAfterLogin(SetupTestCase):
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()
 
-        common_page.swipe_up_to_show_control_center()
-        common_page.switch_airplane_mode()  # method for iOS
-        common_page.turn_on_flight_mode()  # method for Android
-        common_page.swipe_down_to_hide_control_center()
+        # airplane mode on
+        common_page.switch_on_airplane_mode()
 
+        common_page.hamburger_button()
         main_page.scroll_up_to_events_button()
         main_page.open_EVENTS()
         events_page = LoadClass.load_page('EventsPage')
@@ -133,11 +140,10 @@ class TestLoadTypeDataAfterLogin(SetupTestCase):
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()
 
-        common_page.swipe_up_to_show_control_center()
-        common_page.switch_airplane_mode()  # method for iOS
-        common_page.turn_on_all_network()  # method for Android
-        common_page.swipe_down_to_hide_control_center()
+        # airplane mode off
+        common_page.switch_off_airplane_mode()
 
+        common_page.hamburger_button()
         main_page.scroll_up_to_events_button()
         main_page.open_EVENTS()
         events_page.clear_Search_field()

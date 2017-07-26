@@ -28,6 +28,7 @@ from Modules.load_class import LoadClass
 import logging
 import unittest
 from time import sleep
+import os
 
 
 class TestQuickAccessButtons(SetupTestCase):
@@ -40,9 +41,16 @@ class TestQuickAccessButtons(SetupTestCase):
     def tearDown(self):
 
         logging.info("Quitting")
+
+        # take screenshot on quit
+        path = "./screenshots"
+        os.chdir(path)
+        self.driver.save_screenshot("test_QuickAccessButtons" + ".png")
+        os.chdir("..")
+
         self.driver.quit()
 
-    def test_quick_access_buttons(self):
+    def test_QuickAccessButtons(self):
 
         logging.info("starting Test Case: Quick Access buttons on OCA app")
         common_page = LoadClass.load_page('CommonPage')

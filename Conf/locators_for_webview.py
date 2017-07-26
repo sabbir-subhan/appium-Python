@@ -158,6 +158,7 @@ class EventsScreen:
     VIEW_ON_MAP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeView>div.ui-content>ul.ui-listview>li>a[href="#mapPage?geometry=true"]')  # button inside event details
     ADD_MEDIA_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeNew>div.ui-content>ul.edit-view>li.ui-li-static.ui-body-inherit>div.addmedia.edit-mode>a')
     OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#emeNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
+    FIRST_PENDING_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div.ui-content>div.pending>ul.listview>li:first-child')
 
 
 class TypesOfEventsScreen:
@@ -178,8 +179,8 @@ class EventEditScreen:
     CANCEL_BUTTON_EDIT_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                                        'a[href="#cancel"]')
     NAME_FIELD = (MobileBy.CSS_SELECTOR, 'div#emeNew>div>ul>li>div>input#name')
-    SEVERITY_LEVEL_SELECTOR = (MobileBy.CSS_SELECTOR, 'div#emeNew>div>ul>li>div>div>select[name="severity"]')  # for new event
-    SEVERITY_LEVEL_SELECTOR_EDIT_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div>ul>li>div>div>select[name="severity"]')
+    SEVERITY_LEVEL_SELECTOR = (MobileBy.CSS_SELECTOR, 'div#emeNew>div.ui-content>ul>li>div>div>select[name="severity"]')  # for new event
+    SEVERITY_LEVEL_SELECTOR_EDIT_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div.ui-content>ul>li>div>div>select[name="severity"]')
     # CHOOSE_SEVERITY_LVL1_iPad = (MobileBy.CSS_SELECTOR, '')
     # CHOOSE_SEVERITY_LVL2_iPad = (MobileBy.CSS_SELECTOR, '')
     # CHOOSE_SEVERITY_LVL3_iPad = (MobileBy.CSS_SELECTOR, '')

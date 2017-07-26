@@ -30,6 +30,7 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
+import os
 
 
 class TestRisk(SetupTestCase):
@@ -42,9 +43,16 @@ class TestRisk(SetupTestCase):
     def tearDown(self):
 
         logging.info("Quitting")
+
+        # take screenshot on quit
+        path = "./screenshots"
+        os.chdir(path)
+        self.driver.save_screenshot("test_Risk" + ".png")
+        os.chdir("..")
+
         self.driver.quit()
 
-    def test_manage_risks(self):
+    def test_Risk(self):
 
         logging.info("starting Test Case: Risk")
         common_page = LoadClass.load_page('CommonPage')

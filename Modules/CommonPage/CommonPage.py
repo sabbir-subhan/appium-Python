@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 import os
 from Modules.load_class import LoadClass
+from configuration import platform
 
 
 class CommonPage(BasePage):
@@ -76,8 +77,13 @@ class CommonPage(BasePage):
     def wait_for_app_loading(self):
 
         # logging.info("wait for app loading")
+        platform_for_test = str(platform)
+        if "emulator" in platform_for_test:
+            sleep(4)
+        else:
+            pass
         WebDriverWait(self.driver, 20).until(
+            # expected_conditions.invisibility_of_element_located(self.configuration.CommonScreen.LOADING2),
             expected_conditions.invisibility_of_element_located(self.configuration.CommonScreen.LOADING),
             "app is still loading - check internet connection")
-
 

@@ -15,6 +15,7 @@ import unittest
 import logging
 from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
+import os
 
 
 class TestLoginWithWrongPass(SetupTestCase):
@@ -27,6 +28,13 @@ class TestLoginWithWrongPass(SetupTestCase):
     def tearDown(self):
 
         logging.info("Quitting")
+
+        # take screenshot on quit
+        path = "./screenshots"
+        os.chdir(path)
+        self.driver.save_screenshot("test_LoginWithWrongPass" + ".png")
+        os.chdir("..")
+
         self.driver.quit()
 
     def test_1_login_into_general_user_account_with_incorrect_password(self):

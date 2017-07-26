@@ -21,11 +21,13 @@ class Android:
     SWITCH_AIRPLANE_MODE_7_1 = (MobileBy.ACCESSIBILITY_ID, 'Airplane mode')
     SWITCH_ON_AIRPLANE_MODE_7 = (MobileBy.ACCESSIBILITY_ID, 'Airplane,mode,On.,Button')
     SWITCH_OFF_AIRPLANE_MODE_7 = (MobileBy.ACCESSIBILITY_ID, 'Airplane,mode,Off.,Button')
+    # SWITCH_AIRPLANE_MODE_7 = (MobileBy.ACCESSIBILITY_ID, 'Airplane,mode,Off.,Button')
 
 
 class CommonScreen:
     """A class for handling Common buttons on different screen"""
     LOADING = (MobileBy.XPATH, '//android.view.View[@content-desc="loading"]')
+    LOADING2 = (MobileBy.XPATH, '//android.view.View[@content-desc="loading" and @enabled="true"]')
     UPLOADING = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Uploading")]]')  # not working
     SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
     CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Cancel')
@@ -384,11 +386,10 @@ class CameraScreen:
     CAMERA_CHOOSER_ANDROID4 = (MobileBy.ID, 'com.android.camera2:id/btn_switch_camera')
     CAMERA_CHOOSER_ANDROID5 = (MobileBy.ID, 'com.tct.camera:id/onscreen_camera_picker')
     CAMERA_CHOOSER_ANDROID6 = (MobileBy.ACCESSIBILITY_ID, 'Switch camera')
-    CAMERA_CHOOSER_ANDROID_6 = (MobileBy.ACCESSIBILITY_ID, 'Front and back camera switch')  # also Android 5 emulator
+    CAMERA_CHOOSER_ANDROID_6 = (MobileBy.ACCESSIBILITY_ID, 'Front and back camera switch')  # also Android 4, 5 emulator
     CAMERA_CHOOSER_ANDROID7 = (MobileBy.XPATH, '//SideQuickSetting[1]/SideQuickSettingItem[3]/ItemDataButton[1]/GLButton[1]')
     RETAKE_ANDROID_4 = (MobileBy.ACCESSIBILITY_ID, 'Review retake')
     RETAKE_ANDROID_5 = (MobileBy.ID, 'com.tct.camera:id/btn_retake')
-    RETAKE_ANDROID_5_emulator = (MobileBy.ID, 'com.android.camera:id/btn_retake')
     RETAKE_ANDROID_6 = (MobileBy.ID, 'com.sec.android.app.camera:id/retry')
     RETAKE_ANDROID_6_version2 = (MobileBy.ID, 'com.android.camera:id/btn_retake')
     USE_PHOTO_ANDROID4 = (MobileBy.ACCESSIBILITY_ID, 'Review done')

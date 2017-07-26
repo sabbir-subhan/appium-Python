@@ -158,4 +158,3 @@ class SetupTestCase(unittest.TestCase):
             self.driver.implicitly_wait(6)  # seconds - how long Appium will wait, for example try/except
 
 
-

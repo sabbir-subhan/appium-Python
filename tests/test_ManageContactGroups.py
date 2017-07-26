@@ -38,6 +38,7 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
+import os
 
 
 class TestManagingContactGroup(SetupTestCase):
@@ -50,9 +51,16 @@ class TestManagingContactGroup(SetupTestCase):
     def tearDown(self):
 
         logging.info("Quitting")
+
+        # take screenshot on quit
+        path = "./screenshots"
+        os.chdir(path)
+        self.driver.save_screenshot("test_ManagingContactGroup" + ".png")
+        os.chdir("..")
+
         self.driver.quit()
 
-    def test_managing_contact_group(self):
+    def test_ManagingContactGroup(self):
 
         logging.info("starting Test Case: Managing Contact Groups")
         common_page = LoadClass.load_page('CommonPage')

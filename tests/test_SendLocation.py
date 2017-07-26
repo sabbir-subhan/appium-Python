@@ -17,6 +17,7 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
+import os
 
 
 class TestSendLocation(SetupTestCase):
@@ -29,9 +30,16 @@ class TestSendLocation(SetupTestCase):
     def tearDown(self):
 
         logging.info("Quitting")
+
+        # take screenshot on quit
+        path = "./screenshots"
+        os.chdir(path)
+        self.driver.save_screenshot("test_SendLocation" + ".png")
+        os.chdir("..")
+
         self.driver.quit()
 
-    def test_send_location(self):
+    def test_SendLocation(self):
 
         logging.info("starting Test Case: Send location to OCA")
         common_page = LoadClass.load_page('CommonPage')

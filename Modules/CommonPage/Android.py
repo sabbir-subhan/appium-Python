@@ -13,6 +13,7 @@ from configuration import PROJECT_ROOT, platform
 import os
 import subprocess
 from selenium.common.exceptions import NoSuchElementException
+from distutils.version import LooseVersion
 
 
 class Android(CommonPage):
@@ -211,12 +212,14 @@ class Android(CommonPage):
     @staticmethod
     def swipe_up_to_show_control_center():
 
-        logging.warning("Appium is running on Android device - there is no control center to show")
+        pass
+        # logging.warning("Appium is running on Android device - there is no control center to show")
 
     @staticmethod
     def swipe_down_to_hide_control_center():
 
-        logging.warning("Appium is running on Android device - there is no control center to hide")
+        pass
+        # logging.warning("Appium is running on Android device - there is no control center to hide")
 
     def swipe_down_to_show_notifications(self):  # this will bring android notifications
 
@@ -236,9 +239,9 @@ class Android(CommonPage):
         self.driver.swipe(start_x=start_x, start_y=start_y, end_x=start_x, end_y=10, duration=1000)
         sleep(1)
 
-    def switch_airplane_mode(self):  # method only for iOS
-
-        pass
+    # def switch_airplane_mode(self):  # method only for iOS
+    #
+    #     pass
 
     def switch_wifi(self):
 
@@ -252,45 +255,91 @@ class Android(CommonPage):
 
     def switch_off_airplane_mode(self):
 
-        logging.info("switch airplane mode off")
+        logging.info("switch off airplane mode")
         sleep(1)
-        try:
-            switch_off_airplane_mode = self.driver.find_element(*self.configuration.Android.SWITCH_OFF_AIRPLANE_MODE_7)
-        except NoSuchElementException:
-            switch_off_airplane_mode = self.driver.find_element(*self.configuration.Android.SWITCH_AIRPLANE_MODE_7_1)
-        self.assertIsNotNone(switch_off_airplane_mode, "airplane mode button not found")
-        switch_off_airplane_mode.click()
+        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+        platform_version = desired_capabilities.get('platformVersion')
+        if LooseVersion(platform_version) >= LooseVersion("7"):  # platform_version >= "7":
+            logging.info("Appium is running on Android version >= 7"
+                            " (" + str(platform) + ") -- swipe to show notifications and switch airplane mode")
+            # common_page = LoadClass.load_page('CommonPage')
+            # common_page.setDriver(self.driver)
+            Android.swipe_down_to_show_notifications(self)
+            Android.swipe_down_to_show_notifications(self)
+            try:
+                switch_airplane_mode = self.driver.find_element(*self.configuration.Android.SWITCH_OFF_AIRPLANE_MODE_7)
+            except NoSuchElementException:
+                switch_airplane_mode = self.driver.find_element(*self.configuration.Android.SWITCH_AIRPLANE_MODE_7_1)
+            self.assertIsNotNone(switch_airplane_mode, "airplane mode button not found")
+            switch_airplane_mode.click()
+            Android.swipe_up_to_hide_notifications(self)
+        else:
+            logging.info("turn on all network")
+            self.driver.set_network_connection(6)  # this is working for Android 6 and older
+        sleep(1)
 
     def switch_on_airplane_mode(self):
 
-        logging.info("switch airplane mode on")
-        try:
-            switch_on_airplane_mode = self.driver.find_element(*self.configuration.Android.SWITCH_ON_AIRPLANE_MODE_7)
-        except NoSuchElementException:
-            switch_on_airplane_mode = self.driver.find_element(*self.configuration.Android.SWITCH_AIRPLANE_MODE_7_1)
-        self.assertIsNotNone(switch_on_airplane_mode, "airplane mode button not found")
-        switch_on_airplane_mode.click()
-
-    def turn_on_flight_mode(self):  # works only on Android
-
-        logging.info("turn flight mode on")
-
+        logging.info("switch on airplane mode")
+        sleep(1)
         desired_capabilities = DesiredCapabilities.get_desired_capabilities()
         platform_version = desired_capabilities.get('platformVersion')
-        if platform_version >= "7":
-            logging.warning("Appium is running on Android version >= 7"
-                            " (" + str(platform) + ") -- swipe to show notifications and switch airplane mode")
-            common_page = LoadClass.load_page('CommonPage')
-            common_page.setDriver(self.driver)
-            common_page.swipe_down_to_show_notifications()
-            common_page.swipe_down_to_show_notifications()
-            # common_page.switch_wifi()
-            common_page.switch_on_airplane_mode()
-            common_page.swipe_up_to_hide_notifications()
+        if LooseVersion(platform_version) >= LooseVersion("7"):  # platform_version >= "7":
+            logging.info("Appium is running on Android version >= 7"
+                         " (" + str(platform) + ") -- swipe to show notifications and switch airplane mode")
+            # common_page = LoadClass.load_page('CommonPage')
+            # common_page.setDriver(self.driver)
+            Android.swipe_down_to_show_notifications(self)
+            Android.swipe_down_to_show_notifications(self)
+            sleep(0.5)
+            try:
+                switch_airplane_mode = self.driver.find_element(*self.configuration.Android.SWITCH_ON_AIRPLANE_MODE_7)
+            except NoSuchElementException:
+                switch_airplane_mode = self.driver.find_element(*self.configuration.Android.SWITCH_AIRPLANE_MODE_7_1)
+            self.assertIsNotNone(switch_airplane_mode, "airplane mode button not found")
+            switch_airplane_mode.click()
+            Android.swipe_up_to_hide_notifications(self)
         else:
-            logging.info("Appium is running on real device (" + str(platform) + ") = turn on flight mode")
+            logging.info("turn off all network")
             self.driver.set_network_connection(1)  # this is working for Android 6 and older
-        sleep(0.5)
+        sleep(1)
+
+    def turn_off_all_network(self):  # works only on Android
+
+        logging.info("turn off network - data and wifi connections")
+        self.driver.set_network_connection(0)
+
+    # def switch_on_airplane_mode(self):
+    #
+    #     logging.info("switch airplane mode on")
+    #     sleep(1)
+    #     try:
+    #         switch_on_airplane_mode = self.driver.find_element(*self.configuration.Android.SWITCH_ON_AIRPLANE_MODE_7)
+    #     except NoSuchElementException:
+    #         switch_on_airplane_mode = self.driver.find_element(*self.configuration.Android.SWITCH_AIRPLANE_MODE_7_1)
+    #     self.assertIsNotNone(switch_on_airplane_mode, "airplane mode button not found")
+    #     switch_on_airplane_mode.click()
+
+    # def turn_on_flight_mode(self):  # works only on Android
+    #
+    #     logging.info("turn flight mode on")
+    #
+    #     desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+    #     platform_version = desired_capabilities.get('platformVersion')
+    #     if LooseVersion(platform_version) >= LooseVersion("7"):  # platform_version >= "7":
+    #         logging.warning("Appium is running on Android version >= 7"
+    #                         " (" + str(platform) + ") -- swipe to show notifications and switch airplane mode")
+    #         common_page = LoadClass.load_page('CommonPage')
+    #         common_page.setDriver(self.driver)
+    #         common_page.swipe_down_to_show_notifications()
+    #         common_page.swipe_down_to_show_notifications()
+    #         # common_page.switch_wifi()
+    #         common_page.switch_on_airplane_mode()
+    #         common_page.swipe_up_to_hide_notifications()
+    #     else:
+    #         logging.info("Appium is running on real device (" + str(platform) + ") = turn on flight mode")
+    #         self.driver.set_network_connection(1)  # this is working for Android 6 and older
+    #     sleep(0.5)
 
     # def turn_on_flight_mode(self):  # works only on Android
     #
@@ -298,31 +347,26 @@ class Android(CommonPage):
     #     self.driver.set_network_connection(1)  # not working for Android 7
     #     # self.driver.set_network_connection(2)  # switch wi-fi - not working for Android 7
 
-    def turn_off_all_network(self):  # works only on Android
-
-        logging.info("turn off network - data and wifi connections")
-        self.driver.set_network_connection(0)
-
-    def turn_on_all_network(self):  # works only on Android
-
-        logging.info("turn flight mode off")
-
-        desired_capabilities = DesiredCapabilities.get_desired_capabilities()
-        platform_version = desired_capabilities.get('platformVersion')
-        if platform_version >= "7":
-            logging.warning("Appium is running on Android version >= 7"
-                            " (" + str(platform) + ") -- swipe to show notifications and switch airplane mode")
-            common_page = LoadClass.load_page('CommonPage')
-            common_page.setDriver(self.driver)
-            common_page.swipe_down_to_show_notifications()
-            common_page.swipe_down_to_show_notifications()
-            # common_page.switch_wifi()
-            common_page.switch_off_airplane_mode()
-            common_page.swipe_up_to_hide_notifications()
-        else:
-            logging.info("turn on all network")
-            self.driver.set_network_connection(6)
-        sleep(0.5)
+    # def turn_on_all_network(self):  # works only on Android
+    #
+    #     logging.info("turn flight mode off")
+    #
+    #     desired_capabilities = DesiredCapabilities.get_desired_capabilities()
+    #     platform_version = desired_capabilities.get('platformVersion')
+    #     if LooseVersion(platform_version) >= LooseVersion("7"):  # platform_version >= "7":
+    #         logging.warning("Appium is running on Android version >= 7"
+    #                         " (" + str(platform) + ") -- swipe to show notifications and switch airplane mode")
+    #         common_page = LoadClass.load_page('CommonPage')
+    #         common_page.setDriver(self.driver)
+    #         common_page.swipe_down_to_show_notifications()
+    #         common_page.swipe_down_to_show_notifications()
+    #         # common_page.switch_wifi()
+    #         common_page.switch_off_airplane_mode()
+    #         common_page.swipe_up_to_hide_notifications()
+    #     else:
+    #         logging.info("turn on all network")
+    #         self.driver.set_network_connection(6)
+    #     sleep(0.5)
 
     def clear_Search_field(self):
 

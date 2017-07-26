@@ -3,7 +3,6 @@
 from Modules.CameraPage.CameraPage import CameraPage
 import logging
 from Conf.desired_capabilities import DesiredCapabilities
-from time import sleep
 from selenium.common.exceptions import *
 from configuration import platform
 from appium.webdriver.common.touch_action import TouchAction
@@ -172,7 +171,10 @@ class Android(CameraPage):
             # sleep(1)
         else:
             logging.info("Use - Android < 5")
-            use_photo1 = self.driver.find_element(*self.configuration.CameraScreen.USE_PHOTO_ANDROID4)
+            try:
+                use_photo1 = self.driver.find_element(*self.configuration.CameraScreen.USE_PHOTO_ANDROID4)
+            except NoSuchElementException:
+                use_photo1 = self.driver.find_element(*self.configuration.CameraScreen.USE_PHOTO_ANDROID6)
             self.assertIsNotNone(use_photo1)
             # use_photo1.click()
             action.tap(element=use_photo1, count=1).perform()
@@ -203,14 +205,17 @@ class Android(CameraPage):
             self.assertIsNotNone(retake_photo_android_6)
             retake_photo_android_6.click()
         elif LooseVersion(platform_version) < LooseVersion("5"):  # platform_version < "5":
-            retake_photo_android_4 = self.driver.find_element(*self.configuration.CameraScreen.RETAKE_ANDROID_4)
+            try:
+                retake_photo_android_4 = self.driver.find_element(*self.configuration.CameraScreen.RETAKE_ANDROID_4)
+            except NoSuchElementException:
+                retake_photo_android_4 = self.driver.find_element(*self.configuration.CameraScreen.RETAKE_ANDROID_6_version2)
             self.assertIsNotNone(retake_photo_android_4)
             retake_photo_android_4.click()
         else:
             try:
                 retake_photo_android_5 = self.driver.find_element(*self.configuration.CameraScreen.RETAKE_ANDROID_5)
             except NoSuchElementException:
-                retake_photo_android_5 = self.driver.find_element(*self.configuration.CameraScreen.RETAKE_ANDROID_5_emulator)
+                retake_photo_android_5 = self.driver.find_element(*self.configuration.CameraScreen.RETAKE_ANDROID_6_version2)
             self.assertIsNotNone(retake_photo_android_5)
             retake_photo_android_5.click()
 
@@ -234,7 +239,10 @@ class Android(CameraPage):
                 self.assertIsNotNone(retake_photo_android_6)
                 retake_photo_android_6.click()
             elif LooseVersion(platform_version) < LooseVersion("5"):  # platform_version < "5":
-                retake_photo_android_4 = self.driver.find_element(*self.configuration.CameraScreen.RETAKE_ANDROID_4)
+                try:
+                    retake_photo_android_4 = self.driver.find_element(*self.configuration.CameraScreen.RETAKE_ANDROID_4)
+                except NoSuchElementException:
+                    retake_photo_android_4 = self.driver.find_element(*self.configuration.CameraScreen.RETAKE_ANDROID_6_version2)
                 self.assertIsNotNone(retake_photo_android_4)
                 retake_photo_android_4.click()
             else:
@@ -256,7 +264,10 @@ class Android(CameraPage):
             self.assertIsNotNone(chooser_camera_android)
             chooser_camera_android.click()
         elif LooseVersion(platform_version) < LooseVersion("5"):  # platform_version < "5":
-            chooser_camera_android4 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID4)
+            try:
+                chooser_camera_android4 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID4)
+            except NoSuchElementException:
+                chooser_camera_android4 = self.driver.find_element(*self.configuration.CameraScreen.CAMERA_CHOOSER_ANDROID_6)
             self.assertIsNotNone(chooser_camera_android4)
             chooser_camera_android4.click()
         elif LooseVersion(platform_version) >= LooseVersion("7"):  # platform_version >= "7":

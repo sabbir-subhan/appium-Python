@@ -51,6 +51,7 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
+import os
 
 
 class TestManagingReports(SetupTestCase):
@@ -63,9 +64,16 @@ class TestManagingReports(SetupTestCase):
     def tearDown(self):
 
         logging.info("Quitting")
+
+        # take screenshot on quit
+        path = "./screenshots"
+        os.chdir(path)
+        self.driver.save_screenshot("test_ManageReports" + ".png")
+        os.chdir("..")
+
         self.driver.quit()
 
-    def test_manage_reports(self):
+    def test_ManageReports(self):
 
         logging.info("starting Test Case: Managing Reports")
         common_page = LoadClass.load_page('CommonPage')

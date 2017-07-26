@@ -2,6 +2,7 @@
 
 from Modules.MainPage.MainPage import MainPage
 import logging
+from time import sleep
 
 
 class IOS(MainPage):
@@ -204,7 +205,8 @@ class IOS(MainPage):
 
     def scroll_up_to_events_button(self):
 
-        logging.info("scroll up with loop")
+        logging.info("scroll up")
+        sleep(1)
         var = 4
         while var > 0:
             logging.info("check if events button is visible")

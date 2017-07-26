@@ -40,7 +40,7 @@ class IOS(CommonPage):
         height_max = window_size["height"]
         width_center = window_size["width"] * 0.5
         self.driver.swipe(start_x=width_center, start_y=0, end_x=width_center, end_y=height_max, duration=800)
-        sleep(1)
+        sleep(2)
 
     def swipe_up_to_show_control_center(self):  # this will bring control center
 
@@ -55,12 +55,30 @@ class IOS(CommonPage):
         action.press(el, start_x, start_y).wait(100).move_to(el, end_x, end_y).release().perform()
         sleep(1)
 
-    def switch_airplane_mode(self):
+    def switch_on_airplane_mode(self):
 
         logging.info("switch on/off airplane mode")
+
+        IOS.swipe_up_to_show_control_center(self)
+
         airplane_mode_button = self.driver.find_element(*self.configuration.iOS.AIRPLANE_MODE_BUTTON)
         self.assertIsNotNone(airplane_mode_button, "airplane mode button not found")
         airplane_mode_button.click()
+
+        IOS.swipe_down_to_hide_control_center(self)
+
+        sleep(1)
+
+    def switch_off_airplane_mode(self):
+
+        IOS.switch_on_airplane_mode(self)
+
+    # def switch_airplane_mode(self):
+    #
+    #     logging.info("switch on/off airplane mode")
+    #     airplane_mode_button = self.driver.find_element(*self.configuration.iOS.AIRPLANE_MODE_BUTTON)
+    #     self.assertIsNotNone(airplane_mode_button, "airplane mode button not found")
+    #     airplane_mode_button.click()
 
     def turn_on_all_network(self):  # method only for Android
 

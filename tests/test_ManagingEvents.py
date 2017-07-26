@@ -21,6 +21,7 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
+import os
 
 
 class TestManagingEvents(SetupTestCase):
@@ -33,9 +34,16 @@ class TestManagingEvents(SetupTestCase):
     def tearDown(self):
 
         logging.info("Quitting")
+
+        # take screenshot on quit
+        path = "./screenshots"
+        os.chdir(path)
+        self.driver.save_screenshot("test_ManagingEvents" + ".png")
+        os.chdir("..")
+
         self.driver.quit()
 
-    def test_managing_events(self):
+    def test_ManagingEvents(self):
 
         logging.info("starting Test Case: Managing Events")
         common_page = LoadClass.load_page('CommonPage')
@@ -62,6 +70,7 @@ class TestManagingEvents(SetupTestCase):
         main_page.check_presence_of_events_button()
 
         logging.info("TC info: filter events, create first Event and delete it")
+        main_page.scroll_up_to_events_button()
         main_page.open_EVENTS()
         events_page = LoadClass.load_page('EventsPage')
         events_page.setDriver(self.driver)
@@ -76,6 +85,7 @@ class TestManagingEvents(SetupTestCase):
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
+        main_page.scroll_up_to_events_button()
         main_page.open_EVENTS()
         events_page.click_more_button_in_events_list()
         events_page.click_New_event_button()
@@ -88,6 +98,7 @@ class TestManagingEvents(SetupTestCase):
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
+        main_page.scroll_up_to_events_button()
         main_page.open_EVENTS()
         events_page.clear_Search_field()
         events_page.type_text_into_search_field("First event")
@@ -110,6 +121,7 @@ class TestManagingEvents(SetupTestCase):
         main_page.check_presence_of_events_button()
 
         logging.info("TC info: create second event and add map")
+        main_page.scroll_up_to_events_button()
         main_page.open_EVENTS()
         events_page.click_more_button_in_events_list()
         events_page.click_New_event_button()
@@ -122,6 +134,7 @@ class TestManagingEvents(SetupTestCase):
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
+        main_page.scroll_up_to_events_button()
         main_page.open_EVENTS()
         events_page.clear_Search_field()
         events_page.type_text_into_search_field("Second event")
@@ -165,6 +178,7 @@ class TestManagingEvents(SetupTestCase):
                      "but do not save; events with on load/save sequence and with hidden fields"
                      " and another with chooser fields")
 
+        main_page.scroll_up_to_events_button()
         main_page.open_EVENTS()
         events_page.open_previously_created_event()
         common_page.wait_for_app_loading()
@@ -180,6 +194,7 @@ class TestManagingEvents(SetupTestCase):
         events_page.set_as_primary_event()
         common_page.hamburger_button()
 
+        main_page.scroll_up_to_events_button()
         main_page.open_EVENTS()
         events_page.click_more_button_in_events_list()
         events_page.clear_primary_event()
@@ -188,6 +203,7 @@ class TestManagingEvents(SetupTestCase):
 
         logging.info("create new type of event, but do not save it - event with on load and on save sequence"
                      " and with hidden fields")
+        main_page.scroll_up_to_events_button()
         main_page.open_EVENTS()
         events_page.click_more_button_in_events_list()
         events_page.click_New_event_button()
@@ -211,6 +227,7 @@ class TestManagingEvents(SetupTestCase):
 
         logging.info("create new type of event, but do not save it - event with chooser field for another event "
                      "and sub form with chooser field")
+        main_page.scroll_up_to_events_button()
         main_page.open_EVENTS()
         events_page.click_more_button_in_events_list()
         events_page.click_New_event_button()

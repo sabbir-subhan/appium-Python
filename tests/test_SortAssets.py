@@ -20,6 +20,7 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
+import os
 
 
 class TestSortAssets(SetupTestCase):
@@ -32,9 +33,16 @@ class TestSortAssets(SetupTestCase):
     def tearDown(self):
 
         logging.info("Quitting")
+
+        # take screenshot on quit
+        path = "./screenshots"
+        os.chdir(path)
+        self.driver.save_screenshot("test_SortAssets" + ".png")
+        os.chdir("..")
+
         self.driver.quit()
 
-    def test_sort_assets(self):
+    def test_SortAssets(self):
 
         logging.info("starting Test Case: Sort Assets in Alphabetical order")
         common_page = LoadClass.load_page('CommonPage')

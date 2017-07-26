@@ -896,3 +896,15 @@ class EventsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def open_first_pending_event(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("open first pending event on the list")
+        first_pending_event = self.driver.find_element(*self.configuration.EventsScreen.FIRST_PENDING_EVENT)
+        self.assertIsNotNone(first_pending_event, "first pending event not found")
+        first_pending_event.click()
+
+        self.switch_context_to_native()
+
+

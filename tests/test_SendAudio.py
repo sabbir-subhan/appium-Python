@@ -19,6 +19,7 @@ from Modules.load_class import LoadClass
 import logging
 import unittest
 from time import sleep
+import os
 
 
 class TestSendAudio(SetupTestCase):
@@ -31,9 +32,16 @@ class TestSendAudio(SetupTestCase):
     def tearDown(self):
 
         logging.info("Quitting")
+
+        # take screenshot on quit
+        path = "./screenshots"
+        os.chdir(path)
+        self.driver.save_screenshot("test_SendAudio" + ".png")
+        os.chdir("..")
+
         self.driver.quit()
 
-    def test_send_sound(self):
+    def test_SendAudio(self):
 
         logging.info("starting Test Case: Send Audio to OCA")
         common_page = LoadClass.load_page('CommonPage')
