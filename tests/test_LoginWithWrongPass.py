@@ -39,8 +39,7 @@ class TestLoginWithWrongPass(SetupTestCase):
 
     def test_1_login_into_general_user_account_with_incorrect_password(self):
 
-        logging.info("starting Test Case: Logging in as a suspended account and with a wrong password")
-        logging.info("starting test1: login into general user account with incorrect password")
+        logging.info("starting test 1: login into general user account with incorrect password")
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         welcome_page = LoadClass.load_page('WelcomePage')
@@ -58,7 +57,7 @@ class TestLoginWithWrongPass(SetupTestCase):
 
     def test_2_login_into_general_user_account(self):
 
-        logging.info("starting test2: login into general user account with correct credentials")
+        logging.info("starting test 2: login into general user account with correct credentials")
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         welcome_page = LoadClass.load_page('WelcomePage')
@@ -82,7 +81,7 @@ class TestLoginWithWrongPass(SetupTestCase):
 
     def test_3_login_into_admin_account(self):
 
-        logging.info("starting test3: login into admin account with correct credentials")
+        logging.info("starting test 3: login into admin account with correct credentials")
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         welcome_page = LoadClass.load_page('WelcomePage')
@@ -106,7 +105,7 @@ class TestLoginWithWrongPass(SetupTestCase):
 
     def test_4_login_using_account_expired_1_day_ago(self):
 
-        logging.info("starting test4: login using account expired 1 day ago")
+        logging.info("starting test 4: login using account expired 1 day ago")
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         welcome_page = LoadClass.load_page('WelcomePage')
@@ -124,7 +123,7 @@ class TestLoginWithWrongPass(SetupTestCase):
 
     def test_5_login_using_account_that_expires_today(self):
 
-        logging.info("starting test5: login using account that expires today")
+        logging.info("starting test 5: login using account that expires today")
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         welcome_page = LoadClass.load_page('WelcomePage')
@@ -142,7 +141,7 @@ class TestLoginWithWrongPass(SetupTestCase):
 
     def test_6_login_using_account_that_will_expire_in_1_day(self):
 
-        logging.info("starting test6: login using account that will expire in 1 day")
+        logging.info("starting test 6: login using account that will expire in 1 day")
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         welcome_page = LoadClass.load_page('WelcomePage')
@@ -166,7 +165,7 @@ class TestLoginWithWrongPass(SetupTestCase):
 
     def test_7_login_into_suspended_account(self):
 
-        logging.info("starting test7: login into suspended account")
+        logging.info("starting test 7: login into suspended account")
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         welcome_page = LoadClass.load_page('WelcomePage')

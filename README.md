@@ -11,9 +11,11 @@
 - node (tested on 6.10)
 - npm
 - pip install -U selenium
-- pip install Appium-Python-Client
 - npm install -g appium@latest
+- pip install Appium-Python-Client
+- pip install html-testRunner
 - PyCharm - for editing tests
+
 
 **for OSX all above, plus:**
 

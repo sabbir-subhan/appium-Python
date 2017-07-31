@@ -172,10 +172,13 @@ class TasksPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info('click Save button')
-        save_button = self.driver.find_element(*self.configuration.TasksScreen.SAVE_NEW_TASK_BUTTON)
-        self.assertIsNotNone(save_button, "save button not found")
-        save_button.click()
+        try:
+            logging.info('click Save button')
+            save_button = self.driver.find_element(*self.configuration.TasksScreen.SAVE_NEW_TASK_BUTTON)
+            self.assertIsNotNone(save_button, "save button not found")
+            save_button.click()
+        except NoSuchElementException:
+            TasksPage.click_save_edited_task(self)
 
         self.switch_context_to_native()
 
@@ -395,5 +398,20 @@ class TasksPage(BasePage):
 
         # validation_error_popup = self.driver.find_element(*self.configuration.TasksScreen.VALIDATION_ERROR_POPUP)
         # self.assertIsNone(validation_error_popup, "Validation Error popup is present")
+
+        self.switch_context_to_native()
+
+    def ok_button_on_offline_notification_popup(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Ok button on offline notification popup")
+        try:
+            ok_button = self.driver.find_element(*self.configuration.TasksScreen.OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP)
+            self.assertIsNotNone(ok_button, "ok button not found")
+            ok_button.click()
+        except NoSuchElementException:
+            pass
+        sleep(1)
 
         self.switch_context_to_native()

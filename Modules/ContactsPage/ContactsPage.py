@@ -139,9 +139,12 @@ class ContactsPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info('click Save button')
-        save_button = self.driver.find_element(*self.configuration.ContactsScreen.SAVE_NEW_CONTACT)
-        save_button.click()
+        try:
+            logging.info('click Save button')
+            save_button = self.driver.find_element(*self.configuration.ContactsScreen.SAVE_NEW_CONTACT)
+            save_button.click()
+        except NoSuchElementException:  # for IOS emulators in offline mode
+            ContactsPage.save_edited_contact(self)
 
         self.switch_context_to_native()
 
@@ -877,5 +880,27 @@ class ContactsPage(BasePage):
             logging.info("first contact group on the list not found = OK")
 
         self.switch_context_to_native()
+
+    def check_notification_about_offline_mode(self):
+
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.check_notification_about_offline_mode()
+
+    def ok_button_on_offline_notification_popup(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Ok button on offline notification popup")
+        try:
+            ok_button = self.driver.find_element(*self.configuration.ContactsScreen.OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP)
+            self.assertIsNotNone(ok_button, "ok button not found")
+            ok_button.click()
+        except NoSuchElementException:
+            pass
+        sleep(1)
+
+        self.switch_context_to_native()
+
 
 

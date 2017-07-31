@@ -79,6 +79,20 @@ class AssetsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def open_first_pending_asset(self):    # pending event in offline mode
+
+        self.switch_context_to_webview()
+
+        try:  # appium can't enable airplane mode on IOS emulators
+            logging.info("open first pending asset on the list")
+            first_pending_asset = self.driver.find_element(*self.configuration.AssetsScreen.FIRST_PENDING_ASSET)
+            self.assertIsNotNone(first_pending_asset, "first pending asset not found")
+            first_pending_asset.click()
+        except NoSuchElementException:
+            AssetsPage.open_existing_asset(self)
+
+        self.switch_context_to_native()
+
     def click_edit_button(self):
 
         self.switch_context_to_webview()
@@ -88,6 +102,7 @@ class AssetsPage(BasePage):
         edit = self.driver.find_element(*self.configuration.AssetsScreen.EDIT_BUTTON)
         self.assertIsNotNone(edit, "edit button not found")
         edit.click()
+        sleep(1)
 
         self.switch_context_to_native()
 
@@ -98,7 +113,17 @@ class AssetsPage(BasePage):
         logging.info("type cost per unit")
         cost_per_unit = self.driver.find_element(*self.configuration.AssetsScreen.COST_PER_UNIT_FIELD)
         self.assertIsNotNone(cost_per_unit, "Cost per unit input field was not found")
-        # cost_per_unit.click()
+        cost_per_unit.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def type_cost_per_unit_for_new_asset(self, text):  # in offline mode app is using new objects all the time
+
+        self.switch_context_to_webview()
+
+        logging.info("type cost per unit")
+        cost_per_unit = self.driver.find_element(*self.configuration.AssetsScreen.COST_PER_UNIT_FIELD_IN_NEW_ASSET)
+        self.assertIsNotNone(cost_per_unit, "Cost per unit input field was not found")
         cost_per_unit.send_keys(text)
 
         self.switch_context_to_native()
@@ -459,6 +484,28 @@ class AssetsPage(BasePage):
         self.assertIsNotNone(view_on_map_button, "view on map button not found")
 
         self.switch_context_to_native()
+
+    def check_notification_about_offline_mode(self):
+
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.check_notification_about_offline_mode()
+
+    def ok_button_on_offline_notification_popup(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Ok button on offline notification popup")
+        try:
+            ok_button = self.driver.find_element(*self.configuration.AssetsScreen.OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP)
+            self.assertIsNotNone(ok_button, "ok button not found")
+            ok_button.click()
+        except NoSuchElementException:
+            pass
+        sleep(1)
+
+        self.switch_context_to_native()
+
 
 
 

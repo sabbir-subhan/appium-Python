@@ -42,7 +42,6 @@
 # -- Objects can be viewed if it is cached
 
 
-from Modules.AppiumTestResult import AppiumTestResult
 from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
@@ -68,27 +67,6 @@ class TestOfflineObjects(SetupTestCase):
         os.chdir("..")
 
         self.driver.quit()
-
-    #     logging.info("Quitting")
-    #
-    #     hasattr(self, '_outcome')
-    #     result = self.defaultTestResult()  # these 2 methods have no side effects
-    #     self._feedErrorsToResult(result, self._outcome.errors)
-    #     error = self.list2reason(result.errors)
-    #     failure = self.list2reason(result.failures)
-    #     ok = not error and not failure
-    #
-    #     self.driver.quit()
-    #
-    #     # demo:   report short info immediately (not important)
-    #     if not ok:
-    #         typ, text = ('ERROR', error) if error else ('FAIL', failure)
-    #         msg = [x for x in text.split('\n')[1:] if not x.startswith(' ')][0]
-    #         print("\n%s: %s\n     %s" % (typ, self.id(), msg))
-    #
-    # def list2reason(self, exc_list):
-    #     if exc_list and exc_list[-1][0] is self:
-    #         return exc_list[-1][1]
 
     def test_Offline_Objects(self):
 
@@ -119,6 +97,7 @@ class TestOfflineObjects(SetupTestCase):
         common_page.switch_on_airplane_mode()
 
         # While offline, create an event.
+        common_page.hamburger_button()
         main_page.scroll_up_to_events_button()
         main_page.open_EVENTS()
         events_page = LoadClass.load_page('EventsPage')
@@ -126,7 +105,7 @@ class TestOfflineObjects(SetupTestCase):
         events_page.click_more_button_in_events_list()
         events_page.click_New_event_button()
         events_page.choose_Incident_type_of_event()
-        events_page.fill_Name_input_field("Offline Object 1")
+        events_page.fill_Name_input_field("Offline Object - Event")
         events_page.click_severity_lvl_picker()
         events_page.choose_severity_level_5()
         events_page.scroll_down_to_save_button()
@@ -163,17 +142,139 @@ class TestOfflineObjects(SetupTestCase):
         assets_page.click_new_button()
         assets_page.click_new_asset()
         assets_page.choose_asset_type()
-        assets_page.fill_Name_input_field("Asset test")
+        assets_page.fill_Name_input_field("Offline Object - Asset")
         assets_page.scroll_down_to_save_button()
         assets_page.click_save_button()
+        assets_page.check_notification_about_offline_mode()
+        assets_page.ok_button_on_offline_notification_popup()
 
         # While offline, update an asset.
-        # While offline, delete an asset.
+        assets_page.open_first_pending_asset()
+        assets_page.click_edit_button()
+        assets_page.type_cost_per_unit_for_new_asset("2")
+        common_page.hide_keyboard()
+        assets_page.scroll_down_to_save_button()
+        assets_page.click_save_button()
+        assets_page.check_notification_about_offline_mode()
+        assets_page.ok_button_on_offline_notification_popup()
+
+        # # While offline, delete an asset.
+        # assets_page.click_more_button()
+        # assets_page.click_delete_this_asset()
+        # assets_page.alert_accept_delete()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        # While offline, create a contact.
+        main_page.scroll_down_to_contacts_button()
+        main_page.open_CONTACTS()
+        contacts_page = LoadClass.load_page('ContactsPage')
+        contacts_page.setDriver(self.driver)
+        contacts_page.open_contacts_group()  # Contacts
+        contacts_page.click_new_button()
+        contacts_page.add_new_contact_into_group()
+        contacts_page.choose_contact_type_person()
+        contacts_page.type_first_name_for_new_contact("Offline Object - Contact")
+        contacts_page.scroll_down_to_save_button()
+        contacts_page.save_new_contact()
+        assets_page.check_notification_about_offline_mode()
+        assets_page.ok_button_on_offline_notification_popup()
+
+        # While offline, update a contact.
+        contacts_page.click_first_contact_on_the_list()
+        contacts_page.click_edit_button()
+        contacts_page.fill_organisation_field("Bitnoise")
+        common_page.hide_keyboard()
+        contacts_page.scroll_down_to_save_button()
+        contacts_page.save_new_contact()
+        contacts_page.check_notification_about_offline_mode()
+        contacts_page.ok_button_on_offline_notification_popup()
+
+        # # While offline, delete a contact.
+        # contacts_page.click_contact_more_button()
+        # contacts_page.delete_contact()
+        # contacts_page.confirm_delete()
+        common_page.hamburger_button()
+        main_page.check_presence_of_inbox_button()
+
+        # While offline, create a report.
+        main_page.open_REPORTS()
+        reports_page = LoadClass.load_page('ReportsPage')
+        reports_page.setDriver(self.driver)
+        reports_page.click_create_report_button()
+        reports_page.choose_report_type_with_all_fields()
+        reports_page.type_title("Large Report")
+        reports_page.click_on_lodging_agency_picker()
+        reports_page.choose_lodging_agency()
+        reports_page.scroll_down_to_publish_button()
+        reports_page.click_publish_new_report()
+        reports_page.check_notification_about_offline_mode()
+        reports_page.ok_button_on_offline_notification_popup()
+
+        # While offline, update a report.
+        reports_page.edit_created_report_with_all_fields()
+        common_page.wait_for_app_loading()
+        reports_page.click_edit_button()
+        reports_page.edit_report_title(" - Edited")
+        reports_page.scroll_down_to_publish_button()
+        reports_page.click_publish_new_report()
+        reports_page.check_notification_about_offline_mode()
+        reports_page.ok_button_on_offline_notification_popup()
+
+        # While offline, delete a report.
+        # reports_page.open_existing_report()
+        # common_page.wait_for_app_loading()
+        # reports_page.click_more_button()
+        # reports_page.click_delete_report()
+        # reports_page.alert_accept_delete()
+        common_page.hamburger_button()
+        main_page.check_presence_of_inbox_button()
+
+        # While offline, create a task.
+        main_page.scroll_down_to_tasks_button()
+        main_page.open_TASKS()
+        tasks_page = LoadClass.load_page('TasksPage')
+        tasks_page.setDriver(self.driver)
+        tasks_page.create_new_task()
+        tasks_page.type_title("Task for contact")
+        tasks_page.click_on_assigned()
+        tasks_page.add_contacts_and_groups()
+        contacts_page.clear_Search_field()
+        contacts_page.type_username_into_search_field()
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
+        contacts_page.click_first_contact_on_the_list_with_checkbox()
+        tasks_page.click_ok_button()
+        tasks_page.click_start_date()
+        tasks_page.choose_current_date()
+        tasks_page.scroll_down_to_save_button()
+        tasks_page.click_save_new_task()
+        tasks_page.check_if_task_was_filled_correctly()
+        tasks_page.check_notification_about_offline_mode()
+        tasks_page.ok_button_on_offline_notification_popup()
+
+        # While offline, update a task.
+
+        tasks_page.check_notification_about_offline_mode()
+        tasks_page.ok_button_on_offline_notification_popup()
+
+        # While offline, delete a task.
+
+        # While offline, create a contact group.
+
+        contacts_page.check_notification_about_offline_mode()
+        contacts_page.ok_button_on_offline_notification_popup()
+
+        # While offline, update a contact group.
+
+        # While offline, delete a contact group.
 
         # airplane mode off
         common_page.switch_off_airplane_mode()
+        common_page.hamburger_button()
 
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(TestOfflineObjects)
-    unittest.TextTestRunner(resultclass=AppiumTestResult, verbosity=2).run(suite)
+    unittest.TextTestRunner(verbosity=2).run(suite)
+

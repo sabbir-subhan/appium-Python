@@ -2,8 +2,10 @@
 .DS_Store
 *.log
 *.log.*
+tests/.log
 .tmp/
-tests/__pycache__/
 *.pyc
-screenshots/*.png
-
+reports/
+screenshots/
+tests/.cache
+__pycache__

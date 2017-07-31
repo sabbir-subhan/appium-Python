@@ -70,10 +70,13 @@ class ReportsPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info("click Publish button")
-        publish_button = self.driver.find_element(*self.configuration.ReportsScreen.PUBLISH_NEW_REPORT)
-        self.assertIsNotNone(publish_button, "Publish button was not found")
-        publish_button.click()
+        try:
+            logging.info("click Publish button")
+            publish_button = self.driver.find_element(*self.configuration.ReportsScreen.PUBLISH_NEW_REPORT)
+            self.assertIsNotNone(publish_button, "Publish button was not found")
+            publish_button.click()
+        except NoSuchElementException:
+            ReportsPage.click_publish_edited_report(self)
         # sleep(1)
         # action = TouchAction(self.driver)
         # action.tap(element=publish_button, count=1).perform()
@@ -715,5 +718,20 @@ class ReportsPage(BasePage):
         logging.info("check if view on map button is present")
         view_on_map_button = self.driver.find_element(*self.configuration.ReportsScreen.VIEW_ON_MAP_BUTTON)
         self.assertIsNotNone(view_on_map_button, "view on map button not found")
+
+        self.switch_context_to_native()
+
+    def ok_button_on_offline_notification_popup(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Ok button on offline notification popup")
+        try:
+            ok_button = self.driver.find_element(*self.configuration.ReportsScreen.OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP)
+            self.assertIsNotNone(ok_button, "ok button not found")
+            ok_button.click()
+        except NoSuchElementException:
+            pass
+        sleep(1)
 
         self.switch_context_to_native()

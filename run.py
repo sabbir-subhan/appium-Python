@@ -8,6 +8,7 @@ from logging import handlers
 import sys
 from settings import Settings
 from settings import SettingsPort
+import HtmlTestRunner
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 
@@ -188,17 +189,17 @@ def runner():
 
     """ load test """
     loader = unittest.TestLoader()
+    tests_runner = HtmlTestRunner.HTMLTestRunner(output='tests_results', stream=None, verbosity=2,
+                                                 report_title='Appium Tests Results')
 
     if args.test == "all":
         names = loader.discover(start_dir="./tests", pattern="test*.py", top_level_dir=PROJECT_ROOT)
-        unittest.TextTestRunner(verbosity=2).run(names)
+        # unittest.TextTestRunner(verbosity=2).run(names)  # old version
+        tests_runner.run(names)
     else:
         names = loader.discover(start_dir="./tests", pattern=args.test + ".py")
-        unittest.TextTestRunner(verbosity=2).run(names)
-
-    # results = unittest.TextTestResult
-    # results.printErrors()
-    # results.wasSuccessful()
+        # unittest.TextTestRunner(verbosity=2).run(names)  # old version
+        tests_runner.run(names)
 
     logging.warning("test = " + args.test)
     logging.warning("platform = " + args.platform)

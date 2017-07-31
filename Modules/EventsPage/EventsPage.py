@@ -499,7 +499,7 @@ class EventsPage(BasePage):
 
     def type_text_into_description_field(self):
 
-        self.switch_context_to_webview()  # webview is not working on iOS10
+        self.switch_context_to_webview()  # locator in webview is not working on iOS10
 
         sleep(2)
         logging.info("type some text into description field")
@@ -700,10 +700,13 @@ class EventsPage(BasePage):
         sleep(1)
         logging.info("click Save button")
         sleep(1)
-        save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON_NEW_EVENT)
-        self.assertIsNotNone(save_button, "Save button not found")
-        save_button.click()
-        sleep(2)
+        try:
+            save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON_NEW_EVENT)
+            self.assertIsNotNone(save_button, "Save button not found")
+            save_button.click()
+            sleep(2)
+        except NoSuchElementException:  # for IOS emulators in offline mode
+            EventsPage.click_save_edited_event(self)
 
         self.switch_context_to_native()
 
@@ -896,14 +899,17 @@ class EventsPage(BasePage):
 
         self.switch_context_to_native()
 
-    def open_first_pending_event(self):
+    def open_first_pending_event(self):  # pending event in offline mode
 
         self.switch_context_to_webview()
 
-        logging.info("open first pending event on the list")
-        first_pending_event = self.driver.find_element(*self.configuration.EventsScreen.FIRST_PENDING_EVENT)
-        self.assertIsNotNone(first_pending_event, "first pending event not found")
-        first_pending_event.click()
+        try:  # appium can't enable airplane mode on IOS emulators
+            logging.info("open first pending event on the list")
+            first_pending_event = self.driver.find_element(*self.configuration.EventsScreen.FIRST_PENDING_EVENT)
+            self.assertIsNotNone(first_pending_event, "first pending event not found")
+            first_pending_event.click()
+        except NoSuchElementException:
+            EventsPage.open_previously_created_event(self)
 
         self.switch_context_to_native()
 

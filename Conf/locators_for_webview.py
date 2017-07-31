@@ -158,7 +158,7 @@ class EventsScreen:
     VIEW_ON_MAP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeView>div.ui-content>ul.ui-listview>li>a[href="#mapPage?geometry=true"]')  # button inside event details
     ADD_MEDIA_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeNew>div.ui-content>ul.edit-view>li.ui-li-static.ui-body-inherit>div.addmedia.edit-mode>a')
     OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#emeNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
-    FIRST_PENDING_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div.ui-content>div.pending>ul.listview>li:first-child')
+    FIRST_PENDING_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div.ui-content>div.pending>ul.listview>li:first-child>a')
 
 
 class TypesOfEventsScreen:
@@ -384,6 +384,7 @@ class ContactsScreen:
     GROUP_SEND_COMMUNICATION = (MobileBy.CSS_SELECTOR, 'div#contactgroupView>div#contactgroupViewMoreMenu-popup>div#contactgroupViewMoreMenu>ul.ui-listview>li.send>a[href="#messagePage"]')
     CANCEL_NEW_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupNew>div.ui-footer>div.ui-navbar>ul.ui-grid-a>li.ui-block-b>a[href="#cancel"]')
     CHOOSE_FIRST_CONTACTS_GROUP_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul.groups>li:first-child')
+    OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
 
 
 class TasksScreen:
@@ -422,6 +423,7 @@ class TasksScreen:
     SECOND_RESOURCE_ASSIGNMENT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamIndex>div.ui-content>ul.teams>li:nth-child(2)>div.ui-checkbox')
     LAST_RESOURCE_ASSIGNMENT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamIndex>div.ui-content>ul.teams>li:last-child>div.ui-checkbox')
     VALIDATION_ERROR_POPUP = (MobileBy.CSS_SELECTOR, 'div#taskNew>div.ui-popup-container.ui-popup-active')
+    OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#taskNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
 
 
 class ReportsScreen:
@@ -461,6 +463,7 @@ class ReportsScreen:
     OPTION_LIST = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li[name="new option list"]>div.ui-select>div')
     CLEAR_SEARCH_FIELD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div.ui-input-search>a.ui-input-clear')
     VIEW_ON_MAP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#reportView>div.ui-content>ul.ui-listview>li>a[href="#mapPage?geometry=true"]')  # button inside report details
+    OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
 
 
 class SentScreen:
@@ -561,6 +564,7 @@ class AssetsScreen:
     PREVIOUSLY_CREATED_ASSET_CHECKBOX = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.main>ul[data-role="listview"]>li:first-child>div.ui-checkbox')  # whole list element - not just link
     EDIT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.edit>a')
     COST_PER_UNIT_FIELD = (MobileBy.CSS_SELECTOR, 'div#assetEdit>div.ui-content>ul.edit-view>li>div>input[id="cost per unit"]')
+    COST_PER_UNIT_FIELD_IN_NEW_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li>div>input[id="cost per unit"]')
     SAVE_EDITED_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#save"]')
     MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-b>a[href="#assetViewMoreMenu"]')
     DELETE_THIS_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetView>div#assetViewMoreMenu-popup>div#assetViewMoreMenu>ul>li.delete>a[href="#confirmDeleteAsset"]')
@@ -574,6 +578,8 @@ class AssetsScreen:
     ADD_MEDIA_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li.ui-li-static.ui-body-inherit>div.addmedia.edit-mode>a')
     CLEAR_SEARCH_FIELD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.filters>div.ui-input-search>a.ui-input-clear')
     VIEW_ON_MAP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetView>div.ui-content>ul.ui-listview>li>a[href="#mapPage?geometry=true"]')  # button inside assets details
+    FIRST_PENDING_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.pending>ul.listview>li:first-child>a')
+    OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
 
 
 class LogsScreen(EventsScreen, AssetsScreen):
