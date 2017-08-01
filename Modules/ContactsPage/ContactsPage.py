@@ -123,6 +123,17 @@ class ContactsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def clear_name_for_new_contact_group(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("clear name for new contact group")
+        first_name = self.driver.find_element(*self.configuration.ContactsScreen.CLEAR_NAME_FOR_NEW_CONTACT_GROUP)
+        self.assertIsNotNone(first_name, "Name clear field button was not found")
+        first_name.click()
+
+        self.switch_context_to_native()
+
     def scroll_down_to_write_access_level(self):
 
         events_page = LoadClass.load_page('EventsPage')
@@ -243,6 +254,18 @@ class ContactsPage(BasePage):
         second_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.USERS_GROUP)
         self.assertIsNotNone(second_contact_group, "Users group not found")
         second_contact_group.click()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
+    def open_offline_contacts_group(self):  # offline_contact_group
+
+        sleep(1)
+        logging.info('open offline contacts group = "offline_contact_group" ')
+        offline_contacts_group = self.driver.find_element(*self.configuration.ContactsScreen.OFFLINE_CONTACTS_GROUP)
+        self.assertIsNotNone(offline_contacts_group, "offline contacts group not found")
+        offline_contacts_group.click()
 
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
@@ -390,6 +413,34 @@ class ContactsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def open_first_pending_contact(self):    # pending contact in offline mode
+
+        self.switch_context_to_webview()
+
+        try:  # appium can't enable airplane mode on IOS emulators
+            logging.info("open first pending contact on the list")
+            first_pending_contact = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_PENDING_CONTACT)
+            self.assertIsNotNone(first_pending_contact, "first pending contact not found")
+            first_pending_contact.click()
+        except NoSuchElementException:
+            ContactsPage.click_first_contact_on_the_list(self)
+
+        self.switch_context_to_native()
+
+    def open_first_pending_contact_group(self):    # pending contact group in offline mode
+
+        self.switch_context_to_webview()
+
+        try:  # appium can't enable airplane mode on IOS emulators
+            logging.info("open first pending contact group on the list")
+            first_pending_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_PENDING_CONTACT_GROUP)
+            self.assertIsNotNone(first_pending_contact_group, "first pending contact group, not found")
+            first_pending_contact_group.click()
+        except NoSuchElementException:
+            ContactsPage.open_first_contact_group(self)
+
+        self.switch_context_to_native()
+
     def click_first_contact_on_the_list_with_checkbox(self):
 
         sleep(1)
@@ -399,6 +450,21 @@ class ContactsPage(BasePage):
         first_contact_on_the_list = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_CONTACT_ON_THE_LIST_WITH_CHECKBOX)  # first-child
         self.assertIsNotNone(first_contact_on_the_list, 'first contact on the list, not found')
         first_contact_on_the_list.click()
+
+        self.switch_context_to_native()
+
+    def click_first_contact_on_the_list_with_checkbox_in_offline_mode(self):
+
+        sleep(1)
+        self.switch_context_to_webview()
+
+        try:
+            logging.info('click first contact on the list with checkbox in offline mode')
+            first_contact_on_the_list = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_CONTACT_ON_THE_LIST_WITH_CHECKBOX_IN_OFFLINE_MODE)  # first-child
+            self.assertIsNotNone(first_contact_on_the_list, 'first contact on the list in offline mode, not found')
+            first_contact_on_the_list.click()
+        except NoSuchElementException:
+            ContactsPage.click_first_contact_on_the_list_with_checkbox(self)
 
         self.switch_context_to_native()
 
@@ -828,9 +894,12 @@ class ContactsPage(BasePage):
 
         self.switch_context_to_webview()
 
-        logging.info('click Save button')
-        save_button = self.driver.find_element(*self.configuration.ContactsScreen.SAVE_NEW_CONTACT_GROUP)
-        save_button.click()
+        try:
+            logging.info('click Save button')
+            save_button = self.driver.find_element(*self.configuration.ContactsScreen.SAVE_NEW_CONTACT_GROUP)
+            save_button.click()
+        except NoSuchElementException:
+            ContactsPage.save_edited_contact_group(self)
 
         self.switch_context_to_native()
 
@@ -887,17 +956,32 @@ class ContactsPage(BasePage):
         events_page.setDriver(self.driver)
         events_page.check_notification_about_offline_mode()
 
-    def ok_button_on_offline_notification_popup(self):
+    def ok_button_on_offline_notification_popup_for_contact(self):
 
         self.switch_context_to_webview()
 
         logging.info("click Ok button on offline notification popup")
         try:
-            ok_button = self.driver.find_element(*self.configuration.ContactsScreen.OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP)
+            ok_button = self.driver.find_element(*self.configuration.ContactsScreen.OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP_FOR_NEW_CONTACT)
             self.assertIsNotNone(ok_button, "ok button not found")
             ok_button.click()
         except NoSuchElementException:
-            pass
+            logging.warning("offline notification popup not present")
+        sleep(1)
+
+        self.switch_context_to_native()
+
+    def ok_button_on_offline_notification_popup_for_contact_group(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Ok button on offline notification popup")
+        try:
+            ok_button = self.driver.find_element(*self.configuration.ContactsScreen.OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP_FOR_NEW_CONTACT_GROUP)
+            self.assertIsNotNone(ok_button, "ok button not found")
+            ok_button.click()
+        except NoSuchElementException:
+            logging.warning("offline notification popup not present")
         sleep(1)
 
         self.switch_context_to_native()

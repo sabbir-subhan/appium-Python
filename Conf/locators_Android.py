@@ -413,6 +413,7 @@ class ContactsScreen:
     USERS_GROUP = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Users")]]')
     MAILING_LIST_GROUP = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Mailing list")]]')
     NEW_CONTACT_GROUP_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "contact_group_with_on_load_sequence")]]')
+    OFFLINE_CONTACTS_GROUP = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "offline_contact_group")]]')
 
 
 class TasksScreen:

@@ -170,12 +170,10 @@ class TypesOfEventsScreen:
 
 class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
-    SAVE_BUTTON_NEW_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
-                                                    'a[href="#save"]')
+    SAVE_BUTTON_NEW_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#save"]')
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
-    SAVE_BUTTON_EDIT_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
-                                                     'a[href="#save"]')
+    SAVE_BUTTON_EDIT_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#save"]')
     CANCEL_BUTTON_EDIT_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                                        'a[href="#cancel"]')
     NAME_FIELD = (MobileBy.CSS_SELECTOR, 'div#emeNew>div>ul>li>div>input#name')
@@ -188,6 +186,8 @@ class EventEditScreen:
     # CHOOSE_SEVERITY_LVL5_iPad = (MobileBy.CSS_SELECTOR, '')
     # FINISHED_FIELD = (MobileBy.CSS_SELECTOR, '')
     DESCRIPTION_FIELD = (MobileBy.CSS_SELECTOR, 'iframe[title="Rich Text Editor, description"]')
+    DESCRIPTION_FIELD_FOR_EDIT_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div.ui-content>ul>li>div.ui-input-ckeditor>div#cke_description>div>div>iframe')
+    DESCRIPTION_FIELD_FOR_NEW_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeNew>div.ui-content>ul>li>div.ui-input-ckeditor>div#cke_description>div>div>iframe')
     CREATE_MAPPING_DATA_EDIT = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div>ul.edit-view.ui-listview>li.geometryinput>a')
     CREATE_MAPPING_DATA_NEW = (MobileBy.CSS_SELECTOR, 'div#emeNew>div>ul.edit-view.ui-listview>li.geometryinput>a')
     # EDIT_MAPPING_DATA = (MobileBy.CSS_SELECTOR, '')
@@ -346,6 +346,7 @@ class ContactsScreen:
     # FIRST_CONTACT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.secondary>ul.listview>li:first-child')
     FIRST_CONTACT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.secondary>ul.listview>li:first-child>a')
     FIRST_CONTACT_ON_THE_LIST_WITH_CHECKBOX = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.secondary>ul.listview>li:first-child>div.ui-checkbox')
+    FIRST_CONTACT_ON_THE_LIST_WITH_CHECKBOX_IN_OFFLINE_MODE = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul.listview>li:first-child>div.ui-checkbox')
     FIRST_CONTACT_GROUP_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul>li:first-child')
     FIRST_CONTACT_GROUP_ON_THE_LIST_WITH_CHECKBOX = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul>li:first-child>div.ui-checkbox')
     CONTACT_MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactView>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-a>li.ui-block-b>a[href="#contactViewMoreMenu"]')
@@ -379,12 +380,19 @@ class ContactsScreen:
     SAVE_EDITED_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupEdit>div.ui-footer>div.ui-navbar>ul.ui-grid-a>li.ui-block-a>a')
     GROUP_INFO_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.normal-mode.ui-footer>div.ui-navbar>ul.ui-grid-a>li.ui-block-a>a.groupView')
     EDIT_GROUP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactgroupView>div.ui-footer>div.ui-navbar>ul.ui-grid-a>li.edit>a.edit')
-    CLEAR_NAME_FOR_EDITED_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupEdit>div.ui-content>ul.ui-listview>li.ui-field-contain>div.ui-input-text>a.ui-input-clear')
+    CLEAR_NAME_FOR_EDITED_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupEditt>div.ui-content>ul.ui-listview>li.ui-field-contain>div.ui-input-text>a.ui-input-clear')
+    CLEAR_NAME_FOR_NEW_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupNew>div.ui-content>ul.ui-listview>li.ui-field-contain>div.ui-input-text>a.ui-input-clear')
     CLEAR_FIRST_NAME_FOR_EDITED_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactEdit>div.ui-content>ul.ui-listview>li.ui-field-contain:nth-child(2)>div.ui-input-text>a')
     GROUP_SEND_COMMUNICATION = (MobileBy.CSS_SELECTOR, 'div#contactgroupView>div#contactgroupViewMoreMenu-popup>div#contactgroupViewMoreMenu>ul.ui-listview>li.send>a[href="#messagePage"]')
     CANCEL_NEW_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupNew>div.ui-footer>div.ui-navbar>ul.ui-grid-a>li.ui-block-b>a[href="#cancel"]')
     CHOOSE_FIRST_CONTACTS_GROUP_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul.groups>li:first-child')
-    OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
+    OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP_FOR_NEW_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
+    OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP_FOR_NEW_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
+    # FIRST_PENDING_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.pending>ul.listview>li:first-child>a')
+    FIRST_PENDING_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.pending-secondary>ul.listview>li:first-child>a')
+    # FIRST_PENDING_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupNew>div.ui-content>ul.ui-listview>li.ui-first-child>a')
+    FIRST_PENDING_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.pending>ul.ui-listview>li:first-child>a')
+    ADD_NEW_CONTACT_GROUP_IN_OFFLINE_MODE = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div#contactgroupTreeMore-popup>div#contactgroupTreeMore>ul.ui-listview>li.new.contactgroup>a')
 
 
 class TasksScreen:
@@ -424,6 +432,11 @@ class TasksScreen:
     LAST_RESOURCE_ASSIGNMENT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamIndex>div.ui-content>ul.teams>li:last-child>div.ui-checkbox')
     VALIDATION_ERROR_POPUP = (MobileBy.CSS_SELECTOR, 'div#taskNew>div.ui-popup-container.ui-popup-active')
     OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#taskNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
+    FIRST_PENDING_TASK = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-content>div.pending>ul.listview>li:first-child>a')
+    DETAIL_FIELD = (MobileBy.CSS_SELECTOR, 'div#taskNew>div.ui-content>ul.edit-view>li.ui-field-contain>textarea#detail')
+    MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskView>div.ui-footer>div.ui-navbar>ul.ui-grid-a>li.more.ui-block-b>a[href="#taskViewMoreMenu"]')
+    DELETE_TASK = (MobileBy.CSS_SELECTOR, 'div#taskView>div.ui-popup-container>div#taskViewMoreMenu>ul.ui-listview>li.delete>a[href="#confirmDeleteTask"]')
+    CONFIRM_DELETE_TASK = (MobileBy.CSS_SELECTOR, 'div#taskView>div.ui-popup-container>div#confirmDeleteTask>div.ng-dialog-container>div>div>a:first-child')
 
 
 class ReportsScreen:
@@ -464,6 +477,7 @@ class ReportsScreen:
     CLEAR_SEARCH_FIELD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div.ui-input-search>a.ui-input-clear')
     VIEW_ON_MAP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#reportView>div.ui-content>ul.ui-listview>li>a[href="#mapPage?geometry=true"]')  # button inside report details
     OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
+    FIRST_PENDING_REPORT = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div.pending>ul.listview>li:first-child>a')
 
 
 class SentScreen:

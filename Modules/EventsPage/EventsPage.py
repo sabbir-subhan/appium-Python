@@ -503,7 +503,10 @@ class EventsPage(BasePage):
 
         sleep(2)
         logging.info("type some text into description field")
-        description_field = self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD)
+        try:
+            description_field = self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD_FOR_EDIT_EVENT)
+        except NoSuchElementException:
+            description_field = self.driver.find_element(*self.configuration.EventEditScreen.DESCRIPTION_FIELD_FOR_NEW_EVENT)
         description_field.click()
         description_field.send_keys("test appium")
 
@@ -699,7 +702,7 @@ class EventsPage(BasePage):
 
         sleep(1)
         logging.info("click Save button")
-        sleep(1)
+        sleep(2)
         try:
             save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON_NEW_EVENT)
             self.assertIsNotNone(save_button, "Save button not found")
@@ -894,7 +897,7 @@ class EventsPage(BasePage):
             self.assertIsNotNone(ok_button, "ok button not found")
             ok_button.click()
         except NoSuchElementException:
-            pass
+            logging.warning("offline notification popup not present")
         sleep(1)
 
         self.switch_context_to_native()

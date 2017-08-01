@@ -7,7 +7,6 @@ import logging
 from time import sleep
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
-from appium.webdriver.common.touch_action import TouchAction
 
 
 class TasksPage(BasePage):
@@ -208,17 +207,45 @@ class TasksPage(BasePage):
         # search_field.send_keys(text)
         # sleep(1)
 
-    # def open_existing_task(self):
-    #
-    #     self.switch_context_to_webview()
-    #
-    #     logging.info('edit created report approval task')
-    #     edit_created_task = self.driver.find_element(*self.configuration.TasksScreen.FIRST_TASK_ON_THE_LIST)
-    #     self.assertIsNotNone(edit_created_task, 'previously created task, not found')
-    #     edit_created_task.click()
-    #     sleep(2)
-    #
-    #     self.switch_context_to_native()
+    def click_first_task_on_the_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info('click first task on the list')
+        first_task_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.FIRST_TASK_ON_THE_LIST)  # first-child
+        self.assertIsNotNone(first_task_on_the_list, 'first task on the list, not found')
+        first_task_on_the_list.click()
+
+        self.switch_context_to_native()
+        sleep(2)
+
+    def open_existing_task(self):
+
+        # self.switch_context_to_webview()
+        #
+        # logging.info('edit created report approval task')
+        # edit_created_task = self.driver.find_element(*self.configuration.TasksScreen.FIRST_TASK_ON_THE_LIST)
+        # self.assertIsNotNone(edit_created_task, 'previously created task, not found')
+        # edit_created_task.click()
+        # sleep(2)
+        #
+        # self.switch_context_to_native()
+
+        TasksPage.click_first_task_on_the_list(self)
+        
+    def open_first_pending_task(self):    # pending task in offline mode
+
+        self.switch_context_to_webview()
+
+        try:  # appium can't enable airplane mode on IOS emulators
+            logging.info("open first pending task on the list")
+            first_pending_task = self.driver.find_element(*self.configuration.TasksScreen.FIRST_PENDING_TASK)
+            self.assertIsNotNone(first_pending_task, "first pending task not found")
+            first_pending_task.click()
+        except NoSuchElementException:
+            TasksPage.click_first_task_on_the_list(self)
+
+        self.switch_context_to_native()
 
     def click_button_yes_for_action_required(self):
 
@@ -364,18 +391,6 @@ class TasksPage(BasePage):
 
         self.switch_context_to_native()
 
-    def click_first_task_on_the_list(self):
-
-        self.switch_context_to_webview()
-
-        logging.info('click first task on the list')
-        first_task_on_the_list = self.driver.find_element(*self.configuration.TasksScreen.FIRST_TASK_ON_THE_LIST)  # first-child
-        self.assertIsNotNone(first_task_on_the_list, 'first task on the list, not found')
-        first_task_on_the_list.click()
-
-        self.switch_context_to_native()
-        sleep(2)
-
     def edit_task(self):
 
         self.switch_context_to_webview()
@@ -411,7 +426,59 @@ class TasksPage(BasePage):
             self.assertIsNotNone(ok_button, "ok button not found")
             ok_button.click()
         except NoSuchElementException:
-            pass
+            logging.warning("offline notification popup not present")
         sleep(1)
 
         self.switch_context_to_native()
+
+    def type_text_into_detail_field(self, text):
+
+        self.switch_context_to_webview()
+
+        logging.info("type text into Detail field")
+        detail_field = self.driver.find_element(*self.configuration.TasksScreen.DETAIL_FIELD)
+        self.assertIsNotNone(detail_field, "Detail input field not found")
+        detail_field.click()
+        detail_field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def check_notification_about_offline_mode(self):
+
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.check_notification_about_offline_mode()
+
+    def click_more_button(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click More button on task view screen")
+        more_button = self.driver.find_element(*self.configuration.TasksScreen.MORE_BUTTON)
+        self.assertIsNotNone(more_button, "More button not found")
+        more_button.click()
+
+        self.switch_context_to_native()
+        
+    def click_delete_button(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Delete task button")
+        delete_button = self.driver.find_element(*self.configuration.TasksScreen.DELETE_TASK)
+        self.assertIsNotNone(delete_button, "Delete button not found")
+        delete_button.click()
+
+        self.switch_context_to_native()
+
+    def confirm_deleting_task(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("confirm deleting task")
+        confirm_deleting_task = self.driver.find_element(*self.configuration.TasksScreen.CONFIRM_DELETE_TASK)
+        self.assertIsNotNone(confirm_deleting_task, "confirm button not found")
+        confirm_deleting_task.click()
+
+        self.switch_context_to_native()
+

@@ -337,3 +337,5 @@ the command. Original error: Could not install app: 'Command 'ios-deploy --id 4b
 - error: "failed to tap 'h'"  -- observed on iOS 9 emulator - choose Simulator -> Hardware -> Keyboard -> Toggle Software Keyboard
 - error: "A valid provisioning profile for this executable was not found."  --> rebuild OCA app through Xcode
 - error: "Original error: ChromeDriver crashed during startup"  --> You started two parallel tests on Android devices and chromedriver just crashed
+- Android 7 real device and airplane mode -- sometimes there are some problems with switching to airplane mode, try to restart device and/or switch display off and/or switch manually airplane mode on and off
+ 

@@ -479,6 +479,20 @@ class ReportsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def open_first_pending_report(self):    # pending report in offline mode
+
+        self.switch_context_to_webview()
+
+        try:  # appium can't enable airplane mode on IOS emulators
+            logging.info("open first pending report on the list")
+            first_pending_report = self.driver.find_element(*self.configuration.ReportsScreen.FIRST_PENDING_REPORT)
+            self.assertIsNotNone(first_pending_report, "first pending report not found")
+            first_pending_report.click()
+        except NoSuchElementException:
+            ReportsPage.open_existing_report(self)
+
+        self.switch_context_to_native()
+
     def click_more_button(self):
 
         self.switch_context_to_webview()
@@ -731,7 +745,14 @@ class ReportsPage(BasePage):
             self.assertIsNotNone(ok_button, "ok button not found")
             ok_button.click()
         except NoSuchElementException:
-            pass
+            logging.warning("offline notification popup not present")
         sleep(1)
 
         self.switch_context_to_native()
+
+    def check_notification_about_offline_mode(self):
+
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.check_notification_about_offline_mode()
+

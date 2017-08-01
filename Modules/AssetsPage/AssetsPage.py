@@ -79,7 +79,7 @@ class AssetsPage(BasePage):
 
         self.switch_context_to_native()
 
-    def open_first_pending_asset(self):    # pending event in offline mode
+    def open_first_pending_asset(self):    # pending asset in offline mode
 
         self.switch_context_to_webview()
 
@@ -501,7 +501,7 @@ class AssetsPage(BasePage):
             self.assertIsNotNone(ok_button, "ok button not found")
             ok_button.click()
         except NoSuchElementException:
-            pass
+            logging.warning("offline notification popup not present")
         sleep(1)
 
         self.switch_context_to_native()
