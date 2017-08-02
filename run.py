@@ -189,6 +189,8 @@ def runner():
 
     """ load test """
     loader = unittest.TestLoader()
+    path = PROJECT_ROOT
+    os.chdir(path)
     tests_runner = HtmlTestRunner.HTMLTestRunner(output='tests_results', stream=None, verbosity=2,
                                                  report_title='Appium Tests Results')
 

@@ -8,6 +8,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 import os
 from Modules.load_class import LoadClass
 from configuration import platform
+from selenium.common.exceptions import NoSuchElementException
+from configuration import PROJECT_ROOT
 
 
 class CommonPage(BasePage):
@@ -53,7 +55,7 @@ class CommonPage(BasePage):
 
         logging.info("taking screenshot")
         sleep(1)
-        path = "./screenshots"
+        path = PROJECT_ROOT + "/screenshots"
         os.chdir(path)
         self.driver.save_screenshot(file_name + ".png")
         sleep(1)
@@ -82,8 +84,44 @@ class CommonPage(BasePage):
             sleep(4)
         else:
             pass
-        WebDriverWait(self.driver, 20).until(
+        WebDriverWait(self.driver, 25).until(
             # expected_conditions.invisibility_of_element_located(self.configuration.CommonScreen.LOADING2),
             expected_conditions.invisibility_of_element_located(self.configuration.CommonScreen.LOADING),
             "app is still loading - check internet connection")
+
+    def wait_until_app_loads(self):  # android emulator in airplane mode need a long time to load offline object lists
+
+        # platform_for_test = str(platform)
+        # if "emulator" in platform_for_test:
+        logging.info("wait for app loading up to 400s")
+
+        var = 400
+        while expected_conditions.visibility_of_element_located(self.configuration.CommonScreen.LOADING):
+            try:
+                self.driver.find_element(*self.configuration.CommonScreen.LOADING)
+            except NoSuchElementException:
+                break
+            sleep(var)
+            var = var - 2
+            if expected_conditions.invisibility_of_element_located(self.configuration.CommonScreen.LOADING):  # looks like this condition is not working properly
+                break
+            else:
+                logging.info("waiting")
+                continue
+
+        # from selenium.common.exceptions import NoSuchElementException
+        # var = 600
+        # try:
+        #     loading_animation = self.driver.find_element(*self.configuration.CommonScreen.LOADING)
+        #     while loading_animation.is_displayed():
+        #         logging.info("waiting")
+        #         sleep(var)
+        #         var = var - 2
+        #         if expected_conditions.invisibility_of_element_located(self.configuration.CommonScreen.LOADING):
+        #             break
+        #         else:
+        #             continue
+        # except NoSuchElementException:
+        #     pass
+
 

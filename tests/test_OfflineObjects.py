@@ -47,6 +47,7 @@ from Modules.load_class import LoadClass
 import logging
 import unittest
 import os
+from configuration import PROJECT_ROOT
 
 
 class TestOfflineObjects(SetupTestCase):
@@ -61,7 +62,8 @@ class TestOfflineObjects(SetupTestCase):
         logging.info("Quitting")
 
         # take screenshot on quit
-        path = "./screenshots"
+        # path = "./screenshots"
+        path = PROJECT_ROOT + "/screenshots"
         os.chdir(path)
         self.driver.save_screenshot("test_Offline_Objects" + ".png")
         os.chdir("..")
@@ -95,75 +97,76 @@ class TestOfflineObjects(SetupTestCase):
 
         # airplane mode on
         common_page.switch_on_airplane_mode()
+        common_page.hamburger_button()
 
-        # logging.info(" --- While offline, create an event.")
-        # common_page.hamburger_button()
-        # main_page.scroll_up_to_events_button()
-        # main_page.open_EVENTS()
-        # events_page = LoadClass.load_page('EventsPage')
-        # events_page.setDriver(self.driver)
-        # events_page.click_more_button_in_events_list()
-        # events_page.click_New_event_button()
-        # events_page.choose_Incident_type_of_event()
-        # events_page.fill_Name_input_field("Offline Object - Event")
-        # events_page.click_severity_lvl_picker()
-        # events_page.choose_severity_level_5()
-        # events_page.scroll_down_to_save_button()
-        # events_page.click_save_new_event()
-        # events_page.check_notification_about_offline_mode()
-        # events_page.ok_button_on_offline_notification_popup()
-        # common_page.wait_for_app_loading()
-        #
-        # logging.info(" --- While offline, update an event.")
-        # events_page.open_first_pending_event()
-        # common_page.wait_for_app_loading()
-        # events_page.click_edit_button()
-        # events_page.click_severity_lvl_picker()
-        # events_page.choose_severity_level_5()
-        # events_page.scroll_down_to_description_field()
-        # events_page.type_text_into_description_field()
-        # common_page.hide_keyboard()
-        # events_page.scroll_down_to_save_button()
-        # events_page.click_save_new_event()
-        # events_page.check_notification_about_offline_mode()
-        # events_page.ok_button_on_offline_notification_popup()
-        #
-        # logging.info(" --- While offline, delete an event.")
-        # events_page.click_more_button_in_event_details()
-        # events_page.click_Delete_button()
-        # events_page.alert_confirm_delete()
-        # common_page.hamburger_button()
-        # main_page.check_presence_of_events_button()
-        #
-        # logging.info(" --- While offline, create an asset.")
-        # main_page.open_ASSETS()
-        # assets_page = LoadClass.load_page('AssetsPage')
-        # assets_page.setDriver(self.driver)
-        # assets_page.click_new_button()
-        # assets_page.click_new_asset()
-        # assets_page.choose_asset_type()
-        # assets_page.fill_Name_input_field("Offline Object - Asset")
-        # assets_page.scroll_down_to_save_button()
-        # assets_page.click_save_button()
-        # assets_page.check_notification_about_offline_mode()
-        # assets_page.ok_button_on_offline_notification_popup()
-        #
-        # logging.info(" --- While offline, update an asset.")
-        # assets_page.open_first_pending_asset()
-        # assets_page.click_edit_button()
-        # assets_page.type_cost_per_unit_for_new_asset("2")
-        # common_page.hide_keyboard()
-        # assets_page.scroll_down_to_save_button()
-        # assets_page.click_save_button()
-        # assets_page.check_notification_about_offline_mode()
-        # assets_page.ok_button_on_offline_notification_popup()
-        #
-        # logging.info("While offline, delete an asset.")
-        # assets_page.click_more_button()
-        # assets_page.click_delete_this_asset()
-        # assets_page.alert_accept_delete()
-        # common_page.hamburger_button()
-        # main_page.check_presence_of_events_button()
+        logging.info(" --- While offline, create an event.")
+        main_page.scroll_up_to_events_button()
+        main_page.open_EVENTS()
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.click_more_button_in_events_list()
+        events_page.click_New_event_button()
+        events_page.choose_Incident_type_of_event()
+        events_page.fill_Name_input_field("Offline Object - Event")
+        events_page.click_severity_lvl_picker()
+        events_page.choose_severity_level_5()
+        events_page.scroll_down_to_save_button()
+        events_page.click_save_new_event()
+        events_page.check_notification_about_offline_mode()
+        events_page.ok_button_on_offline_notification_popup()
+        common_page.wait_for_app_loading()
+
+        logging.info(" --- While offline, update an event.")
+        common_page.wait_until_app_loads()
+        events_page.open_first_pending_event()
+        common_page.wait_for_app_loading()
+        events_page.click_edit_button()
+        events_page.click_severity_lvl_picker()
+        events_page.choose_severity_level_5()
+        events_page.scroll_down_to_description_field()
+        events_page.type_text_into_description_field()
+        common_page.hide_keyboard()
+        events_page.scroll_down_to_save_button()
+        events_page.click_save_new_event()
+        events_page.check_notification_about_offline_mode()
+        events_page.ok_button_on_offline_notification_popup()
+
+        logging.info(" --- While offline, delete an event.")
+        events_page.click_more_button_in_event_details()
+        events_page.click_Delete_button()
+        events_page.alert_confirm_delete()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        logging.info(" --- While offline, create an asset.")
+        main_page.open_ASSETS()
+        assets_page = LoadClass.load_page('AssetsPage')
+        assets_page.setDriver(self.driver)
+        assets_page.click_new_button()
+        assets_page.click_new_asset()
+        assets_page.choose_asset_type()
+        assets_page.fill_Name_input_field("Offline Object - Asset")
+        assets_page.scroll_down_to_save_button()
+        assets_page.click_save_button()
+        assets_page.check_notification_about_offline_mode()
+        assets_page.ok_button_on_offline_notification_popup()
+
+        logging.info(" --- While offline, update an asset.")
+        assets_page.open_first_pending_asset()
+        assets_page.click_edit_button()
+        assets_page.type_cost_per_unit_for_new_asset("2")
+        common_page.hide_keyboard()
+        assets_page.scroll_down_to_save_button()
+        assets_page.click_save_button()
+        assets_page.check_notification_about_offline_mode()
+        assets_page.ok_button_on_offline_notification_popup()
+
+        logging.info("While offline, delete an asset.")
+        assets_page.click_more_button()
+        assets_page.click_delete_this_asset()
+        assets_page.alert_accept_delete()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
 
         logging.info(" --- While offline, create a contact group.")
         main_page.scroll_down_to_contacts_button()
@@ -255,8 +258,6 @@ class TestOfflineObjects(SetupTestCase):
         reports_page.ok_button_on_offline_notification_popup()
 
         logging.info(" --- While offline, delete a report.")
-        reports_page.open_existing_report()
-        common_page.wait_for_app_loading()
         reports_page.click_more_button()
         reports_page.click_delete_report()
         reports_page.alert_accept_delete()
@@ -278,7 +279,6 @@ class TestOfflineObjects(SetupTestCase):
         tasks_page.choose_current_date()
         tasks_page.scroll_down_to_save_button()
         tasks_page.click_save_new_task()
-        tasks_page.check_if_task_was_filled_correctly()
         tasks_page.check_notification_about_offline_mode()
         tasks_page.ok_button_on_offline_notification_popup()
 
@@ -290,25 +290,48 @@ class TestOfflineObjects(SetupTestCase):
         common_page.hide_keyboard()
         tasks_page.scroll_down_to_save_button()
         tasks_page.click_save_new_task()
-        tasks_page.check_if_task_was_filled_correctly()
         tasks_page.check_notification_about_offline_mode()
         tasks_page.ok_button_on_offline_notification_popup()
 
         logging.info(" --- While offline, delete a task.")
         tasks_page.click_more_button()
-        tasks_page.delete_task()
+        tasks_page.click_delete_button()
         tasks_page.confirm_deleting_task()
+        common_page.hamburger_button()
 
-        logging.info("From the main menu, press Offline Sync. -- View the outgoing queue of all objects created, updated & deleted above.")
+        logging.info(" --- From the main menu, press Offline Sync. -- View the outgoing queue of all objects created,"
+                     " updated & deleted above.")
+        main_page.scroll_down_to_offline_sync_button()
+        main_page.open_OFFLINE_SYNC()
+        common_page.take_screenshot('Offline Objects - offline sync in offline mode')
+        common_page.hamburger_button()
+        main_page.check_presence_of_inbox_button()
 
         # airplane mode off
         common_page.switch_off_airplane_mode()
         common_page.hamburger_button()
 
-        # Connect to the internet. View the offline sync.  -- Objects created, updated & deleted above are applied
-        #  to the system. The outgoing queue empties.
-        # Online- Open few reports,events,Documents (all objects)  Go to Flight mode and view the objects
-        # -- Objects can be viewed if it is cached
+        logging.info(" --- Connect to the internet. View the offline sync.  -- Objects created,"
+                     " updated & deleted above are applied to the system. The outgoing queue empties.")
+        main_page.scroll_down_to_offline_sync_button()
+        main_page.open_OFFLINE_SYNC()
+        common_page.take_screenshot('Offline Objects - offline sync in online mode')
+        common_page.hamburger_button()
+        main_page.check_presence_of_inbox_button()
+
+        logging.info(" --- Online - Open few reports, events, Documents (all objects) "
+                     "Go to Flight mode and view the objects -- Objects can be viewed if it is cached")
+        main_page.scroll_up_to_events_button()
+        main_page.open_EVENTS()
+
+        main_page.scroll_up_to_reports_button()
+        main_page.open_REPORTS()
+
+        main_page.scroll_down_to_contacts_button()
+        main_page.open_CONTACTS()
+
+        main_page.scroll_down_to_tasks_button()
+        main_page.open_TASKS()
 
 
 if __name__ == '__main__':

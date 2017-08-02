@@ -338,4 +338,6 @@ the command. Original error: Could not install app: 'Command 'ios-deploy --id 4b
 - error: "A valid provisioning profile for this executable was not found."  --> rebuild OCA app through Xcode
 - error: "Original error: ChromeDriver crashed during startup"  --> You started two parallel tests on Android devices and chromedriver just crashed
 - Android 7 real device and airplane mode -- sometimes there are some problems with switching to airplane mode, try to restart device and/or switch display off and/or switch manually airplane mode on and off
- 
+- error: "WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Error while executing atom: Element is not currently visible and may not be manipulated (status: 11)"
+ --> probably some problem with crashing iOS instruments? 
+

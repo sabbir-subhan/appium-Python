@@ -6,6 +6,7 @@ import logging
 from selenium.common.exceptions import *
 from Modules.load_class import LoadClass
 from configuration import platform
+# from appium.webdriver.common.touch_action import TouchAction
 
 
 class EventsPage(BasePage):
@@ -707,6 +708,11 @@ class EventsPage(BasePage):
             save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON_NEW_EVENT)
             self.assertIsNotNone(save_button, "Save button not found")
             save_button.click()
+            # try:
+            #     save_button.click()
+            # except WebDriverException:
+            #     action = TouchAction(self.driver)
+            #     action.tap(save_button).perform()
             sleep(2)
         except NoSuchElementException:  # for IOS emulators in offline mode
             EventsPage.click_save_edited_event(self)
