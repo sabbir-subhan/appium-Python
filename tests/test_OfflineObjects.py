@@ -102,6 +102,7 @@ class TestOfflineObjects(SetupTestCase):
         logging.info(" --- While offline, create an event.")
         main_page.scroll_up_to_events_button()
         main_page.open_EVENTS()
+        # common_page.additional_wait_for_emulators_in_airplane_mode()
         events_page = LoadClass.load_page('EventsPage')
         events_page.setDriver(self.driver)
         events_page.click_more_button_in_events_list()
@@ -112,12 +113,13 @@ class TestOfflineObjects(SetupTestCase):
         events_page.choose_severity_level_5()
         events_page.scroll_down_to_save_button()
         events_page.click_save_new_event()
+        common_page.wait_for_app_loading()
+        # common_page.additional_wait_for_emulators_in_airplane_mode()
         events_page.check_notification_about_offline_mode()
         events_page.ok_button_on_offline_notification_popup()
         common_page.wait_for_app_loading()
 
         logging.info(" --- While offline, update an event.")
-        common_page.wait_until_app_loads()
         events_page.open_first_pending_event()
         common_page.wait_for_app_loading()
         events_page.click_edit_button()
@@ -128,6 +130,7 @@ class TestOfflineObjects(SetupTestCase):
         common_page.hide_keyboard()
         events_page.scroll_down_to_save_button()
         events_page.click_save_new_event()
+        common_page.wait_for_app_loading()
         events_page.check_notification_about_offline_mode()
         events_page.ok_button_on_offline_notification_popup()
 
@@ -158,6 +161,7 @@ class TestOfflineObjects(SetupTestCase):
         common_page.hide_keyboard()
         assets_page.scroll_down_to_save_button()
         assets_page.click_save_button()
+        common_page.wait_for_app_loading()
         assets_page.check_notification_about_offline_mode()
         assets_page.ok_button_on_offline_notification_popup()
 
@@ -179,6 +183,7 @@ class TestOfflineObjects(SetupTestCase):
         contacts_page.type_name_for_new_contact_group("Offline Object - Contact Group")
         contacts_page.scroll_down_to_save_button()
         contacts_page.save_new_contact_group()
+        common_page.wait_for_app_loading()
         contacts_page.check_notification_about_offline_mode()
         contacts_page.ok_button_on_offline_notification_popup_for_contact_group()
 
@@ -191,6 +196,7 @@ class TestOfflineObjects(SetupTestCase):
         common_page.hide_keyboard()
         contacts_page.scroll_down_to_save_button()
         contacts_page.save_new_contact_group()
+        common_page.wait_for_app_loading()
         contacts_page.check_notification_about_offline_mode()
         contacts_page.ok_button_on_offline_notification_popup_for_contact_group()
         common_page.hamburger_button()
@@ -206,6 +212,7 @@ class TestOfflineObjects(SetupTestCase):
         contacts_page.type_first_name_for_new_contact("Offline Object - Contact")
         contacts_page.scroll_down_to_save_button()
         contacts_page.save_new_contact()
+        common_page.wait_for_app_loading()
         contacts_page.check_notification_about_offline_mode()
         contacts_page.ok_button_on_offline_notification_popup_for_contact()
 
@@ -216,6 +223,7 @@ class TestOfflineObjects(SetupTestCase):
         common_page.hide_keyboard()
         contacts_page.scroll_down_to_save_button()
         contacts_page.save_new_contact()
+        common_page.wait_for_app_loading()
         contacts_page.check_notification_about_offline_mode()
         contacts_page.ok_button_on_offline_notification_popup_for_contact()
 
@@ -244,6 +252,7 @@ class TestOfflineObjects(SetupTestCase):
         reports_page.choose_lodging_agency()
         reports_page.scroll_down_to_publish_button()
         reports_page.click_publish_new_report()
+        common_page.wait_for_app_loading()
         reports_page.check_notification_about_offline_mode()
         reports_page.ok_button_on_offline_notification_popup()
 
@@ -279,6 +288,7 @@ class TestOfflineObjects(SetupTestCase):
         tasks_page.choose_current_date()
         tasks_page.scroll_down_to_save_button()
         tasks_page.click_save_new_task()
+        common_page.wait_for_app_loading()
         tasks_page.check_notification_about_offline_mode()
         tasks_page.ok_button_on_offline_notification_popup()
 
@@ -290,6 +300,7 @@ class TestOfflineObjects(SetupTestCase):
         common_page.hide_keyboard()
         tasks_page.scroll_down_to_save_button()
         tasks_page.click_save_new_task()
+        common_page.wait_for_app_loading()
         tasks_page.check_notification_about_offline_mode()
         tasks_page.ok_button_on_offline_notification_popup()
 
@@ -319,19 +330,66 @@ class TestOfflineObjects(SetupTestCase):
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()
 
-        logging.info(" --- Online - Open few reports, events, Documents (all objects) "
-                     "Go to Flight mode and view the objects -- Objects can be viewed if it is cached")
+        logging.info(" --- Online - Open few reports, events, Documents (all objects)")
         main_page.scroll_up_to_events_button()
         main_page.open_EVENTS()
+        events_page.open_previously_created_event()
+        events_page.click_edit_button()
+        common_page.hamburger_button()
 
         main_page.scroll_up_to_reports_button()
         main_page.open_REPORTS()
+        reports_page.open_existing_report()
+        reports_page.click_edit_button()
+        common_page.hamburger_button()
 
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
+        contacts_page.open_first_contact_group()
+        contacts_page.click_first_contact_on_the_list()
+        contacts_page.click_edit_button()
+        common_page.hamburger_button()
 
         main_page.scroll_down_to_tasks_button()
         main_page.open_TASKS()
+        tasks_page.click_first_task_on_the_list()
+        tasks_page.edit_task()
+        common_page.hamburger_button()
+
+        # airplane mode on
+        common_page.switch_on_airplane_mode()
+        common_page.hamburger_button()
+
+        logging.info(" --- Go to Flight mode and view the previously opened objects"
+                     " -- Objects can be viewed if it is cached")
+        main_page.scroll_up_to_events_button()
+        main_page.open_EVENTS()
+        events_page.open_previously_created_event()
+        events_page.click_edit_button()
+        common_page.hamburger_button()
+
+        main_page.scroll_up_to_reports_button()
+        main_page.open_REPORTS()
+        reports_page.open_existing_report()
+        reports_page.click_edit_button()
+        common_page.hamburger_button()
+
+        main_page.scroll_down_to_contacts_button()
+        main_page.open_CONTACTS()
+        contacts_page.open_first_contact_group()
+        contacts_page.click_first_contact_on_the_list()
+        contacts_page.click_edit_button()
+        common_page.hamburger_button()
+
+        main_page.scroll_down_to_tasks_button()
+        main_page.open_TASKS()
+        tasks_page.click_first_task_on_the_list()
+        tasks_page.edit_task()
+        common_page.hamburger_button()
+
+        # airplane mode off
+        common_page.switch_off_airplane_mode()
+        common_page.hamburger_button()
 
 
 if __name__ == '__main__':

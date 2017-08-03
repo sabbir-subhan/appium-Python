@@ -203,11 +203,16 @@ class EventEditScreen:
                                            '/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]'
                                            '/XCUIElementTypeOther[1]/XCUIElementTypeTextField[1]')
     SEVERITY_LEVEL_SELECTOR = (MobileBy.XPATH, '//XCUIElementTypeOther[4]/XCUIElementTypeOther[3]')
-    CHOOSE_SEVERITY_LVL1_iPad = (MobileBy.XPATH, '//XCUIElementTypeTableCell[@name="Severity 1"]')
-    CHOOSE_SEVERITY_LVL2_iPad = (MobileBy.XPATH, '//XCUIElementTypeTableCell[@name="Severity 2"]')
-    CHOOSE_SEVERITY_LVL3_iPad = (MobileBy.XPATH, '//XCUIElementTypeTableCell[@name="Severity 3"]')
-    CHOOSE_SEVERITY_LVL4_iPad = (MobileBy.XPATH, '//XCUIElementTypeTableCell[@name="Severity 4"]')
-    CHOOSE_SEVERITY_LVL5_iPad = (MobileBy.XPATH, '//XCUIElementTypeTableCell[@name="Severity 5"]')
+    # CHOOSE_SEVERITY_LVL1_iPad = (MobileBy.XPATH, '//XCUIElementTypeTableCell[@name="Severity 1"]')
+    # CHOOSE_SEVERITY_LVL2_iPad = (MobileBy.XPATH, '//XCUIElementTypeTableCell[@name="Severity 2"]')
+    # CHOOSE_SEVERITY_LVL3_iPad = (MobileBy.XPATH, '//XCUIElementTypeTableCell[@name="Severity 3"]')
+    # CHOOSE_SEVERITY_LVL4_iPad = (MobileBy.XPATH, '//XCUIElementTypeTableCell[@name="Severity 4"]')
+    # CHOOSE_SEVERITY_LVL5_iPad = (MobileBy.XPATH, '//XCUIElementTypeTableCell[@name="Severity 5"]')
+    CHOOSE_SEVERITY_LVL1_iPad = (MobileBy.XPATH, '//XCUIElementTypeCell/XCUIElementTypeStaticText[@value="Severity 1"]')
+    CHOOSE_SEVERITY_LVL2_iPad = (MobileBy.XPATH, '//XCUIElementTypeCell/XCUIElementTypeStaticText[@value="Severity 2"]')
+    CHOOSE_SEVERITY_LVL3_iPad = (MobileBy.XPATH, '//XCUIElementTypeCell/XCUIElementTypeStaticText[@value="Severity 3"]')
+    CHOOSE_SEVERITY_LVL4_iPad = (MobileBy.XPATH, '//XCUIElementTypeCell/XCUIElementTypeStaticText[@value="Severity 4"]')
+    CHOOSE_SEVERITY_LVL5_iPad = (MobileBy.XPATH, '//XCUIElementTypeCell/XCUIElementTypeStaticText[@value="Severity 5"]')
     SEVERITY_PICKER = (MobileBy.XPATH, '//XCUIElementTypeApplication/XCUIElementTypeWindow'
                                        '/XCUIElementTypePicker/XCUIElementTypePickerWheel')
     FINISHED_FIELD = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Finished"]')
@@ -377,7 +382,8 @@ class TasksScreen:
 class ReportsScreen:
     """A class for handling Reports screen"""
     LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//XCUIElementTypeOther[4]/XCUIElementTypeOther[3]')
-    LODGING_AGENCY = (MobileBy.XPATH, '//XCUIElementTypePopover/XCUIElementTypeTableView/XCUIElementTypeTableCell[2]')
+    # LODGING_AGENCY = (MobileBy.XPATH, '//XCUIElementTypePopover/XCUIElementTypeTableView/XCUIElementTypeTableCell[2]')
+    LODGING_AGENCY = (MobileBy.XPATH, '//XCUIElementTypeCell/XCUIElementTypeStaticText[@value="contact_group_for_tests"]')  # contact_group_for_tests
     PUBLISH_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Publish"]')
     # CREATED_REPORT_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Large")]]')
     CREATED_REPORT_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="Large Report"]')

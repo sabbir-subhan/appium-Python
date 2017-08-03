@@ -232,7 +232,8 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 - go to OCA web page - Settings - Settings - Security tab and in section Mobile, uncheck "Encrypt saved data in the app" and "Block jailbroken/rooted devices from using the app"
 
 ### for TC: QuickAccessButtons
-- create quick access buttons - see task OCAMOB-48 prepare Lodging Agency named: "contact_group_for_tests" and configure Quick Access buttons for mobile app, 
+- create quick access buttons - see task OCAMOB-48 prepare Lodging Agency named: "contact_group_for_tests" - - create Lodging agency named: "contact_group_for_tests" -- create new contact group and add "Agency" option to it,
+ and configure Quick Access buttons for mobile app, 
  Login to OCA server>Click on Settings>Mobile Quick access Buttons>Add Quick Access buttons (see task in Jira), remember to firstly open some link on device/emulator - Android will ask witch browser You want to use
 
 ### for TC: SentCommunication
@@ -245,7 +246,7 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 - Lodging agency named: "contact_group_for_tests" is needed
 
 ### for TC: Managing Reports
-- Lodging agency named: "contact_group_for_tests", 
+- create Lodging agency named: "contact_group_for_tests" -- create new contact group and add "Agency" option to it
 - report type with all fields, named: "report_for_tests", 
 - report type with chooser fields, named: "report_with_chooser_fields",
 - report type with chooser fields, must contain asset chooser field as a last field in form, 
@@ -337,7 +338,7 @@ the command. Original error: Could not install app: 'Command 'ios-deploy --id 4b
 - error: "failed to tap 'h'"  -- observed on iOS 9 emulator - choose Simulator -> Hardware -> Keyboard -> Toggle Software Keyboard
 - error: "A valid provisioning profile for this executable was not found."  --> rebuild OCA app through Xcode
 - error: "Original error: ChromeDriver crashed during startup"  --> You started two parallel tests on Android devices and chromedriver just crashed
-- Android 7 real device and airplane mode -- sometimes there are some problems with switching to airplane mode, try to restart device and/or switch display off and/or switch manually airplane mode on and off
+- Android 7 real device and airplane mode -- sometimes there are some problems with switching to airplane mode, to fix it switch manually airplane mode on and off (or try to restart device and/or switch display off) and then start the test
 - error: "WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Error while executing atom: Element is not currently visible and may not be manipulated (status: 11)"
  --> probably some problem with crashing iOS instruments? 
 

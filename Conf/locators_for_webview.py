@@ -5,7 +5,8 @@ from appium.webdriver.common.mobileby import MobileBy
 
 class CommonScreen:
     """A class for handling Common buttons on different screen"""
-    LOADING = (MobileBy.CSS_SELECTOR, 'span.ui-icon-loading')
+    # LOADING = (MobileBy.CSS_SELECTOR, 'span.ui-icon-loading')
+    LOADING = (MobileBy.CSS_SELECTOR, 'div.ui-loader')
     # OK_BUTTON = (MobileBy.CSS_SELECTOR, '')
 
 

@@ -137,13 +137,13 @@ class IOS9(IOS):
             expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
             "Failed to locate Events button")
 
-    def wait_for_app_loading(self):
-
-        # pass
-        # logging.info("wait for app loading")
-        WebDriverWait(self.driver, 5).until(
-            expected_conditions.invisibility_of_element_located(self.configuration.CommonScreen.LOADING),
-            "app is still loading - check internet connection")
+    # def wait_for_app_loading(self):
+    #
+    #     # pass
+    #     # logging.info("wait for app loading")
+    #     WebDriverWait(self.driver, 5).until(
+    #         expected_conditions.invisibility_of_element_located(self.configuration.CommonScreen.LOADING),
+    #         "app is still loading - check internet connection")
 
 
 

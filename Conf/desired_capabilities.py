@@ -38,6 +38,26 @@ class DesiredCapabilities(object):
             "udid": "0123456789ABCDEF"
         },
 
+        "Android_4.4": {  # Sony Xperia T3
+            "platformName": "ANDROID",
+            "platformVersion": "4.4.4",
+            "deviceName": "D5103",
+            "app": os.path.join(PROJECT_ROOT, "oca.apk"),  # path to .apk file
+            "appPackage": "com.noggin.ocalukasl",
+            "appActivity": "com.noggin.ocalukasl.MainActivity",
+            "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
+            "automationName": "uiautomator2",
+            "deviceReadyTimeout": 15,
+            "clearSystemFiles": True,
+            "chromedriverExecutable": os.path.join(PROJECT_ROOT, "chromedriver"),
+            "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
+            "chromeOptions": {
+                "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
+            },
+            "recreateChromeDriverSessions": True,
+            "udid": "YT910VADAE"
+        },
+
         "Android_4_emulator": {
             # Google Nexus 4 - 4.4.2 - API 19 - 768x1280
             "platformName": "ANDROID",
@@ -109,22 +129,24 @@ class DesiredCapabilities(object):
 
         "Android_6": {
             "platformName": "ANDROID",
-            "platformVersion": "6.0.1",
+            # "platformVersion": "6.0.1",
+            "platformVersion": "6.0",
             "deviceName": "Redmi 4X",
             "app": os.path.join(PROJECT_ROOT, "oca.apk"),  # path to .apk file
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
-            "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
+            # "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
             "automationName": "uiautomator2",
-            "appWaitDuration": 5000,
-            "deviceReadyTimeout": 5,
+            # "appWaitDuration": 5000,
+            # "deviceReadyTimeout": 5,
             # "newCommandTimeout": "60",
-            "clearSystemFiles": True,
+            # "clearSystemFiles": True,
             "chromedriverExecutable": os.path.join(PROJECT_ROOT, "chromedriver"),
             "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote",
             "chromeOptions": {
                 "androidDeviceSocket": "com.noggin.ocalukasl_devtools_remote"
             },
+            "recreateChromeDriverSessions": True,
             "udid": "47959a957d14"
         },
 

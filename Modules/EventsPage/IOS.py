@@ -125,6 +125,7 @@ class IOS(EventsPage):
                 logging.info("scroll down to save button")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
                 scroll = scroll - 1
+        sleep(1)
         # else:
         #     pass
 

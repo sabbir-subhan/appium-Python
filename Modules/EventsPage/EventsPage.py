@@ -429,6 +429,25 @@ class EventsPage(BasePage):
 
         sleep(2)
 
+    # def check_edit_button_visibility(self):
+    #
+    #     logging.info("check if in offline mode, Edit button is visible on cached object")
+    #
+    #     try:
+    #         self.driver.find_element(*self.configuration.EventDetailsScreen.EVENT_INFO_BUTTON).click()
+    #     except NoSuchElementException:
+    #         pass
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     sleep(1)
+    #     edit_button = self.driver.find_element(*self.configuration.EventDetailsScreen.EDIT_BUTTON)
+    #     self.assertIsNotNone(edit_button, "edit button not found")
+    #     edit_button.click()
+    #     sleep(2)
+    #
+    #     self.switch_context_to_native()
+
     def set_as_primary_event(self):
 
         self.switch_context_to_webview()

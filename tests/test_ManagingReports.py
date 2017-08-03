@@ -1,7 +1,7 @@
 # Test Case - Managing Reports -- OCAMOB-60
 
 # before running this test create:
-# - Lodging agency named: "contact_group_for_tests"
+# - create Lodging agency named: "contact_group_for_tests" -- create new contact group and add "Agency" option to it
 # - report type with all fields, named: "report_for_tests"
 # - report type with chooser fields, named: "report_with_chooser_fields", must contain asset chooser field as a last field in form,
 # - report type with on load and on save sequence (with default value = "test on load") and on save sequence, named: "report_with_on_load_sequence" (like in TC: Managing Events)

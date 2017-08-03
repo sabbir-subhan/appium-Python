@@ -26,8 +26,9 @@ class Android:
 
 class CommonScreen:
     """A class for handling Common buttons on different screen"""
-    LOADING = (MobileBy.XPATH, '//android.view.View[@content-desc="loading"]')
-    LOADING2 = (MobileBy.XPATH, '//android.view.View[@content-desc="loading" and @enabled="true"]')
+    # LOADING = (MobileBy.XPATH, '//android.view.View[@content-desc="loading"]')
+    # LOADING = (MobileBy.XPATH, '//android.view.View[@content-desc="loading" and @enabled="true"]')
+    LOADING = (MobileBy.ACCESSIBILITY_ID, 'loading')
     UPLOADING = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Uploading")]]')  # not working
     SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
     CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Cancel')
