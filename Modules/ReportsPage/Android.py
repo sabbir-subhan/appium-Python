@@ -142,4 +142,29 @@ class Android(ReportsPage):
         self.driver.press_keycode(52)  # send letter 'X'
         self.driver.press_keycode(48)  # send letter 'T'
 
+    def click_publish_new_report(self):  # for Android 5 emulator --- TO TEST
+
+        logging.info("click Publish button")
+
+        self.switch_context_to_webview()
+
+        try:
+            publish_button = self.driver.find_element(*self.configuration.ReportsScreen.PUBLISH_NEW_REPORT)
+            self.assertIsNot(publish_button, "publish button in native view, not found")
+            publish_button.click()
+            reports_page = LoadClass.load_page('ReportsPage')
+            reports_page.setDriver(self.driver)
+            reports_page.scroll_down_to_publish_button()
+            self.assertIsNot(publish_button, "publish button in native view, not found")
+            publish_button.click()
+        except NoSuchElementException:
+            publish_button = self.driver.find_element(*self.configuration.ReportsScreen.PUBLISH_EDITED_REPORT)
+            self.assertIsNot(publish_button, "publish button in native view, not found")
+            publish_button.click()
+
+        self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 

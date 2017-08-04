@@ -26,6 +26,7 @@ import logging
 import unittest
 from time import sleep
 import os
+from configuration import PROJECT_ROOT
 
 
 class TestLoadTypeDataAfterLogin(SetupTestCase):
@@ -40,7 +41,7 @@ class TestLoadTypeDataAfterLogin(SetupTestCase):
         logging.info("Quitting")
 
         # take screenshot on quit
-        path = "./screenshots"
+        path = PROJECT_ROOT + "/screenshots"
         os.chdir(path)
         self.driver.save_screenshot("test_Load_Type_Data_After_Login" + ".png")
         os.chdir("..")

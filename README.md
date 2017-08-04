@@ -276,6 +276,14 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 - Login to oca server > Click on mapping > Layers > Add > Drawing > Ok > Draw geometry (draw some shape using line tool) > Save map as "FOR MOBILE" (the same map as in TC: Maps)
 - other Saved maps that are needed for TC: All active events, All assets, All contacts, All tasks - for proper TC execution in OCA app should be present one event, asset, task and contact with mapping data or address data
 
+### for TC: Read Only Properties
+- Go to setting > OCA designer > Create object types: Asset, Reports, Event, Risk
+- for each new type add the following: - option list: name = Is Read only ?, Options = Yes A, Yes B, No, Maximum selected options = Height of field = 3, Default value = (None) - *Options may come from a central list or a user-defined list
+- Add the 2 sets of the following fields: option list, single-line text, multi-line text, rich text, phone number, fax number, cell number, email address, website address, location, date, date & time, date & optional time, number, sub form, single-line text inside the sub form
+- Make the 1st set of fields Read only if Is Read only ? = Yes A.
+- Make the 2nd set of fields visible only if Is Read only ? = Yes B.
+- Set up default values for all fields in both sets.
+
 
 #**BEFORE EACH NEW RUN OF TESTS:**
 

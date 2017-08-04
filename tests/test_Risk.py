@@ -31,6 +31,7 @@ from Modules.load_class import LoadClass
 import logging
 import unittest
 import os
+from configuration import PROJECT_ROOT
 
 
 class TestRisk(SetupTestCase):
@@ -45,7 +46,7 @@ class TestRisk(SetupTestCase):
         logging.info("Quitting")
 
         # take screenshot on quit
-        path = "./screenshots"
+        path = PROJECT_ROOT + "/screenshots"
         os.chdir(path)
         self.driver.save_screenshot("test_Risk" + ".png")
         os.chdir("..")

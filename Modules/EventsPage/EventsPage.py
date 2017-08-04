@@ -718,47 +718,83 @@ class EventsPage(BasePage):
 
     def click_save_new_event(self):
 
-        self.switch_context_to_webview()
-
-        sleep(1)
         logging.info("click Save button")
-        sleep(2)
         try:
+            save_button_native = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON)
+            self.assertIsNotNone(save_button_native, "Save button not found")
+            save_button_native.click()
+        except NoSuchElementException:
+            self.switch_context_to_webview()
             save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON_NEW_EVENT)
             self.assertIsNotNone(save_button, "Save button not found")
             save_button.click()
-            # try:
-            #     save_button.click()
-            # except WebDriverException:
-            #     action = TouchAction(self.driver)
-            #     action.tap(save_button).perform()
-            sleep(2)
-        except NoSuchElementException:  # for IOS emulators in offline mode
-            EventsPage.click_save_edited_event(self)
-
-        self.switch_context_to_native()
+            self.switch_context_to_native()
 
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         common_page.wait_for_app_loading()
+
+    # def click_save_new_event(self):
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     sleep(1)
+    #     logging.info("click Save button")
+    #     sleep(2)
+    #     try:
+    #         save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON_NEW_EVENT)
+    #         self.assertIsNotNone(save_button, "Save button not found")
+    #         save_button.click()
+    #         # try:
+    #         #     save_button.click()
+    #         # except WebDriverException:
+    #         #     action = TouchAction(self.driver)
+    #         #     action.tap(save_button).perform()
+    #         sleep(2)
+    #     except NoSuchElementException:  # for IOS emulators in offline mode
+    #         EventsPage.click_save_edited_event(self)
+    #
+    #     self.switch_context_to_native()
+    #
+    #     common_page = LoadClass.load_page('CommonPage')
+    #     common_page.setDriver(self.driver)
+    #     common_page.wait_for_app_loading()
 
     def click_save_edited_event(self):
 
-        self.switch_context_to_webview()
-
-        sleep(1)
         logging.info("click Save button")
-        sleep(1)
-        save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON_EDIT_EVENT)
-        self.assertIsNotNone(save_button, "Save button not found")
-        save_button.click()
-        sleep(2)
-
-        self.switch_context_to_native()
+        try:
+            save_button_native = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON)
+            self.assertIsNotNone(save_button_native, "Save button not found")
+            save_button_native.click()
+        except NoSuchElementException:
+            self.switch_context_to_webview()
+            save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON_EDIT_EVENT)
+            self.assertIsNotNone(save_button, "Save button not found")
+            save_button.click()
+            self.switch_context_to_native()
 
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         common_page.wait_for_app_loading()
+
+    # def click_save_edited_event(self):
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     sleep(1)
+    #     logging.info("click Save button")
+    #     sleep(1)
+    #     save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON_EDIT_EVENT)
+    #     self.assertIsNotNone(save_button, "Save button not found")
+    #     save_button.click()
+    #     sleep(2)
+    #
+    #     self.switch_context_to_native()
+    #
+    #     common_page = LoadClass.load_page('CommonPage')
+    #     common_page.setDriver(self.driver)
+    #     common_page.wait_for_app_loading()
 
     # def click_cancel_button(self):
     #

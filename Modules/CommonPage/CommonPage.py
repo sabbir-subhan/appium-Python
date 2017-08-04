@@ -4,12 +4,11 @@ from Modules.BasePage.BasePage import BasePage
 import logging
 from time import sleep
 from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.ui import WebDriverWait
 import os
 from Modules.load_class import LoadClass
-from configuration import platform
 from configuration import PROJECT_ROOT
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import WebDriverException
 
 
 class CommonPage(BasePage):
@@ -100,11 +99,30 @@ class CommonPage(BasePage):
             while loading_animation.is_displayed():
                 logging.info("wait for app loading")
                 sleep(2)
+                if self.assertIsNot(loading_animation, "end waiting"):
+                    break
         except NoSuchElementException:
             logging.info("loading animation not found")
             pass
 
         self.switch_context_to_native()
+
+    # def wait_for_app_loading(self):
+    #
+    #     sleep(1)
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     try:
+    #         loading_animation = self.driver.find_element(*self.configuration.CommonScreen.LOADING)
+    #         while loading_animation.is_displayed():
+    #             logging.info("wait for app loading")
+    #             sleep(2)
+    #     except NoSuchElementException:
+    #         logging.info("loading animation not found")
+    #         pass
+    #
+    #     self.switch_context_to_native()
 
     # def additional_wait_for_emulators_in_airplane_mode(self):  # android emulator in airplane mode need a long time to load offline object lists
     #

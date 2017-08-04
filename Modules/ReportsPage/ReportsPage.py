@@ -4,7 +4,7 @@ from Modules.BasePage.BasePage import BasePage
 from Modules.load_class import LoadClass
 import logging
 from time import sleep
-# from appium.webdriver.common.touch_action import TouchAction
+from appium.webdriver.common.touch_action import TouchAction
 # from selenium.webdriver.support import expected_conditions
 # from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import *
@@ -66,6 +66,24 @@ class ReportsPage(BasePage):
 
         self.switch_context_to_native()
 
+    # def click_publish_new_report(self):
+    #
+    #     logging.info("click Publish button")
+    #     try:
+    #         publish_button_native = self.driver.find_element(*self.configuration.ReportsScreen.PUBLISH_BUTTON)
+    #         self.assertIsNot(publish_button_native, "publish button in native view, not found")
+    #         publish_button_native.click()
+    #     except NoSuchElementException:
+    #         self.switch_context_to_webview()
+    #         publish_button = self.driver.find_element(*self.configuration.ReportsScreen.PUBLISH_NEW_REPORT)
+    #         self.assertIsNotNone(publish_button, "Publish button was not found")
+    #         publish_button.click()
+    #         self.switch_context_to_native()
+    #
+    #     common_page = LoadClass.load_page('CommonPage')
+    #     common_page.setDriver(self.driver)
+    #     common_page.wait_for_app_loading()
+
     def click_publish_new_report(self):
 
         self.switch_context_to_webview()
@@ -77,15 +95,41 @@ class ReportsPage(BasePage):
             publish_button.click()
         except NoSuchElementException:
             ReportsPage.click_publish_edited_report(self)
-        # sleep(1)
-        # action = TouchAction(self.driver)
-        # action.tap(element=publish_button, count=1).perform()
-        # sleep(2)
-        # WebDriverWait(self.driver, 30).until(
-        #     expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
-        #     "Failed to locate description field")
 
         self.switch_context_to_native()
+
+    # def click_publish_new_report(self):
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     try:
+    #         logging.info("click Publish button")
+    #         publish_button = self.driver.find_element(*self.configuration.ReportsScreen.PUBLISH_NEW_REPORT)
+    #         self.assertIsNotNone(publish_button, "Publish button was not found")
+    #         publish_button.click()
+    #         try:
+    #             self.switch_context_to_native()
+    #             publish_button_native = self.driver.find_element(*self.configuration.ReportsScreen.PUBLISH_REPORT)
+    #             self.assertIsNot(publish_button_native, "publish button in native view, not found")
+    #             publish_button_native.click()
+    #         except: NoSuchElementException:
+    #             pass
+    #         # if publish_button.is_displayed():
+    #         #     self.switch_context_to_native()
+    #         #     action = TouchAction(self.driver)
+    #         #     action.tap(element=publish_button, count=1).perform()
+    #         #     self.switch_context_to_webview()
+    #     except NoSuchElementException:
+    #         ReportsPage.click_publish_edited_report(self)
+    #
+    #     # action = TouchAction(self.driver)
+    #     # action.tap(element=publish_button, count=1).perform()
+    #     # sleep(2)
+    #     # WebDriverWait(self.driver, 30).until(
+    #     #     expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
+    #     #     "Failed to locate description field")
+    #
+    #     self.switch_context_to_native()
 
     def click_cancel_new_report(self):
 
@@ -99,6 +143,24 @@ class ReportsPage(BasePage):
 
         self.switch_context_to_native()
 
+    # def click_publish_edited_report(self):
+    #
+    #     logging.info("click Publish button")
+    #     try:
+    #         publish_button_native = self.driver.find_element(*self.configuration.ReportsScreen.PUBLISH_BUTTON)
+    #         self.assertIsNot(publish_button_native, "publish button in native view, not found")
+    #         publish_button_native.click()
+    #     except NoSuchElementException:
+    #         self.switch_context_to_webview()
+    #         publish_button = self.driver.find_element(*self.configuration.ReportsScreen.PUBLISH_EDITED_REPORT)
+    #         self.assertIsNotNone(publish_button, "Publish button was not found")
+    #         publish_button.click()
+    #         self.switch_context_to_native()
+    #
+    #     common_page = LoadClass.load_page('CommonPage')
+    #     common_page.setDriver(self.driver)
+    #     common_page.wait_for_app_loading()
+
     def click_publish_edited_report(self):
 
         self.switch_context_to_webview()
@@ -107,15 +169,12 @@ class ReportsPage(BasePage):
         publish_button = self.driver.find_element(*self.configuration.ReportsScreen.PUBLISH_EDITED_REPORT)
         self.assertIsNotNone(publish_button, "Publish button was not found")
         publish_button.click()
-        # sleep(1)
-        # action = TouchAction(self.driver)
-        # action.tap(element=publish_button, count=1).perform()
-        # sleep(2)
-        # WebDriverWait(self.driver, 30).until(
-        #     expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
-        #     "Failed to locate description field")
 
         self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
 
     def click_cancel_edited_report(self):
 
