@@ -142,29 +142,32 @@ class Android(ReportsPage):
         self.driver.press_keycode(52)  # send letter 'X'
         self.driver.press_keycode(48)  # send letter 'T'
 
-    def click_publish_new_report(self):  # for Android 5 emulator --- TO TEST
-
-        logging.info("click Publish button")
+    def click_publish_new_report(self):
 
         self.switch_context_to_webview()
 
         try:
+            logging.info("click Publish button")
             publish_button = self.driver.find_element(*self.configuration.ReportsScreen.PUBLISH_NEW_REPORT)
-            self.assertIsNot(publish_button, "publish button in native view, not found")
-            publish_button.click()
-            reports_page = LoadClass.load_page('ReportsPage')
-            reports_page.setDriver(self.driver)
-            reports_page.scroll_down_to_publish_button()
-            self.assertIsNot(publish_button, "publish button in native view, not found")
+            self.assertIsNotNone(publish_button, "Publish button was not found")
             publish_button.click()
         except NoSuchElementException:
-            publish_button = self.driver.find_element(*self.configuration.ReportsScreen.PUBLISH_EDITED_REPORT)
-            self.assertIsNot(publish_button, "publish button in native view, not found")
-            publish_button.click()
+            ReportsPage.click_publish_edited_report(self)
+        try:
+            title = self.driver.find_element(*self.configuration.ReportsScreen.TITLE)
+            if title.is_displayed():
+                try:
+                    self.switch_context_to_native()
+                    Android.scroll_down_to_publish_button(self)
+                    self.switch_context_to_webview()
+                    publish_button = self.driver.find_element(*self.configuration.ReportsScreen.PUBLISH_NEW_REPORT)
+                    publish_button.click()
+                except WebDriverException:
+                    pass
+            else:
+                pass
+        except NoSuchElementException:
+            pass
 
         self.switch_context_to_native()
-
-        common_page = LoadClass.load_page('CommonPage')
-        common_page.setDriver(self.driver)
-        common_page.wait_for_app_loading()
 

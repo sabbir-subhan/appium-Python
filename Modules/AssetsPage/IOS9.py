@@ -9,6 +9,22 @@ class IOS9(IOS):
 
         pass
 
+    def scroll_down_to_add_media_button(self):
+
+        pass
+
+    def scroll_up_to_name_field(self):
+
+        pass
+
+    def scroll_down(self):
+
+        pass
+
+    def scroll_up(self):
+
+        pass
+
 
 
 

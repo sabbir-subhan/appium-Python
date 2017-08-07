@@ -21,6 +21,36 @@ class IOS(AssetsPage):
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
                 scroll = scroll - 1
 
+    def scroll_down_to_add_media_button(self):
+        """Method to scroll down to 'Add Media' button"""
+
+        logging.info("scroll down to Add Media button")
+        scroll = 10
+        while scroll > 0:
+            logging.info("check if Add Media button is visible")
+            add_media_button = self.driver.find_element(*self.configuration.CommonScreen.ADD_MEDIA)
+            if add_media_button.is_displayed():
+                break
+            else:
+                logging.info("scroll down to Add Media button")
+                self.driver.execute_script("mobile: scroll", {"direction": "down"})
+                scroll = scroll - 1
+
+    def scroll_up_to_name_field(self):
+        """Method to scroll up to 'Name' input field"""
+
+        logging.info("scroll down to Name input field")
+        scroll = 10
+        while scroll > 0:
+            logging.info("check if Name input field is visible")
+            name_input_field = self.driver.find_element(*self.configuration.CommonScreen.FIRST_INPUT_FIELD)
+            if name_input_field.is_displayed():
+                break
+            else:
+                logging.info("scroll up to Name input field")
+                self.driver.execute_script("mobile: scroll", {"direction": "up"})
+                scroll = scroll - 1
+
     def scroll_down(self):
 
         logging.info("scroll down")

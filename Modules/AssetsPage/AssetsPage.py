@@ -43,16 +43,23 @@ class AssetsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def choose_asset_type_with_option_list(self):  # asset type with option list
+
+        logging.info('choose asset type with option list')
+        asset_type = self.driver.find_element(*self.configuration.AssetsScreen.ASSET_TYPE_WITH_OPTION_LIST)
+        self.assertIsNotNone(asset_type, "asset type not found")
+        asset_type.click()
+
     def fill_Name_input_field(self, text):
 
         self.switch_context_to_webview()
 
         sleep(1)
-        logging.info("type title")
-        title = self.driver.find_element(*self.configuration.AssetsScreen.NAME)
-        self.assertIsNotNone(title, "Title input field was not found")
-        title.click()
-        title.send_keys(text)
+        logging.info("type Name")
+        name = self.driver.find_element(*self.configuration.AssetsScreen.NAME)
+        self.assertIsNotNone(name, "Name input field was not found")
+        name.click()
+        name.send_keys(text)
 
         self.switch_context_to_native()
 
@@ -113,6 +120,7 @@ class AssetsPage(BasePage):
         logging.info("type cost per unit")
         cost_per_unit = self.driver.find_element(*self.configuration.AssetsScreen.COST_PER_UNIT_FIELD)
         self.assertIsNotNone(cost_per_unit, "Cost per unit input field was not found")
+        cost_per_unit.click()
         cost_per_unit.send_keys(text)
 
         self.switch_context_to_native()
@@ -124,6 +132,7 @@ class AssetsPage(BasePage):
         logging.info("type cost per unit")
         cost_per_unit = self.driver.find_element(*self.configuration.AssetsScreen.COST_PER_UNIT_FIELD_IN_NEW_ASSET)
         self.assertIsNotNone(cost_per_unit, "Cost per unit input field was not found")
+        cost_per_unit.click()
         cost_per_unit.send_keys(text)
 
         self.switch_context_to_native()
@@ -505,6 +514,69 @@ class AssetsPage(BasePage):
         sleep(1)
 
         self.switch_context_to_native()
+
+    def read_only_option_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click option list - Is Read Only ?")
+
+        option_list = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_READ_ONLY)
+        self.assertIsNot(option_list, "option list - Is Read Only ?, not found")
+        option_list.click()
+
+        self.switch_context_to_native()
+
+    def option_list_option_yes_a(self):
+
+        self.switch_context_to_webview()
+
+        logging.info('choose "Yes A" in "Is Read Only ?" option list')
+
+        option = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_OPTION_YES_A)
+        self.assertIsNot(option, "option list - Is Read Only ?, not found")
+        option.click()
+
+        self.switch_context_to_native()
+
+    def option_list_option_yes_b(self):
+
+        self.switch_context_to_webview()
+
+        logging.info('choose "Yes B" in "Is Read Only ?" option list')
+
+        option = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_OPTION_YES_B)
+        self.assertIsNot(option, "option list - Is Read Only ?, not found")
+        option.click()
+
+        self.switch_context_to_native()
+
+    def option_list_option_no(self):
+
+        self.switch_context_to_webview()
+
+        logging.info('choose "No" in "Is Read Only ?" option list')
+
+        option = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_OPTION_NO)
+        self.assertIsNot(option, "option list - Is Read Only ?, not found")
+        option.click()
+
+        self.switch_context_to_native()
+
+    def save_option_list(self):
+
+        logging.info("save option list")
+
+        option_list_save_button = self.driver.find_element(*self.configuration.AssetsScreen.SAVE_OPTION_LIST)
+        self.assertIsNot(option_list_save_button, "Option list save button, not found")
+        option_list_save_button.click()
+
+
+
+
+
+
+
 
 
 

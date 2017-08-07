@@ -25,6 +25,9 @@ class CommonScreen:
     PICKER_WHEEL = (MobileBy.CLASS_NAME, 'XCUIElementTypePickerWheel')
     WEB_VIEW = (MobileBy.CLASS_NAME, 'XCUIElementTypeScrollView')
     WHOLE_APP_SCREEN = (MobileBy.NAME, 'OCA')
+    FIRST_INPUT_FIELD = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')  # locating input field by xpath with name won't work
+    ADD_MEDIA = (MobileBy.NAME, 'Add media')
+    ADD_MEDIA2 = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Add media"]')
 
 
 class TopBar:
@@ -471,4 +474,6 @@ class AssetsScreen:
     CREATED_ASSET_WITH_NAME_BALLART = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Ballarat")]]')
     ASSET_TYPE_WITH_MAX_NUMBER_OF_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "asset_with_max_number_of_fields")]]')
     ASSET_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "asset_with_visibility_rules")]]')
+    ASSET_TYPE_WITH_OPTION_LIST = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "asset_with_option_list")]]')
+    SAVE_OPTION_LIST = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Save")]]')
 

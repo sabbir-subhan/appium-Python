@@ -568,8 +568,7 @@ class RisksScreen:
 class AssetsScreen:
     """A class for handling Assets screen"""
     NAME = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li:first-child>div.ui-input-text>input#name')
-    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
-                                          'a[href="#save"]')
+    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#save"]')
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
     NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'li#openAssetTreeMore>a[href="#assetTreeMore"]')
@@ -595,6 +594,10 @@ class AssetsScreen:
     VIEW_ON_MAP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetView>div.ui-content>ul.ui-listview>li>a[href="#mapPage?geometry=true"]')  # button inside assets details
     FIRST_PENDING_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.pending>ul.listview>li:first-child>a')
     OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
+    OPTION_LIST_READ_ONLY = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li[name="is read only ?"]>div.ui-select')
+    OPTION_LIST_OPTION_YES_A = (MobileBy.CSS_SELECTOR, 'div#optionList>div.ui-content>ul.optionLV>li.ui-first-child')
+    OPTION_LIST_OPTION_YES_B = (MobileBy.CSS_SELECTOR, 'div#optionList>div.ui-content>ul.optionLV>li:nth-child(2)')
+    OPTION_LIST_OPTION_NO = (MobileBy.CSS_SELECTOR, 'div#optionList>div.ui-content>ul.optionLV>li.ui-last-child')
 
 
 class LogsScreen(EventsScreen, AssetsScreen):

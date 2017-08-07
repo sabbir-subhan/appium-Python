@@ -41,9 +41,8 @@
 # dismiss notifications
 # check if button "EVENTS" is present
 
-# create new Asset
-# Do not select any options for is read only Y/N
-# Verify that the 2 sets of fields in step 2 are hidden
+# create new Asset -> Do not select any options for is read only Y/N ->
+# Verify that the second set of fields is hidden
 # Set is Read only = Yes A and Yes B
 # Check that the 2 sets of fields in step 2 are still Read only while set to their default values.
 # Change the value of each field in the 2 sets of fields in step 2 then save the Asset
@@ -109,6 +108,34 @@ class TestReadOnlyProperties(SetupTestCase):
         main_page.setDriver(self.driver)
         main_page.alert_expiring_password()
         main_page.dismiss_notifications()
+        main_page.check_presence_of_events_button()
+
+        # create new Asset -> Do not select any options for is read only Y/N
+        main_page.open_ASSETS()
+        assets_page = LoadClass.load_page('AssetsPage')
+        assets_page.setDriver(self.driver)
+        assets_page.click_new_button()
+        assets_page.click_new_asset()
+        assets_page.choose_asset_type_with_option_list()
+        assets_page.fill_Name_input_field("Asset for Read Only test")
+
+        # Verify that the second set of fields is hidden
+        assets_page.scroll_down_to_add_media_button()
+
+        assets_page.scroll_up_to_name_field()
+
+        # Set is Read only = Yes A and Yes B
+        assets_page.read_only_option_list()
+        assets_page.option_list_option_yes_a()
+        assets_page.option_list_option_yes_b()
+        assets_page.save_option_list()
+
+        # Check that the 2 sets of fields in step 2 are still Read only while set to their default values.
+        # Change the value of each field in the 2 sets of fields in step 2 then save the Asset
+
+        assets_page.scroll_down_to_save_button()
+        assets_page.click_save_button()
+        common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
 

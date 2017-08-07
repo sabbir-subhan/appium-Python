@@ -41,6 +41,9 @@ class CommonScreen:
     SPINNER_ON_THE_LEFT = (MobileBy.XPATH, '//android.widget.ListView[1]/android.view.View[1]'
                                            '/android.widget.Spinner[@clickable="true"]')
     WHOLE_APP_SCREEN = (MobileBy.ACCESSIBILITY_ID, 'OCA')
+    FIRST_INPUT_FIELD = (MobileBy.XPATH, '//android.widget.EditText[1]')  # first input filed inside OCA objects, like events, assets, reports
+    ADD_MEDIA = (MobileBy.ACCESSIBILITY_ID, 'Add media')  # button Add Media inside OCA objects
+    ADD_MEDIA2 = (MobileBy.XPATH, '//android.widget.Button[@name="Add media"]')
 
 
 class TopBar:
@@ -447,6 +450,7 @@ class ReportsScreen:
     LODGING_AGENCY_PICKER2 = (MobileBy.XPATH, '//android.view.View[4]/android.widget.Spinner[1]')
     LODGING_AGENCY = (MobileBy.XPATH, '//android.widget.CheckedTextView[2]')
     PUBLISH_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Publish')
+    PUBLISH_BUTTON2 = (MobileBy.XPATH, '//android.view.View[@content-desc="Publish"]')
     CREATED_REPORT_WITH_ALL_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Large")]]')
     CREATED_REPORT_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "chooser fields")]]')
     CREATED_REPORT_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "assigned question")]]')
@@ -540,7 +544,8 @@ class AssetsScreen:
     CREATED_ASSET_WITH_NAME_BALLART = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Ballarat")]]')
     ASSET_TYPE_WITH_MAX_NUMBER_OF_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "asset_with_max_number_of_fields")]]')
     ASSET_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "asset_with_visibility_rules")]]')
-
+    ASSET_TYPE_WITH_OPTION_LIST = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "asset_with_option_list")]]')
+    SAVE_OPTION_LIST = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains(., "Save")]]')
 
 
 
