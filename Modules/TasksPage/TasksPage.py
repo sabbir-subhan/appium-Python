@@ -32,6 +32,8 @@ class TasksPage(BasePage):
 
     def add_contacts_and_groups(self):
 
+        self.switch_context_to_native()
+
         logging.info("Add Contacts and Groups")
         add_contacts_and_groups = self.driver.find_element(*self.configuration.TasksScreen.ADD_CONTACTS_AND_GROUPS)
         self.assertIsNotNone(add_contacts_and_groups, "Add Contacts and Groups button not found")
@@ -176,7 +178,7 @@ class TasksPage(BasePage):
             save_button = self.driver.find_element(*self.configuration.TasksScreen.SAVE_NEW_TASK_BUTTON)
             self.assertIsNotNone(save_button, "save button not found")
             save_button.click()
-        except NoSuchElementException:
+        except NoSuchElementException and WebDriverException:  # for IOS emulators in offline mode
             TasksPage.click_save_edited_task(self)
 
         self.switch_context_to_native()
@@ -432,6 +434,18 @@ class TasksPage(BasePage):
         self.switch_context_to_native()
 
     def type_text_into_detail_field(self, text):
+
+        self.switch_context_to_webview()
+
+        logging.info("type text into Detail field")
+        detail_field = self.driver.find_element(*self.configuration.TasksScreen.DETAIL_FIELD)
+        self.assertIsNotNone(detail_field, "Detail input field not found")
+        detail_field.click()
+        detail_field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def type_text_into_detail_field_offline(self, text):
 
         self.switch_context_to_webview()
 

@@ -65,13 +65,30 @@ class AssetsPage(BasePage):
 
     def click_save_button(self):
 
-        self.switch_context_to_webview()
+        try:
+            save_button = self.driver.find_element(*self.configuration.CommonScreen.SAVE_BUTTON)
+            self.assertIsNot(save_button, "Save button not found")
+            save_button.click()
+        except NoSuchElementException:
+            self.switch_context_to_webview()
+            save_button = self.driver.find_element(*self.configuration.AssetsScreen.SAVE_BUTTON)
+            self.assertIsNot(save_button, "Save button not found")
+            save_button.click()
+            self.switch_context_to_native()
 
-        logging.info('click Save button')
-        save_button = self.driver.find_element(*self.configuration.AssetsScreen.SAVE_BUTTON)
-        save_button.click()
-
-        self.switch_context_to_native()
+        # self.switch_context_to_webview()
+        #
+        # logging.info('click Save button')
+        # try:
+        #     save_button = self.driver.find_element(*self.configuration.AssetsScreen.SAVE_BUTTON_EDIT_ASSET)
+        #     self.assertIsNot(save_button, "Save button not found")
+        #     save_button.click()
+        # except WebDriverException and NoSuchElementException:  # for IOS emulators in offline mode
+        #     save_button = self.driver.find_element(*self.configuration.AssetsScreen.SAVE_BUTTON)
+        #     self.assertIsNot(save_button, "Save button not found")
+        #     save_button.click()
+        #
+        # self.switch_context_to_native()
 
     def open_existing_asset(self):  # first child
 
@@ -127,10 +144,14 @@ class AssetsPage(BasePage):
 
     def type_cost_per_unit_for_new_asset(self, text):  # in offline mode app is using new objects all the time
 
+        sleep(1)
         self.switch_context_to_webview()
 
         logging.info("type cost per unit")
-        cost_per_unit = self.driver.find_element(*self.configuration.AssetsScreen.COST_PER_UNIT_FIELD_IN_NEW_ASSET)
+        try:
+            cost_per_unit = self.driver.find_element(*self.configuration.AssetsScreen.COST_PER_UNIT_FIELD)
+        except WebDriverException:
+            cost_per_unit = self.driver.find_element(*self.configuration.AssetsScreen.COST_PER_UNIT_FIELD_IN_NEW_ASSET)
         self.assertIsNotNone(cost_per_unit, "Cost per unit input field was not found")
         cost_per_unit.click()
         cost_per_unit.send_keys(text)

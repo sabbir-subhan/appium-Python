@@ -44,7 +44,7 @@ class IOS(CommonPage):
 
     def swipe_up_to_show_control_center(self):  # this will bring control center
 
-        logging.info("swipe up to show control center")
+        logging.info("swipe up to show control center IOS10")
         window_size = self.driver.get_window_size()  # this returns dictionary
         el = self.driver.find_element(*self.configuration.CommonScreen.WEB_VIEW)
         action = TouchAction(self.driver)

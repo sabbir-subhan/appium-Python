@@ -24,9 +24,17 @@ class ReportsPage(BasePage):
 
         self.switch_context_to_native()
 
-        # new_task_page = LoadClass.load_page('TasksPage')
-        # new_task_page.setDriver(self.driver)
-        # new_task_page.type_title(text)
+    def type_title_offline(self, text):
+
+        self.switch_context_to_webview()
+
+        logging.info("type title")
+        title = self.driver.find_element(*self.configuration.ReportsScreen.TITLE)
+        self.assertIsNotNone(title, "Title input field was not found")
+        title.click()
+        title.send_keys(text)
+
+        self.switch_context_to_native()
 
     def type_text_into_media_release_field(self):
 
@@ -75,7 +83,7 @@ class ReportsPage(BasePage):
             publish_button = self.driver.find_element(*self.configuration.ReportsScreen.PUBLISH_NEW_REPORT)
             self.assertIsNotNone(publish_button, "Publish button was not found")
             publish_button.click()
-        except NoSuchElementException:
+        except NoSuchElementException and WebDriverException:  # for IOS emulators in offline mode
             ReportsPage.click_publish_edited_report(self)
 
         self.switch_context_to_native()

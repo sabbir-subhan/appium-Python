@@ -128,11 +128,41 @@ class ContactsPage(BasePage):
         self.switch_context_to_webview()
 
         logging.info("clear name for new contact group")
+
         first_name = self.driver.find_element(*self.configuration.ContactsScreen.CLEAR_NAME_FOR_NEW_CONTACT_GROUP)
         self.assertIsNotNone(first_name, "Name clear field button was not found")
         first_name.click()
 
         self.switch_context_to_native()
+
+    def clear_name_for_offline_contact_group(self):
+
+        ContactsPage.clear_name_for_new_contact_group(self)
+
+        # self.switch_context_to_webview()
+        #
+        # logging.info("clear name for offline contact group")
+        # first_name = self.driver.find_element(*self.configuration.ContactsScreen.CLEAR_NAME_FOR_NEW_CONTACT_GROUP)
+        # self.assertIsNotNone(first_name, "Name clear field button was not found")
+        # first_name.click()
+        #
+        # self.switch_context_to_native()
+
+    # def clear_name_for_new_contact_group(self):
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     logging.info("clear name for new contact group")
+    #     try:
+    #         first_name = self.driver.find_element(*self.configuration.ContactsScreen.CLEAR_NAME_FOR_NEW_CONTACT_GROUP)
+    #         self.assertIsNotNone(first_name, "Name clear field button was not found")
+    #         first_name.click()
+    #     except NoSuchElementException and ElementNotVisibleException and WebDriverException:
+    #         first_name = self.driver.find_element(*self.configuration.ContactsScreen.CLEAR_NAME_FOR_EDITED_CONTACT_GROUP)
+    #         self.assertIsNotNone(first_name, "Name clear field button was not found")
+    #         first_name.click()
+    #
+    #     self.switch_context_to_native()
 
     def scroll_down_to_write_access_level(self):
 
@@ -146,16 +176,25 @@ class ContactsPage(BasePage):
         events_page.setDriver(self.driver)
         events_page.scroll_down_to_save_button()
 
+    def save_offline_contact(self):
+
+        self.switch_context_to_webview()
+
+        logging.info('click Save button')
+        save_button = self.driver.find_element(*self.configuration.ContactsScreen.SAVE_NEW_CONTACT)
+        self.assertIsNot(save_button, "save button not found")
+        save_button.click()
+
+        self.switch_context_to_native()
+
     def save_new_contact(self):
 
         self.switch_context_to_webview()
 
-        try:
-            logging.info('click Save button')
-            save_button = self.driver.find_element(*self.configuration.ContactsScreen.SAVE_NEW_CONTACT)
-            save_button.click()
-        except NoSuchElementException:  # for IOS emulators in offline mode
-            ContactsPage.save_edited_contact(self)
+        logging.info('click Save button')
+        save_button = self.driver.find_element(*self.configuration.ContactsScreen.SAVE_NEW_CONTACT)
+        self.assertIsNot(save_button, "save button not found")
+        save_button.click()
 
         self.switch_context_to_native()
 
@@ -405,7 +444,7 @@ class ContactsPage(BasePage):
 
         sleep(1)
         self.switch_context_to_webview()
-
+        sleep(1)
         logging.info('click first contact on the list')
         first_contact_on_the_list = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_CONTACT_ON_THE_LIST)  # first-child
         self.assertIsNotNone(first_contact_on_the_list, 'first contact on the list, not found')
@@ -417,13 +456,10 @@ class ContactsPage(BasePage):
 
         self.switch_context_to_webview()
 
-        try:  # appium can't enable airplane mode on IOS emulators
-            logging.info("open first pending contact on the list")
-            first_pending_contact = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_PENDING_CONTACT)
-            self.assertIsNotNone(first_pending_contact, "first pending contact not found")
-            first_pending_contact.click()
-        except NoSuchElementException:
-            ContactsPage.click_first_contact_on_the_list(self)
+        logging.info("open first pending contact on the list")
+        first_pending_contact = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_PENDING_CONTACT)
+        self.assertIsNotNone(first_pending_contact, "first pending contact not found")
+        first_pending_contact.click()
 
         self.switch_context_to_native()
 
@@ -431,13 +467,10 @@ class ContactsPage(BasePage):
 
         self.switch_context_to_webview()
 
-        try:  # appium can't enable airplane mode on IOS emulators
-            logging.info("open first pending contact group on the list")
-            first_pending_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_PENDING_CONTACT_GROUP)
-            self.assertIsNotNone(first_pending_contact_group, "first pending contact group, not found")
-            first_pending_contact_group.click()
-        except NoSuchElementException:
-            ContactsPage.open_first_contact_group(self)
+        logging.info("open first pending contact group on the list")
+        first_pending_contact_group = self.driver.find_element(*self.configuration.ContactsScreen.FIRST_PENDING_CONTACT_GROUP)
+        self.assertIsNotNone(first_pending_contact_group, "first pending contact group, not found")
+        first_pending_contact_group.click()
 
         self.switch_context_to_native()
 
@@ -572,6 +605,8 @@ class ContactsPage(BasePage):
         edit_button.click()
 
         self.switch_context_to_native()
+
+        sleep(1)
 
     def check_if_edit_button_is_visible(self):
 
@@ -878,6 +913,20 @@ class ContactsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def type_name_for_offline_contact_group(self, text):
+
+        ContactsPage.type_name_for_new_contact_group(self, text)
+
+        # self.switch_context_to_webview()
+        #
+        # logging.info("Type Name for offline contact group")
+        # name_field = self.driver.find_element(*self.configuration.ContactsScreen.NAME_FIELD_FOR_NEW_CONTACT_GROUP)
+        # self.assertIsNotNone(name_field, "name field not found")
+        # name_field.click()
+        # name_field.send_keys(text)
+        #
+        # self.switch_context_to_native()
+
     def type_name_for_edited_contact_group(self, text):
 
         self.switch_context_to_webview()
@@ -890,16 +939,27 @@ class ContactsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def save_offline_contact_group(self):
+
+        ContactsPage.save_new_contact_group(self)
+
+        # self.switch_context_to_webview()
+        #
+        # logging.info('click Save button')
+        # save_button = self.driver.find_element(*self.configuration.ContactsScreen.SAVE_NEW_CONTACT_GROUP)
+        # self.assertIsNot(save_button, "save button not found")
+        # save_button.click()
+        #
+        # self.switch_context_to_native()
+
     def save_new_contact_group(self):
 
         self.switch_context_to_webview()
 
-        try:
-            logging.info('click Save button')
-            save_button = self.driver.find_element(*self.configuration.ContactsScreen.SAVE_NEW_CONTACT_GROUP)
-            save_button.click()
-        except NoSuchElementException:
-            ContactsPage.save_edited_contact_group(self)
+        logging.info('click Save button')
+        save_button = self.driver.find_element(*self.configuration.ContactsScreen.SAVE_NEW_CONTACT_GROUP)
+        self.assertIsNot(save_button, "save button not found")
+        save_button.click()
 
         self.switch_context_to_native()
 
@@ -909,6 +969,7 @@ class ContactsPage(BasePage):
 
         logging.info('click Save button')
         save_button = self.driver.find_element(*self.configuration.ContactsScreen.SAVE_EDITED_CONTACT_GROUP)
+        self.assertIsNot(save_button, "save button not found")
         save_button.click()
 
         self.switch_context_to_native()

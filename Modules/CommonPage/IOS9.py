@@ -35,7 +35,7 @@ class IOS9(IOS):
 
     def swipe_up_to_show_control_center(self):  # this will bring control center
 
-        logging.info("swipe up to show control center")
+        logging.info("swipe up to show control center IOS9")
         window_size = self.driver.get_window_size()  # this returns dictionary
         el = self.driver.find_element(*self.configuration.CommonScreen.WEB_VIEW)
         action = TouchAction(self.driver)
@@ -55,6 +55,24 @@ class IOS9(IOS):
         self.driver.swipe(start_x=start_x, start_y=start_y, end_x=start_x, end_y=-10, duration=1000)
         # action.press(el, start_x, start_y).wait(1000).move_to(el, end_x, end_y).release().perform()
         sleep(1)
+
+    def switch_on_airplane_mode(self):
+
+        logging.info("switch on/off airplane mode")
+
+        IOS9.swipe_up_to_show_control_center(self)
+
+        airplane_mode_button = self.driver.find_element(*self.configuration.iOS.AIRPLANE_MODE_BUTTON)
+        self.assertIsNotNone(airplane_mode_button, "airplane mode button not found")
+        airplane_mode_button.click()
+
+        IOS.swipe_down_to_hide_control_center(self)
+
+        sleep(1)
+
+    def switch_off_airplane_mode(self):
+
+        IOS9.switch_on_airplane_mode(self)
 
     # # OCA top bar
     # def hamburger_button(self):

@@ -10,11 +10,11 @@
 - brew install python3 (or on Windows just install from .exe file)
 - node (tested on 6.10)
 - npm
-- pip install -U selenium
+- pip install -U selenium==3.3.1 (use version below 3.3.2 - probably there is bug in version 3.3.2)
 - npm install -g appium@latest
 - pip install Appium-Python-Client
 - pip install html-testRunner
-- PyCharm - for editing tests
+- PyCharm - for editing/viewing tests
 
 
 **for OSX all above, plus:**
@@ -41,12 +41,11 @@ INSTALL APPIUM > 1.6.3 TO WORK WITH iOS10: (CLI commands)
 - npm install -g ios-deploy
 - npm install -g deviceconsole
 
-- cd /usr/local/lib/node_modules/appium/node_modules/
-
-- npm install eslint-config-appium 
-- npm i eslint-plugin-import@latest --save-dev
-- npm i eslint-plugin-mocha@latest --save-dev
-- npm i eslint-plugin-promise@latest --save-dev
+~~- cd /usr/local/lib/node_modules/appium/node_modules/~~
+~~- npm install eslint-config-appium~~
+~~- npm i eslint-plugin-import@latest --save-dev~~
+~~- npm i eslint-plugin-mocha@latest --save-dev~~
+~~- npm i eslint-plugin-promise@latest --save-dev~~
 
 ~~- npm install babel-runtime~~
 
@@ -54,20 +53,19 @@ INSTALL APPIUM > 1.6.3 TO WORK WITH iOS10: (CLI commands)
 
 ~~- npm install appium-uiautomator2-driver@latest~~
 
-(for latest version of WebDriverAgent from Appium go to:
-https://github.com/appium/WebDriverAgent.git and place it in /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/)
+~~(for latest version of WebDriverAgent from Appium go to:
+https://github.com/appium/WebDriverAgent.git and place it in /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/)~~
 
 - cd /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent
 - mkdir -p Resources/WebDriverAgent.bundle
-- ./Scripts/bootstrap.sh
+- ./Scripts/bootstrap.sh (there maybe some errors about Inspector)
 - open WebDriverAgent.xcodeproj (in Xcode change the Signing certificates to development) -- set iOS Developer in Build Settings and add unique 
 BundleID and choose dev Team (if there are some warnings after build, for example, no config file, try to resolved them - set "no" dor project settings file
-- to test WebDriverAgent on real device use CLI command: 
+
+(- to test WebDriverAgent on real device use CLI command: 
 xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination 'id=4b15c4284897fa6f9b4c5205325a9cece997ad35' test  --id is a UDID of the device
-
 Last line output after using above command should be; "Listening on USB". Then you are all set!
-
-THIS IS NOT MANDATORY (Appium should handle it, only signing WebDriverAgent code in Xcode maybe necessary)
+THIS IS NOT MANDATORY (Appium should handle it, only signing WebDriverAgent code in Xcode maybe necessary))
 
 
 - id = UDID from real device - open iTunes with connected device and click on serial number or use terminal command: "idevice_id -l"
@@ -276,6 +274,10 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 - Login to oca server > Click on mapping > Layers > Add > Drawing > Ok > Draw geometry (draw some shape using line tool) > Save map as "FOR MOBILE" (the same map as in TC: Maps)
 - other Saved maps that are needed for TC: All active events, All assets, All contacts, All tasks - for proper TC execution in OCA app should be present one event, asset, task and contact with mapping data or address data
 
+### for TC: OfflineObjects
+- airplane mode on iOS emulators is unavailable
+
+
 ### for TC: Read Only Properties
 - Go to setting > OCA designer > Create object types: Asset, Reports, Event, Risk
 - for each new type add the following: - option list: name = Is Read only ?, Options = Yes A, Yes B, No, Maximum selected options = Height of field = 3, Default value = (None) - *Options may come from a central list or a user-defined list
@@ -349,4 +351,6 @@ the command. Original error: Could not install app: 'Command 'ios-deploy --id 4b
 - Android 7 real device and airplane mode -- sometimes there are some problems with switching to airplane mode, to fix it switch manually airplane mode on and off (or try to restart device and/or switch display off) and then start the test
 - error: "WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: Error while executing atom: Element is not currently visible and may not be manipulated (status: 11)"
  --> probably some problem with crashing iOS instruments? 
-
+- airplane mode on iOS emulators is unavailable
+- WebDriverException when sending text --> error occurred after downgrading from Appium 1.6.6 beta 4 to 1.6.5
+- error: "An unknown server-side error occurred while processing the command. Original error: Unable to launch WebDriverAgent because of xcodebuild failure: "iproxy exited with code '208'""  --> kill iproxy process - ps -ax|grep -i "iproxy"

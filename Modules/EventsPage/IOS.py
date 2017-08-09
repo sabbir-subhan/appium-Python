@@ -6,6 +6,7 @@ from time import sleep
 from Modules.load_class import LoadClass
 from appium.webdriver.common.touch_action import TouchAction
 from selenium.common.exceptions import *
+from configuration import platform
 
 
 class IOS(EventsPage):
@@ -347,6 +348,59 @@ class IOS(EventsPage):
         option_3 = self.driver.find_element(*self.configuration.EventEditScreen.OPTION_LIST_VALUE_3)
         self.assertIsNotNone(option_3, "option list - option '3' not found")
         option_3.click()
+
+    def click_save_offline_event(self):
+
+        logging.info("click Save button")
+
+        if "emulator" in platform:  # there is no automatic way to disable networking on iOS emulators
+            save_button_native = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON)
+            self.assertIsNotNone(save_button_native, "Save button not found")
+            save_button_native.click()
+            try:
+                self.switch_context_to_webview()
+                save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON_EDIT_EVENT)
+                self.assertIsNotNone(save_button, "Save button not found")
+                save_button.click()
+                self.switch_context_to_native()
+            except NoSuchElementException:
+                pass
+        else:
+            try:
+                save_button_native = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON)
+                self.assertIsNotNone(save_button_native, "Save button not found")
+                save_button_native.click()
+            except NoSuchElementException:
+                self.switch_context_to_webview()
+                save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON_NEW_EVENT)
+                self.assertIsNotNone(save_button, "Save button not found")
+                save_button.click()
+                self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
+    def open_first_pending_event(self):  # pending event in offline mode
+
+        logging.info("open first pending event on the list")
+
+        if "emulator" in platform:  # there is no automatic way to disable networking on iOS emulators
+            contacts_page = LoadClass.load_page('EventsPage')
+            contacts_page.setDriver(self.driver)
+            contacts_page.clear_Search_field()
+            contacts_page.type_text_into_search_field("Offline Object - Event")
+            common_page = LoadClass.load_page('CommonPage')
+            common_page.setDriver(self.driver)
+            common_page.click_Return_button_on_keyboard()
+            common_page.hide_keyboard()
+            contacts_page.open_previously_created_event()
+        else:
+            self.switch_context_to_webview()
+            first_pending_event = self.driver.find_element(*self.configuration.EventsScreen.FIRST_PENDING_EVENT)
+            self.assertIsNotNone(first_pending_event, "first pending event not found")
+            first_pending_event.click()
+            self.switch_context_to_native()
 
 
 

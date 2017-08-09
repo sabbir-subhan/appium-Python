@@ -363,12 +363,9 @@ class TasksScreen:
     """A class for handling New Task screen"""
     TITLE = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')  # locating input field by xpath with name won't work
     ASSIGNED = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Assigned"]')
-    ADD_CONTACTS_AND_GROUPS = (MobileBy.XPATH, '//XCUIElementTypeButton[@name['
-                                               'contains(., "Add contacts and groups")]]')
-    ADD_RESOURCE_STRUCTURE_NODES = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., '
-                                                    '"Add Resource structure nodes")]]')
-    ADD_RESOURCE_ASSIGNMENTS = (MobileBy.XPATH, '//XCUIElementTypeButton[@name['
-                                                'contains(., "Add Resource assignments")]]')
+    ADD_CONTACTS_AND_GROUPS = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Add contacts and groups")]]')
+    ADD_RESOURCE_STRUCTURE_NODES = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Add Resource structure nodes")]]')
+    ADD_RESOURCE_ASSIGNMENTS = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Add Resource assignments")]]')
     CHOOSE_USERS = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Users"]')
     CHOOSE_CONTACTS = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Contacts"]')
     START_DATE = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Start Date"]')
@@ -408,7 +405,7 @@ class LogsScreen:
     """A class for handling Logs screen"""
     LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]')  # different locator than in New Report Page
     ENTRY_FIELD = (MobileBy.CLASS_NAME, 'XCUIElementTypeTextView')
-    #CREATED_LOG_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="all fields"]')
+    # CREATED_LOG_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="all fields"]')
     CREATED_LOG_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "all fields")]]')
     LOG_TYPE_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "log_with_all_fields")]]')
     LOG_TYPE_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "log_with_chooser_fields")]]')
@@ -443,10 +440,10 @@ class ComposeScreen:
                                               '[contains(., "Require acknowledgment")]]')
     REPLY_TRACKING = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Reply tracking")]]')
     READ_ACCESS_LEVEL = (MobileBy.XPATH, '')
-    ADD_CONTACTS_AND_GROUPS = (MobileBy.XPATH, '//XCUIElementTypeButton[@name'
-                                               '[contains(., "Add contacts and groups")]]')
-    ADD_RESOURCES_STRUCTURE_NODES = (MobileBy.XPATH, '//XCUIElementTypeButton[@name'
-                                                     '[contains(., "Add Resource structure ")]]')
+    # ADD_CONTACTS_AND_GROUPS = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Add contacts and groups")]]')
+    ADD_CONTACTS_AND_GROUPS = TasksScreen.ADD_CONTACTS_AND_GROUPS
+    # ADD_RESOURCES_STRUCTURE_NODES = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Add Resource structure ")]]')
+    ADD_RESOURCES_STRUCTURE_NODES = TasksScreen.ADD_RESOURCE_STRUCTURE_NODES
     CONTACTS_ARROW = (MobileBy.XPATH, '//XCUIElementTypeOther[2]/XCUIElementTypeLink[1]/XCUIElementTypeLink[1]/XCUIElementTypeStaticText[1]')
     USERS_ARROW = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains'
                                    '(., "Users")]]/XCUIElementTypeLink[@index="2"]')
@@ -476,4 +473,4 @@ class AssetsScreen:
     ASSET_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "asset_with_visibility_rules")]]')
     ASSET_TYPE_WITH_OPTION_LIST = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "asset_with_option_list")]]')
     SAVE_OPTION_LIST = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Save")]]')
-
+    COST_PER_UNIT = (MobileBy.XPATH, '//XCUIElementTypeWebView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[5]/XCUIElementTypeTextField[1]')

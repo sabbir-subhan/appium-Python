@@ -24,7 +24,7 @@ class IOS9(IOS):
 
         # print("capabilities after update = " + str(desired_capabilities))
 
-        logging.warning("starting additional driver")
+        logging.warning("starting additional appium driver")
 
         self.driver = webdriver.Remote("http://localhost:" + str(PORT) + "/wd/hub", desired_capabilities)
 

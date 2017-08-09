@@ -6,6 +6,7 @@ import logging
 from time import sleep
 from appium.webdriver.common.touch_action import TouchAction
 from selenium.common.exceptions import *
+from configuration import platform
 
 
 class IOS(ReportsPage):
@@ -104,3 +105,23 @@ class IOS(ReportsPage):
                 logging.info("scroll down")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
                 var = var - 1
+
+    def type_title_offline(self, text):
+
+        self.switch_context_to_webview()
+
+        logging.info("type title")
+
+        if "emulator" in platform:  # there is no automatic way to disable networking on iOS emulators
+            title = self.driver.find_element(*self.configuration.ReportsScreen.TITLE_EDITED)
+            self.assertIsNotNone(title, "Title input field was not found")
+            title.click()
+            title.send_keys(text)
+        else:
+            title = self.driver.find_element(*self.configuration.ReportsScreen.TITLE)
+            self.assertIsNotNone(title, "Title input field was not found")
+            title.click()
+            title.send_keys(text)
+
+        self.switch_context_to_native()
+

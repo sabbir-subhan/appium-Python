@@ -716,6 +716,10 @@ class EventsPage(BasePage):
         common_page.setDriver(self.driver)
         common_page.wait_for_app_loading()
 
+    def click_save_offline_event(self):
+
+        EventsPage.click_save_new_event(self)
+
     def click_save_new_event(self):
 
         logging.info("click Save button")
@@ -967,13 +971,10 @@ class EventsPage(BasePage):
 
         self.switch_context_to_webview()
 
-        try:  # appium can't enable airplane mode on IOS emulators
-            logging.info("open first pending event on the list")
-            first_pending_event = self.driver.find_element(*self.configuration.EventsScreen.FIRST_PENDING_EVENT)
-            self.assertIsNotNone(first_pending_event, "first pending event not found")
-            first_pending_event.click()
-        except NoSuchElementException:
-            EventsPage.open_previously_created_event(self)
+        logging.info("open first pending event on the list")
+        first_pending_event = self.driver.find_element(*self.configuration.EventsScreen.FIRST_PENDING_EVENT)
+        self.assertIsNotNone(first_pending_event, "first pending event not found")
+        first_pending_event.click()
 
         self.switch_context_to_native()
 

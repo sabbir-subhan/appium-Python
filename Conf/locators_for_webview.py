@@ -381,7 +381,7 @@ class ContactsScreen:
     SAVE_EDITED_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupEdit>div.ui-footer>div.ui-navbar>ul.ui-grid-a>li.ui-block-a>a')
     GROUP_INFO_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.normal-mode.ui-footer>div.ui-navbar>ul.ui-grid-a>li.ui-block-a>a.groupView')
     EDIT_GROUP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#contactgroupView>div.ui-footer>div.ui-navbar>ul.ui-grid-a>li.edit>a.edit')
-    CLEAR_NAME_FOR_EDITED_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupEditt>div.ui-content>ul.ui-listview>li.ui-field-contain>div.ui-input-text>a.ui-input-clear')
+    CLEAR_NAME_FOR_EDITED_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupEdit>div.ui-content>ul.ui-listview>li.ui-field-contain>div.ui-input-text>a.ui-input-clear')
     CLEAR_NAME_FOR_NEW_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupNew>div.ui-content>ul.ui-listview>li.ui-field-contain>div.ui-input-text>a.ui-input-clear')
     CLEAR_FIRST_NAME_FOR_EDITED_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactEdit>div.ui-content>ul.ui-listview>li.ui-field-contain:nth-child(2)>div.ui-input-text>a')
     GROUP_SEND_COMMUNICATION = (MobileBy.CSS_SELECTOR, 'div#contactgroupView>div#contactgroupViewMoreMenu-popup>div#contactgroupViewMoreMenu>ul.ui-listview>li.send>a[href="#messagePage"]')
@@ -435,6 +435,7 @@ class TasksScreen:
     OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#taskNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
     FIRST_PENDING_TASK = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-content>div.pending>ul.listview>li:first-child>a')
     DETAIL_FIELD = (MobileBy.CSS_SELECTOR, 'div#taskNew>div.ui-content>ul.edit-view>li.ui-field-contain>textarea#detail')
+    DETAIL_FIELD_EDITED = (MobileBy.CSS_SELECTOR, 'div#taskEdit>div.ui-content>ul.edit-view>li.ui-field-contain>textarea#detail')
     MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskView>div.ui-footer>div.ui-navbar>ul.ui-grid-a>li.more.ui-block-b>a[href="#taskViewMoreMenu"]')
     DELETE_TASK = (MobileBy.CSS_SELECTOR, 'div#taskView>div.ui-popup-container>div#taskViewMoreMenu>ul.ui-listview>li.delete>a[href="#confirmDeleteTask"]')
     CONFIRM_DELETE_TASK = (MobileBy.CSS_SELECTOR, 'div#taskView>div.ui-popup-container>div#confirmDeleteTask>div.ng-dialog-container>div>div>a:first-child')
@@ -443,6 +444,7 @@ class TasksScreen:
 class ReportsScreen:
     """A class for handling Reports screen"""
     TITLE = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li:first-child>div>input#title')
+    TITLE_EDITED = (MobileBy.CSS_SELECTOR, 'div#reportEdit>div.ui-content>ul.edit-view>li:first-child>div>input#title')
     # LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, 'div#field-1201-button>select[name="lodging agency"]')
     NEW_REPORT_LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li>div.ui-select>div.ui-btn>select[name="lodging agency"]')  # not working on iOS 10
     EDIT_REPORT_LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, 'div#reportEdit>div.ui-content>ul.edit-view>li>div.ui-select>div.ui-btn>select[name="lodging agency"]')
@@ -569,6 +571,7 @@ class AssetsScreen:
     """A class for handling Assets screen"""
     NAME = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li:first-child>div.ui-input-text>input#name')
     SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#save"]')
+    SAVE_BUTTON_EDIT_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#save"]')
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
     NEW_BUTTON = (MobileBy.CSS_SELECTOR, 'li#openAssetTreeMore>a[href="#assetTreeMore"]')

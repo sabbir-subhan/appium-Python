@@ -195,11 +195,11 @@ def runner():
                                                  report_title='Appium Tests Results')
 
     if args.test == "all":
-        names = loader.discover(start_dir="./tests", pattern="test*.py", top_level_dir=PROJECT_ROOT)
+        names = loader.discover(start_dir=PROJECT_ROOT + "/tests", pattern="test*.py", top_level_dir=PROJECT_ROOT)
         # unittest.TextTestRunner(verbosity=2).run(names)  # old version
         tests_runner.run(names)
     else:
-        names = loader.discover(start_dir="./tests", pattern=args.test + ".py")
+        names = loader.discover(start_dir=PROJECT_ROOT + "/tests", pattern=args.test + ".py")
         # unittest.TextTestRunner(verbosity=2).run(names)  # old version
         tests_runner.run(names)
 
