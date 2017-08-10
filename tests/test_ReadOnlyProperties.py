@@ -9,11 +9,11 @@
 #   - *Options may come from a central list or a user-defined list
 
 # Add the 2 sets of the following fields
+# - phone number ("New phone number" input field should be visible on top of the form - on the first screen after creating new object)
 # - option list
 # - single-line text
 # - multi-line text
 # - rich text
-# - phone number
 # - fax number
 # - cell number
 # - email address
@@ -121,7 +121,7 @@ class TestReadOnlyProperties(SetupTestCase):
 
         # Verify that the second set of fields is hidden
         assets_page.scroll_down_to_add_media_button()
-
+        assets_page.check_invisibility_of_second_set_of_fields_in_asset_with_option_list()
         assets_page.scroll_up_to_name_field()
 
         # Set is Read only = Yes A and Yes B
@@ -131,6 +131,7 @@ class TestReadOnlyProperties(SetupTestCase):
         assets_page.save_option_list()
 
         # Check that the 2 sets of fields in step 2 are still Read only while set to their default values.
+        assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
         # Change the value of each field in the 2 sets of fields in step 2 then save the Asset
 
         assets_page.scroll_down_to_save_button()

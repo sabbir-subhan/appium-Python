@@ -284,6 +284,7 @@ class DesiredCapabilities(object):
             "clearSystemFiles": True,
             # "startIWDP": True,  # start ios-webkit-debug-proxy -- not recognize by appium server
             # "noReset": False,
+            "enableAsyncExecuteFromHttps": True,
             "fullReset": True,  # iOS9 is not logging out automatically so fullReset is necessary
             "udid": "db55c238e873230ee454c54a63724397a2981acd"
         },
@@ -298,6 +299,7 @@ class DesiredCapabilities(object):
             "newCommandTimeout": 60,
             "launchTimeout": 200000,  # iOS only
             "clearSystemFiles": True,
+            "enableAsyncExecuteFromHttps": True,
             # "startIWDP": True,  # start ios-webkit-debug-proxy -- not recognize by appium server
             "fullReset": False,  # if True - Uninstall app after real device test, destroy Simulator after sim test
             "noReset": True,  # if True - Do not destroy or shut down sim after test. Start tests running on whichever sim is running, or device is plugged in
@@ -326,6 +328,7 @@ class DesiredCapabilities(object):
             "startIWDP": True,  # start ios-webkit-debug-proxy
             "noReset": False,
             "fullReset": False,
+            "enableAsyncExecuteFromHttps": True,
             # "autoAcceptAlerts": True,  # not working for XCUIT
             "udid": "4b15c4284897fa6f9b4c5205325a9cece997ad35"
         },
@@ -347,6 +350,7 @@ class DesiredCapabilities(object):
             "startIWDP": True,  # start ios-webkit-debug-proxy
             "noReset": False,
             "fullReset": False,
+            "enableAsyncExecuteFromHttps": True,
             # "autoAcceptAlerts": True,  # not working for XCUIT
             "udid": "16edd6bdad3ea6ba8a00a034adfe70ecaa03c639"
         },
@@ -370,6 +374,7 @@ class DesiredCapabilities(object):
             # "useNewWDA": True,
             "usePrebuiltWDA": True,
             "noReset": False,
+            "enableAsyncExecuteFromHttps": True,  # capability to allow simulators to execute asynchronous JavaScript on pages using HTTPS
             "fullReset": False
         },
 

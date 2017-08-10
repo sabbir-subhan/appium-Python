@@ -601,6 +601,8 @@ class AssetsScreen:
     OPTION_LIST_OPTION_YES_A = (MobileBy.CSS_SELECTOR, 'div#optionList>div.ui-content>ul.optionLV>li.ui-first-child')
     OPTION_LIST_OPTION_YES_B = (MobileBy.CSS_SELECTOR, 'div#optionList>div.ui-content>ul.optionLV>li:nth-child(2)')
     OPTION_LIST_OPTION_NO = (MobileBy.CSS_SELECTOR, 'div#optionList>div.ui-content>ul.optionLV>li.ui-last-child')
+    NEW_DATE_OPTIONAL_TIME_DISABLED = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li>div.ui-input-text>input[id="new date & optional time"]:disabled')
+    NEW_PHONE_NUMBER_DISABLED = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li>div.ui-input-text>input[id="new phone number"]:disabled')
 
 
 class LogsScreen(EventsScreen, AssetsScreen):

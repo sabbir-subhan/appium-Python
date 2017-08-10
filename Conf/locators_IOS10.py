@@ -461,7 +461,7 @@ class RisksScreen:
     PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.XPATH, '')
     NEW_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "New")]]')
     VIEW_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "View")]]')
-    #STATUS_SELECTOR = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeWebView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]')
+    # STATUS_SELECTOR = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeWebView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]')
     STATUS_SELECTOR = (MobileBy.XPATH, '//XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]')
 
 
@@ -474,3 +474,5 @@ class AssetsScreen:
     ASSET_TYPE_WITH_OPTION_LIST = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "asset_with_option_list")]]')
     SAVE_OPTION_LIST = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Save")]]')
     COST_PER_UNIT = (MobileBy.XPATH, '//XCUIElementTypeWebView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[5]/XCUIElementTypeTextField[1]')
+    NEW_DATE_OPTIONAL_TIME2 = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="New date & optional time2"]')
+    TEXT_FIELDS = (MobileBy.CLASS_NAME, '//XCUIElementTypeTextField')

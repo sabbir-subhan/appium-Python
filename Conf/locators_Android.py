@@ -546,7 +546,7 @@ class AssetsScreen:
     ASSET_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "asset_with_visibility_rules")]]')
     ASSET_TYPE_WITH_OPTION_LIST = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "asset_with_option_list")]]')
     SAVE_OPTION_LIST = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains(., "Save")]]')
-
+    NEW_DATE_OPTIONAL_TIME2 = (MobileBy.XPATH, '//android.view.View[@content-desc="New date & optional time2"]')
 
 
 

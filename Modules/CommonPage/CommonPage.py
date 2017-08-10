@@ -3,12 +3,10 @@
 from Modules.BasePage.BasePage import BasePage
 import logging
 from time import sleep
-from selenium.webdriver.support import expected_conditions
 import os
 from Modules.load_class import LoadClass
 from configuration import PROJECT_ROOT
 from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import WebDriverException
 
 
 class CommonPage(BasePage):

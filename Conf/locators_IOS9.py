@@ -449,3 +449,4 @@ class AssetsScreen:
     ASSET_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//UIALink[@name[contains(., "asset_with_visibility_rules")]]')
     ASSET_TYPE_WITH_OPTION_LIST = (MobileBy.XPATH, '//UIALink[@name[contains(., "asset_with_option_list")]]')
     SAVE_OPTION_LIST = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Save")]]')
+    NEW_DATE_OPTIONAL_TIME2 = (MobileBy.XPATH, '//UIAStaticText[@name="New date & optional time2"]')

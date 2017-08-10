@@ -592,7 +592,32 @@ class AssetsPage(BasePage):
         self.assertIsNot(option_list_save_button, "Option list save button, not found")
         option_list_save_button.click()
 
+    def check_invisibility_of_second_set_of_fields_in_asset_with_option_list(self):
 
+        logging.info("check invisibility of second set of fields in asset with option list")
+
+        try:
+            new_date_optional_time2 = self.driver.find_element(*self.configuration.AssetsScreen.NEW_DATE_OPTIONAL_TIME2)
+            if new_date_optional_time2.is_displayed():
+                self.fail("second set of fields in asset with option list is visible")
+            else:
+                pass
+        except NoSuchElementException:
+            logging.info("second set of fields in asset with option list is not visible = OK")
+
+    def check_if_first_set_of_fields_in_asset_with_option_list_is_disabled(self):
+
+        logging.info('check if "New phone number" field in first set of fields inside asset with option list,'
+                     ' is disabled - field should be read only')
+        self.switch_context_to_webview()
+
+        try:
+            new_date_optional_time_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_PHONE_NUMBER_DISABLED)
+            self.assertIsNotNone(new_date_optional_time_disabled, "New phone number field not found")
+        except NoSuchElementException:
+            self.fail("New phone number field is not read only")
+
+        self.switch_context_to_native()
 
 
 

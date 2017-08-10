@@ -5,7 +5,7 @@
 
 ### **NEEDED SOFTWARE:**
 
-- Java
+- Java jdk
 - Android studio and APIs for android - android avd
 - brew install python3 (or on Windows just install from .exe file)
 - node (tested on 6.10)
@@ -345,7 +345,7 @@ the command. Original error: Could not install app: 'Command 'ios-deploy --id 4b
 - Error: connect ECONNREFUSED 127.0.0.1:8100   -- reinstall appium - npm uninstall -g appium + npm install -g appium
 - (The application does not have a valid signature.)  -- rebuild and install OCA app through Xcode
 - When running on Android, Appium sometimes can freeze on "Getting connected devices..." ---> restart Appium server
-- error: "failed to tap 'h'"  -- observed on iOS 9 emulator - choose Simulator -> Hardware -> Keyboard -> Toggle Software Keyboard
+- error: "WebDriverException: Message: target.frontMostApp().keyboard() failed to tap 'h'" = "failed to tap 'h'"  -- observed on iOS 9 emulator - choose Simulator -> Hardware -> Keyboard -> Toggle Software Keyboard
 - error: "A valid provisioning profile for this executable was not found."  --> rebuild OCA app through Xcode
 - error: "Original error: ChromeDriver crashed during startup"  --> You started two parallel tests on Android devices and chromedriver just crashed
 - Android 7 real device and airplane mode -- sometimes there are some problems with switching to airplane mode, to fix it switch manually airplane mode on and off (or try to restart device and/or switch display off) and then start the test

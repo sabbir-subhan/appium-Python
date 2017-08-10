@@ -10,6 +10,15 @@ from configuration import platform
 
 class IOS(TasksPage):
 
+    def click_on_assigned(self):
+
+        logging.info("click on Assigned field")
+        assigned = self.driver.find_element(*self.configuration.TasksScreen.ASSIGNED)
+        self.assertIsNotNone(assigned, "Assigned field not found")
+        # assigned.click()
+        action = TouchAction(self.driver)
+        action.tap(element=assigned, count=1).perform()
+
     def choose_current_date(self):
 
         logging.info('choose current date by tapping in "Start date" field')
