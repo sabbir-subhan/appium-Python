@@ -510,6 +510,21 @@ class Android(CommonPage):
         self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen
         sleep(1)
 
+    def scroll_down_half_view(self):
+        """Method to scroll down only half of the screen"""
+
+        window_size = self.driver.get_window_size()  # this will give You a dictionary
+        start_x = window_size["width"] * 0.25
+        start_y = window_size["height"] * 0.15
+        if window_size["height"] <= 800:
+            end_y = window_size["height"] * 0.4
+        else:
+            end_y = window_size["height"] * 0.5
+        logging.info("scroll down half of the screen")
+        sleep(1)
+        self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen
+        sleep(1)
+
     def click_back_button(self):
         """ Method to handle back button for Android """
 

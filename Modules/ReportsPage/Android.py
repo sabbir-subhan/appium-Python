@@ -5,6 +5,8 @@ import logging
 from time import sleep
 from Modules.load_class import LoadClass
 from selenium.common.exceptions import *
+from configuration import platform
+from appium.webdriver.common.touch_action import TouchAction
 
 
 class Android(ReportsPage):
@@ -128,7 +130,12 @@ class Android(ReportsPage):
         logging.info("scroll down to media release field")
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
-        common_page.scroll_down_one_view()
+        common_page.scroll_down_half_view()
+
+        # if "emulator" and "5" in platform:
+        #     common_page.scroll_down_one_small_view()
+        # else:
+        #     common_page.scroll_down_one_view()
 
     def type_text_into_media_release_field(self):
 
@@ -153,7 +160,7 @@ class Android(ReportsPage):
             publish_button.click()
         except NoSuchElementException:
             ReportsPage.click_publish_edited_report(self)
-        try:
+        try:  # in some cases after tapping Publish button page jumps to the top
             title = self.driver.find_element(*self.configuration.ReportsScreen.TITLE)
             if title.is_displayed():
                 try:
@@ -170,4 +177,86 @@ class Android(ReportsPage):
             pass
 
         self.switch_context_to_native()
+
+    def click_assets_chooser_field(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click assets chooser field")
+        if "emulator" and "5" in platform:
+            assets_chooser_field = self.driver.find_element(*self.configuration.ReportsScreen.ASSETS_CHOOSER_FIELD)
+            self.assertIsNotNone(assets_chooser_field, "assets chooser field not found")
+            assets_chooser_field.click()
+            common_page = LoadClass.load_page('CommonPage')
+            common_page.setDriver(self.driver)
+            self.switch_context_to_native()
+            common_page.scroll_down_one_view()  # some problem on Android 5.1 emulator after clicking to chooser field
+            self.switch_context_to_webview()
+            assets_chooser_field.click()
+        else:
+            assets_chooser_field = self.driver.find_element(*self.configuration.ReportsScreen.ASSETS_CHOOSER_FIELD)
+            self.assertIsNotNone(assets_chooser_field, "assets chooser field not found")
+            assets_chooser_field.click()
+        sleep(1)
+
+        self.switch_context_to_native()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()
+
+    def create_mapping_data(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click create mapping data")
+
+        if "emulator" and "5" in platform:
+            create_mapping_data = self.driver.find_element(*self.configuration.ReportsScreen.CREATE_MAPPING_DATA)
+            self.assertIsNotNone(create_mapping_data, "create mapping data button not found")
+            create_mapping_data.click()
+            common_page = LoadClass.load_page('CommonPage')
+            common_page.setDriver(self.driver)
+            self.switch_context_to_native()
+            common_page.scroll_down_one_view()  # some problem on Android 5.1 emulator after clicking to chooser field
+            self.switch_context_to_webview()
+            create_mapping_data.click()
+        else:
+            create_mapping_data = self.driver.find_element(*self.configuration.ReportsScreen.CREATE_MAPPING_DATA)
+            self.assertIsNotNone(create_mapping_data, "create mapping data button not found")
+            create_mapping_data.click()
+
+        self.switch_context_to_native()
+        sleep(2)
+
+    # def click_assets_chooser_field(self):
+    #
+    #     sleep(1)
+    #     logging.info("click assets chooser field")
+    #     self.switch_context_to_webview()
+    #
+    #     assets_chooser_field = self.driver.find_element(*self.configuration.ReportsScreen.ASSETS_CHOOSER_FIELD)
+    #     self.assertIsNotNone(assets_chooser_field, "assets chooser field not found")
+    #     if "emulator" in platform:
+    #         location = assets_chooser_field.location
+    #         x = location["x"]
+    #         y = location["y"]
+    #         x = int(x)
+    #         y = int(y)
+    #
+    #         self.switch_context_to_native()
+    #
+    #         action = TouchAction(self.driver)
+    #         action.tap(element=None, x=x, y=y, count=1).perform()
+    #     else:
+    #         self.switch_context_to_webview()
+    #
+    #         assets_chooser_field.click()
+    #     sleep(1)
+    #
+    #     self.switch_context_to_native()
+    #
+    #     common_page = LoadClass.load_page('CommonPage')
+    #     common_page.setDriver(self.driver)
+    #     common_page.wait_for_app_loading()
 

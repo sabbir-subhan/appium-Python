@@ -12,6 +12,9 @@
 # - report type, named: "report_with_assigned_question" and workflow assigned to that - triggered on edit that report, that workflow must contain "Assign a question node" with title: "Report approval task"
 #  and two possible answers: "Yes/No", (field Assign to: Contact that activated workflow: Workflow info)
 # prepare Role for contact - choose contact that will be used to run test (default = Bitnoise QA)
+# Go to a resource assignment and allocate yourself into a role - Contacts>Resource Assignment - Select any resource Assignment
+# choose tab: Resources and click Structure button, in new window click Add - Contact role, type same new name and choose Role type as Role contacts and click OK and Save
+# Choose the contact you are logged in as example Bitnoise QA - Open contact and click on Roles - You can see role allocation - Make sure that the status in IN
 
 
 # open OCA app
@@ -136,7 +139,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.edit_created_report_with_all_fields()
         common_page.wait_for_app_loading()
         reports_page.click_edit_button()
-        reports_page.edit_report_title(" - Edited")
+        reports_page.edit_report_title(" - Edited ")
         reports_page.scroll_down_to_publish_button()
         reports_page.click_publish_edited_report()
         common_page.wait_for_app_loading()
@@ -175,7 +178,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.edit_created_report_with_chooser_fields()
         common_page.wait_for_app_loading()
         reports_page.click_edit_button()
-        reports_page.edit_report_title(" - edited")
+        reports_page.edit_report_title(" - edited ")
         reports_page.scroll_down_to_assets_chooser_field()
         reports_page.click_assets_chooser_field()
         reports_page.choose_asset_from_the_list()
@@ -290,7 +293,7 @@ class TestManagingReports(SetupTestCase):
         reports_page.edit_first_report_on_the_list()
         common_page.wait_for_app_loading()
         reports_page.click_edit_button()
-        reports_page.edit_report_title(" - map")
+        reports_page.edit_report_title(" - map ")
         reports_page.scroll_down_to_publish_button()
         reports_page.create_mapping_data()
         common_page.alert_popup_allow()

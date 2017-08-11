@@ -632,9 +632,14 @@ class EventsPage(BasePage):
     def check_restored_field_1(self):
 
         logging.info("assert restored field 1")
-        field_to_restore_1_header = self.driver.find_element(*self.configuration.EventEditScreen.
-                                                             FIELD_TO_RESTORE_1_HEADER)
+        self.switch_context_to_webview()
+
+        field_to_restore_1_header = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_1_HEADER)
         self.assertIsNotNone(field_to_restore_1_header)
+
+        self.switch_context_to_native()
+        # field_to_restore_1_header = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_1_HEADER)
+        # self.assertIsNotNone(field_to_restore_1_header)
         field_to_restore_1_value = self.driver.find_element(*self.configuration.EventEditScreen.
                                                             FIELD_TO_RESTORE_1_VALUE)
         self.assertIsNotNone(field_to_restore_1_value)
@@ -642,9 +647,15 @@ class EventsPage(BasePage):
     def check_restored_field_2(self):
 
         logging.info("assert restored field 2")
-        field_to_restore_2_header = self.driver.find_element(*self.configuration.EventEditScreen.
-                                                             FIELD_TO_RESTORE_2_HEADER)
+        self.switch_context_to_webview()
+
+        field_to_restore_2_header = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_2_HEADER)
         self.assertIsNotNone(field_to_restore_2_header)
+
+        self.switch_context_to_native()
+        # field_to_restore_2_header = self.driver.find_element(*self.configuration.EventEditScreen.
+        #                                                      FIELD_TO_RESTORE_2_HEADER)
+        # self.assertIsNotNone(field_to_restore_2_header)
         field_to_restore_2_value = self.driver.find_element(*self.configuration.EventEditScreen.
                                                             FIELD_TO_RESTORE_2_VALUE)
         self.assertIsNotNone(field_to_restore_2_value)

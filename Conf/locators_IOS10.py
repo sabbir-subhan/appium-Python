@@ -475,4 +475,4 @@ class AssetsScreen:
     SAVE_OPTION_LIST = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Save")]]')
     COST_PER_UNIT = (MobileBy.XPATH, '//XCUIElementTypeWebView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[5]/XCUIElementTypeTextField[1]')
     NEW_DATE_OPTIONAL_TIME2 = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="New date & optional time2"]')
-    TEXT_FIELDS = (MobileBy.CLASS_NAME, '//XCUIElementTypeTextField')
+    # TEXT_FIELDS = (MobileBy.CLASS_NAME, '//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeWebView/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther//XCUIElementTypeOther/XCUIElementTypeTextField')

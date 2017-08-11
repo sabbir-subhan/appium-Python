@@ -543,7 +543,7 @@ class ReportsPage(BasePage):
 
         logging.info("click assets chooser field")
         assets_chooser_field = self.driver.find_element(*self.configuration.ReportsScreen.ASSETS_CHOOSER_FIELD)
-        self.assertIsNotNone(assets_chooser_field, "log chooser field not found")
+        self.assertIsNotNone(assets_chooser_field, "assets chooser field not found")
         assets_chooser_field.click()
         sleep(1)
 

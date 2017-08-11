@@ -610,7 +610,7 @@ class AssetsPage(BasePage):
         logging.info('check if "New phone number" field in first set of fields inside asset with option list,'
                      ' is disabled - field should be read only')
         self.switch_context_to_webview()
-
+        sleep(1)
         try:
             new_date_optional_time_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_PHONE_NUMBER_DISABLED)
             self.assertIsNotNone(new_date_optional_time_disabled, "New phone number field not found")
@@ -619,6 +619,161 @@ class AssetsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def fill_new_single_line_text2(self):
+
+        logging.warning("fill new single line text 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.AssetsScreen.)
+        self.assertIsNotNone(field, "input field not found")
+        field.send_keys("")
+
+        self.switch_context_to_native()
+
+    def fill_new_phone_number2(self):
+
+        logging.warning("fill new phone number 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.AssetsScreen.)
+        self.assertIsNotNone(field, "input field not found")
+        field.send_keys("")
+
+        self.switch_context_to_native()
+
+    def fill_new_multi_line_text2(self):
+
+        logging.warning("fill new multi line text 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.AssetsScreen.)
+        self.assertIsNotNone(field, "input field not found")
+        field.send_keys("")
+
+        self.switch_context_to_native()
+
+    def fill_new_fax_number2(self):
+
+        logging.warning("fill new fax number 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.AssetsScreen.)
+        self.assertIsNotNone(field, "input field not found")
+        field.send_keys("")
+
+        self.switch_context_to_native()
+
+    def fill_new_mobile_number2(self):
+
+        logging.warning("fill new mobile number 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.AssetsScreen.)
+        self.assertIsNotNone(field, "input field not found")
+        field.send_keys("")
+
+        self.switch_context_to_native()
+
+    def fill_new_email_address2(self):
+
+        logging.warning("fill new email address 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.AssetsScreen.)
+        self.assertIsNotNone(field, "input field not found")
+        field.send_keys("")
+
+        self.switch_context_to_native()
+
+    def fill_new_location2(self):
+
+        logging.warning("fill new location 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.AssetsScreen.)
+        self.assertIsNotNone(field, "input field not found")
+        field.send_keys("")
+
+        self.switch_context_to_native()
+
+    def fill_new_rich_text2(self):
+
+        logging.warning("fill new rich text 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.AssetsScreen.)
+        self.assertIsNotNone(field, "input field not found")
+        field.send_keys("")
+
+        self.switch_context_to_native()
+
+    def fill_new_dater2(self):
+
+        logging.warning("fill new date 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.AssetsScreen.)
+        self.assertIsNotNone(field, "input field not found")
+        field.send_keys("")
+
+        self.switch_context_to_native()
+
+    def fill_new_number2(self):
+
+        logging.warning("fill new number 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.AssetsScreen.)
+        self.assertIsNotNone(field, "input field not found")
+        field.send_keys("")
+
+        self.switch_context_to_native()
+
+    def fill_new_website_address2(self):
+
+        logging.warning("fill new webiste address 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.AssetsScreen.)
+        self.assertIsNotNone(field, "input field not found")
+        field.send_keys("")
+
+        self.switch_context_to_native()
+
+    def fill_new_date_time2(self):
+
+        logging.warning("fill new date & time 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.AssetsScreen.)
+        self.assertIsNotNone(field, "input field not found")
+        field.send_keys("")
+
+        self.switch_context_to_native()
+
+    def fill_new_date_optional_time2(self):
+
+        logging.warning("fill new date & optional time 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.AssetsScreen.)
+        self.assertIsNotNone(field, "input field not found")
+        field.send_keys("")
+
+        self.switch_context_to_native()
 
 
 

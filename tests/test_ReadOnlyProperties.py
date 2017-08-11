@@ -131,7 +131,7 @@ class TestReadOnlyProperties(SetupTestCase):
         assets_page.save_option_list()
 
         # Check that the 2 sets of fields in step 2 are still Read only while set to their default values.
-        assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
+        assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()  # locator is not working
         # Change the value of each field in the 2 sets of fields in step 2 then save the Asset
 
         assets_page.scroll_down_to_save_button()

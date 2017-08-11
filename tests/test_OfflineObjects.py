@@ -203,8 +203,6 @@ class TestOfflineObjects(SetupTestCase):
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
         contacts_page.open_first_pending_contact_group()
-
-        # contacts_page.open_offline_contacts_group()  # offline_contact_group
         contacts_page.click_new_button()
         contacts_page.add_new_contact_into_group()
         contacts_page.choose_contact_type_person()

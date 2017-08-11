@@ -122,7 +122,7 @@ class TestManagingLogs(SetupTestCase):
         common_page.wait_for_app_loading()
         logs_page.click_edit_button()
         logs_page.scroll_down_to_entry_field()
-        logs_page.type_text_into_entry_field("  - edited")
+        logs_page.type_text_into_entry_field("  - edited ")
         common_page.hide_keyboard()
         logs_page.scroll_down_to_save_button()
         logs_page.click_save_edited_log()
