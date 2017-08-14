@@ -47,12 +47,15 @@
 # Check that the 2 sets of fields in step 2 are still Read only while set to their default values.
 # Change the value of each field in the 2 sets of fields in step 2 then save the Asset
 
-#  Edit the details of created Asset and Check that the 2 sets of fields in step 4 are still Read only while set to their default values.
-#  Change the value of each field in the 2 sets of fields in step 4. Set Is Read only ? != Yes A or Yes B then save the Asset
+# Edit the details of created Asset and Check that the 2 sets of fields in step 4 are still Read only
+#  while set to their default values.
 
-# 1. Edit the details of #49135 Asset Set Is Read only ? = Yes A and Yes B.
+# Change the value of each field in the 2 sets of fields in step 4. Set Is Read only ? != Yes A or Yes B
+#  then save the Asset
 
-# . Check that the 2 sets of fields in step 2 are still Read only  while set to their values in step 8 (not step 11).
+# 1.Edit the details of #49135 Asset Set Is Read only ? = Yes A and Yes B.
+
+# Check that the 2 sets of fields in step 2 are still Read only while set to their values in step 8 (not step 11).
 
 # Repeat the steps for Report
 # Repeat the steps for Event
@@ -131,13 +134,45 @@ class TestReadOnlyProperties(SetupTestCase):
         assets_page.save_option_list()
 
         # Check that the 2 sets of fields in step 2 are still Read only while set to their default values.
-        assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()  # locator is not working
-        # Change the value of each field in the 2 sets of fields in step 2 then save the Asset
+        assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
 
+        # Change the value of each field in the 2 sets of fields in step 2 then save the Asset
+        assets_page.fill_new_single_line_text2("test")
+        assets_page.fill_new_phone_number2("+61212345678")
+        assets_page.fill_new_multi_line_text2("test")
+        assets_page.fill_new_fax_number2("+61212345678")
+        assets_page.fill_new_mobile_number2("+61212345678")
+        assets_page.fill_new_email_address2("test@bitnoi.se")
+        assets_page.fill_new_rich_text2("test")
+        assets_page.fill_new_number2("+61212345678")
+        assets_page.fill_new_website_address2("www.google.com")
+        assets_page.fill_new_date_time2("test")
+        assets_page.fill_new_date_optional_time2("test")
         assets_page.scroll_down_to_save_button()
         assets_page.click_save_button()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
+
+        # Edit the details of created Asset and Check that the 2 sets of fields in step 4 are still Read only
+        # while set to their default values.
+        main_page.open_ASSETS()
+        assets_page.clear_Search_field()
+        assets_page.type_text_into_search_field("Asset for Read Only test")
+        assets_page.open_existing_asset()
+        assets_page.click_edit_button()
+        assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
+
+        # Change the value of each field in the 2 sets of fields in step 4. Set Is Read only ? != Yes A or Yes B
+        #  then save the Asset
+
+        # 1. Edit the details of #49135 Asset Set Is Read only ? = Yes A and Yes B.
+
+        # Check that the 2 sets of fields in step 2 are still Read only
+        #  while set to their values in step 8 (not step 11).
+
+        # Repeat the steps for Report
+        # Repeat the steps for Event
+        # Repeat the steps for Risk
 
 
 if __name__ == '__main__':

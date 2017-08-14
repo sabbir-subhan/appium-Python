@@ -2,6 +2,8 @@
 
 from Modules.AssetsPage.AssetsPage import AssetsPage
 import logging
+from appium.webdriver.common.touch_action import TouchAction
+from time import sleep
 
 
 class IOS(AssetsPage):
@@ -64,4 +66,17 @@ class IOS(AssetsPage):
         self.driver.execute_script("mobile: scroll", {"direction": "up"})
         self.driver.execute_script("mobile: scroll", {"direction": "up"})
         self.driver.execute_script("mobile: scroll", {"direction": "up"})
+
+    def read_only_option_list(self):
+
+        logging.info("click option list - Is Read Only ?")
+
+        sleep(1)
+        option_list = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_READ_ONLY_IOS)
+        self.assertIsNot(option_list, "option list - Is Read Only ?, not found")
+        action = TouchAction(self.driver)
+        action.tap(element=option_list, count=1).perform()
+        sleep(1)
+
+
 

@@ -108,7 +108,7 @@ class LogsPage(BasePage):
 
     def type_text_into_entry_field(self, text):
 
-        # webview is not working on iOS10
+        # webview is not working on iOS10, sending key into Entry field on Android devices is not working
 
         logging.info("type text into 'Entry' field")
         sleep(1)
@@ -116,6 +116,14 @@ class LogsPage(BasePage):
         entry_field.click()
         sleep(1)
         entry_field.send_keys(text)
+
+    def type_text_into_entry_field_all_fields(self, text):
+
+        LogsPage.type_text_into_entry_field(self, text)
+
+    def type_text_into_entry_field_chooser_fields(self, text):
+
+        LogsPage.type_text_into_entry_field(self, text)
 
     def expand_types_filter(self):
 

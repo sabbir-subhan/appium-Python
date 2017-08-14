@@ -478,8 +478,7 @@ class LogsScreen:
 class SentScreen:
     """A class for handling Sent screen"""
     SEARCH = EventsScreen.SEARCH_FIELD
-    SENT_COMMUNICATIONS_EMAIL = (MobileBy.XPATH, '//android.view.View[@content-desc'
-                                                 '[contains(., "Short message, Email")]]')
+    SENT_COMMUNICATIONS_EMAIL = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Short message, Email")]]')
 
 
 class ComposeScreen:
