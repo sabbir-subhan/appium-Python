@@ -638,6 +638,36 @@ class AssetsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def check_fields_for_values_and_read_only_property(self):
+
+        logging.info('check read only fields')
+
+        try:
+            new_phone_number_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_PHONE_NUMBER_DISABLED)
+            new_fax_number_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_FAX_NUMBER_DISABLED)
+            new_email_address_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_EMAIL_ADDRESS_DISABLED)
+            self.assertIsNotNone(new_phone_number_disabled, "new phone number disabled field not found")
+            self.assertIsNotNone(new_fax_number_disabled, "new fax number disabled field not found")
+            self.assertIsNotNone(new_email_address_disabled, "new email address disabled field not found")
+        except NoSuchElementException:
+            logging.warning("Read only fields are not read only")
+            pass
+
+    def check_fields_for_default_values(self):
+
+        logging.info('check read only fields')
+
+        try:
+            new_phone_number = self.driver.find_element(*self.configuration.AssetsScreen.NEW_PHONE_NUMBER)
+            new_fax_number = self.driver.find_element(*self.configuration.AssetsScreen.NEW_FAX_NUMBER)
+            new_email_address = self.driver.find_element(*self.configuration.AssetsScreen.NEW_EMAIL_ADDRESS)
+            self.assertIsNotNone(new_phone_number, "new phone number value not found")
+            self.assertIsNotNone(new_fax_number, "new fax number value not found")
+            self.assertIsNotNone(new_email_address, "new email address value not found")
+        except NoSuchElementException:
+            logging.warning("Read only fields are not read only")
+            pass
+
     def fill_new_single_line_text2(self, text):
 
         logging.info("fill new single line text 2 field")
@@ -646,6 +676,8 @@ class AssetsPage(BasePage):
 
         field = self.driver.find_element(*self.configuration.AssetsScreen.NEW_SINGLE_LINE_TEXT2)
         self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
         field.send_keys(text)
 
         self.switch_context_to_native()
@@ -658,6 +690,8 @@ class AssetsPage(BasePage):
 
         field = self.driver.find_element(*self.configuration.AssetsScreen.NEW_PHONE_NUMBER2)
         self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
         field.send_keys(text)
 
         self.switch_context_to_native()
@@ -670,6 +704,8 @@ class AssetsPage(BasePage):
 
         field = self.driver.find_element(*self.configuration.AssetsScreen.NEW_MULTI_LINE_TEXT2)
         self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
         field.send_keys(text)
 
         self.switch_context_to_native()
@@ -682,6 +718,8 @@ class AssetsPage(BasePage):
 
         field = self.driver.find_element(*self.configuration.AssetsScreen.NEW_FAX_NUMBER2)
         self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
         field.send_keys(text)
 
         self.switch_context_to_native()
@@ -694,6 +732,8 @@ class AssetsPage(BasePage):
 
         field = self.driver.find_element(*self.configuration.AssetsScreen.NEW_MOBILE_NUMBER2)
         self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
         field.send_keys(text)
 
         self.switch_context_to_native()
@@ -706,6 +746,8 @@ class AssetsPage(BasePage):
 
         field = self.driver.find_element(*self.configuration.AssetsScreen.NEW_EMAIL_ADDRESS2)
         self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
         field.send_keys(text)
 
         self.switch_context_to_native()
@@ -754,6 +796,8 @@ class AssetsPage(BasePage):
 
         field = self.driver.find_element(*self.configuration.AssetsScreen.NEW_NUMBER2)
         self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
         field.send_keys(text)
 
         self.switch_context_to_native()
@@ -766,33 +810,17 @@ class AssetsPage(BasePage):
 
         field = self.driver.find_element(*self.configuration.AssetsScreen.NEW_WEBSITE_ADDRESS2)
         self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
         field.send_keys(text)
 
         self.switch_context_to_native()
 
-    def fill_new_date_time2(self, text):
+    def scroll_down_one_view(self):
 
-        logging.info("fill new date & time 2 field")
-
-        self.switch_context_to_webview()
-
-        field = self.driver.find_element(*self.configuration.AssetsScreen.NEW_DATE_TIME2)
-        self.assertIsNotNone(field, "input field not found")
-        field.send_keys(text)
-
-        self.switch_context_to_native()
-
-    def fill_new_date_optional_time2(self, text):
-
-        logging.info("fill new date & optional time 2 field")
-
-        self.switch_context_to_webview()
-
-        field = self.driver.find_element(*self.configuration.AssetsScreen.NEW_DATE_OPTIONAL_TIME2)
-        self.assertIsNotNone(field, "input field not found")
-        field.send_keys(text)
-
-        self.switch_context_to_native()
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.scroll_down_one_view()
 
 
 

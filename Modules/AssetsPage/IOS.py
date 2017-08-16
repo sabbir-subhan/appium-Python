@@ -78,5 +78,19 @@ class IOS(AssetsPage):
         action.tap(element=option_list, count=1).perform()
         sleep(1)
 
+    def scroll_down_to_second_set_of_fields(self):
+
+        logging.info("scrolling down to second set of fields")
+
+        scroll = 7
+        while scroll > 0:
+            logging.info("check if field is visible")
+            field = self.driver.find_element(*self.configuration.AssetsScreen.NEW_PHONE_NUMBER2)
+            if field.is_displayed():
+                break
+            else:
+                logging.info("scroll down")
+                self.driver.execute_script("mobile: scroll", {"direction": "down"})
+                scroll = scroll - 1
 
 

@@ -151,8 +151,10 @@ class TestLoadTypeDataAfterLogin(SetupTestCase):
         events_page.type_text_into_search_field("offline mode")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
+        events_page.open_previously_created_event()
+        events_page.check_if_related_section_is_present()
         common_page.hamburger_button()
-        main_page.check_presence_of_events_button()
+        main_page.check_presence_of_inbox_button()
 
 
 if __name__ == '__main__':

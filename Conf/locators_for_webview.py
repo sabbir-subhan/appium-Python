@@ -223,6 +223,7 @@ class EventDetailsScreen:
     NEW_SUB_EVENT = (MobileBy.CSS_SELECTOR, 'li.eme.new.subeme>a')
     SET_AS_PRIMARY_BUTTON = (MobileBy.CSS_SELECTOR, 'li.primary.eme.set.ineme.ui-first-child>a')
     EVENT_INFO_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a.emeView')
+    RELATED_HEADER = (MobileBy.CSS_SELECTOR, 'div#emeView>div.ui-content>ul.ui-listview>li.relatedSection')
 
 
 class Map:

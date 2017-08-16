@@ -3,6 +3,7 @@
 from Modules.GalleryPage.IOS import IOS
 import logging
 from selenium.common.exceptions import *
+from time import sleep
 
 
 class IOS9(IOS):
@@ -19,6 +20,18 @@ class IOS9(IOS):
             choose_element_1 = self.driver.find_element(*self.configuration.GalleryScreen.GALLERY_ELEMENT)
             self.assertIsNotNone(choose_element_1, "element in gallery not found")
             choose_element_1.click()
+
+    def click_use_button(self):
+
+        sleep(2)
+        logging.info("click 'Use' button")
+        try:
+            use_button = self.driver.find_element(*self.configuration.GalleryScreen.USE_BUTTON)
+        except NoSuchElementException:
+            use_button = self.driver.find_element(*self.configuration.GalleryScreen.CHOOSE_BUTTON)
+        self.assertIsNotNone(use_button, "use video button not found")
+        use_button.click()
+        sleep(2)
 
     # def choose_video_from_gallery(self):
     #

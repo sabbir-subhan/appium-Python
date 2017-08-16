@@ -4,6 +4,7 @@ from Modules.GalleryPage.GalleryPage import GalleryPage
 import logging
 from time import sleep
 from selenium.common.exceptions import *
+from appium.webdriver.common.touch_action import TouchAction
 
 
 class IOS(GalleryPage):
@@ -61,7 +62,9 @@ class IOS(GalleryPage):
         except NoSuchElementException:
             use_button = self.driver.find_element(*self.configuration.GalleryScreen.CHOOSE_BUTTON)
         self.assertIsNotNone(use_button, "use video button not found")
-        use_button.click()
+        # use_button.click()
+        action = TouchAction(self.driver)
+        action.tap(element=use_button, count=1).perform()
         sleep(2)
 
     def choose_videos_gallery(self):

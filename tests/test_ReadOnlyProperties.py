@@ -26,6 +26,10 @@
 # - sub form
 # - single-line text inside the sub form
 
+#(new_phone_number with value: +61212345111, new fax number with value: +61212345222, new email address with value: testbitnoise@gmail.com,
+# new website address with value: http://www.google.com, new single line text with value: test_appium_single_line,
+# new multi line text with value: test_appium_multi_line)
+
 # Make the 1st set of fields Read only if Is Read only ? = Yes A.
 # Make the 2nd set of fields visible only if Is Read only ? = Yes B.
 # Set up default values for all fields in both sets.
@@ -44,18 +48,10 @@
 # create new Asset -> Do not select any options for is read only Y/N ->
 # Verify that the second set of fields is hidden
 # Set is Read only = Yes A and Yes B
-# Check that the 2 sets of fields in step 2 are still Read only while set to their default values.
-# Change the value of each field in the 2 sets of fields in step 2 then save the Asset
-
-# Edit the details of created Asset and Check that the 2 sets of fields in step 4 are still Read only
-#  while set to their default values.
-
-# Change the value of each field in the 2 sets of fields in step 4. Set Is Read only ? != Yes A or Yes B
-#  then save the Asset
-
-# 1.Edit the details of #49135 Asset Set Is Read only ? = Yes A and Yes B.
-
-# Check that the 2 sets of fields in step 2 are still Read only while set to their values in step 8 (not step 11).
+# Check that the first set of fields is still Read only while set to their default values.
+# Change the value of each field in the second set of fields and save the Asset
+# Edit the details of created Asset and Check that the first set of fields is still Read only
+# Change the value of each field in the 2 sets of fields in step 4. Set Is Read only ? != Yes A or Yes B and save the Asset
 
 # Repeat the steps for Report
 # Repeat the steps for Event
@@ -133,28 +129,28 @@ class TestReadOnlyProperties(SetupTestCase):
         assets_page.option_list_option_yes_b()
         assets_page.save_option_list()
 
-        # Check that the 2 sets of fields in step 2 are still Read only while set to their default values.
+        # Check that the first set of fields is still Read only while set to their default values.
         assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
+        assets_page.check_fields_for_values_and_read_only_property()
 
-        # Change the value of each field in the 2 sets of fields in step 2 then save the Asset
+        # Change the value of each field in the second set of fields and save the Asset
+        assets_page.scroll_up_to_name_field()
+        assets_page.scroll_down_to_second_set_of_fields()
         assets_page.fill_new_single_line_text2("test")
         assets_page.fill_new_phone_number2("+61212345678")
         assets_page.fill_new_multi_line_text2("test")
         assets_page.fill_new_fax_number2("+61212345678")
+        assets_page.fill_new_email_address2("test90@onet.pl")
+        assets_page.fill_new_website_address2("http://www.google.com")
+        assets_page.fill_new_rich_text2(" test")
+        assets_page.fill_new_number2(" +61212345678 ")
         assets_page.fill_new_mobile_number2("+61212345678")
-        assets_page.fill_new_email_address2("test@bitnoi.se")
-        assets_page.fill_new_rich_text2("test")
-        assets_page.fill_new_number2("+61212345678")
-        assets_page.fill_new_website_address2("www.google.com")
-        assets_page.fill_new_date_time2("test")
-        assets_page.fill_new_date_optional_time2("test")
         assets_page.scroll_down_to_save_button()
         assets_page.click_save_button()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
-        # Edit the details of created Asset and Check that the 2 sets of fields in step 4 are still Read only
-        # while set to their default values.
+        # Edit the details of created Asset and Check that the first set of fields is still Read only
         main_page.open_ASSETS()
         assets_page.clear_Search_field()
         assets_page.type_text_into_search_field("Asset for Read Only test")
@@ -164,11 +160,6 @@ class TestReadOnlyProperties(SetupTestCase):
 
         # Change the value of each field in the 2 sets of fields in step 4. Set Is Read only ? != Yes A or Yes B
         #  then save the Asset
-
-        # 1. Edit the details of #49135 Asset Set Is Read only ? = Yes A and Yes B.
-
-        # Check that the 2 sets of fields in step 2 are still Read only
-        #  while set to their values in step 8 (not step 11).
 
         # Repeat the steps for Report
         # Repeat the steps for Event

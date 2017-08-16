@@ -57,7 +57,9 @@ class MainPage(BasePage):
 
     def check_presence_of_inbox_button(self):
 
-        WebDriverWait(self.driver, 25).until(
+        self.switch_context_to_native()
+
+        WebDriverWait(self.driver, 30).until(
             expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.INBOX_BUTTON),
             "Inbox button in Main Menu is not present")
 

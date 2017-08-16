@@ -989,4 +989,17 @@ class EventsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def check_if_related_section_is_present(self):  # Related section in View Event mode
+
+        self.switch_context_to_webview()
+
+        logging.info("check if Related section is present, in Event view mode")
+        try:
+            check_if_related_section_is_present = self.driver.find_element(*self.configuration.EventDetailsScreen.RELATED_HEADER)
+            self.assertIsNotNone(check_if_related_section_is_present, "Related section not found")
+        except NoSuchElementException:
+            logging.warning("Related section in event view mode, not found - media files were not added correctly")
+
+        self.switch_context_to_native()
+
 
