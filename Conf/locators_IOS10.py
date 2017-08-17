@@ -133,12 +133,10 @@ class LocationScreen:
     """A class for Location screen locators - screen after clicking into Location button in Main Menu."""
     SEND_ONCE_NOW = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Send once now")]]')
     SEND_EVERY_SPINNER = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="Send every"]')
-    CHOOSE_5_MINUTES_OPTION_iPad = (MobileBy.XPATH, '//XCUIElementTypePopover/XCUIElementTypeTableView'
-                                                    '/XCUIElementTypeTableCell[2]')
+    CHOOSE_5_MINUTES_OPTION_iPad = (MobileBy.XPATH, '//XCUIElementTypeTable/XCUIElementTypeCell[2]')
     ASSERT_5_MINUTES_OPTION = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="5 minutes"]')
     FOR_THE_NEXT_SPINNER = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="For the next"]')
-    CHOOSE_1_HOUR_OPTION_iPad = (MobileBy.XPATH, '//XCUIElementTypePopover/XCUIElementTypeTableView'
-                                                 '/XCUIElementTypeTableCell[3]')
+    CHOOSE_1_HOUR_OPTION_iPad = (MobileBy.XPATH, '//XCUIElementTypeTable/XCUIElementTypeCell[3]')
     ASSERT_1_HOUR_OPTION = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="1 hour"]')
     START_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Start")]]')
     STOP_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Stop")]]')
@@ -193,6 +191,7 @@ class TypesOfEventsScreen:
     INCIDENT_TYPE_OF_EVENT = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Incident")]]')
     EVENT_FOR_ON_LOAD_SAVE = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "event_for_on_load")]]')
     EVENT_FOR_CHOOSER_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "event_for_chooser")]]')
+    EVENT_TYPE_WITH_OPTION_LIST = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "event_with_option_list")]]')
 
 
 class EventEditScreen:
@@ -365,8 +364,11 @@ class TasksScreen:
     TITLE = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')  # locating input field by xpath with name won't work
     ASSIGNED = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Assigned"]')
     ADD_CONTACTS_AND_GROUPS = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Add contacts and groups")]]')
+    # ADD_CONTACTS_AND_GROUPS2 = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "Add contacts and groups")]]')
     ADD_RESOURCE_STRUCTURE_NODES = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Add Resource structure nodes")]]')
+    # ADD_RESOURCE_STRUCTURE_NODES2 = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "Add Resource structure")]]')
     ADD_RESOURCE_ASSIGNMENTS = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Add Resource assignments")]]')
+    # ADD_RESOURCE_ASSIGNMENTS2 = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "Add Resource assignments")]]')
     CHOOSE_USERS = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Users"]')
     CHOOSE_CONTACTS = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Contacts"]')
     START_DATE = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Start Date"]')

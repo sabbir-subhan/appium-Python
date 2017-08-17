@@ -10,10 +10,11 @@
 - brew install python3 (or on Windows just install from .exe file)
 - node (tested on 6.10)
 - npm
-- pip install -U selenium==3.3.1 (use version below 3.3.2 - probably there is bug in version 3.3.2)
+- "cd" to project directory and use "pip install -r requirements.txt"
+~~- pip install -U selenium==3.3.1 (use version below 3.3.2 - probably there is bug in version 3.3.2)~~
 - npm install -g appium@latest
-- pip install Appium-Python-Client
-- pip install html-testRunner
+~~- pip install Appium-Python-Client~~
+~~- pip install html-testRunner~~
 - PyCharm - for editing/viewing tests
 
 

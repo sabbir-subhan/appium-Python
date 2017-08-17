@@ -1002,4 +1002,26 @@ class EventsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def choose_event_type_with_option_list(self):  # Event type with option list
+
+        logging.info('choose Event type with option list')
+        event_type = self.driver.find_element(*self.configuration.TypesOfEventsScreen.EVENT_TYPE_WITH_OPTION_LIST)
+        self.assertIsNotNone(event_type, "asset type not found")
+        event_type.click()
+
+    def read_only_option_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click option list - Is Read Only ?")
+
+        try:
+            option_list = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_READ_ONLY)
+        except NoSuchElementException:
+            option_list = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_READ_ONLY_EDIT)
+        self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
+        option_list.click()
+
+        self.switch_context_to_native()
+
 

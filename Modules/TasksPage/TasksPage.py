@@ -66,6 +66,8 @@ class TasksPage(BasePage):
 
     def add_resource_structure_nodes(self):
 
+        self.switch_context_to_native()
+
         logging.info("Add Resource Structure Nodes")
         add_resource_structure_nodes = self.driver.find_element(*self.configuration.TasksScreen.ADD_RESOURCE_STRUCTURE_NODES)
         self.assertIsNotNone(add_resource_structure_nodes, "Add Resource Structure Nodes button not found")
@@ -105,6 +107,8 @@ class TasksPage(BasePage):
         self.switch_context_to_native()
 
     def add_resource_assignments(self):
+
+        self.switch_context_to_native()
 
         logging.info("Add Resource Assignments")
         add_resource_assignments = self.driver.find_element(*self.configuration.TasksScreen.ADD_RESOURCE_ASSIGNMENTS)

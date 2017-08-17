@@ -17,7 +17,6 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
-import os
 from configuration import PROJECT_ROOT
 
 
@@ -33,10 +32,7 @@ class TestSendLocation(SetupTestCase):
         logging.info("Quitting")
 
         # take screenshot on quit
-        path = PROJECT_ROOT + "/screenshots"
-        os.chdir(path)
-        self.driver.save_screenshot("test_SendLocation" + ".png")
-        os.chdir("..")
+        self.driver.save_screenshot(PROJECT_ROOT + "/screenshots/test_SendLocation.png")
 
         self.driver.quit()
 
@@ -78,6 +74,7 @@ class TestSendLocation(SetupTestCase):
         location_page.choose_1_hour_option()
         location_page.check_if_1_hour_option_was_chosen()
         location_page.click_start_button()
+        location_page.alert_allow_location()
         location_page.check_if_start_button_was_clicked()
         location_page.check_if_location_was_sent()
 

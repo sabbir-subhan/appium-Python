@@ -32,7 +32,6 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
-import os
 from configuration import PROJECT_ROOT
 
 
@@ -48,10 +47,7 @@ class TestContactGroupsVisibility(SetupTestCase):
         logging.info("Quitting")
 
         # take screenshot on quit
-        path = PROJECT_ROOT + "/screenshots"
-        os.chdir(path)
-        self.driver.save_screenshot("test_ContactGroupsVisibility" + ".png")
-        os.chdir("..")
+        self.driver.save_screenshot(PROJECT_ROOT + "/screenshots/test_ContactGroupsVisibility.png")
 
         self.driver.quit()
 
@@ -87,28 +83,28 @@ class TestContactGroupsVisibility(SetupTestCase):
         contacts_page.click_new_button()
         contacts_page.add_new_contact_group()
         contacts_page.choose_group_for_new_contact_group_type()  # Group
-        contacts_page.type_name_for_new_contact_group("for_all_users")
+        contacts_page.type_name_for_new_contact_group("for_all")
         contacts_page.scroll_down_to_save_button()
         contacts_page.save_new_contact_group()
 
         contacts_page.click_new_button()
         contacts_page.add_new_contact_group()
         contacts_page.choose_group_for_new_contact_group_type()  # Group
-        contacts_page.type_name_for_new_contact_group("only_high_users")
+        contacts_page.type_name_for_new_contact_group("only_high")
         contacts_page.scroll_down_to_write_access_level()
         contacts_page.click_read_access_level_for_new_group()
         contacts_page.option_list_administrators_only()
         contacts_page.save_new_contact_group()
 
         contacts_page.clear_Search_field()
-        contacts_page.type_text_into_search_field("for_all_users")
+        contacts_page.type_text_into_search_field("for_all")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         contacts_page.open_first_contact_group()
         contacts_page.click_new_button()
         contacts_page.add_new_contact_into_group()
         contacts_page.choose_contact_type_person()
-        contacts_page.type_first_name_for_new_contact("low_user")
+        contacts_page.type_first_name_for_new_contact("low")
         contacts_page.scroll_down_to_save_button()
         contacts_page.save_new_contact()
         common_page.hamburger_button()
@@ -117,14 +113,14 @@ class TestContactGroupsVisibility(SetupTestCase):
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
         contacts_page.clear_Search_field()
-        contacts_page.type_text_into_search_field("only_high_users")
+        contacts_page.type_text_into_search_field("only_high")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         contacts_page.open_first_contact_group()
         contacts_page.click_new_button()
         contacts_page.add_new_contact_into_group()
         contacts_page.choose_contact_type_person()
-        contacts_page.type_first_name_for_new_contact("high_user")
+        contacts_page.type_first_name_for_new_contact("high")
         contacts_page.scroll_down_to_save_button()
         contacts_page.save_new_contact()
         common_page.hamburger_button()
@@ -149,14 +145,14 @@ class TestContactGroupsVisibility(SetupTestCase):
 
         main_page.open_CONTACTS()
         contacts_page.clear_Search_field()
-        contacts_page.type_text_into_search_field("for_all_users")
+        contacts_page.type_text_into_search_field("for_all")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         contacts_page.open_first_contact_group()
         contacts_page.click_new_button()
         contacts_page.add_new_contact_into_group()
         contacts_page.choose_contact_type_person()
-        contacts_page.type_first_name_for_new_contact("created_by_low_user")
+        contacts_page.type_first_name_for_new_contact("created_by_low")
         contacts_page.scroll_down_to_save_button()
         contacts_page.save_new_contact()
         common_page.hamburger_button()
@@ -165,7 +161,7 @@ class TestContactGroupsVisibility(SetupTestCase):
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
         contacts_page.clear_Search_field()
-        contacts_page.type_text_into_search_field("only_high_users")
+        contacts_page.type_text_into_search_field("only_high")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         contacts_page.check_first_contact_group_on_the_list()

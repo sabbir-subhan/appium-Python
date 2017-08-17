@@ -211,6 +211,9 @@ class EventEditScreen:
     SUBFORM_FIELD_ADD_ROW = (MobileBy.CSS_SELECTOR, 'div.subform>a')
     NEW_EVENTS_CHOOSER_IN_SUB_FORM = (MobileBy.CSS_SELECTOR, 'div.subform>div.subform-row>ul.subform-row>li>div.ui-select')
     DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.CSS_SELECTOR, 'div.subform>div.subform-row>a.delete')
+    # NEW_DATE_OPTIONAL_TIME2 = (MobileBy.CSS_SELECTOR, 'div#emeNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new date & optional time2"]')
+    OPTION_LIST_READ_ONLY = (MobileBy.CSS_SELECTOR, 'div#emeNew>div.ui-content>ul.edit-view>li[name="is read only ?"]>div.ui-select')
+    OPTION_LIST_READ_ONLY_EDIT = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div.ui-content>ul.edit-view>li[name="is read only ?"]>div.ui-select')
 
 
 class EventDetailsScreen:
@@ -571,6 +574,7 @@ class RisksScreen:
 class AssetsScreen:
     """A class for handling Assets screen"""
     NAME = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li:first-child>div.ui-input-text>input#name')
+    NAME_FOR_EDITED_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetEdit>div.ui-content>ul.edit-view>li:first-child>div.ui-input-text>input#name')
     SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#save"]')
     SAVE_BUTTON_EDIT_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#save"]')
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
@@ -599,6 +603,7 @@ class AssetsScreen:
     FIRST_PENDING_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.pending>ul.listview>li:first-child>a')
     OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
     OPTION_LIST_READ_ONLY = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li[name="is read only ?"]>div.ui-select')
+    OPTION_LIST_READ_ONLY_EDIT = (MobileBy.CSS_SELECTOR, 'div#assetEdit>div.ui-content>ul.edit-view>li[name="is read only ?"]>div.ui-select')
     OPTION_LIST_OPTION_YES_A = (MobileBy.CSS_SELECTOR, 'div#optionList>div.ui-content>ul.optionLV>li.ui-first-child>div.ui-checkbox')
     OPTION_LIST_OPTION_YES_B = (MobileBy.CSS_SELECTOR, 'div#optionList>div.ui-content>ul.optionLV>li:nth-child(2)>div.ui-checkbox')
     OPTION_LIST_OPTION_NO = (MobileBy.CSS_SELECTOR, 'div#optionList>div.ui-content>ul.optionLV>li.ui-last-child>div.ui-checkbox')
@@ -618,7 +623,8 @@ class AssetsScreen:
     NEW_NUMBER2 = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new number2"]')
     NEW_WEBSITE_ADDRESS2 = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new website address2"]')
     NEW_DATE_TIME2 = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new date & time2"]')
-    NEW_DATE_OPTIONAL_TIME2 = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new date & optional time2"]')
+    # NEW_DATE_OPTIONAL_TIME2 = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new date & optional time2"]')
+    NEW_DATE_OPTIONAL_TIME2 = (MobileBy.CSS_SELECTOR, 'div>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new date & optional time2"]')
 
 
 class LogsScreen(EventsScreen, AssetsScreen):

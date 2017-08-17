@@ -28,7 +28,6 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
-import os
 from configuration import PROJECT_ROOT
 
 
@@ -44,10 +43,7 @@ class TestContactsDirectory(SetupTestCase):
         logging.info("Quitting")
 
         # take screenshot on quit
-        path = PROJECT_ROOT + "/screenshots"
-        os.chdir(path)
-        self.driver.save_screenshot("test_ContactsDirectory" + ".png")
-        os.chdir("..")
+        self.driver.save_screenshot(PROJECT_ROOT + "/screenshots/test_ContactsDirectory.png")
 
         self.driver.quit()
 
@@ -104,11 +100,21 @@ class TestContactsDirectory(SetupTestCase):
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         contacts_page.clear_Search_field()
+        contacts_page.type_text_into_search_field("Contacts")
+        common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         contacts_page.open_contacts_group()  # Contacts
         common_page.back_arrow()
+        contacts_page.clear_Search_field()
+        contacts_page.type_text_into_search_field("Users")
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
         contacts_page.open_users_group()  # Users
         common_page.back_arrow()
+        contacts_page.clear_Search_field()
+        contacts_page.type_text_into_search_field("Mailing list unsubscribes")
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
         contacts_page.open_mailing_list_group()  # Mailing list unsubscribes
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()
@@ -117,3 +123,4 @@ class TestContactsDirectory(SetupTestCase):
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(TestContactsDirectory)
     unittest.TextTestRunner(verbosity=2).run(suite)
+

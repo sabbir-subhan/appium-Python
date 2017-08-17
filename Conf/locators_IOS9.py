@@ -198,6 +198,7 @@ class TypesOfEventsScreen:
     INCIDENT_TYPE_OF_EVENT = (MobileBy.XPATH, '//UIAWebView[1]/UIALink[@name[contains(., "Incident")]]')
     EVENT_FOR_ON_LOAD_SAVE = (MobileBy.XPATH, '//UIAWebView[1]/UIALink[@name[contains(., "event_for_on_load")]]')
     EVENT_FOR_CHOOSER_FIELDS = (MobileBy.XPATH, '//UIAWebView[1]/UIALink[@name[contains(., "event_for_chooser")]]')
+    EVENT_TYPE_WITH_OPTION_LIST = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "event_with_option_list")]]')
 
 
 class EventEditScreen:
@@ -351,8 +352,8 @@ class TasksScreen:
     TITLE = (MobileBy.XPATH, '//UIATextField[1]')  # locating input field by xpath with name won't work
     ASSIGNED = (MobileBy.XPATH, '//UIAStaticText[@name="Assigned"]')
     ADD_CONTACTS_AND_GROUPS = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Add contacts and groups")]]')
-    ADD_RESOURCE_STRUCTURE_NODES = (MobileBy.XPATH, '//UIAButton[@name[contains(., '
-                                                    '"Add Resource structure nodes")]]')
+    ADD_RESOURCE_STRUCTURE_NODES = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Add Resource structure nodes")]]')
+    ADD_RESOURCE_STRUCTURE_NODES2 = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Add Resource structure nodes")]]')
     ADD_RESOURCE_ASSIGNMENTS = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Add Resource assignments")]]')
     CHOOSE_USERS = (MobileBy.XPATH, '//UIAStaticText[@name="Users"]')
     CHOOSE_CONTACTS = (MobileBy.XPATH, '//UIAStaticText[@name="Contacts"]')

@@ -37,7 +37,7 @@ sys.stderr = log_errors
 
 # write logging into file
 log = logging.getLogger('')
-LOGFILE = './tests/TCs' + '.log'
+LOGFILE = PROJECT_ROOT + '/tests/TCs' + '.log'
 # format_without_colors = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
 format_without_colors = logging.Formatter("%(asctime)s - %(message)s")
 file_handler = handlers.RotatingFileHandler(LOGFILE, maxBytes=2550000, backupCount=4)

@@ -26,9 +26,10 @@
 # - sub form
 # - single-line text inside the sub form
 
-#(new_phone_number with value: +61212345111, new fax number with value: +61212345222, new email address with value: testbitnoise@gmail.com,
+# DEFAULT VALUES: new_phone_number with value: +61212345111, new fax number with value: +61212345222,
+# new email address with value: testbitnoise@gmail.com,
 # new website address with value: http://www.google.com, new single line text with value: test_appium_single_line,
-# new multi line text with value: test_appium_multi_line)
+# new multi line text with value: test_appium_multi_line
 
 # Make the 1st set of fields Read only if Is Read only ? = Yes A.
 # Make the 2nd set of fields visible only if Is Read only ? = Yes B.
@@ -49,19 +50,18 @@
 # Verify that the second set of fields is hidden
 # Set is Read only = Yes A and Yes B
 # Check that the first set of fields is still Read only while set to their default values.
-# Change the value of each field in the second set of fields and save the Asset
+# Change the value of fields in the second set of fields and save the Asset
 # Edit the details of created Asset and Check that the first set of fields is still Read only
-# Change the value of each field in the 2 sets of fields in step 4. Set Is Read only ? != Yes A or Yes B and save the Asset
+# Uncheck all checkboxes in Is Read only ?, check "No" and then save the Asset
 
-# Repeat the steps for Report
 # Repeat the steps for Event
+# Repeat the steps for Report
 # Repeat the steps for Risk
 
 import unittest
 import logging
 from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
-import os
 from configuration import PROJECT_ROOT
 
 
@@ -77,10 +77,7 @@ class TestReadOnlyProperties(SetupTestCase):
         logging.info("Quitting")
 
         # take screenshot on quit
-        path = PROJECT_ROOT + "/screenshots"
-        os.chdir(path)
-        self.driver.save_screenshot("test_ReadOnlyProperties" + ".png")
-        os.chdir("..")
+        self.driver.save_screenshot(PROJECT_ROOT + "/screenshots/test_ReadOnlyProperties.png")
 
         self.driver.quit()
 
@@ -116,11 +113,11 @@ class TestReadOnlyProperties(SetupTestCase):
         assets_page.click_new_button()
         assets_page.click_new_asset()
         assets_page.choose_asset_type_with_option_list()
-        assets_page.fill_Name_input_field("Asset for Read Only test")
+        assets_page.fill_Name_input_field("Read_only")
 
         # Verify that the second set of fields is hidden
         assets_page.scroll_down_to_add_media_button()
-        assets_page.check_invisibility_of_second_set_of_fields_in_asset_with_option_list()
+        assets_page.check_invisibility_of_second_set_of_fields()
         assets_page.scroll_up_to_name_field()
 
         # Set is Read only = Yes A and Yes B
@@ -133,7 +130,7 @@ class TestReadOnlyProperties(SetupTestCase):
         assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
         assets_page.check_fields_for_values_and_read_only_property()
 
-        # Change the value of each field in the second set of fields and save the Asset
+        # Change the value of fields in the second set of fields and save the Asset
         assets_page.scroll_up_to_name_field()
         assets_page.scroll_down_to_second_set_of_fields()
         assets_page.fill_new_single_line_text2("test")
@@ -153,16 +150,117 @@ class TestReadOnlyProperties(SetupTestCase):
         # Edit the details of created Asset and Check that the first set of fields is still Read only
         main_page.open_ASSETS()
         assets_page.clear_Search_field()
-        assets_page.type_text_into_search_field("Asset for Read Only test")
+        assets_page.type_text_into_search_field("Read_only")
         assets_page.open_existing_asset()
         assets_page.click_edit_button()
         assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
 
-        # Change the value of each field in the 2 sets of fields in step 4. Set Is Read only ? != Yes A or Yes B
-        #  then save the Asset
+        # Uncheck all checkboxes in Is Read only ?, check "No" and then save the Asset
+        assets_page.fill_name_for_edited_asset(" edit")
+        assets_page.read_only_option_list()
+        assets_page.option_list_option_yes_a()
+        assets_page.option_list_option_yes_b()
+        assets_page.option_list_option_no()
+        assets_page.save_option_list()
+        assets_page.scroll_down_to_save_button()
+        assets_page.save_edited_asset()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
 
-        # Repeat the steps for Report
+        main_page.open_ASSETS()
+        assets_page.clear_Search_field()
+        assets_page.type_text_into_search_field("Read_only edit")
+        assets_page.open_existing_asset()
+        assets_page.click_edit_button()
+        assets_page.read_only_option_list()
+        assets_page.option_list_option_no()
+        assets_page.option_list_option_yes_a()
+        assets_page.option_list_option_yes_b()
+        assets_page.save_option_list()
+        assets_page.scroll_up_to_name_field()
+        assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
+        assets_page.check_fields_for_values_and_read_only_property()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
         # Repeat the steps for Event
+        # create new Event -> Do not select any options for is read only Y/N
+        main_page.open_EVENTS()
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.click_more_button_in_events_list()
+        events_page.click_New_event_button()
+        events_page.choose_event_type_with_option_list()
+        events_page.fill_Name_input_field("Read_only")
+
+        # Verify that the second set of fields is hidden
+        assets_page.scroll_down_to_add_media_button()
+        assets_page.check_invisibility_of_second_set_of_fields()
+        assets_page.scroll_up_to_name_field()
+
+        # Set is Read only = Yes A and Yes B
+        events_page.read_only_option_list()
+        assets_page.option_list_option_yes_a()
+        assets_page.option_list_option_yes_b()
+        assets_page.save_option_list()
+
+        # Check that the first set of fields is still Read only while set to their default values.
+        #events_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
+        #events_page.check_fields_for_values_and_read_only_property()
+
+        # Change the value of fields in the second set of fields and save the Event
+        events_page.scroll_up_to_name_field()
+        events_page.scroll_down_to_second_set_of_fields()
+        events_page.fill_new_single_line_text2("test")
+        events_page.fill_new_phone_number2("+61212345678")
+        events_page.fill_new_multi_line_text2("test")
+        events_page.fill_new_fax_number2("+61212345678")
+        events_page.fill_new_email_address2("test90@onet.pl")
+        events_page.fill_new_website_address2("http://www.google.com")
+        events_page.fill_new_rich_text2(" test")
+        events_page.fill_new_number2(" +61212345678 ")
+        events_page.fill_new_mobile_number2("+61212345678")
+        events_page.scroll_down_to_save_button()
+        events_page.click_save_button()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        # Edit the details of created Event and Check that the first set of fields is still Read only
+        main_page.open_ASSETS()
+        events_page.clear_Search_field()
+        events_page.type_text_into_search_field("Read_only")
+        events_page.open_existing_asset()
+        events_page.click_edit_button()
+        events_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
+
+        # Uncheck all checkboxes in Is Read only ?, check "No" and then save the Event
+        events_page.fill_name_for_edited_asset(" edit")
+        events_page.read_only_option_list()
+        assets_page.option_list_option_yes_a()
+        assets_page.option_list_option_yes_b()
+        assets_page.option_list_option_no()
+        events_page.save_option_list()
+        events_page.scroll_down_to_save_button()
+        events_page.click_save_button()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        main_page.open_ASSETS()
+        events_page.clear_Search_field()
+        events_page.type_text_into_search_field("Read_only edit")
+        events_page.open_existing_asset()
+        events_page.click_edit_button()
+        events_page.read_only_option_list()
+        assets_page.option_list_option_no()
+        assets_page.option_list_option_yes_a()
+        assets_page.option_list_option_yes_b()
+        assets_page.save_option_list()
+        events_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
+        events_page.check_fields_for_values_and_read_only_property()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+        
+        # Repeat the steps for Report
         # Repeat the steps for Risk
 
 

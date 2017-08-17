@@ -219,6 +219,7 @@ class TypesOfEventsScreen:
     INCIDENT_TYPE_OF_EVENT = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Incident")]]')
     EVENT_FOR_ON_LOAD_SAVE = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "event_for_on_load")]]')
     EVENT_FOR_CHOOSER_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "event_for_chooser")]]')
+    EVENT_TYPE_WITH_OPTION_LIST = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "event_with_option_list")]]')
 
 
 class EventEditScreen:
@@ -427,8 +428,8 @@ class TasksScreen:
     ASSIGNED = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Assigned")]]')
     ADD_CONTACTS_AND_GROUPS = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains'
                                                '(., "Add contacts and groups")]]')
-    ADD_RESOURCE_STRUCTURE_NODES = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains'
-                                                    '(., "Add Resource structure nodes")]]')
+    ADD_RESOURCE_STRUCTURE_NODES = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains(., "Add Resource structure nodes")]]')
+    ADD_RESOURCE_STRUCTURE_NODES2 = (MobileBy.XPATH, '//android.view.View[@name[contains(., "Add Resource structure nodes")]]')
     ADD_RESOURCE_ASSIGNMENTS = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains'
                                                 '(., "Add Resource assignments")]]')
     CHOOSE_USERS = (MobileBy.ACCESSIBILITY_ID, 'Users')

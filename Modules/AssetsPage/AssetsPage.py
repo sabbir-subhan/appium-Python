@@ -63,33 +63,18 @@ class AssetsPage(BasePage):
 
         self.switch_context_to_native()
 
-    def click_save_button(self):
+    def fill_name_for_edited_asset(self, text):
 
-        logging.info("click Save button")
-        try:
-            save_button = self.driver.find_element(*self.configuration.CommonScreen.SAVE_BUTTON)
-            self.assertIsNot(save_button, "Save button not found")
-            save_button.click()
-        except NoSuchElementException:
-            self.switch_context_to_webview()
-            save_button = self.driver.find_element(*self.configuration.AssetsScreen.SAVE_BUTTON)
-            self.assertIsNot(save_button, "Save button not found")
-            save_button.click()
-            self.switch_context_to_native()
+        self.switch_context_to_webview()
 
-        # self.switch_context_to_webview()
-        #
-        # logging.info('click Save button')
-        # try:
-        #     save_button = self.driver.find_element(*self.configuration.AssetsScreen.SAVE_BUTTON_EDIT_ASSET)
-        #     self.assertIsNot(save_button, "Save button not found")
-        #     save_button.click()
-        # except WebDriverException and NoSuchElementException:  # for IOS emulators in offline mode
-        #     save_button = self.driver.find_element(*self.configuration.AssetsScreen.SAVE_BUTTON)
-        #     self.assertIsNot(save_button, "Save button not found")
-        #     save_button.click()
-        #
-        # self.switch_context_to_native()
+        sleep(1)
+        logging.info("type Name")
+        name = self.driver.find_element(*self.configuration.AssetsScreen.NAME_FOR_EDITED_ASSET)
+        self.assertIsNotNone(name, "Name input field was not found")
+        name.click()
+        name.send_keys(text)
+
+        self.switch_context_to_native()
 
     def open_existing_asset(self):  # first child
 
@@ -159,15 +144,33 @@ class AssetsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def click_save_button(self):
+
+        logging.info("click Save button")
+        try:
+            save_button = self.driver.find_element(*self.configuration.CommonScreen.SAVE_BUTTON)
+            self.assertIsNot(save_button, "Save button not found")
+            save_button.click()
+        except NoSuchElementException:
+            self.switch_context_to_webview()
+            save_button = self.driver.find_element(*self.configuration.AssetsScreen.SAVE_BUTTON)
+            self.assertIsNot(save_button, "Save button not found")
+            save_button.click()
+            self.switch_context_to_native()
+
     def save_edited_asset(self):
 
-        self.switch_context_to_webview()
-
         logging.info('click Save button')
-        save_button = self.driver.find_element(*self.configuration.AssetsScreen.SAVE_EDITED_ASSET)
-        save_button.click()
-
-        self.switch_context_to_native()
+        try:
+            save_button = self.driver.find_element(*self.configuration.CommonScreen.SAVE_BUTTON)
+            self.assertIsNot(save_button, "Save button not found")
+            save_button.click()
+        except NoSuchElementException:
+            self.switch_context_to_webview()
+            save_button = self.driver.find_element(*self.configuration.AssetsScreen.SAVE_EDITED_ASSET)
+            self.assertIsNot(save_button, "Save button not found")
+            save_button.click()
+            self.switch_context_to_native()
 
     # def click_more_button(self):
     #
@@ -322,9 +325,12 @@ class AssetsPage(BasePage):
     def check_result_for_asset_with_name_containing_map(self):
 
         logging.info("check result")
-        created_map_asset = self.driver.find_elements(*self.configuration.AssetsScreen.CREATED_MAP_ASSET)
-        # self.assertIsNotNone(created_map_asset[1], "created map asset not found")
-        self.assertIsNotNone(created_map_asset[0], "created map asset not found")
+        try:
+            created_map_asset = self.driver.find_elements(*self.configuration.AssetsScreen.CREATED_MAP_ASSET)
+            # self.assertIsNotNone(created_map_asset[1], "created map asset not found")
+            self.assertIsNotNone(created_map_asset[0], "created map asset not found")
+        except NoSuchElementException and IndexError:
+            logging.error("created map asset not found")
 
     def check_result_for_asset_with_name_containing_ballart(self):
 
@@ -543,7 +549,10 @@ class AssetsPage(BasePage):
 
         logging.info("click option list - Is Read Only ?")
 
-        option_list = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_READ_ONLY)
+        try:
+            option_list = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_READ_ONLY)
+        except NoSuchElementException:
+            option_list = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_READ_ONLY_EDIT)
         self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
         option_list.click()
 
@@ -593,18 +602,19 @@ class AssetsPage(BasePage):
         self.assertIsNotNone(option_list_save_button, "Option list save button, not found")
         option_list_save_button.click()
 
-    def check_invisibility_of_second_set_of_fields_in_asset_with_option_list(self):
+    def check_invisibility_of_second_set_of_fields(self):
 
-        logging.info("check invisibility of second set of fields in asset with option list")
+        logging.info("check invisibility of second set of fields in object with option list")
 
         try:
             new_date_optional_time2 = self.driver.find_element(*self.configuration.AssetsScreen.NEW_DATE_OPTIONAL_TIME2)
             if new_date_optional_time2.is_displayed():
-                self.fail("second set of fields in asset with option list is visible")
+                self.fail("second set of fields in object with option list is visible")
             else:
+                logging.warning("PASUJE BO NIE WIDZE")
                 pass
         except NoSuchElementException:
-            logging.info("second set of fields in asset with option list is not visible = OK")
+            logging.info("second set of fields in object with option list is not visible = OK")
 
     # def check_if_first_set_of_fields_in_asset_with_option_list_is_disabled(self):
     #

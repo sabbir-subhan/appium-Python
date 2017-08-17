@@ -21,7 +21,6 @@ from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 import logging
 import unittest
-import os
 from configuration import PROJECT_ROOT
 
 
@@ -37,10 +36,7 @@ class TestManagingEvents(SetupTestCase):
         logging.info("Quitting")
 
         # take screenshot on quit
-        path = PROJECT_ROOT + "/screenshots"
-        os.chdir(path)
-        self.driver.save_screenshot("test_ManagingEvents" + ".png")
-        os.chdir("..")
+        self.driver.save_screenshot(PROJECT_ROOT + "/screenshots/test_ManagingEvents.png")
 
         self.driver.quit()
 
