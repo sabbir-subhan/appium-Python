@@ -44,6 +44,7 @@ class CommonScreen:
     FIRST_INPUT_FIELD = (MobileBy.XPATH, '//android.widget.EditText[1]')  # first input filed inside OCA objects, like events, assets, reports
     ADD_MEDIA = (MobileBy.ACCESSIBILITY_ID, 'Add media')  # button Add Media inside OCA objects
     ADD_MEDIA2 = (MobileBy.XPATH, '//android.widget.Button[@name="Add media"]')
+    POPUP_UNFILLED_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Required fields are not filled")]]')  # Validation error
 
 
 class TopBar:
@@ -453,8 +454,8 @@ class ReportsScreen:
     PUBLISH_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Publish')
     PUBLISH_BUTTON2 = (MobileBy.XPATH, '//android.view.View[@content-desc="Publish"]')
     CREATED_REPORT_WITH_ALL_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Large")]]')
-    CREATED_REPORT_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "chooser fields")]]')
-    CREATED_REPORT_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "assigned question")]]')
+    CREATED_REPORT_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "chooser_fields")]]')
+    CREATED_REPORT_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "assigned_question")]]')
     REPORT_TYPE_WITH_ALL_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_for_tests")]]')
     REPORT_TYPE_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_with_chooser_fields")]]')
     REPORT_TYPE_WITH_ON_CREATE_APPROVAL_WORKFLOW = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_with_on_create_approval")]]')
@@ -536,6 +537,8 @@ class RisksScreen:
     NAME_FIELD_FOR_CONTEXT = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="Name"]')
     FIRST_CONTEXT_ON_THE_LIST = (MobileBy.XPATH, '//android.widget.ListView[1]/android.view.View[1]'
                                                  '/android.view.View[2]')
+    RISK_TYPE_FOR_TEST = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "new_risk_type")]]')
+    RISK_TYPE_WITH_OPTION_LIST = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "risk_with_option_list")]]')
 
 
 class AssetsScreen:

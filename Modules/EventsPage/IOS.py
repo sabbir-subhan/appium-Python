@@ -331,23 +331,38 @@ class IOS(EventsPage):
     def click_on_option_1(self):
 
         logging.info("choose '1' in option list")
-        option_1 = self.driver.find_element(*self.configuration.EventEditScreen.OPTION_LIST_VALUE_1)
+        try:
+            option_1 = self.driver.find_element(*self.configuration.EventEditScreen.OPTION_LIST_VALUE_1)
+        except NoSuchElementException:
+            option_1 = self.driver.find_element(*self.configuration.EventEditScreen.OPTION_LIST_VALUE_1_iPad)
         self.assertIsNotNone(option_1, "option list - option '1' not found")
-        option_1.click()
+        # option_1.click()
+        action = TouchAction(self.driver)
+        action.tap(element=option_1, count=1).perform()
 
     def click_on_option_2(self):
 
         logging.info("choose '2' in option list")
-        option_2 = self.driver.find_element(*self.configuration.EventEditScreen.OPTION_LIST_VALUE_2)
+        try:
+            option_2 = self.driver.find_element(*self.configuration.EventEditScreen.OPTION_LIST_VALUE_2)
+        except NoSuchElementException:
+            option_2 = self.driver.find_element(*self.configuration.EventEditScreen.OPTION_LIST_VALUE_2_iPad)
         self.assertIsNotNone(option_2, "option list - option '2' not found")
-        option_2.click()
+        # option_2.click()
+        action = TouchAction(self.driver)
+        action.tap(element=option_2, count=1).perform()
 
     def click_on_option_3(self):
 
         logging.info("choose '3' in option list")
-        option_3 = self.driver.find_element(*self.configuration.EventEditScreen.OPTION_LIST_VALUE_3)
+        try:
+            option_3 = self.driver.find_element(*self.configuration.EventEditScreen.OPTION_LIST_VALUE_3)
+        except NoSuchElementException:
+            option_3 = self.driver.find_element(*self.configuration.EventEditScreen.OPTION_LIST_VALUE_3_iPad)
         self.assertIsNotNone(option_3, "option list - option '3' not found")
-        option_3.click()
+        # option_3.click()
+        action = TouchAction(self.driver)
+        action.tap(element=option_3, count=1).perform()
 
     def click_save_offline_event(self):
 

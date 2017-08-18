@@ -160,4 +160,33 @@ class CommonPage(BasePage):
     #         self.switch_context_to_native()
     #         sleep(1)
 
+    def check_popup_about_unfilled_fields(self):
+
+        logging.info("check Validation error popup about unfilled fields")
+        try:
+            check_popup_about_unfilled_fields = self.driver.find_element(*self.configuration.CommonScreen.POPUP_UNFILLED_FIELDS)
+            if check_popup_about_unfilled_fields.is_displayed():
+                self.fail("Validation error popup is displayed - mandatory fields were not filled")
+            else:
+                pass
+        except NoSuchElementException:
+            pass
+
+    def scroll_up_to_name_field(self):
+
+        assets_page = LoadClass.load_page('AssetsPage')
+        assets_page.setDriver(self.driver)
+        assets_page.scroll_up_to_name_field()
+
+    def scroll_down_to_second_set_of_fields(self):
+
+        assets_page = LoadClass.load_page('AssetsPage')
+        assets_page.setDriver(self.driver)
+        assets_page.scroll_down_to_second_set_of_fields()
+
+    def scroll_down_to_add_media_button(self):
+
+        assets_page = LoadClass.load_page('AssetsPage')
+        assets_page.setDriver(self.driver)
+        assets_page.scroll_down_to_add_media_button()
 

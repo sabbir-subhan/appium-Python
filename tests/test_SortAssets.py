@@ -74,6 +74,8 @@ class TestSortAssets(SetupTestCase):
         assets_page.fill_Name_input_field("#Asset")
         assets_page.scroll_down_to_save_button()
         assets_page.click_save_button()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -84,6 +86,8 @@ class TestSortAssets(SetupTestCase):
         assets_page.fill_Name_input_field("Assets")
         assets_page.scroll_down_to_save_button()
         assets_page.click_save_button()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -94,6 +98,8 @@ class TestSortAssets(SetupTestCase):
         assets_page.fill_Name_input_field("Ballarat")
         assets_page.scroll_down_to_save_button()
         assets_page.click_save_button()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -104,6 +110,8 @@ class TestSortAssets(SetupTestCase):
         assets_page.fill_Name_input_field("$Asset")
         assets_page.scroll_down_to_save_button()
         assets_page.click_save_button()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -114,6 +122,8 @@ class TestSortAssets(SetupTestCase):
         assets_page.fill_Name_input_field("%Asset")
         assets_page.scroll_down_to_save_button()
         assets_page.click_save_button()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -124,6 +134,8 @@ class TestSortAssets(SetupTestCase):
         assets_page.fill_Name_input_field("CCC_Asset")
         assets_page.scroll_down_to_save_button()
         assets_page.click_save_button()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 

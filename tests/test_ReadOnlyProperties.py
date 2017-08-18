@@ -144,6 +144,8 @@ class TestReadOnlyProperties(SetupTestCase):
         assets_page.fill_new_mobile_number2("+61212345678")
         assets_page.scroll_down_to_save_button()
         assets_page.click_save_button()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -164,6 +166,8 @@ class TestReadOnlyProperties(SetupTestCase):
         assets_page.save_option_list()
         assets_page.scroll_down_to_save_button()
         assets_page.save_edited_asset()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -183,7 +187,7 @@ class TestReadOnlyProperties(SetupTestCase):
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
-        # Repeat the steps for Event
+        # Repeat the steps for Event                                                                                EVENTS !!!!!!!
         # create new Event -> Do not select any options for is read only Y/N
         main_page.open_EVENTS()
         events_page = LoadClass.load_page('EventsPage')
@@ -194,9 +198,9 @@ class TestReadOnlyProperties(SetupTestCase):
         events_page.fill_Name_input_field("Read_only")
 
         # Verify that the second set of fields is hidden
-        assets_page.scroll_down_to_add_media_button()
+        common_page.scroll_down_to_add_media_button()
         assets_page.check_invisibility_of_second_set_of_fields()
-        assets_page.scroll_up_to_name_field()
+        common_page.scroll_up_to_name_field()
 
         # Set is Read only = Yes A and Yes B
         events_page.read_only_option_list()
@@ -209,8 +213,8 @@ class TestReadOnlyProperties(SetupTestCase):
         #events_page.check_fields_for_values_and_read_only_property()
 
         # Change the value of fields in the second set of fields and save the Event
-        events_page.scroll_up_to_name_field()
-        events_page.scroll_down_to_second_set_of_fields()
+        common_page.scroll_up_to_name_field()
+        common_page.scroll_down_to_second_set_of_fields()
         events_page.fill_new_single_line_text2("test")
         events_page.fill_new_phone_number2("+61212345678")
         events_page.fill_new_multi_line_text2("test")
@@ -222,6 +226,8 @@ class TestReadOnlyProperties(SetupTestCase):
         events_page.fill_new_mobile_number2("+61212345678")
         events_page.scroll_down_to_save_button()
         events_page.click_save_button()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
@@ -242,6 +248,8 @@ class TestReadOnlyProperties(SetupTestCase):
         events_page.save_option_list()
         events_page.scroll_down_to_save_button()
         events_page.click_save_button()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 

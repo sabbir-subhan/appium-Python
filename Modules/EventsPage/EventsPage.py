@@ -638,11 +638,16 @@ class EventsPage(BasePage):
         self.assertIsNotNone(field_to_restore_1_header)
 
         self.switch_context_to_native()
-        # field_to_restore_1_header = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_1_HEADER)
-        # self.assertIsNotNone(field_to_restore_1_header)
-        field_to_restore_1_value = self.driver.find_element(*self.configuration.EventEditScreen.
-                                                            FIELD_TO_RESTORE_1_VALUE)
-        self.assertIsNotNone(field_to_restore_1_value)
+
+        try:
+            field_to_restore_1_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_1_VALUE)
+            self.assertIsNotNone(field_to_restore_1_value)
+        except NoSuchElementException:
+            events_page = LoadClass.load_page('EventsPage')
+            events_page.setDriver(self.driver)
+            events_page.scroll_down_to_option_list()
+            field_to_restore_1_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_1_VALUE)
+            self.assertIsNotNone(field_to_restore_1_value)
 
     def check_restored_field_2(self):
 
@@ -653,12 +658,16 @@ class EventsPage(BasePage):
         self.assertIsNotNone(field_to_restore_2_header)
 
         self.switch_context_to_native()
-        # field_to_restore_2_header = self.driver.find_element(*self.configuration.EventEditScreen.
-        #                                                      FIELD_TO_RESTORE_2_HEADER)
-        # self.assertIsNotNone(field_to_restore_2_header)
-        field_to_restore_2_value = self.driver.find_element(*self.configuration.EventEditScreen.
-                                                            FIELD_TO_RESTORE_2_VALUE)
-        self.assertIsNotNone(field_to_restore_2_value)
+
+        try:
+            field_to_restore_2_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_2_VALUE)
+            self.assertIsNotNone(field_to_restore_2_value)
+        except NoSuchElementException:
+            events_page = LoadClass.load_page('EventsPage')
+            events_page.setDriver(self.driver)
+            events_page.scroll_down_to_option_list()
+            field_to_restore_2_value = self.driver.find_element(*self.configuration.EventEditScreen.FIELD_TO_RESTORE_2_VALUE)
+            self.assertIsNotNone(field_to_restore_2_value)
 
     def check_hidden_field_1(self):
 
@@ -1016,12 +1025,150 @@ class EventsPage(BasePage):
         logging.info("click option list - Is Read Only ?")
 
         try:
-            option_list = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_READ_ONLY)
-        except NoSuchElementException:
-            option_list = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_READ_ONLY_EDIT)
-        self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
-        option_list.click()
+            option_list = self.driver.find_element(*self.configuration.EventEditScreen.OPTION_LIST_READ_ONLY)
+            if option_list.is_displayed():
+                self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
+                option_list.click()
+            else:
+                raise ValueError("element not displayed")
+        except NoSuchElementException and ValueError:
+            option_list = self.driver.find_element(*self.configuration.EventEditScreen.OPTION_LIST_READ_ONLY_EDIT)
+            if option_list.is_displayed():
+                self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
+                option_list.click()
+            else:
+                self.fail("Read Only option list, not found")
 
         self.switch_context_to_native()
+
+    def fill_new_single_line_text2(self, text):
+
+        logging.info("fill new single line text 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.EventEditScreen.NEW_SINGLE_LINE_TEXT2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_phone_number2(self, text):
+
+        logging.info("fill new phone number 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.EventEditScreen.NEW_PHONE_NUMBER2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_multi_line_text2(self, text):
+
+        logging.info("fill new multi line text 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.EventEditScreen.NEW_MULTI_LINE_TEXT2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_fax_number2(self, text):
+
+        logging.info("fill new fax number 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.EventEditScreen.NEW_FAX_NUMBER2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_mobile_number2(self, text):
+
+        logging.info("fill new mobile number 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.EventEditScreen.NEW_MOBILE_NUMBER2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_email_address2(self, text):
+
+        logging.info("fill new email address 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.EventEditScreen.NEW_EMAIL_ADDRESS2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_rich_text2(self, text):
+
+        logging.info("fill new rich text 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.EventEditScreen.NEW_RICH_TEXT2)
+        self.assertIsNotNone(field, "input field not found")
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_number2(self, text):
+
+        logging.info("fill new number 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.EventEditScreen.NEW_NUMBER2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_website_address2(self, text):
+
+        logging.info("fill new website address 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.EventEditScreen.NEW_WEBSITE_ADDRESS2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def scroll_down_one_view(self):
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.scroll_down_one_view()
 
 

@@ -125,6 +125,8 @@ class TestMaps(SetupTestCase):
         map_page.double_tap_on_map()
         common_page.take_screenshot("Map_with_all_geometry")
         map_page.save_map()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 

@@ -39,6 +39,7 @@ class CommonScreen:
     FIRST_INPUT_FIELD = (MobileBy.XPATH, '//UIATextField[1]')  # locating input field by xpath with name won't work
     ADD_MEDIA = (MobileBy.NAME, 'Add media')
     ADD_MEDIA2 = (MobileBy.XPATH, '//UIAButton[@name="Add media"]')
+    POPUP_UNFILLED_FIELDS = (MobileBy.XPATH, '//UIAStaticText[@name[contains(., "Required fields are not filled")]]')  # Validation error
 
 
 class TopBar:
@@ -226,6 +227,9 @@ class EventEditScreen:
     OPTION_LIST_VALUE_1 = (MobileBy.XPATH, '//UIAStaticText[@name="1"]')
     OPTION_LIST_VALUE_2 = (MobileBy.XPATH, '//UIAStaticText[@name="2"]')
     OPTION_LIST_VALUE_3 = (MobileBy.XPATH, '//UIAStaticText[@name="3"]')
+    OPTION_LIST_VALUE_1_iPad = (MobileBy.XPATH, '//UIATableCell[@name="1"]')
+    OPTION_LIST_VALUE_2_iPad = (MobileBy.XPATH, '//UIATableCell[@name="2"]')
+    OPTION_LIST_VALUE_3_iPad = (MobileBy.XPATH, '//UIATableCell[@name="3"]')
     FIELD_TO_RESTORE_1_HEADER = (MobileBy.XPATH, '//UIAStaticText[@name="field to restore"]')
     FIELD_TO_RESTORE_1_VALUE = (MobileBy.XPATH, '//UIATextField[@value="value for field 1"]')
     FIELD_TO_RESTORE_2_HEADER = (MobileBy.XPATH, '//UIAStaticText[@name="New email address"]')
@@ -375,8 +379,8 @@ class ReportsScreen:
     # LODGING_AGENCY = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAPopover[1]/UIATableView[1]/UIATableCell[2]')
     PUBLISH_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Publish"]')
     CREATED_REPORT_WITH_ALL_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "Large")]]')
-    CREATED_REPORT_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "chooser fields")]]')
-    CREATED_REPORT_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//UIALink[@name[contains(., "assigned question")]]')
+    CREATED_REPORT_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "chooser_fields")]]')
+    CREATED_REPORT_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//UIALink[@name[contains(., "assigned_question")]]')
     REPORT_TYPE_WITH_ALL_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_for_tests")]]')
     REPORT_TYPE_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_chooser_fields")]]')
     REPORT_TYPE_WITH_ON_CREATE_APPROVAL_WORKFLOW = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_on_create_approval")]]')
@@ -440,6 +444,8 @@ class RisksScreen:
     NEW_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "New")]]')
     VIEW_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "View")]]')
     STATUS_SELECTOR = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAElement[1]')
+    RISK_TYPE_FOR_TEST = (MobileBy.XPATH, '//UIALink[@name[contains(., "new_risk_type")]]')
+    RISK_TYPE_WITH_OPTION_LIST = (MobileBy.XPATH, '//UIALink[@name[contains(., "risk_with_option_list")]]')
 
 
 class AssetsScreen:

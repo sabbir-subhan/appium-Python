@@ -626,3 +626,5 @@ class Android(CommonPage):
 
         logging.info("power button")
         self.driver.press_keycode(26)
+
+

@@ -2,8 +2,6 @@
 
 from Modules.AssetsPage.AssetsPage import AssetsPage
 import logging
-from appium.webdriver.common.touch_action import TouchAction
-from time import sleep
 
 
 class IOS(AssetsPage):
@@ -40,13 +38,14 @@ class IOS(AssetsPage):
 
     def scroll_up_to_name_field(self):
         """Method to scroll up to 'Name' input field"""
-
+        
         logging.info("scroll down to Name input field")
         scroll = 10
         while scroll > 0:
             logging.info("check if Name input field is visible")
-            name_input_field = self.driver.find_element(*self.configuration.CommonScreen.FIRST_INPUT_FIELD)
-            if name_input_field.is_displayed():
+            # name_input_field = self.driver.find_element(*self.configuration.CommonScreen.FIRST_INPUT_FIELD)
+            name_input_field = self.driver.find_elements(*self.configuration.CommonScreen.FIRST_INPUT_FIELD)
+            if name_input_field[0].is_displayed():
                 break
             else:
                 logging.info("scroll up to Name input field")
@@ -67,16 +66,16 @@ class IOS(AssetsPage):
         self.driver.execute_script("mobile: scroll", {"direction": "up"})
         self.driver.execute_script("mobile: scroll", {"direction": "up"})
 
-    def read_only_option_list(self):
-
-        logging.info("click option list - Is Read Only ?")
-
-        sleep(1)
-        option_list = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_READ_ONLY_IOS)
-        self.assertIsNot(option_list, "option list - Is Read Only ?, not found")
-        action = TouchAction(self.driver)
-        action.tap(element=option_list, count=1).perform()
-        sleep(1)
+    # def read_only_option_list(self):
+    #
+    #     logging.info("click option list - Is Read Only ?")
+    #
+    #     sleep(1)
+    #     option_list = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_READ_ONLY_IOS)
+    #     self.assertIsNot(option_list, "option list - Is Read Only ?, not found")
+    #     action = TouchAction(self.driver)
+    #     action.tap(element=option_list, count=1).perform()
+    #     sleep(1)
 
     def scroll_down_to_second_set_of_fields(self):
 

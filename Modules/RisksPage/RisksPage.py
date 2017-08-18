@@ -3,7 +3,6 @@
 from Modules.BasePage.BasePage import BasePage
 import logging
 from time import sleep
-# from appium.webdriver.common.touch_action import TouchAction
 from selenium.common.exceptions import *
 
 
@@ -430,4 +429,21 @@ class RisksPage(BasePage):
             pass
 
         self.switch_context_to_native()
+
+    def choose_risk_type_for_test(self):
+
+        logging.info("choose Risk type for test")
+
+        risk_type_for_test = self.driver.find_element(*self.configuration.RisksScreen.RISK_TYPE_FOR_TEST)
+        self.assertIsNotNone(risk_type_for_test, "Risk type not found")
+        risk_type_for_test.click()
+
+    def choose_risk_with_option_list(self):
+
+        logging.info("choose Risk type with option list")
+
+        risk_type = self.driver.find_element(*self.configuration.RisksScreen.RISK_TYPE_WITH_OPTION_LIST)
+        self.assertIsNotNone(risk_type, "Risk type not found")
+        risk_type.click()
+
 

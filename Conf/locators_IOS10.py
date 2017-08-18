@@ -28,6 +28,7 @@ class CommonScreen:
     FIRST_INPUT_FIELD = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')  # locating input field by xpath with name won't work
     ADD_MEDIA = (MobileBy.NAME, 'Add media')
     ADD_MEDIA2 = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Add media"]')
+    POPUP_UNFILLED_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "Required fields are not filled")]]')  # Validation error
 
 
 class TopBar:
@@ -233,6 +234,9 @@ class EventEditScreen:
     OPTION_LIST_VALUE_1 = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="1"]')
     OPTION_LIST_VALUE_2 = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="2"]')
     OPTION_LIST_VALUE_3 = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="3"]')
+    OPTION_LIST_VALUE_1_iPad = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="1"]')
+    OPTION_LIST_VALUE_2_iPad = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="2"]')
+    OPTION_LIST_VALUE_3_iPad = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="3"]')
     FIELD_TO_RESTORE_1_HEADER = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="field to restore"]')
     FIELD_TO_RESTORE_1_VALUE = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="value for field 1"]')
     FIELD_TO_RESTORE_2_HEADER = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="New email address"]')
@@ -388,10 +392,11 @@ class ReportsScreen:
     # LODGING_AGENCY = (MobileBy.XPATH, '//XCUIElementTypePopover/XCUIElementTypeTableView/XCUIElementTypeTableCell[2]')
     LODGING_AGENCY = (MobileBy.XPATH, '//XCUIElementTypeCell/XCUIElementTypeStaticText[@value="contact_group_for_tests"]')  # contact_group_for_tests
     PUBLISH_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Publish"]')
-    # CREATED_REPORT_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Large")]]')
-    CREATED_REPORT_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="Large Report"]')
-    CREATED_REPORT_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "chooser fields")]]')
-    CREATED_REPORT_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "assigned question")]]')
+    CREATED_REPORT_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Large")]]')
+    # CREATED_REPORT_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="Large Report"]')
+    # CREATED_REPORT_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="Large"]')
+    CREATED_REPORT_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "chooser_fields")]]')
+    CREATED_REPORT_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "assigned_question")]]')
     REPORT_TYPE_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_for_tests")]]')
     REPORT_TYPE_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_with_chooser_fields")]]')
     REPORT_TYPE_WITH_ON_CREATE_APPROVAL_WORKFLOW = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_with_on_create_approval")]]')
@@ -459,13 +464,16 @@ class ComposeScreen:
 
 class RisksScreen:
     """A class for handling Risks screen"""
-    CHOOSE_STATUS_IMPLEMENTED_iPad = (MobileBy.XPATH, '//XCUIElementTypeTableCell[@name="Implemented"]')
+    # CHOOSE_STATUS_IMPLEMENTED_iPad = (MobileBy.XPATH, '//XCUIElementTypeTableCell[@name="Implemented"]')
+    CHOOSE_STATUS_IMPLEMENTED_iPad = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="Implemented"]')
     CREATE_RISK_REGISTER = (MobileBy.ACCESSIBILITY_ID, 'Create risk register')
     PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.XPATH, '')
     NEW_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "New")]]')
     VIEW_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "View")]]')
     # STATUS_SELECTOR = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeWebView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]')
     STATUS_SELECTOR = (MobileBy.XPATH, '//XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]')
+    RISK_TYPE_FOR_TEST = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "new_risk_type")]]')
+    RISK_TYPE_WITH_OPTION_LIST = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "risk_with_option_list")]]')
 
 
 class AssetsScreen:

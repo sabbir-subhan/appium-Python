@@ -86,6 +86,8 @@ class TestContactGroupsVisibility(SetupTestCase):
         contacts_page.type_name_for_new_contact_group("for_all")
         contacts_page.scroll_down_to_save_button()
         contacts_page.save_new_contact_group()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
 
         contacts_page.click_new_button()
         contacts_page.add_new_contact_group()
@@ -95,6 +97,8 @@ class TestContactGroupsVisibility(SetupTestCase):
         contacts_page.click_read_access_level_for_new_group()
         contacts_page.option_list_administrators_only()
         contacts_page.save_new_contact_group()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
 
         contacts_page.clear_Search_field()
         contacts_page.type_text_into_search_field("for_all")
@@ -107,6 +111,8 @@ class TestContactGroupsVisibility(SetupTestCase):
         contacts_page.type_first_name_for_new_contact("low")
         contacts_page.scroll_down_to_save_button()
         contacts_page.save_new_contact()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()
 
@@ -123,6 +129,8 @@ class TestContactGroupsVisibility(SetupTestCase):
         contacts_page.type_first_name_for_new_contact("high")
         contacts_page.scroll_down_to_save_button()
         contacts_page.save_new_contact()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()
 
@@ -155,6 +163,8 @@ class TestContactGroupsVisibility(SetupTestCase):
         contacts_page.type_first_name_for_new_contact("created_by_low")
         contacts_page.scroll_down_to_save_button()
         contacts_page.save_new_contact()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()
 

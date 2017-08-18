@@ -3,7 +3,6 @@
 from Modules.LogsPage.LogsPage import LogsPage
 import logging
 from time import sleep
-from selenium.common.exceptions import *
 from appium.webdriver.common.touch_action import TouchAction
 from Modules.load_class import LoadClass
 
@@ -12,11 +11,11 @@ class IOS(LogsPage):
 
     def click_on_lodging_agency_picker(self):
 
-        sleep(1)
         logging.info("click on 'Lodging Agency' picker")
         lodging_agency_picker = self.driver.find_element(*self.configuration.LogsScreen.LODGING_AGENCY_PICKER)
         self.assertIsNotNone(lodging_agency_picker, "Lodging Agency picker was not found")
         action = TouchAction(self.driver)
+        sleep(1)
         action.tap(element=lodging_agency_picker, count=1).perform()
         sleep(1)
 

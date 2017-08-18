@@ -3,7 +3,6 @@
 from Modules.AssetsPage.AssetsPage import AssetsPage
 import logging
 from time import sleep
-from Modules.load_class import LoadClass
 
 
 class Android(AssetsPage):

@@ -89,6 +89,7 @@ class TestContactsDirectory(SetupTestCase):
         contacts_page.type_address_country("Australia")
         contacts_page.scroll_down_to_save_button()
         contacts_page.save_new_contact()
+        common_page.check_popup_about_unfilled_fields()
         common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()

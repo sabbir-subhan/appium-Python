@@ -118,7 +118,9 @@ class AssetsPage(BasePage):
 
     def type_cost_per_unit(self, text):
 
+        sleep(1)
         self.switch_context_to_webview()
+        sleep(1)
 
         logging.info("type cost per unit")
         cost_per_unit = self.driver.find_element(*self.configuration.AssetsScreen.COST_PER_UNIT_FIELD)
@@ -551,10 +553,18 @@ class AssetsPage(BasePage):
 
         try:
             option_list = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_READ_ONLY)
-        except NoSuchElementException:
+            if option_list.is_displayed():
+                self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
+                option_list.click()
+            else:
+                raise ValueError("element not displayed")
+        except NoSuchElementException and ValueError:
             option_list = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_READ_ONLY_EDIT)
-        self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
-        option_list.click()
+            if option_list.is_displayed():
+                self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
+                option_list.click()
+            else:
+                self.fail("Read Only option list, not found")
 
         self.switch_context_to_native()
 
