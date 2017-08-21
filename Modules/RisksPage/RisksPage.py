@@ -19,7 +19,7 @@ class RisksPage(BasePage):
 
         self.switch_context_to_native()
 
-    def type_name_for_new_risk_register(self):
+    def type_name_for_new_risk_register(self, text):
 
         self.switch_context_to_webview()
 
@@ -28,7 +28,8 @@ class RisksPage(BasePage):
         name = self.driver.find_element(*self.configuration.RisksScreen.NAME_FOR_NEW_RISK_REGISTER)
         self.assertIsNotNone(name, "name input field was not found")
         name.click()
-        name.send_keys('Appium - new risk register')
+        # name.send_keys('Appium - new risk register')
+        name.send_keys(text)
 
         self.switch_context_to_native()
 
@@ -103,7 +104,7 @@ class RisksPage(BasePage):
 
         self.switch_context_to_native()
 
-    def type_name_for_new_context(self):
+    def type_name_for_new_context(self, text):
 
         self.switch_context_to_webview()
 
@@ -112,7 +113,8 @@ class RisksPage(BasePage):
         self.assertIsNotNone(name_field, "name field not found")
         name_field.clear()
         # name_field.click()
-        name_field.send_keys("Appium new context")
+        # name_field.send_keys("Appium new context")
+        name_field.send_keys(text)
 
         self.switch_context_to_native()
 
@@ -173,7 +175,7 @@ class RisksPage(BasePage):
 
         self.switch_context_to_native()
 
-    def type_name_for_new_risk(self):
+    def type_name_for_new_risk(self, text):
 
         self.switch_context_to_webview()
 
@@ -182,7 +184,8 @@ class RisksPage(BasePage):
         self.assertIsNotNone(name_field, "name field not found")
         name_field.clear()
         name_field.click()
-        name_field.send_keys("Appium new risk")
+        # name_field.send_keys("Appium new risk")
+        name_field.send_keys(text)
 
         self.switch_context_to_native()
 

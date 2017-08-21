@@ -642,36 +642,41 @@ class AssetsPage(BasePage):
 
     def check_if_first_set_of_fields_in_asset_with_option_list_is_disabled(self):
 
-        logging.info('check if "New phone number" field in first set of fields inside asset with option list,'
+        logging.info('check if "New phone number" field in first set of fields inside object with option list,'
                      ' is disabled - field should be read only')
-        self.switch_context_to_webview()
         sleep(1)
         try:
-            new_date_optional_time_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_PHONE_NUMBER_DISABLED)
-            if new_date_optional_time_disabled.is_displayed():
-                self.assertIsNotNone(new_date_optional_time_disabled, "New phone number field not found")
-            else:
-                logging.warning("New phone number field is not read only")
+            new_date_optional_time_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_PHONE_NUMBER_DISABLED_1)
         except NoSuchElementException:
-            # self.fail("New phone number field is not read only")
-            pass
-
-        self.switch_context_to_native()
+            new_date_optional_time_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_PHONE_NUMBER_DISABLED_2)
+        # if new_date_optional_time_disabled.is_displayed():  # not working
+        if new_date_optional_time_disabled:
+            self.assertIsNotNone(new_date_optional_time_disabled, "New phone number field not found")
+            logging.info("New phone number field is disabled")
+        else:
+            logging.warning("New phone number field is not read only")
+            self.fail("New phone number field is not read only")
 
     def check_fields_for_values_and_read_only_property(self):
 
-        logging.info('check read only fields')
+        logging.info('check read only fields for read only property and default values')
 
         try:
-            new_phone_number_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_PHONE_NUMBER_DISABLED)
-            new_fax_number_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_FAX_NUMBER_DISABLED)
+            try:
+                new_phone_number_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_PHONE_NUMBER_DISABLED_1)
+            except NoSuchElementException:
+                new_phone_number_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_PHONE_NUMBER_DISABLED_2)
+            try:
+                new_fax_number_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_FAX_NUMBER_DISABLED_1)
+            except NoSuchElementException:
+                new_fax_number_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_FAX_NUMBER_DISABLED_2)
             new_email_address_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_EMAIL_ADDRESS_DISABLED)
             self.assertIsNotNone(new_phone_number_disabled, "new phone number disabled field not found")
             self.assertIsNotNone(new_fax_number_disabled, "new fax number disabled field not found")
             self.assertIsNotNone(new_email_address_disabled, "new email address disabled field not found")
         except NoSuchElementException:
-            logging.warning("Read only fields are not read only")
-            pass
+            self.fail("Read only fields are not read only or/and default values are not set")
+            # pass
 
     def check_fields_for_default_values(self):
 

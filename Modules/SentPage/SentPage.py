@@ -18,7 +18,8 @@ class SentPage(BasePage):
         logging.info('check sent communication')
         try:
             sent_communication_email = self.driver.find_elements(*self.configuration.SentScreen.SENT_COMMUNICATIONS_EMAIL)
-            self.assertIsNotNone(sent_communication_email[1], 'Short message, Email communications not found')
+            self.assertIsNotNone(sent_communication_email[0], 'Short message, Email communications not found')
+            # self.assertIsNotNone(sent_communication_email[1], 'Short message, Email communications not found')
         except NoSuchElementException and IndexError:
             logging.warning("Short message, Email communications not found")
 
@@ -48,7 +49,7 @@ class SentPage(BasePage):
         # sleep(2)
         # search_field.send_keys(text)
         # sleep(1)
-
+        
         events_page = LoadClass.load_page('EventsPage')
         events_page.setDriver(self.driver)
         events_page.type_text_into_search_field(text)

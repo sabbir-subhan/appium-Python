@@ -414,6 +414,14 @@ class ReportsPage(BasePage):
         choose_report_type.click()
         sleep(1)
 
+    def choose_report_type_with_option_list(self):
+
+        logging.info('choose report type = "with_option_list"')
+        choose_report_type = self.driver.find_element(*self.configuration.ReportsScreen.REPORT_TYPE_WITH_OPTION_LIST)
+        self.assertIsNotNone(choose_report_type, 'report type = "with_option_list" not found')
+        choose_report_type.click()
+        sleep(1)
+
     def edit_created_report_with_all_fields(self):
 
         logging.info('edit created report, containing word "Large"')

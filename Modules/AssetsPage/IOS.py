@@ -2,6 +2,7 @@
 
 from Modules.AssetsPage.AssetsPage import AssetsPage
 import logging
+from selenium.common.exceptions import NoSuchElementException
 
 
 class IOS(AssetsPage):
@@ -13,13 +14,35 @@ class IOS(AssetsPage):
         scroll = 20
         while scroll > 0:
             logging.info("check if save button is visible")
-            save_button = self.driver.find_element(*self.configuration.CommonScreen.SAVE_BUTTON)
-            if save_button.is_displayed():
-                break
-            else:
+            try:
+                save_button = self.driver.find_element(*self.configuration.CommonScreen.SAVE_BUTTON)
+                if save_button.is_displayed():
+                    logging.info("save button is visible")
+                    break
+                else:
+                    logging.info("scroll down to save button")
+                    self.driver.execute_script("mobile: scroll", {"direction": "down"})
+                    scroll = scroll - 1
+            except NoSuchElementException:
                 logging.info("scroll down to save button")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
                 scroll = scroll - 1
+
+    # def scroll_down_to_save_button(self):
+    #     """Method to scroll down to bottom of the screen - to 'Save' button"""
+    #
+    #     logging.info("scroll down to Save button")
+    #     scroll = 20
+    #     while scroll > 0:
+    #         logging.info("check if save button is visible")
+    #         save_button = self.driver.find_element(*self.configuration.CommonScreen.SAVE_BUTTON)
+    #         if save_button.is_displayed():
+    #             logging.info("save button is visible")
+    #             break
+    #         else:
+    #             logging.info("scroll down to save button")
+    #             self.driver.execute_script("mobile: scroll", {"direction": "down"})
+    #             scroll = scroll - 1
 
     def scroll_down_to_add_media_button(self):
         """Method to scroll down to 'Add Media' button"""
@@ -43,9 +66,10 @@ class IOS(AssetsPage):
         scroll = 10
         while scroll > 0:
             logging.info("check if Name input field is visible")
-            # name_input_field = self.driver.find_element(*self.configuration.CommonScreen.FIRST_INPUT_FIELD)
-            name_input_field = self.driver.find_elements(*self.configuration.CommonScreen.FIRST_INPUT_FIELD)
-            if name_input_field[0].is_displayed():
+            name_input_field = self.driver.find_element(*self.configuration.CommonScreen.FIRST_INPUT_FIELD)
+            # name_input_field = self.driver.find_elements(*self.configuration.CommonScreen.FIRST_INPUT_FIELD)
+            # if name_input_field[0].is_displayed():
+            if name_input_field.is_displayed():
                 break
             else:
                 logging.info("scroll up to Name input field")

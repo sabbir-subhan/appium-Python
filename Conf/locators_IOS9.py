@@ -204,7 +204,8 @@ class TypesOfEventsScreen:
 
 class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
-    SAVE_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Save"]')
+    SAVE_BUTTON = CommonScreen.SAVE_BUTTON
+    # SAVE_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Save"]')
     NAME_FIELD = (MobileBy.XPATH, '//UIAScrollView/UIAWebView/UIATextField[@name="Name"]')
     NAME_FIELD_by_index = (MobileBy.XPATH, '//UIAScrollView/UIAWebView/UIATextField[1]')
     SEVERITY_LEVEL_SELECTOR = (MobileBy.XPATH, '//UIAElement[2]')
@@ -387,6 +388,7 @@ class ReportsScreen:
     REPORT_TYPE_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_on_load_sequence")]]')
     REPORT_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_visibility_rules")]]')
     REPORT_TYPE_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_assigned_question")]]')
+    REPORT_TYPE_WITH_OPTION_LIST = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_option_list")]]')
     MEDIA_RELEASE_FIELD = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIATextField[2]')
 
 
@@ -464,8 +466,10 @@ class AssetsScreen:
     NEW_WEBSITE_ADDRESS = (MobileBy.XPATH, '//UIATextField[@value="http://www.google.com" and @enabled="true"]')
     NEW_SINGLE_LINE_TEXT = (MobileBy.XPATH, '//UIATextField[@value="test_appium_single_line" and @enabled="true"]')
     NEW_MULTI_LINE_TEXT = (MobileBy.XPATH, '//UIATextField[@value="test_appium_multi_line" and @enabled="true"]')
-    NEW_PHONE_NUMBER_DISABLED = (MobileBy.XPATH, '//UIATextField[@value="+61212345111" and @enabled="false"]')
-    NEW_FAX_NUMBER_DISABLED = (MobileBy.XPATH, '//UIATextField[@value="+61212345222" and @enabled="false"]')
+    NEW_PHONE_NUMBER_DISABLED_1 = (MobileBy.XPATH, '//UIATextField[@value="+61212345111" and @enabled="false"]')
+    NEW_FAX_NUMBER_DISABLED_1 = (MobileBy.XPATH, '//UIATextField[@value="+61212345222" and @enabled="false"]')
+    NEW_PHONE_NUMBER_DISABLED_2 = (MobileBy.XPATH, '//UIATextField[@value="(02) 1234 5111" and @enabled="false"]')
+    NEW_FAX_NUMBER_DISABLED_2 = (MobileBy.XPATH, '//UIATextField[@value="(02) 1234 5222" and @enabled="false"]')
     NEW_EMAIL_ADDRESS_DISABLED = (MobileBy.XPATH, '//UIATextField[@value="testbitnoise@gmail.com" and @enabled="false"]')
     NEW_WEBSITE_ADDRESS_DISABLED = (MobileBy.XPATH, '//UIATextField[@value="http://www.google.com" and @enabled="false"]')
     NEW_SINGLE_LINE_TEXT_DISABLED = (MobileBy.XPATH, '//UIATextField[@value="test_appium_single_line" and @enabled="false"]')

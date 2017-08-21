@@ -225,7 +225,8 @@ class TypesOfEventsScreen:
 
 class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
-    SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
+    SAVE_BUTTON = CommonScreen.SAVE_BUTTON
+    # SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
     # SAVE_BUTTON = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains(., "Save")]]')
     NAME_FIELD = (MobileBy.ID, 'name')
     NAME_FIELD2 = (MobileBy.XPATH, '//android.widget.EditText[@index="1"]')
@@ -462,6 +463,7 @@ class ReportsScreen:
     REPORT_TYPE_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_with_on_load_sequence")]]')
     REPORT_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_with_visibility_rules")]]')
     REPORT_TYPE_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_with_assigned_question")]]')
+    REPORT_TYPE_WITH_OPTION_LIST = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "report_with_option_list")]]')
     MEDIA_RELEASE_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc="Media release Editor toolbars "]/android.view.View[2]/android.view.View[2]/android.view.View[1]/android.view.View[1]')
 
 
@@ -557,8 +559,10 @@ class AssetsScreen:
     NEW_WEBSITE_ADDRESS = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="http://www.google.com" and @enabled="true"]')
     NEW_SINGLE_LINE_TEXT = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="test_appium_single_line" and @enabled="true"]')
     NEW_MULTI_LINE_TEXT = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="test_appium_multi_line" and @enabled="true"]')
-    NEW_PHONE_NUMBER_DISABLED = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="+61212345111" and @enabled="false"]')
-    NEW_FAX_NUMBER_DISABLED = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="+61212345222" and @enabled="false"]')
+    NEW_PHONE_NUMBER_DISABLED_1 = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="+61212345111" and @enabled="false"]')
+    NEW_FAX_NUMBER_DISABLED_1 = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="+61212345222" and @enabled="false"]')
+    NEW_PHONE_NUMBER_DISABLED_2 = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="(02) 1234 5111" and @enabled="false"]')
+    NEW_FAX_NUMBER_DISABLED_2 = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="(02) 1234 5222" and @enabled="false"]')
     NEW_EMAIL_ADDRESS_DISABLED = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="testbitnoise@gmail.com" and @enabled="false"]')
     NEW_WEBSITE_ADDRESS_DISABLED = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="http://www.google.com" and @enabled="false"]')
     NEW_SINGLE_LINE_TEXT_DISABLED = (MobileBy.XPATH, '//android.widget.EditText[@content-desc="test_appium_single_line" and @enabled="false"]')

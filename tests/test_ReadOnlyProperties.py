@@ -154,6 +154,7 @@ class TestReadOnlyProperties(SetupTestCase):
         assets_page.clear_Search_field()
         assets_page.type_text_into_search_field("Read_only")
         assets_page.open_existing_asset()
+        common_page.wait_for_app_loading()
         assets_page.click_edit_button()
         assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
 
@@ -187,7 +188,8 @@ class TestReadOnlyProperties(SetupTestCase):
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
-        # Repeat the steps for Event                                                                                EVENTS !!!!!!!
+        # Repeat the steps for Event
+        logging.info('       MOVING TO "Events"')
         # create new Event -> Do not select any options for is read only Y/N
         main_page.open_EVENTS()
         events_page = LoadClass.load_page('EventsPage')
@@ -209,8 +211,8 @@ class TestReadOnlyProperties(SetupTestCase):
         assets_page.save_option_list()
 
         # Check that the first set of fields is still Read only while set to their default values.
-        #events_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
-        #events_page.check_fields_for_values_and_read_only_property()
+        assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
+        assets_page.check_fields_for_values_and_read_only_property()
 
         # Change the value of fields in the second set of fields and save the Event
         common_page.scroll_up_to_name_field()
@@ -221,7 +223,6 @@ class TestReadOnlyProperties(SetupTestCase):
         events_page.fill_new_fax_number2("+61212345678")
         events_page.fill_new_email_address2("test90@onet.pl")
         events_page.fill_new_website_address2("http://www.google.com")
-        events_page.fill_new_rich_text2(" test")
         events_page.fill_new_number2(" +61212345678 ")
         events_page.fill_new_mobile_number2("+61212345678")
         events_page.scroll_down_to_save_button()
@@ -232,12 +233,12 @@ class TestReadOnlyProperties(SetupTestCase):
         main_page.check_presence_of_events_button()
 
         # Edit the details of created Event and Check that the first set of fields is still Read only
-        main_page.open_ASSETS()
+        main_page.open_EVENTS()
         events_page.clear_Search_field()
         events_page.type_text_into_search_field("Read_only")
-        events_page.open_existing_asset()
+        events_page.open_previously_created_event()
         events_page.click_edit_button()
-        events_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
+        assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
 
         # Uncheck all checkboxes in Is Read only ?, check "No" and then save the Event
         events_page.fill_name_for_edited_asset(" edit")
@@ -253,23 +254,110 @@ class TestReadOnlyProperties(SetupTestCase):
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
 
-        main_page.open_ASSETS()
+        main_page.open_EVENTS()
         events_page.clear_Search_field()
         events_page.type_text_into_search_field("Read_only edit")
-        events_page.open_existing_asset()
+        events_page.open_previously_created_event()
         events_page.click_edit_button()
         events_page.read_only_option_list()
         assets_page.option_list_option_no()
         assets_page.option_list_option_yes_a()
         assets_page.option_list_option_yes_b()
         assets_page.save_option_list()
-        events_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
-        events_page.check_fields_for_values_and_read_only_property()
+        assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
+        assets_page.check_fields_for_values_and_read_only_property()
         common_page.hamburger_button()
         main_page.check_presence_of_events_button()
         
         # Repeat the steps for Report
+        logging.info('       MOVING TO "Reports"')
+        main_page.open_REPORTS()
+        reports_page = LoadClass.load_page('ReportsPage')
+        reports_page.setDriver(self.driver)
+        reports_page.click_create_report_button()
+        reports_page.choose_report_type_with_option_list()
+        reports_page.type_title("Read_only")
+        reports_page.click_on_lodging_agency_picker()
+        reports_page.choose_lodging_agency()
+
+        # Verify that the second set of fields is hidden
+        assets_page.scroll_down_to_add_media_button()
+        assets_page.check_invisibility_of_second_set_of_fields()
+        assets_page.scroll_up_to_name_field()
+
+        # Set is Read only = Yes A and Yes B
+        assets_page.read_only_option_list()
+        assets_page.option_list_option_yes_a()
+        assets_page.option_list_option_yes_b()
+        assets_page.save_option_list()
+
+        # Check that the first set of fields is still Read only while set to their default values.
+        assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
+        assets_page.check_fields_for_values_and_read_only_property()
+
+        reports_page.scroll_down_to_publish_button()
+        reports_page.click_publish_new_report()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
         # Repeat the steps for Risk
+        logging.info('       MOVING TO "Risks"')
+        main_page.open_RISKS()
+        risks_page = LoadClass.load_page('RisksPage')
+        risks_page.setDriver(self.driver)
+        risks_page.create_risk_register()
+        risks_page.type_name_for_new_risk_register('Read_only_register')
+        risks_page.create_new_context()
+        risks_page.scroll_down_to_save_button()
+        risks_page.click_save_button()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
+
+        risks_page.open_existing_risk_register()
+        risks_page.click_new_button()
+        risks_page.click_add_new_context()
+        risks_page.type_name_for_new_context('Read_only_context')
+        common_page.hide_keyboard()
+        risks_page.scroll_down_to_save_button()
+        risks_page.save_new_context()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        # Click on existing Risk Register > Click on existing context > Click on Add new Risk
+        main_page.open_RISKS()
+        risks_page.open_existing_risk_register()
+        risks_page.open_existing_context()
+        risks_page.click_new_button()
+        risks_page.click_add_new_risk()
+        risks_page.choose_risk_with_option_list()
+        risks_page.type_name_for_new_risk('Read_only')
+        common_page.hide_keyboard()
+
+        # Verify that the second set of fields is hidden
+        common_page.scroll_down_to_add_media_button()
+        assets_page.check_invisibility_of_second_set_of_fields()
+        common_page.scroll_up_to_name_field()
+
+        # Set is Read only = Yes A and Yes B
+        events_page.read_only_option_list()
+        assets_page.option_list_option_yes_a()
+        assets_page.option_list_option_yes_b()
+        assets_page.save_option_list()
+
+        # Check that the first set of fields is still Read only while set to their default values.
+        assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
+        assets_page.check_fields_for_values_and_read_only_property()
+
+        risks_page.scroll_down_to_save_button()
+        risks_page.save_new_risk()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
 
 
 if __name__ == '__main__':

@@ -197,7 +197,8 @@ class TypesOfEventsScreen:
 
 class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
-    SAVE_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Save"]')
+    SAVE_BUTTON = CommonScreen.SAVE_BUTTON
+    # SAVE_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Save"]')
     NAME_FIELD = (MobileBy.XPATH, '//XCUIElementTypeTextField[1]')
     NAME_FIELD_by_index = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]'
                                            '/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]'
@@ -403,6 +404,7 @@ class ReportsScreen:
     REPORT_TYPE_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_with_on_load_sequence")]]')
     REPORT_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_with_visibility_rules")]]')
     REPORT_TYPE_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_with_assigned_question")]]')
+    REPORT_TYPE_WITH_OPTION_LIST = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "report_with_option_list")]]')
     ASSETS_CHOOSER_FIELD = (MobileBy.XPATH, '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeWebView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[10]/XCUIElementTypeOther[2]')  # inside already created report
     ON_LOAD_FIELD = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="on_load"]')
     NEW_OPTION_LIST = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="New option list"]')
@@ -494,8 +496,11 @@ class AssetsScreen:
     NEW_WEBSITE_ADDRESS = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="http://www.google.com" and @enabled="true"]')
     NEW_SINGLE_LINE_TEXT = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="test_appium_single_line" and @enabled="true"]')
     NEW_MULTI_LINE_TEXT = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="test_appium_multi_line" and @enabled="true"]')
-    NEW_PHONE_NUMBER_DISABLED = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="+61212345111" and @enabled="false"]')
-    NEW_FAX_NUMBER_DISABLED = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="+61212345222" and @enabled="false"]')
+    # NEW_PHONE_NUMBER_DISABLED_1 = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="+61212345111" and @enabled="false"]')
+    NEW_PHONE_NUMBER_DISABLED_1 = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="+61212345111" and @enabled="false"]')
+    NEW_FAX_NUMBER_DISABLED_1 = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="+61212345222" and @enabled="false"]')
+    NEW_PHONE_NUMBER_DISABLED_2 = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="(02) 1234 5111" and @enabled="false"]')
+    NEW_FAX_NUMBER_DISABLED_2 = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="(02) 1234 5222" and @enabled="false"]')
     NEW_EMAIL_ADDRESS_DISABLED = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="testbitnoise@gmail.com" and @enabled="false"]')
     NEW_WEBSITE_ADDRESS_DISABLED = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="http://www.google.com" and @enabled="false"]')
     NEW_SINGLE_LINE_TEXT_DISABLED = (MobileBy.XPATH, '//XCUIElementTypeTextField[@value="test_appium_single_line" and @enabled="false"]')
