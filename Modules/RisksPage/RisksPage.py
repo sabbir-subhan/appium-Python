@@ -4,6 +4,7 @@ from Modules.BasePage.BasePage import BasePage
 import logging
 from time import sleep
 from selenium.common.exceptions import *
+from Modules.load_class import LoadClass
 
 
 class RisksPage(BasePage):
@@ -69,6 +70,12 @@ class RisksPage(BasePage):
         risks_register_search_field.send_keys("Appium")
 
         self.switch_context_to_native()
+
+    def type_text_into_search_field(self, text):
+
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.type_text_into_search_field(text)
 
     def open_existing_risk_register(self):
 
@@ -185,6 +192,19 @@ class RisksPage(BasePage):
         name_field.clear()
         name_field.click()
         # name_field.send_keys("Appium new risk")
+        name_field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def type_name_for_edit_risk(self, text):
+
+        self.switch_context_to_webview()
+
+        logging.info("type Name for edit Risk")
+        name_field = self.driver.find_element(*self.configuration.RisksScreen.NAME_FOR_EDIT_RISK)
+        self.assertIsNotNone(name_field, "name field not found")
+        name_field.clear()
+        name_field.click()
         name_field.send_keys(text)
 
         self.switch_context_to_native()
@@ -448,5 +468,158 @@ class RisksPage(BasePage):
         risk_type = self.driver.find_element(*self.configuration.RisksScreen.RISK_TYPE_WITH_OPTION_LIST)
         self.assertIsNotNone(risk_type, "Risk type not found")
         risk_type.click()
+
+    def fill_new_single_line_text2(self, text):
+
+        logging.info("fill new single line text 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.RisksScreen.NEW_SINGLE_LINE_TEXT2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_phone_number2(self, text):
+
+        logging.info("fill new phone number 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.RisksScreen.NEW_PHONE_NUMBER2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_multi_line_text2(self, text):
+
+        logging.info("fill new multi line text 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.RisksScreen.NEW_MULTI_LINE_TEXT2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_fax_number2(self, text):
+
+        logging.info("fill new fax number 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.RisksScreen.NEW_FAX_NUMBER2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_mobile_number2(self, text):
+
+        logging.info("fill new mobile number 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.RisksScreen.NEW_MOBILE_NUMBER2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_email_address2(self, text):
+
+        logging.info("fill new email address 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.RisksScreen.NEW_EMAIL_ADDRESS2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_rich_text2(self, text):
+
+        logging.info("fill new rich text 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.RisksScreen.NEW_RICH_TEXT2)
+        self.assertIsNotNone(field, "input field not found")
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_number2(self, text):
+
+        logging.info("fill new number 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.RisksScreen.NEW_NUMBER2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_website_address2(self, text):
+
+        logging.info("fill new website address 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.RisksScreen.NEW_WEBSITE_ADDRESS2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def scroll_down_one_view(self):
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.scroll_down_one_view()
+
+    def read_only_option_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click option list - Is Read Only ?")
+
+        try:
+            option_list = self.driver.find_element(*self.configuration.RisksScreen.OPTION_LIST_READ_ONLY)
+            if option_list.is_displayed():
+                self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
+                option_list.click()
+            else:
+                raise ValueError("element not displayed")
+        except NoSuchElementException and ValueError:
+            option_list = self.driver.find_element(*self.configuration.RisksScreen.OPTION_LIST_READ_ONLY_EDIT)
+            if option_list.is_displayed():
+                self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
+                option_list.click()
+            else:
+                self.fail("Read Only option list, not found")
+
+        self.switch_context_to_native()
 
 

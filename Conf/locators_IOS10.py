@@ -390,6 +390,7 @@ class TasksScreen:
 class ReportsScreen:
     """A class for handling Reports screen"""
     LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//XCUIElementTypeOther[4]/XCUIElementTypeOther[3]')
+    LODGING_AGENCY_PICKER_FIELD = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="Lodging agency"]/following-sibling::XCUIElementTypeOther[2]')
     # LODGING_AGENCY = (MobileBy.XPATH, '//XCUIElementTypePopover/XCUIElementTypeTableView/XCUIElementTypeTableCell[2]')
     LODGING_AGENCY = (MobileBy.XPATH, '//XCUIElementTypeCell/XCUIElementTypeStaticText[@value="contact_group_for_tests"]')  # contact_group_for_tests
     PUBLISH_BUTTON = (MobileBy.XPATH, '//XCUIElementTypeButton[@name="Publish"]')
@@ -426,7 +427,8 @@ class LogsScreen:
 class SentScreen:
     """A class for handling Sent screen"""
     SEARCH = EventsScreen.SEARCH_FIELD
-    SENT_COMMUNICATIONS_EMAIL = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Short message, Email")]]')
+    # SENT_COMMUNICATIONS_EMAIL = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Short message, Email")]]')
+    SENT_COMMUNICATIONS_EMAIL = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name[contains(., "Short message, Email")]]')
 
 
 class ComposeScreen:

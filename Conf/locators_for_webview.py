@@ -178,6 +178,7 @@ class EventEditScreen:
     CANCEL_BUTTON_EDIT_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                                        'a[href="#cancel"]')
     NAME_FIELD = (MobileBy.CSS_SELECTOR, 'div#emeNew>div>ul>li>div>input#name')
+    NAME_FOR_EDITED_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div>ul>li>div>input#name')
     SEVERITY_LEVEL_SELECTOR = (MobileBy.CSS_SELECTOR, 'div#emeNew>div.ui-content>ul>li>div>div>select[name="severity"]')  # for new event
     SEVERITY_LEVEL_SELECTOR_EDIT_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeEdit>div.ui-content>ul>li>div>div>select[name="severity"]')
     # CHOOSE_SEVERITY_LVL1_iPad = (MobileBy.CSS_SELECTOR, '')
@@ -499,6 +500,22 @@ class ReportsScreen:
     VIEW_ON_MAP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#reportView>div.ui-content>ul.ui-listview>li>a[href="#mapPage?geometry=true"]')  # button inside report details
     OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
     FIRST_PENDING_REPORT = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div.pending>ul.listview>li:first-child>a')
+    OPTION_LIST_READ_ONLY = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li[name="is read only ?"]>div.ui-select>div.ui-btn')
+    OPTION_LIST_READ_ONLY_EDIT = (MobileBy.CSS_SELECTOR, 'div#reportEdit>div.ui-content>ul.edit-view>li[name="is read only ?"]>div.ui-select>div.ui-btn')
+    NEW_DATE_OPTIONAL_TIME_DISABLED = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li>div.ui-input-text>input[id="new date & optional time"]:disabled')
+    NEW_PHONE_NUMBER_DISABLED = (MobileBy.CSS_SELECTOR,'div.ui-content>ul.edit-view>li>div.ui-input-text>input[id="new phone number"]:disabled')
+    NEW_PHONE_NUMBER = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li>div.ui-input-text>input[id="new phone number"]')
+    NEW_SINGLE_LINE_TEXT2 = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new single-line text2"]')
+    NEW_PHONE_NUMBER2 = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new phone number2"]')
+    NEW_MULTI_LINE_TEXT2 = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain>textarea[id="new multi-line text2"]')
+    NEW_FAX_NUMBER2 = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new fax number2"]')
+    NEW_MOBILE_NUMBER2 = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new mobile number2"]')
+    NEW_EMAIL_ADDRESS2 = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new email address2"]')
+    NEW_RICH_TEXT2 = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-ckeditor>div[id="cke_new rich text2"]>div.cke_inner>div#cke_2_contents>iframe[title="Rich Text Editor, new rich text2"]')
+    NEW_NUMBER2 = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new number2"]')
+    NEW_WEBSITE_ADDRESS2 = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new website address2"]')
+    NEW_DATE_TIME2 = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new date & time2"]')
+    NEW_DATE_OPTIONAL_TIME2 = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new date & optional time2"]')
 
 
 class SentScreen:
@@ -547,11 +564,11 @@ class RisksScreen:
                                           'a[href="#save"]')
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#riskregisterNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
-    # PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.CSS_SELECTOR, 'div#riskRegisterIndex>div.ui-content>ul.registers>li:first-child')  # not working on iOS 10
+    PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.CSS_SELECTOR, 'div#riskRegisterIndex>div.ui-content>ul.registers.listview.ui-listview>li:first-child>a')  # not working on iOS 10
     # PREVIOUSLY_CREATED_CONTEXT = (MobileBy.CSS_SELECTOR, 'div#riskcontextTreeView>div.ui-content>ul.contexts>li:first-child')
     # PREVIOUSLY_CREATED_RISK = (MobileBy.CSS_SELECTOR, 'div#riskcontextTreeView>div.ui-content>ul.risks>li:first-child')
     LIBRARY_CONTROL = (MobileBy.CSS_SELECTOR, 'div#riskcontrollibraryTreeView>div.ui-content>ul.category>li:first-child')
-    PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.CSS_SELECTOR, 'ul.registers.listview.ui-listview>li>a')
+    #PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.CSS_SELECTOR, 'ul.registers.listview.ui-listview>li>a')
     PREVIOUSLY_CREATED_CONTEXT = (MobileBy.CSS_SELECTOR, 'ul.contexts.listview.ui-listview>li>a')
     PREVIOUSLY_CREATED_RISK = (MobileBy.CSS_SELECTOR, 'ul.risks.listview.ui-listview>li>a')
     RISK_REGISTERS_LIST = (MobileBy.CSS_SELECTOR, 'ul.registers.listview.ui-listview>li:first-child>a')
@@ -563,6 +580,7 @@ class RisksScreen:
     SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input#riskregisterSearch')
     NAME_FOR_NEW_CONTEXT = (MobileBy.CSS_SELECTOR, 'div#riskcontextNew>div>ul>li.ui-field-contain.ui-li-static.ui-body-inherit>div>input#name')
     NAME_FOR_NEW_RISK = (MobileBy.CSS_SELECTOR, 'div#riskNew>div>ul>li>div>input#name')
+    NAME_FOR_EDIT_RISK = (MobileBy.CSS_SELECTOR, 'div#riskEdit>div>ul>li>div>input#name')
     SAVE_NEW_CONTEXT = (MobileBy.CSS_SELECTOR, 'div#riskcontextNew>div[data-role="footer"]>div>ul>li>a[href="#save"]')
     SAVE_NEW_RISK = (MobileBy.CSS_SELECTOR, 'div#riskNew>div[data-role="footer"]>div>ul>li>a[href="#save"]')
     OK_BUTTON = (MobileBy.CSS_SELECTOR, 'div#risklibraryTreeView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.ui-block-a>a')
@@ -583,6 +601,22 @@ class RisksScreen:
     RISK_LIBRARY = (MobileBy.CSS_SELECTOR, 'div#risklibraryTreeView>div.ui-content>ul.category>li:first-child>a')
     RISK_INSIDE_LIBRARY = (MobileBy.CSS_SELECTOR, 'div#risklibraryTreeView>div.ui-content>ul.item>li:first-child')
     CLEAR_SEARCH_FIELD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#riskRegisterIndex>div.ui-content>div.ui-input-search>a.ui-input-clear')
+    OPTION_LIST_READ_ONLY = (MobileBy.CSS_SELECTOR, 'div#riskNew>div.ui-content>ul.edit-view>li[name="is read only ?"]>div.ui-select>div.ui-btn')
+    OPTION_LIST_READ_ONLY_EDIT = (MobileBy.CSS_SELECTOR, 'div#riskEdit>div.ui-content>ul.edit-view>li[name="is read only ?"]>div.ui-select>div.ui-btn')
+    NEW_DATE_OPTIONAL_TIME_DISABLED = (MobileBy.CSS_SELECTOR, 'div#riskNew>div.ui-content>ul.edit-view>li>div.ui-input-text>input[id="new date & optional time"]:disabled')
+    NEW_PHONE_NUMBER_DISABLED = (MobileBy.CSS_SELECTOR,'div.ui-content>ul.edit-view>li>div.ui-input-text>input[id="new phone number"]:disabled')
+    NEW_PHONE_NUMBER = (MobileBy.CSS_SELECTOR, 'div#riskNew>div.ui-content>ul.edit-view>li>div.ui-input-text>input[id="new phone number"]')
+    NEW_SINGLE_LINE_TEXT2 = (MobileBy.CSS_SELECTOR, 'div#riskNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new single-line text2"]')
+    NEW_PHONE_NUMBER2 = (MobileBy.CSS_SELECTOR, 'div#riskNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new phone number2"]')
+    NEW_MULTI_LINE_TEXT2 = (MobileBy.CSS_SELECTOR, 'div#riskNew>div.ui-content>ul.edit-view>li.ui-field-contain>textarea[id="new multi-line text2"]')
+    NEW_FAX_NUMBER2 = (MobileBy.CSS_SELECTOR, 'div#riskNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new fax number2"]')
+    NEW_MOBILE_NUMBER2 = (MobileBy.CSS_SELECTOR, 'div#riskNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new mobile number2"]')
+    NEW_EMAIL_ADDRESS2 = (MobileBy.CSS_SELECTOR, 'div#riskNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new email address2"]')
+    NEW_RICH_TEXT2 = (MobileBy.CSS_SELECTOR, 'div#riskNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-ckeditor>div[id="cke_new rich text2"]>div.cke_inner>div#cke_2_contents>iframe[title="Rich Text Editor, new rich text2"]')
+    NEW_NUMBER2 = (MobileBy.CSS_SELECTOR, 'div#riskNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new number2"]')
+    NEW_WEBSITE_ADDRESS2 = (MobileBy.CSS_SELECTOR, 'div#riskNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new website address2"]')
+    NEW_DATE_TIME2 = (MobileBy.CSS_SELECTOR, 'div#riskNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new date & time2"]')
+    NEW_DATE_OPTIONAL_TIME2 = (MobileBy.CSS_SELECTOR, 'div#riskNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new date & optional time2"]')
 
 
 class AssetsScreen:

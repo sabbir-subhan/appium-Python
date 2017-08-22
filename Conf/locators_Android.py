@@ -31,6 +31,7 @@ class CommonScreen:
     LOADING = (MobileBy.ACCESSIBILITY_ID, 'loading')
     UPLOADING = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Uploading")]]')  # not working
     SAVE_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Save')
+    SAVE_BUTTON2 = (MobileBy.XPATH, '//android.widget.Button[@content-desc[contains(., "Save")]]')
     CANCEL_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Cancel')
     CANCEL_BUTTON_by_index = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Button')
     OK_BUTTON = (MobileBy.ACCESSIBILITY_ID, 'Ok')
@@ -43,7 +44,8 @@ class CommonScreen:
     WHOLE_APP_SCREEN = (MobileBy.ACCESSIBILITY_ID, 'OCA')
     FIRST_INPUT_FIELD = (MobileBy.XPATH, '//android.widget.EditText[1]')  # first input filed inside OCA objects, like events, assets, reports
     ADD_MEDIA = (MobileBy.ACCESSIBILITY_ID, 'Add media')  # button Add Media inside OCA objects
-    ADD_MEDIA2 = (MobileBy.XPATH, '//android.widget.Button[@name="Add media"]')
+    # ADD_MEDIA2 = (MobileBy.XPATH, '//android.widget.Button[@name="Add media"]')
+    ADD_MEDIA2 = (MobileBy.XPATH, '//android.widget.Button[@content-desc="Add media"]')
     POPUP_UNFILLED_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "Required fields are not filled")]]')  # Validation error
 
 

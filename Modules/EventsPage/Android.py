@@ -329,3 +329,23 @@ class Android(EventsPage):
             action.tap(element=option_3, count=1).perform()
         except ElementNotSelectableException:
             option_3.click()
+
+    def click_save_button(self):
+
+        logging.info("click Save button")
+        sleep(2)
+        self.switch_context_to_webview()
+        try:
+            save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON_NEW_EVENT)
+            self.assertIsNotNone(save_button, "Save button for new event, not found")
+            save_button.click()
+        except NoSuchElementException and ElementNotVisibleException:
+            save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON_EDIT_EVENT)
+            self.assertIsNotNone(save_button, "Save button for edited event, not found")
+            save_button.click()
+        self.switch_context_to_native()
+        sleep(2)
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.wait_for_app_loading()

@@ -24,6 +24,19 @@ class ReportsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def type_title_for_edited_report(self, text):
+
+        self.switch_context_to_webview()
+
+        sleep(1)
+        logging.info("type Title")
+        name = self.driver.find_element(*self.configuration.ReportsScreen.TITLE_EDITED)
+        self.assertIsNotNone(name, "Title input field was not found")
+        name.click()
+        name.send_keys(text)
+
+        self.switch_context_to_native()
+
     def type_title_offline(self, text):
 
         self.switch_context_to_webview()
@@ -761,4 +774,157 @@ class ReportsPage(BasePage):
         events_page = LoadClass.load_page('EventsPage')
         events_page.setDriver(self.driver)
         events_page.check_notification_about_offline_mode()
+
+    def read_only_option_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click option list - Is Read Only ?")
+
+        try:
+            option_list = self.driver.find_element(*self.configuration.ReportsScreen.OPTION_LIST_READ_ONLY)
+            if option_list.is_displayed():
+                self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
+                option_list.click()
+            else:
+                raise ValueError("element not displayed")
+        except NoSuchElementException and ValueError:
+            option_list = self.driver.find_element(*self.configuration.ReportsScreen.OPTION_LIST_READ_ONLY_EDIT)
+            if option_list.is_displayed():
+                self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
+                option_list.click()
+            else:
+                self.fail("Read Only option list, not found")
+
+        self.switch_context_to_native()
+
+    def fill_new_single_line_text2(self, text):
+
+        logging.info("fill new single line text 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.ReportsScreen.NEW_SINGLE_LINE_TEXT2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_phone_number2(self, text):
+
+        logging.info("fill new phone number 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.ReportsScreen.NEW_PHONE_NUMBER2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_multi_line_text2(self, text):
+
+        logging.info("fill new multi line text 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.ReportsScreen.NEW_MULTI_LINE_TEXT2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_fax_number2(self, text):
+
+        logging.info("fill new fax number 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.ReportsScreen.NEW_FAX_NUMBER2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_mobile_number2(self, text):
+
+        logging.info("fill new mobile number 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.ReportsScreen.NEW_MOBILE_NUMBER2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_email_address2(self, text):
+
+        logging.info("fill new email address 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.ReportsScreen.NEW_EMAIL_ADDRESS2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_rich_text2(self, text):
+
+        logging.info("fill new rich text 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.ReportsScreen.NEW_RICH_TEXT2)
+        self.assertIsNotNone(field, "input field not found")
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_number2(self, text):
+
+        logging.info("fill new number 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.ReportsScreen.NEW_NUMBER2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def fill_new_website_address2(self, text):
+
+        logging.info("fill new website address 2 field")
+
+        self.switch_context_to_webview()
+
+        field = self.driver.find_element(*self.configuration.ReportsScreen.NEW_WEBSITE_ADDRESS2)
+        self.assertIsNotNone(field, "input field not found")
+        field.click()
+        field.clear()
+        field.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def scroll_down_one_view(self):
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.scroll_down_one_view()
 

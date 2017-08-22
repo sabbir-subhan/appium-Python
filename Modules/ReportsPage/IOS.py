@@ -15,12 +15,24 @@ class IOS(ReportsPage):
 
         sleep(4)
         logging.info("click on 'Lodging Agency' picker")
-        lodging_agency_picker = self.driver.find_element(*self.configuration.ReportsScreen.LODGING_AGENCY_PICKER)
+        # lodging_agency_picker = self.driver.find_element(*self.configuration.ReportsScreen.LODGING_AGENCY_PICKER)
+        lodging_agency_picker = self.driver.find_element(*self.configuration.ReportsScreen.LODGING_AGENCY_PICKER_FIELD)
         self.assertIsNotNone(lodging_agency_picker, "Lodging Agency picker was not found")
         action = TouchAction(self.driver)
         sleep(1)
         action.tap(element=lodging_agency_picker, count=1).perform()
         sleep(1)
+
+    # def click_on_lodging_agency_picker(self):
+    #
+    #     sleep(4)
+    #     logging.info("click on 'Lodging Agency' picker")
+    #     lodging_agency_picker = self.driver.find_element(*self.configuration.ReportsScreen.LODGING_AGENCY_PICKER)
+    #     self.assertIsNotNone(lodging_agency_picker, "Lodging Agency picker was not found")
+    #     action = TouchAction(self.driver)
+    #     sleep(1)
+    #     action.tap(element=lodging_agency_picker, count=1).perform()
+    #     sleep(1)
 
     def scroll_down_to_assets_chooser_field(self):
 

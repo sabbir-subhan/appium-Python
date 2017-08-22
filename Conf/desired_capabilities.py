@@ -348,6 +348,8 @@ class DesiredCapabilities(object):
             "automationName": "XCUITest",
             "clearSystemFiles": True,
             "startIWDP": True,  # start ios-webkit-debug-proxy
+            # "webkitResponseTimeout": 500,  # seconds, milliseconds ?
+            # "showXcodeLog": True,
             "noReset": False,
             "fullReset": False,
             "enableAsyncExecuteFromHttps": True,

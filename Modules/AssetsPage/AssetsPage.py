@@ -777,18 +777,6 @@ class AssetsPage(BasePage):
 
         self.switch_context_to_native()
 
-    # def fill_new_location2(self):
-    #
-    #     logging.warning("fill new location 2 field")
-    #
-    #     self.switch_context_to_webview()
-    #
-    #     field = self.driver.find_element(*self.configuration.AssetsScreen.)
-    #     self.assertIsNotNone(field, "input field not found")
-    #     field.send_keys("")
-    #
-    #     self.switch_context_to_native()
-
     def fill_new_rich_text2(self, text):
 
         logging.info("fill new rich text 2 field")
@@ -800,18 +788,6 @@ class AssetsPage(BasePage):
         field.send_keys(text)
 
         self.switch_context_to_native()
-
-    # def fill_new_dater2(self):
-    #
-    #     logging.warning("fill new date 2 field")
-    #
-    #     self.switch_context_to_webview()
-    #
-    #     field = self.driver.find_element(*self.configuration.AssetsScreen.)
-    #     self.assertIsNotNone(field, "input field not found")
-    #     field.send_keys("")
-    #
-    #     self.switch_context_to_native()
 
     def fill_new_number2(self, text):
 

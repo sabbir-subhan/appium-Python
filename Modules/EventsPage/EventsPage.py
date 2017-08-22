@@ -1005,10 +1005,12 @@ class EventsPage(BasePage):
         try:
             check_if_related_section_is_present = self.driver.find_element(*self.configuration.EventDetailsScreen.RELATED_HEADER)
             self.assertIsNotNone(check_if_related_section_is_present, "Related section not found")
+            logging.info("Related section is present")
         except NoSuchElementException:
             logging.warning("Related section in event view mode, not found - media files were not added correctly")
 
         self.switch_context_to_native()
+        sleep(1)
 
     def choose_event_type_with_option_list(self):  # Event type with option list
 
@@ -1037,6 +1039,19 @@ class EventsPage(BasePage):
                 option_list.click()
             else:
                 self.fail("Read Only option list, not found")
+
+        self.switch_context_to_native()
+
+    def fill_name_for_edited_event(self, text):
+
+        self.switch_context_to_webview()
+
+        sleep(1)
+        logging.info("type Name")
+        name = self.driver.find_element(*self.configuration.EventEditScreen.NAME_FOR_EDITED_EVENT)
+        self.assertIsNotNone(name, "Name input field was not found")
+        name.click()
+        name.send_keys(text)
 
         self.switch_context_to_native()
 
