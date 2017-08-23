@@ -5,11 +5,17 @@ from Modules.load_class import LoadClass
 import logging
 from time import sleep
 from appium.webdriver.common.touch_action import TouchAction
-from selenium.common.exceptions import *
+from selenium.common.exceptions import NoSuchElementException
 from configuration import platform
 
 
 class IOS(ReportsPage):
+
+    def type_text_into_search_field(self, text):
+
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.type_text_into_search_field(text)
 
     def click_on_lodging_agency_picker(self):
 
@@ -136,4 +142,3 @@ class IOS(ReportsPage):
             title.send_keys(text)
 
         self.switch_context_to_native()
-

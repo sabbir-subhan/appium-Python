@@ -427,6 +427,21 @@ class ContactsPage(BasePage):
 
     def type_text_into_search_field(self, text):
 
+        logging.info("type text into search field")
+
+        self.switch_context_to_webview()
+
+        search_field = self.driver.find_element(*self.configuration.ContactsScreen.SEARCH_FIELD)
+        self.assertIsNotNone(search_field, "Search field not found")
+        search_field.click()
+        sleep(1)
+        search_field.send_keys(text)
+        sleep(1)
+
+        self.switch_context_to_native()
+
+    # def type_text_into_search_field(self, text):
+
         # logging.info("type text into search field")
 
         # search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
@@ -436,9 +451,9 @@ class ContactsPage(BasePage):
         # search_field.send_keys(text)
         # sleep(1)
 
-        events_page = LoadClass.load_page('EventsPage')
-        events_page.setDriver(self.driver)
-        events_page.type_text_into_search_field(text)
+        # events_page = LoadClass.load_page('EventsPage')
+        # events_page.setDriver(self.driver)
+        # events_page.type_text_into_search_field(text)
 
     def click_first_contact_on_the_list(self):
 

@@ -311,10 +311,25 @@ class AssetsPage(BasePage):
 
     def type_text_into_search_field(self, text):
 
+        logging.info("type text into search field")
+
+        self.switch_context_to_webview()
+
+        search_field = self.driver.find_element(*self.configuration.AssetsScreen.SEARCH_FIELD)
+        self.assertIsNotNone(search_field, "Search field not found")
+        search_field.click()
         sleep(1)
-        events_page = LoadClass.load_page('EventsPage')
-        events_page.setDriver(self.driver)
-        events_page.type_text_into_search_field(text)
+        search_field.send_keys(text)
+        sleep(1)
+
+        self.switch_context_to_native()
+
+    # def type_text_into_search_field(self, text):
+    #
+    #     sleep(1)
+    #     events_page = LoadClass.load_page('EventsPage')
+    #     events_page.setDriver(self.driver)
+    #     events_page.type_text_into_search_field(text)
 
         # sleep(1)
         # logging.info("type text into search field")

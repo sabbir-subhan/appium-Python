@@ -9,6 +9,12 @@ from Modules.load_class import LoadClass
 
 class IOS(LogsPage):
 
+    def type_text_into_search_field(self, text):
+
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.type_text_into_search_field(text)
+
     def click_on_lodging_agency_picker(self):
 
         logging.info("click on 'Lodging Agency' picker")

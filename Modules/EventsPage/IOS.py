@@ -5,11 +5,22 @@ import logging
 from time import sleep
 from Modules.load_class import LoadClass
 from appium.webdriver.common.touch_action import TouchAction
-from selenium.common.exceptions import *
+from selenium.common.exceptions import NoSuchElementException
 from configuration import platform
 
 
 class IOS(EventsPage):
+
+    def type_text_into_search_field(self, text):
+
+        logging.info("type text into search field")
+
+        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+        self.assertIsNotNone(search_field, "Search field not found")
+        search_field.click()
+        sleep(1)
+        search_field.send_keys(text)
+        sleep(1)
 
     def click_severity_lvl_picker_for_edit_event(self):
 

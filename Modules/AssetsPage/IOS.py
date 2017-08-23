@@ -3,9 +3,16 @@
 from Modules.AssetsPage.AssetsPage import AssetsPage
 import logging
 from selenium.common.exceptions import NoSuchElementException
+from Modules.load_class import LoadClass
 
 
 class IOS(AssetsPage):
+
+    def type_text_into_search_field(self, text):
+
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.type_text_into_search_field(text)
 
     def scroll_down_to_save_button(self):
         """Method to scroll down to bottom of the screen - to 'Save' button"""

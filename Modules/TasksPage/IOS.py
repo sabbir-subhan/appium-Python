@@ -10,6 +10,12 @@ from configuration import platform
 
 class IOS(TasksPage):
 
+    def type_text_into_search_field(self, text):
+
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.type_text_into_search_field(text)
+
     def click_on_assigned(self):
 
         logging.info("click on Assigned field")

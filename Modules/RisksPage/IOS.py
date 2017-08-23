@@ -3,11 +3,17 @@
 from Modules.RisksPage.RisksPage import RisksPage
 from Modules.load_class import LoadClass
 import logging
-from selenium.common.exceptions import *
+from selenium.common.exceptions import NoSuchElementException
 from time import sleep
 
 
 class IOS(RisksPage):
+
+    def type_text_into_search_field(self, text):
+
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.type_text_into_search_field(text)
 
     def click_status_selector(self):
         # it is not working in webview

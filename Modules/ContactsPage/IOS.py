@@ -11,6 +11,12 @@ from configuration import platform
 
 class IOS(ContactsPage):
 
+    def type_text_into_search_field(self, text):
+
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.type_text_into_search_field(text)
+
     def scroll_down_to_email_field(self):
 
         """Method to scroll down to email field"""

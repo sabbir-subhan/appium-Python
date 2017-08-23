@@ -413,6 +413,7 @@ class ContactsScreen:
     # FIRST_PENDING_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupNew>div.ui-content>ul.ui-listview>li.ui-first-child>a')
     FIRST_PENDING_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.pending>ul.ui-listview>li:first-child>a')
     ADD_NEW_CONTACT_GROUP_IN_OFFLINE_MODE = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div#contactgroupTreeMore-popup>div#contactgroupTreeMore>ul.ui-listview>li.new.contactgroup>a')
+    SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input#contactSearch')
 
 
 class TasksScreen:
@@ -458,6 +459,7 @@ class TasksScreen:
     MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskView>div.ui-footer>div.ui-navbar>ul.ui-grid-a>li.more.ui-block-b>a[href="#taskViewMoreMenu"]')
     DELETE_TASK = (MobileBy.CSS_SELECTOR, 'div#taskView>div.ui-popup-container>div#taskViewMoreMenu>ul.ui-listview>li.delete>a[href="#confirmDeleteTask"]')
     CONFIRM_DELETE_TASK = (MobileBy.CSS_SELECTOR, 'div#taskView>div.ui-popup-container>div#confirmDeleteTask>div.ng-dialog-container>div>div>a:first-child')
+    SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input#taskSearch')
 
 
 class ReportsScreen:
@@ -482,7 +484,8 @@ class ReportsScreen:
     SECOND_STATUS = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:nth-child(2)>div>ul[data-role="listview"]>li:nth-child(2)>a')  # ACTIVE
     THIRD_STATUS = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:nth-child(2)>div>ul[data-role="listview"]>li:nth-child(3)>a')  # INACTIVE
     FOURTH_STATUS = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div[data-role="collapsible"]:nth-child(2)>div>ul[data-role="listview"]>li:nth-child(4)>a')  # DRAFT
-    SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div.ui-input-search>input#reportSearch')
+    # SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div.ui-input-search>input#reportSearch')
+    SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input#reportSearch')
     CREATE_REPORT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-solo>li>a[href="#reportNew"]')
     EDIT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#reportView>div[data-role="footer"]>div[data-role="navbar"]>ul.ui-grid-a>li.edit>a')
     FIRST_REPORT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#reportIndex>div.ui-content>div.main>ul>li:first-child>a')
@@ -522,6 +525,7 @@ class SentScreen:
     """A class for handling Sent screen"""
     CLEAR_SEARCH_FIELD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#sentComms>div.ui-content>div.ui-input-search>a.ui-input-clear')
     # SENT_COMMUNICATIONS_EMAIL = (MobileBy.CSS_SELECTOR, '')
+    SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input#sentSearch')
 
 
 class ComposeScreen:
@@ -644,7 +648,8 @@ class AssetsScreen:
     CANCEL_ALERT = (MobileBy.CSS_SELECTOR, 'div#assetView>div#confirmDeleteAsset-popup>div#confirmDeleteAsset>div.ng-dialog-container>div>div.ui-controlgroup-controls>a:last-child')
     PREVIOUSLY_CREATED_CHILD_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.main>ul.assets>li:first-child>a')
     CHILD_ASSET_INSIDE_OTHER_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.main>ul>li:first-child>a')
-    SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.filters>div>input[id="assetSearch"]')
+    # SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.filters>div>input[id="assetSearch"]')
+    SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input[id="assetSearch"]')
     CREATE_MAPPING_DATA = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li.geometryinput>a')
     ADD_MEDIA_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li.ui-li-static.ui-body-inherit>div.addmedia.edit-mode>a')
     CLEAR_SEARCH_FIELD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#assetTreeView>div.ui-content>div.filters>div.ui-input-search>a.ui-input-clear')
@@ -703,6 +708,7 @@ class LogsScreen(EventsScreen, AssetsScreen):
     SEQUENCE_ON_SAVE = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-content>ul.edit-view>li.ui-field-contain.ui-li-static.ui-body-inherit>label[for="on_save"]')
     OPTION_LIST = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-content>ul.edit-view>li[name="new option list"]>div.ui-select>div')
     CLEAR_SEARCH_FIELD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div.ui-input-search>a.ui-input-clear')
+    SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input#logSearch')
 
 
 class SelectMediaScreen:
