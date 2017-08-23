@@ -61,20 +61,40 @@ class IOS(AssetsPage):
 
     def scroll_up_to_name_field(self):
         """Method to scroll up to 'Name' input field"""
-        
+
         logging.info("scroll down to Name input field")
+        self.switch_context_to_native()
         scroll = 10
         while scroll > 0:
             logging.info("check if Name input field is visible")
-            name_input_field = self.driver.find_element(*self.configuration.CommonScreen.FIRST_INPUT_FIELD)
-            # name_input_field = self.driver.find_elements(*self.configuration.CommonScreen.FIRST_INPUT_FIELD)
-            # if name_input_field[0].is_displayed():
-            if name_input_field.is_displayed():
-                break
-            else:
-                logging.info("scroll up to Name input field")
-                self.driver.execute_script("mobile: scroll", {"direction": "up"})
-                scroll = scroll - 1
+            try:
+                name_input_field = self.driver.find_element(*self.configuration.CommonScreen.FIRST_INPUT_FIELD)
+                if name_input_field.is_displayed():
+                    break
+                else:
+                    logging.info("scroll up to Name input field")
+                    self.driver.execute_script("mobile: scroll", {"direction": "up"})
+                    scroll = scroll - 1
+            except NoSuchElementException:
+                logging.warning("first input field not found")
+                pass
+
+    # def scroll_up_to_name_field(self):
+    #     """Method to scroll up to 'Name' input field"""
+    #
+    #     logging.info("scroll down to Name input field")
+    #     scroll = 10
+    #     while scroll > 0:
+    #         logging.info("check if Name input field is visible")
+    #         name_input_field = self.driver.find_element(*self.configuration.CommonScreen.FIRST_INPUT_FIELD)
+    #         # name_input_field = self.driver.find_elements(*self.configuration.CommonScreen.FIRST_INPUT_FIELD)
+    #         # if name_input_field[0].is_displayed():
+    #         if name_input_field.is_displayed():
+    #             break
+    #         else:
+    #             logging.info("scroll up to Name input field")
+    #             self.driver.execute_script("mobile: scroll", {"direction": "up"})
+    #             scroll = scroll - 1
 
     def scroll_down(self):
 

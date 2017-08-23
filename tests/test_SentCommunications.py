@@ -68,10 +68,10 @@ class TestSentCommunications(SetupTestCase):
         sent_page = LoadClass.load_page('SentPage')
         sent_page.setDriver(self.driver)
         sent_page.clear_Search_field()
-        sent_page.type_text_into_search_field("test")
+        sent_page.type_text_into_search_field("Test ")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
-        #sent_page.check_sent_communications()
+        sent_page.check_sent_communications()
         common_page.hamburger_button()
 
         main_page.open_COMPOSE()

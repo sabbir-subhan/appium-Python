@@ -67,7 +67,7 @@ class AssetsPage(BasePage):
 
         self.switch_context_to_webview()
 
-        sleep(1)
+        sleep(5)
         logging.info("type Name")
         name = self.driver.find_element(*self.configuration.AssetsScreen.NAME_FOR_EDITED_ASSET)
         self.assertIsNotNone(name, "Name input field was not found")
@@ -311,6 +311,7 @@ class AssetsPage(BasePage):
 
     def type_text_into_search_field(self, text):
 
+        sleep(1)
         events_page = LoadClass.load_page('EventsPage')
         events_page.setDriver(self.driver)
         events_page.type_text_into_search_field(text)
@@ -611,6 +612,7 @@ class AssetsPage(BasePage):
         option_list_save_button = self.driver.find_element(*self.configuration.AssetsScreen.SAVE_OPTION_LIST)
         self.assertIsNotNone(option_list_save_button, "Option list save button, not found")
         option_list_save_button.click()
+        sleep(1)
 
     def check_invisibility_of_second_set_of_fields(self):
 
@@ -628,17 +630,20 @@ class AssetsPage(BasePage):
 
     # def check_if_first_set_of_fields_in_asset_with_option_list_is_disabled(self):
     #
-    #     logging.info('check if "New phone number" field in first set of fields inside asset with option list,'
+    #     logging.info('check if "New phone number" field in first set of fields inside object with option list,'
     #                  ' is disabled - field should be read only')
-    #     self.switch_context_to_webview()
     #     sleep(1)
     #     try:
-    #         new_date_optional_time_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_PHONE_NUMBER_DISABLED)
-    #         self.assertIsNotNone(new_date_optional_time_disabled, "New phone number field not found")
+    #         new_date_optional_time_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_PHONE_NUMBER_DISABLED_1)
     #     except NoSuchElementException:
+    #         new_date_optional_time_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_PHONE_NUMBER_DISABLED_2)
+    #     # if new_date_optional_time_disabled.is_displayed():  # not working
+    #     if new_date_optional_time_disabled:
+    #         self.assertIsNotNone(new_date_optional_time_disabled, "New phone number field not found")
+    #         logging.info("New phone number field is disabled")
+    #     else:
+    #         logging.warning("New phone number field is not read only")
     #         self.fail("New phone number field is not read only")
-    #
-    #     self.switch_context_to_native()
 
     def check_if_first_set_of_fields_in_asset_with_option_list_is_disabled(self):
 
@@ -646,15 +651,18 @@ class AssetsPage(BasePage):
                      ' is disabled - field should be read only')
         sleep(1)
         try:
-            new_date_optional_time_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_PHONE_NUMBER_DISABLED_1)
+            try:
+                new_date_optional_time_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_PHONE_NUMBER_DISABLED_1)
+            except NoSuchElementException:
+                new_date_optional_time_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_PHONE_NUMBER_DISABLED_2)
+            if new_date_optional_time_disabled:
+                self.assertIsNotNone(new_date_optional_time_disabled, "New phone number field not found")
+                logging.info("New phone number field is disabled = OK")
+            else:
+                logging.error("New phone number field is not read only")
+                self.fail("New phone number field is not read only")
         except NoSuchElementException:
-            new_date_optional_time_disabled = self.driver.find_element(*self.configuration.AssetsScreen.NEW_PHONE_NUMBER_DISABLED_2)
-        # if new_date_optional_time_disabled.is_displayed():  # not working
-        if new_date_optional_time_disabled:
-            self.assertIsNotNone(new_date_optional_time_disabled, "New phone number field not found")
-            logging.info("New phone number field is disabled")
-        else:
-            logging.warning("New phone number field is not read only")
+            logging.error("New phone number field is not read only")
             self.fail("New phone number field is not read only")
 
     def check_fields_for_values_and_read_only_property(self):

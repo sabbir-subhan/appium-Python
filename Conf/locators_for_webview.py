@@ -558,7 +558,8 @@ class ComposeScreen:
 class RisksScreen:
     """A class for handling Risks screen"""
     CREATE_RISK_REGISTER = (MobileBy.CSS_SELECTOR, 'a[href="#riskregisterNew"]')
-    NAME_FOR_NEW_RISK_REGISTER = (MobileBy.CSS_SELECTOR, 'input#name')
+    NAME_FOR_NEW_RISK_REGISTER2 = (MobileBy.CSS_SELECTOR, 'input#name')
+    NAME_FOR_NEW_RISK_REGISTER = (MobileBy.CSS_SELECTOR, 'div#riskregisterNew>div.ui-content>ul.edit-view>li>div.ui-input-text>input#name')
     CREATE_NEW_CONTEXT_INPUT_FIELD = (MobileBy.CSS_SELECTOR, 'input[id="or create new context"]')
     SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#riskregisterNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                           'a[href="#save"]')

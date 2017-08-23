@@ -17,7 +17,7 @@ class Android(AssetsPage):
         end_y = window_size["height"] * 0.80
         logging.info("scroll down to save button")
         sleep(2)
-        scrolls = 5
+        scrolls = 7
         while scrolls > 0:
             self.driver.swipe(start_x, end_y, start_x, start_y, 3000)  # each swipe is scrolling one screen
             scrolls = scrolls - 1

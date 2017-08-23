@@ -106,93 +106,92 @@ class TestReadOnlyProperties(SetupTestCase):
         main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
 
-        # create new Asset -> Do not select any options for is read only Y/N
-        logging.info('-------------------- MOVING TO "Assets"')
-        main_page.open_ASSETS()
+        # # create new Asset -> Do not select any options for is read only Y/N
+        # logging.info('-------------------- MOVING TO "Assets"')
+        # main_page.open_ASSETS()
         assets_page = LoadClass.load_page('AssetsPage')
         assets_page.setDriver(self.driver)
-        assets_page.click_new_button()
-        assets_page.click_new_asset()
-        assets_page.choose_asset_type_with_option_list()
-        assets_page.fill_Name_input_field("Read_only")
-
-        # Verify that the second set of fields is hidden
-        assets_page.scroll_down_to_add_media_button()
-        assets_page.check_invisibility_of_second_set_of_fields()
-        assets_page.scroll_up_to_name_field()
-
-        # Set is Read only = Yes A and Yes B
-        assets_page.read_only_option_list()
-        assets_page.option_list_option_yes_a()
-        assets_page.option_list_option_yes_b()
-        assets_page.save_option_list()
-
-        # Check that the first set of fields is still Read only while set to their default values.
-        assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
-        assets_page.check_fields_for_values_and_read_only_property()
-
-        # Change the value of fields in the second set of fields and save the Asset
-        assets_page.scroll_up_to_name_field()
-        assets_page.scroll_down_to_second_set_of_fields()
-        assets_page.fill_new_single_line_text2("test")
-        assets_page.fill_new_phone_number2("+61212345678")
-        assets_page.fill_new_multi_line_text2("test")
-        assets_page.fill_new_fax_number2("+61212345678")
-        assets_page.fill_new_email_address2("test90@onet.pl")
-        assets_page.fill_new_website_address2("http://www.google.com")
-        assets_page.fill_new_rich_text2(" test")
-        assets_page.fill_new_number2(" +61212345678 ")
-        assets_page.fill_new_mobile_number2("+61212345678")
-        assets_page.scroll_down_to_save_button()
-        assets_page.click_save_button()
-        common_page.check_popup_about_unfilled_fields()
-        common_page.wait_for_app_loading()
-        common_page.hamburger_button()
-        main_page.check_presence_of_events_button()
-
-        # Edit the details of created Asset and Check that the first set of fields is still Read only
-        main_page.open_ASSETS()
-        assets_page.clear_Search_field()
-        assets_page.type_text_into_search_field("Read_only")
-        common_page.click_Return_button_on_keyboard()
-        common_page.hide_keyboard()
-        assets_page.open_existing_asset()
-        common_page.wait_for_app_loading()
-        assets_page.click_edit_button()
-        assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
-
-        # Uncheck all checkboxes in Is Read only ?, check "No" and then save the Asset
-        assets_page.fill_name_for_edited_asset(" edit")
-        assets_page.read_only_option_list()
-        assets_page.option_list_option_yes_a()
-        assets_page.option_list_option_yes_b()
-        assets_page.option_list_option_no()
-        assets_page.save_option_list()
-        assets_page.scroll_down_to_save_button()
-        assets_page.save_edited_asset()
-        common_page.check_popup_about_unfilled_fields()
-        common_page.wait_for_app_loading()
-        common_page.hamburger_button()
-        main_page.check_presence_of_events_button()
-
-        main_page.open_ASSETS()
-        assets_page.clear_Search_field()
-        assets_page.type_text_into_search_field("Read_only edit")
-        common_page.click_Return_button_on_keyboard()
-        common_page.hide_keyboard()
-        assets_page.open_existing_asset()
-        common_page.wait_for_app_loading()
-        assets_page.click_edit_button()
-        assets_page.read_only_option_list()
-        assets_page.option_list_option_no()
-        assets_page.option_list_option_yes_a()
-        assets_page.option_list_option_yes_b()
-        assets_page.save_option_list()
-        assets_page.scroll_up_to_name_field()
-        assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
-        assets_page.check_fields_for_values_and_read_only_property()
-        common_page.hamburger_button()
-        main_page.check_presence_of_events_button()
+        # assets_page.click_new_button()
+        # assets_page.click_new_asset()
+        # assets_page.choose_asset_type_with_option_list()
+        # assets_page.fill_Name_input_field("Read_only")
+        #
+        # # Verify that the second set of fields is hidden
+        # assets_page.scroll_down_to_add_media_button()
+        # assets_page.check_invisibility_of_second_set_of_fields()
+        # assets_page.scroll_up_to_name_field()
+        #
+        # # Set is Read only = Yes A and Yes B
+        # assets_page.read_only_option_list()
+        # assets_page.option_list_option_yes_a()
+        # assets_page.option_list_option_yes_b()
+        # assets_page.save_option_list()
+        #
+        # # Check that the first set of fields is still Read only while set to their default values.
+        # assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
+        # assets_page.check_fields_for_values_and_read_only_property()
+        #
+        # # Change the value of fields in the second set of fields and save the Asset
+        # assets_page.scroll_up_to_name_field()
+        # assets_page.fill_new_single_line_text2("test")
+        # assets_page.fill_new_phone_number2("+61212345678")
+        # assets_page.fill_new_multi_line_text2("test")
+        # assets_page.fill_new_fax_number2("+61212345678")
+        # assets_page.fill_new_email_address2("test90@onet.pl")
+        # assets_page.fill_new_website_address2("http://www.google.com")
+        # assets_page.fill_new_rich_text2(" test")
+        # assets_page.fill_new_number2(" +61212345678 ")
+        # assets_page.fill_new_mobile_number2("+61212345678")
+        # assets_page.scroll_down_to_save_button()
+        # assets_page.click_save_button()
+        # common_page.check_popup_about_unfilled_fields()
+        # common_page.wait_for_app_loading()
+        # common_page.hamburger_button()
+        # main_page.check_presence_of_events_button()
+        #
+        # # Edit the details of created Asset and Check that the first set of fields is still Read only
+        # main_page.open_ASSETS()
+        # assets_page.clear_Search_field()
+        # assets_page.type_text_into_search_field("Read_only")
+        # common_page.click_Return_button_on_keyboard()
+        # common_page.hide_keyboard()
+        # assets_page.open_existing_asset()
+        # common_page.wait_for_app_loading()
+        # assets_page.click_edit_button()
+        # assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
+        #
+        # # Uncheck all checkboxes in Is Read only ?, check "No" and then save the Asset
+        # assets_page.fill_name_for_edited_asset(" edit")
+        # assets_page.read_only_option_list()
+        # assets_page.option_list_option_yes_a()
+        # assets_page.option_list_option_yes_b()
+        # assets_page.option_list_option_no()
+        # assets_page.save_option_list()
+        # assets_page.scroll_down_to_save_button()
+        # assets_page.save_edited_asset()
+        # common_page.check_popup_about_unfilled_fields()
+        # common_page.wait_for_app_loading()
+        # common_page.hamburger_button()
+        # main_page.check_presence_of_events_button()
+        #
+        # main_page.open_ASSETS()
+        # assets_page.clear_Search_field()
+        # assets_page.type_text_into_search_field("Read_only edit")
+        # common_page.click_Return_button_on_keyboard()
+        # common_page.hide_keyboard()
+        # assets_page.open_existing_asset()
+        # common_page.wait_for_app_loading()
+        # assets_page.click_edit_button()
+        # assets_page.read_only_option_list()
+        # assets_page.option_list_option_no()
+        # assets_page.option_list_option_yes_a()
+        # assets_page.option_list_option_yes_b()
+        # assets_page.save_option_list()
+        # assets_page.scroll_up_to_name_field()
+        # assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
+        # assets_page.check_fields_for_values_and_read_only_property()
+        # common_page.hamburger_button()
+        # main_page.check_presence_of_events_button()
 
         # Repeat the steps for Event
         logging.info('-------------------- MOVING TO "Events"')
@@ -222,7 +221,6 @@ class TestReadOnlyProperties(SetupTestCase):
 
         # Change the value of fields in the second set of fields and save the Event
         common_page.scroll_up_to_name_field()
-        common_page.scroll_down_to_second_set_of_fields()
         events_page.fill_new_single_line_text2("test")
         events_page.fill_new_phone_number2("+61212345678")
         events_page.fill_new_multi_line_text2("test")
@@ -309,7 +307,6 @@ class TestReadOnlyProperties(SetupTestCase):
 
         # Change the value of fields in the second set of fields and save the Report
         common_page.scroll_up_to_name_field()
-        common_page.scroll_down_to_second_set_of_fields()
         reports_page.fill_new_single_line_text2("test")
         reports_page.fill_new_phone_number2("+61212345678")
         reports_page.fill_new_multi_line_text2("test")
@@ -426,9 +423,8 @@ class TestReadOnlyProperties(SetupTestCase):
         assets_page.check_if_first_set_of_fields_in_asset_with_option_list_is_disabled()
         assets_page.check_fields_for_values_and_read_only_property()
 
-        # Change the value of fields in the second set of fields and save the Event
+        # Change the value of fields in the second set of fields and save the Risk
         common_page.scroll_up_to_name_field()
-        common_page.scroll_down_to_second_set_of_fields()
         risks_page.fill_new_single_line_text2("test")
         risks_page.fill_new_phone_number2("+61212345678")
         risks_page.fill_new_multi_line_text2("test")
