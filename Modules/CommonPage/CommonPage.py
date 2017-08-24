@@ -190,3 +190,13 @@ class CommonPage(BasePage):
         assets_page.setDriver(self.driver)
         assets_page.scroll_down_to_add_media_button()
 
+    def click_search_field_in_native_view_to_display_keyboard(self):
+
+        logging.info("click search field in native view to display keyboard")
+
+        search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
+        self.assertIsNotNone(search_field, "Search field not found")
+        search_field.click()
+
+
+

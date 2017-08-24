@@ -29,17 +29,6 @@ class ComposePage(BasePage):
 
         self.switch_context_to_native()
 
-        # desired_capabilities = DesiredCapabilities.get_desired_capabilities()
-        # platform_name = desired_capabilities.get('platformName')
-        # platform_version = desired_capabilities.get('platformVersion')
-        # if "Android" in str(platform_name) and platform_version < "5":
-        #     fax_ok_button = self.driver.find_element(*self.configuration.CommonScreen.OK_BUTTON)
-        # else:
-        #     fax_ok_button = self.driver.find_element(*self.configuration.ComposeScreen.FAX_OK_BUTTON)
-        # self.assertIsNotNone(fax_ok_button, "Ok button not found")
-        # fax_ok_button.click()
-        # sleep(2)
-
     def click_send_button(self):
 
         self.switch_context_to_webview()
@@ -47,6 +36,18 @@ class ComposePage(BasePage):
         logging.info("click 'Send' button")
         send_button = self.driver.find_element(*self.configuration.ComposeScreen.SEND_BUTTON)
         self.assertIsNotNone(send_button, "Send button not found")
+        send_button.click()
+        sleep(2)
+
+        self.switch_context_to_native()
+
+    def click_save_button(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click 'Save' button")
+        send_button = self.driver.find_element(*self.configuration.ComposeScreen.SAVE_BUTTON)
+        self.assertIsNotNone(send_button, "Save button not found")
         send_button.click()
         sleep(2)
 
@@ -69,22 +70,6 @@ class ComposePage(BasePage):
             "Failed to send message")
         logging.info("Message was sent")
 
-        # logging.info("click 'Send' button on alert")
-        # desired_capabilities = DesiredCapabilities.get_desired_capabilities()
-        # platform_version = desired_capabilities.get('platformVersion')
-        # if platform_version < "5":
-        #     send_button_on_alert = self.driver.find_element(*self.configuration.ComposeScreen.ALERT_SEND_BUTTON_by_name)
-        # else:
-        #     send_button_on_alert = self.driver.find_element(*self.configuration.ComposeScreen.ALERT_SEND_BUTTON_by_id)
-        # self.assertIsNotNone(send_button_on_alert, "Send button on alert not found")
-        # send_button_on_alert.click()
-        # sleep(2)
-        # logging.info("sending message")
-        # WebDriverWait(self.driver, 10).until(
-        #     expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.EVENTS_BUTTON),
-        #     "Failed to send message")
-        # logging.info("Message was sent")
-
     def add_recipients(self):
 
         logging.info('add recipients')
@@ -98,24 +83,6 @@ class ComposePage(BasePage):
         self.switch_context_to_native()
 
         sleep(2)
-
-        # desired_capabilities = DesiredCapabilities.get_desired_capabilities()
-        # platform_name = desired_capabilities.get('platformName')
-        # print('platform name: ' + str(platform_name))
-        # if "iOS" in str(platform_name):
-        #     self.switch_context_to_webview()
-        #     add_recipients_button = self.driver.find_element(*self.configuration.ComposeScreen.ADD_RECIPIENTS_BUTTON)
-        # else:
-        #     add_recipients_button = self.driver.find_element(*self.configuration.ComposeScreen.ADD_RECIPIENTS_BUTTON)
-        # self.assertIsNotNone(add_recipients_button, 'add recipients button not found')
-        # add_recipients_button.click()
-        #
-        # self.switch_context_to_native()
-        #
-        # sleep(2)
-        # add_recipients_button = self.driver.find_element(*self.configuration.ComposeScreen.ADD_RECIPIENTS_BUTTON)
-        # self.assertIsNotNone(add_recipients_button, 'add recipients button not found')
-        # add_recipients_button.click()
 
     def add_contacts_and_groups(self):
 
@@ -132,6 +99,54 @@ class ComposePage(BasePage):
 
         sleep(2)
 
+    def add_resource_structure_nodes(self):
+
+        logging.info('add resource structure nodes')
+
+        self.switch_context_to_webview()
+
+        add_resource_structure_nodes = self.driver.find_elements(*self.configuration.ComposeScreen.ADD_RESOURCES_STRUCTURE_NODES)
+        self.assertIsNotNone(add_resource_structure_nodes, 'add resource structure nodes button not found')
+        # add_resource_structure_nodes[0].click()
+        add_resource_structure_nodes[1].click()
+
+        self.switch_context_to_native()
+
+        sleep(2)
+
+    def click_first_resource_structure_node_on_the_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("Choose first structure node on the list")
+        click_first_resource_structure_node_on_the_list = self.driver.find_element(*self.configuration.TeamRoleScreen.FIRST_STRUCTURE_NODE_ON_THE_LIST)  # first - child
+        self.assertIsNotNone(click_first_resource_structure_node_on_the_list, "Structure node not found")
+        click_first_resource_structure_node_on_the_list.click()
+
+        self.switch_context_to_native()
+
+    def click_second_resource_structure_node_on_the_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("Choose second structure node on the list")
+        click_second_resource_structure_node_on_the_list = self.driver.find_element(*self.configuration.TeamRoleScreen.SECOND_STRUCTURE_NODE_ON_THE_LIST)  # second - child
+        self.assertIsNotNone(click_second_resource_structure_node_on_the_list, "Structure node not found")
+        click_second_resource_structure_node_on_the_list.click()
+
+        self.switch_context_to_native()
+
+    def click_last_resource_structure_node_on_the_list(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("Choose last structure node on the list")
+        click_last_resource_structure_node_on_the_list = self.driver.find_element(*self.configuration.TeamRoleScreen.LAST_STRUCTURE_NODE_ON_THE_LIST)  # last- child
+        self.assertIsNotNone(click_last_resource_structure_node_on_the_list, "Structure node not found")
+        click_last_resource_structure_node_on_the_list.click()
+
+        self.switch_context_to_native()
+
     def first_element_arrow_button(self):
 
         self.switch_context_to_webview()
@@ -143,31 +158,11 @@ class ComposePage(BasePage):
 
         self.switch_context_to_native()
 
-    # def filter_contacts_by_search_field(self):
-    #
-    #     logging.info("filter contacts by search field")
-    #
-    #     search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
-    #     self.assertIsNotNone(search_field, "Search field not found")
-    #     search_field.click()
-    #     sleep(2)
-    #     search_field.send_keys('A_CONTACT_FOR_APPIUM_TESTS')
-    #     sleep(1)
-
     def type_text_into_search_field(self, text):
 
-        events_page = LoadClass.load_page('EventsPage')
-        events_page.setDriver(self.driver)
-        events_page.type_text_into_search_field(text)
-
-        # sleep(1)
-        # logging.info("type text into search field")
-        # search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
-        # self.assertIsNotNone(search_field, "Search field not found")
-        # search_field.click()
-        # sleep(2)
-        # search_field.send_keys(text)
-        # sleep(1)
+        contacts_page = LoadClass.load_page('ContactsPage')
+        contacts_page.setDriver(self.driver)
+        contacts_page.type_text_into_search_field(text)
 
     def clear_Search_field(self):
 
@@ -251,21 +246,6 @@ class ComposePage(BasePage):
         self.assertIsNotNone(email_text_field, 'email msg field not found')
         email_text_field.click()
         email_text_field.send_keys('Test email')
-
-        # self.switch_context_to_native()
-
-        # sleep(2)
-        # logging.info('type email msg')
-        # desired_capabilities = DesiredCapabilities.get_desired_capabilities()
-        # platform_name = desired_capabilities.get('platformName')
-        # platform_version = desired_capabilities.get('platformVersion')
-        # if "Android" in str(platform_name) and "6" in str(platform_version):
-        #     email_text_field = self.driver.find_element(*self.configuration.ComposeScreen.EMAIL_TEXT_FIELD2)
-        # else:
-        #     email_text_field = self.driver.find_element(*self.configuration.ComposeScreen.EMAIL_TEXT_FIELD)
-        # self.assertIsNotNone(email_text_field, 'email msg field button not found')
-        # email_text_field.click()
-        # email_text_field.send_keys('Test email')
 
     def choose_voice_message(self):
 
@@ -396,3 +376,39 @@ class ComposePage(BasePage):
         confirm_discard_button.click()
 
         self.switch_context_to_native()
+
+    def click_attachments_button(self):  # Attachments button inside email msg
+
+        self.switch_context_to_webview()
+
+        logging.info("click Attachments button")
+        attachment_button = self.driver.find_element(*self.configuration.ComposeScreen.EMAIL_ATTACHMENTS)
+        self.assertIsNotNone(attachment_button, "Attachments button not found")
+        attachment_button.click()
+
+        self.switch_context_to_native()
+
+    def type_name_for_message_draft(self, text):
+
+        self.switch_context_to_webview()
+
+        logging.info("type name for message draft")
+        input_field_for_draft_msg = self.driver.find_element(*self.configuration.ComposeScreen.SAVE_DRAFT_INPUT_NAME)
+        self.assertIsNotNone(input_field_for_draft_msg, "Attachments button not found")
+        input_field_for_draft_msg.click()
+        input_field_for_draft_msg.send_keys(text)
+
+        self.switch_context_to_native()
+
+    def click_save_button_inside_draft_popup(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Save button inside draft popup")
+        save_button_inside_draft_popup = self.driver.find_element(*self.configuration.ComposeScreen.SAVE_BUTTON_INSIDE_DRAFT_POPUP)
+        self.assertIsNotNone(save_button_inside_draft_popup, "Save button inside draft popup, not found")
+        save_button_inside_draft_popup.click()
+
+        self.switch_context_to_native()
+
+

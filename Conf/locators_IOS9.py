@@ -375,6 +375,7 @@ class TasksScreen:
 class ReportsScreen:
     """A class for handling Report screen"""
     # LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAElement[1]')
+    LODGING_AGENCY_PICKER_FIELD = (MobileBy.XPATH, '//UIAStaticText[@name="Lodging agency"]/following-sibling::UIAElement[1]')
     LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//UIAWebView/UIAElement[@value="(none)"]')
     LODGING_AGENCY = (MobileBy.XPATH, '//UIAPopover/UIATableView/UIATableCell[2]')  # index in iOS9 is staring from 1
     # LODGING_AGENCY = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAPopover[1]/UIATableView[1]/UIATableCell[2]')

@@ -416,6 +416,16 @@ class ContactsScreen:
     SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input#contactSearch')
 
 
+class TeamRoleScreen:
+    """A class for handling Team Role screen"""
+    FIRST_STRUCTURE_NODE_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamroleIndex>div.ui-content>ul.teamroles>li:first-child>div.ui-checkbox')  # RESOURCE_STRUCTURE_NODES
+    SECOND_STRUCTURE_NODE_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamroleIndex>div.ui-content>ul.teamroles>li:nth-child(2)>div.ui-checkbox')
+    LAST_STRUCTURE_NODE_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamroleIndex>div.ui-content>ul.teamroles>li:last-child>div.ui-checkbox')
+    FIRST_RESOURCE_ASSIGNMENT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamIndex>div.ui-content>ul.teams>li:first-child>div.ui-checkbox')
+    SECOND_RESOURCE_ASSIGNMENT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamIndex>div.ui-content>ul.teams>li:nth-child(2)>div.ui-checkbox')
+    LAST_RESOURCE_ASSIGNMENT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamIndex>div.ui-content>ul.teams>li:last-child>div.ui-checkbox')
+
+
 class TasksScreen:
     """A class for handling Tasks screen"""
     SAVE_NEW_TASK_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
@@ -423,16 +433,7 @@ class TasksScreen:
     CANCEL_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskNew>div[data-role="footer"]>div[data-role="navbar"]>ul>li>'
                                             'a[href="#cancel"]')
     SAVE_EDITED_TASK_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskEdit>div[data-role="footer"]>div[data-role="navbar"]>ul>li>a[href="#save"]')
-    # TITLE = (MobileBy.CSS_SELECTOR, 'input.field-Name')
     TITLE = (MobileBy.CSS_SELECTOR, 'div#taskNew>div.ui-content>ul.edit-view>li:first-child>div.ui-input-text>input#title')
-    # ASSIGNED = (MobileBy.CSS_SELECTOR, '')
-    # ADD_CONTACTS_AND_GROUPS = (MobileBy.CSS_SELECTOR, '')
-    # ADD_RESOURCE_STRUCTURE_NODES = (MobileBy.CSS_SELECTOR, '')
-    # ADD_RESOURCE_ASSIGNMENTS = (MobileBy.CSS_SELECTOR, '')
-    # CHOOSE_USERS = (MobileBy.CSS_SELECTOR, '')
-    # CHOOSE_CONTACTS = (MobileBy.CSS_SELECTOR, '')
-    # START_DATE = (MobileBy.CSS_SELECTOR, '')
-    # HIDE_DATE_PICKER = (MobileBy.CSS_SELECTOR, '')
     YES_BUTTON_FOR_ACTION_REQUIRED = (MobileBy.CSS_SELECTOR, 'div#taskView>div.ui-content>ul.ui-listview>li.ui-li-static>ul.ui-grid-a.outcomeOptions>li.ui-block-a>a[href="#confirmOutcomeTask"]')
     ALERT_CONFIRM_ACTION_REQUIRED = (MobileBy.CSS_SELECTOR, 'div#taskView>div.ui-popup-container>div#confirmOutcomeTask>div.ng-dialog-container>div>div>a:first-child')
     FILTERS = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-content>div[data-role="collapsible"]:first-child>h2>a')
@@ -445,12 +446,14 @@ class TasksScreen:
     VIEW_ON_MAP_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskView>div.ui-content>ul.ui-listview>li>a[href="#mapPage?geometry=true"]')  # button inside task details
     CREATE_NEW_TASK_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-footer>div.ui-navbar>ul>li>a[href="#taskNew"]')
     EDIT_BUTTON = (MobileBy.CSS_SELECTOR, 'div#taskView>div.ui-footer>div.ui-navbar>ul.ui-grid-a>li.edit>a')
-    FIRST_STRUCTURE_NODE_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamroleIndex>div.ui-content>ul.teamroles>li:first-child>div.ui-checkbox')
-    SECOND_STRUCTURE_NODE_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamroleIndex>div.ui-content>ul.teamroles>li:nth-child(2)>div.ui-checkbox')
-    LAST_STRUCTURE_NODE_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamroleIndex>div.ui-content>ul.teamroles>li:last-child>div.ui-checkbox')
-    FIRST_RESOURCE_ASSIGNMENT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamIndex>div.ui-content>ul.teams>li:first-child>div.ui-checkbox')
-    SECOND_RESOURCE_ASSIGNMENT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamIndex>div.ui-content>ul.teams>li:nth-child(2)>div.ui-checkbox')
-    LAST_RESOURCE_ASSIGNMENT_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#teamIndex>div.ui-content>ul.teams>li:last-child>div.ui-checkbox')
+
+    FIRST_STRUCTURE_NODE_ON_THE_LIST = TeamRoleScreen.FIRST_STRUCTURE_NODE_ON_THE_LIST
+    SECOND_STRUCTURE_NODE_ON_THE_LIST = TeamRoleScreen.SECOND_STRUCTURE_NODE_ON_THE_LIST
+    LAST_STRUCTURE_NODE_ON_THE_LIST = TeamRoleScreen.LAST_STRUCTURE_NODE_ON_THE_LIST
+    FIRST_RESOURCE_ASSIGNMENT_ON_THE_LIST = TeamRoleScreen.FIRST_RESOURCE_ASSIGNMENT_ON_THE_LIST
+    SECOND_RESOURCE_ASSIGNMENT_ON_THE_LIST = TeamRoleScreen.SECOND_RESOURCE_ASSIGNMENT_ON_THE_LIST
+    LAST_RESOURCE_ASSIGNMENT_ON_THE_LIST = TeamRoleScreen.LAST_RESOURCE_ASSIGNMENT_ON_THE_LIST
+
     VALIDATION_ERROR_POPUP = (MobileBy.CSS_SELECTOR, 'div#taskNew>div.ui-popup-container.ui-popup-active')
     OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#taskNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
     FIRST_PENDING_TASK = (MobileBy.CSS_SELECTOR, 'div#taskIndex>div.ui-content>div.pending>ul.listview>li:first-child>a')
@@ -552,11 +555,16 @@ class ComposeScreen:
     FIRST_ELEMENT_ARROW = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.main>ul>li:first-child>a.ui-btn')
     CONTACT_FOR_APPIUM_TESTS = (MobileBy.CSS_SELECTOR, 'input[data-label="A_CONTACT_FOR_APPIUM_TESTS"]')
     SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#confirmSendMessage"]')
+    SAVE_BUTTON = (MobileBy.CSS_SELECTOR, 'a#saveDraft')
     ALERT_SEND_BUTTON = (MobileBy.CSS_SELECTOR, 'div.ui-controlgroup-controls>a#messageSend')
     RECIPIENT_FIELD = (MobileBy.CSS_SELECTOR, 'div#messagePage>div.ui-content>ul.recipients>li.recipient')
     MORE_BUTTON = (MobileBy.CSS_SELECTOR, 'div#messagePage>div.ui-footer>div.ui-navbar>ul.ui-grid-b>li.ui-block-c>a[href="#messageMore"]')
     DISCARD_MESSAGE = (MobileBy.CSS_SELECTOR, 'div#messagePage>div#messageMore-popup>div#messageMore>ul.ui-listview>li.ui-first-child>a[href="#confirmDiscard"]')
     CONFIRM_DISCARD_MESSAGE = (MobileBy.CSS_SELECTOR, 'div#messagePage>div#confirmDiscard-popup>div#confirmDiscard>div.ng-dialog-container>div.center-text>div>a#messageDiscard')
+    SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input#messagePageSearch')
+    EMAIL_ATTACHMENTS = (MobileBy.CSS_SELECTOR, 'div#messageEmail>div.ui-content>ul.attachments>li.more>a[href="#messageEmailAttachments"]')
+    SAVE_DRAFT_INPUT_NAME = (MobileBy.CSS_SELECTOR, 'div#messagePage>div.ui-popup-container>div[data-role="popup"]>div.ng-dialog-container>input.prompt-input')
+    SAVE_BUTTON_INSIDE_DRAFT_POPUP = (MobileBy.CSS_SELECTOR, 'div#messagePage>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div.ui-controlgroup-controls>a:first-child')
 
 
 class RisksScreen:

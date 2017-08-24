@@ -304,7 +304,6 @@ class MainPage(BasePage):
         sent_button = self.driver.find_element(*self.configuration.MainMenuScreen.SENT_BUTTON)
         self.assertIsNotNone(sent_button, "SENT button not found")
         sent_button.click()
-        #sleep(2)
 
         self.switch_context_to_native()
 

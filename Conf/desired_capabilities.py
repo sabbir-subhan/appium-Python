@@ -249,7 +249,7 @@ class DesiredCapabilities(object):
         },
 
         "Android_8_emulator": {
-            # Google Nexus 6 - API 26
+            # Google Nexus 5 - API 26
             "platformName": "ANDROID",
             "platformVersion": "8.0",
             "deviceName": "emulator-5554",

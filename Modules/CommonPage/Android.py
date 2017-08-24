@@ -480,12 +480,15 @@ class Android(CommonPage):
 
     def click_Return_button_on_keyboard(self):
 
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.click_search_field_in_native_view_to_display_keyboard()
+
         logging.info("click Go on keyboard")
         self.driver.press_keycode(66)
         sleep(1)
-
-        common_page = LoadClass.load_page('CommonPage')
-        common_page.setDriver(self.driver)
+        # common_page = LoadClass.load_page('CommonPage')
+        # common_page.setDriver(self.driver)
         common_page.wait_for_app_loading()
 
         # try:

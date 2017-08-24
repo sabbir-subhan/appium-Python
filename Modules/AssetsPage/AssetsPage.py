@@ -81,7 +81,7 @@ class AssetsPage(BasePage):
         self.switch_context_to_webview()
 
         logging.info("open first asset on the list")
-
+        sleep(1)
         open_existing_asset = self.driver.find_element(*self.configuration.AssetsScreen.PREVIOUSLY_CREATED_ASSET)
         self.assertIsNotNone(open_existing_asset, "existing asset not found")
         open_existing_asset.click()
