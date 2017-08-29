@@ -78,12 +78,12 @@ class Android(CommonPage):
         device_name = desired_capabilities.get('deviceName')
 
         # for emulators (no real device udid)
-        print("try multiple adb broadcast commands to refresh android gallery")
+        logging.warning("try multiple adb broadcast commands to refresh android gallery")
         subprocess.call(["adb", "-s", device_name, "shell", "am", "broadcast", "-a",
                         "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])  # works on emulators, on rd throws: "device not found" because for rd -s should point to udid
 
         device_udid = desired_capabilities.get('udid')  # throws permission denial on not rooted device = Android 7
-        print("try multiple adb broadcast commands to refresh android gallery")
+        logging.warning("try multiple adb broadcast commands to refresh android gallery")
         try:
             subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
                              "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])
@@ -91,7 +91,7 @@ class Android(CommonPage):
             pass
 
         device_udid = desired_capabilities.get('udid')
-        print("try multiple adb broadcast commands to refresh android gallery")
+        logging.warning("try multiple adb broadcast commands to refresh android gallery")
         try:
             subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
                              "android.intent.action.MEDIA_MOUNTED", "-d", "file:////storage"])
@@ -186,13 +186,13 @@ class Android(CommonPage):
         device_name = desired_capabilities.get('deviceName')
         # print(device_name)
 
-        print("try multiple adb broadcast commands to refresh android gallery")
+        logging.warning("try multiple adb broadcast commands to refresh android gallery")
         # for emulators (no real device udid)
         subprocess.call(["adb", "-s", device_name, "shell", "am", "broadcast", "-a",
                          "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])
 
         device_udid = desired_capabilities.get('udid')
-        print("try multiple adb broadcast commands to refresh android gallery")
+        logging.warning("try multiple adb broadcast commands to refresh android gallery")
         try:
             subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
                              "android.intent.action.MEDIA_MOUNTED", "-d", "file:////sdcard"])
@@ -200,7 +200,7 @@ class Android(CommonPage):
             pass
 
         device_udid = desired_capabilities.get('udid')
-        print("try multiple adb broadcast commands to refresh android gallery")
+        logging.warning("try multiple adb broadcast commands to refresh android gallery")
         try:
             subprocess.call(["adb", "-s", device_udid, "shell", "am", "broadcast", "-a",
                              "android.intent.action.MEDIA_MOUNTED", "-d", "file:////storage"])

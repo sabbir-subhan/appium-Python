@@ -7,6 +7,7 @@ import os
 from Modules.load_class import LoadClass
 from configuration import PROJECT_ROOT
 from selenium.common.exceptions import NoSuchElementException
+from configuration import platform
 
 
 class CommonPage(BasePage):
@@ -26,6 +27,27 @@ class CommonPage(BasePage):
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         common_page.wait_for_app_loading()
+
+    def back_arrow_for_emulators(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click back arrow if running on emulator")
+
+        logging.info("Appium is running on: " + str(platform))
+        if "emulator" in str(platform):
+            logging.info("Appium is running on emulator")
+            back_arrow = self.driver.find_element(*self.configuration.TopBar.BACK_ARROW)
+            self.assertIsNotNone(back_arrow, "back arrow not found")
+            back_arrow.click()
+
+            self.switch_context_to_native()
+
+            common_page = LoadClass.load_page('CommonPage')
+            common_page.setDriver(self.driver)
+            common_page.wait_for_app_loading()
+        else:
+            pass
 
     def hamburger_button(self):
 

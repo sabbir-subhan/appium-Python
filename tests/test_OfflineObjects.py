@@ -276,7 +276,7 @@ class TestOfflineObjects(SetupTestCase):
         tasks_page.create_new_task()
         tasks_page.type_title("Offline Object - Task")
         common_page.hide_keyboard()
-        tasks_page.click_on_assigned()  # ios iphone
+        tasks_page.click_on_assigned()
         tasks_page.add_contacts_and_groups()
         contacts_page.clear_Search_field()
         contacts_page.click_first_contact_on_the_list_with_checkbox_in_offline_mode()

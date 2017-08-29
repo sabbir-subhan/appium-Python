@@ -548,6 +548,7 @@ class ComposeScreen:
     MESSAGE_FAX = (MobileBy.CSS_SELECTOR, 'a[href="#messageFax"]')
     FAX_DOCUMENT_BUTTON = (MobileBy.CSS_SELECTOR, '#faxDocumentMethod')
     FAX_OK_BUTTON = (MobileBy.CSS_SELECTOR, 'div#messageFax>div[data-role="footer"]>div[data-role="navbar"]>ul>li.ui-block-a>a')
+    FAX_OK_BUTTON2 = (MobileBy.CSS_SELECTOR, 'div#documentfolderTreeView>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-a>li.ui-block-a>a')
     COMMS_DOCUMENTS_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#documentfolderTreeView?selector=true&id=2"]')
     ADD_CONTACTS_AND_GROUPS = (MobileBy.CSS_SELECTOR, 'a.maywrap.ui-link.ui-btn.ui-shadow.ui-corner-all')  # list of two elements - select [0]
     ADD_RESOURCES_STRUCTURE_NODES = (MobileBy.CSS_SELECTOR, 'a.maywrap.ui-link.ui-btn.ui-shadow.ui-corner-all')  # list of two elements - select [1]
@@ -565,6 +566,17 @@ class ComposeScreen:
     EMAIL_ATTACHMENTS = (MobileBy.CSS_SELECTOR, 'div#messageEmail>div.ui-content>ul.attachments>li.more>a[href="#messageEmailAttachments"]')
     SAVE_DRAFT_INPUT_NAME = (MobileBy.CSS_SELECTOR, 'div#messagePage>div.ui-popup-container>div[data-role="popup"]>div.ng-dialog-container>input.prompt-input')
     SAVE_BUTTON_INSIDE_DRAFT_POPUP = (MobileBy.CSS_SELECTOR, 'div#messagePage>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div.ui-controlgroup-controls>a:first-child')
+    LOAD_DRAFT = (MobileBy.CSS_SELECTOR, 'div#messagePage>div#messageMore-popup>div#messageMore>ul.ui-listview>li>a[href="#messageDrafts"]')
+    FIRST_DRAFT_MSG_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#messageDrafts>div.ui-content>ul.ui-listview>li.ui-first-child>a')
+    # RECIPIENTS_NAME = (MobileBy.XPATH, '//*[text()="A_CONTACT_FOR_APPIUM_TESTS"]')
+    ADD_RECIPIENTS_BUTTON_DISPLAY_NONE = (MobileBy.CSS_SELECTOR, 'div#messagePage>div.ui-content>ul.recipients>li.none[style="display: none;"]')
+    WHOLE_POPUP = (MobileBy.CSS_SELECTOR, 'div#messagePage>div.ui-popup-container.ui-popup-active')
+    POPUP_CONTAINER = (MobileBy.CSS_SELECTOR, 'div#messagePage>div.ui-popup-container.ui-popup-active>div[data-role=popup]>div.ng-dialog-container>p')
+    OK_BUTTON_ON_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#messagePage>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
+    # ALERT_NO_RECIPIENTS = (MobileBy.XPATH, '//p[text()="Message not sent. No recipients have been selected"]')
+    # ALERT_OFFLINE_MODE = (MobileBy.XPATH, '//h3[text()="Offline mode"]')
+    # ALERT_NO_COMMUNICATION_METHODS = (MobileBy.XPATH, '//h3[text()="Message not sent. No communication methods have been selected"]')
+    EMAIL_ATTACH_MEDIA = (MobileBy.CSS_SELECTOR, 'a#emailAttachMedia')
 
 
 class RisksScreen:
@@ -581,7 +593,7 @@ class RisksScreen:
     # PREVIOUSLY_CREATED_CONTEXT = (MobileBy.CSS_SELECTOR, 'div#riskcontextTreeView>div.ui-content>ul.contexts>li:first-child')
     # PREVIOUSLY_CREATED_RISK = (MobileBy.CSS_SELECTOR, 'div#riskcontextTreeView>div.ui-content>ul.risks>li:first-child')
     LIBRARY_CONTROL = (MobileBy.CSS_SELECTOR, 'div#riskcontrollibraryTreeView>div.ui-content>ul.category>li:first-child')
-    #PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.CSS_SELECTOR, 'ul.registers.listview.ui-listview>li>a')
+    # PREVIOUSLY_CREATED_RISK_REGISTER = (MobileBy.CSS_SELECTOR, 'ul.registers.listview.ui-listview>li>a')
     PREVIOUSLY_CREATED_CONTEXT = (MobileBy.CSS_SELECTOR, 'ul.contexts.listview.ui-listview>li>a')
     PREVIOUSLY_CREATED_RISK = (MobileBy.CSS_SELECTOR, 'ul.risks.listview.ui-listview>li>a')
     RISK_REGISTERS_LIST = (MobileBy.CSS_SELECTOR, 'ul.registers.listview.ui-listview>li:first-child>a')

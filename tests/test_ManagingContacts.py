@@ -193,6 +193,7 @@ class TestManagingContacts(SetupTestCase):
         compose_page.click_ok_button()
         compose_page.click_send_button()
         compose_page.alert_send_button()
+        compose_page.wait_for_sending_msg()
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()
 
