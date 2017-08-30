@@ -190,10 +190,10 @@ class TestManagingContacts(SetupTestCase):
         compose_page.type_email_subject()
         compose_page.type_email_message()
         common_page.hide_keyboard()
-        compose_page.click_ok_button()
+        compose_page.click_email_ok_button()
         compose_page.click_send_button()
         compose_page.alert_send_button()
-        compose_page.wait_for_sending_msg()
+        common_page.wait_for_app_loading()
         common_page.hamburger_button()
         main_page.check_presence_of_inbox_button()
 

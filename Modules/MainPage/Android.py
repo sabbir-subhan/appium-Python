@@ -82,6 +82,7 @@ class Android(MainPage):
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         common_page.scroll_down_one_view()
+        common_page.scroll_down_one_view()
 
     def scroll_up_to_reports_button(self):
 

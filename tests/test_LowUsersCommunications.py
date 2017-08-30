@@ -1,5 +1,14 @@
-# Test Case 11 - View Inbox & Sent Communications  -- OCAMOB-49
+# Test Case - Low level user should be able to send communication to a low level user  -- OCAMOB-419
 
+
+# before running test case:
+
+# Create two low level users: "A_CONTACT_FOR_APPIUM_TESTS" and "test_general" or change names of the contacts in this script
+# Create high user: test_admin or change name of the contact in this script
+# Login to OCA server -> Click on Settings > Settings>Security > Under Access levels set the write access level to administrators only(high access)
+
+
+# Login to the OCA app with low user
 # open OCA app
 # input login, password and domain
 # click on Submit button
@@ -8,12 +17,9 @@
 # dismiss iOS notifications
 # check if button "EVENTS" is present
 
-# From the main menu, press the Sent button.
-# Verify that communications listed show: Sender, date & time sent and method (e.g. email, SMS).
-# Return to the main menu and press Compose.
-# Send one of each type of communication to some recipient/s.
-# Return to the main menu and press the Sent button. View the most recent communications sent.
-# From the main menu press the Inbox button.
+# Click on inbox and select a email > Click on Forward > Select an other low user created above > Send
+# Forward an other email to a high access user
+# Send Sms/Voice from low level user to an other low level user
 
 
 from Modules.Setup import SetupTestCase
@@ -23,7 +29,7 @@ import unittest
 from configuration import PROJECT_ROOT
 
 
-class TestSentCommunications(SetupTestCase):
+class TestLowUsersCommunications(SetupTestCase):
     """ Setup test """
 
     def setUp(self):
@@ -35,13 +41,13 @@ class TestSentCommunications(SetupTestCase):
         logging.info("Quitting")
 
         # take screenshot on quit
-        self.driver.save_screenshot(PROJECT_ROOT + "/screenshots/test_SentCommunications.png")
+        self.driver.save_screenshot(PROJECT_ROOT + "/screenshots/test_LowUsersCommunications.png")
 
         self.driver.quit()
 
-    def test_SentCommunications(self):
+    def test_LowUsersCommunications(self):
 
-        logging.info("starting Test Case: View Inbox & Sent Communications")
+        logging.info("starting Test Case: Low Users Communications")
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         welcome_page = LoadClass.load_page('WelcomePage')
@@ -52,8 +58,8 @@ class TestSentCommunications(SetupTestCase):
         login_page.type_domain_address('QA')
         common_page.hide_keyboard()
         login_page.click_submit_button()
-        login_page.type_username('QA')
-        login_page.type_password('QA')
+        login_page.type_username('general_user')
+        login_page.type_password('general_user')
         common_page.hide_keyboard()
         login_page.click_submit_button()
         login_page.accept_terms()
@@ -64,65 +70,39 @@ class TestSentCommunications(SetupTestCase):
         main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
 
-        main_page.scroll_down_to_sent_button()
-        main_page.open_SENT()
-        sent_page = LoadClass.load_page('SentPage')
-        sent_page.setDriver(self.driver)
-        sent_page.clear_Search_field()
-        sent_page.type_text_into_search_field("Test ")
-        common_page.click_Return_button_on_keyboard()
-        common_page.hide_keyboard()
-        sent_page.check_sent_communications()
-        common_page.hamburger_button()
-
         main_page.open_COMPOSE()
         compose_page = LoadClass.load_page('ComposePage')
         compose_page.setDriver(self.driver)
         compose_page.add_recipients()
         compose_page.add_contacts_and_groups()
-        # compose_page.clear_Search_field()
-        # compose_page.type_text_into_search_field("Contacts")
-        # common_page.click_Return_button_on_keyboard()
-        # common_page.hide_keyboard()
-        # compose_page.first_element_arrow_button()
         compose_page.clear_Search_field()
         compose_page.type_text_into_search_field("A_CONTACT_FOR_APPIUM_TESTS")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         compose_page.click_first_contact_on_the_list_with_checkbox()
         compose_page.click_ok_button()
-        compose_page.choose_sms_message()
-        compose_page.type_sms_message()
-        compose_page.click_ok_button()
         compose_page.choose_email_message()
         compose_page.type_email_subject()
         compose_page.type_email_message()
         common_page.hide_keyboard()
         compose_page.click_email_ok_button()
-        compose_page.choose_voice_message()
-        compose_page.click_text_to_speech()
-        compose_page.type_voice_message()
-        compose_page.click_ok_button()
-        compose_page.choose_fax_message()
-        compose_page.choose_fax_document()
-        compose_page.choose_comms_documents()
-        compose_page.choose_file()
-        compose_page.click_fax_ok_button()
         compose_page.click_send_button()
         compose_page.alert_send_button()
         common_page.wait_for_app_loading()
         common_page.hamburger_button()
-        main_page.scroll_down_to_sent_button()
-        main_page.open_SENT()
-        common_page.take_screenshot("Sent_communications")
-        common_page.hamburger_button()
+
+        # Click on inbox and select a email > Click on Forward > Select an other low user created above > Send
         main_page.open_INBOX()
         inbox_page = LoadClass.load_page('InboxPage')
         inbox_page.setDriver(self.driver)
-        common_page.take_screenshot("Inbox_screenshot")
-        common_page.hamburger_button()
+        inbox_page.open_first_msg_on_the_list()
+        
+
+        # Forward an other email to a high access user
+
+        # Send Sms/Voice from low level user to an other low level user
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestSentCommunications)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestLowUsersCommunications)
     unittest.TextTestRunner(verbosity=2).run(suite)

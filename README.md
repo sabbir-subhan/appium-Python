@@ -281,7 +281,6 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 ### for TC: OfflineObjects
 - airplane mode on iOS emulators is unavailable
 
-
 ### for TC: Read Only Properties
 - Go to setting > OCA designer > Create object types: Asset, Reports, Event, Risk
 - for each new type add the following: - option list: name = Is Read only ?, Options = Yes A, Yes B, No, Maximum selected options = Height of field = 3, Default value = (None) - *Options may come from a central list or a user-defined list
@@ -289,6 +288,12 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 - Make the 1st set of fields Read only if Is Read only ? = Yes A.
 - Make the 2nd set of fields visible only if Is Read only ? = Yes B.
 - Set up default values for all fields in both sets.
+
+### for TC: Sending Communications
+- make sure that the "A_CONTACT_FOR_APPIUM_TESTS" is present in OCA or change name of the contact in test case script
+- go to OCA web page -> Documents -> edit "Comms documents" -> change read access level to all users
+- highlight OCA Generic Escalation Fax.pdf and click Properties -> change read access level to all users
+- prepare some sample image and video for real devices
 
 
 #**BEFORE EACH NEW RUN OF TESTS:**

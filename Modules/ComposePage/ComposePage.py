@@ -4,9 +4,9 @@ from Modules.BasePage.BasePage import BasePage
 from Modules.load_class import LoadClass
 import logging
 from time import sleep
+from selenium.common.exceptions import NoSuchElementException, WebDriverException
+from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.common.exceptions import NoSuchElementException
 
 
 class ComposePage(BasePage):
@@ -17,6 +17,17 @@ class ComposePage(BasePage):
         common_page.setDriver(self.driver)
         common_page.click_ok_button()
 
+    def click_email_ok_button(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click email msg 'OK' button")
+        ok_button = self.driver.find_element(*self.configuration.ComposeScreen.EMAIL_OK)
+        self.assertIsNotNone(ok_button, "OK button not found")
+        ok_button.click()
+
+        self.switch_context_to_native()
+
     def click_fax_ok_button(self):
 
         self.switch_context_to_webview()
@@ -24,11 +35,13 @@ class ComposePage(BasePage):
         logging.info("click 'Ok' button")
         try:
             fax_ok_button = self.driver.find_element(*self.configuration.ComposeScreen.FAX_OK_BUTTON)
-        except:
+            self.assertIsNotNone(fax_ok_button, "Ok button not found")
+            fax_ok_button.click()
+        except WebDriverException:
             fax_ok_button = self.driver.find_element(*self.configuration.ComposeScreen.FAX_OK_BUTTON2)  # for low user
-        self.assertIsNotNone(fax_ok_button, "Ok button not found")
-        fax_ok_button.click()
-        sleep(2)
+            self.assertIsNotNone(fax_ok_button, "Ok button not found")
+            fax_ok_button.click()
+        sleep(1)
 
         self.switch_context_to_native()
 
@@ -73,13 +86,37 @@ class ComposePage(BasePage):
         #     "Failed to send message")
         # logging.info("Message was sent")
 
-    def wait_for_sending_msg(self):  # msg can have videos attachments
+    # def wait_for_sending_msg(self):  # msg can have videos attachments
+    #
+    #     logging.info("sending message")
+    #
+    #     # time_out = 500
+    #
+    #     common_page = LoadClass.load_page('CommonPage')
+    #     common_page.setDriver(self.driver)
+    #
+    #     while common_page.wait_for_app_loading:
+    #
+    #
+    #     check_offline_notification_alert
+    #     check_no_recipients_alert
+    #     check_no_communication_methods_alert
+    #     OK_BUTTON_ON_NOTIFICATION_POPUP
+    #
+    #
+    #     WebDriverWait(self.driver, 500).until(
+    #         expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.INBOX_BUTTON),
+    #         "Failed to send message")
+    #     logging.info("Message was sent")
 
-        logging.info("sending message")
-        WebDriverWait(self.driver, 500).until(
-            expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.INBOX_BUTTON),
-            "Failed to send message")
-        logging.info("Message was sent")
+    # def wait_for_sending_msg(self):  # msg can have videos attachments
+    #
+    #     logging.info("sending message")
+    #
+    #     WebDriverWait(self.driver, 500).until(
+    #         expected_conditions.presence_of_element_located(self.configuration.MainMenuScreen.INBOX_BUTTON),
+    #         "Failed to send message")
+    #     logging.info("Message was sent")
 
     def add_recipients(self):
 
@@ -344,18 +381,15 @@ class ComposePage(BasePage):
 
     def choose_file(self):
 
-        try:
-            logging.info('choose file from documents')
-            # files = self.driver.find_elements(*self.configuration.ComposeScreen.FILES_LIST)
-            # self.assertIsNotNone(files, 'file in documents not found')
-            # self.assertIsNotNone(files[0], 'first file in documents not found')
-            # files[0].click()
-            file = self.driver.find_element(*self.configuration.ComposeScreen.FAX_PDF_FILE)
-            self.assertIsNotNone(file, 'file in documents not found')
-            file.click()
-            sleep(1)
-        except NoSuchElementException:
-            logging.info("pass")
+        logging.info('choose file from documents')
+        # files = self.driver.find_elements(*self.configuration.ComposeScreen.FILES_LIST)
+        # self.assertIsNotNone(files, 'file in documents not found')
+        # self.assertIsNotNone(files[0], 'first file in documents not found')
+        # files[0].click()
+        file = self.driver.find_element(*self.configuration.ComposeScreen.FAX_PDF_FILE)
+        self.assertIsNotNone(file, 'file in documents not found')
+        file.click()
+        sleep(1)
 
     def check_recipient_field(self):
 
@@ -410,9 +444,21 @@ class ComposePage(BasePage):
         self.switch_context_to_webview()
 
         logging.info("click Attachments button")
-        attachment_button = self.driver.find_element(*self.configuration.ComposeScreen.EMAIL_ATTACHMENTS)
-        self.assertIsNotNone(attachment_button, "Attachments button not found")
-        attachment_button.click()
+        try:
+            attachment_button = self.driver.find_element(*self.configuration.ComposeScreen.EMAIL_ATTACHMENTS)
+            if attachment_button.is_displayed():
+                pass
+            else:
+                self.switch_context_to_native()
+                common_page = LoadClass.load_page('CommonPage')
+                common_page.setDriver(self.driver)
+                common_page.scroll_down_one_view()
+                self.switch_context_to_webview()
+
+            self.assertIsNotNone(attachment_button, "Attachments button not found")
+            attachment_button.click()
+        except NoSuchElementException:
+            self.fail("attachments button not found")
 
         self.switch_context_to_native()
 

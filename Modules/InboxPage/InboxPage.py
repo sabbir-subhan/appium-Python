@@ -2,7 +2,7 @@
 
 from Modules.BasePage.BasePage import BasePage
 # from Modules.load_class import LoadClass
-# import logging
+import logging
 # from time import sleep
 # from selenium.webdriver.support import expected_conditions
 # from selenium.webdriver.support.ui import WebDriverWait
@@ -10,4 +10,14 @@ from Modules.BasePage.BasePage import BasePage
 
 class InboxPage(BasePage):
 
-    pass
+    def open_first_msg_on_the_list(self):
+
+        logging.info("open first message on the list")
+
+        self.switch_context_to_webview()
+
+        first_msg_on_the_list = self.driver.find_element(*self.configuration.InboxScreen.FIRST_MSG_ON_THE_LIST)
+        self.assertIsNotNone(first_msg_on_the_list, "First msg on the list, not found")
+        first_msg_on_the_list.click()
+
+        self.switch_context_to_native()

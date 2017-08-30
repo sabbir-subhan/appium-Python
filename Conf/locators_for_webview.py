@@ -548,7 +548,7 @@ class ComposeScreen:
     MESSAGE_FAX = (MobileBy.CSS_SELECTOR, 'a[href="#messageFax"]')
     FAX_DOCUMENT_BUTTON = (MobileBy.CSS_SELECTOR, '#faxDocumentMethod')
     FAX_OK_BUTTON = (MobileBy.CSS_SELECTOR, 'div#messageFax>div[data-role="footer"]>div[data-role="navbar"]>ul>li.ui-block-a>a')
-    FAX_OK_BUTTON2 = (MobileBy.CSS_SELECTOR, 'div#documentfolderTreeView>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-a>li.ui-block-a>a')
+    FAX_OK_BUTTON2 = (MobileBy.CSS_SELECTOR, 'div#documentfolderTreeView>div[data-role="footer"]>div.ui-navbar>ul.ui-grid-a>li.ui-block-a>a[data-role="button"]')
     COMMS_DOCUMENTS_BUTTON = (MobileBy.CSS_SELECTOR, 'a[href="#documentfolderTreeView?selector=true&id=2"]')
     ADD_CONTACTS_AND_GROUPS = (MobileBy.CSS_SELECTOR, 'a.maywrap.ui-link.ui-btn.ui-shadow.ui-corner-all')  # list of two elements - select [0]
     ADD_RESOURCES_STRUCTURE_NODES = (MobileBy.CSS_SELECTOR, 'a.maywrap.ui-link.ui-btn.ui-shadow.ui-corner-all')  # list of two elements - select [1]
@@ -738,3 +738,9 @@ class SelectMediaScreen:
     RECORD_AUDIO = (MobileBy.CSS_SELECTOR, 'div#filesystemMediaSelect>div.ui-content>div.ui-grid-a>div#fileAudioCapture>div.center-text>span.icon')
     VIDEO_GALLERY = (MobileBy.CSS_SELECTOR, 'div#filesystemMediaSelect>div.ui-content>div.ui-grid-a>div#fileVideoGallery>div.center-text>span.icon')
     PHOTO_GALLERY = (MobileBy.CSS_SELECTOR, 'div#filesystemMediaSelect>div.ui-content>div.ui-grid-a>div#filePhotoGallery>div.center-text>span.icon')
+
+
+class InboxScreen:
+    """A class for Inbox screen locators - screen after clicking into Inbox button in Main Menu."""
+    FIRST_MSG_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#inbox>div.ui-content>ul.messages>li:first-child>a')
+    FORWARD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#inboxitemView>div.ui-footer>div.ui-navbar>ul>li.ui-block-b>a#inboxitemForward')
