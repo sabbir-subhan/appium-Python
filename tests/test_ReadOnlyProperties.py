@@ -122,7 +122,7 @@ class TestReadOnlyProperties(SetupTestCase):
         assets_page.scroll_up_to_name_field()
 
         # Set is Read only = Yes A and Yes B
-        assets_page.read_only_option_list()
+        assets_page.read_only_option_list_for_new_asset()
         assets_page.option_list_option_yes_a()
         assets_page.option_list_option_yes_b()
         assets_page.save_option_list()
@@ -162,7 +162,7 @@ class TestReadOnlyProperties(SetupTestCase):
 
         # Uncheck all checkboxes in Is Read only ?, check "No" and then save the Asset
         assets_page.fill_name_for_edited_asset(" edit")
-        assets_page.read_only_option_list()
+        assets_page.read_only_option_list_for_edit_asset()
         assets_page.option_list_option_yes_a()
         assets_page.option_list_option_yes_b()
         assets_page.option_list_option_no()
@@ -182,7 +182,7 @@ class TestReadOnlyProperties(SetupTestCase):
         assets_page.open_existing_asset()
         common_page.wait_for_app_loading()
         assets_page.click_edit_button()
-        assets_page.read_only_option_list()
+        assets_page.read_only_option_list_for_edit_asset()
         assets_page.option_list_option_no()
         assets_page.option_list_option_yes_a()
         assets_page.option_list_option_yes_b()
@@ -210,7 +210,7 @@ class TestReadOnlyProperties(SetupTestCase):
         common_page.scroll_up_to_name_field()
 
         # Set is Read only = Yes A and Yes B
-        events_page.read_only_option_list()
+        events_page.read_only_option_list_for_new_event()
         assets_page.option_list_option_yes_a()
         assets_page.option_list_option_yes_b()
         assets_page.save_option_list()
@@ -249,7 +249,7 @@ class TestReadOnlyProperties(SetupTestCase):
 
         # Uncheck all checkboxes in Is Read only ?, check "No" and then save the Event
         events_page.fill_name_for_edited_event(" edit")
-        events_page.read_only_option_list()
+        events_page.read_only_option_list_for_edit_event()
         assets_page.option_list_option_yes_a()
         assets_page.option_list_option_yes_b()
         assets_page.option_list_option_no()
@@ -269,7 +269,7 @@ class TestReadOnlyProperties(SetupTestCase):
         events_page.open_previously_created_event()
         common_page.wait_for_app_loading()
         events_page.click_edit_button()
-        events_page.read_only_option_list()
+        events_page.read_only_option_list_for_edit_event()
         assets_page.option_list_option_no()
         assets_page.option_list_option_yes_a()
         assets_page.option_list_option_yes_b()
@@ -296,7 +296,7 @@ class TestReadOnlyProperties(SetupTestCase):
         assets_page.scroll_up_to_name_field()
 
         # Set is Read only = Yes A and Yes B
-        reports_page.read_only_option_list()
+        reports_page.read_only_option_list_for_new_report()
         assets_page.option_list_option_yes_a()
         assets_page.option_list_option_yes_b()
         assets_page.save_option_list()
@@ -336,7 +336,7 @@ class TestReadOnlyProperties(SetupTestCase):
 
         # Uncheck all checkboxes in Is Read only ?, check "No" and then save the Report
         reports_page.type_title_for_edited_report(" edit")
-        reports_page.read_only_option_list()
+        reports_page.read_only_option_list_for_edit_report()
         assets_page.option_list_option_yes_a()
         assets_page.option_list_option_yes_b()
         assets_page.option_list_option_no()
@@ -356,7 +356,7 @@ class TestReadOnlyProperties(SetupTestCase):
         reports_page.edit_first_report_on_the_list()
         common_page.wait_for_app_loading()
         reports_page.click_edit_button()
-        reports_page.read_only_option_list()
+        reports_page.read_only_option_list_for_edit_report()
         assets_page.option_list_option_no()
         assets_page.option_list_option_yes_a()
         assets_page.option_list_option_yes_b()
@@ -414,7 +414,7 @@ class TestReadOnlyProperties(SetupTestCase):
         common_page.scroll_up_to_name_field()
 
         # Set is Read only = Yes A and Yes B
-        risks_page.read_only_option_list()
+        risks_page.read_only_option_list_for_new_risk()
         assets_page.option_list_option_yes_a()
         assets_page.option_list_option_yes_b()
         assets_page.save_option_list()
@@ -446,7 +446,7 @@ class TestReadOnlyProperties(SetupTestCase):
 
         # Uncheck all checkboxes in Is Read only ?, check "No" and then save the Risk
         risks_page.type_name_for_edit_risk(" edit")
-        risks_page.read_only_option_list()
+        risks_page.read_only_option_list_for_edit_risk()
         assets_page.option_list_option_yes_a()
         assets_page.option_list_option_yes_b()
         assets_page.option_list_option_no()
@@ -464,7 +464,7 @@ class TestReadOnlyProperties(SetupTestCase):
         risks_page.open_existing_risk()
         common_page.wait_for_app_loading()
         risks_page.click_edit_button()
-        risks_page.read_only_option_list()
+        risks_page.read_only_option_list_for_edit_risk()
         assets_page.option_list_option_no()
         assets_page.option_list_option_yes_a()
         assets_page.option_list_option_yes_b()

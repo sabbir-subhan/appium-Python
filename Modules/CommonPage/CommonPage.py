@@ -116,11 +116,14 @@ class CommonPage(BasePage):
 
         self.switch_context_to_webview()
 
+        timeout = 600
+
         try:
             loading_animation = self.driver.find_element(*self.configuration.CommonScreen.LOADING)
-            while loading_animation.is_displayed():
+            while loading_animation.is_displayed() and timeout > 0:
                 logging.info("wait for app loading")
                 sleep(2)
+                timeout = timeout - 1
                 if self.assertIsNot(loading_animation, "end waiting"):
                     break
         except NoSuchElementException:
@@ -128,6 +131,25 @@ class CommonPage(BasePage):
             pass
 
         self.switch_context_to_native()
+
+    # def wait_for_app_loading(self):
+    #
+    #     sleep(1)
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     try:
+    #         loading_animation = self.driver.find_element(*self.configuration.CommonScreen.LOADING)
+    #         while loading_animation.is_displayed():
+    #             logging.info("wait for app loading")
+    #             sleep(2)
+    #             if self.assertIsNot(loading_animation, "end waiting"):
+    #                 break
+    #     except NoSuchElementException:
+    #         logging.info("loading animation not found")
+    #         pass
+    #
+    #     self.switch_context_to_native()
 
     # def wait_for_app_loading(self):
     #

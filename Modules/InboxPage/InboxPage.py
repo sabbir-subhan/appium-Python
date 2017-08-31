@@ -21,3 +21,15 @@ class InboxPage(BasePage):
         first_msg_on_the_list.click()
 
         self.switch_context_to_native()
+
+    def click_forward_button(self):
+
+        logging.info("click forward button")
+
+        self.switch_context_to_webview()
+
+        forward_button = self.driver.find_element(*self.configuration.InboxScreen.FORWARD_BUTTON)
+        self.assertIsNotNone(forward_button, "Forward button, not found")
+        forward_button.click()
+
+        self.switch_context_to_native()

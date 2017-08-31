@@ -347,7 +347,7 @@ class AssetsPage(BasePage):
             created_map_asset = self.driver.find_elements(*self.configuration.AssetsScreen.CREATED_MAP_ASSET)
             # self.assertIsNotNone(created_map_asset[1], "created map asset not found")
             self.assertIsNotNone(created_map_asset[0], "created map asset not found")
-        except NoSuchElementException and IndexError:
+        except NoSuchElementException or IndexError:
             logging.error("created map asset not found")
 
     def check_result_for_asset_with_name_containing_ballart(self):
@@ -561,28 +561,52 @@ class AssetsPage(BasePage):
 
         self.switch_context_to_native()
 
-    def read_only_option_list(self):
+    def read_only_option_list_for_new_asset(self):
 
         self.switch_context_to_webview()
 
         logging.info("click option list - Is Read Only ?")
 
-        try:
-            option_list = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_READ_ONLY)
-            if option_list.is_displayed():
-                self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
-                option_list.click()
-            else:
-                raise ValueError("element not displayed")
-        except NoSuchElementException and ValueError:
-            option_list = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_READ_ONLY_EDIT)
-            if option_list.is_displayed():
-                self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
-                option_list.click()
-            else:
-                self.fail("Read Only option list, not found")
+        option_list = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_READ_ONLY)
+        self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
+        option_list.click()
 
         self.switch_context_to_native()
+
+    def read_only_option_list_for_edit_asset(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click option list - Is Read Only ?")
+
+        option_list = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_READ_ONLY_EDIT)
+        self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
+        option_list.click()
+
+        self.switch_context_to_native()
+
+    # def read_only_option_list(self):
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     logging.info("click option list - Is Read Only ?")
+    #
+    #     try:
+    #         option_list = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_READ_ONLY)
+    #         if option_list.is_displayed():
+    #             self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
+    #             option_list.click()
+    #         # else:
+    #         #     raise ValueError("option list element not displayed")
+    #     except NoSuchElementException or WebDriverException:
+    #         option_list = self.driver.find_element(*self.configuration.AssetsScreen.OPTION_LIST_READ_ONLY_EDIT)
+    #         if option_list.is_displayed():
+    #             self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
+    #             option_list.click()
+    #         else:
+    #             self.fail("Read Only option list, not found")
+    #
+    #     self.switch_context_to_native()
 
     def option_list_option_yes_a(self):
 
@@ -627,7 +651,6 @@ class AssetsPage(BasePage):
         option_list_save_button = self.driver.find_element(*self.configuration.AssetsScreen.SAVE_OPTION_LIST)
         self.assertIsNotNone(option_list_save_button, "Option list save button, not found")
         option_list_save_button.click()
-        sleep(1)
 
     def check_invisibility_of_second_set_of_fields(self):
 

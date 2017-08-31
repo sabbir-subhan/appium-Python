@@ -1034,28 +1034,52 @@ class EventsPage(BasePage):
         self.assertIsNotNone(event_type, "asset type not found")
         event_type.click()
 
-    def read_only_option_list(self):
+    def read_only_option_list_for_new_event(self):
 
         self.switch_context_to_webview()
 
         logging.info("click option list - Is Read Only ?")
 
-        try:
-            option_list = self.driver.find_element(*self.configuration.EventEditScreen.OPTION_LIST_READ_ONLY)
-            if option_list.is_displayed():
-                self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
-                option_list.click()
-            else:
-                raise ValueError("element not displayed")
-        except NoSuchElementException and ValueError:
-            option_list = self.driver.find_element(*self.configuration.EventEditScreen.OPTION_LIST_READ_ONLY_EDIT)
-            if option_list.is_displayed():
-                self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
-                option_list.click()
-            else:
-                self.fail("Read Only option list, not found")
+        option_list = self.driver.find_element(*self.configuration.EventEditScreen.OPTION_LIST_READ_ONLY)
+        self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
+        option_list.click()
 
         self.switch_context_to_native()
+
+    def read_only_option_list_for_edit_event(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click option list - Is Read Only ?")
+
+        option_list = self.driver.find_element(*self.configuration.EventEditScreen.OPTION_LIST_READ_ONLY_EDIT)
+        self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
+        option_list.click()
+
+        self.switch_context_to_native()
+
+    # def read_only_option_list(self):
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     logging.info("click option list - Is Read Only ?")
+    #
+    #     try:
+    #         option_list = self.driver.find_element(*self.configuration.EventEditScreen.OPTION_LIST_READ_ONLY)
+    #         if option_list.is_displayed():
+    #             self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
+    #             option_list.click()
+    #         else:
+    #             raise ValueError("element not displayed")
+    #     except NoSuchElementException or ValueError:
+    #         option_list = self.driver.find_element(*self.configuration.EventEditScreen.OPTION_LIST_READ_ONLY_EDIT)
+    #         if option_list.is_displayed():
+    #             self.assertIsNotNone(option_list, "option list - Is Read Only ?, not found")
+    #             option_list.click()
+    #         else:
+    #             self.fail("Read Only option list, not found")
+    #
+    #     self.switch_context_to_native()
 
     def fill_name_for_edited_event(self, text):
 

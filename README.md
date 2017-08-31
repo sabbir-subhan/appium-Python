@@ -295,6 +295,11 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 - highlight OCA Generic Escalation Fax.pdf and click Properties -> change read access level to all users
 - prepare some sample image and video for real devices
 
+### for TC: Low Users Communications
+- If not already present in OCA, create three low level users: "A_CONTACT_FOR_APPIUM_TESTS", "test_general" and "test_expire_in_1_day" or change names of the contacts in this script, (those users must have email addresses) 
+- Create high user: "test_admin" or change name of the contact in this script
+- Login to OCA server -> Click on Settings > Settings>Security > Under Access levels set the write access level to administrators only(high access)
+
 
 #**BEFORE EACH NEW RUN OF TESTS:**
 
