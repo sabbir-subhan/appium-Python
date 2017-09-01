@@ -67,7 +67,8 @@ class AssetsPage(BasePage):
 
         self.switch_context_to_webview()
 
-        sleep(5)
+        # sleep(5)
+        sleep(1)
         logging.info("type Name")
         name = self.driver.find_element(*self.configuration.AssetsScreen.NAME_FOR_EDITED_ASSET)
         self.assertIsNotNone(name, "Name input field was not found")
@@ -685,6 +686,8 @@ class AssetsPage(BasePage):
 
     def check_if_first_set_of_fields_in_asset_with_option_list_is_disabled(self):
 
+        self.switch_context_to_native()
+
         logging.info('check if "New phone number" field in first set of fields inside object with option list,'
                      ' is disabled - field should be read only')
         sleep(1)
@@ -702,6 +705,7 @@ class AssetsPage(BasePage):
         except NoSuchElementException:
             logging.error("New phone number field is not read only")
             self.fail("New phone number field is not read only")
+            # logging.error("New phone number field is not read only")
 
     def check_fields_for_values_and_read_only_property(self):
 

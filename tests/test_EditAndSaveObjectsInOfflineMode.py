@@ -94,6 +94,7 @@ class TestEditAndSaveObjectsInOfflineMode(SetupTestCase):
 
         # Create event using the quick access link
         main_page.open_INCIDENT()
+        # common_page.wait_for_app_loading()  # for Android 8 emulator
         events_page.fill_Name_input_field("Incident_offline")
         events_page.scroll_down_to_save_button()
         events_page.click_save_new_event()
@@ -107,17 +108,30 @@ class TestEditAndSaveObjectsInOfflineMode(SetupTestCase):
         main_page.check_presence_of_events_button()
         main_page.scroll_up_to_events_button()
         main_page.open_EVENTS()
-
-        # Click on the event created above
-        # events_page.clear_Search_field()
-        # events_page.type_text_into_search_field("Incident_offline")
-        # common_page.click_Return_button_on_keyboard()
-        # common_page.hide_keyboard()
         events_page.open_first_pending_event()
         common_page.wait_for_app_loading()
         events_page.click_edit_button()
 
         # Repeat steps for Assets
+        main_page.open_CREATE_ASSETS()
+        assets_page = LoadClass.load_page('AssetsPage')
+        assets_page.setDriver(self.driver)
+        assets_page.click_new_button()
+        assets_page.click_new_asset()
+        assets_page.choose_asset_type()
+        assets_page.fill_Name_input_field("Offline Object - Asset")
+        assets_page.scroll_down_to_save_button()
+        assets_page.click_save_button()
+        assets_page.check_notification_about_offline_mode()
+        assets_page.ok_button_on_offline_notification_popup()
+        common_page.wait_for_app_loading()
+        
+        common_page.hamburger_button()
+        main_page.scroll_up_to_events_button()
+        main_page.open_ASSETS()
+        assets_page.open_first_pending_asset()
+        assets_page.click_edit_button()
+
         # Repeat steps for Reports
         # Repeat steps for Logs
         # Create Assets, Reports, Logs, Events using the other types  ?

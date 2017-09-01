@@ -4,7 +4,6 @@ from Modules.BasePage.BasePage import BasePage
 import logging
 from time import sleep
 from selenium.common.exceptions import *
-from Modules.load_class import LoadClass
 
 
 class SentPage(BasePage):
@@ -12,24 +11,14 @@ class SentPage(BasePage):
     def check_sent_communications(self):
 
         logging.info('check sent communication')
+        
         try:
             sent_communication_email = self.driver.find_elements(*self.configuration.SentScreen.SENT_COMMUNICATIONS_EMAIL)
             self.assertIsNotNone(sent_communication_email[0], 'Short message, Email communications not found')
             # self.assertIsNotNone(sent_communication_email[1], 'Short message, Email communications not found')
             logging.info("sent communication is present")
-        except NoSuchElementException and IndexError:
+        except NoSuchElementException or IndexError:
             logging.warning("Short message, Email communications not found")
-
-    # def check_sent_communications(self):
-    #
-    #     logging.info('check sent communication')
-    #     try:
-    #         sent_communication_email = self.driver.find_elements(*self.configuration.SentScreen.SENT_COMMUNICATIONS_EMAIL)
-    #         self.assertIsNotNone(sent_communication_email[0], 'Short message, Email communications not found')
-    #         # self.assertIsNotNone(sent_communication_email[1], 'Short message, Email communications not found')
-    #         logging.info("sent communication is present")
-    #     except NoSuchElementException and IndexError:
-    #         logging.warning("Short message, Email communications not found")
 
     def clear_Search_field(self):
 

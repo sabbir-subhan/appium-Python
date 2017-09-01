@@ -53,17 +53,18 @@ class CommonPage(BasePage):
 
         self.switch_context_to_webview()
 
-        sleep(1)
+        sleep(0.5)
         logging.info("click hamburger button to go back to main menu")
 
         hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU)
         self.assertIsNotNone(hamburger_button, "hamburger menu button, not found")
         hamburger_button.click()
-        sleep(1)
+        # sleep(1)
 
         self.switch_context_to_native()
 
-        sleep(4)
+        sleep(1)
+        # sleep(4)
 
     def click_device_cancel_button(self):
 

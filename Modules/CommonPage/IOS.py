@@ -220,12 +220,21 @@ class IOS(CommonPage):
         logging.info("hide keyboard")
         try:
             done_button = self.driver.find_element(*self.configuration.iOS.BUTTON_DONE_TO_HIDE_KEYBOARD)
-            if done_button.is_displayed():
-                done_button.click()
-            else:
-                pass
+            done_button.click()
         except NoSuchElementException:
             self.driver.hide_keyboard(key_name="Hide keyboard")
+
+    # def hide_keyboard(self):
+    #
+    #     logging.info("hide keyboard")
+    #     try:
+    #         done_button = self.driver.find_element(*self.configuration.iOS.BUTTON_DONE_TO_HIDE_KEYBOARD)
+    #         if done_button.is_displayed():
+    #             done_button.click()
+    #         else:
+    #             pass
+    #     except NoSuchElementException:
+    #         self.driver.hide_keyboard(key_name="Hide keyboard")
 
     def click_Return_button_on_keyboard(self):
 
