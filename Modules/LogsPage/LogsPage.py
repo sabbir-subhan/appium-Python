@@ -516,3 +516,18 @@ class LogsPage(BasePage):
 
         self.switch_context_to_native()
 
+    def ok_button_on_offline_notification_popup(self):
+
+        self.switch_context_to_webview()
+
+        logging.info("click Ok button on offline notification popup")
+        try:
+            ok_button = self.driver.find_element(*self.configuration.LogsScreen.OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP)
+            self.assertIsNotNone(ok_button, "ok button not found")
+            ok_button.click()
+        except NoSuchElementException:
+            logging.warning("offline notification popup not present")
+        sleep(1)
+
+        self.switch_context_to_native()
+

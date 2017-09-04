@@ -729,6 +729,7 @@ class LogsScreen(EventsScreen, AssetsScreen):
     OPTION_LIST = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-content>ul.edit-view>li[name="new option list"]>div.ui-select>div')
     CLEAR_SEARCH_FIELD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div.ui-input-search>a.ui-input-clear')
     SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input#logSearch')
+    OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
 
 
 class SelectMediaScreen:
@@ -744,3 +745,8 @@ class InboxScreen:
     """A class for Inbox screen locators - screen after clicking into Inbox button in Main Menu."""
     FIRST_MSG_ON_THE_LIST = (MobileBy.CSS_SELECTOR, 'div#inbox>div.ui-content>ul.messages>li:first-child>a')
     FORWARD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#inboxitemView>div.ui-footer>div.ui-navbar>ul>li.ui-block-b>a#inboxitemForward')
+
+
+class OfflinePage:
+    """A class for Offline screen locators"""
+    RETRY_BUTTON = (MobileBy.CSS_SELECTOR, 'div#offline>div.ui-footer>div.ui-navbar>ul.ui-grid-a>li.ui-block-b>a')

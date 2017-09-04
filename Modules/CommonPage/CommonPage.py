@@ -208,6 +208,7 @@ class CommonPage(BasePage):
     def check_popup_about_unfilled_fields(self):
 
         logging.info("check Validation error popup about unfilled fields")
+        self.switch_context_to_native()
         try:
             check_popup_about_unfilled_fields = self.driver.find_element(*self.configuration.CommonScreen.POPUP_UNFILLED_FIELDS)
             if check_popup_about_unfilled_fields.is_displayed():
@@ -242,6 +243,28 @@ class CommonPage(BasePage):
         search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
         self.assertIsNotNone(search_field, "Search field not found")
         search_field.click()
+
+    def offline_retry_button(self):
+
+        self.switch_context_to_webview()
+        try:
+            offline_retry_button = self.driver.find_element(*self.configuration.OfflinePage.RETRY_BUTTON)
+            self.assertIsNotNone(offline_retry_button, "Retry button, not found")
+            logging.info("clicking Retry button")
+            offline_retry_button.click()
+        except NoSuchElementException:
+            pass
+        self.switch_context_to_webview()
+
+    def check_presents_of_string_in_page_source(self, string):
+
+        self.switch_context_to_webview()
+
+        logging.warning(self.driver.page_source)
+        assert string in self.driver.page_source
+
+        self.switch_context_to_native()
+
 
 
 

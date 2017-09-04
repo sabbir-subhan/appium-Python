@@ -1,4 +1,4 @@
-# Test Case - Load Type Data After Login -- OCAMOB-241
+# Test Case - Offline Objects -- OCAMOB-65
 
 
 # open OCA app

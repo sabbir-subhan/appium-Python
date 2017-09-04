@@ -5,6 +5,11 @@
 # Login to OCA server, Click on OCA designer, Click on Mobile Dashboards Add quick access links to create all objects:
 # Events, Assets, Reports, Contact, Log, Send communication
 # Quick access links should be configured like in TC: QuickAccessButtons
+# Asset type named: "asset_with_max_number_of_fields"
+# Report type named: "report_for_tests"
+# Log type named: "log_with_all_fields"
+# Event type named: "event_for_all_fields"
+
 
 # Login to OCA app:
 # open OCA app
@@ -31,7 +36,6 @@ import logging
 from Modules.Setup import SetupTestCase
 from Modules.load_class import LoadClass
 from configuration import PROJECT_ROOT
-from time import sleep
 
 
 class TestEditAndSaveObjectsInOfflineMode(SetupTestCase):
@@ -94,7 +98,8 @@ class TestEditAndSaveObjectsInOfflineMode(SetupTestCase):
 
         # Create event using the quick access link
         main_page.open_INCIDENT()
-        # common_page.wait_for_app_loading()  # for Android 8 emulator
+        common_page.wait_for_app_loading()
+        common_page.offline_retry_button()
         events_page.fill_Name_input_field("Incident_offline")
         events_page.scroll_down_to_save_button()
         events_page.click_save_new_event()
@@ -111,30 +116,121 @@ class TestEditAndSaveObjectsInOfflineMode(SetupTestCase):
         events_page.open_first_pending_event()
         common_page.wait_for_app_loading()
         events_page.click_edit_button()
+        common_page.hamburger_button()
 
         # Repeat steps for Assets
         main_page.open_CREATE_ASSETS()
         assets_page = LoadClass.load_page('AssetsPage')
         assets_page.setDriver(self.driver)
-        assets_page.click_new_button()
-        assets_page.click_new_asset()
-        assets_page.choose_asset_type()
-        assets_page.fill_Name_input_field("Offline Object - Asset")
+        assets_page.fill_Name_input_field("Asset_offline")
         assets_page.scroll_down_to_save_button()
         assets_page.click_save_button()
         assets_page.check_notification_about_offline_mode()
         assets_page.ok_button_on_offline_notification_popup()
         common_page.wait_for_app_loading()
-        
+
         common_page.hamburger_button()
         main_page.scroll_up_to_events_button()
         main_page.open_ASSETS()
         assets_page.open_first_pending_asset()
+        common_page.wait_for_app_loading()
         assets_page.click_edit_button()
+        common_page.hamburger_button()
 
         # Repeat steps for Reports
+        main_page.open_CREATE_REPORT()
+        reports_page = LoadClass.load_page('ReportsPage')
+        reports_page.setDriver(self.driver)
+        reports_page.type_title("Report_offline")
+        reports_page.click_on_lodging_agency_picker()
+        reports_page.choose_lodging_agency()
+        reports_page.scroll_down_to_publish_button()
+        reports_page.click_publish_new_report()
+        common_page.check_popup_about_unfilled_fields()
+        reports_page.ok_button_on_offline_notification_popup()
+        common_page.wait_for_app_loading()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        main_page.open_REPORTS()
+        reports_page.open_first_pending_report()
+        common_page.wait_for_app_loading()
+        reports_page.click_edit_button()
+        common_page.hamburger_button()
+
         # Repeat steps for Logs
-        # Create Assets, Reports, Logs, Events using the other types  ?
+        main_page.open_CREATE_LOG()
+        logs_page = LoadClass.load_page('LogsPage')
+        logs_page.setDriver(self.driver)
+        logs_page.click_on_lodging_agency_picker()
+        logs_page.choose_lodging_agency()
+        logs_page.scroll_down_to_entry_field()
+        logs_page.type_text_into_entry_field("Log_offline")
+        common_page.hide_keyboard()
+        logs_page.scroll_down_to_save_button()
+        logs_page.click_save_new_log()
+        common_page.check_popup_about_unfilled_fields()
+        logs_page.ok_button_on_offline_notification_popup()
+        common_page.wait_for_app_loading()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        # Create Assets, Reports, Logs, Events using the other objects types
+        main_page.open_ASSETS()
+        assets_page.click_new_button()
+        assets_page.click_new_asset()
+        assets_page.choose_asset_type_with_max_number_of_fields()
+        assets_page.fill_Name_input_field("asset_offline_all_fields")
+        assets_page.scroll_down_to_save_button()
+        assets_page.click_save_button()
+        common_page.check_popup_about_unfilled_fields()
+        assets_page.ok_button_on_offline_notification_popup()
+        common_page.wait_for_app_loading()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        main_page.open_REPORTS()
+        reports_page.click_create_report_button()
+        reports_page.choose_report_type_with_all_fields()
+        reports_page.type_title("report_offline_all_fields")
+        reports_page.click_on_lodging_agency_picker()
+        reports_page.choose_lodging_agency()
+        reports_page.scroll_down_to_publish_button()
+        reports_page.click_publish_new_report()
+        common_page.check_popup_about_unfilled_fields()
+        reports_page.ok_button_on_offline_notification_popup()
+        common_page.wait_for_app_loading()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        main_page.open_LOGS()
+        logs_page.create_new_log()
+        logs_page.choose_log_type_with_all_fields()
+        logs_page.click_on_lodging_agency_picker()
+        logs_page.choose_lodging_agency()
+        logs_page.scroll_down_to_entry_field()
+        logs_page.type_text_into_entry_field_all_fields("log_offline_all_fields")
+        common_page.hide_keyboard()
+        logs_page.scroll_down_to_save_button()
+        logs_page.click_save_new_log()
+        common_page.check_popup_about_unfilled_fields()
+        logs_page.ok_button_on_offline_notification_popup()
+        common_page.wait_for_app_loading()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        main_page.open_EVENTS()
+        events_page.click_more_button_in_events_list()
+        events_page.click_New_event_button()
+        events_page.choose_event_with_all_fields()
+        events_page.fill_Name_input_field("event_offline_all_fields")
+        events_page.scroll_down_to_save_button()
+        events_page.click_save_new_event()
+        common_page.check_popup_about_unfilled_fields()
+        events_page.ok_button_on_offline_notification_popup()
+        common_page.wait_for_app_loading()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
 
         # airplane mode off
         common_page.switch_off_airplane_mode()

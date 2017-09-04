@@ -737,7 +737,8 @@ class EventsPage(BasePage):
 
     def click_save_offline_event(self):
 
-        EventsPage.click_save_new_event(self)
+        # EventsPage.click_save_new_event(self)
+        self.click_save_new_event()
 
     def click_save_new_event(self):
 
@@ -757,32 +758,6 @@ class EventsPage(BasePage):
         common_page.setDriver(self.driver)
         common_page.wait_for_app_loading()
 
-    # def click_save_new_event(self):
-    #
-    #     self.switch_context_to_webview()
-    #
-    #     sleep(1)
-    #     logging.info("click Save button")
-    #     sleep(2)
-    #     try:
-    #         save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON_NEW_EVENT)
-    #         self.assertIsNotNone(save_button, "Save button not found")
-    #         save_button.click()
-    #         # try:
-    #         #     save_button.click()
-    #         # except WebDriverException:
-    #         #     action = TouchAction(self.driver)
-    #         #     action.tap(save_button).perform()
-    #         sleep(2)
-    #     except NoSuchElementException:  # for IOS emulators in offline mode
-    #         EventsPage.click_save_edited_event(self)
-    #
-    #     self.switch_context_to_native()
-    #
-    #     common_page = LoadClass.load_page('CommonPage')
-    #     common_page.setDriver(self.driver)
-    #     common_page.wait_for_app_loading()
-
     def click_save_edited_event(self):
 
         logging.info("click Save button")
@@ -800,32 +775,6 @@ class EventsPage(BasePage):
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         common_page.wait_for_app_loading()
-
-    # def click_save_edited_event(self):
-    #
-    #     self.switch_context_to_webview()
-    #
-    #     sleep(1)
-    #     logging.info("click Save button")
-    #     sleep(1)
-    #     save_button = self.driver.find_element(*self.configuration.EventEditScreen.SAVE_BUTTON_EDIT_EVENT)
-    #     self.assertIsNotNone(save_button, "Save button not found")
-    #     save_button.click()
-    #     sleep(2)
-    #
-    #     self.switch_context_to_native()
-    #
-    #     common_page = LoadClass.load_page('CommonPage')
-    #     common_page.setDriver(self.driver)
-    #     common_page.wait_for_app_loading()
-
-    # def click_cancel_button(self):
-    #
-    #     logging.info("click on Cancel button")
-    #     cancel_button = self.driver.find_element(*self.configuration.CommonScreen.CANCEL_BUTTON)
-    #     self.assertIsNotNone(cancel_button, "Cancel button not found")
-    #     cancel_button.click()
-    #     sleep(4)
 
     def click_cancel_button(self):
 
@@ -881,16 +830,12 @@ class EventsPage(BasePage):
         event_type_chooser.click()
         sleep(5)
 
-    # def type_text_into_search_field(self, text):
-    #
-    #     logging.info("type text into search field")
-    #
-    #     search_field = self.driver.find_element(*self.configuration.EventsScreen.SEARCH_FIELD)
-    #     self.assertIsNotNone(search_field, "Search field not found")
-    #     search_field.click()
-    #     sleep(1)
-    #     search_field.send_keys(text)
-    #     sleep(1)
+    def choose_event_with_all_fields(self):
+
+        event_with_all_fields = self.driver.find_element(*self.configuration.TypesOfEventsScreen.EVENT_FOR_ALL_FIELDS)
+        self.assertIsNotNone(event_with_all_fields, "event type with all fields not found")
+        logging.info("choose type of event = event_for_all_fields")
+        event_with_all_fields.click()
 
     def type_text_into_search_field(self, text):
 

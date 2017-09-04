@@ -14,6 +14,7 @@ class Android(LogsPage):
         start_x = window_size["width"] * 0.25
         start_y = window_size["height"] * 0.15
         # end_y = window_size["height"] * 0.6
+        # end_y = window_size["height"] * 0.65
         end_y = window_size["height"] * 0.7
         logging.info("scroll down only one screen")
         self.driver.swipe(start_x, end_y, start_x, start_y, 3000)
@@ -49,7 +50,7 @@ class Android(LogsPage):
             scrolls = scrolls - 1
         sleep(2)
 
-    def type_text_into_entry_field(self, text):
+    def type_text_into_entry_field(self, text):  # text is passed for iOS
 
         logging.info("type text into 'Entry' field")
         sleep(1)
@@ -76,7 +77,7 @@ class Android(LogsPage):
         entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
         entry_field.click()
         logging.info("sending keys")
-        sleep(1)
+        sleep(2)
         self.driver.press_keycode(29)  # send letter 'A'
         self.driver.press_keycode(40)  # send letter 'L'
         self.driver.press_keycode(40)  # send letter 'L'
