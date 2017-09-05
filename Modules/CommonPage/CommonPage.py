@@ -256,14 +256,35 @@ class CommonPage(BasePage):
             pass
         self.switch_context_to_webview()
 
-    def check_presents_of_string_in_page_source(self, string):
+    def check_presence_of_string_in_page_source(self, string):
 
         self.switch_context_to_webview()
 
-        logging.warning(self.driver.page_source)
+        # logging.warning(self.driver.page_source)
         assert string in self.driver.page_source
 
         self.switch_context_to_native()
+
+    def get_page_source(self):
+
+        self.switch_context_to_webview()
+
+        file = open('page_source.txt', 'w')
+        page_source = self.driver.page_source
+        file.write(page_source)
+        file.close()
+
+        self.switch_context_to_native()
+
+    def rotate_to_landscape_view(self):
+
+        logging.info("Rotate screen to landscape view")
+        self.driver.orientation = 'landscape'
+
+    def rotate_to_portrait_view(self):
+
+        logging.info("Rotate screen to portrait view")
+        self.driver.orientation = 'portrait'
 
 
 

@@ -224,6 +224,7 @@ class TypesOfEventsScreen:
     EVENT_FOR_CHOOSER_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "event_for_chooser")]]')
     EVENT_TYPE_WITH_OPTION_LIST = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "event_with_option_list")]]')
     EVENT_FOR_ALL_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "event for all fields")]]')
+    EVENT_WITH_RICH_TEXT = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "event_with_rich_text")]]')
 
 
 class EventEditScreen:

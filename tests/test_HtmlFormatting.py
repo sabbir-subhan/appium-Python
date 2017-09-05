@@ -57,7 +57,34 @@ class TestHtmlFormatting(SetupTestCase):
         main_page.dismiss_notifications()
         main_page.check_presence_of_events_button()
 
-        common_page.check_presents_of_string_in_page_source()
+        main_page.open_EVENTS()
+        events_page = LoadClass.load_page('EventsPage')
+        events_page.setDriver(self.driver)
+        events_page.click_more_button_in_events_list()
+        events_page.click_New_event_button()
+        events_page.choose_event_type_with_rich_text()
+        events_page.fill_Name_input_field("html_formatting_test1")
+        events_page.scroll_down_to_save_button()
+        events_page.click_save_new_event()
+        common_page.check_popup_about_unfilled_fields()
+        common_page.wait_for_app_loading()
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        main_page.open_EVENTS()
+        events_page.clear_Search_field()
+        events_page.type_text_into_search_field("html_formatting_test1")
+        common_page.click_Return_button_on_keyboard()
+        common_page.hide_keyboard()
+        events_page.open_previously_created_event()
+        events_page.iframe()
+        # common_page.check_presents_of_string_in_page_source("Events")
+
+        common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
+
+        common_page.rotate_to_landscape_view()
+        common_page.rotate_to_portrait_view()
 
 
 if __name__ == '__main__':

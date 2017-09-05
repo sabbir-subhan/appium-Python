@@ -837,6 +837,13 @@ class EventsPage(BasePage):
         logging.info("choose type of event = event_for_all_fields")
         event_with_all_fields.click()
 
+    def choose_event_type_with_rich_text(self):
+
+        event_type = self.driver.find_element(*self.configuration.TypesOfEventsScreen.EVENT_WITH_RICH_TEXT)
+        self.assertIsNotNone(event_type, "event type witch rih text not found")
+        logging.info("choosing Event type with rich text - event_with_rich_text")
+        event_type.click()
+
     def type_text_into_search_field(self, text):
 
         logging.info("type text into search field")
@@ -1201,5 +1208,17 @@ class EventsPage(BasePage):
     #     except NoSuchElementException:
     #         logging.warning("Read only fields are not read only")
     #         pass
+
+    def iframe(self):
+
+        self.switch_context_to_webview()
+        self.driver.switch_to.frame(self.driver.find_element(*self.configuration.EventsScreen.RICH_TEXT_IFRAME))
+        # image = self.driver.find_element_by_css_selector('body>p>img[alt="cats.jpg"]')
+        image = self.driver.find_element_by_css_selector('body>p>img')
+        self.assertIsNotNone(image, "nope")
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.get_page_source()
+        self.switch_context_to_native()
 
 

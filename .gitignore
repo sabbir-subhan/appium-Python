@@ -9,4 +9,5 @@ reports/
 screenshots/
 tests/.cache
 __pycache__
+page_source.txt
 

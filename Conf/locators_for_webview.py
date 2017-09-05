@@ -160,6 +160,7 @@ class EventsScreen:
     ADD_MEDIA_BUTTON = (MobileBy.CSS_SELECTOR, 'div#emeNew>div.ui-content>ul.edit-view>li.ui-li-static.ui-body-inherit>div.addmedia.edit-mode>a')
     OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#emeNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
     FIRST_PENDING_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div.ui-content>div.pending>ul.listview>li:first-child>a')
+    RICH_TEXT_IFRAME = (MobileBy.CSS_SELECTOR, 'div#emeView>div.ui-content>ul.ui-listview>li>div.iframe>iframe')
 
 
 class TypesOfEventsScreen:
