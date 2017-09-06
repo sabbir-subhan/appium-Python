@@ -1,4 +1,4 @@
-# Test Case - User unable edit and save events in offline mode  -- OCAMOB-325
+# Test Case - User able edit and save events in offline mode  -- OCAMOB-325
 
 # before running test case:
 

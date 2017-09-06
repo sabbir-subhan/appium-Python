@@ -52,6 +52,13 @@ class LogsPage(BasePage):
         choose_log_type.click()
         sleep(1)
 
+    def choose_log_type_with_rich_text(self):
+
+        logging.info('choose log type = "log_with_rich_text" - containing image inside rich text field')
+        choose_log_type = self.driver.find_element(*self.configuration.LogsScreen.LOG_TYPE_WITH_RICH_TEXT)
+        self.assertIsNotNone(choose_log_type, 'log type = "log_with_all_fields" - containing all fields not found')
+        choose_log_type.click()
+
     def click_on_lodging_agency_picker(self):
 
         sleep(1)
@@ -118,6 +125,10 @@ class LogsPage(BasePage):
         entry_field.send_keys(text)
 
     def type_text_into_entry_field_all_fields(self, text):
+
+        LogsPage.type_text_into_entry_field(self, text)
+
+    def type_text_into_entry_field_for_rich_text(self, text):
 
         LogsPage.type_text_into_entry_field(self, text)
 

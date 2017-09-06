@@ -12,7 +12,8 @@ class CommonScreen:
 
 class TopBar:
     """A class for top bar locators."""
-    HAMBURGER_FOR_MAIN_MENU = (MobileBy.CSS_SELECTOR, 'div#iconbar>a')
+    # HAMBURGER_FOR_MAIN_MENU = (MobileBy.CSS_SELECTOR, 'div#iconbar>a')
+    HAMBURGER_FOR_MAIN_MENU = (MobileBy.CSS_SELECTOR, 'div#iconbar>a[href="#menu"]')
     BACK_ARROW = (MobileBy.CSS_SELECTOR, 'div#header>div>a:first-child')
 
 
@@ -161,6 +162,8 @@ class EventsScreen:
     OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#emeNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
     FIRST_PENDING_EVENT = (MobileBy.CSS_SELECTOR, 'div#emeTreeView>div.ui-content>div.pending>ul.listview>li:first-child>a')
     RICH_TEXT_IFRAME = (MobileBy.CSS_SELECTOR, 'div#emeView>div.ui-content>ul.ui-listview>li>div.iframe>iframe')
+    RICH_TEXT_IFRAME_IMAGE_NAME = (MobileBy.CSS_SELECTOR, 'body>p>img[alt="cats.jpg"]')
+    RICH_TEXT_IFRAME_IMG_TAG = (MobileBy.CSS_SELECTOR, 'body>p>img')
 
 
 class TypesOfEventsScreen:
@@ -523,6 +526,9 @@ class ReportsScreen:
     NEW_WEBSITE_ADDRESS2 = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new website address2"]')
     NEW_DATE_TIME2 = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new date & time2"]')
     NEW_DATE_OPTIONAL_TIME2 = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new date & optional time2"]')
+    RICH_TEXT_IFRAME = (MobileBy.CSS_SELECTOR, 'div#reportView>div.ui-content>ul.ui-listview>li>div.iframe>iframe')
+    RICH_TEXT_IFRAME_IMAGE_NAME = (MobileBy.CSS_SELECTOR, 'body>p>img[alt="everest.jpg"]')
+    RICH_TEXT_IFRAME_IMG_TAG = EventsScreen.RICH_TEXT_IFRAME_IMG_TAG
 
 
 class SentScreen:
@@ -731,6 +737,9 @@ class LogsScreen(EventsScreen, AssetsScreen):
     CLEAR_SEARCH_FIELD_BUTTON = (MobileBy.CSS_SELECTOR, 'div#logIndex>div.ui-content>div.ui-input-search>a.ui-input-clear')
     SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input#logSearch')
     OK_BUTTON_ON_OFFLINE_NOTIFICATION_POPUP = (MobileBy.CSS_SELECTOR, 'div#logNew>div.ui-popup-container>div[data-role="popup"]>div[data-role="controlgroup"]>div>a')
+    RICH_TEXT_IFRAME = (MobileBy.CSS_SELECTOR, 'div#logView>div.ui-content>ul.ui-listview>li>div.iframe>iframe')
+    RICH_TEXT_IFRAME_IMAGE_NAME = (MobileBy.CSS_SELECTOR, 'body>p>img[alt="panda.jpg"]')
+    RICH_TEXT_IFRAME_IMG_TAG = EventsScreen.RICH_TEXT_IFRAME_IMG_TAG
 
 
 class SelectMediaScreen:

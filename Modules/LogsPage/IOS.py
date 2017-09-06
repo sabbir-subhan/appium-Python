@@ -27,6 +27,9 @@ class IOS(LogsPage):
 
     def scroll_down_to_entry_field(self):
 
+        # if "Pad" in platform:
+        #     pass
+        # else:
         logging.info("scroll down with loop")
         var = 20
         while var > 0:

@@ -392,6 +392,7 @@ class ReportsScreen:
     REPORT_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_visibility_rules")]]')
     REPORT_TYPE_WITH_ASSIGNED_QUESTION = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_assigned_question")]]')
     REPORT_TYPE_WITH_OPTION_LIST = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_option_list")]]')
+    REPORT_TYPE_WITH_RICH_TEXT = (MobileBy.XPATH, '//UIALink[@name[contains(., "report_with_rich_text")]]')
     MEDIA_RELEASE_FIELD = (MobileBy.XPATH, '//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIATextField[2]')
 
 
@@ -405,6 +406,7 @@ class LogsScreen:
     LOG_TYPE_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "log_with_chooser_fields")]]')
     LOG_TYPE_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//UIALink[@name[contains(., "log_with_on_load_sequence")]]')
     LOG_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//UIALink[@name[contains(., "log_with_visibility_rules")]]')
+    LOG_TYPE_WITH_RICH_TEXT = (MobileBy.XPATH, '//UIALink[@name[contains(., "log_with_rich_text")]]')
 
 
 class SentScreen:

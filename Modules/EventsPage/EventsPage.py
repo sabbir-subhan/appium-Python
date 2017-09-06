@@ -6,7 +6,8 @@ import logging
 from selenium.common.exceptions import *
 from Modules.load_class import LoadClass
 from configuration import platform
-# from appium.webdriver.common.touch_action import TouchAction
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class EventsPage(BasePage):
@@ -1209,16 +1210,29 @@ class EventsPage(BasePage):
     #         logging.warning("Read only fields are not read only")
     #         pass
 
-    def iframe(self):
+    def check_presence_of_image_inside_rich_text_field(self):
 
         self.switch_context_to_webview()
+
         self.driver.switch_to.frame(self.driver.find_element(*self.configuration.EventsScreen.RICH_TEXT_IFRAME))
-        # image = self.driver.find_element_by_css_selector('body>p>img[alt="cats.jpg"]')
-        image = self.driver.find_element_by_css_selector('body>p>img')
-        self.assertIsNotNone(image, "nope")
+        image = self.driver.find_element(*self.configuration.EventsScreen.RICH_TEXT_IFRAME_IMG_TAG)
+        self.assertIsNotNone(image, "image tag not found")
+
+        WebDriverWait(self.driver, 5).until(expected_conditions.visibility_of_element_located(
+            self.configuration.EventsScreen.RICH_TEXT_IFRAME_IMAGE_NAME))
+        # image_name = self.driver.find_element_by_css_selector('body>p>img[alt="cats.jpg"]')
+        # self.assertIsNotNone(image_name, "image name not found")
+        # self.driver.switch_to.frame(self.driver.find_element_by_css_selector('html.ui-mobile'))
+        # self.driver.switch_to.window("OCA")
+        self.driver.switch_to.default_content()
+        # self.driver.switch_to.parent_frame()
+
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         common_page.get_page_source()
+
         self.switch_context_to_native()
+        # logging.warning(self.driver.page_source)
+
 
 

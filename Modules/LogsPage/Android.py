@@ -89,6 +89,30 @@ class Android(LogsPage):
         self.driver.press_keycode(32)  # send letter 'D'
         self.driver.press_keycode(47)  # send letter 'S'
 
+    def type_text_into_entry_field_for_rich_text(self, text):
+
+        logging.info("type text into 'Entry' field")
+        entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
+        entry_field.click()
+        logging.info("sending keys")
+        sleep(2)
+        self.driver.press_keycode(36)  # send letter 'H'
+        self.driver.press_keycode(48)  # send letter 'T'
+        self.driver.press_keycode(41)  # send letter 'M'
+        self.driver.press_keycode(40)  # send letter 'L'
+        self.driver.press_keycode(34)  # send letter 'F'
+        self.driver.press_keycode(43)  # send letter 'O'
+        self.driver.press_keycode(46)  # send letter 'R'
+        self.driver.press_keycode(41)  # send letter 'M'
+        self.driver.press_keycode(29)  # send letter 'A'
+        self.driver.press_keycode(48)  # send letter 'T'
+        self.driver.press_keycode(48)  # send letter 'T'
+        self.driver.press_keycode(37)  # send letter 'I'
+        self.driver.press_keycode(42)  # send letter 'N'
+        self.driver.press_keycode(35)  # send letter 'G'
+
+        # text = "html_formatting_test"
+
     def type_text_into_entry_field_chooser_fields(self, text):
 
         logging.info("type text into 'Entry' field")

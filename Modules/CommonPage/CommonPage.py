@@ -8,6 +8,8 @@ from Modules.load_class import LoadClass
 from configuration import PROJECT_ROOT
 from selenium.common.exceptions import NoSuchElementException
 from configuration import platform
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class CommonPage(BasePage):
@@ -53,18 +55,18 @@ class CommonPage(BasePage):
 
         self.switch_context_to_webview()
 
-        sleep(0.5)
         logging.info("click hamburger button to go back to main menu")
+
+        WebDriverWait(self.driver, 5).until(expected_conditions.element_to_be_clickable(
+            self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU), "Hamburger menu button not found")
 
         hamburger_button = self.driver.find_element(*self.configuration.TopBar.HAMBURGER_FOR_MAIN_MENU)
         self.assertIsNotNone(hamburger_button, "hamburger menu button, not found")
         hamburger_button.click()
-        # sleep(1)
 
         self.switch_context_to_native()
 
         sleep(1)
-        # sleep(4)
 
     def click_device_cancel_button(self):
 
@@ -280,11 +282,13 @@ class CommonPage(BasePage):
 
         logging.info("Rotate screen to landscape view")
         self.driver.orientation = 'landscape'
+        sleep(1)
 
     def rotate_to_portrait_view(self):
 
         logging.info("Rotate screen to portrait view")
         self.driver.orientation = 'portrait'
+        sleep(1)
 
 
 

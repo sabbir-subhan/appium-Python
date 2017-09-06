@@ -4,9 +4,8 @@ from Modules.BasePage.BasePage import BasePage
 from Modules.load_class import LoadClass
 import logging
 from time import sleep
-# from appium.webdriver.common.touch_action import TouchAction
-# # from selenium.webdriver.support import expected_conditions
-# # from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import *
 
 
@@ -449,6 +448,13 @@ class ReportsPage(BasePage):
         self.assertIsNotNone(choose_report_type, 'report type = "with_option_list" not found')
         choose_report_type.click()
         sleep(1)
+
+    def choose_report_type_with_rich_text(self):
+
+        logging.info('choose report type = "report_with_rich_text" - containing image')
+        choose_report_type = self.driver.find_element(*self.configuration.ReportsScreen.REPORT_TYPE_WITH_RICH_TEXT)
+        self.assertIsNotNone(choose_report_type, 'report type = "report_for_tests" - containing all fields not found')
+        choose_report_type.click()
 
     def edit_created_report_with_all_fields(self):
 
@@ -966,4 +972,24 @@ class ReportsPage(BasePage):
         common_page = LoadClass.load_page('CommonPage')
         common_page.setDriver(self.driver)
         common_page.scroll_down_one_view()
+
+    def check_presence_of_image_inside_rich_text_field(self):
+
+        self.switch_context_to_webview()
+
+        self.driver.switch_to.frame(self.driver.find_element(*self.configuration.ReportsScreen.RICH_TEXT_IFRAME))
+        image = self.driver.find_element(*self.configuration.ReportsScreen.RICH_TEXT_IFRAME_IMG_TAG)
+        self.assertIsNotNone(image, "image tag not found")
+
+        WebDriverWait(self.driver, 5).until(expected_conditions.visibility_of_element_located(
+            self.configuration.ReportsScreen.RICH_TEXT_IFRAME_IMAGE_NAME))
+
+        self.driver.switch_to.default_content()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.get_page_source()
+
+        self.switch_context_to_native()
+
 
