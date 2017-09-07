@@ -419,6 +419,7 @@ class LogsScreen:
     """A class for handling Logs screen"""
     LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]')  # different locator than in New Report Page
     ENTRY_FIELD = (MobileBy.CLASS_NAME, 'XCUIElementTypeTextView')
+    ENTRY_FIELD_BY_XPATH = (MobileBy.XPATH, '//XCUIElementTypeOther[@name[contains(., "Rich Text Editor, entry")]]')
     ALREADY_FILLED_ENTRY_FIELD = (MobileBy.CLASS_NAME, 'XCUIElementTypeTextView')
     # CREATED_LOG_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="all fields"]')
     CREATED_LOG_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "all fields")]]')

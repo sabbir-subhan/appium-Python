@@ -210,7 +210,7 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 
 - create users accounts with correct settings (see credentials.py) and check if You can login (accept Terms and Conditions for new user)
 
-- disable Auto-Correction on iOS devices
+- disable Auto-Correction on iOS devices and on iOS10 simulator
 
 - provide image and video sample file for real devices and android emulators (sample files should be copied while tests are running but for some devices or emulators that functionality may not work)
 

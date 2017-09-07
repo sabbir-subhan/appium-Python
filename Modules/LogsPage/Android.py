@@ -50,6 +50,44 @@ class Android(LogsPage):
             scrolls = scrolls - 1
         sleep(2)
 
+    # def type_text_into_entry_field(self, text):
+    #
+    #     logging.info("type text into 'Entry' field")
+    #
+    #     self.switch_context_to_webview()
+    #
+    #     self.driver.switch_to.frame(self.driver.find_element(*self.configuration.LogsScreen.RICH_TEXT_IFRAME_NEW_LOG))
+    #     from selenium.webdriver.support import expected_conditions
+    #     from selenium.webdriver.support.ui import WebDriverWait
+    #     sleep(1)
+    #     # entry_field_inside_iframe = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD_INSIDE_IFRAME_FIRST_P_TAG)
+    #     WebDriverWait(self.driver, 5).until(expected_conditions.element_to_be_clickable(self.configuration.LogsScreen.ENTRY_FIELD_INSIDE_IFRAME), "Entry field inside iframe not clickable")
+    #     entry_field_inside_iframe = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD_INSIDE_IFRAME)
+    #     self.assertIsNotNone(entry_field_inside_iframe, "Entry file not found")
+    #     entry_field_inside_iframe.click()
+    #
+    #     # entry_field_inside_iframe_first_p_tags = self.driver.find_elements(*self.configuration.LogsScreen.ENTRY_FIELD_INSIDE_IFRAME)
+    #     # self.assertIsNotNone(entry_field_inside_iframe_first_p_tags, "Entry file not found")
+    #     # entry_field_inside_iframe_first_p_tags[0].click()
+    #     # entry_field_inside_iframe_first_p_tags[0].send_keys(text)
+    #
+    #     from selenium.webdriver.common.keys import Keys
+    #     entry_field_inside_iframe.send_keys(Keys.ARROW_LEFT)
+    #     # entry_field_inside_iframe.send_keys(Keys.SPACE)
+    #     entry_field_inside_iframe.send_keys(Keys.RETURN)
+    #     entry_field_inside_iframe.send_keys(text)
+    #
+    #     self.driver.switch_to.default_content()
+    #
+    #     self.switch_context_to_native()
+
+    def scroll_down_to_option_list(self):
+
+        logging.info("scroll down to option list")
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.scroll_down_one_view()
+
     def type_text_into_entry_field(self, text):  # text is passed for iOS
 
         logging.info("type text into 'Entry' field")
@@ -63,13 +101,6 @@ class Android(LogsPage):
         self.driver.press_keycode(48)  # send letter 'T'
         self.driver.press_keycode(46)  # send letter 'R'
         self.driver.press_keycode(53)  # send letter 'Y'
-
-    def scroll_down_to_option_list(self):
-
-        logging.info("scroll down to option list")
-        common_page = LoadClass.load_page('CommonPage')
-        common_page.setDriver(self.driver)
-        common_page.scroll_down_one_view()
 
     def type_text_into_entry_field_all_fields(self, text):
 
@@ -95,7 +126,7 @@ class Android(LogsPage):
         entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
         entry_field.click()
         logging.info("sending keys")
-        sleep(2)
+        sleep(1)
         self.driver.press_keycode(36)  # send letter 'H'
         self.driver.press_keycode(48)  # send letter 'T'
         self.driver.press_keycode(41)  # send letter 'M'
@@ -111,7 +142,7 @@ class Android(LogsPage):
         self.driver.press_keycode(42)  # send letter 'N'
         self.driver.press_keycode(35)  # send letter 'G'
 
-        # text = "html_formatting_test"
+        # text = "htmlformatting"
 
     def type_text_into_entry_field_chooser_fields(self, text):
 

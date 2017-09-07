@@ -4,7 +4,9 @@ from Modules.BasePage.BasePage import BasePage
 from Modules.load_class import LoadClass
 import logging
 from time import sleep
-from selenium.common.exceptions import *
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class LogsPage(BasePage):
@@ -115,26 +117,28 @@ class LogsPage(BasePage):
 
     def type_text_into_entry_field(self, text):
 
-        # webview is not working on iOS10, sending key into Entry field on Android devices is not working
+        # webview is not working on iOS10 and sending keys into Entry field on Android in native is not working
 
         logging.info("type text into 'Entry' field")
-        sleep(1)
-        entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
+        try:
+            entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
+        except NoSuchElementException:
+            entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD_BY_XPATH)
         entry_field.click()
-        sleep(1)
+        sleep(0.5)
         entry_field.send_keys(text)
 
     def type_text_into_entry_field_all_fields(self, text):
 
-        LogsPage.type_text_into_entry_field(self, text)
+        self.type_text_into_entry_field(text)
 
     def type_text_into_entry_field_for_rich_text(self, text):
 
-        LogsPage.type_text_into_entry_field(self, text)
+        self.type_text_into_entry_field(text)
 
     def type_text_into_entry_field_chooser_fields(self, text):
 
-        LogsPage.type_text_into_entry_field(self, text)
+        self.type_text_into_entry_field(text)
 
     def expand_types_filter(self):
 
@@ -541,4 +545,24 @@ class LogsPage(BasePage):
         sleep(1)
 
         self.switch_context_to_native()
+
+    def check_presence_of_image_inside_rich_text_field(self):
+
+        self.switch_context_to_webview()
+
+        self.driver.switch_to.frame(self.driver.find_element(*self.configuration.LogsScreen.RICH_TEXT_IFRAME_VIEW_LOG))
+        image = self.driver.find_element(*self.configuration.LogsScreen.RICH_TEXT_IFRAME_IMG_TAG)
+        self.assertIsNotNone(image, "image tag not found")
+
+        WebDriverWait(self.driver, 5).until(expected_conditions.visibility_of_element_located(
+            self.configuration.LogsScreen.RICH_TEXT_IFRAME_IMAGE_NAME))
+
+        self.driver.switch_to.default_content()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.get_page_source()
+
+        self.switch_context_to_native()
+
 

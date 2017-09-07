@@ -5,6 +5,7 @@ import logging
 from time import sleep
 from appium.webdriver.common.touch_action import TouchAction
 from Modules.load_class import LoadClass
+from selenium.common.exceptions import NoSuchElementException
 
 
 class IOS(LogsPage):
@@ -34,7 +35,10 @@ class IOS(LogsPage):
         var = 20
         while var > 0:
             logging.info("check if entry field is visible")
-            entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
+            try:
+                entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
+            except NoSuchElementException:
+                entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD_BY_XPATH)
             if entry_field.is_displayed():
                 break
             else:

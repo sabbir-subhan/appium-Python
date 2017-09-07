@@ -1214,7 +1214,7 @@ class EventsPage(BasePage):
 
         self.switch_context_to_webview()
 
-        self.driver.switch_to.frame(self.driver.find_element(*self.configuration.EventsScreen.RICH_TEXT_IFRAME))
+        self.driver.switch_to.frame(self.driver.find_element(*self.configuration.EventsScreen.RICH_TEXT_IFRAME_VIEW_EVENT))
         image = self.driver.find_element(*self.configuration.EventsScreen.RICH_TEXT_IFRAME_IMG_TAG)
         self.assertIsNotNone(image, "image tag not found")
 
