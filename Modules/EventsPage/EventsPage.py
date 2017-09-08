@@ -738,7 +738,6 @@ class EventsPage(BasePage):
 
     def click_save_offline_event(self):
 
-        # EventsPage.click_save_new_event(self)
         self.click_save_new_event()
 
     def click_save_new_event(self):
@@ -1233,6 +1232,25 @@ class EventsPage(BasePage):
 
         self.switch_context_to_native()
         # logging.warning(self.driver.page_source)
+
+    # def click_on_lodging_agency_picker(self):
+    #
+    #     sleep(1)
+    #     self.switch_context_to_webview()
+    #
+    #     sleep(1)
+    #     logging.info("click on 'Lodging Agency' picker")
+    #     lodging_agency_picker = self.driver.find_element(*self.configuration.EventEditScreen.NEW_EVENT_LODGING_AGENCY_PICKER)
+    #     self.assertIsNotNone(lodging_agency_picker, "lodging agency picker not found")
+    #     lodging_agency_picker.click()
+    #
+    #     self.switch_context_to_native()
+    #
+    # def choose_lodging_agency(self):
+    #
+    #     reports_page = LoadClass.load_page('ReportsPage')
+    #     reports_page.setDriver(self.driver)
+    #     reports_page.choose_lodging_agency()
 
 
 

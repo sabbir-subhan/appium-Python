@@ -6,6 +6,7 @@ from time import sleep
 from appium.webdriver.common.touch_action import TouchAction
 from Modules.load_class import LoadClass
 from selenium.common.exceptions import NoSuchElementException
+from configuration import platform
 
 
 class IOS(LogsPage):
@@ -28,23 +29,37 @@ class IOS(LogsPage):
 
     def scroll_down_to_entry_field(self):
 
-        # if "Pad" in platform:
-        #     pass
-        # else:
-        logging.info("scroll down with loop")
-        var = 20
-        while var > 0:
-            logging.info("check if entry field is visible")
-            try:
-                entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
-            except NoSuchElementException:
-                entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD_BY_XPATH)
-            if entry_field.is_displayed():
-                break
-            else:
-                logging.info("scroll down")
-                self.driver.execute_script("mobile: scroll", {"direction": "down"})
-                var = var - 1
+        if "Pad" in platform:
+            pass
+        else:
+            logging.info("scroll down with loop")
+            var = 10
+            while var > 0:
+                logging.info("check if entry field is visible")
+                try:
+                    entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
+                except NoSuchElementException:
+                    entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD_BY_XPATH)
+                if entry_field.is_displayed():
+                    break
+                else:
+                    logging.info("scroll down")
+                    self.driver.execute_script("mobile: scroll", {"direction": "down"})
+                    var = var - 1
+
+    # def scroll_down_to_entry_field(self):
+    #
+    #     logging.info("scroll down with loop")
+    #     var = 10
+    #     while var > 0:
+    #         logging.info("check if entry field is visible")
+    #         entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD_BY_XPATH)
+    #         if entry_field.is_displayed():
+    #             break
+    #         else:
+    #             logging.info("scroll down")
+    #             self.driver.execute_script("mobile: scroll", {"direction": "down"})
+    #             var = var - 1
 
     # def type_text_into_entry_field(self, text):
     #

@@ -255,6 +255,7 @@ class EventEditScreen:
     # PREVIOUSLY_CREATED_EVENT_FOR_SUBFORM_CHOOSER = PREVIOUSLY_CREATED_EVENT_FOR_CHOOSER
     DELETE_SUB_EVENT_FROM_CHOOSER = (MobileBy.XPATH, '//XCUIElementTypeOther[9]/XCUIElementTypeLink[1]'
                                                      '/XCUIElementTypeStaticText[1][@name=""]')
+    # LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]')  # different locator than in New Report Page
 
 
 class EventDetailsScreen:
@@ -420,6 +421,8 @@ class LogsScreen:
     LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]')  # different locator than in New Report Page
     ENTRY_FIELD = (MobileBy.CLASS_NAME, 'XCUIElementTypeTextView')
     ENTRY_FIELD_BY_XPATH = (MobileBy.XPATH, '//XCUIElementTypeOther[@name[contains(., "Rich Text Editor, entry")]]')
+    # ENTRY_FIELD_BY_XPATH = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="Rich Text Editor, entry"]')
+    ENTRY_FIELD_FIRST_PARAGRAPH = (MobileBy.XPATH, '//XCUIElementTypeOther[@name="Rich Text Editor, entry"]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]')
     ALREADY_FILLED_ENTRY_FIELD = (MobileBy.CLASS_NAME, 'XCUIElementTypeTextView')
     # CREATED_LOG_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name="all fields"]')
     CREATED_LOG_WITH_ALL_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "all fields")]]')

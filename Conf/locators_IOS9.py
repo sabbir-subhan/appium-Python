@@ -206,8 +206,8 @@ class TypesOfEventsScreen:
 
 class EventEditScreen:
     """A class for Edit Events screen locators - screen after opening edit mode of event or creating a new one."""
-    SAVE_BUTTON = CommonScreen.SAVE_BUTTON
-    # SAVE_BUTTON = (MobileBy.XPATH, '//UIAButton[@name="Save"]')
+    # SAVE_BUTTON = CommonScreen.SAVE_BUTTON
+    SAVE_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Save")]]')
     NAME_FIELD = (MobileBy.XPATH, '//UIAScrollView/UIAWebView/UIATextField[@name="Name"]')
     NAME_FIELD_by_index = (MobileBy.XPATH, '//UIAScrollView/UIAWebView/UIATextField[1]')
     SEVERITY_LEVEL_SELECTOR = (MobileBy.XPATH, '//UIAElement[2]')
@@ -401,6 +401,10 @@ class LogsScreen:
     # LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//UIAWebView/UIAElement[1]')
     LODGING_AGENCY_PICKER = ReportsScreen.LODGING_AGENCY_PICKER
     ENTRY_FIELD = (MobileBy.CLASS_NAME, 'UIATextField')
+    ENTRY_FIELD_BY_XPATH = ENTRY_FIELD
+    ENTRY_FIELD_FIRST_PARAGRAPH = ENTRY_FIELD
+    # ENTRY_FIELD_BY_XPATH = (MobileBy.XPATH, '//UIAElement[@name[contains(., "Rich Text Editor, entry")]]')  # not working
+    # ENTRY_FIELD_FIRST_PARAGRAPH = (MobileBy.XPATH, '//UIAElement[@name="Rich Text Editor, entry"]/UIAElement[1]/UIAElement[1]')  # not working
     CREATED_LOG_WITH_ALL_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "all fields")]]')
     LOG_TYPE_WITH_ALL_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "log_with_all_fields")]]')
     LOG_TYPE_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "log_with_chooser_fields")]]')

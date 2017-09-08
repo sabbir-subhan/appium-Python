@@ -120,13 +120,37 @@ class LogsPage(BasePage):
         # webview is not working on iOS10 and sending keys into Entry field on Android in native is not working
 
         logging.info("type text into 'Entry' field")
+        # try:
+        #     entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
+        #     logging.error("try")
+        # except NoSuchElementException:
+        #     entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD_BY_XPATH)
+        #     logging.error("except")
+        # entry_field.click()
+        sleep(0.5)
+        # from selenium.webdriver.common.keys import Keys
+        # entry_field.send_keys(Keys.ARROW_LEFT)
+        # entry_field.send_keys(Keys.ARROW_UP)
+        # entry_field_inside_iframe.send_keys(Keys.SPACE)
+        # entry_field.send_keys(Keys.RETURN)
+        entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD_BY_XPATH)
+        entry_field.click()
         try:
-            entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
+            entry_field_first_paragraph = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD_FIRST_PARAGRAPH)
+        # entry_field_first_paragraph.click()
+            sleep(1)
+        # entry_field.send_keys(text + " ")
+        # from selenium.webdriver.common.keys import Keys
+        # entry_field_first_paragraph.send_keys(Keys.ARROW_LEFT)
+        # entry_field_first_paragraph.send_keys(Keys.ARROW_UP)
+        # entry_field_first_paragraph.send_keys(Keys.SPACE)
+        # entry_field_first_paragraph.send_keys(Keys.RETURN)
+            entry_field_first_paragraph.send_keys(text + " ")
         except NoSuchElementException:
             entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD_BY_XPATH)
-        entry_field.click()
-        sleep(0.5)
-        entry_field.send_keys(text)
+            entry_field.click()
+            sleep(1)
+            entry_field.send_keys(text + " ")
 
     def type_text_into_entry_field_all_fields(self, text):
 

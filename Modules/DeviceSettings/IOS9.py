@@ -52,7 +52,7 @@ class IOS9(IOS):
 
         sleep(1)
 
-        logging.info("Quit additional driver session")
+        logging.info("Quit additional appium session")
 
         self.driver.quit()
 

@@ -2,7 +2,10 @@
 
 # before running this test create in OCA web page:
 # create a new Asset type that has a rich text field and a subform with a rich text field
-
+# - new object type, with rich text containing image, table and link, name for new object type: "asset_with_rich_text",
+#  (add some text into first line of rich text field and add few empty lines bellow it/above image - at least 5 lines)
+# inside OCA designer add image, table and link into rich text field, image name = "cats.jpg"
+# - create new event named: "event_with_image" - use event type created above
 
 # open OCA app
 # input login, password and domain
@@ -13,9 +16,6 @@
 # check if button "EVENTS" is present
 
 
-# On IM1 stable server (website) create a new Asset that has a rich text field and a subform with a rich text field.
-# Add all the formatting available in rich text field to both rich text fields in the asset. Include tables and some images.
-# Save the asset. Open it and view it again.
 # Login to the OCA mobile app and click on Assets. Edit the asset created above.
 # View the rich text fields of the asset. Add more text below the images and save the asset.
 # Repeat steps 1-5 for an event.

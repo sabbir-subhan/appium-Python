@@ -23,7 +23,7 @@ class DesiredCapabilities(object):
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
             "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
-            # "automationName": "uiautomator2",  # test
+            # "automationName": "uiautomator2",  # works for Android 5 +
             # "appWaitDuration": 20000,
             "deviceReadyTimeout": 15,
             # "newCommandTimeout": "60",  # How long (in seconds) Appium will wait for a new command from the client before assuming the client quit and ending the session
@@ -46,7 +46,6 @@ class DesiredCapabilities(object):
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
             "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
-            # "automationName": "uiautomator2",  # test
             "deviceReadyTimeout": 15,
             "clearSystemFiles": True,
             "chromedriverExecutable": os.path.join(PROJECT_ROOT, "chromedriver"),
@@ -68,7 +67,7 @@ class DesiredCapabilities(object):
             "appPackage": "com.noggin.ocalukasl",
             "appActivity": "com.noggin.ocalukasl.MainActivity",
             "appWaitActivity": "com.noggin.ocalukasl.MainActivity",
-            "automationName": "uiautomator2",
+            # "automationName": "uiautomator2",
             # "appWaitDuration": 20000,
             "deviceReadyTimeout": 5,
             # "newCommandTimeout": "60",

@@ -234,6 +234,7 @@ class EventEditScreen:
     NEW_WEBSITE_ADDRESS2 = (MobileBy.CSS_SELECTOR, 'div#emeNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new website address2"]')
     NEW_DATE_TIME2 = (MobileBy.CSS_SELECTOR, 'div#emeNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new date & time2"]')
     NEW_DATE_OPTIONAL_TIME2 = (MobileBy.CSS_SELECTOR, 'div#emeNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new date & optional time2"]')
+    # NEW_EVENT_LODGING_AGENCY_PICKER = (MobileBy.CSS_SELECTOR, 'div#emeNew>div.ui-content>ul.edit-view>li:nth-child(2)>div.ui-select>div.ui-btn>select[name="lodging agency"]')  # not working on iOS 10
 
 
 class EventDetailsScreen:

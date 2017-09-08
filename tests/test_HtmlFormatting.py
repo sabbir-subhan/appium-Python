@@ -3,14 +3,18 @@
 
 # before running this test create in OCA web page:
 # - new event type, with rich text containing image, table and link, name for new event type: "event_with_rich_text",
+#  (add some text into first line of rich text field and add few empty lines bellow it/above image - at least 5 lines)
 # inside OCA designer add image, table and link into rich text field, image name = "cats.jpg"
 # - create new event named: "event_with_image" - use event type created above
 
 # - new report type, with rich text containing image, table and link, name for new report type: "report_with_rich_text",
+#  (add some text into first line of rich text field and add few empty lines bellow it/above image - at least 5 lines)
 # inside OCA designer add image, table and link into rich text field, image name = "everest.jpg"
 # - create new report named: "report_with_image" - use report type created above
 
-# - new log type, with rich text containing image, table and link, name for new log type: "log_with_rich_text",
+# - new log type, with rich text containing image, table and link
+#  (add some text into first line of rich text field and add few empty lines bellow it/above image - at least 5 lines)
+#  name for new log type: "log_with_rich_text",
 # inside OCA designer add image, table and link into rich text field, image name = "panda.jpg"
 # - create new log named: "log_with_image" - use log type created above
 
@@ -102,6 +106,10 @@ class TestHtmlFormatting(SetupTestCase):
         events_page.click_New_event_button()
         events_page.choose_event_type_with_rich_text()
         events_page.fill_Name_input_field('html_formatting_test')
+
+        # logs_page.click_on_lodging_agency_picker()
+        # logs_page.choose_lodging_agency()
+
         events_page.scroll_down_to_save_button()
         events_page.click_save_new_event()
         common_page.check_popup_about_unfilled_fields()
@@ -191,8 +199,7 @@ class TestHtmlFormatting(SetupTestCase):
         logs_page.choose_log_type_with_rich_text()
         logs_page.click_on_lodging_agency_picker()
         logs_page.choose_lodging_agency()
-        logs_page.scroll_down_to_entry_field()
-        logs_page.type_text_into_entry_field_for_rich_text("htmlformatting")
+        logs_page.type_text_into_entry_field_for_rich_text("html_formatting")
         common_page.hide_keyboard()
         logs_page.scroll_down_to_save_button()
         logs_page.click_save_new_log()
@@ -203,7 +210,7 @@ class TestHtmlFormatting(SetupTestCase):
 
         main_page.open_LOGS()
         logs_page.clear_Search_field()
-        logs_page.type_text_into_search_field("htmlformatting")
+        logs_page.type_text_into_search_field("html_formatting")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         logs_page.open_first_log_on_the_list()

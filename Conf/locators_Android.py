@@ -477,7 +477,8 @@ class LogsScreen:
     LODGING_AGENCY_PICKER = (MobileBy.ID, 'field-201')
     LODGING_AGENCY_PICKER2 = (MobileBy.XPATH, '//android.view.View[2]/android.widget.Spinner[1]')
     # ENTRY_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc="Rich Text Editor, entry"]/android.view.View[2]')  # problem on Android 4
-    ENTRY_FIELD = (MobileBy.XPATH, '//android.view.View[@content-desc="Rich Text Editor, entry"]')
+    ENTRY_FIELD_BY_XPATH = (MobileBy.XPATH, '//android.view.View[@content-desc="Rich Text Editor, entry"]')
+    ENTRY_FIELD_FIRST_PARAGRAPH = (MobileBy.XPATH, '//android.view.View[@content-desc="Rich Text Editor, entry"]/android.view.View[2]/android.view.View[1]/android.view.View[1]/android.view.View[1]')
     CREATED_LOG_WITH_ALL_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "all fields")]]')
     LOG_TYPE_WITH_ALL_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "log_with_all_fields")]]')
     LOG_TYPE_WITH_CHOOSER_FIELDS = (MobileBy.XPATH, '//android.view.View[@content-desc[contains(., "log_with_chooser_fields")]]')
