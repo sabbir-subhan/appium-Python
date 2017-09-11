@@ -1211,6 +1211,7 @@ class EventsPage(BasePage):
 
     def check_presence_of_image_inside_rich_text_field(self):
 
+        logging.info("View object screen - check presence of image inside rich text field")
         self.switch_context_to_webview()
 
         self.driver.switch_to.frame(self.driver.find_element(*self.configuration.EventsScreen.RICH_TEXT_IFRAME_VIEW_EVENT))
@@ -1233,24 +1234,36 @@ class EventsPage(BasePage):
         self.switch_context_to_native()
         # logging.warning(self.driver.page_source)
 
-    # def click_on_lodging_agency_picker(self):
-    #
-    #     sleep(1)
-    #     self.switch_context_to_webview()
-    #
-    #     sleep(1)
-    #     logging.info("click on 'Lodging Agency' picker")
-    #     lodging_agency_picker = self.driver.find_element(*self.configuration.EventEditScreen.NEW_EVENT_LODGING_AGENCY_PICKER)
-    #     self.assertIsNotNone(lodging_agency_picker, "lodging agency picker not found")
-    #     lodging_agency_picker.click()
-    #
-    #     self.switch_context_to_native()
-    #
-    # def choose_lodging_agency(self):
-    #
-    #     reports_page = LoadClass.load_page('ReportsPage')
-    #     reports_page.setDriver(self.driver)
-    #     reports_page.choose_lodging_agency()
+    def check_presence_of_image_inside_rich_text_field_in_subform(self):
 
+        logging.info("View object screen - check presence of image inside rich text field located in subform")
 
+        self.switch_context_to_webview()
 
+        self.driver.switch_to.frame(self.driver.find_element(
+            *self.configuration.EventsScreen.RICH_TEXT_IFRAME_INSIDE_SUBFORM_VIEW_EVENT))
+        image = self.driver.find_element(*self.configuration.EventsScreen.RICH_TEXT_IFRAME_IMG_TAG)
+        self.assertIsNotNone(image, "image tag not found")
+
+        WebDriverWait(self.driver, 5).until(expected_conditions.visibility_of_element_located(
+            self.configuration.EventsScreen.RICH_TEXT_IFRAME_INSIDE_SUBFORM_IMAGE_NAME))
+
+        self.driver.switch_to.default_content()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.get_page_source()
+
+        self.switch_context_to_native()
+
+    def add_subform_row(self):
+
+        logging.info("click 'Add row' button inside subform")
+
+        self.switch_context_to_webview()
+
+        add_row_button = self.driver.find_element(*self.configuration.EventsScreen.SUBFORM_ADD_ROW)
+        self.assertIsNotNone(add_row_button, "Add row button not found")
+        add_row_button.click()
+
+        self.switch_context_to_native()

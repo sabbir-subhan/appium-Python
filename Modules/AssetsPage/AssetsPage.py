@@ -6,6 +6,8 @@ from time import sleep
 from selenium.common.exceptions import *
 from Modules.load_class import LoadClass
 from configuration import platform
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class AssetsPage(BasePage):
@@ -47,6 +49,13 @@ class AssetsPage(BasePage):
 
         logging.info('choose asset type with option list')
         asset_type = self.driver.find_element(*self.configuration.AssetsScreen.ASSET_TYPE_WITH_OPTION_LIST)
+        self.assertIsNotNone(asset_type, "asset type not found")
+        asset_type.click()
+
+    def choose_asset_type_with_rich_text(self):  # asset type with rich text
+
+        logging.info('choose asset type with rich text')
+        asset_type = self.driver.find_element(*self.configuration.AssetsScreen.ASSET_TYPE_WITH_RICH_TEXT)
         self.assertIsNotNone(asset_type, "asset type not found")
         asset_type.click()
 
@@ -873,7 +882,61 @@ class AssetsPage(BasePage):
         common_page.setDriver(self.driver)
         common_page.scroll_down_one_view()
 
+    def check_presence_of_image_inside_rich_text_field(self):
 
+        logging.info("View object screen - check presence of image inside rich text field")
+
+        self.switch_context_to_webview()
+
+        self.driver.switch_to.frame(self.driver.find_element(
+            *self.configuration.AssetsScreen.RICH_TEXT_IFRAME_VIEW_ASSET))
+        image = self.driver.find_element(*self.configuration.AssetsScreen.RICH_TEXT_IFRAME_IMG_TAG)
+        self.assertIsNotNone(image, "image tag not found")
+
+        WebDriverWait(self.driver, 5).until(expected_conditions.visibility_of_element_located(
+            self.configuration.AssetsScreen.RICH_TEXT_IFRAME_IMAGE_NAME))
+
+        self.driver.switch_to.default_content()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.get_page_source()
+
+        self.switch_context_to_native()
+
+    def check_presence_of_image_inside_rich_text_field_in_subform(self):
+
+        logging.info("View object screen - check presence of image inside rich text field located in subform")
+
+        self.switch_context_to_webview()
+
+        self.driver.switch_to.frame(self.driver.find_element(
+            *self.configuration.AssetsScreen.RICH_TEXT_IFRAME_INSIDE_SUBFORM_VIEW_ASSET))
+        image = self.driver.find_element(*self.configuration.AssetsScreen.RICH_TEXT_IFRAME_IMG_TAG)
+        self.assertIsNotNone(image, "image tag not found")
+
+        WebDriverWait(self.driver, 5).until(expected_conditions.visibility_of_element_located(
+            self.configuration.AssetsScreen.RICH_TEXT_IFRAME_INSIDE_SUBFORM_IMAGE_NAME))
+
+        self.driver.switch_to.default_content()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.get_page_source()
+
+        self.switch_context_to_native()
+
+    def add_subform_row(self):
+
+        logging.info("click 'Add row' button inside subform")
+
+        self.switch_context_to_webview()
+
+        add_row_button = self.driver.find_element(*self.configuration.AssetsScreen.SUBFORM_ADD_ROW)
+        self.assertIsNotNone(add_row_button, "Add row button not found")
+        add_row_button.click()
+
+        self.switch_context_to_native()
 
 
 

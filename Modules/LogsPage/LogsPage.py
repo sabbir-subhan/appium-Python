@@ -572,6 +572,8 @@ class LogsPage(BasePage):
 
     def check_presence_of_image_inside_rich_text_field(self):
 
+        logging.info("View object screen - check presence of image inside rich text field")
+
         self.switch_context_to_webview()
 
         self.driver.switch_to.frame(self.driver.find_element(*self.configuration.LogsScreen.RICH_TEXT_IFRAME_VIEW_LOG))

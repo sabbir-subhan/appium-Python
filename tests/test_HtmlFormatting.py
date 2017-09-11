@@ -6,12 +6,12 @@
 #  (add some text into first line of rich text field and add few empty lines bellow it/above image - at least 5 lines)
 # inside OCA designer add image, table and link into rich text field, image name = "cats.jpg"
 # - create new event named: "event_with_image" - use event type created above
-
+#
 # - new report type, with rich text containing image, table and link, name for new report type: "report_with_rich_text",
 #  (add some text into first line of rich text field and add few empty lines bellow it/above image - at least 5 lines)
 # inside OCA designer add image, table and link into rich text field, image name = "everest.jpg"
 # - create new report named: "report_with_image" - use report type created above
-
+#
 # - new log type, with rich text containing image, table and link
 #  (add some text into first line of rich text field and add few empty lines bellow it/above image - at least 5 lines)
 #  name for new log type: "log_with_rich_text",
@@ -106,10 +106,6 @@ class TestHtmlFormatting(SetupTestCase):
         events_page.click_New_event_button()
         events_page.choose_event_type_with_rich_text()
         events_page.fill_Name_input_field('html_formatting_test')
-
-        # logs_page.click_on_lodging_agency_picker()
-        # logs_page.choose_lodging_agency()
-
         events_page.scroll_down_to_save_button()
         events_page.click_save_new_event()
         common_page.check_popup_about_unfilled_fields()

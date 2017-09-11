@@ -364,6 +364,8 @@ class ContactsScreen:
     USERS_GROUP = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Users")]]')
     MAILING_LIST_GROUP = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "Mailing list")]]')
     NEW_CONTACT_GROUP_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "contact_group_with_on_load_sequence")]]')
+    NEW_CONTACT_GROUP_TYPE_CONTACT_GROUP_WITH_RICH_TEXT = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "contact_group_with_rich_text")]]')
+    CONTACT_TYPE_CONTACT_WITH_RICH_TEXT = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "contact_with_rich_text")]]')
     OFFLINE_CONTACTS_GROUP = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "offline_contact_group")]]')
 
 
@@ -496,6 +498,7 @@ class AssetsScreen:
     ASSET_TYPE_WITH_MAX_NUMBER_OF_FIELDS = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "asset_with_max_number_of_fields")]]')
     ASSET_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "asset_with_visibility_rules")]]')
     ASSET_TYPE_WITH_OPTION_LIST = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "asset_with_option_list")]]')
+    ASSET_TYPE_WITH_RICH_TEXT = (MobileBy.XPATH, '//XCUIElementTypeLink[@name[contains(., "asset_with_rich_text")]]')
     SAVE_OPTION_LIST = (MobileBy.XPATH, '//XCUIElementTypeButton[@name[contains(., "Save")]]')
     COST_PER_UNIT = (MobileBy.XPATH, '//XCUIElementTypeWebView[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[5]/XCUIElementTypeTextField[1]')
     NEW_DATE_OPTIONAL_TIME2 = (MobileBy.XPATH, '//XCUIElementTypeStaticText[@name="New date & optional time2"]')

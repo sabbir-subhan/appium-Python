@@ -7,6 +7,8 @@ import logging
 from time import sleep
 from credentials import Credentials
 from appium.webdriver.common.touch_action import TouchAction
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class ContactsPage(BasePage):
@@ -399,6 +401,13 @@ class ContactsPage(BasePage):
         contact_type_person = self.driver.find_element(*self.configuration.ContactsScreen.CONTACT_TYPE_PERSON)
         self.assertIsNotNone(contact_type_person, "contact type 'Person' not found")
         contact_type_person.click()
+
+    def choose_contact_type_contact_with_rich_text(self):
+
+        logging.info("click contact type = contact_with_rich_text")
+        contact_with_rich_text = self.driver.find_element(*self.configuration.ContactsScreen.CONTACT_TYPE_CONTACT_WITH_RICH_TEXT)
+        self.assertIsNotNone(contact_with_rich_text, "contact type 'contact_with_rich_text' not found")
+        contact_with_rich_text.click()
 
     def choose_contact_type_with_on_load_and_on_save_sequence(self):
 
@@ -916,6 +925,13 @@ class ContactsPage(BasePage):
         self.assertIsNotNone(choose_group_type_with_on_load_and_on_save_sequence, "new contact group type = 'contact_group_with_visibility_rules' not found")
         choose_group_type_with_on_load_and_on_save_sequence.click()
 
+    def choose_group_with_rich_text_type(self):  # contact_group_with_rich_text
+
+        logging.info("choose new contact group type = 'contact_group_with_rich_text' ")
+        choose_group_with_rich_text_type = self.driver.find_element(*self.configuration.ContactsScreen.NEW_CONTACT_GROUP_TYPE_CONTACT_GROUP_WITH_RICH_TEXT)
+        self.assertIsNotNone(choose_group_with_rich_text_type, "new contact group type = 'contact_group_with_rich_text' not found")
+        choose_group_with_rich_text_type.click()
+
     def type_name_for_new_contact_group(self, text):
 
         self.switch_context_to_webview()
@@ -1061,6 +1077,51 @@ class ContactsPage(BasePage):
         sleep(1)
 
         self.switch_context_to_native()
+
+    def check_presence_of_image_inside_rich_text_field_for_contact_group(self):
+
+        logging.info("View object screen - check presence of image inside rich text field")
+
+        self.switch_context_to_webview()
+
+        self.driver.switch_to.frame(self.driver.find_element(
+            *self.configuration.ContactsScreen.RICH_TEXT_IFRAME_VIEW_CONTACT_GROUP))
+        image = self.driver.find_element(*self.configuration.ContactsScreen.RICH_TEXT_IFRAME_IMG_TAG)
+        self.assertIsNotNone(image, "image tag not found")
+
+        WebDriverWait(self.driver, 5).until(expected_conditions.visibility_of_element_located(
+            self.configuration.ContactsScreen.RICH_TEXT_IFRAME_IMAGE_NAME_CONTACT_GROUP))
+
+        self.driver.switch_to.default_content()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.get_page_source()
+
+        self.switch_context_to_native()
+
+    def check_presence_of_image_inside_rich_text_field_for_contact(self):
+
+        logging.info("View object screen - check presence of image inside rich text field")
+
+        self.switch_context_to_webview()
+
+        self.driver.switch_to.frame(self.driver.find_element(
+            *self.configuration.ContactsScreen.RICH_TEXT_IFRAME_VIEW_CONTACT))
+        image = self.driver.find_element(*self.configuration.ContactsScreen.RICH_TEXT_IFRAME_IMG_TAG)
+        self.assertIsNotNone(image, "image tag not found")
+
+        WebDriverWait(self.driver, 5).until(expected_conditions.visibility_of_element_located(
+            self.configuration.ContactsScreen.RICH_TEXT_IFRAME_IMAGE_NAME_CONTACT))
+
+        self.driver.switch_to.default_content()
+
+        common_page = LoadClass.load_page('CommonPage')
+        common_page.setDriver(self.driver)
+        common_page.get_page_source()
+
+        self.switch_context_to_native()
+
 
 
 

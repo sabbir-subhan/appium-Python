@@ -165,6 +165,9 @@ class EventsScreen:
     RICH_TEXT_IFRAME_IMAGE_NAME = (MobileBy.CSS_SELECTOR, 'body>p>img[alt="cats.jpg"]')
     RICH_TEXT_IFRAME_IMG_TAG = (MobileBy.CSS_SELECTOR, 'body>p>img')
     RICH_TEXT_IFRAME_NEW_EVENT = (MobileBy.CSS_SELECTOR, 'div#eventNew>div.ui-content>ul>li>div.ui-input-ckeditor>div#cke_entry>div.cke_inner>div#cke_1_contents>iframe')
+    RICH_TEXT_IFRAME_INSIDE_SUBFORM_VIEW_EVENT = (MobileBy.CSS_SELECTOR, 'div#assetView>div.ui-content>ul.ui-listview>li>div.subform>div.subform-row>ul>li>div.iframe>iframe')
+    RICH_TEXT_IFRAME_INSIDE_SUBFORM_IMAGE_NAME = (MobileBy.CSS_SELECTOR, 'body>p>img[alt="everest.jpg"]')
+    SUBFORM_ADD_ROW = (MobileBy.CSS_SELECTOR, 'div#emeNew>div.ui-content>ul.edit-view>li.ui-li-static>div.subform>a.add')  # inside new event
 
 
 class TypesOfEventsScreen:
@@ -420,6 +423,13 @@ class ContactsScreen:
     FIRST_PENDING_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div.ui-content>div.pending>ul.ui-listview>li:first-child>a')
     ADD_NEW_CONTACT_GROUP_IN_OFFLINE_MODE = (MobileBy.CSS_SELECTOR, 'div#contactgroupTreeView>div#contactgroupTreeMore-popup>div#contactgroupTreeMore>ul.ui-listview>li.new.contactgroup>a')
     SEARCH_FIELD = (MobileBy.CSS_SELECTOR, 'input#contactSearch')
+    RICH_TEXT_IFRAME_VIEW_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupNew>div.ui-content>ul.ui-listview>li>div.iframe>iframe')
+    RICH_TEXT_IFRAME_IMAGE_NAME_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'body>p>img[alt="cats.jpg"]')
+    RICH_TEXT_IFRAME_IMG_TAG = EventsScreen.RICH_TEXT_IFRAME_IMG_TAG
+    RICH_TEXT_IFRAME_NEW_CONTACT_GROUP = (MobileBy.CSS_SELECTOR, 'div#contactgroupNew>div.ui-content>ul>li>div.ui-input-ckeditor>div#cke_entry>div.cke_inner>div#cke_1_contents>iframe')
+    RICH_TEXT_IFRAME_VIEW_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul.ui-listview>li>div.iframe>iframe')
+    RICH_TEXT_IFRAME_IMAGE_NAME_CONTACT = (MobileBy.CSS_SELECTOR, 'body>p>img[alt="panda.jpg"]')
+    RICH_TEXT_IFRAME_NEW_CONTACT = (MobileBy.CSS_SELECTOR, 'div#contactNew>div.ui-content>ul>li>div.ui-input-ckeditor>div#cke_entry>div.cke_inner>div#cke_1_contents>iframe')
 
 
 class TeamRoleScreen:
@@ -532,6 +542,9 @@ class ReportsScreen:
     RICH_TEXT_IFRAME_IMAGE_NAME = (MobileBy.CSS_SELECTOR, 'body>p>img[alt="everest.jpg"]')
     RICH_TEXT_IFRAME_IMG_TAG = EventsScreen.RICH_TEXT_IFRAME_IMG_TAG
     RICH_TEXT_IFRAME_NEW_REPORT = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul>li>div.ui-input-ckeditor>div#cke_entry>div.cke_inner>div#cke_1_contents>iframe')
+    RICH_TEXT_IFRAME_INSIDE_SUBFORM_VIEW_EVENT = (MobileBy.CSS_SELECTOR, 'div#reportView>div.ui-content>ul.ui-listview>li>div.subform>div.subform-row>ul>li>div.iframe>iframe')
+    RICH_TEXT_IFRAME_INSIDE_SUBFORM_IMAGE_NAME = (MobileBy.CSS_SELECTOR, 'body>p>img[alt="panda.jpg"]')
+    SUBFORM_ADD_ROW = (MobileBy.CSS_SELECTOR, 'div#reportNew>div.ui-content>ul.edit-view>li.ui-li-static>div.subform>a.add')  # inside new report
 
 
 class SentScreen:
@@ -705,6 +718,13 @@ class AssetsScreen:
     NEW_WEBSITE_ADDRESS2 = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new website address2"]')
     NEW_DATE_TIME2 = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new date & time2"]')
     NEW_DATE_OPTIONAL_TIME2 = (MobileBy.CSS_SELECTOR, 'div>div.ui-content>ul.edit-view>li.ui-field-contain>div.ui-input-text>input[id="new date & optional time2"]')
+    RICH_TEXT_IFRAME_VIEW_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetView>div.ui-content>ul.ui-listview>li>div.iframe>iframe')
+    RICH_TEXT_IFRAME_IMAGE_NAME = (MobileBy.CSS_SELECTOR, 'body>p>img[alt="cats.jpg"]')
+    RICH_TEXT_IFRAME_IMG_TAG = EventsScreen.RICH_TEXT_IFRAME_IMG_TAG
+    RICH_TEXT_IFRAME_NEW_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul>li>div.ui-input-ckeditor>div#cke_entry>div.cke_inner>div#cke_1_contents>iframe')
+    RICH_TEXT_IFRAME_INSIDE_SUBFORM_VIEW_ASSET = (MobileBy.CSS_SELECTOR, 'div#assetView>div.ui-content>ul.ui-listview>li>div.subform>div.subform-row>ul>li>div.iframe>iframe')
+    RICH_TEXT_IFRAME_INSIDE_SUBFORM_IMAGE_NAME = (MobileBy.CSS_SELECTOR, 'body>p>img[alt="everest.jpg"]')
+    SUBFORM_ADD_ROW = (MobileBy.CSS_SELECTOR, 'div#assetNew>div.ui-content>ul.edit-view>li.ui-li-static>div.subform>a.add')  # inside new asset
 
 
 class LogsScreen(EventsScreen, AssetsScreen):

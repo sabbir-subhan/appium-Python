@@ -351,6 +351,8 @@ class ContactsScreen:
     USERS_GROUP = (MobileBy.XPATH, '//UIALink[@name[contains(., "Users")]]')
     MAILING_LIST_GROUP = (MobileBy.XPATH, '//UIALink[@name[contains(., "Mailing list")]]')
     NEW_CONTACT_GROUP_WITH_ON_LOAD_SEQUENCE = (MobileBy.XPATH, '//UIALink[@name[contains(., "contact_group_with_on_load_sequence")]]')
+    NEW_CONTACT_GROUP_TYPE_CONTACT_GROUP_WITH_RICH_TEXT = (MobileBy.XPATH, '//UIALink[@name[contains(., "contact_group_with_rich_text")]]')
+    CONTACT_TYPE_CONTACT_WITH_RICH_TEXT = (MobileBy.XPATH, '//UIALink[@name[contains(., "contact_with_rich_text")]]')
     OFFLINE_CONTACTS_GROUP = (MobileBy.XPATH, '//UIALink[@name[contains(., "offline_contact_group")]]')
 
 
@@ -466,6 +468,7 @@ class AssetsScreen:
     ASSET_TYPE_WITH_MAX_NUMBER_OF_FIELDS = (MobileBy.XPATH, '//UIALink[@name[contains(., "asset_with_max_number_of_fields")]]')
     ASSET_TYPE_WITH_VISIBILITY_RULES = (MobileBy.XPATH, '//UIALink[@name[contains(., "asset_with_visibility_rules")]]')
     ASSET_TYPE_WITH_OPTION_LIST = (MobileBy.XPATH, '//UIALink[@name[contains(., "asset_with_option_list")]]')
+    ASSET_TYPE_WITH_RICH_TEXT = (MobileBy.XPATH, '//UIALink[@name[contains(., "asset_with_rich_text")]]')
     SAVE_OPTION_LIST = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Save")]]')
     NEW_DATE_OPTIONAL_TIME2 = (MobileBy.XPATH, '//UIAStaticText[@name="New date & optional time2"]')
     OPTION_LIST_READ_ONLY_IOS = (MobileBy.XPATH, '//UIAStaticText[@name="Is Read only ?"]')

@@ -97,6 +97,7 @@ class Android(LogsPage):
         entry_field.click()
         sleep(1)
         entry_field.send_keys(text + " ")
+        sleep(0.5)
 
     # def type_text_into_entry_field(self, text):  # text is passed for iOS
     #

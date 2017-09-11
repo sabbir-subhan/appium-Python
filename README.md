@@ -300,6 +300,35 @@ file /Conf/desired_capabilities.py need to be updated accordingly to used device
 - Create high user: "test_admin" or change name of the contact in this script
 - Login to OCA server -> Click on Settings > Settings>Security > Under Access levels set the write access level to administrators only(high access)
 
+### for TC: Html Formatting 
+- new event type, with rich text containing image, table and link, name for new event type: "event_with_rich_text",
+ (add some text into first line of rich text field and add few empty lines bellow it/above image - at least 5 lines)
+inside OCA designer add image, table and link into rich text field, image name = "cats.jpg"
+- create new event named: "event_with_image" - use event type created above
+- new report type, with rich text containing image, table and link, name for new report type: "report_with_rich_text",
+ (add some text into first line of rich text field and add few empty lines bellow it/above image - at least 5 lines)
+inside OCA designer add image, table and link into rich text field, image name = "everest.jpg"
+- create new report named: "report_with_image" - use report type created above
+- new log type, with rich text containing image, table and link
+ (add some text into first line of rich text field and add few empty lines bellow it/above image - at least 5 lines)
+ name for new log type: "log_with_rich_text",
+inside OCA designer add image, table and link into rich text field, image name = "panda.jpg"
+- create new log named: "log_with_image" - use log type created above
+
+### for TC: Rich Text Fields
+- (EDIT OBJECTS TYPE FROM TC: Html Formatting) create a new Asset type that has a rich text field and a subform with a rich text field
+- new object type, with rich text containing image, table and link, name for new object type: "asset_with_rich_text",
+ (add some text into first line of rich text field and add few empty lines bellow it/above image - at least 5 lines)
+inside OCA designer add image, table and link into rich text field, image name = "cats.jpg" and add the same
+elements into rich text field inside sub form - image name: "everest.jpg"
+- create new asset named: "asset_with_image" - use asset type created above
+- create new object type for Event just like Asset, first image use: "cats.jpg" and for sub form: "everest.jpg"
+- create new object type for Report just like Asset, but for the first image use: "everest.jpg" and for sub form: "panda.jpg"
+- create new object type for Log just like Asset, but for the first image use: "panda.jpg" (Log can't have sub form)
+- create new object type for Contact Group just like Asset, but for the first image use: "cats.jpg" (Contact Group can't have sub form)
+- create new object type for Contact just like Asset, but for the first image use: "panda.jpg" (Contact can't have sub form)
+(remember to create each one of new objects types on OCA web page)
+
 
 #**BEFORE EACH NEW RUN OF TESTS:**
 
