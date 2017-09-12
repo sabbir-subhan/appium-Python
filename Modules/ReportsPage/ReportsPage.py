@@ -1001,7 +1001,7 @@ class ReportsPage(BasePage):
         self.switch_context_to_webview()
 
         self.driver.switch_to.frame(self.driver.find_element(
-            *self.configuration.ReportsScreen.RICH_TEXT_IFRAME_INSIDE_SUBFORM_VIEW_EVENT))
+            *self.configuration.ReportsScreen.RICH_TEXT_IFRAME_INSIDE_SUBFORM_VIEW_REPORT))
         image = self.driver.find_element(*self.configuration.ReportsScreen.RICH_TEXT_IFRAME_IMG_TAG)
         self.assertIsNotNone(image, "image tag not found")
 

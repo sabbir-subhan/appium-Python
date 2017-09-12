@@ -163,7 +163,9 @@ class IOS9(IOS):
     #         expected_conditions.invisibility_of_element_located(self.configuration.CommonScreen.LOADING),
     #         "app is still loading - check internet connection")
 
+    def scroll_down_to_add_row_button(self):
 
+        pass
 
 
 

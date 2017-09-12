@@ -287,5 +287,19 @@ class IOS(CommonPage):
         logging.info("power button")
         self.driver.press_keycode(26)
 
+    def scroll_down_to_subform_add_row_button(self):
+
+        sleep(1)
+        logging.info("scroll down with loop")
+        var = 10
+        while var > 0:
+            logging.info("check if add row button is visible")
+            subform_field = self.driver.find_element(*self.configuration.EventEditScreen.SUBFORM_FIELD_ADD_ROW)  # locator is based on xpath with name of the button
+            if subform_field.is_displayed():
+                break
+            else:
+                logging.info("scroll down to add row button")
+                self.driver.execute_script("mobile: scroll", {"direction": "down"})
+
 
 

@@ -2,10 +2,10 @@
 
 from Modules.EventsPage.IOS import IOS
 import logging
+from Modules.load_class import LoadClass
 # from selenium.webdriver.support import expected_conditions
 # from selenium.webdriver.support.ui import WebDriverWait
-from Modules.load_class import LoadClass
-from appium.webdriver.common.touch_action import TouchAction
+# from appium.webdriver.common.touch_action import TouchAction
 
 
 class IOS9(IOS):

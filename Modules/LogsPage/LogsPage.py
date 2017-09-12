@@ -152,11 +152,15 @@ class LogsPage(BasePage):
             sleep(1)
             entry_field.send_keys(text + " ")
 
+    def type_text_into_entry_field_for_rich_text(self, text):
+
+        self.type_text_into_entry_field(text)
+
     def type_text_into_entry_field_all_fields(self, text):
 
         self.type_text_into_entry_field(text)
 
-    def type_text_into_entry_field_for_rich_text(self, text):
+    def type_text_into_entry_field_for_html_formatting(self, text):
 
         self.type_text_into_entry_field(text)
 

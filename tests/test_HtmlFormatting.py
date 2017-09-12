@@ -195,7 +195,7 @@ class TestHtmlFormatting(SetupTestCase):
         logs_page.choose_log_type_with_rich_text()
         logs_page.click_on_lodging_agency_picker()
         logs_page.choose_lodging_agency()
-        logs_page.type_text_into_entry_field_for_rich_text("html_formatting")
+        logs_page.type_text_into_entry_field_for_html_formatting("htmlformatting")
         common_page.hide_keyboard()
         logs_page.scroll_down_to_save_button()
         logs_page.click_save_new_log()
@@ -206,7 +206,7 @@ class TestHtmlFormatting(SetupTestCase):
 
         main_page.open_LOGS()
         logs_page.clear_Search_field()
-        logs_page.type_text_into_search_field("html_formatting")
+        logs_page.type_text_into_search_field("htmlformatting")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         logs_page.open_first_log_on_the_list()

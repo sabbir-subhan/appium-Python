@@ -893,7 +893,7 @@ class AssetsPage(BasePage):
         image = self.driver.find_element(*self.configuration.AssetsScreen.RICH_TEXT_IFRAME_IMG_TAG)
         self.assertIsNotNone(image, "image tag not found")
 
-        WebDriverWait(self.driver, 5).until(expected_conditions.visibility_of_element_located(
+        WebDriverWait(self.driver, 7).until(expected_conditions.visibility_of_element_located(
             self.configuration.AssetsScreen.RICH_TEXT_IFRAME_IMAGE_NAME))
 
         self.driver.switch_to.default_content()

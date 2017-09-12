@@ -142,7 +142,8 @@ class TestRichTextFields(SetupTestCase):
         events_page.click_New_event_button()
         events_page.choose_event_type_with_rich_text()
         events_page.fill_Name_input_field('event_rich_text')
-        events_page.scroll_down_to_save_button()
+        # events_page.scroll_down_to_save_button()
+        common_page.scroll_down_to_subform_add_row_button()
         events_page.add_subform_row()
         events_page.scroll_down_to_save_button()
         events_page.click_save_new_event()
@@ -184,7 +185,7 @@ class TestRichTextFields(SetupTestCase):
         reports_page.type_title("report_rich_text")
         reports_page.click_on_lodging_agency_picker()
         reports_page.choose_lodging_agency()
-        reports_page.scroll_down_to_publish_button()
+        common_page.scroll_down_to_subform_add_row_button()
         reports_page.add_subform_row()
         reports_page.scroll_down_to_publish_button()
         reports_page.click_publish_new_report()
@@ -224,7 +225,7 @@ class TestRichTextFields(SetupTestCase):
         logs_page.choose_log_type_with_rich_text()
         logs_page.click_on_lodging_agency_picker()
         logs_page.choose_lodging_agency()
-        logs_page.type_text_into_entry_field_for_rich_text("log_rich_text")
+        logs_page.type_text_into_entry_field_for_rich_text("logrichtext")
         common_page.hide_keyboard()
         logs_page.scroll_down_to_save_button()
         logs_page.click_save_new_log()
@@ -235,7 +236,7 @@ class TestRichTextFields(SetupTestCase):
 
         main_page.open_LOGS()
         logs_page.clear_Search_field()
-        logs_page.type_text_into_search_field("log_rich_text")
+        logs_page.type_text_into_search_field("logrichtext")
         common_page.click_Return_button_on_keyboard()
         common_page.hide_keyboard()
         logs_page.open_first_log_on_the_list()
@@ -258,7 +259,7 @@ class TestRichTextFields(SetupTestCase):
         common_page.wait_for_app_loading()
         contacts_page.check_presence_of_image_inside_rich_text_field_for_contact_group()
         common_page.hamburger_button()
-        main_page.check_presence_of_events_button()
+        main_page.check_presence_of_inbox_button()
 
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
@@ -271,7 +272,7 @@ class TestRichTextFields(SetupTestCase):
         common_page.check_popup_about_unfilled_fields()
         common_page.wait_for_app_loading()
         common_page.hamburger_button()
-        main_page.check_presence_of_events_button()
+        main_page.check_presence_of_inbox_button()
 
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
@@ -284,7 +285,7 @@ class TestRichTextFields(SetupTestCase):
         common_page.wait_for_app_loading()
         contacts_page.check_presence_of_image_inside_rich_text_field_for_contact_group()
         common_page.hamburger_button()
-        main_page.check_presence_of_events_button()
+        main_page.check_presence_of_inbox_button()
 
         # Repeat steps for a contact.
         main_page.scroll_down_to_contacts_button()
@@ -296,10 +297,11 @@ class TestRichTextFields(SetupTestCase):
         contacts_page.click_first_contact_on_the_list()
         contacts_page.check_presence_of_image_inside_rich_text_field_for_contact()
         common_page.hamburger_button()
-        main_page.check_presence_of_events_button()
+        main_page.check_presence_of_inbox_button()
 
         main_page.scroll_down_to_contacts_button()
         main_page.open_CONTACTS()
+        contacts_page.clear_Search_field()
         contacts_page.open_contacts_group()  # Contacts
         contacts_page.click_new_button()
         contacts_page.add_new_contact_into_group()
@@ -321,7 +323,7 @@ class TestRichTextFields(SetupTestCase):
         contacts_page.click_first_contact_on_the_list()
         contacts_page.check_presence_of_image_inside_rich_text_field_for_contact()
         common_page.hamburger_button()
-        main_page.check_presence_of_events_button()
+        main_page.check_presence_of_inbox_button()
 
 
 if __name__ == '__main__':

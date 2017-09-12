@@ -88,95 +88,116 @@ class Android(LogsPage):
         common_page.setDriver(self.driver)
         common_page.scroll_down_one_view()
 
-    def type_text_into_entry_field(self, text):
+    # def type_text_into_entry_field(self, text):
+    #
+    #     logging.info("type text into 'Entry' field")
+    #
+    #     sleep(0.5)
+    #     entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD_BY_XPATH)
+    #     entry_field.click()
+    #     sleep(0.5)
+    #     entry_field.send_keys(text + " ")
+    #     sleep(0.5)
+
+    def type_text_into_entry_field(self, text):  # text is passed for iOS
 
         logging.info("type text into 'Entry' field")
-
-        sleep(0.5)
-        entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD_BY_XPATH)
+        sleep(1)
+        entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
         entry_field.click()
         sleep(1)
-        entry_field.send_keys(text + " ")
-        sleep(0.5)
+        logging.info("sending keys for Android")
+        self.driver.press_keycode(33)  # send letter 'E'
+        self.driver.press_keycode(42)  # send letter 'N'
+        self.driver.press_keycode(48)  # send letter 'T'
+        self.driver.press_keycode(46)  # send letter 'R'
+        self.driver.press_keycode(53)  # send letter 'Y'
 
-    # def type_text_into_entry_field(self, text):  # text is passed for iOS
-    #
-    #     logging.info("type text into 'Entry' field")
-    #     sleep(1)
-    #     entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
-    #     entry_field.click()
-    #     sleep(1)
-    #     logging.info("sending keys")
-    #     self.driver.press_keycode(33)  # send letter 'E'
-    #     self.driver.press_keycode(42)  # send letter 'N'
-    #     self.driver.press_keycode(48)  # send letter 'T'
-    #     self.driver.press_keycode(46)  # send letter 'R'
-    #     self.driver.press_keycode(53)  # send letter 'Y'
-    #
-    # def type_text_into_entry_field_all_fields(self, text):
-    #
-    #     logging.info("type text into 'Entry' field")
-    #     entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
-    #     entry_field.click()
-    #     logging.info("sending keys")
-    #     sleep(2)
-    #     self.driver.press_keycode(29)  # send letter 'A'
-    #     self.driver.press_keycode(40)  # send letter 'L'
-    #     self.driver.press_keycode(40)  # send letter 'L'
-    #     self.driver.press_keycode(62)  # send letter 'SPACE'
-    #     self.driver.press_keycode(34)  # send letter 'F'
-    #     self.driver.press_keycode(37)  # send letter 'I'
-    #     self.driver.press_keycode(33)  # send letter 'E'
-    #     self.driver.press_keycode(40)  # send letter 'L'
-    #     self.driver.press_keycode(32)  # send letter 'D'
-    #     self.driver.press_keycode(47)  # send letter 'S'
-    #
-    # def type_text_into_entry_field_for_rich_text(self, text):
-    #
-    #     logging.info("type text into 'Entry' field")
-    #     entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
-    #     entry_field.click()
-    #     logging.info("sending keys")
-    #     sleep(1)
-    #     self.driver.press_keycode(36)  # send letter 'H'
-    #     self.driver.press_keycode(48)  # send letter 'T'
-    #     self.driver.press_keycode(41)  # send letter 'M'
-    #     self.driver.press_keycode(40)  # send letter 'L'
-    #     self.driver.press_keycode(34)  # send letter 'F'
-    #     self.driver.press_keycode(43)  # send letter 'O'
-    #     self.driver.press_keycode(46)  # send letter 'R'
-    #     self.driver.press_keycode(41)  # send letter 'M'
-    #     self.driver.press_keycode(29)  # send letter 'A'
-    #     self.driver.press_keycode(48)  # send letter 'T'
-    #     self.driver.press_keycode(48)  # send letter 'T'
-    #     self.driver.press_keycode(37)  # send letter 'I'
-    #     self.driver.press_keycode(42)  # send letter 'N'
-    #     self.driver.press_keycode(35)  # send letter 'G'
-    #
-    #     # text = "htmlformatting"
-    #
-    # def type_text_into_entry_field_chooser_fields(self, text):
-    #
-    #     logging.info("type text into 'Entry' field")
-    #     entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
-    #     entry_field.click()
-    #     logging.info("sending keys")
-    #     sleep(1)
-    #     self.driver.press_keycode(31)  # send letter 'C'
-    #     sleep(0.5)
-    #     self.driver.press_keycode(36)  # send letter 'H'
-    #     self.driver.press_keycode(43)  # send letter 'O'
-    #     self.driver.press_keycode(43)  # send letter 'O'
-    #     self.driver.press_keycode(47)  # send letter 'S'
-    #     self.driver.press_keycode(33)  # send letter 'E'
-    #     self.driver.press_keycode(46)  # send letter 'R'
-    #     self.driver.press_keycode(62)  # send letter 'SPACE'
-    #     self.driver.press_keycode(34)  # send letter 'F'
-    #     self.driver.press_keycode(37)  # send letter 'I'
-    #     self.driver.press_keycode(33)  # send letter 'E'
-    #     self.driver.press_keycode(40)  # send letter 'L'
-    #     self.driver.press_keycode(32)  # send letter 'D'
-    #     self.driver.press_keycode(47)  # send letter 'S'
+    def type_text_into_entry_field_all_fields(self, text):
+
+        logging.info("type text into 'Entry' field")
+        entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
+        entry_field.click()
+        logging.info("sending keys for Android")
+        sleep(2)
+        self.driver.press_keycode(29)  # send letter 'A'
+        self.driver.press_keycode(40)  # send letter 'L'
+        self.driver.press_keycode(40)  # send letter 'L'
+        self.driver.press_keycode(62)  # send letter 'SPACE'
+        self.driver.press_keycode(34)  # send letter 'F'
+        self.driver.press_keycode(37)  # send letter 'I'
+        self.driver.press_keycode(33)  # send letter 'E'
+        self.driver.press_keycode(40)  # send letter 'L'
+        self.driver.press_keycode(32)  # send letter 'D'
+        self.driver.press_keycode(47)  # send letter 'S'
+
+    def type_text_into_entry_field_for_html_formatting(self, text):
+
+        logging.info("type text into 'Entry' field")
+        entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
+        entry_field.click()
+        logging.info("sending keys for Android")
+        sleep(1)
+        self.driver.press_keycode(36)  # send letter 'H'
+        self.driver.press_keycode(48)  # send letter 'T'
+        self.driver.press_keycode(41)  # send letter 'M'
+        self.driver.press_keycode(40)  # send letter 'L'
+        self.driver.press_keycode(34)  # send letter 'F'
+        self.driver.press_keycode(43)  # send letter 'O'
+        self.driver.press_keycode(46)  # send letter 'R'
+        self.driver.press_keycode(41)  # send letter 'M'
+        self.driver.press_keycode(29)  # send letter 'A'
+        self.driver.press_keycode(48)  # send letter 'T'
+        self.driver.press_keycode(48)  # send letter 'T'
+        self.driver.press_keycode(37)  # send letter 'I'
+        self.driver.press_keycode(42)  # send letter 'N'
+        self.driver.press_keycode(35)  # send letter 'G'
+
+        # text = "htmlformatting"
+
+    def type_text_into_entry_field_chooser_fields(self, text):
+
+        logging.info("type text into 'Entry' field")
+        entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
+        entry_field.click()
+        logging.info("sending keys for Android")
+        sleep(1)
+        self.driver.press_keycode(31)  # send letter 'C'
+        sleep(0.5)
+        self.driver.press_keycode(36)  # send letter 'H'
+        self.driver.press_keycode(43)  # send letter 'O'
+        self.driver.press_keycode(43)  # send letter 'O'
+        self.driver.press_keycode(47)  # send letter 'S'
+        self.driver.press_keycode(33)  # send letter 'E'
+        self.driver.press_keycode(46)  # send letter 'R'
+        self.driver.press_keycode(62)  # send letter 'SPACE'
+        self.driver.press_keycode(34)  # send letter 'F'
+        self.driver.press_keycode(37)  # send letter 'I'
+        self.driver.press_keycode(33)  # send letter 'E'
+        self.driver.press_keycode(40)  # send letter 'L'
+        self.driver.press_keycode(32)  # send letter 'D'
+        self.driver.press_keycode(47)  # send letter 'S'
+
+    def type_text_into_entry_field_for_rich_text(self, text):
+
+        logging.info("type text into 'Entry' field")
+        entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD)
+        entry_field.click()
+        logging.info("sending keys for Android")
+        sleep(1)
+        self.driver.press_keycode(40)  # send letter 'L'
+        self.driver.press_keycode(43)  # send letter 'O'
+        self.driver.press_keycode(35)  # send letter 'G'
+        self.driver.press_keycode(46)  # send letter 'R'
+        self.driver.press_keycode(37)  # send letter 'I'
+        self.driver.press_keycode(31)  # send letter 'C'
+        self.driver.press_keycode(36)  # send letter 'H'
+        self.driver.press_keycode(48)  # send letter 'T'
+        self.driver.press_keycode(33)  # send letter 'E'
+        self.driver.press_keycode(52)  # send letter 'X'
+        self.driver.press_keycode(48)  # send letter 'T'
+
+        # text = "logrichtext"
 
 
 
