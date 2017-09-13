@@ -300,6 +300,6 @@ class IOS(CommonPage):
             else:
                 logging.info("scroll down to add row button")
                 self.driver.execute_script("mobile: scroll", {"direction": "down"})
-
+                var = var - 1
 
 

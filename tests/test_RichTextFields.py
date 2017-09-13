@@ -142,7 +142,6 @@ class TestRichTextFields(SetupTestCase):
         events_page.click_New_event_button()
         events_page.choose_event_type_with_rich_text()
         events_page.fill_Name_input_field('event_rich_text')
-        # events_page.scroll_down_to_save_button()
         common_page.scroll_down_to_subform_add_row_button()
         events_page.add_subform_row()
         events_page.scroll_down_to_save_button()

@@ -274,6 +274,7 @@ class Map:
     POLYGON_BUTTON = (MobileBy.XPATH, '//UIALink[@name[contains(., "Polygon")]]')
     SAVE_MAP_BUTTON = (MobileBy.XPATH, '//UIAButton[@name[contains(., "Save")]]')
     SAVED_MAP_FOR_MOBILE = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "FOR MOBILE")]]')
+    MAP_LAYER_FOR_APPIUM = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "map_layer_for_appium")]]')
     SAVED_MAP_ALL_ACTIVE_EVENTS = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "All active events")]]')
     SAVED_MAP_ALL_ASSETS = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "All assets")]]')
     SAVED_MAP_ALL_CONTACTS = (MobileBy.XPATH, '//UIAWebView/UIALink[@name[contains(., "All contacts")]]')
@@ -403,7 +404,7 @@ class LogsScreen:
     # LODGING_AGENCY_PICKER = (MobileBy.XPATH, '//UIAWebView/UIAElement[1]')
     LODGING_AGENCY_PICKER = ReportsScreen.LODGING_AGENCY_PICKER
     ENTRY_FIELD = (MobileBy.CLASS_NAME, 'UIATextField')
-    ENTRY_FIELD_BY_XPATH = ENTRY_FIELD
+    ENTRY_FIELD_BY_XPATH = (MobileBy.XPATH, '//UIATextField[1]')
     ENTRY_FIELD_FIRST_PARAGRAPH = ENTRY_FIELD
     # ENTRY_FIELD_BY_XPATH = (MobileBy.XPATH, '//UIAElement[@name[contains(., "Rich Text Editor, entry")]]')  # not working
     # ENTRY_FIELD_FIRST_PARAGRAPH = (MobileBy.XPATH, '//UIAElement[@name="Rich Text Editor, entry"]/UIAElement[1]/UIAElement[1]')  # not working

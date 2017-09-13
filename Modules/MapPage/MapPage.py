@@ -358,13 +358,13 @@ class MapPage(BasePage):
         #     whole_g_element = self.driver.find_element(*self.configuration.Map.MAP_ADDED_LAYER_SECOND_ELEMENT)
         #     self.assertIsNotNone(whole_g_element, "whole graphic element not found")
         try:
-            added_layer = self.driver.find_element(*self.configuration.Map.MAP_ADDED_LAYER_SECOND_ELEMENT)  # actually it is first element because first-child is empty <g> tag
+            # added_layer = self.driver.find_element(*self.configuration.Map.MAP_ADDED_LAYER_SECOND_ELEMENT)  # actually it is first element because first-child is empty <g> tag
+            added_layer = self.driver.find_element(*self.configuration.Map.MAP_LAYER_PRESENCE)
             if added_layer.is_displayed():
                 self.assertIsNotNone(added_layer, "added layer not found")
-            else:
-                pass
         except NoSuchElementException:
-            logging.warning("added layer not found - check if, for example contact with address, is present")
+            # logging.warning("added layer not found - check if, for example contact with address, is present")
+            logging.warning("added layer not found")
 
         self.switch_context_to_native()
 
@@ -515,6 +515,14 @@ class MapPage(BasePage):
         logging.info("choose saved map 'FOR MOBILE' ")
         choose_map_for_mobile = self.driver.find_element(*self.configuration.Map.SAVED_MAP_FOR_MOBILE)
         self.assertIsNotNone(choose_map_for_mobile, "Saved map 'FOR MOBILE' not found")
+        choose_map_for_mobile.click()
+        sleep(2)
+
+    def choose_map_layer_for_appium(self):
+
+        logging.info("choose saved map 'map_layer_for_appium' ")
+        choose_map_for_mobile = self.driver.find_element(*self.configuration.Map.MAP_LAYER_FOR_APPIUM)
+        self.assertIsNotNone(choose_map_for_mobile, "Saved map 'map_layer_for_appium' not found")
         choose_map_for_mobile.click()
         sleep(2)
 
