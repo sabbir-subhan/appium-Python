@@ -117,6 +117,7 @@ class TestEditAndSaveObjectsInOfflineMode(SetupTestCase):
         common_page.wait_for_app_loading()
         events_page.click_edit_button()
         common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
 
         # Repeat steps for Assets
         main_page.open_CREATE_ASSETS()
@@ -131,11 +132,13 @@ class TestEditAndSaveObjectsInOfflineMode(SetupTestCase):
 
         common_page.hamburger_button()
         main_page.scroll_up_to_events_button()
+        main_page.check_presence_of_events_button()
         main_page.open_ASSETS()
         assets_page.open_first_pending_asset()
         common_page.wait_for_app_loading()
         assets_page.click_edit_button()
         common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
 
         # Repeat steps for Reports
         main_page.open_CREATE_REPORT()
@@ -157,6 +160,7 @@ class TestEditAndSaveObjectsInOfflineMode(SetupTestCase):
         common_page.wait_for_app_loading()
         reports_page.click_edit_button()
         common_page.hamburger_button()
+        main_page.check_presence_of_events_button()
 
         # Repeat steps for Logs
         main_page.open_CREATE_LOG()

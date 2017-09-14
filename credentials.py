@@ -36,7 +36,7 @@ class Credentials:
     production_domain = 'https://nogginoca.com'  # here You can change domain for production
 
     # QA
-    QA_username = "bitnoise"  # here You can change username for QA
+    QA_username = "bitnoise"  # here You can change username for QA (system admin)
     QA_password = "bitnoise1"  # here You can change password for QA
 
     # general_user

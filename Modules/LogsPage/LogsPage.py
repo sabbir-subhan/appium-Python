@@ -7,6 +7,7 @@ from time import sleep
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
+from appium.webdriver.common.touch_action import TouchAction
 
 
 class LogsPage(BasePage):
@@ -115,7 +116,7 @@ class LogsPage(BasePage):
 
         self.switch_context_to_native()
 
-    def type_text_into_entry_field(self, text):
+    def type_text_into_entry_field(self, text):  # this method will work only for log type: "log_with_rich_text"
 
         # webview is not working on iOS10 and sending keys into Entry field on Android in native is not working
 
@@ -134,23 +135,20 @@ class LogsPage(BasePage):
         # entry_field_inside_iframe.send_keys(Keys.SPACE)
         # entry_field.send_keys(Keys.RETURN)
         entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD_BY_XPATH)
+        action = TouchAction(self.driver)
+        action.tap(element=entry_field, count=1).perform()
         entry_field.click()
         try:
-            entry_field_first_paragraph = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD_FIRST_PARAGRAPH)
-        # entry_field_first_paragraph.click()
-            sleep(1)
-        # entry_field.send_keys(text + " ")
-        # from selenium.webdriver.common.keys import Keys
-        # entry_field_first_paragraph.send_keys(Keys.ARROW_LEFT)
-        # entry_field_first_paragraph.send_keys(Keys.ARROW_UP)
-        # entry_field_first_paragraph.send_keys(Keys.SPACE)
-        # entry_field_first_paragraph.send_keys(Keys.RETURN)
-            entry_field_first_paragraph.send_keys(text + " ")
-        except NoSuchElementException:
             entry_field = self.driver.find_element(*self.configuration.LogsScreen.ENTRY_FIELD_BY_XPATH)
             entry_field.click()
             sleep(1)
             entry_field.send_keys(text + " ")
+        except NoSuchElementException:
+            entry_field_first_paragraph = self.driver.find_element(
+                *self.configuration.LogsScreen.ENTRY_FIELD_FIRST_PARAGRAPH)
+            entry_field_first_paragraph.click()
+            sleep(1)
+            entry_field_first_paragraph.send_keys(text + " ")
 
     def type_text_into_entry_field_for_rich_text(self, text):
 
